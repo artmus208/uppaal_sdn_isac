@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>
+const int MAX_Q = 2;
+int[0, MAX_Q] q = 0;
+  </declaration>
+  <template>
+    <name>Queue</name>
+    <location id="id0" x="0" y="0">
+      <name x="-30" y="-30">Accepting</name>
+    </location>
+    <location id="id1" x="220" y="0">
+      <name x="190" y="-30">Overflow</name>
+    </location>
+    <init ref="id0"/>
+    <transition>
+      <source ref="id0"/>
+      <target ref="id0"/>
+      <label kind="guard" x="-40" y="40">q &lt; MAX_Q</label>
+      <label kind="assignment" x="-40" y="60">q = q + 1</label>
+    </transition>
+    <transition>
+      <source ref="id0"/>
+      <target ref="id1"/>
+      <label kind="guard" x="80" y="-40">q == MAX_Q</label>
+    </transition>
+    <transition>
+      <source ref="id1"/>
+      <target ref="id1"/>
+    </transition>
+  </template>
+  <system>
+Q = Queue();
+system Q;
+  </system>
+</nta>

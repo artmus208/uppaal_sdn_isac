@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uppaal-mcp"
+version = "0.1.0"
+description = "Model Context Protocol server and Python runner for UPPAAL verifyta."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = []
+
+[project.scripts]
+uppaal-mcp = "uppaal_mcp.server:main"
+uppaal-verifyta = "uppaal_mcp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+uppaal_mcp = ["builtin_examples/*/*.xml", "builtin_examples/*/*.q"]

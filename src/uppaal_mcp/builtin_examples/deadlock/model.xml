@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>
+// Global declarations.
+  </declaration>
+  <template>
+    <name>StuckProcess</name>
+    <location id="id0" x="0" y="0">
+      <name x="-20" y="-30">Stuck</name>
+      <urgent/>
+    </location>
+    <init ref="id0"/>
+  </template>
+  <system>
+P = StuckProcess();
+system P;
+  </system>
+</nta>
