@@ -16,6 +16,12 @@ from .validation import (
     validate_model_text,
 )
 
+VERIFYTA_OPTION_PRESETS: dict[str, list[str]] = {
+    "normal": [],
+    "trace_on_violation": ["-t0"],
+    "diagnostic": ["-t0"],
+}
+
 
 @dataclass
 class QueryOutcome:
@@ -112,6 +118,7 @@ class VerifytaRunner:
         queries: str | None = None,
         query_path: str | Path | None = None,
         options: list[str] | None = None,
+        options_preset: str | None = None,
         timeout_sec: float | None = None,
         keep_artifacts: bool = True,
     ) -> VerificationResult:
@@ -163,9 +170,10 @@ class VerifytaRunner:
             else parse_queries_text(query_file.read_text(encoding="utf-8"))
         )
 
+        resolved_options = resolve_verifyta_options(options=options, options_preset=options_preset)
         command = [
             self.config.verifyta_path,
-            *(options or []),
+            *resolved_options,
             path_for_verifyta_arg(model_file, self.config.verifyta_path),
             path_for_verifyta_arg(query_file, self.config.verifyta_path),
         ]
@@ -230,6 +238,7 @@ class VerifytaRunner:
         items: list[dict],
         *,
         options: list[str] | None = None,
+        options_preset: str | None = None,
         timeout_sec: float | None = None,
     ) -> list[dict]:
         results: list[dict] = []
@@ -240,6 +249,7 @@ class VerifytaRunner:
                 queries=item.get("queries"),
                 query_path=item.get("query_path"),
                 options=item.get("options", options),
+                options_preset=item.get("options_preset", options_preset),
                 timeout_sec=item.get("timeout_sec", timeout_sec),
                 keep_artifacts=item.get("keep_artifacts", True),
             )
@@ -256,6 +266,18 @@ class VerifytaRunner:
         path = self.config.workspace / "runs" / f"{timestamp}-{digest}-{uuid4().hex[:8]}"
         path.mkdir(parents=True, exist_ok=False)
         return path
+
+
+def resolve_verifyta_options(
+    *,
+    options: list[str] | None = None,
+    options_preset: str | None = None,
+) -> list[str]:
+    preset_name = (options_preset or "normal").strip().lower()
+    if preset_name not in VERIFYTA_OPTION_PRESETS:
+        allowed = ", ".join(sorted(VERIFYTA_OPTION_PRESETS))
+        raise ValueError(f"Unsupported verifyta options_preset {options_preset!r}. Use one of: {allowed}.")
+    return [*VERIFYTA_OPTION_PRESETS[preset_name], *(options or [])]
 
 
 def parse_verifyta_outcomes(stdout: str, formulas: list[str]) -> list[QueryOutcome]:

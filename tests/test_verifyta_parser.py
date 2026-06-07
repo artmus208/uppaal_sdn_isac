@@ -1,6 +1,6 @@
 import unittest
 
-from uppaal_mcp.verifyta import parse_verifyta_outcomes, summarize_status
+from uppaal_mcp.verifyta import parse_verifyta_outcomes, resolve_verifyta_options, summarize_status
 
 
 class VerifytaParserTests(unittest.TestCase):
@@ -23,6 +23,13 @@ class VerifytaParserTests(unittest.TestCase):
 
     def test_summarize_error_without_outcomes(self) -> None:
         self.assertEqual(summarize_status(1, [], "", "syntax error"), "error")
+
+    def test_resolve_verifyta_options_presets(self) -> None:
+        self.assertEqual(resolve_verifyta_options(options_preset="normal"), [])
+        self.assertEqual(resolve_verifyta_options(options_preset="trace_on_violation"), ["-t0"])
+        self.assertEqual(resolve_verifyta_options(options=["-u"], options_preset="diagnostic"), ["-t0", "-u"])
+        with self.assertRaises(ValueError):
+            resolve_verifyta_options(options_preset="wild")
 
 
 if __name__ == "__main__":

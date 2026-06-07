@@ -74,6 +74,31 @@ class PhyLayerTests(unittest.TestCase):
         negative = generate_uppaal_model(mode="with_negative_scenarios")
         self.assertTrue(negative.include_negative_scenarios)
         self.assertIn("Negative scenarios are emitted by the benchmark suite", negative.model_xml)
+        extended = generate_uppaal_model(mode="with_extended_observers")
+        self.assertTrue(extended.include_extended_observers)
+        self.assertIn("ObsChannelReport = Template_ObsChannelReport();", extended.model_xml)
+        self.assertIn("A[] not ObsPhyKpiReport.Violation", extended.queries)
+        extended_report = validate_generated_model(extended.model_xml, extended.queries)
+        self.assertTrue(extended_report.ok, extended_report.errors)
+
+    def test_open_system_mode_excludes_environment_and_wraps_queries(self) -> None:
+        generated = generate_uppaal_model(mode="open_system")
+        self.assertEqual(generated.system_mode, "open")
+        self.assertNotIn("ENV_CH = Template_ENV_CH();", generated.model_xml)
+        self.assertIn("A[] (ass_env() imply (not deadlock))", generated.queries)
+        report = validate_generated_model(
+            generated.model_xml,
+            generated.queries,
+            require_environment=False,
+        )
+        self.assertTrue(report.ok, report.errors)
+        bare_deadlock = validate_generated_model(
+            generated.model_xml,
+            "A[] not deadlock\n",
+            require_environment=False,
+        )
+        self.assertFalse(bare_deadlock.ok)
+        self.assertTrue(any("closed A_SYS" in item for item in bare_deadlock.errors), bare_deadlock.errors)
 
     def test_alpha_rejects_continuous_guard_tokens(self) -> None:
         report = check_no_continuous_guards("guard SINR_c < SINR_min")
@@ -267,6 +292,13 @@ class PhyLayerTests(unittest.TestCase):
         report = validate_generated_model(broken, generated.queries)
         self.assertFalse(report.ok)
         self.assertTrue(any("highest_priority_SQ()" in item and "ChannelClass" in item for item in report.errors), report.errors)
+
+    def test_generated_model_validator_rejects_bad_contract_violation_guard(self) -> None:
+        generated = generate_uppaal_model()
+        broken = generated.model_xml.replace("!ass_ch()", "ass_ch()")
+        report = validate_generated_model(broken, generated.queries)
+        self.assertFalse(report.ok)
+        self.assertTrue(any("!ass_ch()" in item for item in report.errors), report.errors)
 
     def test_generated_model_validator_rejects_undeclared_and_dangling_channel(self) -> None:
         generated = generate_uppaal_model()

@@ -173,6 +173,7 @@ def validate_generated_model(
     errors.extend(_check_a_sq_dependency(declarations))
     errors.extend(_check_sensing_report_guarantee(root))
     errors.extend(_check_phy_kpi_report_guarantee(root))
+    errors.extend(_check_contract_violation_paths(root))
     if require_environment:
         dangling_errors, dangling_warnings = _check_dangling_channels(root, declarations, require_observers=require_observers)
         errors.extend(dangling_errors)
@@ -661,6 +662,33 @@ def _check_phy_kpi_report_guarantee(root: ET.Element) -> list[str]:
     for transition in report_edges:
         if not re.search(r"\bc_report\s*<=\s*D_report\b", _transition_guard(transition)):
             errors.append("A_PH phy_kpi_report! transition from PHYKpiReporting must guard c_report <= D_report.")
+    return errors
+
+
+def _check_contract_violation_paths(root: ET.Element) -> list[str]:
+    errors: list[str] = []
+    expected = {
+        "Template_A_CH": ("ass_ch()", "contract_violation_ch!", "ContractViolation_CH"),
+        "Template_A_SIG": ("ass_sig()", "contract_violation_sig!", "ContractViolation_SIG"),
+        "Template_A_BM": ("ass_bm()", "contract_violation_bm!", "ContractViolation_BM"),
+        "Template_A_SQ": ("ass_sq()", "contract_violation_sq!", "ContractViolation_SQ"),
+        "Template_A_PH": ("ass_ph()", "contract_violation_ph!", "ContractViolation_PH"),
+    }
+    for template_name, (assumption, sync, target) in expected.items():
+        template = _template_by_any_name(root, template_name, template_name.replace("Template_", ""))
+        if template is None:
+            continue
+        edges = [
+            transition
+            for transition in template.findall("transition")
+            if _transition_target_name(template, transition) == target
+            and _transition_sync(transition) == sync
+        ]
+        if not edges:
+            errors.append(f"{template_name} has no contract violation path to {target} via {sync}.")
+            continue
+        if not any(f"!{assumption}" in _transition_guard(transition) for transition in edges):
+            errors.append(f"{template_name} contract violation path must be guarded by !{assumption}.")
     return errors
 
 

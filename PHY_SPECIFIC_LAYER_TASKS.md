@@ -107,7 +107,7 @@
 - [x] Проверять `ch_enabled_count <= 1` или доказывать детерминизм через generated priority function.
 - [x] Проверять отсутствие continuous guards.
 - [x] Проверять guarantee: после `measure_tick?` до `D_meas` публикуется `channel_report!`.
-- [ ] Проверять contract violation path при нарушении assumptions.
+- [x] Проверять contract violation path при нарушении assumptions.
 
 ## 7. A_SIG generator and checks
 
@@ -175,8 +175,8 @@
 - [x] Сгенерировать `ENV_NET` с bounded delivery для `mac_report_delivered!` и `controller_report_delivered!`.
 - [x] Реализовать assumption state variables: `TimingOk`, `ConfigAdmissible`, `BeamCmdAdmissible`, network delivery ok flags.
 - [x] Проверять, что generated `A_SYS` включает все `ENV_*`.
-- [ ] Добавить режим open-system contract, где `A_ENV` не включен, а свойства оборачиваются assumptions; по умолчанию использовать closed-system.
-- [ ] Проверять, что `A[] not deadlock` запускается только на закрытой модели или явно помеченной open-assumption модели.
+- [x] Добавить режим open-system contract, где `A_ENV` не включен, а свойства оборачиваются assumptions; по умолчанию использовать closed-system.
+- [x] Проверять, что `A[] not deadlock` запускается только на закрытой модели или явно помеченной open-assumption модели.
 - [x] Добавить scenario profiles для нормального, degraded и failure окружения.
 
 ## 12. Observer generators
@@ -185,10 +185,10 @@
 - [x] Сгенерировать `ObsSenseReport`: `sensing_degraded? -> phy_kpi_report? within D_report`.
 - [x] Сгенерировать `ObsFreshness`: `aos_ctrl_expired? -> sensing_report? with SensingState == FreshnessLimited within D_sense`.
 - [x] Сгенерировать `ObsBeamRecovery`: `recovery_start? -> one of beam_restored?/handover_hint?/beam_failure? within D_BM`.
-- [ ] Сгенерировать optional `ObsChannelReport`: `measure_tick? -> channel_report? within D_meas`.
-- [ ] Сгенерировать optional `ObsSignalReport`: config command -> `signal_report? within D_sig`.
-- [ ] Сгенерировать optional `ObsSensingReport`: child report update -> `sensing_report? within D_sense`.
-- [ ] Сгенерировать optional `ObsPhyKpiReport`: child degradation/update -> `phy_kpi_report? within D_report`.
+- [x] Сгенерировать optional `ObsChannelReport`: `measure_tick? -> channel_report? within D_meas`.
+- [x] Сгенерировать optional `ObsSignalReport`: config command -> `signal_report? within D_sig`.
+- [x] Сгенерировать optional `ObsSensingReport`: child report update -> `sensing_report? within D_sense`.
+- [x] Сгенерировать optional `ObsPhyKpiReport`: child degradation/update -> `phy_kpi_report? within D_report`.
 - [x] Проверять, что observer waiting locations не имеют invariant `c_obs <= D`.
 - [x] Проверять, что violation transition использует `c_obs > D`.
 - [x] Проверять, что success transition допускает `c_obs <= D`.
@@ -231,7 +231,7 @@
 
 ## 15. Verifyta integration extensions
 
-- [ ] Расширить `uppaal_verify` options preset: normal verification, trace-on-violation, diagnostic run.
+- [x] Расширить `uppaal_verify` options preset: normal verification, trace-on-violation, diagnostic run.
 - [ ] Добавить safe support для verifyta trace generation flags после проверки конкретного UPPAAL 5.0 syntax.
 - [x] Добавить `phy_verify_contract(tex_path|contract_ir|model_xml, profile, mode)`.
 - [x] Добавить `phy_verify_property_pack(model, queries, explain=True)`.
@@ -328,7 +328,7 @@
 - [x] Golden tests: current `.tex` -> generated `queries.q`.
 - [ ] Verifyta smoke tests for minimal closed model.
 - [ ] Verifyta smoke tests for each scenario.
-- [ ] Negative tests for each semantic validator.
+- [x] Negative tests for each semantic validator.
 - [x] Regression tests for MCP tool JSON shapes.
 - [x] Test that generic MVP tools still work after PHY layer additions.
 

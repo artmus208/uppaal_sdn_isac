@@ -34,8 +34,10 @@
   - `A_CH`, `A_SIG`, `A_BM`, `A_SQ`, `A_PH`;
   - `ENV_CH`, `ENV_TARGET`, `ENV_MAC`, `ENV_NET`;
   - `ObsSenseReport`, `ObsFreshness`, `ObsBeamRecovery`;
+  - optional extended observers in `mode=with_extended_observers`: `ObsChannelReport`, `ObsSignalReport`, `ObsSensingReport`, `ObsPhyKpiReport`;
   - closed `A_SYS`;
-  - generation modes: `minimal`, `with_observers`, `with_debug_counters`, `with_negative_scenarios`;
+  - open-system contract mode `open_system`, where `A_ENV` is excluded and generated queries are wrapped with `ass_env()`;
+  - generation modes: `minimal`, `with_observers`, `with_debug_counters`, `with_negative_scenarios`, `with_extended_observers`, `open_system`;
   - generated query pack.
 - Static semantic validators:
   - required PHY/ENV/observer templates;
@@ -50,7 +52,13 @@
   - observer syncs are passive `?` syncs over broadcast channels;
   - required inputs for `A_SQ` and `A_PH`.
   - generated priority helpers `highest_priority_CH()` and `highest_priority_SQ()` exist and are used.
+  - estimator-derived values are rejected in transition guards;
+  - report/event syncs cannot be combined on one transition;
+  - `A_CH`, `A_SIG`, `A_SQ` and `A_PH` report-deadline skeletons require trigger reset, deadline guard and report edge;
+  - `A_SQ` dependency on `ChannelClass`, `SignalClass`, `BeamClass` and sensing class variables is checked;
   - `BeamRecover` has `beam_restored!`, `handover_hint!`, `beam_failure!` outcomes and `beam_failure!` uses `c_rec == D_BM`.
+  - `BeamRecover` outcome edges are checked as exactly one edge per outcome event, and `BeamMisalign` must emit `beam_misaligned!`.
+  - open-system models reject bare `A[] not deadlock`; deadlock freedom must be closed-system or guarded by `ass_env()`.
   - no unbounded leads-to queries for bounded deadlines;
   - all finite classes use bounded `int[0,N]` domains;
   - query instance/location references exist;
@@ -97,6 +105,11 @@
   - `phy-list-benchmarks`
   - `phy-benchmark`
   - `phy-validate-benchmarks`
+- Generic verifyta options presets:
+  - `normal`: no extra options;
+  - `trace_on_violation`: `-t0`;
+  - `diagnostic`: `-t0`;
+  - unsupported presets fail before spawning `verifyta`.
 - Compact observer scenarios:
   - `obs_sense_report_success`
   - `obs_sense_report_violation`
@@ -155,8 +168,8 @@
   - static-check metadata for channel semantics, single-sync and no-continuous-guards checks;
   - negative property pack for intentionally broken benchmark models.
 - Tests:
-  - system Python: `44 tests OK, 1 skipped` when `mcp` package is absent;
-  - `.venv`: `44 tests OK`.
+  - system Python: `51 tests OK, 1 skipped` when `mcp` package is absent;
+  - `.venv`: `51 tests OK`.
   - golden fixtures:
     - `tests/fixtures/phy_contract_article.golden.json`
     - `tests/fixtures/phy_model_article.golden.xml`
@@ -170,6 +183,8 @@
   - `phy-property-pack --include-negative --output-dir .uppaal_mcp_workspace/phy_property_pack_smoke`: writes `queries.q`, `queries.json`, `property_pack.json`, `negative_property_pack.json`.
   - `phy-verify-property-pack --model .uppaal_mcp_workspace/phy_generated_smoke/model.xml --queries .uppaal_mcp_workspace/phy_generated_smoke/queries.q --static-only`: `status=validated`.
   - `phy-generate --mode minimal --output-dir .uppaal_mcp_workspace/phy_generated_minimal_smoke`: returns clean semantic validation without observers.
+  - `phy-generate --mode open_system --output-dir .uppaal_mcp_workspace/phy_generated_open_smoke`: returns clean semantic validation without `ENV_*` instances and with `ass_env()`-wrapped queries.
+  - `phy-generate --mode with_extended_observers --output-dir .uppaal_mcp_workspace/phy_generated_extended_observers_smoke`: returns clean semantic validation with `ObsChannelReport`, `ObsSignalReport`, `ObsSensingReport`, `ObsPhyKpiReport`.
   - `phy-run-artifacts --output-root .uppaal_mcp_workspace/phy_run_artifacts_smoke --verifyta-version "UPPAAL 5.0.0"`: writes artifact layout and returns stable cache hit on repeat without `--force`.
   - `list-examples`: returns `category`/`is_phy`, so `phy_contract_skeleton` is visible as a PHY example.
 - MCP UPPAAL validation:
@@ -179,13 +194,16 @@
 
 `phy_verify_contract` now runs the non-observer property pack one formula at a time.
 
-Current fresh check on 2026-06-07: `verifyta.exe` is found, but Windows execution from WSL fails before UPPAAL starts:
+Current fresh checks on 2026-06-07:
+
+- `uppaal_version` can return `UPPAAL 5.0.0 (rev. 714BA9DB36F49691)`;
+- actual verification of the generated minimal closed model still fails before UPPAAL starts:
 
 ```text
 UtilBindVsockAnyPort:309: socket failed 1
 ```
 
-So the generated model/query validation is green, but current `verifyta` execution is blocked by WSL interop state, not by UPPAAL syntax.
+So the generated model/query validation is green, but current `verifyta` execution is still blocked by WSL interop state, not by the static UPPAAL model validator.
 
 Last known successful verifyta run before the current WSL interop failure verified these as satisfied:
 
@@ -221,8 +239,9 @@ For negative scenarios, `not_satisfied` is the expected result because the scena
 - Full transition semantics for every automaton from the article, not just a verification-friendly baseline.
 - Full observer verification inside the full `A_SYS`, or a redesigned observer encoding that avoids UPPAAL 5.0 guarded-broadcast state-space blow-up.
 - Official `.xtr`/UPPAAL trace option integration; current parser handles text traces passed through `trace_text`.
+- Confirmed UPPAAL 5.0 trace file/output syntax. Current presets expose conservative `-t0`, but `.xtr`/file-output flags are not marked complete until `verifyta --help` or an actual trace run works in this environment.
 - Counterexample explanation from full generated traces, including exact transition path reconstruction.
-- CSV/publication table export and richer report polishing.
+- Richer report polishing beyond the current publication tables/CSV export.
 - Official result cache around actual `verifyta` execution; current cache is artifact-layout cache keyed by generated inputs/options.
 - Current WSL interop failure prevents fresh `verifyta.exe` execution from this WSL session.
 - Full checklist closure in `PHY_SPECIFIC_LAYER_TASKS.md`.

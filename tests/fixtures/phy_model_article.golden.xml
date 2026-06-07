@@ -26,6 +26,7 @@ int[0,3] env_scenario = SCENARIO_NORMAL;
 clock c_meas, c_sig, c_sense, c_report, c_rec, c_ssb;
 clock aos_bs, aos_ctrl, c_env, c_net;
 clock c_obs_sense, c_obs_fresh, c_obs_beam;
+clock c_obs_channel, c_obs_signal, c_obs_sensing, c_obs_phy;
 
 typedef int[0,4] WaveformT;
 const int W_OFDM = 0;
@@ -252,6 +253,10 @@ bool degradation_flag = false;
 bool child_update = false;
 bool input_changed = false;
 bool target_seen = false;
+bool channel_report_pending = false;
+bool signal_report_pending = false;
+bool sensing_report_pending = false;
+bool phy_kpi_report_pending = false;
 bool comm_ok = true;
 bool sensing_qos_ok = true;
 bool TimingOk = true;
@@ -274,7 +279,8 @@ bool gar_bm() { return classes_in_range_bm; }
 bool ass_sq() { return fresh_child_reports &amp;&amp; gar_ch() &amp;&amp; gar_sig() &amp;&amp; gar_bm(); }
 bool gar_sq() { return true; }
 bool ass_ph() { return gar_ch() &amp;&amp; gar_sig() &amp;&amp; gar_bm() &amp;&amp; gar_sq(); }
-bool gar_ph() { return true; }</declaration>
+bool gar_ph() { return true; }
+bool ass_env() { return TimingOk &amp;&amp; ConfigAdmissible &amp;&amp; BeamCmdAdmissible &amp;&amp; NetDeliveryOk; }</declaration>
   <template>
     <name>Template_A_CH</name>
     <location id="Template_A_CH_0" x="0" y="0">
@@ -307,7 +313,7 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_0" />
       <target ref="Template_A_CH_1" />
       <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
-      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0, channel_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_0" />
@@ -323,7 +329,7 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_2" />
       <target ref="Template_A_CH_1" />
       <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
-      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0, channel_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_2" />
@@ -334,7 +340,7 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_3" />
       <target ref="Template_A_CH_1" />
       <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
-      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0, channel_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_3" />
@@ -345,7 +351,7 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_4" />
       <target ref="Template_A_CH_1" />
       <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
-      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0, channel_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_4" />
@@ -356,7 +362,7 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_5" />
       <target ref="Template_A_CH_1" />
       <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
-      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0, channel_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_5" />
@@ -367,7 +373,7 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_6" />
       <target ref="Template_A_CH_1" />
       <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
-      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0, channel_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_6" />
@@ -378,7 +384,7 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_7" />
       <target ref="Template_A_CH_1" />
       <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
-      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0, channel_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_7" />
@@ -390,28 +396,28 @@ bool gar_ph() { return true; }</declaration>
       <target ref="Template_A_CH_0" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_NORMAL &amp;&amp; c_meas &lt;= D_meas</label>
       <label kind="synchronisation" x="0" y="-40">channel_report!</label>
-      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = false, ch_enabled_count = 1, c_meas = 0</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = false, ch_enabled_count = 1, channel_report_pending = false, c_meas = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_1" />
       <target ref="Template_A_CH_2" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_COMM_DEGRADED &amp;&amp; c_meas &lt;= D_meas</label>
       <label kind="synchronisation" x="0" y="-40">channel_report!</label>
-      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, c_meas = 0</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, channel_report_pending = false, c_meas = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_1" />
       <target ref="Template_A_CH_3" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_SENSING_DEGRADED &amp;&amp; c_meas &lt;= D_meas</label>
       <label kind="synchronisation" x="0" y="-40">channel_report!</label>
-      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, c_meas = 0</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, channel_report_pending = false, c_meas = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_1" />
       <target ref="Template_A_CH_6" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_JOINT_DEGRADED &amp;&amp; c_meas &lt;= D_meas</label>
       <label kind="synchronisation" x="0" y="-40">channel_report!</label>
-      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, c_meas = 0</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, channel_report_pending = false, c_meas = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_CH_2" />
@@ -437,6 +443,48 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_CH_6" />
       <target ref="Template_A_CH_6" />
       <label kind="synchronisation" x="0" y="-60">phy_outage!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_0" />
+      <target ref="Template_A_CH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ch()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ch!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_1" />
+      <target ref="Template_A_CH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ch()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ch!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_2" />
+      <target ref="Template_A_CH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ch()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ch!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_3" />
+      <target ref="Template_A_CH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ch()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ch!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_4" />
+      <target ref="Template_A_CH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ch()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ch!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_5" />
+      <target ref="Template_A_CH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ch()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ch!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_6" />
+      <target ref="Template_A_CH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ch()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ch!</label>
     </transition>
   </template>
   <template>
@@ -465,209 +513,209 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_SIG_0" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_0" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_0" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">prs_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_0" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_0" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_1" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_1" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_1" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">prs_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_1" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_1" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_2" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_2" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_2" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">prs_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_2" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_2" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_3" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_3" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_3" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">prs_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_3" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_3" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_4" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_4" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_4" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">prs_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_4" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_4" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_5" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_5" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_5" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">prs_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_5" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_5" />
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
-      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0, signal_report_pending = true</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_3" />
       <target ref="Template_A_SIG_0" />
       <label kind="guard" x="0" y="-60">c_sig &lt;= D_sig</label>
       <label kind="synchronisation" x="0" y="-40">signal_report!</label>
-      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_RECONFIGURING, c_sig = 0</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_RECONFIGURING, signal_report_pending = false, c_sig = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_0" />
       <target ref="Template_A_SIG_1" />
       <label kind="guard" x="0" y="-60">PilotDensityClass == PILOTDENSITYCLASS_OK &amp;&amp; BLERClass == BLERCLASS_OK &amp;&amp; DRTClass == DRTCLASS_OK</label>
       <label kind="synchronisation" x="0" y="-40">signal_report!</label>
-      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_PILOT_BASED, c_sig = 0</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_PILOT_BASED, signal_report_pending = false, c_sig = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_1" />
       <target ref="Template_A_SIG_2" />
       <label kind="guard" x="0" y="-60">PilotDensityClass == PILOTDENSITYCLASS_LOW &amp;&amp; PayloadSenseClass != PAYLOADSENSECLASS_FAILED</label>
       <label kind="synchronisation" x="0" y="-40">signal_report!</label>
-      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_PAYLOAD_ASSISTED, c_sig = 0</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_PAYLOAD_ASSISTED, signal_report_pending = false, c_sig = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_2" />
       <target ref="Template_A_SIG_4" />
       <label kind="guard" x="0" y="-60">BLERClass != BLERCLASS_OK || DRTClass == DRTCLASS_BAD || PayloadSenseClass == PAYLOADSENSECLASS_FAILED</label>
       <label kind="synchronisation" x="0" y="-40">signal_report!</label>
-      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_LIMITED, signal_degraded_flag = true, c_sig = 0</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_LIMITED, signal_report_pending = false, signal_degraded_flag = true, c_sig = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SIG_4" />
@@ -679,6 +727,36 @@ bool gar_ph() { return true; }</declaration>
       <target ref="Template_A_SIG_3" />
       <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
       <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_0" />
+      <target ref="Template_A_SIG_5" />
+      <label kind="guard" x="0" y="-60">!ass_sig()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sig!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_1" />
+      <target ref="Template_A_SIG_5" />
+      <label kind="guard" x="0" y="-60">!ass_sig()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sig!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_2" />
+      <target ref="Template_A_SIG_5" />
+      <label kind="guard" x="0" y="-60">!ass_sig()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sig!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_3" />
+      <target ref="Template_A_SIG_5" />
+      <label kind="guard" x="0" y="-60">!ass_sig()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sig!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_4" />
+      <target ref="Template_A_SIG_5" />
+      <label kind="guard" x="0" y="-60">!ass_sig()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sig!</label>
     </transition>
   </template>
   <template>
@@ -1068,6 +1146,66 @@ bool gar_ph() { return true; }</declaration>
       <label kind="synchronisation" x="0" y="-60">new_beam_confirmed?</label>
       <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_TRACK</label>
     </transition>
+    <transition>
+      <source ref="Template_A_BM_0" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_1" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_2" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_3" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_4" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_5" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_6" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_8" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_9" />
+      <target ref="Template_A_BM_10" />
+      <label kind="guard" x="0" y="-60">!ass_bm()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_bm!</label>
+    </transition>
   </template>
   <template>
     <name>Template_A_SQ</name>
@@ -1110,47 +1248,47 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_SQ_0" />
       <target ref="Template_A_SQ_1" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">input_changed = true, c_sense = 0</label>
+      <label kind="assignment" x="0" y="-40">input_changed = true, sensing_report_pending = true, c_sense = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SQ_0" />
       <target ref="Template_A_SQ_1" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">input_changed = true, c_sense = 0</label>
+      <label kind="assignment" x="0" y="-40">input_changed = true, sensing_report_pending = true, c_sense = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SQ_0" />
       <target ref="Template_A_SQ_1" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">input_changed = true, c_sense = 0</label>
+      <label kind="assignment" x="0" y="-40">input_changed = true, sensing_report_pending = true, c_sense = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SQ_1" />
       <target ref="Template_A_SQ_2" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_NORMAL &amp;&amp; c_sense &lt;= D_sense</label>
       <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
-      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_degraded_flag = false, sensing_qos_ok = true, sq_enabled_count = 1, c_sense = 0</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_report_pending = false, sensing_degraded_flag = false, sensing_qos_ok = true, sq_enabled_count = 1, c_sense = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SQ_1" />
       <target ref="Template_A_SQ_2" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_COMM_DEGRADED &amp;&amp; c_sense &lt;= D_sense</label>
       <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
-      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_degraded_flag = false, sensing_qos_ok = true, sq_enabled_count = 1, c_sense = 0</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_report_pending = false, sensing_degraded_flag = false, sensing_qos_ok = true, sq_enabled_count = 1, c_sense = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SQ_1" />
       <target ref="Template_A_SQ_6" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_SENSING_DEGRADED &amp;&amp; c_sense &lt;= D_sense</label>
       <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
-      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_degraded_flag = true, sensing_qos_ok = false, sq_enabled_count = 1, c_sense = 0</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_report_pending = false, sensing_degraded_flag = true, sensing_qos_ok = false, sq_enabled_count = 1, c_sense = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SQ_1" />
       <target ref="Template_A_SQ_9" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_JOINT_DEGRADED &amp;&amp; c_sense &lt;= D_sense</label>
       <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
-      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_failure_flag = true, sensing_qos_ok = false, sq_enabled_count = 1, c_sense = 0</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_report_pending = false, sensing_failure_flag = true, sensing_qos_ok = false, sq_enabled_count = 1, c_sense = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_SQ_3" />
@@ -1187,6 +1325,66 @@ bool gar_ph() { return true; }</declaration>
       <target ref="Template_A_SQ_9" />
       <label kind="synchronisation" x="0" y="-60">sensing_failure!</label>
     </transition>
+    <transition>
+      <source ref="Template_A_SQ_0" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_1" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_2" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_3" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_4" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_5" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_6" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_7" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_8" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_9" />
+      <target ref="Template_A_SQ_10" />
+      <label kind="guard" x="0" y="-60">!ass_sq()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_sq!</label>
+    </transition>
   </template>
   <template>
     <name>Template_A_PH</name>
@@ -1220,25 +1418,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_0" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_0" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_0" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_0" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_0" />
@@ -1260,25 +1458,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_1" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_1" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_1" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_1" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_1" />
@@ -1300,25 +1498,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_2" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_2" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_2" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_2" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_2" />
@@ -1340,25 +1538,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_3" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_3" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_3" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_3" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_3" />
@@ -1380,25 +1578,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_4" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
@@ -1420,25 +1618,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_5" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_5" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_5" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_5" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_5" />
@@ -1460,25 +1658,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_6" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_6" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_6" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_6" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_6" />
@@ -1500,25 +1698,25 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_7" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">channel_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_7" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">signal_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_7" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">beam_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_7" />
       <target ref="Template_A_PH_4" />
       <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
-      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, phy_kpi_report_pending = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_7" />
@@ -1541,28 +1739,28 @@ bool gar_ph() { return true; }</declaration>
       <target ref="Template_A_PH_0" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_NORMAL &amp;&amp; c_report &lt;= D_report</label>
       <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
-      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYNORMAL, comm_ok = true, sensing_qos_ok = true, degradation_flag = false, c_report = 0</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYNORMAL, phy_kpi_report_pending = false, comm_ok = true, sensing_qos_ok = true, degradation_flag = false, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
       <target ref="Template_A_PH_1" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_COMM_DEGRADED &amp;&amp; c_report &lt;= D_report</label>
       <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
-      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYCOMMUNICATIONDEGRADED, comm_ok = false, sensing_qos_ok = true, degradation_flag = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYCOMMUNICATIONDEGRADED, phy_kpi_report_pending = false, comm_ok = false, sensing_qos_ok = true, degradation_flag = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
       <target ref="Template_A_PH_2" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_SENSING_DEGRADED &amp;&amp; c_report &lt;= D_report</label>
       <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
-      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYSENSINGDEGRADED, comm_ok = true, sensing_qos_ok = false, degradation_flag = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYSENSINGDEGRADED, phy_kpi_report_pending = false, comm_ok = true, sensing_qos_ok = false, degradation_flag = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
       <target ref="Template_A_PH_3" />
       <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_JOINT_DEGRADED &amp;&amp; c_report &lt;= D_report</label>
       <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
-      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYJOINTDEGRADED, comm_ok = false, sensing_qos_ok = false, degradation_flag = true, c_report = 0</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYJOINTDEGRADED, phy_kpi_report_pending = false, comm_ok = false, sensing_qos_ok = false, degradation_flag = true, c_report = 0</label>
     </transition>
     <transition>
       <source ref="Template_A_PH_4" />
@@ -1585,6 +1783,48 @@ bool gar_ph() { return true; }</declaration>
       <source ref="Template_A_PH_3" />
       <target ref="Template_A_PH_3" />
       <label kind="synchronisation" x="0" y="-60">degradation_event!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ph()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ph!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ph()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ph!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ph()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ph!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ph()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ph!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ph()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ph!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ph()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ph!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_7" />
+      <label kind="guard" x="0" y="-60">!ass_ph()</label>
+      <label kind="synchronisation" x="0" y="-40">contract_violation_ph!</label>
     </transition>
   </template>
   <template>

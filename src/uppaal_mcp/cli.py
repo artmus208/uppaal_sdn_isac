@@ -28,6 +28,7 @@ def main() -> None:
     verify = subparsers.add_parser("verify", help="Run verifyta.")
     verify.add_argument("--model", required=True)
     verify.add_argument("--queries")
+    verify.add_argument("--options-preset", choices=["normal", "trace_on_violation", "diagnostic"])
     verify.add_argument("verifyta_options", nargs=argparse.REMAINDER)
 
     example = subparsers.add_parser("example", help="Print or export a built-in example.")
@@ -119,6 +120,7 @@ def main() -> None:
             model_path=args.model,
             query_path=args.queries,
             options=options,
+            options_preset=args.options_preset,
         )
         print_json(result.to_dict())
     elif args.command == "example":

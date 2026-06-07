@@ -49,6 +49,7 @@ def build_mcp() -> Any:
         queries: str | None = None,
         query_path: str | None = None,
         options: list[str] | None = None,
+        options_preset: str | None = None,
         timeout_sec: float | None = None,
         keep_artifacts: bool = True,
     ) -> dict:
@@ -59,14 +60,19 @@ def build_mcp() -> Any:
             queries=queries,
             query_path=query_path,
             options=options,
+            options_preset=options_preset,
             timeout_sec=timeout_sec,
             keep_artifacts=keep_artifacts,
         ).to_dict()
 
     @mcp.tool()
-    def uppaal_verify_batch(items: list[dict], timeout_sec: float | None = None) -> list[dict]:
+    def uppaal_verify_batch(
+        items: list[dict],
+        options_preset: str | None = None,
+        timeout_sec: float | None = None,
+    ) -> list[dict]:
         """Run several UPPAAL verification jobs sequentially."""
-        return _runner().verify_batch(items, timeout_sec=timeout_sec)
+        return _runner().verify_batch(items, options_preset=options_preset, timeout_sec=timeout_sec)
 
     @mcp.tool()
     def uppaal_list_examples() -> list[dict]:

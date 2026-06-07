@@ -298,12 +298,14 @@ def verify_contract(
 ) -> dict:
     source_text = _load_tex(tex_text=tex_text, tex_path=tex_path)
     include_observers = _include_observers_from_mode(mode, include_observers)
+    generator_mode = _generator_mode_from_verify_mode(mode)
     generated = generate_uppaal_from_contract(
         contract_json=contract_json,
         tex_text=source_text if contract_json is None else None,
         tex_path=None,
         profile=profile,
         include_observers=include_observers,
+        mode=generator_mode,
     )
     runner = VerifytaRunner(UppaalConfig.from_env())
     version = _verifyta_version_banner(runner)
@@ -312,6 +314,7 @@ def verify_contract(
             contract_json=generated["contract"],
             profile=generated["profile"],
             include_observers=False,
+            mode=generator_mode,
         )
         base_queries = [
             query
@@ -716,9 +719,26 @@ def _include_observers_from_mode(mode: str | None, include_observers: bool) -> b
     normalized = mode.strip().lower()
     if normalized in {"closed", "with_observers", "observers"}:
         return True
-    if normalized in {"base", "no_observers", "without_observers"}:
+    if normalized in {"open", "open_system", "open-system"}:
+        return include_observers
+    if normalized in {"base", "minimal", "no_observers", "without_observers"}:
         return False
-    raise ValueError("Unsupported PHY verify mode. Use closed, with_observers, base, or no_observers.")
+    raise ValueError("Unsupported PHY verify mode. Use closed, open_system, with_observers, base, or no_observers.")
+
+
+def _generator_mode_from_verify_mode(mode: str | None) -> str | None:
+    if mode is None:
+        return None
+    normalized = mode.strip().lower()
+    if normalized in {"closed", "with_observers", "observers"}:
+        return None
+    if normalized in {"open", "open_system", "open-system"}:
+        return "open_system"
+    if normalized in {"minimal"}:
+        return "minimal"
+    if normalized in {"base", "no_observers", "without_observers"}:
+        return None
+    raise ValueError("Unsupported PHY verify mode. Use closed, open_system, with_observers, minimal, base, or no_observers.")
 
 
 def _verifyta_version_banner(runner: VerifytaRunner) -> str:
