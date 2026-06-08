@@ -6,6 +6,7 @@ from .config import UppaalConfig
 from .examples import get_builtin_example, list_builtin_examples
 from .mac import tools as mac_tools
 from .phy import tools as phy_tools
+from .sdn import tools as sdn_tools
 from .verifyta import VerifytaRunner
 
 
@@ -721,6 +722,308 @@ def build_mcp() -> Any:
     def mac_validate_benchmarks(profile: dict | None = None) -> dict:
         """Generate and statically validate all MAC benchmark scenarios."""
         return mac_tools.mac_validate_benchmarks(profile=profile)
+
+    @mcp.tool()
+    def sdn_extract_contract(
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+    ) -> dict:
+        """Extract the SDN/RIC contract IR from the article LaTeX source."""
+        return sdn_tools.extract_contract(tex_text=tex_text, tex_path=tex_path)
+
+    @mcp.tool()
+    def sdn_validate_contract(contract_json: dict | None = None) -> dict:
+        """Validate the SDN/RIC contract IR against article invariants."""
+        return sdn_tools.validate_contract(contract_json)
+
+    @mcp.tool()
+    def sdn_generate_uppaal_model(
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        profile: dict | None = None,
+        include_observers: bool = True,
+        debug_counters: bool = True,
+        include_negative_scenarios: bool = False,
+        mode: str | None = None,
+        layout: str = "readable",
+    ) -> dict:
+        """Generate a closed UPPAAL A_SYS_SDN model from the SDN/RIC contract."""
+        return sdn_tools.generate_uppaal_from_contract(
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            profile=profile,
+            include_observers=include_observers,
+            debug_counters=debug_counters,
+            include_negative_scenarios=include_negative_scenarios,
+            mode=mode,
+            layout=layout,
+        )
+
+    @mcp.tool()
+    def sdn_validate_layout(
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+    ) -> dict:
+        """Validate that generated SDN/RIC model coordinates are readable in UPPAAL GUI."""
+        return sdn_tools.validate_layout(model_xml=model_xml, contract_json=contract_json)
+
+    @mcp.tool()
+    def sdn_export_diagram(
+        output_dir: str,
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        profile: dict | None = None,
+        layout: str = "readable",
+    ) -> dict:
+        """Write SDN/RIC Graphviz DOT/SVG and readable model maps."""
+        return sdn_tools.export_diagram(
+            output_dir=output_dir,
+            model_xml=model_xml,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            profile=profile,
+            layout=layout,
+        )
+
+    @mcp.tool()
+    def sdn_generate_property_pack(
+        contract_json: dict | None = None,
+        model_xml: str | None = None,
+        profile: dict | None = None,
+        include_observers: bool = True,
+        debug_counters: bool = True,
+        include_negative: bool = False,
+    ) -> dict:
+        """Generate the SDN/RIC-specific query pack from the contract IR."""
+        return sdn_tools.generate_property_pack(
+            contract_json=contract_json,
+            model_xml=model_xml,
+            profile=profile,
+            include_observers=include_observers,
+            debug_counters=debug_counters,
+            include_negative=include_negative,
+        )
+
+    @mcp.tool()
+    def sdn_export_property_pack(
+        output_dir: str,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        profile: dict | None = None,
+        include_observers: bool = True,
+        debug_counters: bool = True,
+        include_negative: bool = False,
+    ) -> dict:
+        """Write SDN/RIC queries.q plus JSON metadata/provenance files."""
+        return sdn_tools.export_property_pack(
+            output_dir=output_dir,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            profile=profile,
+            include_observers=include_observers,
+            debug_counters=debug_counters,
+            include_negative=include_negative,
+        )
+
+    @mcp.tool()
+    def sdn_generate_report(
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        queries: str | None = None,
+        result_json: dict | None = None,
+        trace_text: str | None = None,
+        profile: dict | None = None,
+    ) -> dict:
+        """Generate SDN/RIC Markdown reports and traceability artifacts in-memory."""
+        return sdn_tools.generate_report(
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            queries=queries,
+            result_json=result_json,
+            trace_text=trace_text,
+            profile=profile,
+        )
+
+    @mcp.tool()
+    def sdn_export_report(
+        output_dir: str,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        queries: str | None = None,
+        result_json: dict | None = None,
+        trace_text: str | None = None,
+        profile: dict | None = None,
+    ) -> dict:
+        """Write SDN/RIC reports plus contract/model/query artifacts to a directory."""
+        return sdn_tools.export_report(
+            output_dir=output_dir,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            queries=queries,
+            result_json=result_json,
+            trace_text=trace_text,
+            profile=profile,
+        )
+
+    @mcp.tool()
+    def sdn_export_run_artifacts(
+        output_root: str,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        queries: str | None = None,
+        result_json: dict | None = None,
+        trace_text: str | None = None,
+        profile: dict | None = None,
+        verifyta_version: str | None = None,
+        verifyta_command: list[str] | None = None,
+        options: list[str] | None = None,
+        force: bool = False,
+    ) -> dict:
+        """Write an SDN/RIC run artifact layout with metadata and cache key."""
+        return sdn_tools.export_run_artifacts(
+            output_root=output_root,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            queries=queries,
+            result_json=result_json,
+            trace_text=trace_text,
+            profile=profile,
+            verifyta_version=verifyta_version,
+            verifyta_command=verifyta_command,
+            options=options,
+            force=force,
+        )
+
+    @mcp.tool()
+    def sdn_verify_contract(
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        contract_json: dict | None = None,
+        profile: dict | None = None,
+        mode: str | None = None,
+        include_observers: bool = True,
+        timeout_sec: float | None = None,
+        artifact_root: str | None = None,
+        force: bool = False,
+    ) -> dict:
+        """Generate and verify the closed SDN/RIC A_SYS_SDN model with verifyta."""
+        return sdn_tools.verify_contract(
+            tex_text=tex_text,
+            tex_path=tex_path,
+            contract_json=contract_json,
+            profile=profile,
+            mode=mode,
+            include_observers=include_observers,
+            timeout_sec=timeout_sec,
+            artifact_root=artifact_root,
+            force=force,
+        )
+
+    @mcp.tool()
+    def sdn_verify_property_pack(
+        model_xml: str | None = None,
+        model_path: str | None = None,
+        queries: str | None = None,
+        query_path: str | None = None,
+        explain: bool = True,
+        timeout_sec: float | None = None,
+        static_only: bool = False,
+    ) -> dict:
+        """Verify an SDN/RIC property pack against a model, optionally returning SDN explanation."""
+        return sdn_tools.verify_property_pack(
+            model_xml=model_xml,
+            model_path=model_path,
+            queries=queries,
+            query_path=query_path,
+            explain=explain,
+            timeout_sec=timeout_sec,
+            static_only=static_only,
+        )
+
+    @mcp.tool()
+    def sdn_check_alpha_profile(profile_json: dict | None = None) -> dict:
+        """Validate an alpha_SDN threshold/profile policy."""
+        return sdn_tools.check_alpha_profile(profile_json)
+
+    @mcp.tool()
+    def sdn_check_channel_semantics(
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+    ) -> dict:
+        """Check SDN/RIC report broadcast and command handshake channel semantics."""
+        return sdn_tools.check_channel_semantics(model_xml=model_xml, contract_json=contract_json)
+
+    @mcp.tool()
+    def sdn_explain_counterexample(
+        result_json: dict,
+        trace_text: str | None = None,
+        contract_json: dict | None = None,
+    ) -> dict:
+        """Explain a verifyta violation in SDN/RIC control-plane terms."""
+        return sdn_tools.explain_counterexample(result_json, trace_text=trace_text, contract_json=contract_json)
+
+    @mcp.tool()
+    def sdn_list_scenarios() -> list[dict]:
+        """List built-in SDN/RIC verification scenarios."""
+        return sdn_tools.sdn_list_scenarios()
+
+    @mcp.tool()
+    def sdn_get_scenario(name: str, profile: dict | None = None) -> dict:
+        """Generate one compact SDN/RIC scenario model."""
+        return sdn_tools.sdn_get_scenario(name, profile=profile)
+
+    @mcp.tool()
+    def sdn_verify_scenario(
+        name: str,
+        profile: dict | None = None,
+        timeout_sec: float | None = None,
+    ) -> dict:
+        """Verify one compact SDN/RIC scenario with verifyta."""
+        return sdn_tools.sdn_verify_scenario(name, profile=profile, timeout_sec=timeout_sec)
+
+    @mcp.tool()
+    def sdn_verify_all_scenarios(
+        profile: dict | None = None,
+        timeout_sec: float | None = None,
+    ) -> dict:
+        """Verify all built-in compact SDN/RIC scenarios with verifyta."""
+        return sdn_tools.sdn_verify_all_scenarios(profile=profile, timeout_sec=timeout_sec)
+
+    @mcp.tool()
+    def sdn_list_benchmarks() -> list[dict]:
+        """List SDN/RIC benchmark and intentionally broken static scenarios."""
+        return sdn_tools.sdn_list_benchmarks()
+
+    @mcp.tool()
+    def sdn_get_benchmark(name: str, profile: dict | None = None) -> dict:
+        """Generate one SDN/RIC benchmark scenario model."""
+        return sdn_tools.sdn_get_benchmark(name, profile=profile)
+
+    @mcp.tool()
+    def sdn_validate_benchmarks(profile: dict | None = None) -> dict:
+        """Generate and statically validate all SDN/RIC benchmark scenarios."""
+        return sdn_tools.sdn_validate_benchmarks(profile=profile)
 
     return mcp
 

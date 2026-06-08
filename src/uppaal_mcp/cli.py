@@ -8,6 +8,7 @@ from .config import UppaalConfig
 from .examples import get_builtin_example, list_builtin_examples
 from .mac import tools as mac_tools
 from .phy import tools as phy_tools
+from .sdn import tools as sdn_tools
 from .verifyta import VerifytaRunner
 
 
@@ -179,6 +180,78 @@ def main() -> None:
     mac_benchmark.add_argument("--output-dir")
 
     subparsers.add_parser("mac-validate-benchmarks", help="Statically validate all MAC benchmark scenarios.")
+
+    sdn_extract = subparsers.add_parser("sdn-extract", help="Extract SDN/RIC contract IR from the article.")
+    sdn_extract.add_argument("--tex")
+
+    sdn_generate = subparsers.add_parser("sdn-generate", help="Generate SDN/RIC UPPAAL model and queries.")
+    sdn_generate.add_argument("--tex")
+    sdn_generate.add_argument("--output-dir")
+    sdn_generate.add_argument("--mode")
+    sdn_generate.add_argument("--layout", choices=["compact", "readable"], default="readable")
+    sdn_generate.add_argument("--no-observers", action="store_true")
+    sdn_generate.add_argument("--no-debug-counters", action="store_true")
+    sdn_generate.add_argument("--include-negative-scenarios", action="store_true")
+
+    sdn_export_diagram = subparsers.add_parser("sdn-export-diagram", help="Export SDN/RIC Graphviz DOT/SVG and readable maps.")
+    sdn_export_diagram.add_argument("--model")
+    sdn_export_diagram.add_argument("--tex")
+    sdn_export_diagram.add_argument("--output-dir")
+    sdn_export_diagram.add_argument("--layout", choices=["compact", "readable"], default="readable")
+
+    sdn_property_pack = subparsers.add_parser("sdn-property-pack", help="Generate SDN/RIC property pack with JSON metadata.")
+    sdn_property_pack.add_argument("--tex")
+    sdn_property_pack.add_argument("--output-dir")
+    sdn_property_pack.add_argument("--no-observers", action="store_true")
+    sdn_property_pack.add_argument("--no-debug-counters", action="store_true")
+    sdn_property_pack.add_argument("--include-negative", action="store_true")
+
+    sdn_report = subparsers.add_parser("sdn-report", help="Generate SDN/RIC Markdown reports.")
+    sdn_report.add_argument("--tex")
+    sdn_report.add_argument("--output-dir")
+    sdn_report.add_argument("--result-json")
+    sdn_report.add_argument("--trace-text")
+
+    sdn_run_artifacts = subparsers.add_parser("sdn-run-artifacts", help="Export SDN/RIC run artifacts with metadata/cache key.")
+    sdn_run_artifacts.add_argument("--tex")
+    sdn_run_artifacts.add_argument("--output-root", required=True)
+    sdn_run_artifacts.add_argument("--result-json")
+    sdn_run_artifacts.add_argument("--trace-text")
+    sdn_run_artifacts.add_argument("--verifyta-version")
+    sdn_run_artifacts.add_argument("--force", action="store_true")
+
+    sdn_verify = subparsers.add_parser("sdn-verify", help="Generate and verify the SDN/RIC model.")
+    sdn_verify.add_argument("--tex")
+    sdn_verify.add_argument("--mode")
+    sdn_verify.add_argument("--timeout-sec", type=float)
+
+    sdn_verify_property_pack = subparsers.add_parser("sdn-verify-property-pack", help="Verify an SDN/RIC property pack against a model.")
+    sdn_verify_property_pack.add_argument("--model", required=True)
+    sdn_verify_property_pack.add_argument("--queries", required=True)
+    sdn_verify_property_pack.add_argument("--timeout-sec", type=float)
+    sdn_verify_property_pack.add_argument("--no-explain", action="store_true")
+    sdn_verify_property_pack.add_argument("--static-only", action="store_true")
+
+    subparsers.add_parser("sdn-list-scenarios", help="List built-in SDN/RIC scenarios.")
+
+    sdn_scenario = subparsers.add_parser("sdn-scenario", help="Generate one SDN/RIC scenario.")
+    sdn_scenario.add_argument("name")
+    sdn_scenario.add_argument("--output-dir")
+
+    sdn_verify_scenario = subparsers.add_parser("sdn-verify-scenario", help="Verify one SDN/RIC scenario.")
+    sdn_verify_scenario.add_argument("name")
+    sdn_verify_scenario.add_argument("--timeout-sec", type=float)
+
+    sdn_verify_all_scenarios = subparsers.add_parser("sdn-verify-all-scenarios", help="Verify all built-in SDN/RIC scenarios.")
+    sdn_verify_all_scenarios.add_argument("--timeout-sec", type=float)
+
+    subparsers.add_parser("sdn-list-benchmarks", help="List SDN/RIC benchmark scenarios.")
+
+    sdn_benchmark = subparsers.add_parser("sdn-benchmark", help="Generate one SDN/RIC benchmark scenario.")
+    sdn_benchmark.add_argument("name")
+    sdn_benchmark.add_argument("--output-dir")
+
+    subparsers.add_parser("sdn-validate-benchmarks", help="Statically validate all SDN/RIC benchmark scenarios.")
 
     args = parser.parse_args()
     config = UppaalConfig.from_env(
@@ -488,6 +561,128 @@ def main() -> None:
         print_json(benchmark)
     elif args.command == "mac-validate-benchmarks":
         print_json(mac_tools.mac_validate_benchmarks())
+    elif args.command == "sdn-extract":
+        print_json(sdn_tools.extract_contract(tex_path=args.tex))
+    elif args.command == "sdn-generate":
+        generated = sdn_tools.generate_uppaal_from_contract(
+            tex_path=args.tex,
+            include_observers=not args.no_observers,
+            debug_counters=not args.no_debug_counters,
+            include_negative_scenarios=args.include_negative_scenarios,
+            mode=args.mode,
+            layout=args.layout,
+        )
+        if args.output_dir:
+            output = Path(args.output_dir)
+            output.mkdir(parents=True, exist_ok=True)
+            (output / "contract.json").write_text(json.dumps(generated["contract"], ensure_ascii=False, indent=2), encoding="utf-8")
+            (output / "model.xml").write_text(generated["model_xml"], encoding="utf-8")
+            (output / "queries.q").write_text(generated["queries"], encoding="utf-8")
+            (output / "model_map.md").write_text(generated["model_map"], encoding="utf-8")
+            (output / "template_map.md").write_text(generated["template_map"], encoding="utf-8")
+            (output / "channels_map.md").write_text(generated["channels_map"], encoding="utf-8")
+            (output / "policy_map.md").write_text(generated["policy_map"], encoding="utf-8")
+            (output / "interface_map.md").write_text(generated["interface_map"], encoding="utf-8")
+            (output / "layout_validation.json").write_text(json.dumps(generated["layout_validation"], ensure_ascii=False, indent=2), encoding="utf-8")
+            generated = {
+                "output_dir": str(output),
+                "generation_mode": generated["generation_mode"],
+                "layout": generated["layout"],
+                "system_mode": generated["system_mode"],
+                "include_negative_scenarios": generated["include_negative_scenarios"],
+                "semantic_validation": generated["semantic_validation"],
+                "alpha_validation": generated["alpha_validation"],
+                "layout_validation": generated["layout_validation"],
+            }
+        print_json(generated)
+    elif args.command == "sdn-export-diagram":
+        model_xml = Path(args.model).read_text(encoding="utf-8") if args.model else None
+        if args.output_dir:
+            print_json(sdn_tools.export_diagram(output_dir=args.output_dir, model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+        else:
+            print_json(sdn_tools.generate_diagram(model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+    elif args.command == "sdn-property-pack":
+        if args.output_dir:
+            print_json(
+                sdn_tools.export_property_pack(
+                    output_dir=args.output_dir,
+                    tex_path=args.tex,
+                    include_observers=not args.no_observers,
+                    debug_counters=not args.no_debug_counters,
+                    include_negative=args.include_negative,
+                )
+            )
+        else:
+            print_json(
+                sdn_tools.generate_property_pack(
+                    contract_json=sdn_tools.extract_contract(tex_path=args.tex),
+                    include_observers=not args.no_observers,
+                    debug_counters=not args.no_debug_counters,
+                    include_negative=args.include_negative,
+                )
+            )
+    elif args.command == "sdn-report":
+        result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
+        trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
+        if args.output_dir:
+            print_json(sdn_tools.export_report(output_dir=args.output_dir, tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+        else:
+            print_json(sdn_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+    elif args.command == "sdn-run-artifacts":
+        result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
+        trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
+        print_json(
+            sdn_tools.export_run_artifacts(
+                output_root=args.output_root,
+                tex_path=args.tex,
+                result_json=result_json,
+                trace_text=trace_text,
+                verifyta_version=args.verifyta_version,
+                force=args.force,
+            )
+        )
+    elif args.command == "sdn-verify":
+        print_json(sdn_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
+    elif args.command == "sdn-verify-property-pack":
+        print_json(
+            sdn_tools.verify_property_pack(
+                model_path=args.model,
+                query_path=args.queries,
+                explain=not args.no_explain,
+                timeout_sec=args.timeout_sec,
+                static_only=args.static_only,
+            )
+        )
+    elif args.command == "sdn-list-scenarios":
+        print_json(sdn_tools.sdn_list_scenarios())
+    elif args.command == "sdn-scenario":
+        scenario = sdn_tools.sdn_get_scenario(args.name)
+        if args.output_dir:
+            output = Path(args.output_dir)
+            output.mkdir(parents=True, exist_ok=True)
+            (output / "model.xml").write_text(scenario["model_xml"], encoding="utf-8")
+            (output / "queries.q").write_text(scenario["queries"], encoding="utf-8")
+            scenario = {key: value for key, value in scenario.items() if key not in {"model_xml", "queries"}}
+            scenario["output_dir"] = str(output)
+        print_json(scenario)
+    elif args.command == "sdn-verify-scenario":
+        print_json(sdn_tools.sdn_verify_scenario(args.name, timeout_sec=args.timeout_sec))
+    elif args.command == "sdn-verify-all-scenarios":
+        print_json(sdn_tools.sdn_verify_all_scenarios(timeout_sec=args.timeout_sec))
+    elif args.command == "sdn-list-benchmarks":
+        print_json(sdn_tools.sdn_list_benchmarks())
+    elif args.command == "sdn-benchmark":
+        benchmark = sdn_tools.sdn_get_benchmark(args.name)
+        if args.output_dir:
+            output = Path(args.output_dir)
+            output.mkdir(parents=True, exist_ok=True)
+            (output / "model.xml").write_text(benchmark["model_xml"], encoding="utf-8")
+            (output / "queries.q").write_text(benchmark["queries"], encoding="utf-8")
+            benchmark = {key: value for key, value in benchmark.items() if key not in {"model_xml", "queries"}}
+            benchmark["output_dir"] = str(output)
+        print_json(benchmark)
+    elif args.command == "sdn-validate-benchmarks":
+        print_json(sdn_tools.sdn_validate_benchmarks())
 
 
 def print_json(data: object) -> None:
