@@ -1,0 +1,275 @@
+% This paper follows the Springer LNCS template.
+\documentclass[runningheads]{llncs}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{url}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\A}[1]{\mathcal{A}_{#1}}
+\newcommand{\Contract}[1]{\mathcal{C}_{#1}}
+\newcommand{\Env}{\mathcal{A}_{ENV}}
+\newcommand{\placeholder}[4]{%
+\begin{figure}[t]
+\centering
+\fbox{\parbox[c][#1][c]{0.92\textwidth}{\centering\small
+\textbf{UPPAAL screenshot placeholder}\\[1mm]
+#2}}
+\caption{#3}
+\label{#4}
+\end{figure}}
+
+\begin{document}
+
+\title{A Hierarchical Timed-Automata Model for SDN-Managed Resource Orchestration in 6G ISAC Networks}
+\titlerunning{Timed-Automata Model for SDN-Managed 6G ISAC}
+
+\author{Artur Mustafin\inst{1}\orcidID{0009-0008-8322-0864} \and
+Vadim Tinishov\inst{1}\orcidID{0009-0003-7319-1944}}
+\authorrunning{A. Mustafin and V. Tinishov}
+
+\institute{ITMO University, Faculty of Software Engineering and Computer Systems, Saint Petersburg, Russia\\
+\email{armustafin@itmo.ru}, \email{vadimtdot@gmail.com}}
+
+\maketitle
+
+\begin{abstract}
+Integrated sensing and communication (ISAC) turns the radio access network, transport segment, and edge infrastructure into a shared resource for data delivery, environment sensing, and computation. This paper assembles a verification-oriented model of such an infrastructure from four layer specifications: physical-layer sensing and signaling, MAC/resource scheduling, SDN/RAN intelligent control, and application-level service contracts. The model represents each layer as a finite timed automaton with explicit clocks, guards, bounded counters, synchronization channels, and assume--guarantee contracts. The physical layer abstracts continuous radio behavior into conservative quality classes; the MAC layer converts these classes into queueing and allocation decisions; the SDN/RIC layer performs policy selection, rule installation, recovery, and rollback; and the application layer defines service criticality, deadlines, and SLA outcomes. The resulting hierarchy is intended for UPPAAL implementation and for checking deadlock freedom, bounded response, queue safety, sensing degradation handling, rule-miss processing, and fault recovery. Because the XML automata are not yet attached, the manuscript reserves explicit figure placeholders for later screenshots of the UPPAAL templates.
+
+\keywords{Integrated sensing and communication \and 6G \and SDN \and RAN intelligent controller \and timed automata \and UPPAAL \and resource orchestration \and resilience}
+\end{abstract}
+
+\section{Introduction}
+
+Integrated sensing and communication changes the role of mobile infrastructure. A 6G base station, UAV node, RIS-assisted segment, or edge cluster is not only a communication endpoint; it can also participate in target detection, localization, environmental mapping, digital-twin updates, and safety monitoring. Consequently, the same infrastructure must satisfy data-rate and latency requirements together with sensing metrics such as detection probability, false-alarm probability, Cramer--Rao bounds, age of sensing information, angular and range resolution, and sensing coverage \cite{qaisar_role_2026,liu_cooperative_2025,ahmed_advancements_2025,luo_integrated_2025}.
+
+This tension is cross-layer. A sensing-dominant mode may require additional pilots, different beams, a different waveform profile, or more edge processing, whereas a communication-dominant mode may reduce sensing overhead to preserve throughput and delay. At the same time, resilience mechanisms such as multipath delivery, selective standby failover, dependent recovery in multi-level cluster systems, and re-embedding influence the resources that remain available for ISAC operation \cite{bogatyrev_redundant_2015,mustafin_selective_2026,bogatyrev_combinatorial-probabilistic_2026}. A static split between sensing and communication resources is therefore insufficient: it cannot express service criticality, global controller policy, queue pressure, failure recovery, or rollback.
+
+We use software-defined networking (SDN) and the RAN intelligent controller (RIC) as the programmable control layer for the whole ISAC system. The SDN/RIC plane collects telemetry from radio, MAC, transport, edge, cloud, and service components and selects resource partitions, flow rules, service admission decisions, routing, and recovery actions. Recent work on AI-assisted slicing and resource allocation shows the relevance of such control loops, but it does not by itself provide a compact model for formal verification of deadlines, rule-miss handling, recovery, and SLA impact \cite{hossain_ai-assisted_2023,radosavljevic_rl-based_2025,aman_ai-driven_2026}.
+
+The contribution of this paper is a unified, Springer LNCS-formatted article assembled from the PHY, MAC, SDN/RIC, and application-layer specifications. The article defines the layer hierarchy, the finite abstractions used at each layer, the shared interface, and the verification properties that should be encoded in UPPAAL. The model is not a replacement for link-level or packet-level simulation. Instead, it is a conservative timed-automata abstraction for early verification of orchestration logic in SDN-managed 6G ISAC networks.
+
+\section{Hierarchical Model}
+
+The complete system is represented as a synchronized product of layer automata, an abstract environment, and observer automata:
+\begin{equation}
+\mathcal{M}=\A{PHY}\parallel\A{MAC}\parallel\A{SDN}\parallel\A{APP}\parallel\Env\parallel\A{OBS}.
+\end{equation}
+Each layer automaton is a tuple
+\begin{equation}
+\A{L}=(L,l_0,C,V,\Sigma,E,Inv),
+\end{equation}
+where $L$ is the finite set of locations, $l_0$ is the initial location, $C$ is the set of clocks, $V$ is the set of finite-domain variables, $\Sigma$ is the set of synchronization channels, $E$ is the transition relation, and $Inv$ assigns clock invariants to locations. The model deliberately uses finite classes instead of continuous-valued traces to keep reachability and bounded-response checks tractable in ordinary timed automata \cite{alur_theory_1994}.
+
+The hierarchy is motivated by state-space control. A monolithic automaton for radio behavior, scheduling, controller logic, and service contracts would obscure the source of violations and lead to unnecessary state explosion. The layered decomposition permits coarse abstractions for stable subsystems and more detailed templates for components that influence the target metric. This is aligned with hierarchical and reconfigurable timed-automata modeling, where a component can be refined only when a failure, policy change, or diagnostic scenario requires additional detail \cite{bettira_reconfigurable_2019,tigane_dynamic_2023}.
+
+Every layer is described by an assume--guarantee contract
+\begin{equation}
+\Contract{L}=(Ass_L,Guar_L,I_L,O_L,D_L),
+\end{equation}
+where $Ass_L$ states admissible inputs, $Guar_L$ states guaranteed outputs, $I_L$ and $O_L$ are input and output channels, and $D_L$ is the set of relevant deadlines. A composition is admissible when the guarantees of lower layers satisfy the assumptions of upper layers and the controller never hides a violation that changes service impact.
+
+\begin{table}[t]
+\caption{Layer roles and finite abstractions in the unified model.}
+\label{tab:layers}
+\centering
+\small
+\begin{tabular}{|p{0.16\textwidth}|p{0.31\textwidth}|p{0.42\textwidth}|}
+\hline
+\textbf{Layer} & \textbf{Main automata} & \textbf{Finite abstraction and output}\\
+\hline
+PHY & $\A{CH}$, $\A{SIG}$, $\A{BM}$, $\A{SQ}$, $\A{PH}$ & Channel, signaling, beam, sensing-quality, and aggregate PHY states. Outputs quality classes, freshness, sensing capacity, CRB class, detection class, and PHY resource pressure.\\
+\hline
+MAC & $\A{SCH}$, queue, buffer, $\A{RSRC}$ & Scheduler, queue, buffer, and resource states. Outputs allocation mode, queue class, drop reason, resource conflicts, and MAC-level sensing or communication pressure.\\
+\hline
+SDN/RIC & monitor, policy, rule, recovery, rollback & Global control loop for telemetry collection, policy evaluation, rule installation, failure handling, standby switch, reactive re-embedding, and rollback.\\
+\hline
+Application & $\A{REQ}$, $\A{SLA}$, admission, observers & Service requests, criticality, SLA deadlines, degradation tolerance, admission result, and final service impact.\\
+\hline
+\end{tabular}
+\end{table}
+
+The shared interface has the form
+\begin{equation}
+I=(src,dst,ch,sync,payload,deadline,outcome).
+\end{equation}
+The field $ch$ identifies the UPPAAL synchronization channel, $payload$ is encoded by shared bounded variables before synchronization, $deadline$ determines the observer clock bound, and $outcome$ is the permitted response class. The main outcomes are $\mathrm{ACCEPTED}$, $\mathrm{DEGRADED}$, $\mathrm{REJECTED}$, $\mathrm{FAILED}$, $\mathrm{INSTALLED}$, $\mathrm{DROPPED}$, $\mathrm{RECOVERED}$, and $\mathrm{ROLLED\_BACK}$.
+
+\section{Physical-Layer Automata}
+
+The PHY layer abstracts hybrid ISAC signaling without simulating I/Q samples. Its inputs are the signal profile chosen by the controller, the current channel and interference class, beam state, sensing freshness, and MAC resource availability. Its outputs are finite classes that can be consumed by MAC and SDN/RIC automata. This avoids mixing continuous radio equations with controller verification while preserving the monotonic effect of resource and channel degradation.
+
+The channel automaton $\A{CH}$ models normal, degraded, blocked, and recovered channel states. The signaling automaton $\A{SIG}$ represents the selected ISAC mode: communication-dominant, balanced, sensing-dominant, or constrained. The beam-management automaton $\A{BM}$ models beam acquisition, tracking, misalignment, and recovery. The sensing-quality automaton $\A{SQ}$ classifies detection and freshness states. The aggregate automaton $\A{PH}$ reports a single PHY state to the upper layers after combining channel, signaling, beam, and sensing evidence.
+
+The finite discretization can be written as
+\begin{equation}
+\delta_{PHY}(\gamma,P_d,P_{fa},CRB,AoS,B)=
+(q_{ch},q_{det},q_{crb},q_{fresh},q_{cap}),
+\end{equation}
+where $\gamma$ is an SINR-like class input, $P_d$ and $P_{fa}$ are detection and false-alarm indicators, $CRB$ is the estimation-accuracy class, $AoS$ is the age of sensing information, and $B$ is the available bandwidth or symbol budget. The result uses bounded enumerations such as $q_{ch}\in\{\mathrm{GOOD},\mathrm{WEAK},\mathrm{OUTAGE}\}$ and $q_{fresh}\in\{\mathrm{FRESH},\mathrm{STALE}\}$. Thresholds are selected conservatively: if a continuous region overlaps two classes, the less favorable class is used. This preserves safety properties for deadline and degradation checks.
+
+The PHY contract assumes that the MAC layer provides a bounded resource decision within $D_{mac}$ and that the environment changes channel class only through modeled events. It guarantees a PHY report within $D_{phy}$ after a relevant channel, signal, or beam event. The report is sent over a channel such as $\code{phy\_kpi\_report!}$ and includes $SensingState$, $FreshnessClass$, $ResourceClass$, and $ConflictReason$ as shared variables.
+
+\placeholder{32mm}{Insert the UPPAAL screenshot for PHY templates $\A{CH}$, $\A{SIG}$, $\A{BM}$, $\A{SQ}$, and $\A{PH}$. The screenshot should show channel degradation/recovery, signaling-mode selection, beam tracking, sensing-quality classification, and the aggregate PHY report.}{Placeholder for the UPPAAL automata of the PHY layer.}{fig:phy-placeholder}
+
+\section{MAC and Resource Scheduling}
+
+The MAC/resource-scheduling layer converts PHY quality classes into bounded allocation decisions. It decides whether the system remains in a normal balanced mode, increases sensing resources, prioritizes communication, enters a constrained mode, or rejects a request. It also exposes queueing and buffer states so that SDN/RIC and service observers can detect whether a formal violation is caused by radio quality, scheduler overload, or controller delay.
+
+The scheduler automaton $\A{SCH}$ contains locations for idle operation, request classification, resource calculation, allocation, and timeout. Queue and buffer automata count pending packets or sensing jobs up to finite limits. The resource automaton $\A{RSRC}$ tracks whether pilot, payload, beam, and edge-processing budgets are sufficient for the current service class. A typical policy guard is
+\begin{equation}
+\begin{aligned}
+g_{boost}={}&(SensingState\in\{\mathrm{WEAK},\mathrm{STALE}\})\\
+&\wedge (R_{free}\ge R_{boost})\wedge (Q_{comm}\le Q_{safe}).
+\end{aligned}
+\end{equation}
+which permits a sensing boost only when the communication queue remains safe. If $g_{boost}$ is false and the service is critical, the MAC layer reports constrained operation rather than silently dropping sensing performance.
+
+PHY classes are mapped into MAC classes through a finite relation. For example, $\mathrm{GOOD}$ channel and $\mathrm{FRESH}$ sensing allow balanced allocation, $\mathrm{WEAK}$ channel or $\mathrm{STALE}$ sensing may request a boost, and $\mathrm{OUTAGE}$ or buffer overflow produces a drop or degradation reason. The relation is intentionally explicit because it is the main bridge between continuous radio behavior and verification-oriented resource scheduling.
+
+The MAC contract assumes that PHY reports are received with bounded age and that the SDN/RIC layer acknowledges policy changes within $D_{ctrl\_ack}$. It guarantees that each admissible service or packet request reaches one of the following outcomes within $D_{mac}$: allocated, delayed within a bounded queue, degraded with reason, or dropped with reason. The layer reports $AllocMode$, $QueueClass$, $DropReason$, and $ResourceConflict$ via $\code{mac\_report!}$.
+
+\placeholder{32mm}{Insert the UPPAAL screenshot for MAC templates $\A{SCH}$, queue/buffer automata, and $\A{RSRC}$. The screenshot should show normal scheduling, sensing boost, constrained allocation, bounded queue transitions, buffer overflow, and explicit drop/degradation reports.}{Placeholder for the UPPAAL automata of the MAC/resource-scheduling layer.}{fig:mac-placeholder}
+
+\section{SDN/RIC Control Plane}
+
+The SDN/RIC layer is the central control automaton. It collects PHY and MAC reports, receives service requests and data-plane rule misses, evaluates policies, installs flow rules, issues resource commands, and handles failures. Its locations include stable configuration, telemetry collection, policy evaluation, rule miss, rule-install pending, acknowledgement wait, failure detected, standby switch, reactive re-embedding, rollback, and rejected-by-policy.
+
+The controller uses a multi-objective policy score
+\begin{equation}
+J=w_c U_{comm}+w_s U_{sense}-w_e E-w_r Risk-w_v Viol,
+\end{equation}
+where $U_{comm}$ and $U_{sense}$ are communication and sensing utility classes, $E$ is an energy or resource-cost class, $Risk$ is an infrastructure-risk class that can include dependent recovery effects in multi-level edge or cloud clusters \cite{bogatyrev_combinatorial-probabilistic_2026}, and $Viol$ penalizes deadline and SLA violations. The expression is not optimized numerically inside the timed automaton. Instead, it is discretized into policy classes such as $\mathrm{NORMAL}$, $\mathrm{SENSING\_BOOST}$, $\mathrm{CONSTRAINED}$, $\mathrm{RECOVERY}$, and $\mathrm{REJECT}$.
+
+Four procedures are mandatory in the SDN/RIC interface. A rule miss carries flow, slice, service, and rule classes and must end in rule installation and forwarding or in a drop report. A recovery procedure carries fault, affected-slice, affected-service, and recovery classes and must end in a stable configuration, rollback, or failure report. A sensing-degradation procedure receives PHY/MAC evidence and must select sensing boost, constrained mode, or rejection. A service-admission procedure receives service, criticality, demand, and SLA classes and must accept, degrade, or reject the service.
+
+\begin{table}[t]
+\caption{Controller procedures and bounded outcomes.}
+\label{tab:sdn-interface}
+\centering
+\small
+\begin{tabular}{|p{0.18\textwidth}|p{0.22\textwidth}|p{0.24\textwidth}|p{0.25\textwidth}|}
+\hline
+\textbf{Procedure} & \textbf{Input channel} & \textbf{Main path} & \textbf{Permitted outcome}\\
+\hline
+Rule miss & $\code{rule\_miss?}$ & Stable $\rightarrow$ miss $\rightarrow$ install pending or drop reason & $\code{flow\_mod!}$, $\code{forward\_cmd!}$, $\code{drop\_report!}$, timeout report\\
+\hline
+Recovery & $\code{link\_failure?}$, $\code{node\_failure?}$ & Stable $\rightarrow$ failure $\rightarrow$ standby switch or re-embedding $\rightarrow$ rollback/stable & policy command, flow update, rollback, failure report\\
+\hline
+Sensing degradation & $\code{phy\_kpi\_report?}$, $\code{mac\_report?}$ & Normal $\rightarrow$ evaluate $\rightarrow$ sensing boost, constrained, or reject & policy command, service degraded, service rejected\\
+\hline
+Admission & $\code{service\_request?}$ & Idle $\rightarrow$ evaluate $\rightarrow$ normal, constrained, or reject & service accepted, degraded, or rejected\\
+\hline
+\end{tabular}
+\end{table}
+
+The SDN/RIC contract assumes that reports encode finite classes and that acknowledgements are possible unless the environment has raised a modeled fault. It guarantees that each controller decision either reaches acknowledgement before $D_{ctrl\_ack}$ or produces a timeout/rollback outcome visible to the service layer. This prevents a local controller timeout from being hidden from SLA observers.
+
+\placeholder{32mm}{Insert the UPPAAL screenshot for SDN/RIC templates. The screenshot should show telemetry collection, policy evaluation, rule-miss processing, flow-rule installation, acknowledgement wait, failure detection, standby switch, reactive re-embedding, and rollback.}{Placeholder for the UPPAAL automata of the SDN/RIC control plane.}{fig:sdn-placeholder}
+
+\section{Application and Service Contracts}
+
+The application layer defines the service meaning of lower-layer events. It does not allocate radio or network resources directly; instead, it generates requests, declares SLA requirements, classifies service criticality, and receives accepted, degraded, rejected, or failed outcomes. This is necessary because the same PHY or MAC degradation may be tolerable for a best-effort telemetry flow but unacceptable for a safety-critical UAV-detection service.
+
+The request automaton $\A{REQ}$ creates service requests with finite classes for demand, criticality, mobility, and sensing need. The SLA automaton $\A{SLA}$ tracks deadlines and service health. Observer automata monitor whether a request has been answered, whether a service has been degraded explicitly, and whether the degradation remains within the allowed budget. For a low-altitude UAV-detection scenario, the service contract may require high sensing freshness, bounded detection delay, limited false alarms, and priority recovery after link failure. For an industrial telemetry scenario, the same framework may prioritize bounded communication delay and packet delivery while allowing lower sensing resolution.
+
+The service contract is expressed as
+\begin{equation}
+ServiceReq\Rightarrow\Diamond_{\le D_{admission}}
+(Accepted\vee Degraded\vee Rejected),
+\end{equation}
+and, for an active critical service,
+\begin{equation}
+Fault\Rightarrow\Diamond_{\le D_{recovery}}
+(Recovered\vee Degraded\vee Failed).
+\end{equation}
+These formulas define the property pattern; in UPPAAL they are implemented with observer clocks and finite outcome variables. The important modeling rule is that every lower-layer failure that affects a service must eventually update $ServiceImpact\in\{\mathrm{NONE},\mathrm{DEGRADED},\mathrm{REJECTED},\mathrm{FAILED}\}$.
+
+\placeholder{32mm}{Insert the UPPAAL screenshot for application/service templates $\A{REQ}$, $\A{SLA}$, admission logic, and SLA observers. The screenshot should show service request generation, deadline tracking, accepted/degraded/rejected outcomes, and the UAV-detection SLA observer.}{Placeholder for the UPPAAL automata of the application/service layer.}{fig:app-placeholder}
+
+\section{Cross-Layer Operational Semantics}
+
+The four layers communicate by rendezvous channels and shared bounded variables. Payload is assigned before synchronization and read immediately after synchronization. This style is convenient for UPPAAL because channels themselves do not carry structured messages, while finite shared variables still allow the model to encode flow identifiers, service class, rule class, freshness, queue class, and outcome.
+
+\begin{table}[t]
+\caption{Representative channels and deadlines.}
+\label{tab:channels}
+\centering
+\small
+\begin{tabular}{|p{0.24\textwidth}|p{0.31\textwidth}|p{0.34\textwidth}|}
+\hline
+\textbf{Channel} & \textbf{Direction} & \textbf{Deadline or observer bound}\\
+\hline
+$\code{phy\_kpi\_report}$ & PHY $\rightarrow$ MAC/SDN & report freshness bounded by $D_{phy}$ and $D_{mon}$\\
+\hline
+$\code{mac\_report}$ & MAC $\rightarrow$ SDN/RIC & queue/resource report before controller decision\\
+\hline
+$\code{service\_request}$ & Application $\rightarrow$ SDN/RIC & admission answer within $D_{admission}$\\
+\hline
+$\code{sdn\_policy\_cmd}$ & SDN/RIC $\rightarrow$ MAC/PHY & resource command acknowledged within $D_{ctrl\_ack}$\\
+\hline
+$\code{rule\_miss}$, $\code{flow\_mod}$ & Data plane $\leftrightarrow$ SDN/RIC & rule installed, forwarded, or dropped within $D_{rule}$\\
+\hline
+$\code{link\_failure}$, $\code{node\_failure}$ & Environment/data plane $\rightarrow$ SDN/RIC & recovery, rollback, or failure report within $D_{recovery}$\\
+\hline
+\end{tabular}
+\end{table}
+
+The main clocks are $c_{phy}$ for PHY reporting, $c_{sched}$ for MAC scheduling, $c_{mon}$ for telemetry age, $c_{dec}$ for policy selection, $c_{rule}$ for rule installation, $c_{ack}$ for controller acknowledgement, $c_{rec}$ for recovery, and $c_{sla}$ for application deadlines. Each non-stable location has an invariant, for example $c_{dec}\le D_{decision}$ in the controller evaluation location and $c_{sched}\le D_{sched}$ in the scheduler location. Timeout transitions are explicit and lead to a visible report rather than to an unmodeled dead end.
+
+Two consistency rules are enforced across the hierarchy. First, a lower-layer automaton may not silently discard a request that has an active service identifier. It must emit a drop, degradation, timeout, or failure report. Second, SDN/RIC must translate technical outcomes into service outcomes when the affected flow belongs to an admitted service. These rules connect resource verification to SLA verification.
+
+\section{Verification Properties}
+
+The model is intended for preliminary verification before detailed network simulation. The first group of properties concerns structural correctness:
+\begin{align}
+&A[]\;\neg deadlock,\label{eq:deadlock}\\
+&A[]\;0\le Q_i\le Q_i^{max},\label{eq:queue}\\
+&A[]\;Attempts_{rec}\le Attempts_{rec}^{max}.\label{eq:attempts}
+\end{align}
+These formulas check deadlock freedom, bounded queues, and bounded recovery attempts. Reachability checks are then used for every meaningful location, including sensing boost, constrained allocation, rule drop, standby switch, rollback, accepted service, degraded service, and rejected service. An unreachable location indicates either an impossible scenario or an incomplete interface.
+
+The second group concerns bounded response. For each request type $k$,
+\begin{equation}
+request_k\Rightarrow\Diamond_{\le D_k} outcome_k,
+\end{equation}
+where $k\in\{phy,mac,rule,recovery,sensing,admission\}$. In UPPAAL this is encoded by observer automata because standard timed automata do not directly attach quantitative time bounds to all temporal operators. Each observer starts a clock at the request event and moves to an error location if no permitted outcome occurs before the corresponding deadline.
+
+The third group checks cross-layer consistency:
+\begin{align}
+&A[]\;(RuleTimeout\wedge ActiveService)
+   \Rightarrow ServiceImpact\ne \mathrm{NONE},\label{eq:ruleimpact}\\
+&A[]\;(SensingLost\wedge CriticalService)
+   \Rightarrow (Boosted\vee Degraded\vee Rejected),\label{eq:sensingimpact}\\
+&A[]\;(FaultDetected\wedge ActiveService)\Rightarrow \notag\\
+&\hspace{10mm}(Recovered\vee RolledBack\vee Failed\vee Degraded).\label{eq:faultimpact}
+\end{align}
+These properties prevent the controller from treating local technical recovery as sufficient when the service layer still observes SLA degradation.
+
+The fourth group is comparative. The same service trace can be checked under three policy modes: a static communication/sensing split, a non-SDN local-control scheme, and the SDN/RIC-managed scheme. The comparison uses symbolic counters and observer states rather than stochastic frequencies. Metrics include accepted requests, degraded services, rejected services, rule misses, drops, recovery outcomes, queue overflows, and sensing-freshness violations. Frequency estimates, if required, should be added later through statistical model checking, priced/probabilistic timed automata, or finite traffic traces.
+
+\section{Discussion}
+
+The proposed hierarchy makes the boundary between physical phenomena and controller verification explicit. PHY equations and link-level simulation remain outside the timed automaton, but their results are abstracted into conservative finite classes. MAC scheduling is represented in enough detail to expose queues, resource conflicts, and drop reasons. SDN/RIC decisions are modeled as bounded control procedures with acknowledgements and rollback. The application layer turns lower-layer outcomes into SLA-visible service impact.
+
+This division keeps the model compact enough for UPPAAL while preserving the causal chain from channel degradation to service-level violation. It also supports later refinement. When XML templates become available, the placeholder figures in this manuscript should be replaced with screenshots of the concrete UPPAAL templates. The placeholders identify the expected automata groups and therefore serve as a checklist for the model repository: PHY templates, MAC scheduling templates, SDN/RIC control templates, and application/SLA templates.
+
+The limitations are also explicit. The model does not estimate continuous SINR, CRB, or detection probability internally. It cannot by itself produce statistically meaningful rates of rule misses or packet drops without a stochastic extension or traffic trace. Finally, the discretization thresholds must be justified by separate radio and system-level analysis; otherwise, the formal model may be internally correct but poorly calibrated.
+
+\section{Conclusion}
+
+This paper consolidates separate PHY, MAC/resource scheduling, SDN/RIC, and application-layer specifications into a single LNCS-style article. The resulting model treats an SDN-managed 6G ISAC network as a hierarchy of synchronized timed automata with finite reports, explicit contracts, bounded deadlines, and service-impact propagation. It is designed for UPPAAL verification of deadlock freedom, bounded response, queue safety, rule-miss handling, sensing degradation, and failure recovery. The next step is to attach the XML model repository, replace the four placeholders with actual UPPAAL screenshots, and run the listed observer queries on representative service traces.
+
+\begin{credits}
+\subsubsection{\ackname} The current manuscript assembles the formal layer descriptions into a single article and reserves figure locations for UPPAAL screenshots that will be produced from the XML model repository.
+
+\subsubsection{\discintname} The authors have no competing interests to declare that are relevant to the content of this article.
+\end{credits}
+
+\bibliographystyle{splncs04}
+\bibliography{../monotec2026}
+
+\end{document}
