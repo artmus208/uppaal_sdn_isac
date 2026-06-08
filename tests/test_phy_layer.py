@@ -2,6 +2,7 @@ import asyncio
 import json
 import tempfile
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from uppaal_mcp.phy.alpha import (
@@ -14,14 +15,17 @@ from uppaal_mcp.phy.defaults import build_default_contract
 from uppaal_mcp.phy.extractor import analyze_latex
 from uppaal_mcp.phy.generator import generate_uppaal_model
 from uppaal_mcp.phy.ir import PhyContractModel
+from uppaal_mcp.phy.layout import validate_generated_layout
 from uppaal_mcp.phy.scenarios import generate_scenario_model, list_scenarios
 from uppaal_mcp.phy.tools import (
     check_channel_semantics,
     explain_counterexample,
+    export_diagram,
     extract_contract,
     export_property_pack,
     export_report,
     export_run_artifacts,
+    generate_diagram,
     phy_get_benchmark,
     phy_list_benchmarks,
     phy_validate_benchmarks,
@@ -57,6 +61,11 @@ class PhyLayerTests(unittest.TestCase):
         report = validate_generated_model(generated.model_xml, generated.queries)
         self.assertTrue(report.ok, report.errors)
         self.assertEqual(generated.generation_mode, "with_observers")
+        self.assertEqual(generated.layout, "readable")
+        self.assertTrue(generated.layout_validation["ok"], generated.layout_validation["errors"])
+        self.assertIn("coordinate convention", generated.model_map)
+        self.assertIn("Channel classifier", generated.template_map)
+        self.assertIn("handshake command", generated.channels_map)
         for name in ("A_CH", "A_SIG", "A_BM", "A_SQ", "A_PH", "ENV_CH", "ENV_TARGET", "ENV_MAC", "ENV_NET"):
             self.assertIn(name, generated.model_xml)
         self.assertIn("A[] not deadlock", generated.queries)
@@ -149,11 +158,55 @@ class PhyLayerTests(unittest.TestCase):
 
     def test_article_generated_model_and_queries_golden_fixtures(self) -> None:
         contract = PhyContractModel.from_dict(extract_contract(tex_path=str(ARTICLE_TEX)))
-        generated = generate_uppaal_model(contract)
-        expected_model = (FIXTURES / "phy_model_article.golden.xml").read_text(encoding="utf-8")
+        generated = generate_uppaal_model(contract, layout="readable")
+        expected_model = (FIXTURES / "phy_model_article.readable.golden.xml").read_text(encoding="utf-8")
         expected_queries = (FIXTURES / "phy_queries_article.golden.q").read_text(encoding="utf-8")
         self.assertEqual(generated.model_xml, expected_model)
         self.assertEqual(generated.queries, expected_queries)
+        compact = generate_uppaal_model(contract, layout="compact")
+        compact_report = validate_generated_model(compact.model_xml, compact.queries)
+        self.assertTrue(compact_report.ok, compact_report.errors)
+        self.assertFalse(validate_generated_layout(compact.model_xml).ok)
+
+    def test_readable_layout_keeps_locations_labels_and_loops_apart(self) -> None:
+        generated = generate_uppaal_model(layout="readable")
+        layout_report = validate_generated_layout(generated.model_xml)
+        self.assertTrue(layout_report.ok, layout_report.errors)
+        root = ET.fromstring(generated.model_xml)
+        template = _template_by_name(root, "Template_A_CH")
+        points = _location_points(template)
+        self.assertLess(points["ChannelNominal"][0], points["ContractViolation_CH"][0])
+        self.assertLess(points["Outage"][1], points["ChannelNominal"][1])
+        self.assertGreater(points["MeasurePending"][1], points["ChannelNominal"][1])
+        for template_name in ("Template_A_CH", "Template_A_SIG", "Template_A_BM", "Template_A_SQ", "Template_A_PH"):
+            template = _template_by_name(root, template_name)
+            self.assertGreater(len({point[1] for point in _location_points(template).values()}), 1)
+            for transition in template.findall("transition"):
+                label_points = [
+                    (label.attrib["x"], label.attrib["y"])
+                    for label in transition.findall("label")
+                    if "x" in label.attrib and "y" in label.attrib
+                ]
+                self.assertEqual(len(label_points), len(set(label_points)))
+        self.assertTrue(_has_self_loop_nail(root, "Template_A_CH", "ChannelNominal"))
+        self.assertTrue(_has_self_loop_nail(root, "Template_A_PH", "PHYCommunicationDegraded"))
+
+    def test_diagram_export_includes_dot_svg_and_maps(self) -> None:
+        generated = generate_uppaal_model()
+        diagram = generate_diagram(model_xml=generated.model_xml, contract_json=generated.contract)
+        self.assertTrue(diagram["layout_validation"]["ok"], diagram["layout_validation"])
+        self.assertIn("digraph PHY", diagram["model.dot"])
+        self.assertIn("<svg", diagram["model.svg"])
+        self.assertIn("PHY Channels Map", diagram["channels_map.md"])
+        with tempfile.TemporaryDirectory() as tmp:
+            exported = export_diagram(
+                output_dir=tmp,
+                model_xml=generated.model_xml,
+                contract_json=generated.contract,
+            )
+            names = {Path(item).name for item in exported["files"]}
+            for name in ("model_map.md", "template_map.md", "channels_map.md", "model.dot", "model.svg", "layout_validation.json"):
+                self.assertIn(name, names)
 
     def test_article_latex_extractor_flags_missing_a_env(self) -> None:
         text = ARTICLE_TEX.read_text(encoding="utf-8")
@@ -327,9 +380,13 @@ class PhyLayerTests(unittest.TestCase):
         self.assertIn("report.md", bundle["reports"])
         self.assertIn("traceability_matrix.md", bundle["reports"])
         self.assertIn("publication_tables.md", bundle["reports"])
+        self.assertIn("model_map.md", bundle["reports"])
+        self.assertIn("template_map.md", bundle["reports"])
+        self.assertIn("channels_map.md", bundle["reports"])
         self.assertIn("properties.csv", bundle["reports"])
         self.assertIn("Property | Category | Query", bundle["reports"]["report.md"])
         self.assertIn("A_SYS = A_PHY || A_ENV", bundle["reports"]["traceability_matrix.md"])
+        self.assertIn("coordinate convention", bundle["reports"]["model_map.md"])
         with tempfile.TemporaryDirectory() as tmp:
             exported = export_report(
                 output_dir=tmp,
@@ -345,6 +402,9 @@ class PhyLayerTests(unittest.TestCase):
             self.assertIn("coverage_report.md", names)
             self.assertIn("publication_tables.md", names)
             self.assertIn("properties.csv", names)
+            self.assertIn("model_map.md", names)
+            self.assertIn("template_map.md", names)
+            self.assertIn("channels_map.md", names)
 
     def test_run_artifact_export_writes_layout_and_uses_cache_key(self) -> None:
         contract = extract_contract(tex_path=str(ARTICLE_TEX))
@@ -370,7 +430,7 @@ class PhyLayerTests(unittest.TestCase):
             self.assertTrue(first["cache_key"])
             self.assertIn("model_hash", first["metadata"]["hashes"])
             names = {Path(item).name for item in first["files"]}
-            for name in ("source.tex", "contract.json", "model.xml", "queries.q", "results.json", "trace.txt", "trace_explanation.md", "report.md", "run_metadata.json"):
+            for name in ("source.tex", "contract.json", "model.xml", "queries.q", "results.json", "trace.txt", "trace_explanation.md", "report.md", "model_map.md", "template_map.md", "channels_map.md", "run_metadata.json"):
                 self.assertIn(name, names)
             second = export_run_artifacts(
                 output_root=tmp,
@@ -532,10 +592,48 @@ class PhyMcpRegistrationTests(unittest.TestCase):
         self.assertIn("phy_generate_report", names)
         self.assertIn("phy_export_report", names)
         self.assertIn("phy_check_channel_semantics", names)
+        self.assertIn("phy_validate_layout", names)
+        self.assertIn("phy_export_diagram", names)
         self.assertIn("phy_verify_scenario", names)
         self.assertIn("phy_list_benchmarks", names)
         self.assertIn("phy_get_benchmark", names)
         self.assertIn("phy_validate_benchmarks", names)
+
+
+def _template_by_name(root: ET.Element, name: str) -> ET.Element:
+    for template in root.findall("template"):
+        if template.findtext("name") == name:
+            return template
+    raise AssertionError(f"Missing template {name}")
+
+
+def _location_points(template: ET.Element) -> dict[str, tuple[int, int]]:
+    return {
+        location.findtext("name") or "": (
+            int(location.attrib["x"]),
+            int(location.attrib["y"]),
+        )
+        for location in template.findall("location")
+    }
+
+
+def _has_self_loop_nail(root: ET.Element, template_name: str, location_name: str) -> bool:
+    template = _template_by_name(root, template_name)
+    location_id = None
+    for location in template.findall("location"):
+        if location.findtext("name") == location_name:
+            location_id = location.attrib["id"]
+            break
+    if location_id is None:
+        return False
+    for transition in template.findall("transition"):
+        source = transition.find("source")
+        target = transition.find("target")
+        if source is None or target is None:
+            continue
+        if source.attrib.get("ref") == location_id and target.attrib.get("ref") == location_id:
+            return bool(transition.findall("nail"))
+    return False
 
 
 if __name__ == "__main__":

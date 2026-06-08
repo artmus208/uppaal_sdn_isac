@@ -112,6 +112,7 @@ def build_mcp() -> Any:
         debug_counters: bool = True,
         include_negative_scenarios: bool = False,
         mode: str | None = None,
+        layout: str = "readable",
     ) -> dict:
         """Generate a closed UPPAAL A_SYS model from the PHY contract."""
         return phy_tools.generate_uppaal_from_contract(
@@ -123,6 +124,36 @@ def build_mcp() -> Any:
             debug_counters=debug_counters,
             include_negative_scenarios=include_negative_scenarios,
             mode=mode,
+            layout=layout,
+        )
+
+    @mcp.tool()
+    def phy_validate_layout(
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+    ) -> dict:
+        """Validate that generated PHY model coordinates are readable in UPPAAL GUI."""
+        return phy_tools.validate_layout(model_xml=model_xml, contract_json=contract_json)
+
+    @mcp.tool()
+    def phy_export_diagram(
+        output_dir: str,
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        profile: dict | None = None,
+        layout: str = "readable",
+    ) -> dict:
+        """Write PHY Graphviz DOT/SVG and readable model maps."""
+        return phy_tools.export_diagram(
+            output_dir=output_dir,
+            model_xml=model_xml,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            profile=profile,
+            layout=layout,
         )
 
     @mcp.tool()

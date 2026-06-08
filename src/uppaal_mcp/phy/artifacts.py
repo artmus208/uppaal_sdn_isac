@@ -10,7 +10,7 @@ from .alpha import default_profile
 from .reports import generate_report_bundle
 
 
-GENERATOR_VERSION = "phy-generator-v0.5"
+GENERATOR_VERSION = "phy-generator-v0.6-readable-layout"
 
 
 def build_run_metadata(
@@ -127,6 +127,9 @@ def export_run_artifacts(
     _write_text(artifact_dir / "report.md", reports["reports"]["report.md"], files)
     _write_text(artifact_dir / "traceability_matrix.md", reports["reports"]["traceability_matrix.md"], files)
     _write_text(artifact_dir / "model_summary.md", reports["reports"]["model_summary.md"], files)
+    for name in ("model_map.md", "template_map.md", "channels_map.md"):
+        if name in reports["reports"]:
+            _write_text(artifact_dir / name, reports["reports"][name], files)
     if "trace_explanation.md" in reports["reports"]:
         _write_text(artifact_dir / "trace_explanation.md", reports["reports"]["trace_explanation.md"], files)
     _write_json(artifact_dir / "run_metadata.json", metadata, files)

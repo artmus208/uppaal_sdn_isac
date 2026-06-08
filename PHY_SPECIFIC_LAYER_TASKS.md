@@ -78,9 +78,16 @@
 - [x] Генерировать template instances: `A_CH`, `A_SIG`, `A_BM`, `A_SQ`, `A_PH`, `ENV_CH`, `ENV_TARGET`, `ENV_MAC`, `ENV_NET`, observers.
 - [x] Генерировать `system A_CH, A_SIG, A_BM, A_SQ, A_PH, ENV_CH, ENV_TARGET, ENV_MAC, ENV_NET, ...;`.
 - [x] Добавить deterministic layout координаты, чтобы XML открывался в UPPAAL GUI без каши.
+- [x] Добавить layout modes `readable` и `compact`, default `readable`.
+- [x] Вынести layout rules в `phy/layout.py`: coordinates, label placement, bend-points, maps.
+- [x] Разносить labels по типам: guard сверху, sync в середине, assignment снизу; длинные assignments переносить.
+- [x] Добавить bend-points/nails для self-loops, backward edges, parallel edges и violation paths.
+- [x] Генерировать `model_map.md`, `template_map.md`, `channels_map.md` рядом с `model.xml`.
+- [x] Добавить `validate_generated_layout(model_xml)` с проверками coordinate collapse, label density, violation-right, nominal-left, self-loop nails.
+- [x] Добавить Graphviz/SVG экспорт `phy-export-diagram`.
 - [x] Добавить режим `minimal`, `with_observers`, `with_debug_counters`, `with_negative_scenarios`.
 - [x] Добавить static validation после генерации: XML parse, templates exist, init exists, all transition sources/targets valid.
-- [ ] Добавить smoke verification generated model через `verifyta`.
+- [x] Добавить smoke verification generated model через `verifyta`.
 
 ## 5. Channel semantics validation
 
@@ -232,7 +239,7 @@
 ## 15. Verifyta integration extensions
 
 - [x] Расширить `uppaal_verify` options preset: normal verification, trace-on-violation, diagnostic run.
-- [ ] Добавить safe support для verifyta trace generation flags после проверки конкретного UPPAAL 5.0 syntax.
+- [x] Добавить safe support для verifyta trace generation flags после проверки конкретного UPPAAL 5.0 syntax.
 - [x] Добавить `phy_verify_contract(tex_path|contract_ir|model_xml, profile, mode)`.
 - [x] Добавить `phy_verify_property_pack(model, queries, explain=True)`.
 - [x] Добавить timeout profile per scenario.
@@ -262,7 +269,7 @@
 
 - [x] Добавить `phy_extract_contract(tex_text?, tex_path?)`.
 - [x] Добавить `phy_validate_contract(contract_json)`.
-- [x] Добавить `phy_generate_uppaal_model(contract_json?, tex_text?, tex_path?, profile?, include_observers?)`.
+- [x] Добавить `phy_generate_uppaal_model(contract_json?, tex_text?, tex_path?, profile?, include_observers?, layout?)`.
 - [x] Добавить `phy_generate_property_pack(contract_json?, model_xml?, profile?)`.
 - [x] Добавить `phy_verify_contract(tex_path?, tex_text?, profile?, mode?)`.
 - [x] Добавить `phy_check_no_continuous_guards(model_xml?, contract_json?)`.
@@ -326,8 +333,8 @@
 - [x] Golden tests: current `.tex` -> expected `contract.json`.
 - [x] Golden tests: current `.tex` -> generated `model.xml`.
 - [x] Golden tests: current `.tex` -> generated `queries.q`.
-- [ ] Verifyta smoke tests for minimal closed model.
-- [ ] Verifyta smoke tests for each scenario.
+- [x] Verifyta smoke tests for minimal closed model.
+- [x] Verifyta smoke tests for each scenario.
 - [x] Negative tests for each semantic validator.
 - [x] Regression tests for MCP tool JSON shapes.
 - [x] Test that generic MVP tools still work after PHY layer additions.
@@ -353,7 +360,7 @@
 - [x] Generated `queries.q` содержит базовые reachability/safety/contract/observer properties из статьи.
 - [x] Static validators проходят на корректной модели.
 - [x] Static validators ловят все intentionally broken cases.
-- [ ] `verifyta` успешно запускается на generated closed model.
+- [x] `verifyta` успешно запускается на generated closed model.
 - [x] MCP tool `phy_verify_contract` возвращает structured JSON, artifact paths и compact explanation.
 - [x] При нарушении свойства MCP объясняет counterexample в терминах PHY/SDN/ISAC, а не только отдает сырой stdout.
 - [x] README содержит рабочий путь использования из Codex через VS Code/WSL.

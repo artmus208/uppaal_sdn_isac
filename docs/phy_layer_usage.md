@@ -30,6 +30,8 @@ phy_export_run_artifacts
 phy_verify_contract
 phy_verify_property_pack
 phy_check_channel_semantics
+phy_validate_layout
+phy_export_diagram
 phy_explain_counterexample
 phy_list_scenarios
 phy_verify_scenario
@@ -55,8 +57,24 @@ PYTHONPATH=src python3 -m uppaal_mcp.cli phy-extract \
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-generate \
   --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode with_observers \
+  --layout readable \
   --output-dir .uppaal_mcp_workspace/phy_generated
 ```
+
+`readable` — default. Он раскладывает locations по смысловым зонам, разводит guard/sync/assignment labels, добавляет bend-points для self-loops/back edges/violation paths и пишет карты:
+
+```text
+.uppaal_mcp_workspace/phy_generated/
+  contract.json
+  model.xml
+  queries.q
+  model_map.md
+  template_map.md
+  channels_map.md
+  layout_validation.json
+```
+
+Открывай в UPPAAL GUI именно generated `model.xml`, а смысловую навигацию смотри в `model_map.md`.
 
 Режимы генерации:
 
@@ -65,6 +83,23 @@ minimal                  A_SYS без observers и debug-counter queries
 with_observers           default: A_SYS + bounded observers
 with_debug_counters      включает classifier determinism counters
 with_negative_scenarios  помечает run как связанный с negative benchmark suite
+with_extended_observers  добавляет extended observer templates
+open_system              open A_SYS без ENV_* instances, queries guarded by ass_env()
+```
+
+Layout modes:
+
+```text
+readable  default, нормальная схема для GUI
+compact   плотная старая раскладка для минимальных diff-ов
+```
+
+Сгенерировать Graphviz/SVG карту:
+
+```bash
+PYTHONPATH=src python3 -m uppaal_mcp.cli phy-export-diagram \
+  --model .uppaal_mcp_workspace/phy_generated/model.xml \
+  --output-dir .uppaal_mcp_workspace/phy_diagram
 ```
 
 Сгенерировать property pack как `.q` и JSON metadata:
@@ -107,6 +142,9 @@ artifacts/<run_id>/
   report.md
   traceability_matrix.md
   model_summary.md
+  model_map.md
+  template_map.md
+  channels_map.md
   run_metadata.json
 ```
 
@@ -149,12 +187,19 @@ PYTHONPATH=src python3 -m uppaal_mcp.cli phy-benchmark nominal_phy \
 ```text
 1. phy_extract_contract(tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex")
 2. phy_validate_contract(contract_json=<result.contract>)
-3. phy_generate_uppaal_model(contract_json=<contract>, include_observers=true)
+3. phy_generate_uppaal_model(contract_json=<contract>, include_observers=true, layout="readable")
 4. phy_generate_property_pack(contract_json=<contract>, include_observers=true)
 5. phy_verify_contract(contract_json=<contract>, timeout_sec=12)
 6. phy_verify_property_pack(model_xml=<model>, queries=<queries>, static_only=true)
 7. phy_generate_report(contract_json=<contract>, result_json=<verify.result>)
 8. phy_validate_benchmarks()
+```
+
+Для отдельной проверки раскладки:
+
+```text
+phy_validate_layout(model_xml=<generated.model_xml>)
+phy_export_diagram(output_dir=".uppaal_mcp_workspace/phy_diagram", model_xml=<generated.model_xml>)
 ```
 
 Для записи файлов вместо in-memory отчета:
@@ -267,6 +312,9 @@ profile.json
 report.md
 traceability_matrix.md
 model_summary.md
+model_map.md
+template_map.md
+channels_map.md
 assume_guarantee_report.md
 alpha_profile_report.md
 coverage_report.md

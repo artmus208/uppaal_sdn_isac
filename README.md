@@ -100,10 +100,10 @@ env = {
 
 ```text
 PYTHONPATH=src python3 -m unittest discover -s tests
-Ran 44 tests: OK (1 skipped if mcp package is absent)
+Ran 53 tests: OK (skipped=1)
 
 .venv/bin/python -m unittest discover -s tests
-Ran 44 tests: OK
+Не перегонялось в этом срезе.
 
 .venv/bin/python -c "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
 FastMCP
@@ -152,6 +152,8 @@ phy_verify_property_pack
 phy_check_no_continuous_guards
 phy_check_channel_semantics
 phy_check_alpha_profile
+phy_validate_layout
+phy_export_diagram
 phy_explain_counterexample
 phy_list_profiles
 phy_get_profile
@@ -168,7 +170,8 @@ CLI:
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-extract --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex
-PYTHONPATH=src python3 -m uppaal_mcp.cli phy-generate --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --output-dir .uppaal_mcp_workspace/phy_generated_smoke
+PYTHONPATH=src python3 -m uppaal_mcp.cli phy-generate --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --layout readable --output-dir .uppaal_mcp_workspace/phy_generated_smoke
+PYTHONPATH=src python3 -m uppaal_mcp.cli phy-export-diagram --model .uppaal_mcp_workspace/phy_generated_smoke/model.xml --output-dir .uppaal_mcp_workspace/phy_diagram_smoke
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-property-pack --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --include-negative --output-dir .uppaal_mcp_workspace/phy_property_pack_smoke
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-report --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --output-dir .uppaal_mcp_workspace/phy_report_smoke
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-run-artifacts --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --output-root .uppaal_mcp_workspace/phy_run_artifacts_smoke --verifyta-version "UPPAAL 5.0.0"
@@ -179,6 +182,15 @@ PYTHONPATH=src python3 -m uppaal_mcp.cli phy-verify-all-scenarios --timeout-sec 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-list-benchmarks
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-validate-benchmarks
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-benchmark nominal_phy --output-dir .uppaal_mcp_workspace/phy_benchmark_nominal
+```
+
+`phy-generate --output-dir` пишет не только `model.xml`, `queries.q`, `contract.json`, но и человекочитаемые карты:
+
+```text
+model_map.md
+template_map.md
+channels_map.md
+layout_validation.json
 ```
 
 Подробный рабочий сценарий PHY-specific слоя:

@@ -9,6 +9,16 @@ from typing import Iterable
 from .alpha import default_profile, generate_uppaal_declarations
 from .defaults import build_default_contract
 from .ir import PhyContractModel, PropertySpec
+from .layout import (
+    Point,
+    generate_layout_maps,
+    location_positions,
+    normalize_layout_mode,
+    transition_comment,
+    transition_geometry,
+    validate_generated_layout,
+    wrap_assignment,
+)
 
 
 @dataclass(frozen=True)
@@ -17,6 +27,11 @@ class GeneratedPhyModel:
     queries: str
     contract: dict
     profile: dict
+    layout: str = "readable"
+    model_map: str = ""
+    template_map: str = ""
+    channels_map: str = ""
+    layout_validation: dict | None = None
     generation_mode: str = "with_observers"
     include_negative_scenarios: bool = False
     system_mode: str = "closed"
@@ -27,9 +42,13 @@ class GeneratedPhyModel:
 
 
 class UppaalXmlBuilder:
-    def __init__(self) -> None:
+    def __init__(self, *, layout: str | None = None) -> None:
         self.root = ET.Element("nta")
         self.template_index = 0
+        self.layout = normalize_layout_mode(layout)
+        self._location_ids: dict[int, dict[str, str]] = {}
+        self._location_points: dict[int, dict[str, Point]] = {}
+        self._edge_counts: dict[tuple[int, str, str], int] = {}
 
     def declaration(self, text: str) -> None:
         ET.SubElement(self.root, "declaration").text = text
@@ -38,17 +57,18 @@ class UppaalXmlBuilder:
         template = ET.SubElement(self.root, "template")
         ET.SubElement(template, "name").text = name
         location_ids: dict[str, str] = {}
-        x = 0
+        points = location_positions(name, [location_name for location_name, _ in locations], self.layout)
         for index, (location_name, invariant) in enumerate(locations):
             loc_id = f"{_safe(name)}_{index}"
             location_ids[location_name] = loc_id
-            location = ET.SubElement(template, "location", {"id": loc_id, "x": str(x), "y": "0"})
-            ET.SubElement(location, "name", {"x": str(x - 20), "y": "-30"}).text = location_name
+            point = points[location_name]
+            location = ET.SubElement(template, "location", {"id": loc_id, "x": str(point.x), "y": str(point.y)})
+            ET.SubElement(location, "name", {"x": str(point.x - 58), "y": str(point.y - 38)}).text = location_name
             if invariant:
-                ET.SubElement(location, "label", {"kind": "invariant", "x": str(x - 20), "y": "20"}).text = invariant
-            x += 180
+                ET.SubElement(location, "label", {"kind": "invariant", "x": str(point.x - 64), "y": str(point.y + 34)}).text = invariant
         ET.SubElement(template, "init", {"ref": location_ids[initial]})
-        template.attrib["_location_ids"] = repr(location_ids)
+        self._location_ids[id(template)] = location_ids
+        self._location_points[id(template)] = points
         return template
 
     def add_transition(
@@ -61,26 +81,54 @@ class UppaalXmlBuilder:
         sync: str | None = None,
         assignment: str | None = None,
     ) -> None:
-        location_ids = eval(template.attrib["_location_ids"], {"__builtins__": {}})
+        location_ids = self._location_ids[id(template)]
+        points = self._location_points[id(template)]
+        pair_key = (id(template), source, target)
+        geometry_key = (id(template), "__violation_target__", target) if _is_violation_location(target) else pair_key
+        pair_index = self._edge_counts.get(geometry_key, 0)
+        self._edge_counts[geometry_key] = pair_index + 1
+        template_name = template.findtext("name") or ""
+        geometry = transition_geometry(
+            template_name,
+            source,
+            target,
+            points[source],
+            points[target],
+            pair_index=pair_index,
+            layout=self.layout,
+        )
         transition = ET.SubElement(template, "transition")
         ET.SubElement(transition, "source", {"ref": location_ids[source]})
         ET.SubElement(transition, "target", {"ref": location_ids[target]})
-        y = -60
         if guard:
-            ET.SubElement(transition, "label", {"kind": "guard", "x": "0", "y": str(y)}).text = guard
-            y += 20
+            point = geometry.labels["guard"]
+            ET.SubElement(transition, "label", {"kind": "guard", "x": str(point.x), "y": str(point.y)}).text = guard
         if sync:
-            ET.SubElement(transition, "label", {"kind": "synchronisation", "x": "0", "y": str(y)}).text = sync
-            y += 20
+            point = geometry.labels["synchronisation"]
+            ET.SubElement(transition, "label", {"kind": "synchronisation", "x": str(point.x), "y": str(point.y)}).text = sync
         if assignment:
-            ET.SubElement(transition, "label", {"kind": "assignment", "x": "0", "y": str(y)}).text = assignment
+            point = geometry.labels["assignment"]
+            text = wrap_assignment(assignment) if self.layout == "readable" else assignment
+            ET.SubElement(transition, "label", {"kind": "assignment", "x": str(point.x), "y": str(point.y)}).text = text
+        comment = transition_comment(
+            template_name,
+            source,
+            target,
+            guard=guard,
+            sync=sync,
+            assignment=assignment,
+            layout=self.layout,
+        )
+        if comment:
+            point = geometry.labels["comments"]
+            ET.SubElement(transition, "label", {"kind": "comments", "x": str(point.x), "y": str(point.y)}).text = comment
+        for nail in geometry.nails:
+            ET.SubElement(transition, "nail", {"x": str(nail.x), "y": str(nail.y)})
 
     def system(self, text: str) -> None:
         ET.SubElement(self.root, "system").text = text
 
     def to_xml(self) -> str:
-        for template in self.root.findall("template"):
-            template.attrib.pop("_location_ids", None)
         ET.indent(self.root, space="  ")
         xml_body = ET.tostring(self.root, encoding="unicode")
         return (
@@ -99,9 +147,11 @@ def generate_uppaal_model(
     debug_counters: bool = True,
     include_negative_scenarios: bool = False,
     mode: str | None = None,
+    layout: str | None = None,
 ) -> GeneratedPhyModel:
     model = contract or build_default_contract()
     profile = profile or default_profile()
+    layout_mode = normalize_layout_mode(layout)
     (
         mode_name,
         include_observers,
@@ -115,8 +165,15 @@ def generate_uppaal_model(
         debug_counters=debug_counters,
         include_negative_scenarios=include_negative_scenarios,
     )
-    builder = UppaalXmlBuilder()
-    builder.declaration(_declarations(model, profile, debug_counters=debug_counters, mode_name=mode_name, include_negative_scenarios=include_negative_scenarios))
+    builder = UppaalXmlBuilder(layout=layout_mode)
+    builder.declaration(_declarations(
+        model,
+        profile,
+        debug_counters=debug_counters,
+        mode_name=mode_name,
+        layout_mode=layout_mode,
+        include_negative_scenarios=include_negative_scenarios,
+    ))
     _add_a_ch(builder)
     _add_a_sig(builder)
     _add_a_bm(builder)
@@ -141,8 +198,10 @@ def generate_uppaal_model(
         include_environment=include_environment,
         include_extended_observers=include_extended_observers,
     ))
+    model_xml = builder.to_xml()
+    maps = generate_layout_maps(model, model_xml=model_xml, layout=layout_mode)
     return GeneratedPhyModel(
-        model_xml=builder.to_xml(),
+        model_xml=model_xml,
         queries=generate_queries(
             model,
             include_observers=include_observers,
@@ -152,6 +211,11 @@ def generate_uppaal_model(
         ),
         contract=model.to_dict(),
         profile=profile,
+        layout=layout_mode,
+        model_map=maps["model_map.md"],
+        template_map=maps["template_map.md"],
+        channels_map=maps["channels_map.md"],
+        layout_validation=validate_generated_layout(model_xml).to_dict(),
         generation_mode=mode_name,
         include_negative_scenarios=include_negative_scenarios,
         system_mode="closed" if include_environment else "open",
@@ -223,12 +287,14 @@ def _declarations(
     *,
     debug_counters: bool,
     mode_name: str,
+    layout_mode: str,
     include_negative_scenarios: bool,
 ) -> str:
     deadlines = profile.get("deadlines", {})
     lines = [
         "// Generated from PHY contract IR. Continuous PHY metrics stay outside timed automata.",
         f"// Generation mode: {mode_name}.",
+        f"// Layout mode: {layout_mode}.",
         "// Negative scenarios are emitted by the benchmark suite, not embedded in the closed A_SYS." if include_negative_scenarios else "// Negative scenarios disabled for this generated model.",
         f"const int D_meas = {int(deadlines.get('D_meas', 5))};",
         f"const int D_sig = {int(deadlines.get('D_sig', 5))};",
@@ -263,6 +329,14 @@ def _declarations(
         "WaveformT W = W_OFDM;",
         "",
         _channel_declarations(model),
+        "",
+        "// === A_CH: Channel classifier ===",
+        "// === A_SIG: Signal classifier ===",
+        "// === A_BM: Beam management ===",
+        "// === A_SQ: Sensing QoS classifier ===",
+        "// === A_PH: Aggregate PHY state ===",
+        "// === ENV_*: Closed-system environment stimulus loops ===",
+        "// === Obs*: Bounded response observers ===",
         "",
         generate_uppaal_declarations(model),
         _priority_helpers(),
@@ -663,3 +737,7 @@ def _system_declaration(*, include_observers: bool, include_environment: bool, i
 
 def _safe(value: str) -> str:
     return re.sub(r"[^A-Za-z0-9_]", "_", value)
+
+
+def _is_violation_location(name: str) -> bool:
+    return name == "Violation" or name.startswith("ContractViolation")

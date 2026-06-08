@@ -8,6 +8,7 @@ from typing import Any
 
 from .alpha import check_no_continuous_guards, default_profile
 from .ir import PhyContractModel, Provenance
+from .layout import generate_layout_maps
 from .trace import parse_trace_text
 from .validators import validate_contract_ir, validate_generated_model
 
@@ -33,6 +34,8 @@ def generate_report_bundle(
         "publication_tables.md": _publication_tables(contract),
         "properties.csv": _properties_csv(contract, result_json=result_json),
     }
+    if model_xml is not None:
+        reports.update(generate_layout_maps(contract, model_xml=model_xml))
     if result_json:
         reports["violations.md"] = _violations_report(result_json)
     if trace_text:

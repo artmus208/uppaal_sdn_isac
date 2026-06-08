@@ -2,6 +2,7 @@
 
 from .defaults import build_default_contract
 from .generator import generate_uppaal_model, generate_queries
+from .layout import validate_generated_layout
 from .tools import (
     explain_counterexample,
     extract_contract,
@@ -20,5 +21,6 @@ __all__ = [
     "generate_queries",
     "generate_uppaal_model",
     "validate_contract",
+    "validate_generated_layout",
     "verify_contract",
 ]

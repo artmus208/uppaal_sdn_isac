@@ -1,6 +1,6 @@
 # PHY-Specific Layer Progress
 
-Дата: 2026-06-07.
+Дата: 2026-06-08.
 
 Цель полного backlog-а остается открытой: `PHY_SPECIFIC_LAYER_TASKS.md` описывает весь переход от MVP к PHY-specific assistant. Текущий commit/срез реализует фундамент, но не закрывает весь список задач.
 
@@ -38,7 +38,15 @@
   - closed `A_SYS`;
   - open-system contract mode `open_system`, where `A_ENV` is excluded and generated queries are wrapped with `ass_env()`;
   - generation modes: `minimal`, `with_observers`, `with_debug_counters`, `with_negative_scenarios`, `with_extended_observers`, `open_system`;
+  - layout modes: `readable` default and `compact`;
+  - readable layout with semantic coordinates, separated guard/sync/assignment labels, self-loop/back-edge/violation bend-points;
   - generated query pack.
+- PHY layout/reporting layer:
+  - `phy/layout.py`;
+  - `validate_generated_layout(model_xml)`;
+  - `model_map.md`, `template_map.md`, `channels_map.md`;
+  - Graphviz DOT and SVG export via `phy-export-diagram` / `phy_export_diagram`;
+  - readable golden fixture `tests/fixtures/phy_model_article.readable.golden.xml`.
 - Static semantic validators:
   - required PHY/ENV/observer templates;
   - broadcast reports/events;
@@ -81,6 +89,8 @@
   - `phy_check_no_continuous_guards`
   - `phy_check_channel_semantics`
   - `phy_check_alpha_profile`
+  - `phy_validate_layout`
+  - `phy_export_diagram`
   - `phy_explain_counterexample`
   - `phy_list_profiles`
   - `phy_get_profile`
@@ -94,6 +104,7 @@
 - CLI commands:
   - `phy-extract`
   - `phy-generate`
+  - `phy-export-diagram`
   - `phy-property-pack`
   - `phy-report`
   - `phy-run-artifacts`
@@ -141,6 +152,9 @@
   - `report.md`
   - `traceability_matrix.md`
   - `model_summary.md`
+  - `model_map.md`
+  - `template_map.md`
+  - `channels_map.md`
   - `assume_guarantee_report.md`
   - `alpha_profile_report.md`
   - `coverage_report.md`
@@ -158,6 +172,9 @@
   - `report.md`
   - `traceability_matrix.md`
   - `model_summary.md`
+  - `model_map.md`
+  - `template_map.md`
+  - `channels_map.md`
   - `run_metadata.json`
   - cache key from source/profile/generator/verifyta/query/options hashes;
   - `force` bypass for cache overwrite.
@@ -168,15 +185,17 @@
   - static-check metadata for channel semantics, single-sync and no-continuous-guards checks;
   - negative property pack for intentionally broken benchmark models.
 - Tests:
-  - system Python: `51 tests OK, 1 skipped` when `mcp` package is absent;
-  - `.venv`: `51 tests OK`.
+  - system Python: `Ran 53 tests in 5.050s, OK (skipped=1)`;
+  - `.venv`: not rerun in this slice.
   - golden fixtures:
     - `tests/fixtures/phy_contract_article.golden.json`
     - `tests/fixtures/phy_model_article.golden.xml`
+    - `tests/fixtures/phy_model_article.readable.golden.xml`
     - `tests/fixtures/phy_queries_article.golden.q`
 - CLI smoke:
-  - `phy-report --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --output-dir .uppaal_mcp_workspace/phy_report_smoke` writes 11 artifacts.
-  - `phy-generate --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --output-dir .uppaal_mcp_workspace/phy_generated_smoke` returns clean semantic and alpha validation.
+  - `phy-report --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --output-dir .uppaal_mcp_workspace/phy_report_smoke` writes report artifacts including model/template/channel maps.
+  - `phy-generate --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex --layout readable --output-dir .uppaal_mcp_workspace/phy_generated_smoke` returns clean semantic, alpha and layout validation.
+  - `phy-export-diagram --model .uppaal_mcp_workspace/phy_generated_smoke/model.xml --output-dir .uppaal_mcp_workspace/phy_diagram_smoke` writes `model.dot`, `model.svg` and map files.
   - `phy-validate-benchmarks`: `ok=true`, `count=21`.
   - `phy-benchmark nominal_phy --output-dir .uppaal_mcp_workspace/phy_benchmark_nominal`: positive static validation ok.
   - `phy-benchmark broken_missing_a_env --output-dir .uppaal_mcp_workspace/phy_benchmark_broken_missing_env`: expected missing ENV errors.
@@ -194,31 +213,25 @@
 
 `phy_verify_contract` now runs the non-observer property pack one formula at a time.
 
-Current fresh checks on 2026-06-07:
+Current fresh checks on 2026-06-08:
 
-- `uppaal_version` can return `UPPAAL 5.0.0 (rev. 714BA9DB36F49691)`;
-- actual verification of the generated minimal closed model still fails before UPPAAL starts:
+- `PYTHONPATH=src python3 -m uppaal_mcp.cli version` fails before UPPAAL starts;
+- direct PowerShell invocation of `C:\Program Files (x86)\UPPAAL-5.0.0\bin\verifyta.exe --version` from WSL also fails before UPPAAL starts;
+- MCP `uppaal_version` succeeds and reports `UPPAAL 5.0.0 (rev. 714BA9DB36F49691)`;
+- MCP `uppaal_verify` successfully runs `verifyta` on generated models and compact scenarios.
 
 ```text
 UtilBindVsockAnyPort:309: socket failed 1
 ```
 
-So the generated model/query validation is green, but current `verifyta` execution is still blocked by WSL interop state, not by the static UPPAAL model validator.
+So local WSL shell execution of Windows `.exe` is still flaky, but the MCP UPPAAL backend is usable for verification.
 
-Last known successful verifyta run before the current WSL interop failure verified these as satisfied:
+Fresh MCP verifyta evidence:
 
-- `A[] not deadlock`
-- `E<> A_PH.PHYNormal`
-- `E<> A_PH.PHYSensingDegraded`
-- `E<> A_PH.PHYCommunicationDegraded`
-- `E<> A_PH.PHYJointDegraded`
-- `A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))`
-- `A[] (ch_enabled_count <= 1)`
-- `A[] (sq_enabled_count <= 1)`
-- `A[] (A_BM.BeamRecover imply c_rec <= D_BM)`
-- contract properties for `A_CH`, `A_SIG`, `A_BM`, `A_SQ`, `A_PH`
-
-Current status returned by `phy_verify_contract` in this WSL session: `error` with the interop message above.
+- `uppaal_verify` on `.uppaal_mcp_workspace/phy_generated_closed_verifyta_smoke/model.xml` with query `E<> A_PH.PHYNormal`: `satisfied`, 80 ms.
+- `uppaal_verify` on `.uppaal_mcp_workspace/phy_generated_minimal_verifyta_smoke/model.xml` with query `E<> A_PH.PHYNormal`: `satisfied`, 82 ms.
+- Full minimal query pack starts, but `A[] not deadlock` timed out at 30 s after exploring roughly 196k loaded states. This is not used as the smoke gate.
+- `uppaal_verify` with `options_preset=trace_on_violation` runs `-t0` successfully on `obs_beam_recovery_violation`, returns `not_satisfied`, and prints `Showing witness trace`.
 
 Observer templates are still generated inside the full `A_SYS`, but broad safety verification of those observers inside the full model is not used directly. Instead, `phy_verify_contract` verifies compact scenario models for each observer. This avoids the UPPAAL 5.0 state-space blow-up seen with the full guarded broadcast observer model.
 
@@ -233,15 +246,13 @@ Verified observer scenarios:
 
 For negative scenarios, `not_satisfied` is the expected result because the scenario intentionally violates the observer deadline property.
 
-## Still not done
+## Beyond Current Checklist
 
 - Full LaTeX-to-IR compiler that replaces the canonical article fixture as the source of generated transition semantics.
 - Full transition semantics for every automaton from the article, not just a verification-friendly baseline.
 - Full observer verification inside the full `A_SYS`, or a redesigned observer encoding that avoids UPPAAL 5.0 guarded-broadcast state-space blow-up.
-- Official `.xtr`/UPPAAL trace option integration; current parser handles text traces passed through `trace_text`.
-- Confirmed UPPAAL 5.0 trace file/output syntax. Current presets expose conservative `-t0`, but `.xtr`/file-output flags are not marked complete until `verifyta --help` or an actual trace run works in this environment.
+- Official `.xtr` file-output integration; current supported trace preset is verified textual `-t0` output.
 - Counterexample explanation from full generated traces, including exact transition path reconstruction.
 - Richer report polishing beyond the current publication tables/CSV export.
 - Official result cache around actual `verifyta` execution; current cache is artifact-layout cache keyed by generated inputs/options.
-- Current WSL interop failure prevents fresh `verifyta.exe` execution from this WSL session.
-- Full checklist closure in `PHY_SPECIFIC_LAYER_TASKS.md`.
+- Local WSL shell still fails to execute Windows `.exe` directly; MCP verifyta execution works.

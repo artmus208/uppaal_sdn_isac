@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from pathlib import Path
 
 from ..config import UppaalConfig
@@ -22,6 +23,7 @@ from .defaults import SOURCE, build_default_contract
 from .extractor import analyze_latex, extract_contract_model
 from .generator import generate_uppaal_model
 from .ir import PhyContractModel
+from .layout import generate_diagram_artifacts, generate_layout_maps, validate_generated_layout
 from .property_pack import (
     export_property_pack as export_property_pack_files,
     generate_property_pack as build_property_pack,
@@ -68,6 +70,7 @@ def generate_uppaal_from_contract(
     debug_counters: bool = True,
     include_negative_scenarios: bool = False,
     mode: str | None = None,
+    layout: str | None = None,
 ) -> dict:
     contract = _contract_from_json(contract_json) if contract_json else _contract_from_json(extract_contract(tex_text=tex_text, tex_path=tex_path))
     generated = generate_uppaal_model(
@@ -77,6 +80,7 @@ def generate_uppaal_from_contract(
         debug_counters=debug_counters,
         include_negative_scenarios=include_negative_scenarios,
         mode=mode,
+        layout=layout,
     )
     semantic = validate_generated_model(
         generated.model_xml,
@@ -88,6 +92,78 @@ def generate_uppaal_from_contract(
     data["semantic_validation"] = semantic.to_dict()
     data["alpha_validation"] = alpha_check_no_continuous_guards(generated.model_xml).to_dict()
     return data
+
+
+def validate_layout(model_xml: str | None = None, contract_json: dict | None = None) -> dict:
+    if model_xml is None:
+        contract = _contract_from_json(contract_json)
+        model_xml = generate_uppaal_model(contract, include_observers=True).model_xml
+    return validate_generated_layout(model_xml).to_dict()
+
+
+def generate_diagram(
+    *,
+    model_xml: str | None = None,
+    contract_json: dict | None = None,
+    tex_text: str | None = None,
+    tex_path: str | None = None,
+    profile: dict | None = None,
+    layout: str | None = None,
+) -> dict:
+    if model_xml is None:
+        generated = generate_uppaal_from_contract(
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            profile=profile,
+            layout=layout,
+        )
+        model_xml = generated["model_xml"]
+        contract_json = generated["contract"]
+    maps = generate_layout_maps(contract_json, model_xml=model_xml, layout=layout)
+    diagrams = generate_diagram_artifacts(model_xml)
+    return {
+        "layout_validation": validate_generated_layout(model_xml).to_dict(),
+        **maps,
+        **diagrams,
+    }
+
+
+def export_diagram(
+    *,
+    output_dir: str,
+    model_xml: str | None = None,
+    contract_json: dict | None = None,
+    tex_text: str | None = None,
+    tex_path: str | None = None,
+    profile: dict | None = None,
+    layout: str | None = None,
+) -> dict:
+    output = Path(output_dir)
+    output.mkdir(parents=True, exist_ok=True)
+    data = generate_diagram(
+        model_xml=model_xml,
+        contract_json=contract_json,
+        tex_text=tex_text,
+        tex_path=tex_path,
+        profile=profile,
+        layout=layout,
+    )
+    files: list[str] = []
+    for name in ("model_map.md", "template_map.md", "channels_map.md", "model.dot", "model.svg"):
+        path = output / name
+        path.write_text(data[name], encoding="utf-8")
+        files.append(str(path))
+    (output / "layout_validation.json").write_text(
+        json.dumps(data["layout_validation"], ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    files.append(str(output / "layout_validation.json"))
+    return {
+        "output_dir": str(output),
+        "files": files,
+        "layout_validation": data["layout_validation"],
+    }
 
 
 def generate_property_pack(

@@ -42,9 +42,16 @@ def main() -> None:
     phy_generate.add_argument("--tex")
     phy_generate.add_argument("--output-dir")
     phy_generate.add_argument("--mode")
+    phy_generate.add_argument("--layout", choices=["compact", "readable"], default="readable")
     phy_generate.add_argument("--no-observers", action="store_true")
     phy_generate.add_argument("--no-debug-counters", action="store_true")
     phy_generate.add_argument("--include-negative-scenarios", action="store_true")
+
+    phy_export_diagram = subparsers.add_parser("phy-export-diagram", help="Export PHY Graphviz DOT/SVG and readable maps.")
+    phy_export_diagram.add_argument("--model")
+    phy_export_diagram.add_argument("--tex")
+    phy_export_diagram.add_argument("--output-dir")
+    phy_export_diagram.add_argument("--layout", choices=["compact", "readable"], default="readable")
 
     phy_property_pack = subparsers.add_parser("phy-property-pack", help="Generate PHY property pack with JSON metadata.")
     phy_property_pack.add_argument("--tex")
@@ -142,6 +149,7 @@ def main() -> None:
             debug_counters=not args.no_debug_counters,
             include_negative_scenarios=args.include_negative_scenarios,
             mode=args.mode,
+            layout=args.layout,
         )
         if args.output_dir:
             output = Path(args.output_dir)
@@ -152,14 +160,44 @@ def main() -> None:
             )
             (output / "model.xml").write_text(generated["model_xml"], encoding="utf-8")
             (output / "queries.q").write_text(generated["queries"], encoding="utf-8")
+            (output / "model_map.md").write_text(generated["model_map"], encoding="utf-8")
+            (output / "template_map.md").write_text(generated["template_map"], encoding="utf-8")
+            (output / "channels_map.md").write_text(generated["channels_map"], encoding="utf-8")
+            (output / "layout_validation.json").write_text(
+                json.dumps(generated["layout_validation"], ensure_ascii=False, indent=2),
+                encoding="utf-8",
+            )
             generated = {
                 "output_dir": str(output),
                 "generation_mode": generated["generation_mode"],
+                "layout": generated["layout"],
                 "include_negative_scenarios": generated["include_negative_scenarios"],
                 "semantic_validation": generated["semantic_validation"],
                 "alpha_validation": generated["alpha_validation"],
+                "layout_validation": generated["layout_validation"],
             }
         print_json(generated)
+    elif args.command == "phy-export-diagram":
+        model_xml = None
+        if args.model:
+            model_xml = Path(args.model).read_text(encoding="utf-8")
+        if args.output_dir:
+            print_json(
+                phy_tools.export_diagram(
+                    output_dir=args.output_dir,
+                    model_xml=model_xml,
+                    tex_path=args.tex,
+                    layout=args.layout,
+                )
+            )
+        else:
+            print_json(
+                phy_tools.generate_diagram(
+                    model_xml=model_xml,
+                    tex_path=args.tex,
+                    layout=args.layout,
+                )
+            )
     elif args.command == "phy-property-pack":
         if args.output_dir:
             print_json(
