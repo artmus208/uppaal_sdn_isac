@@ -4,6 +4,7 @@ from typing import Any
 
 from .config import UppaalConfig
 from .examples import get_builtin_example, list_builtin_examples
+from .mac import tools as mac_tools
 from .phy import tools as phy_tools
 from .verifyta import VerifytaRunner
 
@@ -418,6 +419,308 @@ def build_mcp() -> Any:
     def phy_validate_benchmarks(profile: dict | None = None) -> dict:
         """Generate and statically validate all PHY benchmark scenarios."""
         return phy_tools.phy_validate_benchmarks(profile=profile)
+
+    @mcp.tool()
+    def mac_extract_contract(
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+    ) -> dict:
+        """Extract the MAC contract IR from the article LaTeX source."""
+        return mac_tools.extract_contract(tex_text=tex_text, tex_path=tex_path)
+
+    @mcp.tool()
+    def mac_validate_contract(contract_json: dict | None = None) -> dict:
+        """Validate the MAC contract IR against article invariants."""
+        return mac_tools.validate_contract(contract_json)
+
+    @mcp.tool()
+    def mac_generate_uppaal_model(
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        profile: dict | None = None,
+        include_observers: bool = True,
+        debug_counters: bool = True,
+        include_negative_scenarios: bool = False,
+        mode: str | None = None,
+        layout: str = "readable",
+    ) -> dict:
+        """Generate a closed UPPAAL A_SYS_MAC model from the MAC contract."""
+        return mac_tools.generate_uppaal_from_contract(
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            profile=profile,
+            include_observers=include_observers,
+            debug_counters=debug_counters,
+            include_negative_scenarios=include_negative_scenarios,
+            mode=mode,
+            layout=layout,
+        )
+
+    @mcp.tool()
+    def mac_validate_layout(
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+    ) -> dict:
+        """Validate that generated MAC model coordinates are readable in UPPAAL GUI."""
+        return mac_tools.validate_layout(model_xml=model_xml, contract_json=contract_json)
+
+    @mcp.tool()
+    def mac_export_diagram(
+        output_dir: str,
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        profile: dict | None = None,
+        layout: str = "readable",
+    ) -> dict:
+        """Write MAC Graphviz DOT/SVG and readable model maps."""
+        return mac_tools.export_diagram(
+            output_dir=output_dir,
+            model_xml=model_xml,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            profile=profile,
+            layout=layout,
+        )
+
+    @mcp.tool()
+    def mac_generate_property_pack(
+        contract_json: dict | None = None,
+        model_xml: str | None = None,
+        profile: dict | None = None,
+        include_observers: bool = True,
+        debug_counters: bool = True,
+        include_negative: bool = False,
+    ) -> dict:
+        """Generate the MAC-specific query pack from the contract IR."""
+        return mac_tools.generate_property_pack(
+            contract_json=contract_json,
+            model_xml=model_xml,
+            profile=profile,
+            include_observers=include_observers,
+            debug_counters=debug_counters,
+            include_negative=include_negative,
+        )
+
+    @mcp.tool()
+    def mac_export_property_pack(
+        output_dir: str,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        profile: dict | None = None,
+        include_observers: bool = True,
+        debug_counters: bool = True,
+        include_negative: bool = False,
+    ) -> dict:
+        """Write MAC queries.q plus JSON metadata/provenance files."""
+        return mac_tools.export_property_pack(
+            output_dir=output_dir,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            profile=profile,
+            include_observers=include_observers,
+            debug_counters=debug_counters,
+            include_negative=include_negative,
+        )
+
+    @mcp.tool()
+    def mac_generate_report(
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        queries: str | None = None,
+        result_json: dict | None = None,
+        trace_text: str | None = None,
+        profile: dict | None = None,
+    ) -> dict:
+        """Generate MAC Markdown reports and traceability artifacts in-memory."""
+        return mac_tools.generate_report(
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            queries=queries,
+            result_json=result_json,
+            trace_text=trace_text,
+            profile=profile,
+        )
+
+    @mcp.tool()
+    def mac_export_report(
+        output_dir: str,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        queries: str | None = None,
+        result_json: dict | None = None,
+        trace_text: str | None = None,
+        profile: dict | None = None,
+    ) -> dict:
+        """Write MAC reports plus contract/model/query artifacts to a directory."""
+        return mac_tools.export_report(
+            output_dir=output_dir,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            queries=queries,
+            result_json=result_json,
+            trace_text=trace_text,
+            profile=profile,
+        )
+
+    @mcp.tool()
+    def mac_export_run_artifacts(
+        output_root: str,
+        contract_json: dict | None = None,
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        model_xml: str | None = None,
+        queries: str | None = None,
+        result_json: dict | None = None,
+        trace_text: str | None = None,
+        profile: dict | None = None,
+        verifyta_version: str | None = None,
+        verifyta_command: list[str] | None = None,
+        options: list[str] | None = None,
+        force: bool = False,
+    ) -> dict:
+        """Write a MAC run artifact layout with metadata and cache key."""
+        return mac_tools.export_run_artifacts(
+            output_root=output_root,
+            contract_json=contract_json,
+            tex_text=tex_text,
+            tex_path=tex_path,
+            model_xml=model_xml,
+            queries=queries,
+            result_json=result_json,
+            trace_text=trace_text,
+            profile=profile,
+            verifyta_version=verifyta_version,
+            verifyta_command=verifyta_command,
+            options=options,
+            force=force,
+        )
+
+    @mcp.tool()
+    def mac_verify_contract(
+        tex_text: str | None = None,
+        tex_path: str | None = None,
+        contract_json: dict | None = None,
+        profile: dict | None = None,
+        mode: str | None = None,
+        include_observers: bool = True,
+        timeout_sec: float | None = None,
+        artifact_root: str | None = None,
+        force: bool = False,
+    ) -> dict:
+        """Generate and verify the closed MAC A_SYS_MAC model with verifyta."""
+        return mac_tools.verify_contract(
+            tex_text=tex_text,
+            tex_path=tex_path,
+            contract_json=contract_json,
+            profile=profile,
+            mode=mode,
+            include_observers=include_observers,
+            timeout_sec=timeout_sec,
+            artifact_root=artifact_root,
+            force=force,
+        )
+
+    @mcp.tool()
+    def mac_verify_property_pack(
+        model_xml: str | None = None,
+        model_path: str | None = None,
+        queries: str | None = None,
+        query_path: str | None = None,
+        explain: bool = True,
+        timeout_sec: float | None = None,
+        static_only: bool = False,
+    ) -> dict:
+        """Verify a MAC property pack against a model, optionally returning MAC explanation."""
+        return mac_tools.verify_property_pack(
+            model_xml=model_xml,
+            model_path=model_path,
+            queries=queries,
+            query_path=query_path,
+            explain=explain,
+            timeout_sec=timeout_sec,
+            static_only=static_only,
+        )
+
+    @mcp.tool()
+    def mac_check_alpha_profile(profile_json: dict | None = None) -> dict:
+        """Validate an alpha_MAC threshold/profile policy."""
+        return mac_tools.check_alpha_profile(profile_json)
+
+    @mcp.tool()
+    def mac_check_channel_semantics(
+        model_xml: str | None = None,
+        contract_json: dict | None = None,
+    ) -> dict:
+        """Check MAC report broadcast and command handshake channel semantics."""
+        return mac_tools.check_channel_semantics(model_xml=model_xml, contract_json=contract_json)
+
+    @mcp.tool()
+    def mac_explain_counterexample(
+        result_json: dict,
+        trace_text: str | None = None,
+        contract_json: dict | None = None,
+    ) -> dict:
+        """Explain a verifyta violation in MAC scheduling/resource terms."""
+        return mac_tools.explain_counterexample(result_json, trace_text=trace_text, contract_json=contract_json)
+
+    @mcp.tool()
+    def mac_list_scenarios() -> list[dict]:
+        """List built-in MAC verification scenarios."""
+        return mac_tools.mac_list_scenarios()
+
+    @mcp.tool()
+    def mac_get_scenario(name: str, profile: dict | None = None) -> dict:
+        """Generate one compact MAC scenario model."""
+        return mac_tools.mac_get_scenario(name, profile=profile)
+
+    @mcp.tool()
+    def mac_verify_scenario(
+        name: str,
+        profile: dict | None = None,
+        timeout_sec: float | None = None,
+    ) -> dict:
+        """Verify one compact MAC scenario with verifyta."""
+        return mac_tools.mac_verify_scenario(name, profile=profile, timeout_sec=timeout_sec)
+
+    @mcp.tool()
+    def mac_verify_all_scenarios(
+        profile: dict | None = None,
+        timeout_sec: float | None = None,
+    ) -> dict:
+        """Verify all built-in compact MAC scenarios with verifyta."""
+        return mac_tools.mac_verify_all_scenarios(profile=profile, timeout_sec=timeout_sec)
+
+    @mcp.tool()
+    def mac_list_benchmarks() -> list[dict]:
+        """List MAC benchmark and intentionally broken static scenarios."""
+        return mac_tools.mac_list_benchmarks()
+
+    @mcp.tool()
+    def mac_get_benchmark(name: str, profile: dict | None = None) -> dict:
+        """Generate one MAC benchmark scenario model."""
+        return mac_tools.mac_get_benchmark(name, profile=profile)
+
+    @mcp.tool()
+    def mac_validate_benchmarks(profile: dict | None = None) -> dict:
+        """Generate and statically validate all MAC benchmark scenarios."""
+        return mac_tools.mac_validate_benchmarks(profile=profile)
 
     return mcp
 

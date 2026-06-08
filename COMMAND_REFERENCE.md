@@ -838,3 +838,69 @@ result = uppaal_verify(
 )
 phy_explain_counterexample(result_json=result, trace_text=result.stdout)
 ```
+
+### Полный MAC flow из TeX
+
+```bash
+PYTHONPATH=src python3 -m uppaal_mcp.cli mac-extract \
+  --tex MAC_resource_scheduling_formalization.tex
+
+PYTHONPATH=src python3 -m uppaal_mcp.cli mac-generate \
+  --tex MAC_resource_scheduling_formalization.tex \
+  --mode with_observers \
+  --layout readable \
+  --output-dir .uppaal_mcp_workspace/mac_generated
+
+PYTHONPATH=src python3 -m uppaal_mcp.cli mac-property-pack \
+  --tex MAC_resource_scheduling_formalization.tex \
+  --include-negative \
+  --output-dir .uppaal_mcp_workspace/mac_property_pack
+
+PYTHONPATH=src python3 -m uppaal_mcp.cli mac-verify-property-pack \
+  --model .uppaal_mcp_workspace/mac_generated/model.xml \
+  --queries .uppaal_mcp_workspace/mac_generated/queries.q \
+  --static-only
+
+PYTHONPATH=src python3 -m uppaal_mcp.cli mac-report \
+  --tex MAC_resource_scheduling_formalization.tex \
+  --output-dir .uppaal_mcp_workspace/mac_report
+
+PYTHONPATH=src python3 -m uppaal_mcp.cli mac-validate-benchmarks
+```
+
+MAC generation modes:
+
+```text
+minimal                  A_SYS_MAC без observers/debug-counter query
+with_observers           default: A_SYS_MAC + MAC bounded observers
+with_debug_counters      включает policy_totality query
+with_negative_scenarios  помечает модель как negative-suite related
+```
+
+MAC MCP flow:
+
+```text
+contract = mac_extract_contract(tex_path="MAC_resource_scheduling_formalization.tex")
+mac_validate_contract(contract_json=contract)
+generated = mac_generate_uppaal_model(contract_json=contract, mode="with_observers", layout="readable")
+mac_verify_property_pack(model_xml=generated.model_xml, queries=generated.queries, static_only=true)
+mac_validate_benchmarks()
+mac_export_report(output_dir=".uppaal_mcp_workspace/mac_report", contract_json=contract)
+```
+
+MAC benchmark names:
+
+```text
+nominal_mac
+queue_critical
+buffer_overflow
+resource_exhausted
+stale_phy_kpi
+sensing_conflict
+phy_ack_timeout
+broken_report_channel_declared_as_chan
+broken_continuous_guard
+broken_missing_a_env_mac
+broken_silent_accept
+broken_missing_ack_timeout
+```

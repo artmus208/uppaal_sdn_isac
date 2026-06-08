@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .config import UppaalConfig
 from .examples import get_builtin_example, list_builtin_examples
+from .mac import tools as mac_tools
 from .phy import tools as phy_tools
 from .verifyta import VerifytaRunner
 
@@ -106,6 +107,78 @@ def main() -> None:
     phy_benchmark.add_argument("--output-dir")
 
     subparsers.add_parser("phy-validate-benchmarks", help="Statically validate all PHY benchmark scenarios.")
+
+    mac_extract = subparsers.add_parser("mac-extract", help="Extract MAC contract IR from the article.")
+    mac_extract.add_argument("--tex")
+
+    mac_generate = subparsers.add_parser("mac-generate", help="Generate MAC UPPAAL model and queries.")
+    mac_generate.add_argument("--tex")
+    mac_generate.add_argument("--output-dir")
+    mac_generate.add_argument("--mode")
+    mac_generate.add_argument("--layout", choices=["compact", "readable"], default="readable")
+    mac_generate.add_argument("--no-observers", action="store_true")
+    mac_generate.add_argument("--no-debug-counters", action="store_true")
+    mac_generate.add_argument("--include-negative-scenarios", action="store_true")
+
+    mac_export_diagram = subparsers.add_parser("mac-export-diagram", help="Export MAC Graphviz DOT/SVG and readable maps.")
+    mac_export_diagram.add_argument("--model")
+    mac_export_diagram.add_argument("--tex")
+    mac_export_diagram.add_argument("--output-dir")
+    mac_export_diagram.add_argument("--layout", choices=["compact", "readable"], default="readable")
+
+    mac_property_pack = subparsers.add_parser("mac-property-pack", help="Generate MAC property pack with JSON metadata.")
+    mac_property_pack.add_argument("--tex")
+    mac_property_pack.add_argument("--output-dir")
+    mac_property_pack.add_argument("--no-observers", action="store_true")
+    mac_property_pack.add_argument("--no-debug-counters", action="store_true")
+    mac_property_pack.add_argument("--include-negative", action="store_true")
+
+    mac_report = subparsers.add_parser("mac-report", help="Generate MAC Markdown reports.")
+    mac_report.add_argument("--tex")
+    mac_report.add_argument("--output-dir")
+    mac_report.add_argument("--result-json")
+    mac_report.add_argument("--trace-text")
+
+    mac_run_artifacts = subparsers.add_parser("mac-run-artifacts", help="Export MAC run artifacts with metadata/cache key.")
+    mac_run_artifacts.add_argument("--tex")
+    mac_run_artifacts.add_argument("--output-root", required=True)
+    mac_run_artifacts.add_argument("--result-json")
+    mac_run_artifacts.add_argument("--trace-text")
+    mac_run_artifacts.add_argument("--verifyta-version")
+    mac_run_artifacts.add_argument("--force", action="store_true")
+
+    mac_verify = subparsers.add_parser("mac-verify", help="Generate and verify the MAC model.")
+    mac_verify.add_argument("--tex")
+    mac_verify.add_argument("--mode")
+    mac_verify.add_argument("--timeout-sec", type=float)
+
+    mac_verify_property_pack = subparsers.add_parser("mac-verify-property-pack", help="Verify a MAC property pack against a model.")
+    mac_verify_property_pack.add_argument("--model", required=True)
+    mac_verify_property_pack.add_argument("--queries", required=True)
+    mac_verify_property_pack.add_argument("--timeout-sec", type=float)
+    mac_verify_property_pack.add_argument("--no-explain", action="store_true")
+    mac_verify_property_pack.add_argument("--static-only", action="store_true")
+
+    subparsers.add_parser("mac-list-scenarios", help="List built-in MAC scenarios.")
+
+    mac_scenario = subparsers.add_parser("mac-scenario", help="Generate one MAC scenario.")
+    mac_scenario.add_argument("name")
+    mac_scenario.add_argument("--output-dir")
+
+    mac_verify_scenario = subparsers.add_parser("mac-verify-scenario", help="Verify one MAC scenario.")
+    mac_verify_scenario.add_argument("name")
+    mac_verify_scenario.add_argument("--timeout-sec", type=float)
+
+    mac_verify_all_scenarios = subparsers.add_parser("mac-verify-all-scenarios", help="Verify all built-in MAC scenarios.")
+    mac_verify_all_scenarios.add_argument("--timeout-sec", type=float)
+
+    subparsers.add_parser("mac-list-benchmarks", help="List MAC benchmark scenarios.")
+
+    mac_benchmark = subparsers.add_parser("mac-benchmark", help="Generate one MAC benchmark scenario.")
+    mac_benchmark.add_argument("name")
+    mac_benchmark.add_argument("--output-dir")
+
+    subparsers.add_parser("mac-validate-benchmarks", help="Statically validate all MAC benchmark scenarios.")
 
     args = parser.parse_args()
     config = UppaalConfig.from_env(
@@ -295,6 +368,126 @@ def main() -> None:
         print_json(benchmark)
     elif args.command == "phy-validate-benchmarks":
         print_json(phy_tools.phy_validate_benchmarks())
+    elif args.command == "mac-extract":
+        print_json(mac_tools.extract_contract(tex_path=args.tex))
+    elif args.command == "mac-generate":
+        generated = mac_tools.generate_uppaal_from_contract(
+            tex_path=args.tex,
+            include_observers=not args.no_observers,
+            debug_counters=not args.no_debug_counters,
+            include_negative_scenarios=args.include_negative_scenarios,
+            mode=args.mode,
+            layout=args.layout,
+        )
+        if args.output_dir:
+            output = Path(args.output_dir)
+            output.mkdir(parents=True, exist_ok=True)
+            (output / "contract.json").write_text(json.dumps(generated["contract"], ensure_ascii=False, indent=2), encoding="utf-8")
+            (output / "model.xml").write_text(generated["model_xml"], encoding="utf-8")
+            (output / "queries.q").write_text(generated["queries"], encoding="utf-8")
+            (output / "model_map.md").write_text(generated["model_map"], encoding="utf-8")
+            (output / "template_map.md").write_text(generated["template_map"], encoding="utf-8")
+            (output / "channels_map.md").write_text(generated["channels_map"], encoding="utf-8")
+            (output / "policy_map.md").write_text(generated["policy_map"], encoding="utf-8")
+            (output / "layout_validation.json").write_text(json.dumps(generated["layout_validation"], ensure_ascii=False, indent=2), encoding="utf-8")
+            generated = {
+                "output_dir": str(output),
+                "generation_mode": generated["generation_mode"],
+                "layout": generated["layout"],
+                "include_negative_scenarios": generated["include_negative_scenarios"],
+                "semantic_validation": generated["semantic_validation"],
+                "alpha_validation": generated["alpha_validation"],
+                "layout_validation": generated["layout_validation"],
+            }
+        print_json(generated)
+    elif args.command == "mac-export-diagram":
+        model_xml = Path(args.model).read_text(encoding="utf-8") if args.model else None
+        if args.output_dir:
+            print_json(mac_tools.export_diagram(output_dir=args.output_dir, model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+        else:
+            print_json(mac_tools.generate_diagram(model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+    elif args.command == "mac-property-pack":
+        if args.output_dir:
+            print_json(
+                mac_tools.export_property_pack(
+                    output_dir=args.output_dir,
+                    tex_path=args.tex,
+                    include_observers=not args.no_observers,
+                    debug_counters=not args.no_debug_counters,
+                    include_negative=args.include_negative,
+                )
+            )
+        else:
+            print_json(
+                mac_tools.generate_property_pack(
+                    contract_json=mac_tools.extract_contract(tex_path=args.tex),
+                    include_observers=not args.no_observers,
+                    debug_counters=not args.no_debug_counters,
+                    include_negative=args.include_negative,
+                )
+            )
+    elif args.command == "mac-report":
+        result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
+        trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
+        if args.output_dir:
+            print_json(mac_tools.export_report(output_dir=args.output_dir, tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+        else:
+            print_json(mac_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+    elif args.command == "mac-run-artifacts":
+        result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
+        trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
+        print_json(
+            mac_tools.export_run_artifacts(
+                output_root=args.output_root,
+                tex_path=args.tex,
+                result_json=result_json,
+                trace_text=trace_text,
+                verifyta_version=args.verifyta_version,
+                force=args.force,
+            )
+        )
+    elif args.command == "mac-verify":
+        print_json(mac_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
+    elif args.command == "mac-verify-property-pack":
+        print_json(
+            mac_tools.verify_property_pack(
+                model_path=args.model,
+                query_path=args.queries,
+                explain=not args.no_explain,
+                timeout_sec=args.timeout_sec,
+                static_only=args.static_only,
+            )
+        )
+    elif args.command == "mac-list-scenarios":
+        print_json(mac_tools.mac_list_scenarios())
+    elif args.command == "mac-scenario":
+        scenario = mac_tools.mac_get_scenario(args.name)
+        if args.output_dir:
+            output = Path(args.output_dir)
+            output.mkdir(parents=True, exist_ok=True)
+            (output / "model.xml").write_text(scenario["model_xml"], encoding="utf-8")
+            (output / "queries.q").write_text(scenario["queries"], encoding="utf-8")
+            scenario = {key: value for key, value in scenario.items() if key not in {"model_xml", "queries"}}
+            scenario["output_dir"] = str(output)
+        print_json(scenario)
+    elif args.command == "mac-verify-scenario":
+        print_json(mac_tools.mac_verify_scenario(args.name, timeout_sec=args.timeout_sec))
+    elif args.command == "mac-verify-all-scenarios":
+        print_json(mac_tools.mac_verify_all_scenarios(timeout_sec=args.timeout_sec))
+    elif args.command == "mac-list-benchmarks":
+        print_json(mac_tools.mac_list_benchmarks())
+    elif args.command == "mac-benchmark":
+        benchmark = mac_tools.mac_get_benchmark(args.name)
+        if args.output_dir:
+            output = Path(args.output_dir)
+            output.mkdir(parents=True, exist_ok=True)
+            (output / "model.xml").write_text(benchmark["model_xml"], encoding="utf-8")
+            (output / "queries.q").write_text(benchmark["queries"], encoding="utf-8")
+            benchmark = {key: value for key, value in benchmark.items() if key not in {"model_xml", "queries"}}
+            benchmark["output_dir"] = str(output)
+        print_json(benchmark)
+    elif args.command == "mac-validate-benchmarks":
+        print_json(mac_tools.mac_validate_benchmarks())
 
 
 def print_json(data: object) -> None:
