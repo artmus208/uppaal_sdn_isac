@@ -1,0 +1,13 @@
+name,category,query,interpretation
+deadlock_free,safety,A[] not deadlock,closed SDN/RIC model has no deadlocks
+rule_invariant,timing,A[] (A_RULE.RuleInstallPending imply c_rule <= D_rule_install),rule install pending respects deadline invariant
+stale_no_optimistic,safety,A[] (telemetryClass == TEL_STALE imply !optimistic_reconfig),stale telemetry blocks optimistic reconfiguration
+missing_no_optimistic,safety,A[] (telemetryClass == TEL_MISSING imply !optimistic_reconfig),missing telemetry blocks optimistic reconfiguration
+recovery_failure_report,safety,A[] (recoveryClass == REC_FAILED imply failure_report_sent),recovery failure is explicit
+ObsRuleMiss,observer,A[] not ObsRuleMiss.Violation,rule miss has bounded explicit outcome
+ObsRecovery,observer,A[] not ObsRecovery.Violation,recovery has bounded explicit outcome
+ObsAdmission,observer,A[] not ObsAdmission.Violation,admission has bounded service outcome
+ObsStaleTelemetry,observer,A[] not ObsStaleTelemetry.Violation,stale/missing telemetry never enables optimistic reconfiguration
+reach_policy_evaluate,reachability,E<> A_POLICY.Evaluate,policy evaluation is reachable
+reach_rule_timeout,reachability,E<> A_RULE.RuleTimeout,rule timeout path is reachable
+reach_recovery_failed,reachability,E<> A_REC.RecoveryFailed,recovery failure path is reachable

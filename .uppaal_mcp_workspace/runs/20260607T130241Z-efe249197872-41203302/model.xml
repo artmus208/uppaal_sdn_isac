@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>const int D_report = 5;
+clock c_obs, c_driver;
+broadcast chan phy_kpi_report, sensing_degraded;
+</declaration>
+  <template>
+    <name>Template_Driver</name>
+    <location id="Template_Driver_0" x="0" y="0">
+      <name x="-20" y="-30">Start</name>
+    </location>
+    <location id="Template_Driver_1" x="180" y="0">
+      <name x="160" y="-30">WaitResponse</name>
+    </location>
+    <location id="Template_Driver_2" x="360" y="0">
+      <name x="340" y="-30">Done</name>
+    </location>
+    <init ref="Template_Driver_0" />
+    <transition>
+      <source ref="Template_Driver_0" />
+      <target ref="Template_Driver_1" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded!</label>
+      <label kind="assignment" x="0" y="-40">c_driver = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_Driver_2" />
+      <target ref="Template_Driver_2" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsSenseReport</name>
+    <location id="Template_ObsSenseReport_0" x="0" y="0">
+      <name x="-20" y="-30">Idle</name>
+    </location>
+    <location id="Template_ObsSenseReport_1" x="180" y="0">
+      <name x="160" y="-30">Wait</name>
+    </location>
+    <location id="Template_ObsSenseReport_2" x="360" y="0">
+      <name x="340" y="-30">Violation</name>
+    </location>
+    <init ref="Template_ObsSenseReport_0" />
+    <transition>
+      <source ref="Template_ObsSenseReport_0" />
+      <target ref="Template_ObsSenseReport_1" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded?</label>
+      <label kind="assignment" x="0" y="-40">c_obs = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsSenseReport_1" />
+      <target ref="Template_ObsSenseReport_0" />
+      <label kind="guard" x="0" y="-60">c_obs &lt;= D_report</label>
+      <label kind="synchronisation" x="0" y="-40">phy_kpi_report?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsSenseReport_1" />
+      <target ref="Template_ObsSenseReport_2" />
+      <label kind="guard" x="0" y="-60">c_obs &gt; D_report</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsSenseReport_0" />
+      <target ref="Template_ObsSenseReport_0" />
+    </transition>
+    <transition>
+      <source ref="Template_ObsSenseReport_2" />
+      <target ref="Template_ObsSenseReport_2" />
+    </transition>
+  </template>
+  <system>Driver = Template_Driver();
+ObsSenseReport = Template_ObsSenseReport();
+system Driver, ObsSenseReport;</system>
+</nta>

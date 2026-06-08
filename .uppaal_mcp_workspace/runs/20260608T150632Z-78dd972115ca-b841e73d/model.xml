@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>// Generated from MAC contract IR. Raw queue/delay/loss/utilization samples stay outside timed automata.
+// Generation mode: with_observers.
+// Layout mode: readable.
+// Negative scenarios disabled for this generated model.
+const int D_collect = 2;
+const int D_sched = 5;
+const int D_phy_ack = 3;
+const int D_queue_crit = 10;
+const int D_buf_report = 4;
+const int D_mac_report = 5;
+const int D_phy_report = 10;
+
+clock c_sched, c_phy_ack, c_queue, c_buf, c_report;
+clock c_obs_ack, c_obs_queue, c_obs_sensing, c_obs_buf, c_obs_report;
+
+broadcast chan phy_kpi_report, mac_report;
+chan mac_tick, sdn_policy_cmd, service_priority, phy_ack;
+chan mac_schedule_cmd, beam_update_cmd, sensing_boost_cmd, constrained_mode_cmd, resource_reject;
+
+typedef int[0,4] QueueClass_t;
+const QueueClass_t Q_EMPTY=0, Q_LOW=1, Q_MED=2, Q_HIGH=3, Q_CRIT=4;
+typedef int[0,2] BufferClass_t;
+const BufferClass_t B_SAFE=0, B_WARN=1, B_OVERFLOW=2;
+typedef int[0,3] DelayClass_t;
+const DelayClass_t D_OK=0, D_WARN=1, D_DEADLINE_RISK=2, D_VIOLATED=3;
+typedef int[0,2] DropClass_t;
+const DropClass_t DROP_NONE=0, DROP_LOW=1, DROP_HIGH=2;
+typedef int[0,3] ResourceClass_t;
+const ResourceClass_t RES_FREE=0, RES_BALANCED=1, RES_TIGHT=2, RES_EXHAUSTED=3;
+typedef int[0,2] SensingDemand_t;
+const SensingDemand_t SENS_NOMINAL=0, SENS_BOOST_REQ=1, SENS_CRITICAL=2;
+typedef int[0,2] CommDemand_t;
+const CommDemand_t COMM_NOMINAL=0, COMM_HIGH=1, COMM_CRITICAL=2;
+typedef int[0,2] KPIFreshnessClass_t;
+const KPIFreshnessClass_t KPI_FRESH=0, KPI_STALE=1, KPI_MISSING=2;
+typedef int[0,4] ScheduleMode_t;
+const ScheduleMode_t SCH_IDLE=0, SCH_COMM=1, SCH_SENS=2, SCH_JOINT=3, SCH_CONSTRAINED=4;
+typedef int[0,6] MacReason_t;
+const MacReason_t REASON_NONE=0, REASON_RESOURCE_EXHAUSTED=1, REASON_PHY_ACK_TIMEOUT=2, REASON_QUEUE_CRITICAL=3, REASON_SENS_COMM_CONFLICT=4, REASON_STALE_PHY_KPI=5, REASON_BUFFER_OVERFLOW=6;
+
+QueueClass_t queueClass = Q_EMPTY;
+BufferClass_t bufferClass = B_SAFE;
+DelayClass_t delayClass = D_OK;
+DropClass_t dropClass = DROP_NONE;
+ResourceClass_t resourceClass = RES_FREE;
+ResourceClass_t mappedResourceClass = RES_FREE;
+SensingDemand_t sensingDemand = SENS_NOMINAL;
+CommDemand_t commDemand = COMM_NOMINAL;
+KPIFreshnessClass_t kpiFreshnessClass = KPI_FRESH;
+ScheduleMode_t scheduleMode = SCH_IDLE;
+MacReason_t macReason = REASON_NONE;
+bool mac_report_pending = false;
+bool mac_report_sent = false;
+bool silent_accept = false;
+bool phy_ack_timeout = false;
+bool phy_command_pending = false;
+bool sdn_sensing_priority_allowed = false;
+bool sdn_comm_priority_allowed = false;
+int[0,8] policy_enabled_count = 1;
+
+bool gP0() { return resourceClass == RES_EXHAUSTED || mappedResourceClass == RES_EXHAUSTED; }
+bool gP1() { return bufferClass == B_OVERFLOW || delayClass == D_VIOLATED; }
+bool gP2() { return queueClass == Q_CRIT &amp;&amp; commDemand == COMM_CRITICAL; }
+bool gP3() { return sensingDemand == SENS_CRITICAL &amp;&amp; sdn_sensing_priority_allowed; }
+bool gP4() { return resourceClass == RES_TIGHT &amp;&amp; sensingDemand != SENS_NOMINAL &amp;&amp; commDemand != COMM_NOMINAL; }
+bool gP5() { return kpiFreshnessClass == KPI_STALE || kpiFreshnessClass == KPI_MISSING; }
+bool gP6() { return resourceClass == RES_FREE || resourceClass == RES_BALANCED; }
+bool gP7() { return true; }
+void update_policy_counter() { policy_enabled_count = 0; if (gP0()) policy_enabled_count++; if (gP1()) policy_enabled_count++; if (gP2()) policy_enabled_count++; if (gP3()) policy_enabled_count++; if (gP4()) policy_enabled_count++; if (gP5()) policy_enabled_count++; if (gP6()) policy_enabled_count++; if (gP7()) policy_enabled_count++; }
+void select_mac_policy() { update_policy_counter(); silent_accept = false; if (gP0()) { scheduleMode = SCH_CONSTRAINED; macReason = REASON_RESOURCE_EXHAUSTED; mac_report_pending = true; } else if (gP1()) { scheduleMode = SCH_COMM; } else if (gP2()) { scheduleMode = SCH_COMM; } else if (gP3()) { scheduleMode = SCH_SENS; } else if (gP4()) { scheduleMode = SCH_JOINT; macReason = REASON_SENS_COMM_CONFLICT; } else if (gP5()) { scheduleMode = SCH_CONSTRAINED; macReason = REASON_STALE_PHY_KPI; } else if (gP6()) { scheduleMode = SCH_JOINT; } else { scheduleMode = SCH_CONSTRAINED; } }</declaration>
+  <template>
+    <name>Template_A_SCH</name>
+    <location id="Template_A_SCH_0" x="0" y="0">
+      <name x="-55" y="-35">Idle</name>
+    </location>
+    <location id="Template_A_SCH_1" x="280" y="0">
+      <name x="225" y="-35">CollectKPI</name>
+      <label kind="invariant" x="210" y="35">c_sched &lt;= D_collect</label>
+    </location>
+    <location id="Template_A_SCH_2" x="560" y="0">
+      <name x="505" y="-35">SelectMode</name>
+      <label kind="invariant" x="490" y="35">c_sched &lt;= D_sched</label>
+    </location>
+    <location id="Template_A_SCH_3" x="840" y="0">
+      <name x="785" y="-35">ApplySchedule</name>
+    </location>
+    <location id="Template_A_SCH_4" x="1120" y="0">
+      <name x="1065" y="-35">WaitPHYAck</name>
+      <label kind="invariant" x="1050" y="35">c_phy_ack &lt;= D_phy_ack</label>
+    </location>
+    <location id="Template_A_SCH_5" x="1120" y="-240">
+      <name x="1065" y="-275">ScheduleFailure</name>
+    </location>
+    <init ref="Template_A_SCH_0" />
+    <transition>
+      <source ref="Template_A_SCH_0" />
+      <target ref="Template_A_SCH_1" />
+      <label kind="synchronisation" x="70" y="-20">mac_tick?</label>
+      <label kind="assignment" x="70" y="26">c_sched = 0, mac_report_sent = false</label>
+      <label kind="comments" x="70" y="68">start scheduling window</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_1" />
+      <target ref="Template_A_SCH_2" />
+      <label kind="guard" x="350" y="-64">c_sched &lt;= D_collect</label>
+      <label kind="synchronisation" x="350" y="-20">phy_kpi_report?</label>
+      <label kind="assignment" x="350" y="26">c_sched = 0</label>
+      <label kind="comments" x="350" y="68">fresh KPI collected</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_1" />
+      <target ref="Template_A_SCH_3" />
+      <label kind="guard" x="490" y="-64">kpiFreshnessClass != KPI_FRESH || c_sched == D_collect</label>
+      <label kind="assignment" x="490" y="26">scheduleMode = SCH_CONSTRAINED, macReason = REASON_STALE_PHY_KPI, c_phy_ack = 0</label>
+      <label kind="comments" x="490" y="68">stale KPI fallback</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_2" />
+      <target ref="Template_A_SCH_5" />
+      <label kind="guard" x="770" y="-184">gP0()</label>
+      <label kind="assignment" x="770" y="-94">scheduleMode = SCH_CONSTRAINED,
+macReason = REASON_RESOURCE_EXHAUSTED,
+mac_report_pending = true,
+silent_accept = false</label>
+      <label kind="comments" x="770" y="-52">explicit exhausted-resource path</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_2" />
+      <target ref="Template_A_SCH_3" />
+      <label kind="guard" x="630" y="-64">!gP0()</label>
+      <label kind="assignment" x="630" y="26">select_mac_policy(), c_phy_ack = 0, phy_command_pending = true</label>
+      <label kind="comments" x="630" y="68">apply selected finite policy</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_3" />
+      <target ref="Template_A_SCH_4" />
+      <label kind="synchronisation" x="910" y="-20">mac_schedule_cmd!</label>
+      <label kind="assignment" x="910" y="26">phy_command_pending = true</label>
+      <label kind="comments" x="910" y="68">send PHY command</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_4" />
+      <target ref="Template_A_SCH_0" />
+      <label kind="guard" x="490" y="-64">c_phy_ack &lt;= D_phy_ack</label>
+      <label kind="synchronisation" x="490" y="-20">phy_ack?</label>
+      <label kind="assignment" x="490" y="26">phy_command_pending = false, phy_ack_timeout = false</label>
+      <label kind="comments" x="490" y="68">PHY acknowledged</label>
+      <nail x="1120" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_4" />
+      <target ref="Template_A_SCH_5" />
+      <label kind="guard" x="1050" y="-184">c_phy_ack == D_phy_ack</label>
+      <label kind="assignment" x="1050" y="-94">phy_ack_timeout = true,
+macReason = REASON_PHY_ACK_TIMEOUT,
+mac_report_pending = true,
+phy_command_pending = false</label>
+      <label kind="comments" x="1050" y="-52">ack timeout</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SCH_5" />
+      <target ref="Template_A_SCH_0" />
+      <label kind="synchronisation" x="490" y="-140">mac_report!</label>
+      <label kind="assignment" x="490" y="-94">mac_report_sent = true, mac_report_pending = false, silent_accept = false</label>
+      <label kind="comments" x="490" y="-52">report local failure</label>
+      <nail x="1120" y="-80" />
+      <nail x="0" y="160" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_Q</name>
+    <location id="Template_A_Q_0" x="0" y="0">
+      <name x="-55" y="-35">QueueNormal</name>
+    </location>
+    <location id="Template_A_Q_1" x="280" y="-120">
+      <name x="225" y="-155">QueueWarning</name>
+    </location>
+    <location id="Template_A_Q_2" x="560" y="-240">
+      <name x="505" y="-275">QueueCritical</name>
+      <label kind="invariant" x="490" y="-205">c_queue &lt;= D_queue_crit</label>
+    </location>
+    <location id="Template_A_Q_3" x="840" y="0">
+      <name x="785" y="-35">QueueDraining</name>
+    </location>
+    <init ref="Template_A_Q_0" />
+    <transition>
+      <source ref="Template_A_Q_0" />
+      <target ref="Template_A_Q_1" />
+      <label kind="guard" x="70" y="-124">queueClass == Q_HIGH</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_Q_0" />
+      <target ref="Template_A_Q_2" />
+      <label kind="guard" x="210" y="-184">queueClass == Q_CRIT</label>
+      <label kind="assignment" x="210" y="-94">c_queue = 0, mac_report_pending = true, macReason = REASON_QUEUE_CRITICAL</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_Q_1" />
+      <target ref="Template_A_Q_2" />
+      <label kind="guard" x="350" y="-244">queueClass == Q_CRIT</label>
+      <label kind="assignment" x="350" y="-154">c_queue = 0, mac_report_pending = true, macReason = REASON_QUEUE_CRITICAL</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_Q_2" />
+      <target ref="Template_A_Q_3" />
+      <label kind="guard" x="630" y="-184">c_queue &lt;= D_queue_crit &amp;&amp; (scheduleMode == SCH_COMM || scheduleMode == SCH_CONSTRAINED || mac_report_sent)</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_Q_2" />
+      <target ref="Template_A_Q_3" />
+      <label kind="guard" x="648" y="-160">c_queue == D_queue_crit</label>
+      <label kind="synchronisation" x="648" y="-116">resource_reject!</label>
+      <label kind="assignment" x="648" y="-70">mac_report_pending = true, macReason = REASON_QUEUE_CRITICAL</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_Q_3" />
+      <target ref="Template_A_Q_0" />
+      <label kind="guard" x="350" y="-64">queueClass != Q_CRIT</label>
+      <nail x="840" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_A_Q_1" />
+      <target ref="Template_A_Q_0" />
+      <label kind="guard" x="70" y="-124">queueClass &lt; Q_HIGH</label>
+      <nail x="280" y="40" />
+      <nail x="0" y="160" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_BUF</name>
+    <location id="Template_A_BUF_0" x="0" y="0">
+      <name x="-55" y="-35">BufferSafe</name>
+    </location>
+    <location id="Template_A_BUF_1" x="280" y="-120">
+      <name x="225" y="-155">BufferWarning</name>
+    </location>
+    <location id="Template_A_BUF_2" x="560" y="-240">
+      <name x="505" y="-275">BufferOverflow</name>
+      <label kind="invariant" x="490" y="-205">c_buf &lt;= D_buf_report</label>
+    </location>
+    <init ref="Template_A_BUF_0" />
+    <transition>
+      <source ref="Template_A_BUF_0" />
+      <target ref="Template_A_BUF_1" />
+      <label kind="guard" x="70" y="-124">bufferClass == B_WARN</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BUF_0" />
+      <target ref="Template_A_BUF_2" />
+      <label kind="guard" x="210" y="-184">bufferClass == B_OVERFLOW</label>
+      <label kind="assignment" x="210" y="-94">c_buf = 0, mac_report_pending = true, macReason = REASON_BUFFER_OVERFLOW</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BUF_1" />
+      <target ref="Template_A_BUF_2" />
+      <label kind="guard" x="350" y="-244">bufferClass == B_OVERFLOW</label>
+      <label kind="assignment" x="350" y="-154">c_buf = 0, mac_report_pending = true, macReason = REASON_BUFFER_OVERFLOW</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BUF_2" />
+      <target ref="Template_A_BUF_0" />
+      <label kind="guard" x="210" y="-184">bufferClass != B_OVERFLOW</label>
+      <nail x="560" y="-80" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_A_BUF_2" />
+      <target ref="Template_A_BUF_0" />
+      <label kind="guard" x="228" y="-160">c_buf == D_buf_report</label>
+      <label kind="synchronisation" x="228" y="-116">mac_report!</label>
+      <label kind="assignment" x="228" y="-70">mac_report_sent = true, mac_report_pending = false</label>
+      <nail x="560" y="-40" />
+      <nail x="0" y="200" />
+    </transition>
+    <transition>
+      <source ref="Template_A_BUF_1" />
+      <target ref="Template_A_BUF_0" />
+      <label kind="guard" x="70" y="-124">bufferClass == B_SAFE</label>
+      <nail x="280" y="40" />
+      <nail x="0" y="160" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_RSRC</name>
+    <location id="Template_A_RSRC_0" x="0" y="0">
+      <name x="-55" y="-35">ResourceAvailable</name>
+    </location>
+    <location id="Template_A_RSRC_1" x="300" y="-120">
+      <name x="245" y="-155">ResourceTight</name>
+    </location>
+    <location id="Template_A_RSRC_2" x="600" y="-240">
+      <name x="545" y="-275">ResourceConflict</name>
+    </location>
+    <location id="Template_A_RSRC_3" x="900" y="-360">
+      <name x="845" y="-395">ResourceExhausted</name>
+    </location>
+    <init ref="Template_A_RSRC_0" />
+    <transition>
+      <source ref="Template_A_RSRC_0" />
+      <target ref="Template_A_RSRC_1" />
+      <label kind="guard" x="80" y="-124">resourceClass == RES_TIGHT</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_RSRC_0" />
+      <target ref="Template_A_RSRC_3" />
+      <label kind="guard" x="380" y="-244">resourceClass == RES_EXHAUSTED || mappedResourceClass == RES_EXHAUSTED</label>
+      <label kind="assignment" x="380" y="-154">silent_accept = false, mac_report_pending = true, macReason = REASON_RESOURCE_EXHAUSTED</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_RSRC_1" />
+      <target ref="Template_A_RSRC_2" />
+      <label kind="guard" x="380" y="-244">sensingDemand != SENS_NOMINAL &amp;&amp; commDemand != COMM_NOMINAL</label>
+      <label kind="assignment" x="380" y="-154">macReason = REASON_SENS_COMM_CONFLICT</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_RSRC_2" />
+      <target ref="Template_A_RSRC_3" />
+      <label kind="guard" x="680" y="-364">resourceClass == RES_EXHAUSTED</label>
+      <label kind="assignment" x="680" y="-274">silent_accept = false, mac_report_pending = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_RSRC_3" />
+      <target ref="Template_A_RSRC_0" />
+      <label kind="synchronisation" x="380" y="-200">resource_reject!</label>
+      <label kind="assignment" x="380" y="-154">silent_accept = false, mac_report_pending = true</label>
+      <nail x="900" y="-200" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_A_RSRC_1" />
+      <target ref="Template_A_RSRC_0" />
+      <label kind="guard" x="80" y="-124">resourceClass == RES_FREE || resourceClass == RES_BALANCED</label>
+      <nail x="300" y="40" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_A_RSRC_2" />
+      <target ref="Template_A_RSRC_0" />
+      <label kind="guard" x="230" y="-184">resourceClass == RES_FREE || resourceClass == RES_BALANCED</label>
+      <nail x="600" y="-80" />
+      <nail x="0" y="160" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_MAC_AGG</name>
+    <location id="Template_A_MAC_AGG_0" x="0" y="0">
+      <name x="-55" y="-35">ReportIdle</name>
+    </location>
+    <location id="Template_A_MAC_AGG_1" x="320" y="0">
+      <name x="265" y="-35">ReportBuild</name>
+      <label kind="invariant" x="250" y="35">c_report &lt;= D_mac_report</label>
+    </location>
+    <location id="Template_A_MAC_AGG_2" x="640" y="0">
+      <name x="585" y="-35">ReportSent</name>
+    </location>
+    <location id="Template_A_MAC_AGG_3" x="640" y="-220">
+      <name x="585" y="-255">ReportStale</name>
+    </location>
+    <init ref="Template_A_MAC_AGG_0" />
+    <transition>
+      <source ref="Template_A_MAC_AGG_0" />
+      <target ref="Template_A_MAC_AGG_1" />
+      <label kind="guard" x="90" y="-64">mac_report_pending</label>
+      <label kind="assignment" x="90" y="26">c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_MAC_AGG_1" />
+      <target ref="Template_A_MAC_AGG_2" />
+      <label kind="guard" x="410" y="-64">c_report &lt;= D_mac_report</label>
+      <label kind="synchronisation" x="410" y="-20">mac_report!</label>
+      <label kind="assignment" x="410" y="26">mac_report_sent = true, mac_report_pending = false</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_MAC_AGG_1" />
+      <target ref="Template_A_MAC_AGG_3" />
+      <label kind="guard" x="410" y="-174">c_report == D_mac_report</label>
+      <label kind="assignment" x="410" y="-84">macReason = REASON_STALE_PHY_KPI</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_MAC_AGG_3" />
+      <target ref="Template_A_MAC_AGG_2" />
+      <label kind="synchronisation" x="570" y="-130">mac_report!</label>
+      <label kind="assignment" x="570" y="-84">mac_report_sent = true, mac_report_pending = false</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_MAC_AGG_2" />
+      <target ref="Template_A_MAC_AGG_0" />
+      <label kind="assignment" x="250" y="26">mac_report_sent = false</label>
+      <nail x="640" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_ENV_MAC</name>
+    <location id="Template_A_ENV_MAC_0" x="0" y="0">
+      <name x="-55" y="-35">EnvIdle</name>
+    </location>
+    <init ref="Template_A_ENV_MAC_0" />
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="-70" y="-20">mac_tick!</label>
+      <nail x="-80" y="-80" />
+      <nail x="80" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="-52" y="4">phy_kpi_report!</label>
+      <nail x="-100" y="-80" />
+      <nail x="100" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="-34" y="28">sdn_policy_cmd!</label>
+      <label kind="assignment" x="-34" y="74">sdn_sensing_priority_allowed = true, sdn_comm_priority_allowed = true</label>
+      <nail x="-120" y="-80" />
+      <nail x="120" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="-16" y="52">service_priority!</label>
+      <label kind="assignment" x="-16" y="98">commDemand = COMM_CRITICAL</label>
+      <nail x="-140" y="-80" />
+      <nail x="140" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="2" y="76">phy_ack!</label>
+      <nail x="-160" y="-80" />
+      <nail x="160" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="20" y="100">mac_schedule_cmd?</label>
+      <nail x="-180" y="-80" />
+      <nail x="180" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="38" y="124">beam_update_cmd?</label>
+      <nail x="-200" y="-80" />
+      <nail x="200" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="56" y="148">sensing_boost_cmd?</label>
+      <nail x="-220" y="-80" />
+      <nail x="220" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="74" y="172">constrained_mode_cmd?</label>
+      <nail x="-240" y="-80" />
+      <nail x="240" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="synchronisation" x="92" y="196">resource_reject?</label>
+      <nail x="-260" y="-80" />
+      <nail x="260" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="assignment" x="110" y="266">queueClass = Q_CRIT, bufferClass = B_SAFE, resourceClass = RES_BALANCED</label>
+      <nail x="-280" y="-80" />
+      <nail x="280" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="assignment" x="128" y="290">bufferClass = B_OVERFLOW, queueClass = Q_LOW</label>
+      <nail x="-300" y="-80" />
+      <nail x="300" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="assignment" x="146" y="314">resourceClass = RES_EXHAUSTED, mappedResourceClass = RES_EXHAUSTED</label>
+      <nail x="-320" y="-80" />
+      <nail x="320" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="assignment" x="164" y="338">sensingDemand = SENS_CRITICAL, resourceClass = RES_TIGHT</label>
+      <nail x="-340" y="-80" />
+      <nail x="340" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="assignment" x="182" y="362">kpiFreshnessClass = KPI_STALE</label>
+      <nail x="-360" y="-80" />
+      <nail x="360" y="-80" />
+    </transition>
+    <transition>
+      <source ref="Template_A_ENV_MAC_0" />
+      <target ref="Template_A_ENV_MAC_0" />
+      <label kind="assignment" x="200" y="386">queueClass = Q_EMPTY,
+bufferClass = B_SAFE,
+resourceClass = RES_FREE,
+mappedResourceClass = RES_FREE,
+sensingDemand = SENS_NOMINAL,
+commDemand = COMM_NOMINAL,
+kpiFreshnessClass = KPI_FRESH</label>
+      <nail x="-380" y="-80" />
+      <nail x="380" y="-80" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsPhyAck</name>
+    <location id="Template_ObsPhyAck_0" x="0" y="0">
+      <name x="-55" y="-35">Idle</name>
+    </location>
+    <location id="Template_ObsPhyAck_1" x="300" y="0">
+      <name x="245" y="-35">Wait</name>
+    </location>
+    <location id="Template_ObsPhyAck_2" x="620" y="-220">
+      <name x="565" y="-255">Violation</name>
+    </location>
+    <init ref="Template_ObsPhyAck_0" />
+    <transition>
+      <source ref="Template_ObsPhyAck_0" />
+      <target ref="Template_ObsPhyAck_1" />
+      <label kind="guard" x="80" y="-64">phy_command_pending</label>
+      <label kind="assignment" x="80" y="26">c_obs_ack = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsPhyAck_1" />
+      <target ref="Template_ObsPhyAck_0" />
+      <label kind="guard" x="80" y="-64">(!phy_command_pending) &amp;&amp; c_obs_ack &lt;= D_phy_ack</label>
+      <nail x="300" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_ObsPhyAck_1" />
+      <target ref="Template_ObsPhyAck_2" />
+      <label kind="guard" x="390" y="-174">c_obs_ack &gt; D_phy_ack</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsQueueCritical</name>
+    <location id="Template_ObsQueueCritical_0" x="0" y="0">
+      <name x="-55" y="-35">Idle</name>
+    </location>
+    <location id="Template_ObsQueueCritical_1" x="300" y="0">
+      <name x="245" y="-35">Wait</name>
+    </location>
+    <location id="Template_ObsQueueCritical_2" x="620" y="-220">
+      <name x="565" y="-255">Violation</name>
+    </location>
+    <init ref="Template_ObsQueueCritical_0" />
+    <transition>
+      <source ref="Template_ObsQueueCritical_0" />
+      <target ref="Template_ObsQueueCritical_1" />
+      <label kind="guard" x="80" y="-64">queueClass == Q_CRIT</label>
+      <label kind="assignment" x="80" y="26">c_obs_queue = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsQueueCritical_1" />
+      <target ref="Template_ObsQueueCritical_0" />
+      <label kind="guard" x="80" y="-64">(queueClass != Q_CRIT || mac_report_sent || scheduleMode == SCH_COMM || scheduleMode == SCH_CONSTRAINED) &amp;&amp; c_obs_queue &lt;= D_queue_crit</label>
+      <nail x="300" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_ObsQueueCritical_1" />
+      <target ref="Template_ObsQueueCritical_2" />
+      <label kind="guard" x="390" y="-174">c_obs_queue &gt; D_queue_crit</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsSensingCritical</name>
+    <location id="Template_ObsSensingCritical_0" x="0" y="0">
+      <name x="-55" y="-35">Idle</name>
+    </location>
+    <location id="Template_ObsSensingCritical_1" x="300" y="0">
+      <name x="245" y="-35">Wait</name>
+    </location>
+    <location id="Template_ObsSensingCritical_2" x="620" y="-220">
+      <name x="565" y="-255">Violation</name>
+    </location>
+    <init ref="Template_ObsSensingCritical_0" />
+    <transition>
+      <source ref="Template_ObsSensingCritical_0" />
+      <target ref="Template_ObsSensingCritical_1" />
+      <label kind="guard" x="80" y="-64">sensingDemand == SENS_CRITICAL</label>
+      <label kind="assignment" x="80" y="26">c_obs_sensing = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsSensingCritical_1" />
+      <target ref="Template_ObsSensingCritical_0" />
+      <label kind="guard" x="80" y="-64">(scheduleMode == SCH_SENS || scheduleMode == SCH_JOINT || scheduleMode == SCH_CONSTRAINED || mac_report_sent) &amp;&amp; c_obs_sensing &lt;= D_sched</label>
+      <nail x="300" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_ObsSensingCritical_1" />
+      <target ref="Template_ObsSensingCritical_2" />
+      <label kind="guard" x="390" y="-174">c_obs_sensing &gt; D_sched</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsBufferOverflow</name>
+    <location id="Template_ObsBufferOverflow_0" x="0" y="0">
+      <name x="-55" y="-35">Idle</name>
+    </location>
+    <location id="Template_ObsBufferOverflow_1" x="300" y="0">
+      <name x="245" y="-35">Wait</name>
+    </location>
+    <location id="Template_ObsBufferOverflow_2" x="620" y="-220">
+      <name x="565" y="-255">Violation</name>
+    </location>
+    <init ref="Template_ObsBufferOverflow_0" />
+    <transition>
+      <source ref="Template_ObsBufferOverflow_0" />
+      <target ref="Template_ObsBufferOverflow_1" />
+      <label kind="guard" x="80" y="-64">bufferClass == B_OVERFLOW</label>
+      <label kind="assignment" x="80" y="26">c_obs_buf = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBufferOverflow_1" />
+      <target ref="Template_ObsBufferOverflow_0" />
+      <label kind="guard" x="80" y="-64">(mac_report_sent || bufferClass != B_OVERFLOW) &amp;&amp; c_obs_buf &lt;= D_buf_report</label>
+      <nail x="300" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_ObsBufferOverflow_1" />
+      <target ref="Template_ObsBufferOverflow_2" />
+      <label kind="guard" x="390" y="-174">c_obs_buf &gt; D_buf_report</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsMacReportFreshness</name>
+    <location id="Template_ObsMacReportFreshness_0" x="0" y="0">
+      <name x="-55" y="-35">Idle</name>
+    </location>
+    <location id="Template_ObsMacReportFreshness_1" x="300" y="0">
+      <name x="245" y="-35">Wait</name>
+    </location>
+    <location id="Template_ObsMacReportFreshness_2" x="620" y="-220">
+      <name x="565" y="-255">Violation</name>
+    </location>
+    <init ref="Template_ObsMacReportFreshness_0" />
+    <transition>
+      <source ref="Template_ObsMacReportFreshness_0" />
+      <target ref="Template_ObsMacReportFreshness_1" />
+      <label kind="guard" x="80" y="-64">mac_report_pending</label>
+      <label kind="assignment" x="80" y="26">c_obs_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsMacReportFreshness_1" />
+      <target ref="Template_ObsMacReportFreshness_0" />
+      <label kind="guard" x="80" y="-64">(mac_report_sent || !mac_report_pending) &amp;&amp; c_obs_report &lt;= D_mac_report</label>
+      <nail x="300" y="160" />
+      <nail x="0" y="160" />
+    </transition>
+    <transition>
+      <source ref="Template_ObsMacReportFreshness_1" />
+      <target ref="Template_ObsMacReportFreshness_2" />
+      <label kind="guard" x="390" y="-174">c_obs_report &gt; D_mac_report</label>
+    </transition>
+  </template>
+  <system>A_SCH = Template_A_SCH();
+A_Q = Template_A_Q();
+A_BUF = Template_A_BUF();
+A_RSRC = Template_A_RSRC();
+A_MAC_AGG = Template_A_MAC_AGG();
+A_ENV_MAC = Template_A_ENV_MAC();
+ObsPhyAck = Template_ObsPhyAck();
+ObsQueueCritical = Template_ObsQueueCritical();
+ObsSensingCritical = Template_ObsSensingCritical();
+ObsBufferOverflow = Template_ObsBufferOverflow();
+ObsMacReportFreshness = Template_ObsMacReportFreshness();
+
+system A_SCH, A_Q, A_BUF, A_RSRC, A_MAC_AGG, A_ENV_MAC, ObsPhyAck, ObsQueueCritical, ObsSensingCritical, ObsBufferOverflow, ObsMacReportFreshness;
+</system>
+</nta>

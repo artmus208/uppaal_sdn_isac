@@ -1,0 +1,677 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[russian,english]{babel}
+\else
+  \usepackage{fontspec}
+  \usepackage[russian,english]{babel}
+  \setmainfont{DejaVu Serif}
+  \setsansfont{DejaVu Sans}
+  \setmonofont{DejaVu Sans Mono}
+\fi
+\usepackage{amsmath,amssymb}
+\usepackage{array,longtable}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{url}
+
+\geometry{left=18mm,right=18mm,top=16mm,bottom=18mm}
+\setlength{\parindent}{3.5mm}
+\setlength{\parskip}{0.25em}
+\setlist{nosep,leftmargin=5mm}
+\renewcommand{\arraystretch}{1.18}
+\sloppy
+
+\newcommand{\code}[1]{\ifmmode\text{\ttfamily\detokenize{#1}}\else\texttt{\detokenize{#1}}\fi}
+\newcommand{\A}[1]{\mathcal{A}_{#1}}
+\newcommand{\Contract}[1]{\mathcal{C}_{#1}}
+\newcommand{\Env}{\mathcal{A}_{ENV}}
+\newcommand{\Guard}{\operatorname{guard}}
+\newcommand{\Reset}{\operatorname{reset}}
+\newcommand{\Inv}{\operatorname{Inv}}
+\pdfstringdefDisableCommands{\def\A#1{A_#1}\def\Contract#1{C_#1}}
+
+\title{Формализация уровня MAC / Resource Scheduling в иерархической SDN-управляемой 6G ISAC-сети}
+\author{Техническая документация уровня}
+\date{8 июня 2026 г.}
+
+\begin{document}
+
+\maketitle
+
+\section*{Аннотация}
+
+Документ задает формальную спецификацию уровня MAC / Resource Scheduling (Medium Access Control / планирование радиоресурсов) для иерархической SDN-управляемой 6G ISAC-сети. Уровень MAC связывает PHY (Physical Layer, физический уровень) с SDN/RIC (Software-Defined Networking / RAN Intelligent Controller, программно-определяемое управление и контроллер радиодоступа): он принимает дискретизированные PHY-отчеты, применяет локальные ограничения политики SDN и выдает команды распределения радиоресурсов. Модель не является оптимизатором пропускной способности, симулятором очередей или радиофизическим расчетом. Она задает конечную контрактную timed automata (временные автоматы с часами) абстракцию, пригодную для проверки дедлайнов, отсутствия тупиков, корректности отказов и bounded response (ограниченного отклика) при конфликте между communication (передача данных) и sensing (радиозондирование).
+
+\section{Назначение и границы уровня}
+
+MAC / Resource Scheduling layer (уровень доступа к среде и планирования ресурсов) выполняет локальное распределение временно-частотных, энергетических и лучевых ресурсов между communication и sensing. В ISAC (Integrated Sensing and Communication, интегрированная связь и радиозондирование) эти функции конкурируют за общий ресурс: повышение плотности sensing-пилотов может ухудшить полезную нагрузку связи, а приоритет связи может ухудшить свежесть или точность sensing-информации. Разделение локального расписания и централизованной политики соответствует SDN-подходу к архитектурам 5G/6G \cite{mosudi_sdn,zolanvari_sdn}.
+
+Граница уровня задается следующим образом:
+\begin{itemize}
+  \item MAC принимает от PHY конечные классы состояния канала, луча, сигнальной конфигурации, sensing quality (качество радиозондирования) и freshness (свежесть информации).
+  \item MAC принимает от SDN/RIC конечную policy command (команду политики), но не выбирает глобальную сетевую политику самостоятельно.
+  \item MAC выдает PHY команды resource allocation (выделение ресурса), beam update (обновление луча), sensing boost (усиление режима радиозондирования), comm priority (приоритет связи) или constrained mode (ограниченный режим).
+  \item MAC сообщает SDN/RIC агрегированные классы очереди, задержки, потерь, дефицита ресурсов и невозможности локального выполнения контракта.
+\end{itemize}
+
+Следовательно, MAC не должен выполнять rerouting (перемаршрутизацию), slice migration (перенос сетевого среза), global recovery (глобальное восстановление) или admission control (допуск сервиса) как самостоятельные решения. Эти действия относятся к SDN/RIC и service layer. Если поместить их внутрь MAC, модель теряет иерархичность и становится трудно проверяемой.
+
+\section{Архитектурное положение MAC}
+
+MAC является промежуточным контрактным уровнем между PHY и SDN/RIC:
+\[
+\A{TOTAL}=\A{SVC}\parallel \A{SDN}\parallel \A{MAC}\parallel \A{PHY}\parallel \Env.
+\]
+
+В полной модели \(\Env\) является общей средой, а не независимой средой для каждого уровня:
+\[
+\Env=\A{ENV\_PHY}\parallel \A{ENV\_MAC}\parallel
+\A{ENV\_SDN}\parallel \A{ENV\_SVC}\parallel \A{ENV\_FAULT}.
+\]
+
+При локальной верификации MAC используется согласованная проекция:
+\[
+E_{MAC}=\pi_{MAC}(\Env).
+\]
+
+Эта проекция содержит события окна планирования, поступление PHY-отчетов, изменение трафика, подтверждения PHY и допустимые команды SDN/RIC. Она не должна создавать события, противоречащие PHY-проекции той же среды. Например, если общий fault (отказ или блокировка) на PHY классифицирован как \code{OUTAGE}, то MAC не должен одновременно видеть \code{RES_FREE} без признаков деградации.
+
+Контрактная связность уровня:
+\[
+Gar_{SDN}\Rightarrow Ass_{MAC},\qquad
+Gar_{PHY}\Rightarrow Ass_{MAC},\qquad
+Gar_{MAC}\Rightarrow Ass_{PHY}\land Ass_{SDN}.
+\]
+
+\section{Базовая модель контрактного автомата}
+
+Каждый компонент уровня MAC задается как контрактный timed automaton:
+\[
+\A{i}=(L_i,l_i^0,C_i,V_i,E_i,\Inv_i,In_i,Out_i,Ass_i,Gar_i),
+\]
+где \(L_i\) --- конечное множество состояний, \(l_i^0\) --- начальное состояние, \(C_i\) --- множество часов, \(V_i\) --- дискретные переменные, \(E_i\) --- переходы, \(\Inv_i\) --- инварианты, \(In_i\) и \(Out_i\) --- входные и выходные каналы, \(Ass_i\) и \(Gar_i\) --- assumption/guarantee (предположения и гарантии) компонента. Такая форма опирается на классическую семантику timed automata \cite{alur_dill}.
+
+Переход имеет вид:
+\[
+e=(l,\;g,\;a,\;r,\;u,\;l'),
+\]
+где \(g\) --- guard (условие перехода), \(a\) --- синхронизационное действие, \(r\subseteq C_i\) --- множество сбрасываемых часов, \(u\) --- обновление конечных переменных. Такая запись отделяет формальную логику MAC от внешней оценки задержек, очередей и радиоресурсов.
+
+\section{Дискретная абстракция MAC}
+
+Непрерывные измерения и счетчики уровня MAC сводятся к конечным классам:
+\[
+\alpha_{MAC}:X_{MAC}^{meas}\times X_{MAC}^{cfg}\rightarrow X_{MAC}^{disc}.
+\]
+
+Здесь \(X_{MAC}^{meas}\) содержит queue length (длина очереди), buffer occupancy (заполнение буфера), packet loss (потери пакетов), scheduling delay (задержка планирования), radio resource utilization (использование радиоресурса), HARQ/NACK statistics (статистика повторных передач и отрицательных подтверждений). \(X_{MAC}^{cfg}\) содержит размер окна планирования, ограничения политики SDN, приоритеты сервисов, предельную долю ресурса для sensing и communication.
+
+\begin{longtable}{p{0.24\linewidth}p{0.34\linewidth}p{0.34\linewidth}}
+\hline
+\textbf{Переменная} & \textbf{Значения} & \textbf{Смысл}\\
+\hline
+\code{QueueClass} & \code{Q_EMPTY}, \code{Q_LOW}, \code{Q_MED}, \code{Q_HIGH}, \code{Q_CRIT} & Класс длины очереди.\\
+\code{BufferClass} & \code{B_SAFE}, \code{B_WARN}, \code{B_OVERFLOW} & Класс заполнения буфера.\\
+\code{DelayClass} & \code{D_OK}, \code{D_WARN}, \code{D_DEADLINE_RISK}, \code{D_VIOLATED} & Класс задержки планирования.\\
+\code{DropClass} & \code{DROP_NONE}, \code{DROP_LOW}, \code{DROP_HIGH} & Класс потерь пакетов.\\
+\code{ResourceClass} & \code{RES_FREE}, \code{RES_BALANCED}, \code{RES_TIGHT}, \code{RES_EXHAUSTED} & Класс доступности радиоресурса.\\
+\code{SensingDemand} & \code{SENS_NOMINAL}, \code{SENS_BOOST_REQ}, \code{SENS_CRITICAL} & Класс потребности радиозондирования.\\
+\code{CommDemand} & \code{COMM_NOMINAL}, \code{COMM_HIGH}, \code{COMM_CRITICAL} & Класс потребности связи.\\
+\code{KPIFreshnessClass} & \code{KPI_FRESH}, \code{KPI_STALE}, \code{KPI_MISSING} & Свежесть PHY/MAC KPI для локального расписания.\\
+\code{ScheduleMode} & \code{SCH_IDLE}, \code{SCH_COMM}, \code{SCH_SENS}, \code{SCH_JOINT}, \code{SCH_CONSTRAINED} & Режим локального планирования.\\
+\hline
+\end{longtable}
+
+Классы являются консервативной абстракцией. Если измерение попадает на границу между классами, safety-критичное решение должно использовать худший класс. Иначе автомат может доказать корректность для состояния, которое физически является деградированным.
+
+\subsection{Отображение PHY-классов в MAC-классы}
+
+MAC не интерпретирует непрерывную радиофизику напрямую. Он использует дискретные PHY-классы, сформированные автоматами \(\A{CH}\), \(\A{SIG}\), \(\A{BM}\), \(\A{SQ}\) и агрегатором \(\A{PH}\). Для связи уровней вводится отображение:
+\[
+\mu_{PHY\rightarrow MAC}:
+X_{PHY}^{disc}\times X_{SDN}^{policy}\rightarrow X_{MAC}^{disc}.
+\]
+
+Если несколько PHY-признаков дают разные MAC-классы, выбирается более строгий класс по порядку:
+\[
+\code{RES_FREE}<\code{RES_BALANCED}<\code{RES_TIGHT}<\code{RES_EXHAUSTED}.
+\]
+
+\begin{longtable}{p{0.25\linewidth}p{0.30\linewidth}p{0.37\linewidth}}
+\hline
+\textbf{PHY-класс} & \textbf{MAC-абстракция} & \textbf{Интерпретация для планирования}\\
+\hline
+\code{PHYNormal}; \code{ChannelClass=NOMINAL}; \code{BeamClass=LOCKED} & \code{ResourceClass=RES_BALANCED}; \code{SensingDemand=SENS_NOMINAL} & Допустим \code{SCH_JOINT} без усиления sensing и без приоритета связи.\\
+\code{ChannelClass=INTERFERENCE_LIMITED} или \code{SignalClass=PILOT_BASED} & \code{ResourceClass=RES_TIGHT}; \code{ScheduleMode=SCH_JOINT} & Требуется ограниченное совместное расписание; при росте очереди возможен \code{SCH_COMM}.\\
+\code{ChannelClass=MOBILITY_LIMITED} или \code{MULTIPATH_LIMITED} & \code{ResourceClass=RES_TIGHT}; \code{CommDemand=COMM_HIGH} & MAC сокращает агрессивные переключения, ожидает beam update или constrained mode.\\
+\code{BeamClass=SEARCH}, \code{MISALIGNED} или \code{RECOVERING} & \code{ResourceClass=RES_TIGHT}; \code{SensingDemand=SENS_BOOST_REQ} & Нужны \code{beam_update_cmd!}, \code{sensing_boost_cmd!} или ограниченный режим.\\
+\code{SignalClass=RECONFIGURING} или \code{SignalClass=LIMITED} & \code{ResourceClass=RES_TIGHT} или \code{RES_EXHAUSTED} & До подтверждения PHY запрещается молчаливо принимать новые критичные требования.\\
+\code{SensingState=ProbabilityLimited}, \code{AccuracyLimited} или \code{FreshnessLimited} & \code{SensingDemand=SENS_BOOST_REQ} & MAC запрашивает sensing boost, если политика SDN/RIC это разрешает.\\
+\code{SensingState=SensingFailure} или \code{PHYFailure} & \code{ResourceClass=RES_EXHAUSTED}; \code{SensingDemand=SENS_CRITICAL} & Допустимы только отказ, constrained mode или отчет SDN/RIC.\\
+\code{ChannelClass=BLOCKAGE} или \code{OUTAGE}; \code{BeamClass=FAILED} & \code{ResourceClass=RES_EXHAUSTED} & Локальное расписание не должно создавать видимость доступного ресурса.\\
+\hline
+\end{longtable}
+
+Это отображение является интерфейсным контрактом между PHY и MAC. Оно не утверждает, что MAC вычисляет BLER, SINR, CRB или probability of detection; эти величины уже были сведены к конечным PHY-классам.
+
+\section{Композиция автоматов MAC}
+
+Уровень задается параллельной композицией:
+\[
+\A{MAC}=\A{SCH}\parallel \A{Q}\parallel \A{BUF}\parallel \A{RSRC}\parallel \A{MAC\_AGG}.
+\]
+
+\begin{longtable}{p{0.18\linewidth}p{0.38\linewidth}p{0.36\linewidth}}
+\hline
+\textbf{Автомат} & \textbf{Основные состояния} & \textbf{Ответственность}\\
+\hline
+\(\A{SCH}\) & \code{Idle}, \code{CollectKPI}, \code{SelectMode}, \code{ApplySchedule}, \code{WaitPHYAck}, \code{ScheduleFailure} & Выбор и применение локального режима планирования.\\
+\(\A{Q}\) & \code{QueueNormal}, \code{QueueWarning}, \code{QueueCritical}, \code{QueueDraining} & Контроль очередей и риска нарушения задержки.\\
+\(\A{BUF}\) & \code{BufferSafe}, \code{BufferWarning}, \code{BufferOverflow} & Контроль переполнения буфера.\\
+\(\A{RSRC}\) & \code{ResourceAvailable}, \code{ResourceTight}, \code{ResourceConflict}, \code{ResourceExhausted} & Проверка совместимости sensing и communication.\\
+\(\A{MAC\_AGG}\) & \code{ReportIdle}, \code{ReportBuild}, \code{ReportSent}, \code{ReportStale} & Формирование отчета для SDN/RIC.\\
+\hline
+\end{longtable}
+
+\subsection{Автомат планировщика \(\A{SCH}\)}
+
+\(\A{SCH}\) выбирает один из конечных режимов расписания. Схема переходов:
+\[
+\begin{array}{rcl}
+\code{Idle} & \xrightarrow{\code{mac_tick?}} & \code{CollectKPI},\\
+\code{CollectKPI} & \xrightarrow{\code{fresh_kpi}\land \code{policy_ok}} & \code{SelectMode},\\
+\code{CollectKPI} & \xrightarrow{\code{stale_kpi}} & \code{ApplyConstrained},\\
+\code{SelectMode} & \xrightarrow{\code{resource_ok}} & \code{ApplySchedule},\\
+\code{SelectMode} & \xrightarrow{\code{resource_conflict}} & \code{ResolveConflict},\\
+\code{SelectMode} & \xrightarrow{\code{resource_exhausted}} & \code{RejectOrAskSDN}.
+\end{array}
+\]
+
+После отправки команды на PHY автомат переходит в \code{WaitPHYAck}. Если подтверждение \code{phy_ack?} не получено до \(D_{phy\_ack}\), формируется \code{mac_report!} с причиной \code{PHY_ACK_TIMEOUT}.
+
+\subsection{Автоматы очереди и буфера}
+
+\(\A{Q}\) и \(\A{BUF}\) не вычисляют стохастические характеристики очереди. Они читают результат \(\alpha_{MAC}\) и проверяют обязанность реакции:
+\[
+\code{Q_CRIT}\Rightarrow
+\Diamond_{\le D_{queue\_crit}}
+(\code{QueueDraining}\vee \code{resource_reject}\vee \code{mac_report_sent}).
+\]
+
+Для буфера:
+\[
+\code{B_OVERFLOW}\Rightarrow
+\Diamond_{\le D_{buf\_report}}\code{mac_report_sent}.
+\]
+
+\subsection{Автомат ресурса \(\A{RSRC}\)}
+
+\(\A{RSRC}\) фиксирует конфликт между communication и sensing. Важная деталь: \(\A{RSRC}\) не решает глобальный приоритет; он применяет уже разрешенную SDN/RIC политику. При \code{RES_EXHAUSTED} недопустим silent accept (молчаливое принятие запроса). Допустимы только explicit reject (явный отказ), constrained mode или escalation report (отчет наверх). Sensing-demand классы здесь трактуются как дискретные интерфейсные классы, согласованные с метриками sensing capability и cooperative sensing, а не как расчет физической вероятности обнаружения внутри MAC \cite{liu_senscap,liu_coop}.
+
+\section{Политики MAC}
+
+Политика MAC --- это конечное правило выбора режима расписания при заданной SDN-команде и локальных классах. Она не является глобальной политикой сети.
+
+\begin{longtable}{p{0.12\linewidth}p{0.27\linewidth}p{0.23\linewidth}p{0.28\linewidth}}
+\hline
+\textbf{Приоритет} & \textbf{Условие} & \textbf{Режим} & \textbf{Обязательный исход}\\
+\hline
+\code{P0} & \code{ResourceClass=RES_EXHAUSTED} & \code{SCH_CONSTRAINED} или отказ & \code{resource_reject!} или \code{mac_report!} за \(D_{sched}\).\\
+\code{P1} & \code{BufferClass=B_OVERFLOW} или \code{DelayClass=D_VIOLATED} & \code{SCH_COMM} или отказ & Сначала защита от потери данных; затем отчет SDN/RIC.\\
+\code{P2} & \code{QueueClass=Q_CRIT} и \code{CommDemand=COMM_CRITICAL} & \code{SCH_COMM} & \code{mac_schedule_cmd!}; при конфликте \code{mac_report!}.\\
+\code{P3} & \code{SensingDemand=SENS_CRITICAL} и SDN разрешает sensing priority & \code{SCH_SENS} или \code{SCH_JOINT} & \code{sensing_boost_cmd!} или \code{constrained_mode_cmd!}.\\
+\code{P4} & \code{ResourceClass=RES_TIGHT} и оба требования активны & \code{SCH_JOINT} или \code{SCH_CONSTRAINED} & Совместное расписание с отчетом о дефиците ресурса.\\
+\code{P5} & \code{KPIFreshnessClass=KPI_STALE} или \code{KPI_MISSING} & \code{SCH_CONSTRAINED} & Запрет агрессивной перенастройки; запрос свежего отчета.\\
+\code{P6} & \code{ResourceClass=RES_FREE} или \code{RES_BALANCED} & \code{SCH_JOINT} & Обычное совместное расписание communication/sensing.\\
+\code{P7} & Ни одно условие выше не выполнено & \code{SCH_CONSTRAINED} & Консервативный режим; deadlock не допускается.\\
+\hline
+\end{longtable}
+
+Таблица применяется как first-match policy (политика первого совпадения): выбирается первая строка с истинным guard. Поэтому политика является детерминированной при фиксированном наборе входных классов. Требование тотальности задается формально:
+\[
+\forall x\in X_{MAC}^{disc}\;\exists p\in\{P0,\ldots,P7\}:\Guard_p(x)=true.
+\]
+
+Если несколько условий истинны одновременно, приоритеты \(P0<P1<\ldots<P7\) устраняют неоднозначность. Домен политики включает \code{ResourceClass}, \code{SensingDemand}, \code{CommDemand}, \code{KPIFreshnessClass} и SDN-policy. Неполная таблица политик является источником deadlock (тупика), а неприоритетная таблица --- источником nondeterminism (недетерминизма), который может скрыть нарушение дедлайна.
+
+\section{UPPAAL-спецификация MAC-уровня}
+
+В UPPAAL payload (полезная нагрузка сообщения) не передается через канал. Поэтому перед синхронизацией \code{phy_kpi_report!}, \code{sdn_policy_cmd!} или \code{mac_report!} отправитель обновляет shared variables (общие переменные), а получатель читает их после синхронизации. Для совместимости с классическим UPPAAL классы ниже задаются как ограниченные целочисленные типы и константы; если используемая версия UPPAAL поддерживает enum-типы, эти объявления могут быть заменены на \code{typedef enum}.
+
+\subsection{Declarations уровня MAC}
+
+\begin{verbatim}
+// ----- MAC constants -----
+const int D_collect       = 2;
+const int D_sched         = 5;
+const int D_phy_ack       = 3;
+const int D_queue_crit    = 10;
+const int D_buf_report    = 4;
+const int D_mac_report    = 5;
+const int D_phy_report    = 10;
+
+// ----- MAC clocks -----
+clock c_sched, c_phy_ack, c_queue, c_buf, c_report;
+
+// ----- MAC channels -----
+broadcast chan phy_kpi_report, mac_report;
+chan mac_tick, sdn_policy_cmd, service_priority, phy_ack;
+chan mac_schedule_cmd, beam_update_cmd;
+chan sensing_boost_cmd, constrained_mode_cmd, resource_reject;
+
+// ----- MAC discrete classes -----
+typedef int[0,4] QueueClass_t;
+const QueueClass_t Q_EMPTY=0, Q_LOW=1, Q_MED=2, Q_HIGH=3, Q_CRIT=4;
+
+typedef int[0,2] BufferClass_t;
+const BufferClass_t B_SAFE=0, B_WARN=1, B_OVERFLOW=2;
+
+typedef int[0,3] DelayClass_t;
+const DelayClass_t D_OK=0, D_WARN=1, D_DEADLINE_RISK=2, D_VIOLATED=3;
+
+typedef int[0,2] DropClass_t;
+const DropClass_t DROP_NONE=0, DROP_LOW=1, DROP_HIGH=2;
+
+typedef int[0,3] ResourceClass_t;
+const ResourceClass_t RES_FREE=0, RES_BALANCED=1;
+const ResourceClass_t RES_TIGHT=2, RES_EXHAUSTED=3;
+
+typedef int[0,2] SensingDemand_t;
+const SensingDemand_t SENS_NOMINAL=0, SENS_BOOST_REQ=1, SENS_CRITICAL=2;
+
+typedef int[0,2] CommDemand_t;
+const CommDemand_t COMM_NOMINAL=0, COMM_HIGH=1, COMM_CRITICAL=2;
+
+typedef int[0,2] KPIFreshnessClass_t;
+const KPIFreshnessClass_t KPI_FRESH=0, KPI_STALE=1, KPI_MISSING=2;
+
+typedef int[0,4] ScheduleMode_t;
+const ScheduleMode_t SCH_IDLE=0, SCH_COMM=1, SCH_SENS=2;
+const ScheduleMode_t SCH_JOINT=3, SCH_CONSTRAINED=4;
+
+typedef int[0,5] MacReason_t;
+const MacReason_t REASON_NONE=0, REASON_RESOURCE_EXHAUSTED=1;
+const MacReason_t REASON_PHY_ACK_TIMEOUT=2, REASON_QUEUE_CRITICAL=3;
+const MacReason_t REASON_SENS_COMM_CONFLICT=4, REASON_STALE_PHY_KPI=5;
+
+// ----- shared variables: payload replacement -----
+QueueClass_t queueClass;
+BufferClass_t bufferClass;
+DelayClass_t delayClass;
+DropClass_t dropClass;
+ResourceClass_t resourceClass;
+ResourceClass_t mappedResourceClass;
+SensingDemand_t sensingDemand;
+CommDemand_t commDemand;
+KPIFreshnessClass_t kpiFreshnessClass;
+ScheduleMode_t scheduleMode;
+MacReason_t macReason;
+
+bool mac_report_pending = false;
+bool mac_report_sent = false;
+bool silent_accept = false;
+bool phy_ack_timeout = false;
+bool phy_command_pending = false;
+bool sdn_sensing_priority_allowed = false;
+bool sdn_comm_priority_allowed = false;
+\end{verbatim}
+
+\subsection{Формулы MAC-метрик}
+
+Для UPPAAL обычные timed automata не считают средние значения и вероятности. Поэтому метрики используются как целочисленные score-переменные, полученные из классов:
+\[
+\begin{array}{l}
+M_{queue}=0,1,2,3,4\quad \text{для } \code{Q_EMPTY},\ldots,\code{Q_CRIT},\\
+M_{res}=0,1,2,3\quad \text{для } \code{RES_FREE},\ldots,\code{RES_EXHAUSTED},\\
+M_{fresh}=0,1,2\quad \text{для } \code{KPI_FRESH},\code{KPI_STALE},\code{KPI_MISSING}.
+\end{array}
+\]
+
+Суммарный риск MAC:
+\[
+Risk_{MAC}=2M_{queue}+3M_{res}+2M_{fresh}
+ + \mathbf{1}_{\code{B_OVERFLOW}}+\mathbf{1}_{\code{D_VIOLATED}}.
+\]
+
+В UPPAAL это задается функцией:
+\begin{verbatim}
+int mac_risk() {
+  return 2*queueClass + 3*resourceClass + 2*kpiFreshnessClass
+       + (bufferClass == B_OVERFLOW ? 1 : 0)
+       + (delayClass == D_VIOLATED ? 1 : 0);
+}
+\end{verbatim}
+
+Эта величина не является вероятностью отказа. Она используется только как дискретный score (оценка) для сортировки локальных решений и диагностики counterexample.
+
+\subsection{Полные guards политик MAC}
+
+\begin{verbatim}
+bool gP0() {
+  return resourceClass == RES_EXHAUSTED
+      || mappedResourceClass == RES_EXHAUSTED;
+}
+
+bool gP1() {
+  return bufferClass == B_OVERFLOW
+      || delayClass == D_VIOLATED;
+}
+
+bool gP2() {
+  return queueClass == Q_CRIT
+      && commDemand == COMM_CRITICAL
+      && sdn_comm_priority_allowed;
+}
+
+bool gP3() {
+  return sensingDemand == SENS_CRITICAL
+      && sdn_sensing_priority_allowed
+      && resourceClass != RES_EXHAUSTED;
+}
+
+bool gP4() {
+  return resourceClass == RES_TIGHT
+      && sensingDemand != SENS_NOMINAL
+      && commDemand != COMM_NOMINAL;
+}
+
+bool gP5() {
+  return kpiFreshnessClass == KPI_STALE
+      || kpiFreshnessClass == KPI_MISSING;
+}
+
+bool gP6() {
+  return resourceClass == RES_FREE
+      || resourceClass == RES_BALANCED;
+}
+
+bool gP7() {
+  return true; // totality fallback
+}
+
+void select_mac_policy() {
+  if (gP0()) {
+    scheduleMode = SCH_CONSTRAINED;
+    macReason = REASON_RESOURCE_EXHAUSTED;
+  } else if (gP1()) {
+    scheduleMode = SCH_COMM;
+    macReason = REASON_QUEUE_CRITICAL;
+  } else if (gP2()) {
+    scheduleMode = SCH_COMM;
+    macReason = REASON_NONE;
+  } else if (gP3()) {
+    scheduleMode = SCH_SENS;
+    macReason = REASON_NONE;
+  } else if (gP4()) {
+    scheduleMode = SCH_JOINT;
+    macReason = REASON_SENS_COMM_CONFLICT;
+  } else if (gP5()) {
+    scheduleMode = SCH_CONSTRAINED;
+    macReason = REASON_STALE_PHY_KPI;
+  } else if (gP6()) {
+    scheduleMode = SCH_JOINT;
+    macReason = REASON_NONE;
+  } else {
+    scheduleMode = SCH_CONSTRAINED;
+    macReason = REASON_NONE;
+  }
+}
+\end{verbatim}
+
+\subsection{UPPAAL templates MAC}
+
+\begin{longtable}{p{0.18\linewidth}p{0.27\linewidth}p{0.23\linewidth}p{0.24\linewidth}}
+\hline
+\textbf{Template} & \textbf{Locations} & \textbf{Invariants} & \textbf{Ключевые edges}\\
+\hline
+\(\A{SCH}\) & \code{Idle}, \code{CollectKPI}, \code{SelectMode}, \code{ApplySchedule}, \code{WaitPHYAck}, \code{ScheduleFailure} & \code{CollectKPI}: \(c_{sched}\le D_{collect}\); \code{SelectMode}: \(c_{sched}\le D_{sched}\); \code{WaitPHYAck}: \(c_{phy\_ack}\le D_{phy\_ack}\). & \code{mac_tick?}; \code{phy_kpi_report?}; \code{select_mac_policy()}; command edge; \code{phy_ack?}; timeout edge.\\
+\(\A{Q}\) & \code{QueueNormal}, \code{QueueWarning}, \code{QueueCritical}, \code{QueueDraining} & \code{QueueCritical}: \(c_{queue}\le D_{queue\_crit}\). & class update; critical report; drain or reject.\\
+\(\A{BUF}\) & \code{BufferSafe}, \code{BufferWarning}, \code{BufferOverflow} & \code{BufferOverflow}: \(c_{buf}\le D_{buf\_report}\). & overflow report; reset on safe class.\\
+\(\A{RSRC}\) & \code{ResourceAvailable}, \code{ResourceTight}, \code{ResourceConflict}, \code{ResourceExhausted} & Нет отдельного clock; использует \(c_{sched}\). & conflict detection; resource reject; report.\\
+\(\A{MAC\_AGG}\) & \code{ReportIdle}, \code{ReportBuild}, \code{ReportSent}, \code{ReportStale} & \code{ReportBuild}: \(c_{report}\le D_{mac\_report}\). & set shared payload; \code{mac_report!}; clear pending.\\
+\hline
+\end{longtable}
+
+Типовой edge для команды PHY:
+\begin{verbatim}
+SelectMode -> ApplySchedule
+  guard !gP0()
+  update select_mac_policy(), c_phy_ack = 0;
+
+ApplySchedule -> WaitPHYAck
+  sync mac_schedule_cmd!
+  update phy_command_pending = true;
+
+WaitPHYAck -> Idle
+  guard c_phy_ack <= D_phy_ack
+  sync phy_ack?
+  update phy_ack_timeout = false,
+         phy_command_pending = false;
+
+WaitPHYAck -> ScheduleFailure
+  guard c_phy_ack >= D_phy_ack
+  update phy_ack_timeout = true,
+         macReason = REASON_PHY_ACK_TIMEOUT,
+         mac_report_pending = true;
+\end{verbatim}
+
+\subsection{Observer-автоматы MAC}
+
+Observer для PHY ack:
+\begin{verbatim}
+template ObsPhyAck() {
+  clock x;
+  state Idle, Waiting, Violation;
+  init Idle;
+
+  Idle -> Waiting guard phy_command_pending update x = 0;
+  Waiting -> Idle guard !phy_command_pending && x <= D_phy_ack;
+  Waiting -> Violation guard x > D_phy_ack;
+}
+\end{verbatim}
+
+Observer для критической очереди:
+\begin{verbatim}
+template ObsQueueCritical() {
+  clock x;
+  state Idle, Waiting, Violation;
+  init Idle;
+
+  Idle -> Waiting guard queueClass == Q_CRIT update x = 0;
+  Waiting -> Idle
+    guard queueClass != Q_CRIT
+       || mac_report_sent
+       || scheduleMode == SCH_COMM
+       || scheduleMode == SCH_CONSTRAINED;
+  Waiting -> Violation guard x > D_queue_crit;
+}
+\end{verbatim}
+
+Observer для sensing-demand:
+\begin{verbatim}
+template ObsSensingCritical() {
+  clock x;
+  state Idle, Waiting, Violation;
+  init Idle;
+
+  Idle -> Waiting guard sensingDemand == SENS_CRITICAL update x = 0;
+  Waiting -> Idle
+    guard scheduleMode == SCH_SENS
+       || scheduleMode == SCH_JOINT
+       || scheduleMode == SCH_CONSTRAINED
+       || mac_report_sent;
+  Waiting -> Violation guard x > D_sched;
+}
+\end{verbatim}
+
+Минимальные UPPAAL queries:
+\begin{verbatim}
+A[] not deadlock
+A[] not ObsPhyAck.Violation
+A[] not ObsQueueCritical.Violation
+A[] not ObsSensingCritical.Violation
+A[] (resourceClass == RES_EXHAUSTED imply !silent_accept)
+\end{verbatim}
+
+\section{Operational semantics}
+
+\subsection{Часы и инварианты}
+
+\begin{longtable}{p{0.22\linewidth}p{0.68\linewidth}}
+\hline
+\textbf{Часы} & \textbf{Назначение}\\
+\hline
+\(c_{sched}\) & Время от начала окна планирования до выбора режима.\\
+\(c_{phy\_ack}\) & Время ожидания подтверждения от PHY.\\
+\(c_{queue}\) & Время пребывания в критическом классе очереди.\\
+\(c_{buf}\) & Время пребывания в состоянии переполнения буфера.\\
+\(c_{report}\) & Возраст последнего MAC-отчета для SDN/RIC.\\
+\hline
+\end{longtable}
+
+Типовые инварианты:
+\[
+\begin{array}{ll}
+\code{CollectKPI}: & c_{sched}\le D_{collect},\\
+\code{SelectMode}: & c_{sched}\le D_{sched},\\
+\code{WaitPHYAck}: & c_{phy\_ack}\le D_{phy\_ack},\\
+\code{QueueCritical}: & c_{queue}\le D_{queue\_crit},\\
+\code{ReportBuild}: & c_{report}\le D_{mac\_report}.
+\end{array}
+\]
+
+\subsection{Синхронизационные каналы}
+
+Входные каналы:
+\[
+\{\code{phy_kpi_report?},\code{sdn_policy_cmd?},\code{service_priority?},
+\code{mac_tick?},\code{phy_ack?}\}.
+\]
+
+Выходные каналы:
+\[
+\{\code{mac_schedule_cmd!},\code{beam_update_cmd!},\code{sensing_boost_cmd!},
+\code{constrained_mode_cmd!},\code{mac_report!},\code{resource_reject!}\}.
+\]
+
+Отчеты \code{mac_report!} удобно трактовать как broadcast (широковещательное уведомление), а команды к PHY --- как handshake (двусторонняя синхронизация), потому что команда должна быть подтверждена \code{phy_ack?}.
+
+\subsection{Локальная среда}
+
+\(\A{ENV\_MAC}\) моделирует только допустимые внешние входы для MAC:
+\[
+\A{SYS}^{MAC}=\A{MAC}\parallel \A{ENV\_MAC}.
+\]
+
+Assumption среды: \code{mac_tick?} поступает в допустимом диапазоне периодов, PHY-отчет либо свежий, либо явно помечен как stale, SDN-команда принадлежит конечному множеству политик. Среда не должна заставлять MAC одновременно видеть взаимоисключающие классы, например \code{RES_FREE} и \code{RES_EXHAUSTED}.
+
+\section{Контракт MAC}
+
+Контракт уровня:
+\[
+\Contract{MAC}=(Ass_{MAC},Gar_{MAC}).
+\]
+
+\subsection{Предположения}
+
+\begin{itemize}
+  \item PHY передает отчет не реже \(D_{phy\_report}\) или явно сообщает stale-состояние.
+  \item PHY-отчет содержит конечные классы из \(X_{PHY}^{disc}\), пригодные для применения \(\mu_{PHY\rightarrow MAC}\).
+  \item SDN/RIC-команда принадлежит конечному допустимому множеству политик.
+  \item Сервисный приоритет уже проверен SDN/RIC и не противоречит текущему admission decision (решению допуска).
+  \item Классы \code{QueueClass}, \code{ResourceClass}, \code{DelayClass}, \code{SensingDemand}, \code{CommDemand}, \code{KPIFreshnessClass} принадлежат доменам \(\alpha_{MAC}\).
+\end{itemize}
+
+\subsection{Гарантии}
+
+\begin{itemize}
+  \item Если \code{QueueClass=Q_CRIT} или \code{DelayClass=D_DEADLINE_RISK}, MAC обязан за \(D_{sched}\) перейти в допустимый режим или выдать \code{resource_reject!}.
+  \item Если \code{SensingDemand=SENS_CRITICAL} и политика SDN разрешает sensing priority, MAC обязан за \(D_{sched}\) выдать \code{sensing_boost_cmd!} или \code{constrained_mode_cmd!}.
+  \item Если \code{ResourceClass=RES_EXHAUSTED}, MAC не должен выполнять silent accept.
+  \item Если \(\mu_{PHY\rightarrow MAC}\) возвращает \code{RES_EXHAUSTED}, MAC обязан выбрать \code{P0} независимо от менее строгих локальных классов очереди.
+  \item Если \code{BufferClass=B_OVERFLOW}, MAC обязан сформировать \code{mac_report!} с причиной overflow.
+  \item Любая команда PHY должна получить \code{phy_ack?} до \(D_{phy\_ack}\) или завершиться \code{ScheduleFailure}.
+\end{itemize}
+
+\section{Интерфейс отчетов}
+
+Минимальный MAC-отчет:
+\[
+\begin{array}{l}
+R_{MAC}=(\code{QueueClass},\code{BufferClass},\code{DelayClass},\\
+\qquad \code{DropClass},\code{ResourceClass},\code{ScheduleMode},\\
+\qquad \code{KPIFreshnessClass},\code{SourcePHYState},\\
+\qquad \code{ConflictReason},\code{ReportAge}).
+\end{array}
+\]
+
+Для SDN/RIC существенны не только текущие классы, но и причина невозможности локального расписания: \code{RESOURCE_EXHAUSTED}, \code{PHY_ACK_TIMEOUT}, \code{QUEUE_CRITICAL}, \code{SENS_COMM_CONFLICT}, \code{STALE_PHY_KPI}. Без этой причины SDN/RIC не сможет выбрать корректную политику восстановления или отказа.
+
+\section{Верификационные свойства и observer-автоматы}
+
+Базовые свойства:
+\[
+\begin{array}{l}
+A[]\ \neg\code{deadlock},\\
+A[]\ (\code{ResourceClass=RES_EXHAUSTED}\Rightarrow \neg\code{silent_accept}),\\
+A[]\ (\code{WaitPHYAck}\Rightarrow c_{phy\_ack}\le D_{phy\_ack}),\\
+A[]\ (\code{BufferOverflow}\Rightarrow \Diamond_{\le D_{buf\_report}}\code{mac_report_sent}).
+\end{array}
+\]
+
+Observer для критической очереди:
+\[
+\code{QueueCritical}\Rightarrow
+\Diamond_{\le D_{queue\_crit}}
+(\code{QueueDraining}\vee \code{resource_reject}\vee \code{mac_report_sent}).
+\]
+
+Observer для критического sensing:
+\[
+\code{SENS_CRITICAL}\Rightarrow
+\Diamond_{\le D_{sched}}
+(\code{sensing_boost_cmd}\vee \code{constrained_mode_cmd}\vee \code{resource_reject}).
+\]
+
+Если требуется оценить среднюю задержку, вероятность переполнения буфера или частоту потерь, обычного timed automaton недостаточно. Эти метрики должны задаваться внешней статистикой, priced timed automata (временные автоматы со стоимостью) или probabilistic timed automata (вероятностные временные автоматы).
+
+\section{Ограничения применимости}
+
+Основные ограничения:
+\begin{itemize}
+  \item \(\alpha_{MAC}\) должна быть задана заранее; автомат не выводит классы из сырых измерений очередей или трафика.
+  \item MAC не является глобальным оптимизатором сети и не должен принимать решения SDN/RIC.
+  \item Корректность safety-свойств зависит от консервативности порогов дискретизации.
+  \item Модель проверяет bounded response и отсутствие тупиков, но не доказывает вероятностную эффективность расписания.
+  \item Таблица политик должна быть полной относительно конечного домена входных классов.
+\end{itemize}
+
+\section{Заключение}
+
+MAC / Resource Scheduling layer целесообразно задавать как композицию \(\A{SCH}\), \(\A{Q}\), \(\A{BUF}\), \(\A{RSRC}\) и \(\A{MAC\_AGG}\). Такой уровень принимает дискретизированные PHY-KPI, применяет конечные политики SDN/RIC и обязан явно завершать конфликт между communication и sensing: локальным расписанием, ограниченным режимом, отказом или отчетом наверх. Слабое место модели состоит в возможном смешении MAC и SDN: если MAC начинает выполнять глобальную реконфигурацию, иерархическая контрактная формализация теряет смысл. Поэтому в данной спецификации MAC ограничен локальным расписанием и проверяемыми временными гарантиями.
+
+\begin{thebibliography}{9}
+
+\bibitem{liu_senscap}
+G. Liu et al., ``SensCAP: A Systematic Sensing Capability Performance Metric for 6G ISAC,'' \emph{IEEE Internet of Things Journal}, vol. 11, no. 18, pp. 29438--29454, 2024, doi: 10.1109/JIOT.2024.3430502.
+
+\bibitem{liu_coop}
+G. Liu et al., ``Cooperative Sensing for 6G ISAC: Concept, Key Technologies, Performance Evaluation, and Field Trial,'' \emph{Engineering}, vol. 56, pp. 130--148, 2026.
+
+\bibitem{alur_dill}
+R. Alur and D. L. Dill, ``A Theory of Timed Automata,'' \emph{Theoretical Computer Science}, vol. 126, no. 2, pp. 183--235, 1994.
+
+\bibitem{mosudi_sdn}
+O. A. Mosudi, S. I. Popoola, A. A. Atayero, and A. A. Elngar, ``SDN for 5G and Beyond: Transforming Network Architecture,'' 2025.
+
+\bibitem{zolanvari_sdn}
+Zolanvari, ``SDN for 5G,'' 2015.
+
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>
+typedef int[0, 3] PhyStateT;
+const int PHY_NORMAL = 0;
+const int PHY_SENSING_DEGRADED = 1;
+const int PHY_COMMUNICATION_DEGRADED = 2;
+const int PHY_JOINT_DEGRADED = 3;
+PhyStateT PHYState = PHY_NORMAL;
+
+broadcast chan channel_report, signal_report, beam_report, sensing_report, phy_kpi_report;
+chan measure_tick, pilot_config, waveform_config, beam_cmd, recovery_cmd;
+clock c_report;
+  </declaration>
+  <template>
+    <name>A_CH</name>
+    <location id="ch0" x="0" y="0">
+      <name x="-20" y="-30">ChannelNominal</name>
+    </location>
+    <init ref="ch0"/>
+    <transition>
+      <source ref="ch0"/>
+      <target ref="ch0"/>
+      <label kind="synchronisation" x="-30" y="40">channel_report!</label>
+    </transition>
+  </template>
+  <template>
+    <name>A_SIG</name>
+    <location id="sig0" x="0" y="0">
+      <name x="-20" y="-30">SignalNominal</name>
+    </location>
+    <init ref="sig0"/>
+    <transition>
+      <source ref="sig0"/>
+      <target ref="sig0"/>
+      <label kind="synchronisation" x="-30" y="40">signal_report!</label>
+    </transition>
+  </template>
+  <template>
+    <name>A_BM</name>
+    <location id="bm0" x="0" y="0">
+      <name x="-20" y="-30">BeamNominal</name>
+    </location>
+    <init ref="bm0"/>
+    <transition>
+      <source ref="bm0"/>
+      <target ref="bm0"/>
+      <label kind="synchronisation" x="-30" y="40">beam_report!</label>
+    </transition>
+  </template>
+  <template>
+    <name>A_SQ</name>
+    <location id="sq0" x="0" y="0">
+      <name x="-20" y="-30">SensingQoSOk</name>
+    </location>
+    <init ref="sq0"/>
+    <transition>
+      <source ref="sq0"/>
+      <target ref="sq0"/>
+      <label kind="synchronisation" x="-30" y="40">sensing_report!</label>
+    </transition>
+  </template>
+  <template>
+    <name>A_PH</name>
+    <location id="ph0" x="0" y="0">
+      <name x="-20" y="-30">PHYNormal</name>
+    </location>
+    <location id="ph1" x="220" y="0">
+      <name x="180" y="-30">PHYSensingDegraded</name>
+    </location>
+    <location id="ph2" x="440" y="0">
+      <name x="390" y="-30">PHYCommunicationDegraded</name>
+    </location>
+    <location id="ph3" x="660" y="0">
+      <name x="610" y="-30">PHYJointDegraded</name>
+    </location>
+    <init ref="ph0"/>
+    <transition>
+      <source ref="ph0"/>
+      <target ref="ph0"/>
+      <label kind="synchronisation" x="-30" y="40">phy_kpi_report!</label>
+      <label kind="assignment" x="-30" y="60">PHYState = PHY_NORMAL</label>
+    </transition>
+  </template>
+  <template>
+    <name>ENV</name>
+    <location id="env0" x="0" y="0">
+      <name x="-20" y="-30">Open</name>
+    </location>
+    <init ref="env0"/>
+  </template>
+  <system>
+CH = A_CH();
+SIG = A_SIG();
+BM = A_BM();
+SQ = A_SQ();
+PH = A_PH();
+E = ENV();
+system CH, SIG, BM, SQ, PH, E;
+  </system>
+</nta>

@@ -1,0 +1,13 @@
+{
+  "name": "default",
+  "source": "built-in",
+  "boundary_policy": "worse_class",
+  "parameter_synthesis": false,
+  "deadlines": {
+    "D_meas": 5,
+    "D_sig": 5,
+    "D_sense": 5,
+    "D_report": 5,
+    "D_BM": 5
+  }
+}

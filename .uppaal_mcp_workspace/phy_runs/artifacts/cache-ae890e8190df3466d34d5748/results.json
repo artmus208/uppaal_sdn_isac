@@ -1,0 +1,427 @@
+{
+  "status": "error",
+  "returncode": 1,
+  "command": [
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-2695ec198abb-1d07d2d4\\model.xml",
+    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-2695ec198abb-1d07d2d4\\queries.q"
+  ],
+  "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-2695ec198abb-1d07d2d4/model.xml",
+  "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-2695ec198abb-1d07d2d4/queries.q",
+  "stdout": "",
+  "stderr": "<3>WSL (4 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+  "elapsed_ms": 11,
+  "timeout_sec": 20.0,
+  "query_results": [],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "templates": [
+      "Template_A_CH",
+      "Template_A_SIG",
+      "Template_A_BM",
+      "Template_A_SQ",
+      "Template_A_PH",
+      "Template_ENV_CH",
+      "Template_ENV_TARGET",
+      "Template_ENV_MAC",
+      "Template_ENV_NET"
+    ],
+    "queries": [
+      "A[] not deadlock"
+    ]
+  },
+  "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-2695ec198abb-1d07d2d4",
+  "runs": [
+    {
+      "status": "error",
+      "returncode": 1,
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-2695ec198abb-1d07d2d4\\model.xml",
+        "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-2695ec198abb-1d07d2d4\\queries.q"
+      ],
+      "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-2695ec198abb-1d07d2d4/model.xml",
+      "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-2695ec198abb-1d07d2d4/queries.q",
+      "stdout": "",
+      "stderr": "<3>WSL (4 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+      "elapsed_ms": 11,
+      "timeout_sec": 20.0,
+      "query_results": [],
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [],
+        "templates": [
+          "Template_A_CH",
+          "Template_A_SIG",
+          "Template_A_BM",
+          "Template_A_SQ",
+          "Template_A_PH",
+          "Template_ENV_CH",
+          "Template_ENV_TARGET",
+          "Template_ENV_MAC",
+          "Template_ENV_NET"
+        ],
+        "queries": [
+          "A[] not deadlock"
+        ]
+      },
+      "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-2695ec198abb-1d07d2d4"
+    }
+  ],
+  "observer_verification_mode": "compact_scenarios",
+  "observer_queries": [
+    "A[] not ObsSenseReport.Violation",
+    "A[] not ObsFreshness.Violation",
+    "A[] not ObsBeamRecovery.Violation"
+  ],
+  "observer_scenario_results": {
+    "ok": false,
+    "results": [
+      {
+        "name": "obs_sense_report_success",
+        "expected_status": "satisfied",
+        "status": "error",
+        "ok": false,
+        "result": {
+          "status": "error",
+          "returncode": 1,
+          "command": [
+            "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-fe2c39cea203-ef5bdec8\\model.xml",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-fe2c39cea203-ef5bdec8\\queries.q"
+          ],
+          "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-fe2c39cea203-ef5bdec8/model.xml",
+          "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-fe2c39cea203-ef5bdec8/queries.q",
+          "stdout": "",
+          "stderr": "<3>WSL (5 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+          "elapsed_ms": 11,
+          "timeout_sec": 12.0,
+          "query_results": [],
+          "validation": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "templates": [
+              "Template_Driver",
+              "Template_ObsSenseReport"
+            ],
+            "queries": [
+              "A[] not ObsSenseReport.Violation"
+            ]
+          },
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-fe2c39cea203-ef5bdec8"
+        },
+        "explanation": {
+          "status": "error",
+          "summary": "At least one generated PHY contract property was not satisfied or was not classified as satisfied.",
+          "counterexample_type": "unknown",
+          "counterexample_classification": "unknown",
+          "failed_queries": [],
+          "reasons": [],
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-fe2c39cea203-ef5bdec8",
+          "normalized_output": {
+            "status": "error",
+            "events": [
+              {
+                "kind": "stderr",
+                "text": "<3>WSL (5 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1",
+                "formula_index": null,
+                "status": null
+              }
+            ],
+            "stderr_tail": "<3>WSL (5 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1"
+          },
+          "parsed_trace": null
+        }
+      },
+      {
+        "name": "obs_sense_report_violation",
+        "expected_status": "not_satisfied",
+        "status": "error",
+        "ok": false,
+        "result": {
+          "status": "error",
+          "returncode": 1,
+          "command": [
+            "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-efe249197872-25f3a7db\\model.xml",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-efe249197872-25f3a7db\\queries.q"
+          ],
+          "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-efe249197872-25f3a7db/model.xml",
+          "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-efe249197872-25f3a7db/queries.q",
+          "stdout": "",
+          "stderr": "<3>WSL (6 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+          "elapsed_ms": 13,
+          "timeout_sec": 12.0,
+          "query_results": [],
+          "validation": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "templates": [
+              "Template_Driver",
+              "Template_ObsSenseReport"
+            ],
+            "queries": [
+              "A[] not ObsSenseReport.Violation"
+            ]
+          },
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-efe249197872-25f3a7db"
+        },
+        "explanation": {
+          "status": "error",
+          "summary": "At least one generated PHY contract property was not satisfied or was not classified as satisfied.",
+          "counterexample_type": "unknown",
+          "counterexample_classification": "unknown",
+          "failed_queries": [],
+          "reasons": [],
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-efe249197872-25f3a7db",
+          "normalized_output": {
+            "status": "error",
+            "events": [
+              {
+                "kind": "stderr",
+                "text": "<3>WSL (6 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1",
+                "formula_index": null,
+                "status": null
+              }
+            ],
+            "stderr_tail": "<3>WSL (6 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1"
+          },
+          "parsed_trace": null
+        }
+      },
+      {
+        "name": "obs_freshness_success",
+        "expected_status": "satisfied",
+        "status": "error",
+        "ok": false,
+        "result": {
+          "status": "error",
+          "returncode": 1,
+          "command": [
+            "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-f6834820bf20-843f0787\\model.xml",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-f6834820bf20-843f0787\\queries.q"
+          ],
+          "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-f6834820bf20-843f0787/model.xml",
+          "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-f6834820bf20-843f0787/queries.q",
+          "stdout": "",
+          "stderr": "<3>WSL (7 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+          "elapsed_ms": 14,
+          "timeout_sec": 12.0,
+          "query_results": [],
+          "validation": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "templates": [
+              "Template_Driver",
+              "Template_ObsFreshness"
+            ],
+            "queries": [
+              "A[] not ObsFreshness.Violation"
+            ]
+          },
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-f6834820bf20-843f0787"
+        },
+        "explanation": {
+          "status": "error",
+          "summary": "At least one generated PHY contract property was not satisfied or was not classified as satisfied.",
+          "counterexample_type": "unknown",
+          "counterexample_classification": "unknown",
+          "failed_queries": [],
+          "reasons": [],
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-f6834820bf20-843f0787",
+          "normalized_output": {
+            "status": "error",
+            "events": [
+              {
+                "kind": "stderr",
+                "text": "<3>WSL (7 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1",
+                "formula_index": null,
+                "status": null
+              }
+            ],
+            "stderr_tail": "<3>WSL (7 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1"
+          },
+          "parsed_trace": null
+        }
+      },
+      {
+        "name": "obs_freshness_violation",
+        "expected_status": "not_satisfied",
+        "status": "error",
+        "ok": false,
+        "result": {
+          "status": "error",
+          "returncode": 1,
+          "command": [
+            "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-a01a2640558c-9b19bcbb\\model.xml",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-a01a2640558c-9b19bcbb\\queries.q"
+          ],
+          "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-a01a2640558c-9b19bcbb/model.xml",
+          "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-a01a2640558c-9b19bcbb/queries.q",
+          "stdout": "",
+          "stderr": "<3>WSL (8 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+          "elapsed_ms": 10,
+          "timeout_sec": 12.0,
+          "query_results": [],
+          "validation": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "templates": [
+              "Template_Driver",
+              "Template_ObsFreshness"
+            ],
+            "queries": [
+              "A[] not ObsFreshness.Violation"
+            ]
+          },
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-a01a2640558c-9b19bcbb"
+        },
+        "explanation": {
+          "status": "error",
+          "summary": "At least one generated PHY contract property was not satisfied or was not classified as satisfied.",
+          "counterexample_type": "unknown",
+          "counterexample_classification": "unknown",
+          "failed_queries": [],
+          "reasons": [],
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-a01a2640558c-9b19bcbb",
+          "normalized_output": {
+            "status": "error",
+            "events": [
+              {
+                "kind": "stderr",
+                "text": "<3>WSL (8 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1",
+                "formula_index": null,
+                "status": null
+              }
+            ],
+            "stderr_tail": "<3>WSL (8 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1"
+          },
+          "parsed_trace": null
+        }
+      },
+      {
+        "name": "obs_beam_recovery_success",
+        "expected_status": "satisfied",
+        "status": "error",
+        "ok": false,
+        "result": {
+          "status": "error",
+          "returncode": 1,
+          "command": [
+            "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-5483920ca9bd-eb957b88\\model.xml",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191845Z-5483920ca9bd-eb957b88\\queries.q"
+          ],
+          "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-5483920ca9bd-eb957b88/model.xml",
+          "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-5483920ca9bd-eb957b88/queries.q",
+          "stdout": "",
+          "stderr": "<3>WSL (9 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+          "elapsed_ms": 15,
+          "timeout_sec": 12.0,
+          "query_results": [],
+          "validation": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "templates": [
+              "Template_Driver",
+              "Template_ObsBeamRecovery"
+            ],
+            "queries": [
+              "A[] not ObsBeamRecovery.Violation"
+            ]
+          },
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-5483920ca9bd-eb957b88"
+        },
+        "explanation": {
+          "status": "error",
+          "summary": "At least one generated PHY contract property was not satisfied or was not classified as satisfied.",
+          "counterexample_type": "unknown",
+          "counterexample_classification": "unknown",
+          "failed_queries": [],
+          "reasons": [],
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191845Z-5483920ca9bd-eb957b88",
+          "normalized_output": {
+            "status": "error",
+            "events": [
+              {
+                "kind": "stderr",
+                "text": "<3>WSL (9 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1",
+                "formula_index": null,
+                "status": null
+              }
+            ],
+            "stderr_tail": "<3>WSL (9 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1"
+          },
+          "parsed_trace": null
+        }
+      },
+      {
+        "name": "obs_beam_recovery_violation",
+        "expected_status": "not_satisfied",
+        "status": "error",
+        "ok": false,
+        "result": {
+          "status": "error",
+          "returncode": 1,
+          "command": [
+            "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191846Z-2ad0887d34fd-2767cd78\\model.xml",
+            "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T191846Z-2ad0887d34fd-2767cd78\\queries.q"
+          ],
+          "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191846Z-2ad0887d34fd-2767cd78/model.xml",
+          "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191846Z-2ad0887d34fd-2767cd78/queries.q",
+          "stdout": "",
+          "stderr": "<3>WSL (10 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+          "elapsed_ms": 11,
+          "timeout_sec": 12.0,
+          "query_results": [],
+          "validation": {
+            "ok": true,
+            "errors": [],
+            "warnings": [],
+            "templates": [
+              "Template_Driver",
+              "Template_ObsBeamRecovery"
+            ],
+            "queries": [
+              "A[] not ObsBeamRecovery.Violation"
+            ]
+          },
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191846Z-2ad0887d34fd-2767cd78"
+        },
+        "explanation": {
+          "status": "error",
+          "summary": "At least one generated PHY contract property was not satisfied or was not classified as satisfied.",
+          "counterexample_type": "unknown",
+          "counterexample_classification": "unknown",
+          "failed_queries": [],
+          "reasons": [],
+          "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T191846Z-2ad0887d34fd-2767cd78",
+          "normalized_output": {
+            "status": "error",
+            "events": [
+              {
+                "kind": "stderr",
+                "text": "<3>WSL (10 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1",
+                "formula_index": null,
+                "status": null
+              }
+            ],
+            "stderr_tail": "<3>WSL (10 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1"
+          },
+          "parsed_trace": null
+        }
+      }
+    ]
+  }
+}

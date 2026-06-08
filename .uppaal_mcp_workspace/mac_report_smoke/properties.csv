@@ -1,0 +1,9 @@
+name,category,query,interpretation
+deadlock_free,safety,A[] not deadlock,closed MAC model has no deadlocks
+no_silent_accept,safety,A[] (resourceClass == RES_EXHAUSTED imply !silent_accept),exhausted resource is never silently accepted
+ack_invariant,timing,A[] (A_SCH.WaitPHYAck imply c_phy_ack <= D_phy_ack),wait-for-PHY-ack state respects its deadline
+ObsPhyAck,observer,A[] not ObsPhyAck.Violation,PHY command is acked or failed by deadline
+ObsQueueCritical,observer,A[] not ObsQueueCritical.Violation,critical queue gets bounded response
+ObsSensingCritical,observer,A[] not ObsSensingCritical.Violation,critical sensing demand gets bounded response
+reach_schedule,reachability,E<> A_SCH.SelectMode,scheduler can reach policy selection
+reach_report,reachability,E<> A_MAC_AGG.ReportSent,MAC can emit report

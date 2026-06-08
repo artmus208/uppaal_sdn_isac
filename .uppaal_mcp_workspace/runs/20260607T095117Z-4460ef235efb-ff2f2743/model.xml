@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>
+clock x;
+const int DEADLINE = 5;
+  </declaration>
+  <template>
+    <name>Controller</name>
+    <location id="id0" x="0" y="0">
+      <name x="-20" y="-30">Idle</name>
+    </location>
+    <location id="id1" x="220" y="0">
+      <name x="190" y="-30">Waiting</name>
+      <label kind="invariant" x="190" y="20">x &lt;= DEADLINE</label>
+    </location>
+    <location id="id2" x="440" y="0">
+      <name x="420" y="-30">Done</name>
+    </location>
+    <init ref="id0"/>
+    <transition>
+      <source ref="id0"/>
+      <target ref="id1"/>
+      <label kind="assignment" x="70" y="-40">x = 0</label>
+    </transition>
+    <transition>
+      <source ref="id1"/>
+      <target ref="id2"/>
+      <label kind="guard" x="290" y="-40">x &lt;= DEADLINE</label>
+    </transition>
+  </template>
+  <system>
+C = Controller();
+system C;
+  </system>
+</nta>

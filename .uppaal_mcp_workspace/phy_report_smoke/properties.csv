@@ -1,0 +1,18 @@
+name,category,query,result,source,line
+deadlock_free,safety,A[] not deadlock,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,812
+reach_phy_normal,reachability,E<> A_PH.PHYNormal,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,813
+reach_phy_sensing_degraded,reachability,E<> A_PH.PHYSensingDegraded,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,814
+reach_phy_communication_degraded,reachability,E<> A_PH.PHYCommunicationDegraded,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,815
+reach_phy_joint_degraded,reachability,E<> A_PH.PHYJointDegraded,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,816
+aggregation_consistency,safety,A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok)),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,817
+ch_determinism,safety,A[] (ch_enabled_count <= 1),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,858
+sq_determinism,safety,A[] (sq_enabled_count <= 1),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,859
+bm_recover_invariant,safety,A[] (A_BM.BeamRecover imply c_rec <= D_BM),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,854
+ObsSenseReport,observer,A[] not ObsSenseReport.Violation,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,820
+ObsFreshness,observer,A[] not ObsFreshness.Violation,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,832
+ObsBeamRecovery,observer,A[] not ObsBeamRecovery.Violation,not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,842
+contract_ch,contract,A[] (ass_ch() imply not A_CH.ContractViolation_CH),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,877
+contract_sig,contract,A[] (ass_sig() imply not A_SIG.ContractViolation_SIG),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,878
+contract_bm,contract,A[] (ass_bm() imply not A_BM.ContractViolation_BM),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,879
+contract_sq,contract,A[] (ass_sq() imply not A_SQ.ContractViolation_SQ),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,880
+contract_ph,contract,A[] (ass_ph() imply not A_PH.ContractViolation_PH),not_run,PHY_level_formalization_reviewed-2026-06-06-143000.tex,881

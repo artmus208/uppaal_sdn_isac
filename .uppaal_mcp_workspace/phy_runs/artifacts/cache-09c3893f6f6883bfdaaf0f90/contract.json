@@ -1,0 +1,4102 @@
+{
+  "source_name": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  "phy_components": [
+    "A_CH",
+    "A_SIG",
+    "A_BM",
+    "A_SQ",
+    "A_PH"
+  ],
+  "env_components": [
+    "ENV_CH",
+    "ENV_TARGET",
+    "ENV_MAC",
+    "ENV_NET"
+  ],
+  "classes": [
+    {
+      "name": "SINRClass",
+      "values": [
+        "OUTAGE",
+        "LOW",
+        "OK",
+        "HIGH"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 170
+      }
+    },
+    {
+      "name": "BLERClass",
+      "values": [
+        "OK",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 193
+      }
+    },
+    {
+      "name": "CQIClass",
+      "values": [
+        "GOOD",
+        "LIMITED",
+        "BAD"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 194
+      }
+    },
+    {
+      "name": "IClass",
+      "values": [
+        "OK",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 195
+      }
+    },
+    {
+      "name": "DopplerClass",
+      "values": [
+        "OK",
+        "HIGH"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 196
+      }
+    },
+    {
+      "name": "DelaySpreadClass",
+      "values": [
+        "OK",
+        "HIGH"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 197
+      }
+    },
+    {
+      "name": "PowerClass",
+      "values": [
+        "OK",
+        "LOW",
+        "ABSENT"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 198
+      }
+    },
+    {
+      "name": "DRTClass",
+      "values": [
+        "OK",
+        "BAD"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 199
+      }
+    },
+    {
+      "name": "PilotDensityClass",
+      "values": [
+        "OK",
+        "LOW",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 200
+      }
+    },
+    {
+      "name": "PayloadSenseClass",
+      "values": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 201
+      }
+    },
+    {
+      "name": "PRSClass",
+      "values": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 202
+      }
+    },
+    {
+      "name": "BeamErrorClass",
+      "values": [
+        "LOCKABLE",
+        "UNSTABLE",
+        "CRITICAL"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 203
+      }
+    },
+    {
+      "name": "BlockageClass",
+      "values": [
+        "NONE",
+        "SUSPECTED",
+        "CONFIRMED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 204
+      }
+    },
+    {
+      "name": "PdClass",
+      "values": [
+        "OK",
+        "LOW",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 205
+      }
+    },
+    {
+      "name": "RfaClass",
+      "values": [
+        "OK",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 206
+      }
+    },
+    {
+      "name": "AccClass",
+      "values": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 207
+      }
+    },
+    {
+      "name": "CRBClass",
+      "values": [
+        "OK",
+        "LOOSE",
+        "UNUSABLE"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 208
+      }
+    },
+    {
+      "name": "AoSClass",
+      "values": [
+        "FRESH",
+        "STALE",
+        "EXPIRED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 209
+      }
+    },
+    {
+      "name": "CapClass",
+      "values": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 210
+      }
+    },
+    {
+      "name": "CoverageClass",
+      "values": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 211
+      }
+    },
+    {
+      "name": "ResourceShareClass",
+      "values": [
+        "OK",
+        "LIMITED",
+        "STARVED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 212
+      }
+    },
+    {
+      "name": "MisClass",
+      "values": [
+        "OK",
+        "WARN",
+        "CRITICAL"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 213
+      }
+    },
+    {
+      "name": "BMOverheadClass",
+      "values": [
+        "OK",
+        "HIGH",
+        "EXCESSIVE"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 214
+      }
+    },
+    {
+      "name": "ChannelClass",
+      "values": [
+        "NOMINAL",
+        "INTERFERENCE_LIMITED",
+        "MOBILITY_LIMITED",
+        "MULTIPATH_LIMITED",
+        "BLOCKAGE",
+        "OUTAGE"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 215
+      }
+    },
+    {
+      "name": "SignalClass",
+      "values": [
+        "NOMINAL",
+        "PILOT_BASED",
+        "PAYLOAD_ASSISTED",
+        "RECONFIGURING",
+        "LIMITED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 217
+      }
+    },
+    {
+      "name": "BeamClass",
+      "values": [
+        "SEARCH",
+        "TRACK",
+        "LOCKED",
+        "PREDICT",
+        "MISALIGNED",
+        "RECOVERING",
+        "HO_ASSIST",
+        "FAILED"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 219
+      }
+    },
+    {
+      "name": "SensingState",
+      "values": [
+        "SensingQoSOk",
+        "ProbabilityLimited",
+        "FalseAlarmLimited",
+        "AccuracyLimited",
+        "FreshnessLimited",
+        "CoverageLimited",
+        "CapacityLimited",
+        "SensingFailure"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 221
+      }
+    },
+    {
+      "name": "PHYState",
+      "values": [
+        "PHYNormal",
+        "PHYCommunicationDegraded",
+        "PHYSensingDegraded",
+        "PHYJointDegraded",
+        "PHYRecovery",
+        "PHYFailure"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 225
+      }
+    }
+  ],
+  "clocks": [
+    {
+      "name": "c_meas",
+      "meaning": "age of last channel measurement",
+      "reset": "measure_tick?, channel_report!",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 283
+      }
+    },
+    {
+      "name": "c_sig",
+      "meaning": "duration of signal configuration",
+      "reset": "config commands, signal_report!",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 285
+      }
+    },
+    {
+      "name": "c_sense",
+      "meaning": "sensing state computation age",
+      "reset": "child reports, sensing_report!",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 287
+      }
+    },
+    {
+      "name": "c_report",
+      "meaning": "aggregated PHY report age",
+      "reset": "phy_kpi_report!",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 289
+      }
+    },
+    {
+      "name": "c_rec",
+      "meaning": "beam recovery duration",
+      "reset": "enter BeamRecover",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 291
+      }
+    },
+    {
+      "name": "c_ssb",
+      "meaning": "SSB/beam-search window duration",
+      "reset": "enter BeamSearch or ssb_burst_config?",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 293
+      }
+    },
+    {
+      "name": "aos_bs",
+      "meaning": "local Age of Sensing at BS",
+      "reset": "sensing_success!",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 295
+      }
+    },
+    {
+      "name": "aos_ctrl",
+      "meaning": "Age of Sensing at controller",
+      "reset": "controller_report_delivered?",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 297
+      }
+    },
+    {
+      "name": "c_obs",
+      "meaning": "observer deadline clock",
+      "reset": "enter observer wait state",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "clocks",
+        "line": 300
+      }
+    }
+  ],
+  "channels": [
+    {
+      "name": "measure_tick",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "pilot_config",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "prs_config",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "ssb_burst_config",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "waveform_config",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "payload_sensing_config",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "beam_cmd",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "extra_ssb_cmd",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "handover_assist_cmd",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "power_cmd",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "sensing_mode_cmd",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "recovery_cmd",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "new_beam_confirmed",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "mac_report_delivered",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "controller_report_delivered",
+      "kind": "handshake",
+      "role": "environment/MAC/SDN command",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 319
+      }
+    },
+    {
+      "name": "channel_report",
+      "kind": "broadcast",
+      "role": "report notification",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 325
+      }
+    },
+    {
+      "name": "signal_report",
+      "kind": "broadcast",
+      "role": "report notification",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 325
+      }
+    },
+    {
+      "name": "beam_report",
+      "kind": "broadcast",
+      "role": "report notification",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 325
+      }
+    },
+    {
+      "name": "sensing_report",
+      "kind": "broadcast",
+      "role": "report notification",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 325
+      }
+    },
+    {
+      "name": "phy_kpi_report",
+      "kind": "broadcast",
+      "role": "report notification",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 325
+      }
+    },
+    {
+      "name": "channel_degraded",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "signal_degraded",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "beam_misaligned",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "beam_failure",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "sensing_degraded",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "phy_outage",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "degradation_event",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "recovery_event",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "mobility_alert",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "multipath_alert",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "blockage_detected",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "beam_locked",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "beam_restored",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "handover_hint",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "sensing_failure",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "phy_failure",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "sensing_success",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "aos_ctrl_expired",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "recovery_start",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "target_detected",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "contract_violation_ch",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "contract_violation_sig",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "contract_violation_bm",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "contract_violation_sq",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    },
+    {
+      "name": "contract_violation_ph",
+      "kind": "broadcast",
+      "role": "diagnostic/degradation/recovery event",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "channels",
+        "line": 329
+      }
+    }
+  ],
+  "automata": [
+    {
+      "name": "A_CH",
+      "initial": "ChannelNominal",
+      "locations": [
+        {
+          "name": "MeasurePending",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "ChannelNominal",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "InterferenceLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "MobilityLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "MultipathLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "Blockage",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "Outage",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "ContractViolation_CH",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [],
+      "assumptions": [
+        "measurements refreshed not later than T_meas + J_meas",
+        "class inputs are in declared enum ranges"
+      ],
+      "guarantees": [
+        "channel_report! within D_meas",
+        "ChannelClass follows priority prio_CH"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_CH",
+        "line": 377
+      }
+    },
+    {
+      "name": "A_SIG",
+      "initial": "SignalNominal",
+      "locations": [
+        {
+          "name": "SignalNominal",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PilotBasedSensing",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PayloadAssistedSensing",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "SignalReconfiguring",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "SignalLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "ContractViolation_SIG",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [],
+      "assumptions": [
+        "MAC/SDN provides admissible waveform and pilot configuration"
+      ],
+      "guarantees": [
+        "signal_report! within D_sig",
+        "waveform W is a variable, not a location"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_SIG",
+        "line": 444
+      }
+    },
+    {
+      "name": "A_BM",
+      "initial": "BeamSearch",
+      "locations": [
+        {
+          "name": "BeamSearch",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamSearchSeen",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamTrack",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamLock",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamPredict",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamMisalign",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamRecoveryStart",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamRecover",
+          "invariant": "c_rec <= D_BM",
+          "provenance": null
+        },
+        {
+          "name": "BeamHOAssist",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "BeamFailed",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "ContractViolation_BM",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [],
+      "assumptions": [
+        "beam commands and SSB/PRS configuration are finite and admissible"
+      ],
+      "guarantees": [
+        "recovery outcome no later than c_rec == D_BM",
+        "no c_rec > D_BM transition under BeamRecover invariant"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_BM",
+        "line": 487
+      }
+    },
+    {
+      "name": "A_SQ",
+      "initial": "Idle",
+      "locations": [
+        {
+          "name": "Idle",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "SensingEvaluating",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "SensingQoSOk",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "ProbabilityLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "FalseAlarmLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "AccuracyLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "FreshnessLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "CoverageLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "CapacityLimited",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "SensingFailure",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "ContractViolation_SQ",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [],
+      "assumptions": [
+        "fresh channel_report?, signal_report?, beam_report?"
+      ],
+      "guarantees": [
+        "sensing_report! within D_sense",
+        "SensingState follows priority prio_SQ"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_SQ",
+        "line": 585
+      }
+    },
+    {
+      "name": "A_PH",
+      "initial": "PHYNormal",
+      "locations": [
+        {
+          "name": "PHYNormal",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PHYCommunicationDegraded",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PHYSensingDegraded",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PHYJointDegraded",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PHYKpiReporting",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PHYRecovery",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "PHYFailure",
+          "invariant": null,
+          "provenance": null
+        },
+        {
+          "name": "ContractViolation_PH",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [],
+      "assumptions": [
+        "child reports delivered within D_child",
+        "aos_bs and aos_ctrl reset correctly"
+      ],
+      "guarantees": [
+        "phy_kpi_report! within D_report",
+        "only A_PH updates PHYState"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_PH",
+        "line": 667
+      }
+    }
+  ],
+  "observers": [
+    {
+      "name": "ObsSenseReport",
+      "trigger": "sensing_degraded?",
+      "responses": [
+        "phy_kpi_report?"
+      ],
+      "deadline": "D_report",
+      "violation_query": "A[] not ObsSenseReport.Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 820
+      }
+    },
+    {
+      "name": "ObsFreshness",
+      "trigger": "aos_ctrl_expired?",
+      "responses": [
+        "sensing_report?"
+      ],
+      "deadline": "D_sense",
+      "violation_query": "A[] not ObsFreshness.Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 832
+      }
+    },
+    {
+      "name": "ObsBeamRecovery",
+      "trigger": "recovery_start?",
+      "responses": [
+        "beam_restored?",
+        "handover_hint?",
+        "beam_failure?"
+      ],
+      "deadline": "D_BM",
+      "violation_query": "A[] not ObsBeamRecovery.Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 842
+      }
+    }
+  ],
+  "properties": [
+    {
+      "name": "deadlock_free",
+      "query": "A[] not deadlock",
+      "category": "safety",
+      "interpretation": "closed A_SYS has no deadlocks",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 812
+      }
+    },
+    {
+      "name": "reach_phy_normal",
+      "query": "E<> A_PH.PHYNormal",
+      "category": "reachability",
+      "interpretation": "normal PHY state is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 813
+      }
+    },
+    {
+      "name": "reach_phy_sensing_degraded",
+      "query": "E<> A_PH.PHYSensingDegraded",
+      "category": "reachability",
+      "interpretation": "sensing degradation is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 814
+      }
+    },
+    {
+      "name": "reach_phy_communication_degraded",
+      "query": "E<> A_PH.PHYCommunicationDegraded",
+      "category": "reachability",
+      "interpretation": "communication degradation is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 815
+      }
+    },
+    {
+      "name": "reach_phy_joint_degraded",
+      "query": "E<> A_PH.PHYJointDegraded",
+      "category": "reachability",
+      "interpretation": "joint degradation is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 816
+      }
+    },
+    {
+      "name": "aggregation_consistency",
+      "query": "A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))",
+      "category": "safety",
+      "interpretation": "normal state implies both aggregate booleans are ok",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 817
+      }
+    },
+    {
+      "name": "ch_determinism",
+      "query": "A[] (ch_enabled_count <= 1)",
+      "category": "safety",
+      "interpretation": "channel classifier has at most one enabled result",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 858
+      }
+    },
+    {
+      "name": "sq_determinism",
+      "query": "A[] (sq_enabled_count <= 1)",
+      "category": "safety",
+      "interpretation": "sensing classifier has at most one enabled result",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 859
+      }
+    },
+    {
+      "name": "bm_recover_invariant",
+      "query": "A[] (A_BM.BeamRecover imply c_rec <= D_BM)",
+      "category": "safety",
+      "interpretation": "beam recovery never exceeds its invariant",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 854
+      }
+    },
+    {
+      "name": "ObsSenseReport",
+      "query": "A[] not ObsSenseReport.Violation",
+      "category": "observer",
+      "interpretation": "ObsSenseReport does not reach Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 820
+      }
+    },
+    {
+      "name": "ObsFreshness",
+      "query": "A[] not ObsFreshness.Violation",
+      "category": "observer",
+      "interpretation": "ObsFreshness does not reach Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 832
+      }
+    },
+    {
+      "name": "ObsBeamRecovery",
+      "query": "A[] not ObsBeamRecovery.Violation",
+      "category": "observer",
+      "interpretation": "ObsBeamRecovery does not reach Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 842
+      }
+    },
+    {
+      "name": "contract_ch",
+      "query": "A[] (ass_ch() imply not A_CH.ContractViolation_CH)",
+      "category": "contract",
+      "interpretation": "A_CH contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 877
+      }
+    },
+    {
+      "name": "contract_sig",
+      "query": "A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)",
+      "category": "contract",
+      "interpretation": "A_SIG contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 878
+      }
+    },
+    {
+      "name": "contract_bm",
+      "query": "A[] (ass_bm() imply not A_BM.ContractViolation_BM)",
+      "category": "contract",
+      "interpretation": "A_BM contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 879
+      }
+    },
+    {
+      "name": "contract_sq",
+      "query": "A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)",
+      "category": "contract",
+      "interpretation": "A_SQ contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 880
+      }
+    },
+    {
+      "name": "contract_ph",
+      "query": "A[] (ass_ph() imply not A_PH.ContractViolation_PH)",
+      "category": "contract",
+      "interpretation": "A_PH contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 881
+      }
+    }
+  ],
+  "contracts": [
+    {
+      "automaton": "A_CH",
+      "assumptions": [
+        "ass_ch()"
+      ],
+      "guarantees": [
+        "gar_ch()"
+      ],
+      "violation_location": "ContractViolation_CH",
+      "violation_channel": "contract_violation_ch",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 263
+      }
+    },
+    {
+      "automaton": "A_SIG",
+      "assumptions": [
+        "ass_sig()"
+      ],
+      "guarantees": [
+        "gar_sig()"
+      ],
+      "violation_location": "ContractViolation_SIG",
+      "violation_channel": "contract_violation_sig",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 265
+      }
+    },
+    {
+      "automaton": "A_BM",
+      "assumptions": [
+        "ass_bm()"
+      ],
+      "guarantees": [
+        "gar_bm()"
+      ],
+      "violation_location": "ContractViolation_BM",
+      "violation_channel": "contract_violation_bm",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 267
+      }
+    },
+    {
+      "automaton": "A_SQ",
+      "assumptions": [
+        "ass_sq()"
+      ],
+      "guarantees": [
+        "gar_sq()"
+      ],
+      "violation_location": "ContractViolation_SQ",
+      "violation_channel": "contract_violation_sq",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 269
+      }
+    },
+    {
+      "automaton": "A_PH",
+      "assumptions": [
+        "ass_ph()"
+      ],
+      "guarantees": [
+        "gar_ph()"
+      ],
+      "violation_location": "ContractViolation_PH",
+      "violation_channel": "contract_violation_ph",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 271
+      }
+    }
+  ],
+  "variables": [
+    {
+      "name": "SINRClass",
+      "type_name": "SINRClassT",
+      "initial": "OUTAGE",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 170
+      }
+    },
+    {
+      "name": "BLERClass",
+      "type_name": "BLERClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 193
+      }
+    },
+    {
+      "name": "CQIClass",
+      "type_name": "CQIClassT",
+      "initial": "GOOD",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 194
+      }
+    },
+    {
+      "name": "IClass",
+      "type_name": "IClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 195
+      }
+    },
+    {
+      "name": "DopplerClass",
+      "type_name": "DopplerClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 196
+      }
+    },
+    {
+      "name": "DelaySpreadClass",
+      "type_name": "DelaySpreadClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 197
+      }
+    },
+    {
+      "name": "PowerClass",
+      "type_name": "PowerClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 198
+      }
+    },
+    {
+      "name": "DRTClass",
+      "type_name": "DRTClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 199
+      }
+    },
+    {
+      "name": "PilotDensityClass",
+      "type_name": "PilotDensityClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 200
+      }
+    },
+    {
+      "name": "PayloadSenseClass",
+      "type_name": "PayloadSenseClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 201
+      }
+    },
+    {
+      "name": "PRSClass",
+      "type_name": "PRSClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 202
+      }
+    },
+    {
+      "name": "BeamErrorClass",
+      "type_name": "BeamErrorClassT",
+      "initial": "LOCKABLE",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 203
+      }
+    },
+    {
+      "name": "BlockageClass",
+      "type_name": "BlockageClassT",
+      "initial": "NONE",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 204
+      }
+    },
+    {
+      "name": "PdClass",
+      "type_name": "PdClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 205
+      }
+    },
+    {
+      "name": "RfaClass",
+      "type_name": "RfaClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 206
+      }
+    },
+    {
+      "name": "AccClass",
+      "type_name": "AccClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 207
+      }
+    },
+    {
+      "name": "CRBClass",
+      "type_name": "CRBClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 208
+      }
+    },
+    {
+      "name": "AoSClass",
+      "type_name": "AoSClassT",
+      "initial": "FRESH",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 209
+      }
+    },
+    {
+      "name": "CapClass",
+      "type_name": "CapClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 210
+      }
+    },
+    {
+      "name": "CoverageClass",
+      "type_name": "CoverageClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 211
+      }
+    },
+    {
+      "name": "ResourceShareClass",
+      "type_name": "ResourceShareClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 212
+      }
+    },
+    {
+      "name": "MisClass",
+      "type_name": "MisClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 213
+      }
+    },
+    {
+      "name": "BMOverheadClass",
+      "type_name": "BMOverheadClassT",
+      "initial": "OK",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 214
+      }
+    },
+    {
+      "name": "ChannelClass",
+      "type_name": "ChannelClassT",
+      "initial": "NOMINAL",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 215
+      }
+    },
+    {
+      "name": "SignalClass",
+      "type_name": "SignalClassT",
+      "initial": "NOMINAL",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 217
+      }
+    },
+    {
+      "name": "BeamClass",
+      "type_name": "BeamClassT",
+      "initial": "SEARCH",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 219
+      }
+    },
+    {
+      "name": "SensingState",
+      "type_name": "SensingStateT",
+      "initial": "SensingQoSOk",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 221
+      }
+    },
+    {
+      "name": "PHYState",
+      "type_name": "PHYStateT",
+      "initial": "PHYNormal",
+      "role": "finite alpha_PHY class variable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "alpha_PHY/X_disc",
+        "line": 225
+      }
+    },
+    {
+      "name": "W",
+      "type_name": "WaveformT",
+      "initial": "W_OFDM",
+      "role": "finite waveform selector; waveform values are not locations",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_SIG",
+        "line": 438
+      }
+    },
+    {
+      "name": "env_scenario",
+      "type_name": "int[0,3]",
+      "initial": "SCENARIO_NORMAL",
+      "role": "bounded environment scenario selector",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_ENV",
+        "line": 705
+      }
+    },
+    {
+      "name": "channel_degraded_flag",
+      "type_name": "bool",
+      "initial": "false",
+      "role": "diagnostic flag",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "reports",
+        "line": 735
+      }
+    },
+    {
+      "name": "signal_degraded_flag",
+      "type_name": "bool",
+      "initial": "false",
+      "role": "diagnostic flag",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "reports",
+        "line": 737
+      }
+    },
+    {
+      "name": "beam_degraded_flag",
+      "type_name": "bool",
+      "initial": "false",
+      "role": "diagnostic flag",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "reports",
+        "line": 739
+      }
+    },
+    {
+      "name": "sensing_degraded_flag",
+      "type_name": "bool",
+      "initial": "false",
+      "role": "observer trigger metadata",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "reports",
+        "line": 741
+      }
+    },
+    {
+      "name": "sensing_failure_flag",
+      "type_name": "bool",
+      "initial": "false",
+      "role": "observer trigger metadata",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "reports",
+        "line": 743
+      }
+    },
+    {
+      "name": "degradation_flag",
+      "type_name": "bool",
+      "initial": "false",
+      "role": "aggregate PHY degradation flag",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "reports",
+        "line": 745
+      }
+    },
+    {
+      "name": "TimingOk",
+      "type_name": "bool",
+      "initial": "true",
+      "role": "environment timing assumption",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 253
+      }
+    },
+    {
+      "name": "ConfigAdmissible",
+      "type_name": "bool",
+      "initial": "true",
+      "role": "MAC/SDN configuration assumption",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 255
+      }
+    },
+    {
+      "name": "BeamCmdAdmissible",
+      "type_name": "bool",
+      "initial": "true",
+      "role": "beam command assumption",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 257
+      }
+    },
+    {
+      "name": "NetDeliveryOk",
+      "type_name": "bool",
+      "initial": "true",
+      "role": "network delivery assumption",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 259
+      }
+    }
+  ],
+  "env": [
+    {
+      "name": "ENV_CH",
+      "initial": "TickWait",
+      "locations": [
+        {
+          "name": "TickWait",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [
+        {
+          "source": "TickWait",
+          "target": "TickWait",
+          "guard": null,
+          "sync": "measure_tick!",
+          "assignment": "update finite channel/sensing estimator classes",
+          "provenance": null
+        }
+      ],
+      "assumptions": [
+        "bounded nondeterministic measurement ticks",
+        "continuous estimator values are classified before UPPAAL"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_ENV",
+        "line": 705
+      }
+    },
+    {
+      "name": "ENV_TARGET",
+      "initial": "TargetWait",
+      "locations": [
+        {
+          "name": "TargetWait",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [
+        {
+          "source": "TargetWait",
+          "target": "TargetWait",
+          "guard": null,
+          "sync": "target_detected!",
+          "assignment": "update PRSClass, BeamErrorClass, BlockageClass",
+          "provenance": null
+        }
+      ],
+      "assumptions": [
+        "target presence and blockage are abstract finite classes"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_ENV",
+        "line": 711
+      }
+    },
+    {
+      "name": "ENV_MAC",
+      "initial": "ConfigWait",
+      "locations": [
+        {
+          "name": "ConfigWait",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [
+        {
+          "source": "ConfigWait",
+          "target": "ConfigWait",
+          "guard": null,
+          "sync": "pilot_config!",
+          "assignment": "ConfigAdmissible = true",
+          "provenance": null
+        }
+      ],
+      "assumptions": [
+        "MAC/SDN commands are admissible in closed-system smoke mode"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_ENV",
+        "line": 718
+      }
+    },
+    {
+      "name": "ENV_NET",
+      "initial": "DeliveryWait",
+      "locations": [
+        {
+          "name": "DeliveryWait",
+          "invariant": null,
+          "provenance": null
+        }
+      ],
+      "transitions": [
+        {
+          "source": "DeliveryWait",
+          "target": "DeliveryWait",
+          "guard": null,
+          "sync": "controller_report_delivered!",
+          "assignment": "NetDeliveryOk = true, aos_ctrl = 0",
+          "provenance": null
+        }
+      ],
+      "assumptions": [
+        "report delivery is bounded by network abstraction"
+      ],
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "A_ENV",
+        "line": 724
+      }
+    }
+  ],
+  "invariants": [
+    "A_PHY = A_CH || A_SIG || A_BM || A_SQ || A_PH",
+    "A_SYS = A_PHY || A_ENV",
+    "A_ENV = ENV_CH || ENV_TARGET || ENV_MAC || ENV_NET",
+    "guards use finite class variables, not continuous PHY metrics",
+    "report/event channels are broadcast; command channels are handshake",
+    "bounded deadlines are checked by observers"
+  ],
+  "limitations": [
+    "base TA model does not prove radio-physical probabilities",
+    "base TA model does not optimize Pi_PHY",
+    "counterexamples may be physical scenarios or abstraction artifacts",
+    "parameter synthesis is out of scope for this MCP layer"
+  ],
+  "extractor": {
+    "ok": true,
+    "mode": "section-aware-article-extractor",
+    "source_name": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+    "source_hash": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+    "line_count": 921,
+    "sections": [
+      {
+        "level": "section",
+        "title": "Аннотация",
+        "start_line": 43,
+        "end_line": 46,
+        "line_count": 4
+      },
+      {
+        "level": "section",
+        "title": "Назначение и границы модели",
+        "start_line": 47,
+        "end_line": 56,
+        "line_count": 10
+      },
+      {
+        "level": "section",
+        "title": "Архитектурное положение PHY",
+        "start_line": 57,
+        "end_line": 103,
+        "line_count": 47
+      },
+      {
+        "level": "section",
+        "title": "Базовая модель контрактного timed automaton",
+        "start_line": 104,
+        "end_line": 137,
+        "line_count": 34
+      },
+      {
+        "level": "section",
+        "title": "Абстракция непрерывной PHY-физики",
+        "start_line": 138,
+        "end_line": 139,
+        "line_count": 2
+      },
+      {
+        "level": "subsection",
+        "title": "Измерительный слой, конфигурация и конечные классы",
+        "start_line": 140,
+        "end_line": 164,
+        "line_count": 25
+      },
+      {
+        "level": "subsection",
+        "title": "Функция дискретизации",
+        "start_line": 165,
+        "end_line": 230,
+        "line_count": 66
+      },
+      {
+        "level": "subsection",
+        "title": "Soundness и консервативность абстракции",
+        "start_line": 231,
+        "end_line": 242,
+        "line_count": 12
+      },
+      {
+        "level": "section",
+        "title": "Семантика assume--guarantee контрактов",
+        "start_line": 243,
+        "end_line": 274,
+        "line_count": 32
+      },
+      {
+        "level": "section",
+        "title": "Operational semantics",
+        "start_line": 275,
+        "end_line": 276,
+        "line_count": 2
+      },
+      {
+        "level": "subsection",
+        "title": "Часы и resets",
+        "start_line": 277,
+        "end_line": 312,
+        "line_count": 36
+      },
+      {
+        "level": "subsection",
+        "title": "Синхронизационные каналы",
+        "start_line": 313,
+        "end_line": 342,
+        "line_count": 30
+      },
+      {
+        "level": "subsection",
+        "title": "Шаблон перехода",
+        "start_line": 343,
+        "end_line": 350,
+        "line_count": 8
+      },
+      {
+        "level": "subsection",
+        "title": "Абстрактная среда и закрытая модель",
+        "start_line": 351,
+        "end_line": 372,
+        "line_count": 22
+      },
+      {
+        "level": "section",
+        "title": "Автоматы PHY",
+        "start_line": 373,
+        "end_line": 374,
+        "line_count": 2
+      },
+      {
+        "level": "subsection",
+        "title": "Автомат канала A\\_CH",
+        "start_line": 375,
+        "end_line": 437,
+        "line_count": 63
+      },
+      {
+        "level": "subsection",
+        "title": "Автомат сигнальной конфигурации A\\_SIG",
+        "start_line": 438,
+        "end_line": 484,
+        "line_count": 47
+      },
+      {
+        "level": "subsection",
+        "title": "Автомат beam management A\\_BM",
+        "start_line": 485,
+        "end_line": 582,
+        "line_count": 98
+      },
+      {
+        "level": "subsection",
+        "title": "Автомат качества зондирования A\\_SQ",
+        "start_line": 583,
+        "end_line": 664,
+        "line_count": 82
+      },
+      {
+        "level": "subsection",
+        "title": "Агрегирующий автомат A\\_PH",
+        "start_line": 665,
+        "end_line": 724,
+        "line_count": 60
+      },
+      {
+        "level": "section",
+        "title": "SensCAP, capacity и freshness",
+        "start_line": 725,
+        "end_line": 768,
+        "line_count": 44
+      },
+      {
+        "level": "section",
+        "title": "Интерфейс отчетов и PHY-компоненты штрафа",
+        "start_line": 769,
+        "end_line": 805,
+        "line_count": 37
+      },
+      {
+        "level": "section",
+        "title": "Верификационные свойства и observer-автоматы",
+        "start_line": 806,
+        "end_line": 883,
+        "line_count": 78
+      },
+      {
+        "level": "section",
+        "title": "Ограничения применимости",
+        "start_line": 884,
+        "end_line": 889,
+        "line_count": 6
+      },
+      {
+        "level": "section",
+        "title": "Заключение",
+        "start_line": 890,
+        "end_line": 921,
+        "line_count": 32
+      }
+    ],
+    "verbatim_blocks": [
+      {
+        "start_line": 62,
+        "end_line": 74,
+        "line_count": 13
+      },
+      {
+        "start_line": 82,
+        "end_line": 99,
+        "line_count": 18
+      },
+      {
+        "start_line": 317,
+        "end_line": 338,
+        "line_count": 22
+      },
+      {
+        "start_line": 355,
+        "end_line": 369,
+        "line_count": 15
+      },
+      {
+        "start_line": 410,
+        "end_line": 434,
+        "line_count": 25
+      },
+      {
+        "start_line": 464,
+        "end_line": 481,
+        "line_count": 18
+      },
+      {
+        "start_line": 531,
+        "end_line": 564,
+        "line_count": 34
+      },
+      {
+        "start_line": 570,
+        "end_line": 580,
+        "line_count": 11
+      },
+      {
+        "start_line": 627,
+        "end_line": 661,
+        "line_count": 35
+      },
+      {
+        "start_line": 698,
+        "end_line": 721,
+        "line_count": 24
+      },
+      {
+        "start_line": 773,
+        "end_line": 781,
+        "line_count": 9
+      },
+      {
+        "start_line": 812,
+        "end_line": 817,
+        "line_count": 6
+      },
+      {
+        "start_line": 822,
+        "end_line": 829,
+        "line_count": 8
+      },
+      {
+        "start_line": 834,
+        "end_line": 839,
+        "line_count": 6
+      },
+      {
+        "start_line": 844,
+        "end_line": 850,
+        "line_count": 7
+      },
+      {
+        "start_line": 854,
+        "end_line": 854,
+        "line_count": 1
+      },
+      {
+        "start_line": 860,
+        "end_line": 861,
+        "line_count": 2
+      },
+      {
+        "start_line": 867,
+        "end_line": 881,
+        "line_count": 15
+      }
+    ],
+    "compositions": {
+      "A_ENV": {
+        "line": 130,
+        "expression": "A_ENV= ENV_CH|| ENV_TARGET|| ENV_MAC|| ENV_NET.",
+        "components": [
+          "ENV_CH",
+          "ENV_TARGET",
+          "ENV_MAC",
+          "ENV_NET"
+        ]
+      },
+      "A_PHY": {
+        "line": 120,
+        "expression": "A_PHY=A_CH||A_SIG||A_BM||A_SQ||A_PH.",
+        "components": [
+          "A_CH",
+          "A_SIG",
+          "A_BM",
+          "A_SQ",
+          "A_PH"
+        ]
+      },
+      "A_SYS": {
+        "line": 126,
+        "expression": "A_SYS=A_PHY||A_ENV,",
+        "components": [
+          "A_PHY",
+          "A_ENV"
+        ]
+      }
+    },
+    "x_disc": {
+      "line": 174,
+      "end_line": 179,
+      "variables": [
+        "SINRClass",
+        "BLERClass",
+        "CQIClass",
+        "IClass",
+        "DopplerClass",
+        "DelaySpreadClass",
+        "PowerClass",
+        "DRTClass",
+        "PilotDensityClass",
+        "PayloadSenseClass",
+        "PRSClass",
+        "BeamErrorClass",
+        "BlockageClass",
+        "PdClass",
+        "RfaClass",
+        "AccClass",
+        "CRBClass",
+        "AoSClass",
+        "CapClass",
+        "CoverageClass",
+        "ResourceShareClass",
+        "MisClass",
+        "BMOverheadClass",
+        "ChannelClass",
+        "SignalClass",
+        "BeamClass",
+        "SensingState",
+        "PHYState"
+      ],
+      "class_sets": {
+        "SINRClass": [
+          "OUTAGE",
+          "LOW",
+          "OK",
+          "HIGH"
+        ],
+        "BLERClass": [
+          "OK",
+          "HIGH",
+          "CRITICAL"
+        ],
+        "CQIClass": [
+          "GOOD",
+          "LIMITED",
+          "BAD"
+        ],
+        "IClass": [
+          "OK",
+          "HIGH",
+          "CRITICAL"
+        ],
+        "DopplerClass": [
+          "OK",
+          "HIGH"
+        ],
+        "DelaySpreadClass": [
+          "OK",
+          "HIGH"
+        ],
+        "PowerClass": [
+          "OK",
+          "LOW",
+          "ABSENT"
+        ],
+        "DRTClass": [
+          "OK",
+          "BAD"
+        ],
+        "PilotDensityClass": [
+          "OK",
+          "LOW",
+          "FAILED"
+        ],
+        "PayloadSenseClass": [
+          "OK",
+          "LIMITED",
+          "FAILED"
+        ],
+        "PRSClass": [
+          "OK",
+          "LIMITED",
+          "FAILED"
+        ],
+        "BeamErrorClass": [
+          "LOCKABLE",
+          "UNSTABLE",
+          "CRITICAL"
+        ],
+        "BlockageClass": [
+          "NONE",
+          "SUSPECTED",
+          "CONFIRMED"
+        ],
+        "PdClass": [
+          "OK",
+          "LOW",
+          "FAILED"
+        ],
+        "RfaClass": [
+          "OK",
+          "HIGH",
+          "CRITICAL"
+        ],
+        "AccClass": [
+          "OK",
+          "LIMITED",
+          "FAILED"
+        ],
+        "CRBClass": [
+          "OK",
+          "LOOSE",
+          "UNUSABLE"
+        ],
+        "AoSClass": [
+          "FRESH",
+          "STALE",
+          "EXPIRED"
+        ],
+        "CapClass": [
+          "OK",
+          "LIMITED",
+          "FAILED"
+        ],
+        "CoverageClass": [
+          "OK",
+          "LIMITED",
+          "FAILED"
+        ],
+        "ResourceShareClass": [
+          "OK",
+          "LIMITED",
+          "STARVED"
+        ],
+        "MisClass": [
+          "OK",
+          "WARN",
+          "CRITICAL"
+        ],
+        "BMOverheadClass": [
+          "OK",
+          "HIGH",
+          "EXCESSIVE"
+        ],
+        "ChannelClass": [
+          "NOMINAL",
+          "INTERFERENCE_LIMITED",
+          "MOBILITY_LIMITED",
+          "MULTIPATH_LIMITED",
+          "BLOCKAGE",
+          "OUTAGE"
+        ],
+        "SignalClass": [
+          "NOMINAL",
+          "PILOT_BASED",
+          "PAYLOAD_ASSISTED",
+          "RECONFIGURING",
+          "LIMITED"
+        ],
+        "BeamClass": [
+          "SEARCH",
+          "TRACK",
+          "LOCKED",
+          "PREDICT",
+          "MISALIGNED",
+          "RECOVERING",
+          "HO_ASSIST",
+          "FAILED"
+        ],
+        "SensingState": [
+          "SensingQoSOk",
+          "ProbabilityLimited",
+          "FalseAlarmLimited",
+          "AccuracyLimited",
+          "FreshnessLimited",
+          "CoverageLimited",
+          "CapacityLimited",
+          "SensingFailure"
+        ],
+        "PHYState": [
+          "PHYNormal",
+          "PHYCommunicationDegraded",
+          "PHYSensingDegraded",
+          "PHYJointDegraded",
+          "PHYRecovery",
+          "PHYFailure"
+        ]
+      },
+      "missing_from_formula": [],
+      "unexpected_in_formula": []
+    },
+    "clock_resets": {
+      "aos_bs": {
+        "line": 296,
+        "meaning": "локальная давность sensing-информации на BS",
+        "reset": "sensing_success!"
+      },
+      "aos_ctrl": {
+        "line": 298,
+        "meaning": "давность sensing-информации у SDN-контроллера",
+        "reset": "доставка отчета контроллеру"
+      },
+      "c_meas": {
+        "line": 284,
+        "meaning": "возраст последнего channel measurement",
+        "reset": "measure_tick?, channel_report!"
+      },
+      "c_obs": {
+        "line": 300,
+        "meaning": "clock observer-автоматов для deadlines",
+        "reset": "вход observer в состояние ожидания"
+      },
+      "c_rec": {
+        "line": 292,
+        "meaning": "длительность beam recovery",
+        "reset": "вход в BeamRecover"
+      },
+      "c_report": {
+        "line": 290,
+        "meaning": "возраст агрегированного PHY-отчета",
+        "reset": "phy_kpi_report!"
+      },
+      "c_sense": {
+        "line": 288,
+        "meaning": "время вычисления sensing state из входных классов",
+        "reset": "channel_report?, signal_report?, beam_report?, sensing_report!"
+      },
+      "c_sig": {
+        "line": 286,
+        "meaning": "длительность применения signal configuration",
+        "reset": "waveform_config?, pilot_config?, signal_report!"
+      },
+      "c_ssb": {
+        "line": 294,
+        "meaning": "длительность очередного SSB/beam-search окна",
+        "reset": "вход в BeamSearch или команда ssb_burst_config?"
+      }
+    },
+    "invariants": {
+      "BeamRecover": {
+        "line": 310,
+        "formula": "c_rec <= D_BM",
+        "bound": "D_BM"
+      },
+      "MeasurePending": {
+        "line": 306,
+        "formula": "c_meas <= T_meas + J_meas",
+        "bound": "T_meas + J_meas"
+      },
+      "PHYKpiReporting": {
+        "line": 309,
+        "formula": "c_report <= D_report",
+        "bound": "D_report"
+      },
+      "SensingEvaluating": {
+        "line": 308,
+        "formula": "c_sense <= D_sense",
+        "bound": "D_sense"
+      },
+      "SignalReconfiguring": {
+        "line": 307,
+        "formula": "c_sig <= D_sig",
+        "bound": "D_sig"
+      }
+    },
+    "automata_sketches": {
+      "A_BM": {
+        "section_title": "Автомат beam management A\\_BM",
+        "start_line": 485,
+        "end_line": 582,
+        "locations": [
+          "BeamSearch",
+          "BeamSearchSeen",
+          "BeamTrack",
+          "BeamLock",
+          "BeamPredict",
+          "BeamMisalign",
+          "BeamRecoveryStart",
+          "BeamRecover",
+          "BeamHOAssist",
+          "BeamFailed"
+        ],
+        "location_lines": {
+          "BeamSearch": [
+            511,
+            531,
+            532
+          ],
+          "BeamSearchSeen": [
+            532,
+            533
+          ],
+          "BeamTrack": [
+            511,
+            513,
+            523,
+            535,
+            536,
+            539,
+            562
+          ],
+          "BeamLock": [
+            513,
+            515,
+            521,
+            538,
+            542,
+            544,
+            545,
+            554
+          ],
+          "BeamPredict": [
+            515,
+            517,
+            547,
+            548
+          ],
+          "BeamMisalign": [
+            519,
+            541,
+            551
+          ],
+          "BeamRecoveryStart": [
+            548,
+            549,
+            551
+          ],
+          "BeamRecover": [
+            502,
+            504,
+            517,
+            519,
+            521,
+            550,
+            552,
+            555,
+            558,
+            564,
+            566,
+            577
+          ],
+          "BeamHOAssist": [
+            521,
+            523,
+            557,
+            562,
+            566
+          ],
+          "BeamFailed": [
+            502,
+            504,
+            525,
+            561,
+            563,
+            566
+          ]
+        },
+        "transition_count": 15,
+        "transitions": [
+          {
+            "start_line": 531,
+            "end_line": 531,
+            "source": "Any",
+            "target": "BeamSearch",
+            "guard": null,
+            "sync": "beam_cmd?",
+            "assignment": "BeamClass := SEARCH, c_ssb := 0",
+            "statement": "Any -- beam_cmd? / BeamClass := SEARCH, c_ssb := 0 --> BeamSearch"
+          },
+          {
+            "start_line": 532,
+            "end_line": 532,
+            "source": "BeamSearch",
+            "target": "BeamSearchSeen",
+            "guard": null,
+            "sync": "target_detected?",
+            "assignment": "target_seen := true",
+            "statement": "BeamSearch -- target_detected? / target_seen := true --> BeamSearchSeen"
+          },
+          {
+            "start_line": 533,
+            "end_line": 535,
+            "source": "BeamSearchSeen",
+            "target": "BeamTrack",
+            "guard": "PRSClass != FAILED",
+            "sync": "beam_report!",
+            "assignment": "BeamClass := TRACK",
+            "statement": "BeamSearchSeen -- PRSClass != FAILED sync: beam_report! update: BeamClass := TRACK --> BeamTrack"
+          },
+          {
+            "start_line": 536,
+            "end_line": 538,
+            "source": "BeamTrack",
+            "target": "BeamLock",
+            "guard": "BeamErrorClass == LOCKABLE",
+            "sync": "beam_report!",
+            "assignment": "BeamClass := LOCKED",
+            "statement": "BeamTrack -- BeamErrorClass == LOCKABLE sync: beam_report! update: BeamClass := LOCKED --> BeamLock"
+          },
+          {
+            "start_line": 539,
+            "end_line": 541,
+            "source": "BeamTrack",
+            "target": "BeamMisalign",
+            "guard": "AccClass == FAILED || BeamErrorClass == CRITICAL",
+            "sync": "beam_report!",
+            "assignment": "BeamClass := MISALIGNED, beam_degraded_flag := true",
+            "statement": "BeamTrack -- AccClass == FAILED || BeamErrorClass == CRITICAL sync: beam_report! update: BeamClass := MISALIGNED, beam_degraded_flag := true --> BeamMisalign"
+          },
+          {
+            "start_line": 542,
+            "end_line": 544,
+            "source": "BeamLock",
+            "target": "BeamLock",
+            "guard": "MisClass == OK",
+            "sync": "beam_report!",
+            "assignment": "BeamClass := LOCKED",
+            "statement": "BeamLock -- MisClass == OK sync: beam_report! update: BeamClass := LOCKED --> BeamLock"
+          },
+          {
+            "start_line": 545,
+            "end_line": 547,
+            "source": "BeamLock",
+            "target": "BeamPredict",
+            "guard": "MisClass == WARN || BlockageClass == SUSPECTED",
+            "sync": "beam_report!",
+            "assignment": "BeamClass := PREDICT",
+            "statement": "BeamLock -- MisClass == WARN || BlockageClass == SUSPECTED sync: beam_report! update: BeamClass := PREDICT --> BeamPredict"
+          },
+          {
+            "start_line": 548,
+            "end_line": 548,
+            "source": "BeamPredict",
+            "target": "BeamRecoveryStart",
+            "guard": null,
+            "sync": "extra_ssb_cmd?",
+            "assignment": "c_rec := 0",
+            "statement": "BeamPredict -- extra_ssb_cmd? / c_rec := 0 --> BeamRecoveryStart"
+          },
+          {
+            "start_line": 549,
+            "end_line": 550,
+            "source": "BeamRecoveryStart",
+            "target": "BeamRecover",
+            "guard": null,
+            "sync": null,
+            "assignment": "BeamClass := RECOVERING",
+            "statement": "BeamRecoveryStart -- recovery_start! update: BeamClass := RECOVERING --> BeamRecover"
+          },
+          {
+            "start_line": 551,
+            "end_line": 551,
+            "source": "BeamMisalign",
+            "target": "BeamRecoveryStart",
+            "guard": null,
+            "sync": "beam_misaligned!",
+            "assignment": null,
+            "statement": "BeamMisalign -- beam_misaligned! --> BeamRecoveryStart"
+          },
+          {
+            "start_line": 552,
+            "end_line": 554,
+            "source": "BeamRecover",
+            "target": "BeamLock",
+            "guard": "BeamErrorClass == LOCKABLE c_rec <= D_BM",
+            "sync": "beam_restored!",
+            "assignment": "BeamClass := LOCKED",
+            "statement": "BeamRecover -- BeamErrorClass == LOCKABLE c_rec <= D_BM sync: beam_restored! update: BeamClass := LOCKED --> BeamLock"
+          },
+          {
+            "start_line": 555,
+            "end_line": 557,
+            "source": "BeamRecover",
+            "target": "BeamHOAssist",
+            "guard": "BlockageClass == CONFIRMED c_rec <= D_BM",
+            "sync": "handover_hint!",
+            "assignment": "BeamClass := HO_ASSIST",
+            "statement": "BeamRecover -- BlockageClass == CONFIRMED c_rec <= D_BM sync: handover_hint! update: BeamClass := HO_ASSIST --> BeamHOAssist"
+          },
+          {
+            "start_line": 558,
+            "end_line": 561,
+            "source": "BeamRecover",
+            "target": "BeamFailed",
+            "guard": "c_rec == D_BM BeamErrorClass != LOCKABLE BlockageClass != CONFIRMED",
+            "sync": "beam_failure!",
+            "assignment": "BeamClass := FAILED",
+            "statement": "BeamRecover -- c_rec == D_BM BeamErrorClass != LOCKABLE BlockageClass != CONFIRMED sync: beam_failure! update: BeamClass := FAILED --> BeamFailed"
+          },
+          {
+            "start_line": 562,
+            "end_line": 562,
+            "source": "BeamHOAssist",
+            "target": "BeamTrack",
+            "guard": null,
+            "sync": "new_beam_confirmed?",
+            "assignment": "BeamClass := TRACK",
+            "statement": "BeamHOAssist -- new_beam_confirmed? / BeamClass := TRACK --> BeamTrack"
+          },
+          {
+            "start_line": 563,
+            "end_line": 564,
+            "source": "BeamFailed",
+            "target": "BeamRecover",
+            "guard": null,
+            "sync": "recovery_cmd?",
+            "assignment": "BeamClass := RECOVERING, c_rec := 0",
+            "statement": "BeamFailed -- recovery_cmd? / BeamClass := RECOVERING, c_rec := 0 --> BeamRecover"
+          }
+        ],
+        "has_priority_text": false
+      },
+      "A_CH": {
+        "section_title": "Автомат канала A\\_CH",
+        "start_line": 375,
+        "end_line": 437,
+        "locations": [
+          "MeasurePending",
+          "ChannelNominal",
+          "InterferenceLimited",
+          "MobilityLimited",
+          "MultipathLimited",
+          "Blockage",
+          "Outage"
+        ],
+        "location_lines": {
+          "MeasurePending": [
+            410,
+            411,
+            415,
+            419,
+            423,
+            427,
+            431
+          ],
+          "ChannelNominal": [
+            381,
+            394,
+            414
+          ],
+          "InterferenceLimited": [
+            380,
+            396,
+            418
+          ],
+          "MobilityLimited": [
+            381,
+            398,
+            422
+          ],
+          "MultipathLimited": [
+            381,
+            400,
+            426
+          ],
+          "Blockage": [
+            380,
+            396,
+            402,
+            430
+          ],
+          "Outage": [
+            380,
+            396,
+            404,
+            434,
+            436
+          ]
+        },
+        "transition_count": 7,
+        "transitions": [
+          {
+            "start_line": 410,
+            "end_line": 410,
+            "source": "Any",
+            "target": "MeasurePending",
+            "guard": null,
+            "sync": "measure_tick?",
+            "assignment": "c_meas := 0",
+            "statement": "Any -- measure_tick? / c_meas := 0 --> MeasurePending"
+          },
+          {
+            "start_line": 411,
+            "end_line": 414,
+            "source": "MeasurePending",
+            "target": "ChannelNominal",
+            "guard": "ChannelClass' == NOMINAL",
+            "sync": "channel_report!",
+            "assignment": "ChannelClass := NOMINAL, channel_degraded_flag := false, c_meas := 0",
+            "statement": "MeasurePending -- guard: ChannelClass' == NOMINAL sync: channel_report! update: ChannelClass := NOMINAL, channel_degraded_flag := false, c_meas := 0 --> ChannelNominal"
+          },
+          {
+            "start_line": 415,
+            "end_line": 418,
+            "source": "MeasurePending",
+            "target": "InterferenceLimited",
+            "guard": "ChannelClass' == INTERFERENCE_LIMITED",
+            "sync": "channel_report!",
+            "assignment": "ChannelClass := INTERFERENCE_LIMITED, channel_degraded_flag := true, c_meas := 0",
+            "statement": "MeasurePending -- guard: ChannelClass' == INTERFERENCE_LIMITED sync: channel_report! update: ChannelClass := INTERFERENCE_LIMITED, channel_degraded_flag := true, c_meas := 0 --> InterferenceLimited"
+          },
+          {
+            "start_line": 419,
+            "end_line": 422,
+            "source": "MeasurePending",
+            "target": "MobilityLimited",
+            "guard": "ChannelClass' == MOBILITY_LIMITED",
+            "sync": "channel_report!",
+            "assignment": "ChannelClass := MOBILITY_LIMITED, channel_degraded_flag := true, c_meas := 0",
+            "statement": "MeasurePending -- guard: ChannelClass' == MOBILITY_LIMITED sync: channel_report! update: ChannelClass := MOBILITY_LIMITED, channel_degraded_flag := true, c_meas := 0 --> MobilityLimited"
+          },
+          {
+            "start_line": 423,
+            "end_line": 426,
+            "source": "MeasurePending",
+            "target": "MultipathLimited",
+            "guard": "ChannelClass' == MULTIPATH_LIMITED",
+            "sync": "channel_report!",
+            "assignment": "ChannelClass := MULTIPATH_LIMITED, channel_degraded_flag := true, c_meas := 0",
+            "statement": "MeasurePending -- guard: ChannelClass' == MULTIPATH_LIMITED sync: channel_report! update: ChannelClass := MULTIPATH_LIMITED, channel_degraded_flag := true, c_meas := 0 --> MultipathLimited"
+          },
+          {
+            "start_line": 427,
+            "end_line": 430,
+            "source": "MeasurePending",
+            "target": "Blockage",
+            "guard": "ChannelClass' == BLOCKAGE",
+            "sync": "channel_report!",
+            "assignment": "ChannelClass := BLOCKAGE, channel_degraded_flag := true, c_meas := 0",
+            "statement": "MeasurePending -- guard: ChannelClass' == BLOCKAGE sync: channel_report! update: ChannelClass := BLOCKAGE, channel_degraded_flag := true, c_meas := 0 --> Blockage"
+          },
+          {
+            "start_line": 431,
+            "end_line": 434,
+            "source": "MeasurePending",
+            "target": "Outage",
+            "guard": "ChannelClass' == OUTAGE",
+            "sync": "channel_report!",
+            "assignment": "ChannelClass := OUTAGE, channel_degraded_flag := true, c_meas := 0",
+            "statement": "MeasurePending -- guard: ChannelClass' == OUTAGE sync: channel_report! update: ChannelClass := OUTAGE, channel_degraded_flag := true, c_meas := 0 --> Outage"
+          }
+        ],
+        "has_priority_text": true
+      },
+      "A_PH": {
+        "section_title": "Агрегирующий автомат A\\_PH",
+        "start_line": 665,
+        "end_line": 724,
+        "locations": [
+          "PHYNormal",
+          "PHYCommunicationDegraded",
+          "PHYSensingDegraded",
+          "PHYJointDegraded",
+          "PHYKpiReporting",
+          "PHYRecovery",
+          "PHYFailure"
+        ],
+        "location_lines": {
+          "PHYNormal": [
+            680,
+            690,
+            704
+          ],
+          "PHYCommunicationDegraded": [
+            682,
+            707,
+            708
+          ],
+          "PHYSensingDegraded": [
+            684,
+            711,
+            712
+          ],
+          "PHYJointDegraded": [
+            686,
+            715,
+            716
+          ],
+          "PHYKpiReporting": [
+            688,
+            698,
+            699,
+            700,
+            701,
+            702,
+            705,
+            709,
+            713
+          ],
+          "PHYRecovery": [
+            690,
+            717
+          ],
+          "PHYFailure": [
+            692,
+            721
+          ]
+        },
+        "transition_count": 10,
+        "transitions": [
+          {
+            "start_line": 698,
+            "end_line": 698,
+            "source": "Any",
+            "target": "PHYKpiReporting",
+            "guard": null,
+            "sync": "channel_report?",
+            "assignment": "child_update := true, c_report := 0",
+            "statement": "Any -- channel_report? / child_update := true, c_report := 0 --> PHYKpiReporting"
+          },
+          {
+            "start_line": 699,
+            "end_line": 699,
+            "source": "Any",
+            "target": "PHYKpiReporting",
+            "guard": null,
+            "sync": "signal_report?",
+            "assignment": "child_update := true, c_report := 0",
+            "statement": "Any -- signal_report? / child_update := true, c_report := 0 --> PHYKpiReporting"
+          },
+          {
+            "start_line": 700,
+            "end_line": 700,
+            "source": "Any",
+            "target": "PHYKpiReporting",
+            "guard": null,
+            "sync": "beam_report?",
+            "assignment": "child_update := true, c_report := 0",
+            "statement": "Any -- beam_report? / child_update := true, c_report := 0 --> PHYKpiReporting"
+          },
+          {
+            "start_line": 701,
+            "end_line": 701,
+            "source": "Any",
+            "target": "PHYKpiReporting",
+            "guard": null,
+            "sync": "sensing_report?",
+            "assignment": "child_update := true, c_report := 0",
+            "statement": "Any -- sensing_report? / child_update := true, c_report := 0 --> PHYKpiReporting"
+          },
+          {
+            "start_line": 702,
+            "end_line": 704,
+            "source": "PHYKpiReporting",
+            "target": "PHYNormal",
+            "guard": "comm_ok sensing_qos_ok c_report <= D_report",
+            "sync": "phy_kpi_report!",
+            "assignment": "PHYState := PHYNormal, c_report := 0",
+            "statement": "PHYKpiReporting -- comm_ok sensing_qos_ok c_report <= D_report sync: phy_kpi_report! update: PHYState := PHYNormal, c_report := 0 --> PHYNormal"
+          },
+          {
+            "start_line": 705,
+            "end_line": 708,
+            "source": "PHYKpiReporting",
+            "target": "PHYCommunicationDegraded",
+            "guard": "!comm_ok sensing_qos_ok c_report <= D_report",
+            "sync": "phy_kpi_report!",
+            "assignment": "PHYState := PHYCommunicationDegraded, degradation_flag := true, c_report := 0",
+            "statement": "PHYKpiReporting -- !comm_ok sensing_qos_ok c_report <= D_report sync: phy_kpi_report! update: PHYState := PHYCommunicationDegraded, degradation_flag := true, c_report := 0 --> PHYCommunicationDegraded"
+          },
+          {
+            "start_line": 709,
+            "end_line": 712,
+            "source": "PHYKpiReporting",
+            "target": "PHYSensingDegraded",
+            "guard": "comm_ok !sensing_qos_ok c_report <= D_report",
+            "sync": "phy_kpi_report!",
+            "assignment": "PHYState := PHYSensingDegraded, degradation_flag := true, c_report := 0",
+            "statement": "PHYKpiReporting -- comm_ok !sensing_qos_ok c_report <= D_report sync: phy_kpi_report! update: PHYState := PHYSensingDegraded, degradation_flag := true, c_report := 0 --> PHYSensingDegraded"
+          },
+          {
+            "start_line": 713,
+            "end_line": 716,
+            "source": "PHYKpiReporting",
+            "target": "PHYJointDegraded",
+            "guard": "!comm_ok !sensing_qos_ok c_report <= D_report",
+            "sync": "phy_kpi_report!",
+            "assignment": "PHYState := PHYJointDegraded, degradation_flag := true, c_report := 0",
+            "statement": "PHYKpiReporting -- !comm_ok !sensing_qos_ok c_report <= D_report sync: phy_kpi_report! update: PHYState := PHYJointDegraded, degradation_flag := true, c_report := 0 --> PHYJointDegraded"
+          },
+          {
+            "start_line": 717,
+            "end_line": 717,
+            "source": "Any",
+            "target": "PHYRecovery",
+            "guard": null,
+            "sync": "recovery_cmd?",
+            "assignment": "PHYState := PHYRecovery",
+            "statement": "Any -- recovery_cmd? / PHYState := PHYRecovery --> PHYRecovery"
+          },
+          {
+            "start_line": 718,
+            "end_line": 721,
+            "source": "Any",
+            "target": "PHYFailure",
+            "guard": "ChannelClass == OUTAGE || BeamClass == FAILED || SensingState == SensingFailure",
+            "sync": "phy_failure!",
+            "assignment": "PHYState := PHYFailure",
+            "statement": "Any -- ChannelClass == OUTAGE || BeamClass == FAILED || SensingState == SensingFailure sync: phy_failure! update: PHYState := PHYFailure --> PHYFailure"
+          }
+        ],
+        "has_priority_text": false
+      },
+      "A_SIG": {
+        "section_title": "Автомат сигнальной конфигурации A\\_SIG",
+        "start_line": 438,
+        "end_line": 484,
+        "locations": [
+          "SignalNominal",
+          "PilotBasedSensing",
+          "PayloadAssistedSensing",
+          "SignalReconfiguring",
+          "SignalLimited"
+        ],
+        "location_lines": {
+          "SignalNominal": [
+            450,
+            469,
+            470
+          ],
+          "PilotBasedSensing": [
+            450,
+            452,
+            472,
+            473
+          ],
+          "PayloadAssistedSensing": [
+            452,
+            475
+          ],
+          "SignalReconfiguring": [
+            456,
+            464,
+            465,
+            466,
+            467,
+            481
+          ],
+          "SignalLimited": [
+            454,
+            458,
+            480,
+            481,
+            483
+          ]
+        },
+        "transition_count": 8,
+        "transitions": [
+          {
+            "start_line": 464,
+            "end_line": 464,
+            "source": "Any",
+            "target": "SignalReconfiguring",
+            "guard": null,
+            "sync": "waveform_config?",
+            "assignment": "c_sig := 0",
+            "statement": "Any -- waveform_config? / c_sig := 0 --> SignalReconfiguring"
+          },
+          {
+            "start_line": 465,
+            "end_line": 465,
+            "source": "Any",
+            "target": "SignalReconfiguring",
+            "guard": null,
+            "sync": "pilot_config?",
+            "assignment": "c_sig := 0",
+            "statement": "Any -- pilot_config? / c_sig := 0 --> SignalReconfiguring"
+          },
+          {
+            "start_line": 466,
+            "end_line": 466,
+            "source": "Any",
+            "target": "SignalReconfiguring",
+            "guard": null,
+            "sync": "payload_sensing_config?",
+            "assignment": "c_sig := 0",
+            "statement": "Any -- payload_sensing_config? / c_sig := 0 --> SignalReconfiguring"
+          },
+          {
+            "start_line": 467,
+            "end_line": 469,
+            "source": "SignalReconfiguring",
+            "target": "SignalNominal",
+            "guard": "c_sig <= D_sig",
+            "sync": "signal_report!",
+            "assignment": "SignalClass := RECONFIGURING, c_sig := 0",
+            "statement": "SignalReconfiguring -- c_sig <= D_sig sync: signal_report! update: SignalClass := RECONFIGURING, c_sig := 0 --> SignalNominal"
+          },
+          {
+            "start_line": 470,
+            "end_line": 472,
+            "source": "SignalNominal",
+            "target": "PilotBasedSensing",
+            "guard": "PilotDensityClass == OK BLERClass == OK DRTClass == OK",
+            "sync": "signal_report!",
+            "assignment": "SignalClass := PILOT_BASED, c_sig := 0",
+            "statement": "SignalNominal -- PilotDensityClass == OK BLERClass == OK DRTClass == OK sync: signal_report! update: SignalClass := PILOT_BASED, c_sig := 0 --> PilotBasedSensing"
+          },
+          {
+            "start_line": 473,
+            "end_line": 475,
+            "source": "PilotBasedSensing",
+            "target": "PayloadAssistedSensing",
+            "guard": "PilotDensityClass == LOW PayloadSenseClass != FAILED",
+            "sync": "signal_report!",
+            "assignment": "SignalClass := PAYLOAD_ASSISTED, c_sig := 0",
+            "statement": "PilotBasedSensing -- PilotDensityClass == LOW PayloadSenseClass != FAILED sync: signal_report! update: SignalClass := PAYLOAD_ASSISTED, c_sig := 0 --> PayloadAssistedSensing"
+          },
+          {
+            "start_line": 476,
+            "end_line": 480,
+            "source": "Any",
+            "target": "SignalLimited",
+            "guard": "BLERClass in HIGH, CRITICAL || DRTClass == BAD || PayloadSenseClass == FAILED",
+            "sync": "signal_report!",
+            "assignment": "SignalClass := LIMITED, signal_degraded_flag := true, c_sig := 0",
+            "statement": "Any -- BLERClass in HIGH, CRITICAL || DRTClass == BAD || PayloadSenseClass == FAILED sync: signal_report! update: SignalClass := LIMITED, signal_degraded_flag := true, c_sig := 0 --> SignalLimited"
+          },
+          {
+            "start_line": 481,
+            "end_line": 481,
+            "source": "SignalLimited",
+            "target": "SignalReconfiguring",
+            "guard": null,
+            "sync": "waveform_config?",
+            "assignment": "c_sig := 0",
+            "statement": "SignalLimited -- waveform_config? / c_sig := 0 --> SignalReconfiguring"
+          }
+        ],
+        "has_priority_text": false
+      },
+      "A_SQ": {
+        "section_title": "Автомат качества зондирования A\\_SQ",
+        "start_line": 583,
+        "end_line": 664,
+        "locations": [
+          "Idle",
+          "SensingEvaluating",
+          "SensingQoSOk",
+          "ProbabilityLimited",
+          "FalseAlarmLimited",
+          "AccuracyLimited",
+          "FreshnessLimited",
+          "CoverageLimited",
+          "CapacityLimited",
+          "SensingFailure"
+        ],
+        "location_lines": {
+          "Idle": [
+            627,
+            628,
+            629
+          ],
+          "SensingEvaluating": [
+            627,
+            628,
+            629,
+            630,
+            634,
+            638,
+            642,
+            646,
+            650,
+            654,
+            658
+          ],
+          "SensingQoSOk": [
+            591,
+            599,
+            630,
+            632,
+            633
+          ],
+          "ProbabilityLimited": [
+            590,
+            601,
+            634,
+            636,
+            637
+          ],
+          "FalseAlarmLimited": [
+            590,
+            603,
+            638,
+            640,
+            641
+          ],
+          "AccuracyLimited": [
+            589,
+            605,
+            642,
+            644,
+            645
+          ],
+          "FreshnessLimited": [
+            589,
+            607,
+            646,
+            648,
+            649
+          ],
+          "CoverageLimited": [
+            591,
+            609,
+            650,
+            652,
+            653
+          ],
+          "CapacityLimited": [
+            590,
+            611,
+            654,
+            656,
+            657
+          ],
+          "SensingFailure": [
+            589,
+            607,
+            613,
+            658,
+            660,
+            661
+          ]
+        },
+        "transition_count": 11,
+        "transitions": [
+          {
+            "start_line": 627,
+            "end_line": 627,
+            "source": "Idle",
+            "target": "SensingEvaluating",
+            "guard": null,
+            "sync": "channel_report?",
+            "assignment": "input_changed := true, c_sense := 0",
+            "statement": "Idle -- channel_report? / input_changed := true, c_sense := 0 --> SensingEvaluating"
+          },
+          {
+            "start_line": 628,
+            "end_line": 628,
+            "source": "Idle",
+            "target": "SensingEvaluating",
+            "guard": null,
+            "sync": "signal_report?",
+            "assignment": "input_changed := true, c_sense := 0",
+            "statement": "Idle -- signal_report? / input_changed := true, c_sense := 0 --> SensingEvaluating"
+          },
+          {
+            "start_line": 629,
+            "end_line": 629,
+            "source": "Idle",
+            "target": "SensingEvaluating",
+            "guard": null,
+            "sync": "beam_report?",
+            "assignment": "input_changed := true, c_sense := 0",
+            "statement": "Idle -- beam_report? / input_changed := true, c_sense := 0 --> SensingEvaluating"
+          },
+          {
+            "start_line": 630,
+            "end_line": 633,
+            "source": "SensingEvaluating",
+            "target": "SensingQoSOk",
+            "guard": "SensingState' == SensingQoSOk",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := SensingQoSOk, sensing_degraded_flag := false, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == SensingQoSOk sync: sensing_report! update: SensingState := SensingQoSOk, sensing_degraded_flag := false, c_sense := 0 --> SensingQoSOk"
+          },
+          {
+            "start_line": 634,
+            "end_line": 637,
+            "source": "SensingEvaluating",
+            "target": "ProbabilityLimited",
+            "guard": "SensingState' == ProbabilityLimited",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := ProbabilityLimited, sensing_degraded_flag := true, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == ProbabilityLimited sync: sensing_report! update: SensingState := ProbabilityLimited, sensing_degraded_flag := true, c_sense := 0 --> ProbabilityLimited"
+          },
+          {
+            "start_line": 638,
+            "end_line": 641,
+            "source": "SensingEvaluating",
+            "target": "FalseAlarmLimited",
+            "guard": "SensingState' == FalseAlarmLimited",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := FalseAlarmLimited, sensing_degraded_flag := true, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == FalseAlarmLimited sync: sensing_report! update: SensingState := FalseAlarmLimited, sensing_degraded_flag := true, c_sense := 0 --> FalseAlarmLimited"
+          },
+          {
+            "start_line": 642,
+            "end_line": 645,
+            "source": "SensingEvaluating",
+            "target": "AccuracyLimited",
+            "guard": "SensingState' == AccuracyLimited",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := AccuracyLimited, sensing_degraded_flag := true, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == AccuracyLimited sync: sensing_report! update: SensingState := AccuracyLimited, sensing_degraded_flag := true, c_sense := 0 --> AccuracyLimited"
+          },
+          {
+            "start_line": 646,
+            "end_line": 649,
+            "source": "SensingEvaluating",
+            "target": "FreshnessLimited",
+            "guard": "SensingState' == FreshnessLimited",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := FreshnessLimited, sensing_degraded_flag := true, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == FreshnessLimited sync: sensing_report! update: SensingState := FreshnessLimited, sensing_degraded_flag := true, c_sense := 0 --> FreshnessLimited"
+          },
+          {
+            "start_line": 650,
+            "end_line": 653,
+            "source": "SensingEvaluating",
+            "target": "CoverageLimited",
+            "guard": "SensingState' == CoverageLimited",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := CoverageLimited, sensing_degraded_flag := true, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == CoverageLimited sync: sensing_report! update: SensingState := CoverageLimited, sensing_degraded_flag := true, c_sense := 0 --> CoverageLimited"
+          },
+          {
+            "start_line": 654,
+            "end_line": 657,
+            "source": "SensingEvaluating",
+            "target": "CapacityLimited",
+            "guard": "SensingState' == CapacityLimited",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := CapacityLimited, sensing_degraded_flag := true, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == CapacityLimited sync: sensing_report! update: SensingState := CapacityLimited, sensing_degraded_flag := true, c_sense := 0 --> CapacityLimited"
+          },
+          {
+            "start_line": 658,
+            "end_line": 661,
+            "source": "SensingEvaluating",
+            "target": "SensingFailure",
+            "guard": "SensingState' == SensingFailure",
+            "sync": "sensing_report!",
+            "assignment": "SensingState := SensingFailure, sensing_failure_flag := true, c_sense := 0",
+            "statement": "SensingEvaluating -- guard: SensingState' == SensingFailure sync: sensing_report! update: SensingState := SensingFailure, sensing_failure_flag := true, c_sense := 0 --> SensingFailure"
+          }
+        ],
+        "has_priority_text": true
+      }
+    },
+    "env_sketches": {
+      "ENV_CH": {
+        "line": 355,
+        "statements": [
+          "TickWait -- c_env <= T_meas + J_meas / measure_tick! --> TickWait",
+          "update: estimator classes are refreshed before measure_tick!"
+        ]
+      },
+      "ENV_MAC": {
+        "line": 363,
+        "statements": [
+          "emits pilot_config!, waveform_config!, recovery_cmd!,",
+          "extra_ssb_cmd! and new_beam_confirmed! under admissible configs."
+        ]
+      },
+      "ENV_NET": {
+        "line": 367,
+        "statements": [
+          "delivers mac_report_delivered! and controller_report_delivered!",
+          "within bounded network delay D_net."
+        ]
+      },
+      "ENV_TARGET": {
+        "line": 359,
+        "statements": [
+          "nondeterministically updates PRSClass, BeamErrorClass,",
+          "BlockageClass and emits target_detected! when a target is visible."
+        ]
+      }
+    },
+    "assume_guarantee": {
+      "A_BM": {
+        "line": 267,
+        "assumption": "Команды луча и SSB/PRS-конфигурации конечны; beam_cmd? доставляется за D_cmd .",
+        "guarantee": "beam_report! публикуется в каждом окне; misalignment порождает beam_misaligned! за D_BM ; неуспешное recovery при c_rec=D_BM порождает beam_failure!.",
+        "assumption_predicate": "ENV_MAC.BeamCmdAdmissible classes_in_range_bm",
+        "predicate_lines": [
+          871,
+          872
+        ],
+        "guarantee_predicate": "A_BM.Reported BeamClass in BEAM_ENUM",
+        "queries": [
+          "A[] (ass_bm() imply not A_BM.ContractViolation_BM)"
+        ]
+      },
+      "A_CH": {
+        "line": 263,
+        "assumption": "Measurements P_r,I_c, _tau,f_D,SINR_c обновляются не реже T_meas ; estimator возвращает конечные классы.",
+        "guarantee": "За D_meas после measure_tick? публикуется channel_report!; ChannelClass выбирается по приоритету _CH .",
+        "assumption_predicate": "ENV_CH.TimingOk classes_in_range_ch",
+        "predicate_lines": [
+          867,
+          868
+        ],
+        "guarantee_predicate": "A_CH.Reported ChannelClass in CHANNEL_ENUM",
+        "queries": [
+          "A[] (ass_ch() imply not A_CH.ContractViolation_CH)"
+        ]
+      },
+      "A_PH": {
+        "line": 271,
+        "assumption": "Все дочерние отчеты доставляются за D_child ; clocks aos_bs , aos_ctrl корректно сбрасываются.",
+        "guarantee": "За D_report после деградации публикуется phy_kpi_report!; агрегированное состояние отражает communication и sensing classes.",
+        "assumption_predicate": "gar_ch() gar_sig() gar_bm() gar_sq()",
+        "predicate_lines": [
+          875
+        ],
+        "queries": [
+          "A[] (ass_ph() imply not A_PH.ContractViolation_PH)"
+        ]
+      },
+      "A_SIG": {
+        "line": 265,
+        "assumption": "MAC/SDN задают допустимые W, _p,MCS, _DRT, _cs, _ps , а estimator возвращает PilotDensityClass, DRTClass и PayloadSenseClass.",
+        "guarantee": "За D_sig после конфигурационной команды публикуется signal_report!; нарушение DRT или BLER переводит автомат в SignalLimited.",
+        "assumption_predicate": "ENV_MAC.ConfigAdmissible classes_in_range_sig",
+        "predicate_lines": [
+          869,
+          870
+        ],
+        "guarantee_predicate": "A_SIG.Reported SignalClass in SIGNAL_ENUM",
+        "queries": [
+          "A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)"
+        ]
+      },
+      "A_SQ": {
+        "line": 269,
+        "assumption": "На вход поступают свежие channel_report?, signal_report? и beam_report?.",
+        "guarantee": "За D_sense публикуется sensing_report!; SensingState выбирается по приоритету _SQ .",
+        "assumption_predicate": "fresh_child_reports gar_ch() gar_sig() gar_bm()",
+        "predicate_lines": [
+          873,
+          874
+        ],
+        "guarantee_predicate": "A_SQ.Reported SensingState in SENSING_ENUM",
+        "queries": [
+          "A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)"
+        ]
+      }
+    },
+    "channels": {
+      "aos_ctrl_expired": "broadcast",
+      "beam_cmd": "handshake",
+      "beam_failure": "broadcast",
+      "beam_locked": "broadcast",
+      "beam_misaligned": "broadcast",
+      "beam_report": "broadcast",
+      "beam_restored": "broadcast",
+      "blockage_detected": "broadcast",
+      "channel_degraded": "broadcast",
+      "channel_report": "broadcast",
+      "contract_violation_bm": "broadcast",
+      "contract_violation_ch": "broadcast",
+      "contract_violation_ph": "broadcast",
+      "contract_violation_sig": "broadcast",
+      "contract_violation_sq": "broadcast",
+      "controller_report_delivered": "handshake",
+      "degradation_event": "broadcast",
+      "extra_ssb_cmd": "handshake",
+      "handover_assist_cmd": "handshake",
+      "handover_hint": "broadcast",
+      "mac_report_delivered": "handshake",
+      "measure_tick": "handshake",
+      "mobility_alert": "broadcast",
+      "multipath_alert": "broadcast",
+      "new_beam_confirmed": "handshake",
+      "payload_sensing_config": "handshake",
+      "phy_failure": "broadcast",
+      "phy_kpi_report": "broadcast",
+      "phy_outage": "broadcast",
+      "pilot_config": "handshake",
+      "power_cmd": "handshake",
+      "prs_config": "handshake",
+      "recovery_cmd": "handshake",
+      "recovery_event": "broadcast",
+      "recovery_start": "broadcast",
+      "sensing_degraded": "broadcast",
+      "sensing_failure": "broadcast",
+      "sensing_mode_cmd": "handshake",
+      "sensing_report": "broadcast",
+      "sensing_success": "broadcast",
+      "signal_degraded": "broadcast",
+      "signal_report": "broadcast",
+      "ssb_burst_config": "handshake",
+      "target_detected": "broadcast",
+      "waveform_config": "handshake"
+    },
+    "class_sets": {
+      "AccClass": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "AoSClass": [
+        "FRESH",
+        "STALE",
+        "EXPIRED"
+      ],
+      "BLERClass": [
+        "OK",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "BMOverheadClass": [
+        "OK",
+        "HIGH",
+        "EXCESSIVE"
+      ],
+      "BeamClass": [
+        "SEARCH",
+        "TRACK",
+        "LOCKED",
+        "PREDICT",
+        "MISALIGNED",
+        "RECOVERING",
+        "HO_ASSIST",
+        "FAILED"
+      ],
+      "BeamErrorClass": [
+        "LOCKABLE",
+        "UNSTABLE",
+        "CRITICAL"
+      ],
+      "BlockageClass": [
+        "NONE",
+        "SUSPECTED",
+        "CONFIRMED"
+      ],
+      "CQIClass": [
+        "GOOD",
+        "LIMITED",
+        "BAD"
+      ],
+      "CRBClass": [
+        "OK",
+        "LOOSE",
+        "UNUSABLE"
+      ],
+      "CapClass": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "ChannelClass": [
+        "NOMINAL",
+        "INTERFERENCE_LIMITED",
+        "MOBILITY_LIMITED",
+        "MULTIPATH_LIMITED",
+        "BLOCKAGE",
+        "OUTAGE"
+      ],
+      "CoverageClass": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "DRTClass": [
+        "OK",
+        "BAD"
+      ],
+      "DelaySpreadClass": [
+        "OK",
+        "HIGH"
+      ],
+      "DopplerClass": [
+        "OK",
+        "HIGH"
+      ],
+      "IClass": [
+        "OK",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "MisClass": [
+        "OK",
+        "WARN",
+        "CRITICAL"
+      ],
+      "PHYState": [
+        "PHYNormal",
+        "PHYCommunicationDegraded",
+        "PHYSensingDegraded",
+        "PHYJointDegraded",
+        "PHYRecovery",
+        "PHYFailure"
+      ],
+      "PRSClass": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "PayloadSenseClass": [
+        "OK",
+        "LIMITED",
+        "FAILED"
+      ],
+      "PdClass": [
+        "OK",
+        "LOW",
+        "FAILED"
+      ],
+      "PilotDensityClass": [
+        "OK",
+        "LOW",
+        "FAILED"
+      ],
+      "PowerClass": [
+        "OK",
+        "LOW",
+        "ABSENT"
+      ],
+      "ResourceShareClass": [
+        "OK",
+        "LIMITED",
+        "STARVED"
+      ],
+      "RfaClass": [
+        "OK",
+        "HIGH",
+        "CRITICAL"
+      ],
+      "SINRClass": [
+        "OUTAGE",
+        "LOW",
+        "OK",
+        "HIGH"
+      ],
+      "SensingState": [
+        "SensingQoSOk",
+        "ProbabilityLimited",
+        "FalseAlarmLimited",
+        "AccuracyLimited",
+        "FreshnessLimited",
+        "CoverageLimited",
+        "CapacityLimited",
+        "SensingFailure"
+      ],
+      "SignalClass": [
+        "NOMINAL",
+        "PILOT_BASED",
+        "PAYLOAD_ASSISTED",
+        "RECONFIGURING",
+        "LIMITED"
+      ]
+    },
+    "queries": [
+      "A[] not deadlock",
+      "E<> A_PH.PHYNormal",
+      "E<> A_PH.PHYSensingDegraded",
+      "E<> A_PH.PHYCommunicationDegraded",
+      "E<> A_PH.PHYJointDegraded",
+      "A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))",
+      "A[] not ObsSenseReport.Violation",
+      "A[] not ObsFreshness.Violation",
+      "A[] not ObsBeamRecovery.Violation",
+      "A[] (A_BM.BeamRecover imply c_rec <= D_BM)",
+      "A[] (ch_enabled_count <= 1)",
+      "A[] (sq_enabled_count <= 1)",
+      "A[] (ass_ch() imply not A_CH.ContractViolation_CH)",
+      "A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)",
+      "A[] (ass_bm() imply not A_BM.ContractViolation_BM)",
+      "A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)",
+      "A[] (ass_ph() imply not A_PH.ContractViolation_PH)"
+    ],
+    "marker_lines": {
+      "A_BM": [
+        79,
+        98,
+        120,
+        267,
+        315,
+        341,
+        485,
+        487,
+        568,
+        854,
+        872,
+        879
+      ],
+      "A_CH": [
+        79,
+        85,
+        120,
+        263,
+        315,
+        341,
+        375,
+        377,
+        868,
+        877
+      ],
+      "A_ENV": [
+        122,
+        126,
+        130,
+        136
+      ],
+      "A_PH": [
+        79,
+        93,
+        99,
+        120,
+        271,
+        315,
+        341,
+        665,
+        667,
+        674,
+        723,
+        813,
+        814,
+        815,
+        816,
+        817,
+        881
+      ],
+      "A_PHY": [
+        120,
+        126,
+        353
+      ],
+      "A_SIG": [
+        79,
+        85,
+        102,
+        120,
+        265,
+        315,
+        341,
+        438,
+        444,
+        870,
+        878
+      ],
+      "A_SQ": [
+        53,
+        79,
+        85,
+        99,
+        120,
+        269,
+        315,
+        341,
+        583,
+        585,
+        874,
+        880
+      ],
+      "A_SYS": [
+        126
+      ],
+      "ENV_CH": [
+        131,
+        251,
+        355,
+        867
+      ],
+      "ENV_MAC": [
+        133,
+        363,
+        869,
+        871
+      ],
+      "ENV_NET": [
+        134,
+        367
+      ],
+      "ENV_TARGET": [
+        132,
+        359
+      ],
+      "ObsBeamRecovery": [
+        850
+      ],
+      "ObsFreshness": [
+        839
+      ],
+      "ObsSenseReport": [
+        829
+      ],
+      "Pi_PHY_external": [
+        800,
+        804
+      ],
+      "alpha_PHY": [
+        45,
+        169,
+        235,
+        241,
+        888,
+        892
+      ],
+      "no_continuous_guards": [
+        45,
+        163,
+        585,
+        727,
+        892
+      ]
+    },
+    "diagnostics": [],
+    "coverage": {
+      "found": {
+        "sections": 25,
+        "verbatim_blocks": 18,
+        "compositions": 3,
+        "x_disc_variables": 28,
+        "clock_resets": 9,
+        "invariants": 5,
+        "automata_sketches": 5,
+        "env_sketches": 4,
+        "assume_guarantee": 5,
+        "channels": 45,
+        "class_sets": 28,
+        "queries": 17,
+        "markers": 18
+      },
+      "expected": {
+        "classes": 28,
+        "clocks": 9,
+        "channels": 45,
+        "queries": 17,
+        "compositions": 3,
+        "invariants": 5,
+        "automata": 5,
+        "environment": 4,
+        "markers": 18
+      },
+      "channel_coverage": 1.0,
+      "class_coverage": 1.0,
+      "query_coverage": 1.0,
+      "composition_coverage": 1.0,
+      "clock_coverage": 1.0,
+      "invariant_coverage": 1.0,
+      "automata_sketch_coverage": 1.0,
+      "environment_sketch_coverage": 1.0,
+      "assume_guarantee_coverage": 1.0
+    },
+    "note": "The extractor derives article structure, channels, class sets, queries, composition formulas, X_disc, clocks, invariants, automata/environment sketches, and assume/guarantee evidence from LaTeX, then binds them to the canonical PHY IR."
+  }
+}

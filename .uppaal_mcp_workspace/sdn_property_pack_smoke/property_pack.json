@@ -1,0 +1,119 @@
+{
+  "queries": "A[] not deadlock\nA[] (A_RULE.RuleInstallPending imply c_rule <= D_rule_install)\nA[] (telemetryClass == TEL_STALE imply !optimistic_reconfig)\nA[] (telemetryClass == TEL_MISSING imply !optimistic_reconfig)\nA[] (recoveryClass == REC_FAILED imply failure_report_sent)\nA[] not ObsRuleMiss.Violation\nA[] not ObsRecovery.Violation\nA[] not ObsAdmission.Violation\nA[] not ObsStaleTelemetry.Violation\nE<> A_POLICY.Evaluate\nE<> A_RULE.RuleTimeout\nE<> A_REC.RecoveryFailed\nA[] policy_enabled_count >= 1\n",
+  "queries_json": [
+    {
+      "name": "deadlock_free",
+      "query": "A[] not deadlock",
+      "category": "safety",
+      "interpretation": "closed SDN/RIC model has no deadlocks",
+      "source": "Verification properties"
+    },
+    {
+      "name": "rule_invariant",
+      "query": "A[] (A_RULE.RuleInstallPending imply c_rule <= D_rule_install)",
+      "category": "timing",
+      "interpretation": "rule install pending respects deadline invariant",
+      "source": "Verification properties"
+    },
+    {
+      "name": "stale_no_optimistic",
+      "query": "A[] (telemetryClass == TEL_STALE imply !optimistic_reconfig)",
+      "category": "safety",
+      "interpretation": "stale telemetry blocks optimistic reconfiguration",
+      "source": "Verification properties"
+    },
+    {
+      "name": "missing_no_optimistic",
+      "query": "A[] (telemetryClass == TEL_MISSING imply !optimistic_reconfig)",
+      "category": "safety",
+      "interpretation": "missing telemetry blocks optimistic reconfiguration",
+      "source": "Verification properties"
+    },
+    {
+      "name": "recovery_failure_report",
+      "query": "A[] (recoveryClass == REC_FAILED imply failure_report_sent)",
+      "category": "safety",
+      "interpretation": "recovery failure is explicit",
+      "source": "Verification properties"
+    },
+    {
+      "name": "ObsRuleMiss",
+      "query": "A[] not ObsRuleMiss.Violation",
+      "category": "observer",
+      "interpretation": "rule miss has bounded explicit outcome",
+      "source": "Observers"
+    },
+    {
+      "name": "ObsRecovery",
+      "query": "A[] not ObsRecovery.Violation",
+      "category": "observer",
+      "interpretation": "recovery has bounded explicit outcome",
+      "source": "Observers"
+    },
+    {
+      "name": "ObsAdmission",
+      "query": "A[] not ObsAdmission.Violation",
+      "category": "observer",
+      "interpretation": "admission has bounded service outcome",
+      "source": "Observers"
+    },
+    {
+      "name": "ObsStaleTelemetry",
+      "query": "A[] not ObsStaleTelemetry.Violation",
+      "category": "observer",
+      "interpretation": "stale/missing telemetry never enables optimistic reconfiguration",
+      "source": "Observers"
+    },
+    {
+      "name": "reach_policy_evaluate",
+      "query": "E<> A_POLICY.Evaluate",
+      "category": "reachability",
+      "interpretation": "policy evaluation is reachable",
+      "source": "Verification properties"
+    },
+    {
+      "name": "reach_rule_timeout",
+      "query": "E<> A_RULE.RuleTimeout",
+      "category": "reachability",
+      "interpretation": "rule timeout path is reachable",
+      "source": "Verification properties"
+    },
+    {
+      "name": "reach_recovery_failed",
+      "query": "E<> A_REC.RecoveryFailed",
+      "category": "reachability",
+      "interpretation": "recovery failure path is reachable",
+      "source": "Verification properties"
+    },
+    {
+      "name": "policy_totality",
+      "query": "A[] policy_enabled_count >= 1",
+      "category": "debug",
+      "interpretation": "policy/fallback totality",
+      "source": "generated"
+    }
+  ],
+  "summary": {
+    "property_count": 13,
+    "include_observers": true,
+    "debug_counters": true
+  },
+  "static_checks": {
+    "channel_semantics": "reports/service outcomes broadcast; commands/acks/failure paths handshake",
+    "no_continuous_guards": "raw SDN/PHY/MAC samples, probabilities and optimization scores forbidden in guards",
+    "single_sync": "one sync label per edge",
+    "stale_telemetry": "TEL_STALE/TEL_MISSING imply !optimistic_reconfig",
+    "explicit_outcomes": "rule miss, admission and recovery expose bounded explicit outcomes"
+  },
+  "negative_property_pack": {
+    "mutations": [
+      "report/outcome channel declared as chan",
+      "raw continuous guard",
+      "missing A_ENV_SDN",
+      "stale optimistic reconfiguration",
+      "missing rule miss outcome",
+      "missing admission outcome",
+      "missing ack timeout path"
+    ]
+  }
+}

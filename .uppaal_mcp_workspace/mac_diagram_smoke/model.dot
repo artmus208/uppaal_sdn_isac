@@ -1,0 +1,138 @@
+digraph MAC {
+  rankdir=LR;
+  subgraph "cluster_A_SCH" {
+    label="A_SCH";
+    "A_SCH.Idle" [label="Idle"];
+    "A_SCH.CollectKPI" [label="CollectKPI"];
+    "A_SCH.SelectMode" [label="SelectMode"];
+    "A_SCH.ApplySchedule" [label="ApplySchedule"];
+    "A_SCH.WaitPHYAck" [label="WaitPHYAck"];
+    "A_SCH.ScheduleFailure" [label="ScheduleFailure"];
+    "A_SCH.Idle" -> "A_SCH.CollectKPI" [label="mac_tick?"];
+    "A_SCH.CollectKPI" -> "A_SCH.SelectMode" [label="phy_kpi_report?"];
+    "A_SCH.CollectKPI" -> "A_SCH.ApplySchedule" [label=""];
+    "A_SCH.SelectMode" -> "A_SCH.ScheduleFailure" [label=""];
+    "A_SCH.SelectMode" -> "A_SCH.ApplySchedule" [label=""];
+    "A_SCH.ApplySchedule" -> "A_SCH.WaitPHYAck" [label="mac_schedule_cmd!"];
+    "A_SCH.WaitPHYAck" -> "A_SCH.Idle" [label="phy_ack?"];
+    "A_SCH.WaitPHYAck" -> "A_SCH.ScheduleFailure" [label=""];
+    "A_SCH.ScheduleFailure" -> "A_SCH.Idle" [label="mac_report!"];
+  }
+  subgraph "cluster_A_Q" {
+    label="A_Q";
+    "A_Q.QueueNormal" [label="QueueNormal"];
+    "A_Q.QueueWarning" [label="QueueWarning"];
+    "A_Q.QueueCritical" [label="QueueCritical"];
+    "A_Q.QueueDraining" [label="QueueDraining"];
+    "A_Q.QueueNormal" -> "A_Q.QueueWarning" [label=""];
+    "A_Q.QueueNormal" -> "A_Q.QueueCritical" [label=""];
+    "A_Q.QueueWarning" -> "A_Q.QueueCritical" [label=""];
+    "A_Q.QueueCritical" -> "A_Q.QueueDraining" [label=""];
+    "A_Q.QueueCritical" -> "A_Q.QueueDraining" [label="resource_reject!"];
+    "A_Q.QueueDraining" -> "A_Q.QueueNormal" [label=""];
+    "A_Q.QueueWarning" -> "A_Q.QueueNormal" [label=""];
+  }
+  subgraph "cluster_A_BUF" {
+    label="A_BUF";
+    "A_BUF.BufferSafe" [label="BufferSafe"];
+    "A_BUF.BufferWarning" [label="BufferWarning"];
+    "A_BUF.BufferOverflow" [label="BufferOverflow"];
+    "A_BUF.BufferSafe" -> "A_BUF.BufferWarning" [label=""];
+    "A_BUF.BufferSafe" -> "A_BUF.BufferOverflow" [label=""];
+    "A_BUF.BufferWarning" -> "A_BUF.BufferOverflow" [label=""];
+    "A_BUF.BufferOverflow" -> "A_BUF.BufferSafe" [label=""];
+    "A_BUF.BufferOverflow" -> "A_BUF.BufferSafe" [label="mac_report!"];
+    "A_BUF.BufferWarning" -> "A_BUF.BufferSafe" [label=""];
+  }
+  subgraph "cluster_A_RSRC" {
+    label="A_RSRC";
+    "A_RSRC.ResourceAvailable" [label="ResourceAvailable"];
+    "A_RSRC.ResourceTight" [label="ResourceTight"];
+    "A_RSRC.ResourceConflict" [label="ResourceConflict"];
+    "A_RSRC.ResourceExhausted" [label="ResourceExhausted"];
+    "A_RSRC.ResourceAvailable" -> "A_RSRC.ResourceTight" [label=""];
+    "A_RSRC.ResourceAvailable" -> "A_RSRC.ResourceExhausted" [label=""];
+    "A_RSRC.ResourceTight" -> "A_RSRC.ResourceConflict" [label=""];
+    "A_RSRC.ResourceConflict" -> "A_RSRC.ResourceExhausted" [label=""];
+    "A_RSRC.ResourceExhausted" -> "A_RSRC.ResourceAvailable" [label="resource_reject!"];
+    "A_RSRC.ResourceTight" -> "A_RSRC.ResourceAvailable" [label=""];
+    "A_RSRC.ResourceConflict" -> "A_RSRC.ResourceAvailable" [label=""];
+  }
+  subgraph "cluster_A_MAC_AGG" {
+    label="A_MAC_AGG";
+    "A_MAC_AGG.ReportIdle" [label="ReportIdle"];
+    "A_MAC_AGG.ReportBuild" [label="ReportBuild"];
+    "A_MAC_AGG.ReportSent" [label="ReportSent"];
+    "A_MAC_AGG.ReportStale" [label="ReportStale"];
+    "A_MAC_AGG.ReportIdle" -> "A_MAC_AGG.ReportBuild" [label=""];
+    "A_MAC_AGG.ReportBuild" -> "A_MAC_AGG.ReportSent" [label="mac_report!"];
+    "A_MAC_AGG.ReportBuild" -> "A_MAC_AGG.ReportStale" [label=""];
+    "A_MAC_AGG.ReportStale" -> "A_MAC_AGG.ReportSent" [label="mac_report!"];
+    "A_MAC_AGG.ReportSent" -> "A_MAC_AGG.ReportIdle" [label=""];
+  }
+  subgraph "cluster_A_ENV_MAC" {
+    label="A_ENV_MAC";
+    "A_ENV_MAC.EnvIdle" [label="EnvIdle"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="mac_tick!"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="phy_kpi_report!"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="sdn_policy_cmd!"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="service_priority!"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="phy_ack!"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="mac_schedule_cmd?"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="beam_update_cmd?"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="sensing_boost_cmd?"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="constrained_mode_cmd?"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label="resource_reject?"];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label=""];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label=""];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label=""];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label=""];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label=""];
+    "A_ENV_MAC.EnvIdle" -> "A_ENV_MAC.EnvIdle" [label=""];
+  }
+  subgraph "cluster_ObsPhyAck" {
+    label="ObsPhyAck";
+    "ObsPhyAck.Idle" [label="Idle"];
+    "ObsPhyAck.Wait" [label="Wait"];
+    "ObsPhyAck.Violation" [label="Violation"];
+    "ObsPhyAck.Idle" -> "ObsPhyAck.Wait" [label=""];
+    "ObsPhyAck.Wait" -> "ObsPhyAck.Idle" [label=""];
+    "ObsPhyAck.Wait" -> "ObsPhyAck.Violation" [label=""];
+  }
+  subgraph "cluster_ObsQueueCritical" {
+    label="ObsQueueCritical";
+    "ObsQueueCritical.Idle" [label="Idle"];
+    "ObsQueueCritical.Wait" [label="Wait"];
+    "ObsQueueCritical.Violation" [label="Violation"];
+    "ObsQueueCritical.Idle" -> "ObsQueueCritical.Wait" [label=""];
+    "ObsQueueCritical.Wait" -> "ObsQueueCritical.Idle" [label=""];
+    "ObsQueueCritical.Wait" -> "ObsQueueCritical.Violation" [label=""];
+  }
+  subgraph "cluster_ObsSensingCritical" {
+    label="ObsSensingCritical";
+    "ObsSensingCritical.Idle" [label="Idle"];
+    "ObsSensingCritical.Wait" [label="Wait"];
+    "ObsSensingCritical.Violation" [label="Violation"];
+    "ObsSensingCritical.Idle" -> "ObsSensingCritical.Wait" [label=""];
+    "ObsSensingCritical.Wait" -> "ObsSensingCritical.Idle" [label=""];
+    "ObsSensingCritical.Wait" -> "ObsSensingCritical.Violation" [label=""];
+  }
+  subgraph "cluster_ObsBufferOverflow" {
+    label="ObsBufferOverflow";
+    "ObsBufferOverflow.Idle" [label="Idle"];
+    "ObsBufferOverflow.Wait" [label="Wait"];
+    "ObsBufferOverflow.Violation" [label="Violation"];
+    "ObsBufferOverflow.Idle" -> "ObsBufferOverflow.Wait" [label=""];
+    "ObsBufferOverflow.Wait" -> "ObsBufferOverflow.Idle" [label=""];
+    "ObsBufferOverflow.Wait" -> "ObsBufferOverflow.Violation" [label=""];
+  }
+  subgraph "cluster_ObsMacReportFreshness" {
+    label="ObsMacReportFreshness";
+    "ObsMacReportFreshness.Idle" [label="Idle"];
+    "ObsMacReportFreshness.Wait" [label="Wait"];
+    "ObsMacReportFreshness.Violation" [label="Violation"];
+    "ObsMacReportFreshness.Idle" -> "ObsMacReportFreshness.Wait" [label=""];
+    "ObsMacReportFreshness.Wait" -> "ObsMacReportFreshness.Idle" [label=""];
+    "ObsMacReportFreshness.Wait" -> "ObsMacReportFreshness.Violation" [label=""];
+  }
+}

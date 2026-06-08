@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "Template_A_RISK has dense/reused label coordinates.",
+    "Template_A_RULE has dense/reused label coordinates.",
+    "Template_A_REC has dense/reused label coordinates."
+  ],
+  "details": {}
+}

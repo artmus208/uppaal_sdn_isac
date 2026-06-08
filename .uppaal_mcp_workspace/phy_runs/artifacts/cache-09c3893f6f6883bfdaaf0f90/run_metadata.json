@@ -1,0 +1,37 @@
+{
+  "run_id": "cache-09c3893f6f6883bfdaaf0f90",
+  "created_at": "2026-06-07T20:02:27.893824+00:00",
+  "generator_version": "phy-generator-v0.5",
+  "cache_key": "09c3893f6f6883bfdaaf0f90758cfda85fa06570ddd73b9af9a0ea8b45f95084",
+  "hashes": {
+    "source_hash": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+    "contract_hash": "7dc5e2055aaa66b492337fc6b8011dab96c7114d057ce797fec352df8baf34fa",
+    "model_hash": "e72736850a3934220f53d33fd15fa3366a89b381a68965ab835eef6fd94af75b",
+    "query_hash": "a34a80b1708594a925a41c1756573d3409af36be9b90f6bb88cc1a701aa54869",
+    "profile_hash": "217ab9b96d6da367320a1bded98fe32de8989139f9cf9e8a78919b202fc3f3a4",
+    "result_hash": "0ab0897548487df083b6c8971ef7b1e698ede28893d5aad220bef64a3040cd4c"
+  },
+  "verifyta": {
+    "version": "unavailable:error",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T200227Z-28ec567b45e1-87ef72b7\\model.xml",
+      "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T200227Z-28ec567b45e1-87ef72b7\\queries.q"
+    ],
+    "options": []
+  },
+  "profile": {
+    "name": "default",
+    "source": "built-in",
+    "boundary_policy": "worse_class",
+    "parameter_synthesis": false,
+    "deadlines": {
+      "D_meas": 5,
+      "D_sig": 5,
+      "D_sense": 5,
+      "D_report": 5,
+      "D_BM": 5
+    }
+  },
+  "result_status": "error"
+}

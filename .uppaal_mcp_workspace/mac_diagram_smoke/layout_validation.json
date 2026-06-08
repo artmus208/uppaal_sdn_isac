@@ -1,0 +1,8 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [
+    "A_RSRC has dense/reused label coordinates."
+  ],
+  "details": {}
+}

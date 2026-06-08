@@ -1,0 +1,50 @@
+{
+  "count": 5,
+  "items": [
+    {
+      "name": "broken_report_channel_declared_as_chan",
+      "description": "Intentionally broken model: report/event channels are not broadcast.",
+      "queries": [
+        "A[] not deadlock"
+      ],
+      "expected_static_ok": false,
+      "expected_validation_error": "broadcast chan"
+    },
+    {
+      "name": "broken_continuous_guard",
+      "description": "Intentionally broken model: continuous SINR_c appears in a guard.",
+      "queries": [
+        "A[] not deadlock"
+      ],
+      "expected_static_ok": false,
+      "expected_validation_error": "SINR_c"
+    },
+    {
+      "name": "broken_c_rec_gt_d_bm",
+      "description": "Intentionally broken model: BeamRecover uses c_rec > D_BM.",
+      "queries": [
+        "A[] not deadlock"
+      ],
+      "expected_static_ok": false,
+      "expected_validation_error": "c_rec > D_BM"
+    },
+    {
+      "name": "broken_phy_state_outside_a_ph",
+      "description": "Intentionally broken model: A_CH writes PHYState.",
+      "queries": [
+        "A[] not deadlock"
+      ],
+      "expected_static_ok": false,
+      "expected_validation_error": "writes PHYState"
+    },
+    {
+      "name": "broken_missing_a_env",
+      "description": "Intentionally broken model: closed system misses ENV templates/instances.",
+      "queries": [
+        "A[] not deadlock"
+      ],
+      "expected_static_ok": false,
+      "expected_validation_error": "ENV_CH"
+    }
+  ]
+}

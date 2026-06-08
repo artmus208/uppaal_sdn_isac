@@ -1,0 +1,12 @@
+A[] not deadlock
+E<> A_PH.PHYNormal
+E<> A_PH.PHYSensingDegraded
+E<> A_PH.PHYCommunicationDegraded
+E<> A_PH.PHYJointDegraded
+A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))
+A[] (A_BM.BeamRecover imply c_rec <= D_BM)
+A[] (ass_ch() imply not A_CH.ContractViolation_CH)
+A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)
+A[] (ass_bm() imply not A_BM.ContractViolation_BM)
+A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)
+A[] (ass_ph() imply not A_PH.ContractViolation_PH)

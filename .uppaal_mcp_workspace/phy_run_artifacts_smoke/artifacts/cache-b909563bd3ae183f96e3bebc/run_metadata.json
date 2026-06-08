@@ -1,0 +1,33 @@
+{
+  "run_id": "cache-b909563bd3ae183f96e3bebc",
+  "created_at": "2026-06-07T14:56:34.657321+00:00",
+  "generator_version": "phy-generator-v0.5",
+  "cache_key": "b909563bd3ae183f96e3bebc05f27ab137e217ae32c942ab46b49e9db6e885f4",
+  "hashes": {
+    "source_hash": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+    "contract_hash": "2d3cdfbff78b4322b82c262598778315e2bbadcfd2b5065996f781aa4f692913",
+    "model_hash": "39c6bd341818c2854f63941ce54b5852f11971da205b28f386d9262a03a9f4e6",
+    "query_hash": "96a0757a240f6a27b67cffc68bc6aff4866149d614eaf05e95e9c9945c244d53",
+    "profile_hash": "217ab9b96d6da367320a1bded98fe32de8989139f9cf9e8a78919b202fc3f3a4",
+    "result_hash": null
+  },
+  "verifyta": {
+    "version": "UPPAAL 5.0.0",
+    "command": [],
+    "options": []
+  },
+  "profile": {
+    "name": "default",
+    "source": "built-in",
+    "boundary_policy": "worse_class",
+    "parameter_synthesis": false,
+    "deadlines": {
+      "D_meas": 5,
+      "D_sig": 5,
+      "D_sense": 5,
+      "D_report": 5,
+      "D_BM": 5
+    }
+  },
+  "result_status": null
+}

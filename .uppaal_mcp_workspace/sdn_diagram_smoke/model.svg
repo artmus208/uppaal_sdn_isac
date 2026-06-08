@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="364"><rect width="100%" height="100%" fill="white"/><text x="24" y="36" font-family="DejaVu Sans" font-size="14">Template_A_MON</text>
+<text x="24" y="60" font-family="DejaVu Sans" font-size="14">Template_A_RISK</text>
+<text x="24" y="84" font-family="DejaVu Sans" font-size="14">Template_A_POLICY</text>
+<text x="24" y="108" font-family="DejaVu Sans" font-size="14">Template_A_RULE</text>
+<text x="24" y="132" font-family="DejaVu Sans" font-size="14">Template_A_REC</text>
+<text x="24" y="156" font-family="DejaVu Sans" font-size="14">Template_A_SDN_AGG</text>
+<text x="24" y="180" font-family="DejaVu Sans" font-size="14">Template_A_ENV_SDN</text>
+<text x="24" y="204" font-family="DejaVu Sans" font-size="14">Template_ObsRuleMiss</text>
+<text x="24" y="228" font-family="DejaVu Sans" font-size="14">Template_ObsRecovery</text>
+<text x="24" y="252" font-family="DejaVu Sans" font-size="14">Template_ObsAdmission</text>
+<text x="24" y="276" font-family="DejaVu Sans" font-size="14">Template_ObsStaleTelemetry</text>
+<text x="24" y="300" font-family="DejaVu Sans" font-size="14">Template_ObsCommandAck</text>
+<text x="24" y="324" font-family="DejaVu Sans" font-size="14">Template_ObsSensingDecision</text></svg>

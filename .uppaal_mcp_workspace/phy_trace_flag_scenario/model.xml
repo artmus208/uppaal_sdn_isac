@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>const int D_BM = 5;
+clock c_obs, c_driver;
+broadcast chan beam_failure, beam_restored, handover_hint, recovery_start;
+</declaration>
+  <template>
+    <name>Template_Driver</name>
+    <location id="Template_Driver_0" x="0" y="0">
+      <name x="-20" y="-30">Start</name>
+    </location>
+    <location id="Template_Driver_1" x="180" y="0">
+      <name x="160" y="-30">WaitResponse</name>
+    </location>
+    <location id="Template_Driver_2" x="360" y="0">
+      <name x="340" y="-30">Done</name>
+    </location>
+    <init ref="Template_Driver_0" />
+    <transition>
+      <source ref="Template_Driver_0" />
+      <target ref="Template_Driver_1" />
+      <label kind="synchronisation" x="0" y="-60">recovery_start!</label>
+      <label kind="assignment" x="0" y="-40">c_driver = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_Driver_2" />
+      <target ref="Template_Driver_2" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsBeamRecovery</name>
+    <location id="Template_ObsBeamRecovery_0" x="0" y="0">
+      <name x="-20" y="-30">Idle</name>
+    </location>
+    <location id="Template_ObsBeamRecovery_1" x="180" y="0">
+      <name x="160" y="-30">Wait</name>
+    </location>
+    <location id="Template_ObsBeamRecovery_2" x="360" y="0">
+      <name x="340" y="-30">Violation</name>
+    </location>
+    <init ref="Template_ObsBeamRecovery_0" />
+    <transition>
+      <source ref="Template_ObsBeamRecovery_0" />
+      <target ref="Template_ObsBeamRecovery_1" />
+      <label kind="synchronisation" x="0" y="-60">recovery_start?</label>
+      <label kind="assignment" x="0" y="-40">c_obs = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_0" />
+      <label kind="guard" x="0" y="-60">c_obs &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">beam_restored?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_0" />
+      <label kind="guard" x="0" y="-60">c_obs &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">handover_hint?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_0" />
+      <label kind="guard" x="0" y="-60">c_obs &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">beam_failure?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_2" />
+      <label kind="guard" x="0" y="-60">c_obs &gt; D_BM</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_0" />
+      <target ref="Template_ObsBeamRecovery_0" />
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_2" />
+      <target ref="Template_ObsBeamRecovery_2" />
+    </transition>
+  </template>
+  <system>Driver = Template_Driver();
+ObsBeamRecovery = Template_ObsBeamRecovery();
+system Driver, ObsBeamRecovery;</system>
+</nta>

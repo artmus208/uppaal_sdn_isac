@@ -1,0 +1,87 @@
+{
+  "queries": "A[] not deadlock\nA[] (resourceClass == RES_EXHAUSTED imply !silent_accept)\nA[] (A_SCH.WaitPHYAck imply c_phy_ack <= D_phy_ack)\nA[] not ObsPhyAck.Violation\nA[] not ObsQueueCritical.Violation\nA[] not ObsSensingCritical.Violation\nE<> A_SCH.SelectMode\nE<> A_MAC_AGG.ReportSent\nA[] policy_enabled_count >= 1\n",
+  "queries_json": [
+    {
+      "name": "deadlock_free",
+      "query": "A[] not deadlock",
+      "category": "safety",
+      "interpretation": "closed MAC model has no deadlocks",
+      "source": "Verification properties"
+    },
+    {
+      "name": "no_silent_accept",
+      "query": "A[] (resourceClass == RES_EXHAUSTED imply !silent_accept)",
+      "category": "safety",
+      "interpretation": "exhausted resource is never silently accepted",
+      "source": "Verification properties"
+    },
+    {
+      "name": "ack_invariant",
+      "query": "A[] (A_SCH.WaitPHYAck imply c_phy_ack <= D_phy_ack)",
+      "category": "timing",
+      "interpretation": "wait-for-PHY-ack state respects its deadline",
+      "source": "Verification properties"
+    },
+    {
+      "name": "ObsPhyAck",
+      "query": "A[] not ObsPhyAck.Violation",
+      "category": "observer",
+      "interpretation": "PHY command is acked or failed by deadline",
+      "source": "Observers"
+    },
+    {
+      "name": "ObsQueueCritical",
+      "query": "A[] not ObsQueueCritical.Violation",
+      "category": "observer",
+      "interpretation": "critical queue gets bounded response",
+      "source": "Observers"
+    },
+    {
+      "name": "ObsSensingCritical",
+      "query": "A[] not ObsSensingCritical.Violation",
+      "category": "observer",
+      "interpretation": "critical sensing demand gets bounded response",
+      "source": "Observers"
+    },
+    {
+      "name": "reach_schedule",
+      "query": "E<> A_SCH.SelectMode",
+      "category": "reachability",
+      "interpretation": "scheduler can reach policy selection",
+      "source": "Verification properties"
+    },
+    {
+      "name": "reach_report",
+      "query": "E<> A_MAC_AGG.ReportSent",
+      "category": "reachability",
+      "interpretation": "MAC can emit report",
+      "source": "Verification properties"
+    },
+    {
+      "name": "policy_totality",
+      "query": "A[] policy_enabled_count >= 1",
+      "category": "debug",
+      "interpretation": "policy/fallback totality",
+      "source": "generated"
+    }
+  ],
+  "summary": {
+    "property_count": 9,
+    "include_observers": true,
+    "debug_counters": true
+  },
+  "static_checks": {
+    "channel_semantics": "mac_report/phy_kpi_report broadcast; commands handshake",
+    "no_continuous_guards": "raw MAC samples forbidden in guards",
+    "single_sync": "one sync label per edge"
+  },
+  "negative_property_pack": {
+    "mutations": [
+      "report channel declared as chan",
+      "raw continuous guard",
+      "missing A_ENV_MAC",
+      "silent_accept=true",
+      "missing PHY ack timeout path"
+    ]
+  }
+}

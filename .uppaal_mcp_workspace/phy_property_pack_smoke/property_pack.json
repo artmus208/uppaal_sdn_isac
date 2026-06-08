@@ -1,0 +1,442 @@
+{
+  "queries_json": [
+    {
+      "index": 1,
+      "name": "deadlock_free",
+      "query": "A[] not deadlock",
+      "category": "safety",
+      "interpretation": "closed A_SYS has no deadlocks",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 812
+    },
+    {
+      "index": 2,
+      "name": "reach_phy_normal",
+      "query": "E<> A_PH.PHYNormal",
+      "category": "reachability",
+      "interpretation": "normal PHY state is reachable",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 813
+    },
+    {
+      "index": 3,
+      "name": "reach_phy_sensing_degraded",
+      "query": "E<> A_PH.PHYSensingDegraded",
+      "category": "reachability",
+      "interpretation": "sensing degradation is reachable",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 814
+    },
+    {
+      "index": 4,
+      "name": "reach_phy_communication_degraded",
+      "query": "E<> A_PH.PHYCommunicationDegraded",
+      "category": "reachability",
+      "interpretation": "communication degradation is reachable",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 815
+    },
+    {
+      "index": 5,
+      "name": "reach_phy_joint_degraded",
+      "query": "E<> A_PH.PHYJointDegraded",
+      "category": "reachability",
+      "interpretation": "joint degradation is reachable",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 816
+    },
+    {
+      "index": 6,
+      "name": "aggregation_consistency",
+      "query": "A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))",
+      "category": "safety",
+      "interpretation": "normal state implies both aggregate booleans are ok",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 817
+    },
+    {
+      "index": 7,
+      "name": "ch_determinism",
+      "query": "A[] (ch_enabled_count <= 1)",
+      "category": "safety",
+      "interpretation": "channel classifier has at most one enabled result",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 858
+    },
+    {
+      "index": 8,
+      "name": "sq_determinism",
+      "query": "A[] (sq_enabled_count <= 1)",
+      "category": "safety",
+      "interpretation": "sensing classifier has at most one enabled result",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 859
+    },
+    {
+      "index": 9,
+      "name": "bm_recover_invariant",
+      "query": "A[] (A_BM.BeamRecover imply c_rec <= D_BM)",
+      "category": "safety",
+      "interpretation": "beam recovery never exceeds its invariant",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "properties",
+      "line": 854
+    },
+    {
+      "index": 10,
+      "name": "ObsSenseReport",
+      "query": "A[] not ObsSenseReport.Violation",
+      "category": "observer",
+      "interpretation": "ObsSenseReport does not reach Violation",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "observers",
+      "line": 820
+    },
+    {
+      "index": 11,
+      "name": "ObsFreshness",
+      "query": "A[] not ObsFreshness.Violation",
+      "category": "observer",
+      "interpretation": "ObsFreshness does not reach Violation",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "observers",
+      "line": 832
+    },
+    {
+      "index": 12,
+      "name": "ObsBeamRecovery",
+      "query": "A[] not ObsBeamRecovery.Violation",
+      "category": "observer",
+      "interpretation": "ObsBeamRecovery does not reach Violation",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "observers",
+      "line": 842
+    },
+    {
+      "index": 13,
+      "name": "contract_ch",
+      "query": "A[] (ass_ch() imply not A_CH.ContractViolation_CH)",
+      "category": "contract",
+      "interpretation": "A_CH contract violation is absent under assumptions",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "contracts",
+      "line": 877
+    },
+    {
+      "index": 14,
+      "name": "contract_sig",
+      "query": "A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)",
+      "category": "contract",
+      "interpretation": "A_SIG contract violation is absent under assumptions",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "contracts",
+      "line": 878
+    },
+    {
+      "index": 15,
+      "name": "contract_bm",
+      "query": "A[] (ass_bm() imply not A_BM.ContractViolation_BM)",
+      "category": "contract",
+      "interpretation": "A_BM contract violation is absent under assumptions",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "contracts",
+      "line": 879
+    },
+    {
+      "index": 16,
+      "name": "contract_sq",
+      "query": "A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)",
+      "category": "contract",
+      "interpretation": "A_SQ contract violation is absent under assumptions",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "contracts",
+      "line": 880
+    },
+    {
+      "index": 17,
+      "name": "contract_ph",
+      "query": "A[] (ass_ph() imply not A_PH.ContractViolation_PH)",
+      "category": "contract",
+      "interpretation": "A_PH contract violation is absent under assumptions",
+      "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "section": "contracts",
+      "line": 881
+    }
+  ],
+  "properties": [
+    {
+      "name": "deadlock_free",
+      "query": "A[] not deadlock",
+      "category": "safety",
+      "interpretation": "closed A_SYS has no deadlocks",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 812
+      }
+    },
+    {
+      "name": "reach_phy_normal",
+      "query": "E<> A_PH.PHYNormal",
+      "category": "reachability",
+      "interpretation": "normal PHY state is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 813
+      }
+    },
+    {
+      "name": "reach_phy_sensing_degraded",
+      "query": "E<> A_PH.PHYSensingDegraded",
+      "category": "reachability",
+      "interpretation": "sensing degradation is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 814
+      }
+    },
+    {
+      "name": "reach_phy_communication_degraded",
+      "query": "E<> A_PH.PHYCommunicationDegraded",
+      "category": "reachability",
+      "interpretation": "communication degradation is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 815
+      }
+    },
+    {
+      "name": "reach_phy_joint_degraded",
+      "query": "E<> A_PH.PHYJointDegraded",
+      "category": "reachability",
+      "interpretation": "joint degradation is reachable",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 816
+      }
+    },
+    {
+      "name": "aggregation_consistency",
+      "query": "A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))",
+      "category": "safety",
+      "interpretation": "normal state implies both aggregate booleans are ok",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 817
+      }
+    },
+    {
+      "name": "ch_determinism",
+      "query": "A[] (ch_enabled_count <= 1)",
+      "category": "safety",
+      "interpretation": "channel classifier has at most one enabled result",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 858
+      }
+    },
+    {
+      "name": "sq_determinism",
+      "query": "A[] (sq_enabled_count <= 1)",
+      "category": "safety",
+      "interpretation": "sensing classifier has at most one enabled result",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 859
+      }
+    },
+    {
+      "name": "bm_recover_invariant",
+      "query": "A[] (A_BM.BeamRecover imply c_rec <= D_BM)",
+      "category": "safety",
+      "interpretation": "beam recovery never exceeds its invariant",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "properties",
+        "line": 854
+      }
+    },
+    {
+      "name": "ObsSenseReport",
+      "query": "A[] not ObsSenseReport.Violation",
+      "category": "observer",
+      "interpretation": "ObsSenseReport does not reach Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 820
+      }
+    },
+    {
+      "name": "ObsFreshness",
+      "query": "A[] not ObsFreshness.Violation",
+      "category": "observer",
+      "interpretation": "ObsFreshness does not reach Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 832
+      }
+    },
+    {
+      "name": "ObsBeamRecovery",
+      "query": "A[] not ObsBeamRecovery.Violation",
+      "category": "observer",
+      "interpretation": "ObsBeamRecovery does not reach Violation",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "observers",
+        "line": 842
+      }
+    },
+    {
+      "name": "contract_ch",
+      "query": "A[] (ass_ch() imply not A_CH.ContractViolation_CH)",
+      "category": "contract",
+      "interpretation": "A_CH contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 877
+      }
+    },
+    {
+      "name": "contract_sig",
+      "query": "A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)",
+      "category": "contract",
+      "interpretation": "A_SIG contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 878
+      }
+    },
+    {
+      "name": "contract_bm",
+      "query": "A[] (ass_bm() imply not A_BM.ContractViolation_BM)",
+      "category": "contract",
+      "interpretation": "A_BM contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 879
+      }
+    },
+    {
+      "name": "contract_sq",
+      "query": "A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)",
+      "category": "contract",
+      "interpretation": "A_SQ contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 880
+      }
+    },
+    {
+      "name": "contract_ph",
+      "query": "A[] (ass_ph() imply not A_PH.ContractViolation_PH)",
+      "category": "contract",
+      "interpretation": "A_PH contract violation is absent under assumptions",
+      "provenance": {
+        "source": "PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+        "section": "contracts",
+        "line": 881
+      }
+    }
+  ],
+  "summary": {
+    "query_count": 17,
+    "categories": {
+      "safety": 5,
+      "reachability": 4,
+      "observer": 3,
+      "contract": 5
+    },
+    "include_observers": true,
+    "debug_counters": true,
+    "profile": null
+  },
+  "static_checks": [
+    {
+      "name": "channel_semantics",
+      "type": "static",
+      "reason": "broadcast/handshake semantics are syntactic/model-structure checks, not UPPAAL formulas"
+    },
+    {
+      "name": "single_sync_per_transition",
+      "type": "static",
+      "reason": "UPPAAL XML transition labels are checked structurally by validators"
+    },
+    {
+      "name": "no_continuous_guards",
+      "type": "static",
+      "reason": "continuous PHY symbols must not appear in generated automata guards"
+    }
+  ],
+  "negative_property_pack": {
+    "count": 5,
+    "items": [
+      {
+        "name": "broken_report_channel_declared_as_chan",
+        "description": "Intentionally broken model: report/event channels are not broadcast.",
+        "queries": [
+          "A[] not deadlock"
+        ],
+        "expected_static_ok": false,
+        "expected_validation_error": "broadcast chan"
+      },
+      {
+        "name": "broken_continuous_guard",
+        "description": "Intentionally broken model: continuous SINR_c appears in a guard.",
+        "queries": [
+          "A[] not deadlock"
+        ],
+        "expected_static_ok": false,
+        "expected_validation_error": "SINR_c"
+      },
+      {
+        "name": "broken_c_rec_gt_d_bm",
+        "description": "Intentionally broken model: BeamRecover uses c_rec > D_BM.",
+        "queries": [
+          "A[] not deadlock"
+        ],
+        "expected_static_ok": false,
+        "expected_validation_error": "c_rec > D_BM"
+      },
+      {
+        "name": "broken_phy_state_outside_a_ph",
+        "description": "Intentionally broken model: A_CH writes PHYState.",
+        "queries": [
+          "A[] not deadlock"
+        ],
+        "expected_static_ok": false,
+        "expected_validation_error": "writes PHYState"
+      },
+      {
+        "name": "broken_missing_a_env",
+        "description": "Intentionally broken model: closed system misses ENV templates/instances.",
+        "queries": [
+          "A[] not deadlock"
+        ],
+        "expected_static_ok": false,
+        "expected_validation_error": "ENV_CH"
+      }
+    ]
+  }
+}

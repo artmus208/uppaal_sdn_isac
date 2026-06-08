@@ -1,0 +1,1820 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC "-//Uppaal Team//DTD Flat System 1.6//EN" "http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd">
+<nta>
+  <declaration>// Generated from PHY contract IR. Continuous PHY metrics stay outside timed automata.
+// Generation mode: with_observers.
+// Negative scenarios disabled for this generated model.
+const int D_meas = 5;
+const int D_sig = 5;
+const int D_sense = 5;
+const int D_report = 5;
+const int D_BM = 5;
+const int D_child = 5;
+const int D_net = 5;
+const int T_meas = 5;
+const int J_meas = 1;
+const int T_report = 5;
+const int J_SSB = 1;
+const int tau_SSB = 4;
+
+const int SCENARIO_NORMAL = 0;
+const int SCENARIO_COMM_DEGRADED = 1;
+const int SCENARIO_SENSING_DEGRADED = 2;
+const int SCENARIO_JOINT_DEGRADED = 3;
+int[0,3] env_scenario = SCENARIO_NORMAL;
+
+clock c_meas, c_sig, c_sense, c_report, c_rec, c_ssb;
+clock aos_bs, aos_ctrl, c_env, c_net;
+clock c_obs_sense, c_obs_fresh, c_obs_beam;
+
+typedef int[0,4] WaveformT;
+const int W_OFDM = 0;
+const int W_OTFS = 1;
+const int W_AFDM = 2;
+const int W_SC = 3;
+const int W_OTHER = 4;
+WaveformT W = W_OFDM;
+
+chan beam_cmd, controller_report_delivered, extra_ssb_cmd, handover_assist_cmd, mac_report_delivered, measure_tick, new_beam_confirmed, payload_sensing_config, pilot_config, power_cmd, prs_config, recovery_cmd, sensing_mode_cmd, ssb_burst_config, waveform_config;
+broadcast chan aos_ctrl_expired, beam_failure, beam_locked, beam_misaligned, beam_report, beam_restored, blockage_detected, channel_degraded, channel_report, contract_violation_bm, contract_violation_ch, contract_violation_ph, contract_violation_sig, contract_violation_sq, degradation_event, handover_hint, mobility_alert, multipath_alert, phy_failure, phy_kpi_report, phy_outage, recovery_event, recovery_start, sensing_degraded, sensing_failure, sensing_report, sensing_success, signal_degraded, signal_report, target_detected;
+
+typedef int[0,3] SINRClassT;
+const int SINRCLASS_OUTAGE = 0;
+const int SINRCLASS_LOW = 1;
+const int SINRCLASS_OK = 2;
+const int SINRCLASS_HIGH = 3;
+SINRClassT SINRClass = SINRCLASS_OK;
+
+typedef int[0,2] BLERClassT;
+const int BLERCLASS_OK = 0;
+const int BLERCLASS_HIGH = 1;
+const int BLERCLASS_CRITICAL = 2;
+BLERClassT BLERClass = BLERCLASS_OK;
+
+typedef int[0,2] CQIClassT;
+const int CQICLASS_GOOD = 0;
+const int CQICLASS_LIMITED = 1;
+const int CQICLASS_BAD = 2;
+CQIClassT CQIClass = CQICLASS_GOOD;
+
+typedef int[0,2] IClassT;
+const int ICLASS_OK = 0;
+const int ICLASS_HIGH = 1;
+const int ICLASS_CRITICAL = 2;
+IClassT IClass = ICLASS_OK;
+
+typedef int[0,1] DopplerClassT;
+const int DOPPLERCLASS_OK = 0;
+const int DOPPLERCLASS_HIGH = 1;
+DopplerClassT DopplerClass = DOPPLERCLASS_OK;
+
+typedef int[0,1] DelaySpreadClassT;
+const int DELAYSPREADCLASS_OK = 0;
+const int DELAYSPREADCLASS_HIGH = 1;
+DelaySpreadClassT DelaySpreadClass = DELAYSPREADCLASS_OK;
+
+typedef int[0,2] PowerClassT;
+const int POWERCLASS_OK = 0;
+const int POWERCLASS_LOW = 1;
+const int POWERCLASS_ABSENT = 2;
+PowerClassT PowerClass = POWERCLASS_OK;
+
+typedef int[0,1] DRTClassT;
+const int DRTCLASS_OK = 0;
+const int DRTCLASS_BAD = 1;
+DRTClassT DRTClass = DRTCLASS_OK;
+
+typedef int[0,2] PilotDensityClassT;
+const int PILOTDENSITYCLASS_OK = 0;
+const int PILOTDENSITYCLASS_LOW = 1;
+const int PILOTDENSITYCLASS_FAILED = 2;
+PilotDensityClassT PilotDensityClass = PILOTDENSITYCLASS_OK;
+
+typedef int[0,2] PayloadSenseClassT;
+const int PAYLOADSENSECLASS_OK = 0;
+const int PAYLOADSENSECLASS_LIMITED = 1;
+const int PAYLOADSENSECLASS_FAILED = 2;
+PayloadSenseClassT PayloadSenseClass = PAYLOADSENSECLASS_OK;
+
+typedef int[0,2] PRSClassT;
+const int PRSCLASS_OK = 0;
+const int PRSCLASS_LIMITED = 1;
+const int PRSCLASS_FAILED = 2;
+PRSClassT PRSClass = PRSCLASS_OK;
+
+typedef int[0,2] BeamErrorClassT;
+const int BEAMERRORCLASS_LOCKABLE = 0;
+const int BEAMERRORCLASS_UNSTABLE = 1;
+const int BEAMERRORCLASS_CRITICAL = 2;
+BeamErrorClassT BeamErrorClass = BEAMERRORCLASS_LOCKABLE;
+
+typedef int[0,2] BlockageClassT;
+const int BLOCKAGECLASS_NONE = 0;
+const int BLOCKAGECLASS_SUSPECTED = 1;
+const int BLOCKAGECLASS_CONFIRMED = 2;
+BlockageClassT BlockageClass = BLOCKAGECLASS_NONE;
+
+typedef int[0,2] PdClassT;
+const int PDCLASS_OK = 0;
+const int PDCLASS_LOW = 1;
+const int PDCLASS_FAILED = 2;
+PdClassT PdClass = PDCLASS_OK;
+
+typedef int[0,2] RfaClassT;
+const int RFACLASS_OK = 0;
+const int RFACLASS_HIGH = 1;
+const int RFACLASS_CRITICAL = 2;
+RfaClassT RfaClass = RFACLASS_OK;
+
+typedef int[0,2] AccClassT;
+const int ACCCLASS_OK = 0;
+const int ACCCLASS_LIMITED = 1;
+const int ACCCLASS_FAILED = 2;
+AccClassT AccClass = ACCCLASS_OK;
+
+typedef int[0,2] CRBClassT;
+const int CRBCLASS_OK = 0;
+const int CRBCLASS_LOOSE = 1;
+const int CRBCLASS_UNUSABLE = 2;
+CRBClassT CRBClass = CRBCLASS_OK;
+
+typedef int[0,2] AoSClassT;
+const int AOSCLASS_FRESH = 0;
+const int AOSCLASS_STALE = 1;
+const int AOSCLASS_EXPIRED = 2;
+AoSClassT AoSClass = AOSCLASS_FRESH;
+
+typedef int[0,2] CapClassT;
+const int CAPCLASS_OK = 0;
+const int CAPCLASS_LIMITED = 1;
+const int CAPCLASS_FAILED = 2;
+CapClassT CapClass = CAPCLASS_OK;
+
+typedef int[0,2] CoverageClassT;
+const int COVERAGECLASS_OK = 0;
+const int COVERAGECLASS_LIMITED = 1;
+const int COVERAGECLASS_FAILED = 2;
+CoverageClassT CoverageClass = COVERAGECLASS_OK;
+
+typedef int[0,2] ResourceShareClassT;
+const int RESOURCESHARECLASS_OK = 0;
+const int RESOURCESHARECLASS_LIMITED = 1;
+const int RESOURCESHARECLASS_STARVED = 2;
+ResourceShareClassT ResourceShareClass = RESOURCESHARECLASS_OK;
+
+typedef int[0,2] MisClassT;
+const int MISCLASS_OK = 0;
+const int MISCLASS_WARN = 1;
+const int MISCLASS_CRITICAL = 2;
+MisClassT MisClass = MISCLASS_OK;
+
+typedef int[0,2] BMOverheadClassT;
+const int BMOVERHEADCLASS_OK = 0;
+const int BMOVERHEADCLASS_HIGH = 1;
+const int BMOVERHEADCLASS_EXCESSIVE = 2;
+BMOverheadClassT BMOverheadClass = BMOVERHEADCLASS_OK;
+
+typedef int[0,5] ChannelClassT;
+const int CHANNELCLASS_NOMINAL = 0;
+const int CHANNELCLASS_INTERFERENCE_LIMITED = 1;
+const int CHANNELCLASS_MOBILITY_LIMITED = 2;
+const int CHANNELCLASS_MULTIPATH_LIMITED = 3;
+const int CHANNELCLASS_BLOCKAGE = 4;
+const int CHANNELCLASS_OUTAGE = 5;
+ChannelClassT ChannelClass = CHANNELCLASS_NOMINAL;
+
+typedef int[0,4] SignalClassT;
+const int SIGNALCLASS_NOMINAL = 0;
+const int SIGNALCLASS_PILOT_BASED = 1;
+const int SIGNALCLASS_PAYLOAD_ASSISTED = 2;
+const int SIGNALCLASS_RECONFIGURING = 3;
+const int SIGNALCLASS_LIMITED = 4;
+SignalClassT SignalClass = SIGNALCLASS_NOMINAL;
+
+typedef int[0,7] BeamClassT;
+const int BEAMCLASS_SEARCH = 0;
+const int BEAMCLASS_TRACK = 1;
+const int BEAMCLASS_LOCKED = 2;
+const int BEAMCLASS_PREDICT = 3;
+const int BEAMCLASS_MISALIGNED = 4;
+const int BEAMCLASS_RECOVERING = 5;
+const int BEAMCLASS_HO_ASSIST = 6;
+const int BEAMCLASS_FAILED = 7;
+BeamClassT BeamClass = BEAMCLASS_SEARCH;
+
+typedef int[0,7] SensingStateT;
+const int SENSINGSTATE_SENSINGQOSOK = 0;
+const int SENSINGSTATE_PROBABILITYLIMITED = 1;
+const int SENSINGSTATE_FALSEALARMLIMITED = 2;
+const int SENSINGSTATE_ACCURACYLIMITED = 3;
+const int SENSINGSTATE_FRESHNESSLIMITED = 4;
+const int SENSINGSTATE_COVERAGELIMITED = 5;
+const int SENSINGSTATE_CAPACITYLIMITED = 6;
+const int SENSINGSTATE_SENSINGFAILURE = 7;
+SensingStateT SensingState = SENSINGSTATE_SENSINGQOSOK;
+
+typedef int[0,5] PHYStateT;
+const int PHYSTATE_PHYNORMAL = 0;
+const int PHYSTATE_PHYCOMMUNICATIONDEGRADED = 1;
+const int PHYSTATE_PHYSENSINGDEGRADED = 2;
+const int PHYSTATE_PHYJOINTDEGRADED = 3;
+const int PHYSTATE_PHYRECOVERY = 4;
+const int PHYSTATE_PHYFAILURE = 5;
+PHYStateT PHYState = PHYSTATE_PHYNORMAL;
+
+int highest_priority_CH() {
+  if (SINRClass == SINRCLASS_OUTAGE) return CHANNELCLASS_OUTAGE;
+  if (PowerClass == POWERCLASS_LOW || PowerClass == POWERCLASS_ABSENT) return CHANNELCLASS_BLOCKAGE;
+  if (IClass == ICLASS_HIGH || IClass == ICLASS_CRITICAL) return CHANNELCLASS_INTERFERENCE_LIMITED;
+  if (DopplerClass == DOPPLERCLASS_HIGH) return CHANNELCLASS_MOBILITY_LIMITED;
+  if (DelaySpreadClass == DELAYSPREADCLASS_HIGH) return CHANNELCLASS_MULTIPATH_LIMITED;
+  return CHANNELCLASS_NOMINAL;
+}
+
+int highest_priority_SQ() {
+  if (PdClass == PDCLASS_FAILED || RfaClass == RFACLASS_CRITICAL || AccClass == ACCCLASS_FAILED || CRBClass == CRBCLASS_UNUSABLE || AoSClass == AOSCLASS_EXPIRED || CapClass == CAPCLASS_FAILED || CoverageClass == COVERAGECLASS_FAILED || BeamClass == BEAMCLASS_FAILED) return SENSINGSTATE_SENSINGFAILURE;
+  if (AoSClass == AOSCLASS_STALE) return SENSINGSTATE_FRESHNESSLIMITED;
+  if (AccClass == ACCCLASS_LIMITED || CRBClass == CRBCLASS_LOOSE) return SENSINGSTATE_ACCURACYLIMITED;
+  if (PdClass == PDCLASS_LOW) return SENSINGSTATE_PROBABILITYLIMITED;
+  if (RfaClass == RFACLASS_HIGH) return SENSINGSTATE_FALSEALARMLIMITED;
+  if (CapClass == CAPCLASS_LIMITED) return SENSINGSTATE_CAPACITYLIMITED;
+  if (CoverageClass == COVERAGECLASS_LIMITED) return SENSINGSTATE_COVERAGELIMITED;
+  return SENSINGSTATE_SENSINGQOSOK;
+}
+
+bool channel_degraded_flag = false;
+bool signal_degraded_flag = false;
+bool beam_degraded_flag = false;
+bool sensing_degraded_flag = false;
+bool sensing_failure_flag = false;
+bool degradation_flag = false;
+bool child_update = false;
+bool input_changed = false;
+bool target_seen = false;
+bool comm_ok = true;
+bool sensing_qos_ok = true;
+bool TimingOk = true;
+bool ConfigAdmissible = true;
+bool BeamCmdAdmissible = true;
+bool NetDeliveryOk = true;
+bool classes_in_range_ch = true;
+bool classes_in_range_sig = true;
+bool classes_in_range_bm = true;
+bool fresh_child_reports = true;
+int[0,1] ch_enabled_count = 1;
+int[0,1] sq_enabled_count = 1;
+
+bool ass_ch() { return TimingOk &amp;&amp; classes_in_range_ch; }
+bool gar_ch() { return classes_in_range_ch; }
+bool ass_sig() { return ConfigAdmissible &amp;&amp; classes_in_range_sig; }
+bool gar_sig() { return classes_in_range_sig; }
+bool ass_bm() { return BeamCmdAdmissible &amp;&amp; classes_in_range_bm; }
+bool gar_bm() { return classes_in_range_bm; }
+bool ass_sq() { return fresh_child_reports &amp;&amp; gar_ch() &amp;&amp; gar_sig() &amp;&amp; gar_bm(); }
+bool gar_sq() { return true; }
+bool ass_ph() { return gar_ch() &amp;&amp; gar_sig() &amp;&amp; gar_bm() &amp;&amp; gar_sq(); }
+bool gar_ph() { return true; }</declaration>
+  <template>
+    <name>Template_A_CH</name>
+    <location id="Template_A_CH_0" x="0" y="0">
+      <name x="-20" y="-30">ChannelNominal</name>
+    </location>
+    <location id="Template_A_CH_1" x="180" y="0">
+      <name x="160" y="-30">MeasurePending</name>
+    </location>
+    <location id="Template_A_CH_2" x="360" y="0">
+      <name x="340" y="-30">InterferenceLimited</name>
+    </location>
+    <location id="Template_A_CH_3" x="540" y="0">
+      <name x="520" y="-30">MobilityLimited</name>
+    </location>
+    <location id="Template_A_CH_4" x="720" y="0">
+      <name x="700" y="-30">MultipathLimited</name>
+    </location>
+    <location id="Template_A_CH_5" x="900" y="0">
+      <name x="880" y="-30">Blockage</name>
+    </location>
+    <location id="Template_A_CH_6" x="1080" y="0">
+      <name x="1060" y="-30">Outage</name>
+    </location>
+    <location id="Template_A_CH_7" x="1260" y="0">
+      <name x="1240" y="-30">ContractViolation_CH</name>
+    </location>
+    <init ref="Template_A_CH_0" />
+    <transition>
+      <source ref="Template_A_CH_0" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_0" />
+      <target ref="Template_A_CH_0" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_1" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_2" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_2" />
+      <target ref="Template_A_CH_2" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_3" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_3" />
+      <target ref="Template_A_CH_3" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_4" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_4" />
+      <target ref="Template_A_CH_4" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_5" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_5" />
+      <target ref="Template_A_CH_5" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_6" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_6" />
+      <target ref="Template_A_CH_6" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_7" />
+      <target ref="Template_A_CH_1" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick?</label>
+      <label kind="assignment" x="0" y="-40">c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_7" />
+      <target ref="Template_A_CH_7" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_1" />
+      <target ref="Template_A_CH_0" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_NORMAL</label>
+      <label kind="synchronisation" x="0" y="-40">channel_report!</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = false, ch_enabled_count = 1, c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_1" />
+      <target ref="Template_A_CH_2" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_COMM_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">channel_report!</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_1" />
+      <target ref="Template_A_CH_3" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_SENSING_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">channel_report!</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, c_meas = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_CH_1" />
+      <target ref="Template_A_CH_6" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_JOINT_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">channel_report!</label>
+      <label kind="assignment" x="0" y="-20">ChannelClass = highest_priority_CH(), channel_degraded_flag = true, ch_enabled_count = 1, c_meas = 0</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_SIG</name>
+    <location id="Template_A_SIG_0" x="0" y="0">
+      <name x="-20" y="-30">SignalNominal</name>
+    </location>
+    <location id="Template_A_SIG_1" x="180" y="0">
+      <name x="160" y="-30">PilotBasedSensing</name>
+    </location>
+    <location id="Template_A_SIG_2" x="360" y="0">
+      <name x="340" y="-30">PayloadAssistedSensing</name>
+    </location>
+    <location id="Template_A_SIG_3" x="540" y="0">
+      <name x="520" y="-30">SignalReconfiguring</name>
+      <label kind="invariant" x="520" y="20">c_sig &lt;= D_sig</label>
+    </location>
+    <location id="Template_A_SIG_4" x="720" y="0">
+      <name x="700" y="-30">SignalLimited</name>
+    </location>
+    <location id="Template_A_SIG_5" x="900" y="0">
+      <name x="880" y="-30">ContractViolation_SIG</name>
+    </location>
+    <init ref="Template_A_SIG_0" />
+    <transition>
+      <source ref="Template_A_SIG_0" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_0" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_0" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">prs_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_0" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_0" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_1" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_1" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_1" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">prs_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_1" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_1" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_2" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_2" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_2" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">prs_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_2" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_2" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_3" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_3" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_3" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">prs_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_3" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_3" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_4" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_4" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_4" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">prs_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_4" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_4" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_5" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_5" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">pilot_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_5" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">prs_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_5" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">payload_sensing_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_5" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_3" />
+      <target ref="Template_A_SIG_0" />
+      <label kind="guard" x="0" y="-60">c_sig &lt;= D_sig</label>
+      <label kind="synchronisation" x="0" y="-40">signal_report!</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_RECONFIGURING, c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_0" />
+      <target ref="Template_A_SIG_1" />
+      <label kind="guard" x="0" y="-60">PilotDensityClass == PILOTDENSITYCLASS_OK &amp;&amp; BLERClass == BLERCLASS_OK &amp;&amp; DRTClass == DRTCLASS_OK</label>
+      <label kind="synchronisation" x="0" y="-40">signal_report!</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_PILOT_BASED, c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_1" />
+      <target ref="Template_A_SIG_2" />
+      <label kind="guard" x="0" y="-60">PilotDensityClass == PILOTDENSITYCLASS_LOW &amp;&amp; PayloadSenseClass != PAYLOADSENSECLASS_FAILED</label>
+      <label kind="synchronisation" x="0" y="-40">signal_report!</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_PAYLOAD_ASSISTED, c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_2" />
+      <target ref="Template_A_SIG_4" />
+      <label kind="guard" x="0" y="-60">BLERClass != BLERCLASS_OK || DRTClass == DRTCLASS_BAD || PayloadSenseClass == PAYLOADSENSECLASS_FAILED</label>
+      <label kind="synchronisation" x="0" y="-40">signal_report!</label>
+      <label kind="assignment" x="0" y="-20">SignalClass = SIGNALCLASS_LIMITED, signal_degraded_flag = true, c_sig = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SIG_4" />
+      <target ref="Template_A_SIG_3" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config?</label>
+      <label kind="assignment" x="0" y="-40">c_sig = 0</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_BM</name>
+    <location id="Template_A_BM_0" x="0" y="0">
+      <name x="-20" y="-30">BeamSearch</name>
+    </location>
+    <location id="Template_A_BM_1" x="180" y="0">
+      <name x="160" y="-30">BeamSearchSeen</name>
+    </location>
+    <location id="Template_A_BM_2" x="360" y="0">
+      <name x="340" y="-30">BeamTrack</name>
+    </location>
+    <location id="Template_A_BM_3" x="540" y="0">
+      <name x="520" y="-30">BeamLock</name>
+    </location>
+    <location id="Template_A_BM_4" x="720" y="0">
+      <name x="700" y="-30">BeamPredict</name>
+    </location>
+    <location id="Template_A_BM_5" x="900" y="0">
+      <name x="880" y="-30">BeamMisalign</name>
+    </location>
+    <location id="Template_A_BM_6" x="1080" y="0">
+      <name x="1060" y="-30">BeamRecoveryStart</name>
+    </location>
+    <location id="Template_A_BM_7" x="1260" y="0">
+      <name x="1240" y="-30">BeamRecover</name>
+      <label kind="invariant" x="1240" y="20">c_rec &lt;= D_BM</label>
+    </location>
+    <location id="Template_A_BM_8" x="1440" y="0">
+      <name x="1420" y="-30">BeamHOAssist</name>
+    </location>
+    <location id="Template_A_BM_9" x="1620" y="0">
+      <name x="1600" y="-30">BeamFailed</name>
+    </location>
+    <location id="Template_A_BM_10" x="1800" y="0">
+      <name x="1780" y="-30">ContractViolation_BM</name>
+    </location>
+    <init ref="Template_A_BM_0" />
+    <transition>
+      <source ref="Template_A_BM_0" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_0" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_0" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_0" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_1" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_1" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_1" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_1" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_2" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_2" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_2" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_2" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_3" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_3" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_3" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_3" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_4" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_4" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_4" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_4" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_5" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_5" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_5" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_5" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_6" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_6" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_6" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_6" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_8" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_8" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_8" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_8" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_9" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_9" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_9" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_9" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_10" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_10" />
+      <target ref="Template_A_BM_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_SEARCH, c_ssb = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_10" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING, c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_10" />
+      <target ref="Template_A_BM_8" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_0" />
+      <target ref="Template_A_BM_1" />
+      <label kind="synchronisation" x="0" y="-60">target_detected?</label>
+      <label kind="assignment" x="0" y="-40">target_seen = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_1" />
+      <target ref="Template_A_BM_2" />
+      <label kind="guard" x="0" y="-60">PRSClass != PRSCLASS_FAILED</label>
+      <label kind="synchronisation" x="0" y="-40">beam_report!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_TRACK</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_2" />
+      <target ref="Template_A_BM_3" />
+      <label kind="guard" x="0" y="-60">BeamErrorClass == BEAMERRORCLASS_LOCKABLE</label>
+      <label kind="synchronisation" x="0" y="-40">beam_report!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_LOCKED</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_2" />
+      <target ref="Template_A_BM_5" />
+      <label kind="guard" x="0" y="-60">AccClass == ACCCLASS_FAILED || BeamErrorClass == BEAMERRORCLASS_CRITICAL</label>
+      <label kind="synchronisation" x="0" y="-40">beam_report!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_MISALIGNED, beam_degraded_flag = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_3" />
+      <target ref="Template_A_BM_3" />
+      <label kind="guard" x="0" y="-60">MisClass == MISCLASS_OK</label>
+      <label kind="synchronisation" x="0" y="-40">beam_report!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_LOCKED</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_3" />
+      <target ref="Template_A_BM_4" />
+      <label kind="guard" x="0" y="-60">MisClass == MISCLASS_WARN || BlockageClass == BLOCKAGECLASS_SUSPECTED</label>
+      <label kind="synchronisation" x="0" y="-40">beam_report!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_PREDICT</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_4" />
+      <target ref="Template_A_BM_6" />
+      <label kind="synchronisation" x="0" y="-60">extra_ssb_cmd?</label>
+      <label kind="assignment" x="0" y="-40">c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_6" />
+      <target ref="Template_A_BM_7" />
+      <label kind="synchronisation" x="0" y="-60">recovery_start!</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_RECOVERING</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_5" />
+      <target ref="Template_A_BM_6" />
+      <label kind="synchronisation" x="0" y="-60">beam_misaligned!</label>
+      <label kind="assignment" x="0" y="-40">c_rec = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_3" />
+      <label kind="guard" x="0" y="-60">BeamErrorClass == BEAMERRORCLASS_LOCKABLE &amp;&amp; c_rec &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">beam_restored!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_LOCKED</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_8" />
+      <label kind="guard" x="0" y="-60">BlockageClass == BLOCKAGECLASS_CONFIRMED &amp;&amp; c_rec &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">handover_hint!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_HO_ASSIST</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_7" />
+      <target ref="Template_A_BM_9" />
+      <label kind="guard" x="0" y="-60">c_rec == D_BM &amp;&amp; BeamErrorClass != BEAMERRORCLASS_LOCKABLE &amp;&amp; BlockageClass != BLOCKAGECLASS_CONFIRMED</label>
+      <label kind="synchronisation" x="0" y="-40">beam_failure!</label>
+      <label kind="assignment" x="0" y="-20">BeamClass = BEAMCLASS_FAILED</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_BM_8" />
+      <target ref="Template_A_BM_2" />
+      <label kind="synchronisation" x="0" y="-60">new_beam_confirmed?</label>
+      <label kind="assignment" x="0" y="-40">BeamClass = BEAMCLASS_TRACK</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_SQ</name>
+    <location id="Template_A_SQ_0" x="0" y="0">
+      <name x="-20" y="-30">Idle</name>
+    </location>
+    <location id="Template_A_SQ_1" x="180" y="0">
+      <name x="160" y="-30">SensingEvaluating</name>
+    </location>
+    <location id="Template_A_SQ_2" x="360" y="0">
+      <name x="340" y="-30">SensingQoSOk</name>
+    </location>
+    <location id="Template_A_SQ_3" x="540" y="0">
+      <name x="520" y="-30">ProbabilityLimited</name>
+    </location>
+    <location id="Template_A_SQ_4" x="720" y="0">
+      <name x="700" y="-30">FalseAlarmLimited</name>
+    </location>
+    <location id="Template_A_SQ_5" x="900" y="0">
+      <name x="880" y="-30">AccuracyLimited</name>
+    </location>
+    <location id="Template_A_SQ_6" x="1080" y="0">
+      <name x="1060" y="-30">FreshnessLimited</name>
+    </location>
+    <location id="Template_A_SQ_7" x="1260" y="0">
+      <name x="1240" y="-30">CoverageLimited</name>
+    </location>
+    <location id="Template_A_SQ_8" x="1440" y="0">
+      <name x="1420" y="-30">CapacityLimited</name>
+    </location>
+    <location id="Template_A_SQ_9" x="1620" y="0">
+      <name x="1600" y="-30">SensingFailure</name>
+    </location>
+    <location id="Template_A_SQ_10" x="1800" y="0">
+      <name x="1780" y="-30">ContractViolation_SQ</name>
+    </location>
+    <init ref="Template_A_SQ_0" />
+    <transition>
+      <source ref="Template_A_SQ_0" />
+      <target ref="Template_A_SQ_1" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">input_changed = true, c_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_0" />
+      <target ref="Template_A_SQ_1" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">input_changed = true, c_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_0" />
+      <target ref="Template_A_SQ_1" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">input_changed = true, c_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_1" />
+      <target ref="Template_A_SQ_2" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_NORMAL</label>
+      <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_degraded_flag = false, sensing_qos_ok = true, sq_enabled_count = 1, c_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_1" />
+      <target ref="Template_A_SQ_2" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_COMM_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_degraded_flag = false, sensing_qos_ok = true, sq_enabled_count = 1, c_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_1" />
+      <target ref="Template_A_SQ_6" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_SENSING_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_degraded_flag = true, sensing_qos_ok = false, sq_enabled_count = 1, c_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_1" />
+      <target ref="Template_A_SQ_9" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_JOINT_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">sensing_report!</label>
+      <label kind="assignment" x="0" y="-20">SensingState = highest_priority_SQ(), sensing_failure_flag = true, sensing_qos_ok = false, sq_enabled_count = 1, c_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_3" />
+      <target ref="Template_A_SQ_3" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_4" />
+      <target ref="Template_A_SQ_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_5" />
+      <target ref="Template_A_SQ_5" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_6" />
+      <target ref="Template_A_SQ_6" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_7" />
+      <target ref="Template_A_SQ_7" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_8" />
+      <target ref="Template_A_SQ_8" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded!</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_SQ_9" />
+      <target ref="Template_A_SQ_9" />
+      <label kind="synchronisation" x="0" y="-60">sensing_failure!</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_A_PH</name>
+    <location id="Template_A_PH_0" x="0" y="0">
+      <name x="-20" y="-30">PHYNormal</name>
+    </location>
+    <location id="Template_A_PH_1" x="180" y="0">
+      <name x="160" y="-30">PHYCommunicationDegraded</name>
+    </location>
+    <location id="Template_A_PH_2" x="360" y="0">
+      <name x="340" y="-30">PHYSensingDegraded</name>
+    </location>
+    <location id="Template_A_PH_3" x="540" y="0">
+      <name x="520" y="-30">PHYJointDegraded</name>
+    </location>
+    <location id="Template_A_PH_4" x="720" y="0">
+      <name x="700" y="-30">PHYKpiReporting</name>
+    </location>
+    <location id="Template_A_PH_5" x="900" y="0">
+      <name x="880" y="-30">PHYRecovery</name>
+    </location>
+    <location id="Template_A_PH_6" x="1080" y="0">
+      <name x="1060" y="-30">PHYFailure</name>
+    </location>
+    <location id="Template_A_PH_7" x="1260" y="0">
+      <name x="1240" y="-30">ContractViolation_PH</name>
+    </location>
+    <init ref="Template_A_PH_0" />
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_0" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_0" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_0" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_1" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_1" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_1" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_2" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_2" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_2" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_3" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_3" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_3" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_5" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_6" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_6" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_6" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_7" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">channel_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_7" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">signal_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_7" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">beam_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_7" />
+      <target ref="Template_A_PH_4" />
+      <label kind="synchronisation" x="0" y="-60">sensing_report?</label>
+      <label kind="assignment" x="0" y="-40">child_update = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_7" />
+      <target ref="Template_A_PH_7" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_7" />
+      <target ref="Template_A_PH_7" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered?</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_7" />
+      <target ref="Template_A_PH_5" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd?</label>
+      <label kind="assignment" x="0" y="-40">PHYState = PHYSTATE_PHYRECOVERY</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_0" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_NORMAL</label>
+      <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYNORMAL, comm_ok = true, sensing_qos_ok = true, degradation_flag = false, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_1" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_COMM_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYCOMMUNICATIONDEGRADED, comm_ok = false, sensing_qos_ok = true, degradation_flag = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_2" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_SENSING_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYSENSINGDEGRADED, comm_ok = true, sensing_qos_ok = false, degradation_flag = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_3" />
+      <label kind="guard" x="0" y="-60">env_scenario == SCENARIO_JOINT_DEGRADED</label>
+      <label kind="synchronisation" x="0" y="-40">phy_kpi_report!</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYJOINTDEGRADED, comm_ok = false, sensing_qos_ok = false, degradation_flag = true, c_report = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_A_PH_4" />
+      <target ref="Template_A_PH_6" />
+      <label kind="guard" x="0" y="-60">ChannelClass == CHANNELCLASS_OUTAGE || BeamClass == BEAMCLASS_FAILED || SensingState == SENSINGSTATE_SENSINGFAILURE</label>
+      <label kind="synchronisation" x="0" y="-40">phy_failure!</label>
+      <label kind="assignment" x="0" y="-20">PHYState = PHYSTATE_PHYFAILURE</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ENV_CH</name>
+    <location id="Template_ENV_CH_0" x="0" y="0">
+      <name x="-20" y="-30">TickWait</name>
+    </location>
+    <init ref="Template_ENV_CH_0" />
+    <transition>
+      <source ref="Template_ENV_CH_0" />
+      <target ref="Template_ENV_CH_0" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick!</label>
+      <label kind="assignment" x="0" y="-40">env_scenario = SCENARIO_NORMAL, TimingOk = true, SINRClass = SINRCLASS_OK, IClass = ICLASS_OK, PowerClass = POWERCLASS_OK, AoSClass = AOSCLASS_FRESH, PdClass = PDCLASS_OK, RfaClass = RFACLASS_OK, c_env = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_CH_0" />
+      <target ref="Template_ENV_CH_0" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick!</label>
+      <label kind="assignment" x="0" y="-40">env_scenario = SCENARIO_COMM_DEGRADED, TimingOk = true, SINRClass = SINRCLASS_OK, IClass = ICLASS_CRITICAL, PowerClass = POWERCLASS_OK, AoSClass = AOSCLASS_FRESH, PdClass = PDCLASS_OK, RfaClass = RFACLASS_OK, c_env = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_CH_0" />
+      <target ref="Template_ENV_CH_0" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick!</label>
+      <label kind="assignment" x="0" y="-40">env_scenario = SCENARIO_SENSING_DEGRADED, TimingOk = true, SINRClass = SINRCLASS_OK, IClass = ICLASS_OK, PowerClass = POWERCLASS_OK, AoSClass = AOSCLASS_STALE, PdClass = PDCLASS_OK, RfaClass = RFACLASS_OK, c_env = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_CH_0" />
+      <target ref="Template_ENV_CH_0" />
+      <label kind="synchronisation" x="0" y="-60">measure_tick!</label>
+      <label kind="assignment" x="0" y="-40">env_scenario = SCENARIO_JOINT_DEGRADED, TimingOk = true, SINRClass = SINRCLASS_OUTAGE, IClass = ICLASS_CRITICAL, PowerClass = POWERCLASS_ABSENT, AoSClass = AOSCLASS_EXPIRED, PdClass = PDCLASS_FAILED, RfaClass = RFACLASS_CRITICAL, c_env = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_CH_0" />
+      <target ref="Template_ENV_CH_0" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_ENV_TARGET</name>
+    <location id="Template_ENV_TARGET_0" x="0" y="0">
+      <name x="-20" y="-30">TargetWait</name>
+    </location>
+    <init ref="Template_ENV_TARGET_0" />
+    <transition>
+      <source ref="Template_ENV_TARGET_0" />
+      <target ref="Template_ENV_TARGET_0" />
+      <label kind="synchronisation" x="0" y="-60">target_detected!</label>
+      <label kind="assignment" x="0" y="-40">PRSClass = PRSCLASS_OK, BeamErrorClass = BEAMERRORCLASS_LOCKABLE, BlockageClass = BLOCKAGECLASS_NONE</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_TARGET_0" />
+      <target ref="Template_ENV_TARGET_0" />
+      <label kind="assignment" x="0" y="-60">BlockageClass = BLOCKAGECLASS_CONFIRMED</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ENV_MAC</name>
+    <location id="Template_ENV_MAC_0" x="0" y="0">
+      <name x="-20" y="-30">ConfigWait</name>
+    </location>
+    <init ref="Template_ENV_MAC_0" />
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">pilot_config!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">prs_config!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">ssb_burst_config!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">waveform_config!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">payload_sensing_config!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">beam_cmd!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">extra_ssb_cmd!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">handover_assist_cmd!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">power_cmd!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">sensing_mode_cmd!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">new_beam_confirmed!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+      <label kind="synchronisation" x="0" y="-60">recovery_cmd!</label>
+      <label kind="assignment" x="0" y="-40">ConfigAdmissible = true, BeamCmdAdmissible = true</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_MAC_0" />
+      <target ref="Template_ENV_MAC_0" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_ENV_NET</name>
+    <location id="Template_ENV_NET_0" x="0" y="0">
+      <name x="-20" y="-30">DeliveryWait</name>
+    </location>
+    <init ref="Template_ENV_NET_0" />
+    <transition>
+      <source ref="Template_ENV_NET_0" />
+      <target ref="Template_ENV_NET_0" />
+      <label kind="synchronisation" x="0" y="-60">mac_report_delivered!</label>
+      <label kind="assignment" x="0" y="-40">NetDeliveryOk = true, c_net = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_NET_0" />
+      <target ref="Template_ENV_NET_0" />
+      <label kind="synchronisation" x="0" y="-60">controller_report_delivered!</label>
+      <label kind="assignment" x="0" y="-40">NetDeliveryOk = true, aos_ctrl = 0, c_net = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_NET_0" />
+      <target ref="Template_ENV_NET_0" />
+      <label kind="synchronisation" x="0" y="-60">aos_ctrl_expired!</label>
+    </transition>
+    <transition>
+      <source ref="Template_ENV_NET_0" />
+      <target ref="Template_ENV_NET_0" />
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsSenseReport</name>
+    <location id="Template_ObsSenseReport_0" x="0" y="0">
+      <name x="-20" y="-30">Idle</name>
+    </location>
+    <location id="Template_ObsSenseReport_1" x="180" y="0">
+      <name x="160" y="-30">Wait</name>
+    </location>
+    <location id="Template_ObsSenseReport_2" x="360" y="0">
+      <name x="340" y="-30">Violation</name>
+    </location>
+    <init ref="Template_ObsSenseReport_0" />
+    <transition>
+      <source ref="Template_ObsSenseReport_0" />
+      <target ref="Template_ObsSenseReport_1" />
+      <label kind="synchronisation" x="0" y="-60">sensing_degraded?</label>
+      <label kind="assignment" x="0" y="-40">c_obs_sense = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsSenseReport_1" />
+      <target ref="Template_ObsSenseReport_0" />
+      <label kind="guard" x="0" y="-60">c_obs_sense &lt;= D_report</label>
+      <label kind="synchronisation" x="0" y="-40">phy_kpi_report?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsSenseReport_1" />
+      <target ref="Template_ObsSenseReport_2" />
+      <label kind="guard" x="0" y="-60">c_obs_sense &gt; D_report</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsFreshness</name>
+    <location id="Template_ObsFreshness_0" x="0" y="0">
+      <name x="-20" y="-30">Idle</name>
+    </location>
+    <location id="Template_ObsFreshness_1" x="180" y="0">
+      <name x="160" y="-30">Wait</name>
+    </location>
+    <location id="Template_ObsFreshness_2" x="360" y="0">
+      <name x="340" y="-30">Violation</name>
+    </location>
+    <init ref="Template_ObsFreshness_0" />
+    <transition>
+      <source ref="Template_ObsFreshness_0" />
+      <target ref="Template_ObsFreshness_1" />
+      <label kind="synchronisation" x="0" y="-60">aos_ctrl_expired?</label>
+      <label kind="assignment" x="0" y="-40">c_obs_fresh = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsFreshness_1" />
+      <target ref="Template_ObsFreshness_0" />
+      <label kind="guard" x="0" y="-60">c_obs_fresh &lt;= D_sense &amp;&amp; SensingState == SENSINGSTATE_FRESHNESSLIMITED</label>
+      <label kind="synchronisation" x="0" y="-40">sensing_report?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsFreshness_1" />
+      <target ref="Template_ObsFreshness_2" />
+      <label kind="guard" x="0" y="-60">c_obs_fresh &gt; D_sense</label>
+    </transition>
+  </template>
+  <template>
+    <name>Template_ObsBeamRecovery</name>
+    <location id="Template_ObsBeamRecovery_0" x="0" y="0">
+      <name x="-20" y="-30">Idle</name>
+    </location>
+    <location id="Template_ObsBeamRecovery_1" x="180" y="0">
+      <name x="160" y="-30">Wait</name>
+    </location>
+    <location id="Template_ObsBeamRecovery_2" x="360" y="0">
+      <name x="340" y="-30">Violation</name>
+    </location>
+    <init ref="Template_ObsBeamRecovery_0" />
+    <transition>
+      <source ref="Template_ObsBeamRecovery_0" />
+      <target ref="Template_ObsBeamRecovery_1" />
+      <label kind="synchronisation" x="0" y="-60">recovery_start?</label>
+      <label kind="assignment" x="0" y="-40">c_obs_beam = 0</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_0" />
+      <label kind="guard" x="0" y="-60">c_obs_beam &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">beam_restored?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_0" />
+      <label kind="guard" x="0" y="-60">c_obs_beam &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">handover_hint?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_0" />
+      <label kind="guard" x="0" y="-60">c_obs_beam &lt;= D_BM</label>
+      <label kind="synchronisation" x="0" y="-40">beam_failure?</label>
+    </transition>
+    <transition>
+      <source ref="Template_ObsBeamRecovery_1" />
+      <target ref="Template_ObsBeamRecovery_2" />
+      <label kind="guard" x="0" y="-60">c_obs_beam &gt; D_BM</label>
+    </transition>
+  </template>
+  <system>A_CH = Template_A_CH();
+A_SIG = Template_A_SIG();
+A_BM = Template_A_BM();
+A_SQ = Template_A_SQ();
+A_PH = Template_A_PH();
+ENV_CH = Template_ENV_CH();
+ENV_TARGET = Template_ENV_TARGET();
+ENV_MAC = Template_ENV_MAC();
+ENV_NET = Template_ENV_NET();
+ObsSenseReport = Template_ObsSenseReport();
+ObsFreshness = Template_ObsFreshness();
+ObsBeamRecovery = Template_ObsBeamRecovery();
+system A_CH, A_SIG, A_BM, A_SQ, A_PH, ENV_CH, ENV_TARGET, ENV_MAC, ENV_NET, ObsSenseReport, ObsFreshness, ObsBeamRecovery;</system>
+</nta>

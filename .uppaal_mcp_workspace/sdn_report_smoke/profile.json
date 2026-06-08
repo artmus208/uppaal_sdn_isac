@@ -1,0 +1,18 @@
+{
+  "name": "default",
+  "source": "built-in",
+  "boundary_policy": "worse_class",
+  "stale_policy": "constrained_or_reject",
+  "parameter_synthesis": false,
+  "deadlines": {
+    "D_mon": 5,
+    "D_decision": 5,
+    "D_rule_install": 8,
+    "D_rule_ack": 5,
+    "D_ctrl_ack": 5,
+    "D_recovery": 20,
+    "D_rollback": 10,
+    "D_admission": 15,
+    "D_sec_ack": 10
+  }
+}

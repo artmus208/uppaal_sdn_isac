@@ -1,0 +1,15 @@
+{
+  "name": "default",
+  "source": "built-in",
+  "boundary_policy": "worse_class",
+  "parameter_synthesis": false,
+  "deadlines": {
+    "D_collect": 2,
+    "D_sched": 5,
+    "D_phy_ack": 3,
+    "D_queue_crit": 10,
+    "D_buf_report": 4,
+    "D_mac_report": 5,
+    "D_phy_report": 10
+  }
+}

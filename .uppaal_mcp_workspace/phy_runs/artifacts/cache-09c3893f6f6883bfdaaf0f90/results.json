@@ -1,0 +1,74 @@
+{
+  "status": "error",
+  "returncode": 1,
+  "command": [
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T200227Z-28ec567b45e1-87ef72b7\\model.xml",
+    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T200227Z-28ec567b45e1-87ef72b7\\queries.q"
+  ],
+  "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T200227Z-28ec567b45e1-87ef72b7/model.xml",
+  "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T200227Z-28ec567b45e1-87ef72b7/queries.q",
+  "stdout": "",
+  "stderr": "<3>WSL (4 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+  "elapsed_ms": 7,
+  "timeout_sec": 20.0,
+  "query_results": [],
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "warnings": [],
+    "templates": [
+      "Template_A_CH",
+      "Template_A_SIG",
+      "Template_A_BM",
+      "Template_A_SQ",
+      "Template_A_PH",
+      "Template_ENV_CH",
+      "Template_ENV_TARGET",
+      "Template_ENV_MAC",
+      "Template_ENV_NET"
+    ],
+    "queries": [
+      "A[] not deadlock"
+    ]
+  },
+  "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T200227Z-28ec567b45e1-87ef72b7",
+  "runs": [
+    {
+      "status": "error",
+      "returncode": 1,
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T200227Z-28ec567b45e1-87ef72b7\\model.xml",
+        "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260607T200227Z-28ec567b45e1-87ef72b7\\queries.q"
+      ],
+      "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T200227Z-28ec567b45e1-87ef72b7/model.xml",
+      "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T200227Z-28ec567b45e1-87ef72b7/queries.q",
+      "stdout": "",
+      "stderr": "<3>WSL (4 - ) ERROR: UtilBindVsockAnyPort:309: socket failed 1\n",
+      "elapsed_ms": 7,
+      "timeout_sec": 20.0,
+      "query_results": [],
+      "validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [],
+        "templates": [
+          "Template_A_CH",
+          "Template_A_SIG",
+          "Template_A_BM",
+          "Template_A_SQ",
+          "Template_A_PH",
+          "Template_ENV_CH",
+          "Template_ENV_TARGET",
+          "Template_ENV_MAC",
+          "Template_ENV_NET"
+        ],
+        "queries": [
+          "A[] not deadlock"
+        ]
+      },
+      "artifact_dir": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260607T200227Z-28ec567b45e1-87ef72b7"
+    }
+  ]
+}
