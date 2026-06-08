@@ -7,6 +7,7 @@ import xml.etree.ElementTree as ET
 from dataclasses import asdict, dataclass, field
 from typing import Any, Iterable
 
+from ..layout_core import Point, TransitionGeometry
 from .defaults import build_default_contract
 from .ir import PhyContractModel
 
@@ -14,18 +15,6 @@ from .ir import PhyContractModel
 READABLE_LAYOUT = "readable"
 COMPACT_LAYOUT = "compact"
 LAYOUT_MODES = {READABLE_LAYOUT, COMPACT_LAYOUT}
-
-
-@dataclass(frozen=True)
-class Point:
-    x: int
-    y: int
-
-
-@dataclass(frozen=True)
-class TransitionGeometry:
-    labels: dict[str, Point]
-    nails: list[Point] = field(default_factory=list)
 
 
 @dataclass

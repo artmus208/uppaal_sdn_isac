@@ -6,7 +6,7 @@ from dataclasses import asdict, dataclass
 from .alpha import default_profile
 from .defaults import build_default_contract
 from .ir import PropertySpec, SdnContractModel
-from .layout import generate_layout_maps, label_point, location_positions, nails_for, normalize_layout_mode, validate_generated_layout
+from .layout import Point, TransitionGeometry, generate_layout_maps, location_positions, normalize_layout_mode, transition_geometry, validate_generated_layout, wrap_label
 
 
 @dataclass(frozen=True)
@@ -37,6 +37,7 @@ class UppaalXmlBuilder:
         self.location_ids: dict[int, dict[str, str]] = {}
         self.points: dict[int, dict[str, object]] = {}
         self.edge_counts: dict[tuple[int, str, str], int] = {}
+        self.label_points: dict[int, set[tuple[int, int]]] = {}
 
     def declaration(self, text: str) -> None:
         ET.SubElement(self.root, "declaration").text = text
@@ -57,6 +58,7 @@ class UppaalXmlBuilder:
         ET.SubElement(template, "init", {"ref": ids[initial]})
         self.location_ids[id(template)] = ids
         self.points[id(template)] = points
+        self.label_points[id(template)] = set()
         return template
 
     def add_transition(self, template: ET.Element, source: str, target: str, *, guard: str | None = None, sync: str | None = None, assignment: str | None = None, comment: str | None = None) -> None:
@@ -67,23 +69,46 @@ class UppaalXmlBuilder:
         self.edge_counts[count_key] = index + 1
         src = points[source]
         dst = points[target]
+        geometry = transition_geometry(
+            template.findtext("name") or "",
+            source,
+            target,
+            src,
+            dst,
+            pair_index=index,
+            layout=self.layout,
+        )
+        label_kinds = [
+            kind
+            for kind, present in (
+                ("guard", bool(guard)),
+                ("synchronisation", bool(sync)),
+                ("assignment", bool(assignment)),
+                ("comments", bool(comment)),
+            )
+            if present
+        ]
+        geometry = _avoid_label_collisions(geometry, label_kinds, self.label_points[id(template)])
         transition = ET.SubElement(template, "transition")
         ET.SubElement(transition, "source", {"ref": ids[source]})
         ET.SubElement(transition, "target", {"ref": ids[target]})
         if guard:
-            pt = label_point(src, dst, "guard", index)
-            ET.SubElement(transition, "label", {"kind": "guard", "x": str(pt.x), "y": str(pt.y)}).text = guard
+            pt = geometry.labels["guard"]
+            ET.SubElement(transition, "label", {"kind": "guard", "x": str(pt.x), "y": str(pt.y)}).text = wrap_label(guard)
         if sync:
-            pt = label_point(src, dst, "synchronisation", index)
+            pt = geometry.labels["synchronisation"]
             ET.SubElement(transition, "label", {"kind": "synchronisation", "x": str(pt.x), "y": str(pt.y)}).text = sync
         if assignment:
-            pt = label_point(src, dst, "assignment", index)
-            ET.SubElement(transition, "label", {"kind": "assignment", "x": str(pt.x), "y": str(pt.y)}).text = _wrap_assignment(assignment)
+            pt = geometry.labels["assignment"]
+            ET.SubElement(transition, "label", {"kind": "assignment", "x": str(pt.x), "y": str(pt.y)}).text = wrap_label(assignment)
         if comment:
-            pt = label_point(src, dst, "comments", index)
-            ET.SubElement(transition, "label", {"kind": "comments", "x": str(pt.x), "y": str(pt.y)}).text = comment
-        for nail in nails_for(src, dst, source, target, index):
+            pt = geometry.labels["comments"]
+            ET.SubElement(transition, "label", {"kind": "comments", "x": str(pt.x), "y": str(pt.y)}).text = wrap_label(comment)
+        for nail in geometry.nails:
             ET.SubElement(transition, "nail", {"x": str(nail.x), "y": str(nail.y)})
+        for kind in label_kinds:
+            pt = geometry.labels[kind]
+            self.label_points[id(template)].add((pt.x, pt.y))
 
     def system(self, text: str) -> None:
         ET.SubElement(self.root, "system").text = text
@@ -427,22 +452,27 @@ def _system_declaration(*, include_observers: bool, include_sec: bool, open_syst
 
 
 def _wrap_assignment(text: str, width: int = 96) -> str:
-    if len(text) <= width:
-        return text
-    parts = [part.strip() for part in text.split(",")]
-    lines = []
-    current = ""
-    for part in parts:
-        candidate = part if not current else f"{current}, {part}"
-        if len(candidate) > width:
-            if current:
-                lines.append(current + ",")
-            current = part
-        else:
-            current = candidate
-    if current:
-        lines.append(current)
-    return "\n".join(lines)
+    return wrap_label(text, max_len=width)
+
+
+def _avoid_label_collisions(
+    geometry: TransitionGeometry,
+    label_kinds: list[str],
+    occupied: set[tuple[int, int]],
+) -> TransitionGeometry:
+    if not label_kinds:
+        return geometry
+    labels = dict(geometry.labels)
+    shift = 0
+    while any((labels[kind].x, labels[kind].y) in occupied for kind in label_kinds):
+        shift += 1
+        dx = 36 * shift
+        dy = 100 * shift
+        labels = {
+            kind: Point(point.x + dx, point.y + dy)
+            for kind, point in geometry.labels.items()
+        }
+    return TransitionGeometry(labels=labels, nails=geometry.nails)
 
 
 def _safe(name: str) -> str:

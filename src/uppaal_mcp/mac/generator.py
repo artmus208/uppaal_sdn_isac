@@ -8,12 +8,14 @@ from .alpha import default_profile
 from .defaults import build_default_contract
 from .ir import MacContractModel, PropertySpec
 from .layout import (
-    label_point,
+    Point,
+    TransitionGeometry,
     location_positions,
-    nails_for,
     normalize_layout_mode,
+    transition_geometry,
     validate_generated_layout,
     generate_layout_maps,
+    wrap_label,
 )
 
 
@@ -44,6 +46,7 @@ class UppaalXmlBuilder:
         self.location_ids: dict[int, dict[str, str]] = {}
         self.points: dict[int, dict[str, object]] = {}
         self.edge_counts: dict[tuple[int, str, str], int] = {}
+        self.label_points: dict[int, set[tuple[int, int]]] = {}
 
     def declaration(self, text: str) -> None:
         ET.SubElement(self.root, "declaration").text = text
@@ -65,6 +68,7 @@ class UppaalXmlBuilder:
         ET.SubElement(template, "init", {"ref": ids[initial]})
         self.location_ids[id(template)] = ids
         self.points[id(template)] = points
+        self.label_points[id(template)] = set()
         return template
 
     def add_transition(self, template: ET.Element, source: str, target: str, *, guard: str | None = None, sync: str | None = None, assignment: str | None = None, comment: str | None = None) -> None:
@@ -75,23 +79,46 @@ class UppaalXmlBuilder:
         self.edge_counts[count_key] = index + 1
         src = points[source]
         dst = points[target]
+        geometry = transition_geometry(
+            template.findtext("name") or "",
+            source,
+            target,
+            src,
+            dst,
+            pair_index=index,
+            layout=self.layout,
+        )
+        label_kinds = [
+            kind
+            for kind, present in (
+                ("guard", bool(guard)),
+                ("synchronisation", bool(sync)),
+                ("assignment", bool(assignment)),
+                ("comments", bool(comment)),
+            )
+            if present
+        ]
+        geometry = _avoid_label_collisions(geometry, label_kinds, self.label_points[id(template)])
         transition = ET.SubElement(template, "transition")
         ET.SubElement(transition, "source", {"ref": ids[source]})
         ET.SubElement(transition, "target", {"ref": ids[target]})
         if guard:
-            pt = label_point(src, dst, "guard", index)
-            ET.SubElement(transition, "label", {"kind": "guard", "x": str(pt.x), "y": str(pt.y)}).text = guard
+            pt = geometry.labels["guard"]
+            ET.SubElement(transition, "label", {"kind": "guard", "x": str(pt.x), "y": str(pt.y)}).text = wrap_label(guard)
         if sync:
-            pt = label_point(src, dst, "synchronisation", index)
+            pt = geometry.labels["synchronisation"]
             ET.SubElement(transition, "label", {"kind": "synchronisation", "x": str(pt.x), "y": str(pt.y)}).text = sync
         if assignment:
-            pt = label_point(src, dst, "assignment", index)
-            ET.SubElement(transition, "label", {"kind": "assignment", "x": str(pt.x), "y": str(pt.y)}).text = _wrap_assignment(assignment)
+            pt = geometry.labels["assignment"]
+            ET.SubElement(transition, "label", {"kind": "assignment", "x": str(pt.x), "y": str(pt.y)}).text = wrap_label(assignment)
         if comment:
-            pt = label_point(src, dst, "comments", index)
-            ET.SubElement(transition, "label", {"kind": "comments", "x": str(pt.x), "y": str(pt.y)}).text = comment
-        for nail in nails_for(src, dst, source, target, index):
+            pt = geometry.labels["comments"]
+            ET.SubElement(transition, "label", {"kind": "comments", "x": str(pt.x), "y": str(pt.y)}).text = wrap_label(comment)
+        for nail in geometry.nails:
             ET.SubElement(transition, "nail", {"x": str(nail.x), "y": str(nail.y)})
+        for kind in label_kinds:
+            pt = geometry.labels[kind]
+            self.label_points[id(template)].add((pt.x, pt.y))
 
     def system(self, text: str) -> None:
         ET.SubElement(self.root, "system").text = text
@@ -386,7 +413,25 @@ def _safe(name: str) -> str:
     return re.sub(r"\W+", "_", name)
 
 
+def _avoid_label_collisions(
+    geometry: TransitionGeometry,
+    label_kinds: list[str],
+    occupied: set[tuple[int, int]],
+) -> TransitionGeometry:
+    if not label_kinds:
+        return geometry
+    labels = dict(geometry.labels)
+    shift = 0
+    while any((labels[kind].x, labels[kind].y) in occupied for kind in label_kinds):
+        shift += 1
+        dx = 34 * shift
+        dy = 96 * shift
+        labels = {
+            kind: Point(point.x + dx, point.y + dy)
+            for kind, point in geometry.labels.items()
+        }
+    return TransitionGeometry(labels=labels, nails=geometry.nails)
+
+
 def _wrap_assignment(text: str) -> str:
-    if len(text) <= 90:
-        return text
-    return ",\n".join(part.strip() for part in text.split(","))
+    return wrap_label(text)

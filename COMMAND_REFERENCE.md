@@ -1,4 +1,118 @@
 # MCP UPPAAL Command Reference
+## Быстрый запуск генерации readable-моделей
+
+Актуальные TeX-исходники лежат в `levels_tex/`. Генерировать удобнее из корня репозитория в отдельные папки внутри `.uppaal_mcp_workspace/`.
+
+PowerShell / Windows:
+
+```powershell
+$env:PYTHONPATH = "src"
+
+.venv\Scripts\python.exe -m uppaal_mcp.cli phy-generate `
+  --tex levels_tex\PHY_level_formalization_reviewed-2026-06-06-143000.tex `
+  --layout readable `
+  --output-dir .uppaal_mcp_workspace\phy_generated
+
+.venv\Scripts\python.exe -m uppaal_mcp.cli mac-generate `
+  --tex levels_tex\MAC_resource_scheduling_formalization.tex `
+  --layout readable `
+  --output-dir .uppaal_mcp_workspace\mac_generated
+
+.venv\Scripts\python.exe -m uppaal_mcp.cli sdn-generate `
+  --tex levels_tex\SDN_RIC_control_plane_formalization.tex `
+  --layout readable `
+  --output-dir .uppaal_mcp_workspace\sdn_generated
+```
+
+Bash / WSL / Linux:
+
+```bash
+export PYTHONPATH=src
+
+python -m uppaal_mcp.cli phy-generate \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --layout readable \
+  --output-dir .uppaal_mcp_workspace/phy_generated
+
+python -m uppaal_mcp.cli mac-generate \
+  --tex levels_tex/MAC_resource_scheduling_formalization.tex \
+  --layout readable \
+  --output-dir .uppaal_mcp_workspace/mac_generated
+
+python -m uppaal_mcp.cli sdn-generate \
+  --tex levels_tex/SDN_RIC_control_plane_formalization.tex \
+  --layout readable \
+  --output-dir .uppaal_mcp_workspace/sdn_generated
+```
+
+Что получится в каждой output-папке:
+
+```text
+model.xml                открыть в UPPAAL GUI
+queries.q                запросы для verifyta
+contract.json            извлеченный contract IR
+model_map.md             карта модели и layout convention
+template_map.md          карта состояний/переходов
+channels_map.md          карта каналов
+layout_validation.json   проверка читаемости layout
+policy_map.md            только MAC/SDN
+interface_map.md         только SDN
+```
+
+Проверить, что layout не схлопнулся:
+
+```powershell
+Get-Content .uppaal_mcp_workspace\phy_generated\layout_validation.json
+Get-Content .uppaal_mcp_workspace\mac_generated\layout_validation.json
+Get-Content .uppaal_mcp_workspace\sdn_generated\layout_validation.json
+```
+
+В `layout_validation.json` для readable-модели должно быть:
+
+```json
+{
+  "ok": true,
+  "errors": [],
+  "warnings": []
+}
+```
+
+Для проверки без установленного UPPAAL/verifyta можно запускать статический property-pack validator:
+
+```powershell
+.venv\Scripts\python.exe -m uppaal_mcp.cli phy-verify-property-pack `
+  --model .uppaal_mcp_workspace\phy_generated\model.xml `
+  --queries .uppaal_mcp_workspace\phy_generated\queries.q `
+  --static-only
+
+.venv\Scripts\python.exe -m uppaal_mcp.cli mac-verify-property-pack `
+  --model .uppaal_mcp_workspace\mac_generated\model.xml `
+  --queries .uppaal_mcp_workspace\mac_generated\queries.q `
+  --static-only
+
+.venv\Scripts\python.exe -m uppaal_mcp.cli sdn-verify-property-pack `
+  --model .uppaal_mcp_workspace\sdn_generated\model.xml `
+  --queries .uppaal_mcp_workspace\sdn_generated\queries.q `
+  --static-only
+```
+
+Чтобы получить дополнительную DOT/SVG-карту и те же readable maps из уже сгенерированного `model.xml`:
+
+```powershell
+.venv\Scripts\python.exe -m uppaal_mcp.cli phy-export-diagram `
+  --model .uppaal_mcp_workspace\phy_generated\model.xml `
+  --output-dir .uppaal_mcp_workspace\phy_diagram
+
+.venv\Scripts\python.exe -m uppaal_mcp.cli mac-export-diagram `
+  --model .uppaal_mcp_workspace\mac_generated\model.xml `
+  --output-dir .uppaal_mcp_workspace\mac_diagram
+
+.venv\Scripts\python.exe -m uppaal_mcp.cli sdn-export-diagram `
+  --model .uppaal_mcp_workspace\sdn_generated\model.xml `
+  --output-dir .uppaal_mcp_workspace\sdn_diagram
+```
+
+`--layout readable` сейчас является default, но лучше указывать его явно, если результат нужен для чтения в UPPAAL GUI. `--layout compact` оставлен для маленьких diff/regression сценариев и не предназначен для ручного анализа схем.
 
 Этот файл фиксирует фактический интерфейс текущего репозитория: CLI-команды,
 MCP tools для Codex/VS Code, режимы, встроенные имена и рабочие примеры.
@@ -162,7 +276,7 @@ PHY_level_formalization_reviewed-2026-06-06-143000.tex
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-extract \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
 ```
 
 ### `phy-generate [--tex TEX] [--output-dir DIR] [--mode MODE] [--layout readable|compact] [--no-observers] [--no-debug-counters] [--include-negative-scenarios]`
@@ -193,22 +307,22 @@ open-system              alias для open_system
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-generate \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --layout readable \
   --output-dir .uppaal_mcp_workspace/phy_generated
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-generate \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode minimal \
   --output-dir .uppaal_mcp_workspace/phy_generated_minimal
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-generate \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode with_extended_observers \
   --output-dir .uppaal_mcp_workspace/phy_generated_extended
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-generate \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode open_system \
   --output-dir .uppaal_mcp_workspace/phy_generated_open
 ```
@@ -238,7 +352,7 @@ PYTHONPATH=src python3 -m uppaal_mcp.cli phy-export-diagram \
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-property-pack \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --include-negative \
   --output-dir .uppaal_mcp_workspace/phy_property_pack
 ```
@@ -249,11 +363,11 @@ PYTHONPATH=src python3 -m uppaal_mcp.cli phy-property-pack \
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-report \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --output-dir .uppaal_mcp_workspace/phy_report
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-report \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --result-json .uppaal_mcp_workspace/results.json \
   --trace-text .uppaal_mcp_workspace/trace.txt \
   --output-dir .uppaal_mcp_workspace/phy_report_with_trace
@@ -265,12 +379,12 @@ PYTHONPATH=src python3 -m uppaal_mcp.cli phy-report \
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-run-artifacts \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --output-root .uppaal_mcp_workspace/phy_run_artifacts \
   --verifyta-version "UPPAAL 5.0.0"
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-run-artifacts \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --output-root .uppaal_mcp_workspace/phy_run_artifacts \
   --result-json .uppaal_mcp_workspace/results.json \
   --trace-text .uppaal_mcp_workspace/trace.txt \
@@ -300,16 +414,16 @@ without_observers alias для no_observers
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-verify \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --timeout-sec 12
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-verify \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode minimal \
   --timeout-sec 30
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli phy-verify \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode open_system \
   --timeout-sec 30
 ```
@@ -517,7 +631,7 @@ uppaal_explain_result(result=<uppaal_verify result>)
 
 ```text
 phy_extract_contract(
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex"
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex"
 )
 ```
 
@@ -531,7 +645,7 @@ phy_validate_contract(contract_json=<contract>)
 
 ```text
 phy_generate_uppaal_model(
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   mode="with_observers",
   layout="readable",
   include_observers=true,
@@ -539,12 +653,12 @@ phy_generate_uppaal_model(
 )
 
 phy_generate_uppaal_model(
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   mode="with_extended_observers"
 )
 
 phy_generate_uppaal_model(
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   mode="open_system"
 )
 ```
@@ -582,7 +696,7 @@ phy_generate_property_pack(
 ```text
 phy_export_property_pack(
   output_dir=".uppaal_mcp_workspace/phy_property_pack",
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   include_negative=true
 )
 ```
@@ -591,7 +705,7 @@ phy_export_property_pack(
 
 ```text
 phy_generate_report(
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   result_json=<verify_result>,
   trace_text=<trace_text>
 )
@@ -602,7 +716,7 @@ phy_generate_report(
 ```text
 phy_export_report(
   output_dir=".uppaal_mcp_workspace/phy_report",
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   result_json=<verify_result>
 )
 ```
@@ -612,7 +726,7 @@ phy_export_report(
 ```text
 phy_export_run_artifacts(
   output_root=".uppaal_mcp_workspace/phy_run_artifacts",
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   result_json=<verify_result>,
   trace_text=<trace_text>,
   force=true
@@ -623,13 +737,13 @@ phy_export_run_artifacts(
 
 ```text
 phy_verify_contract(
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   mode="minimal",
   timeout_sec=30
 )
 
 phy_verify_contract(
-  tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+  tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
   mode="open_system",
   timeout_sec=30,
   artifact_root=".uppaal_mcp_workspace/phy_runs",
@@ -777,10 +891,10 @@ uppaal_verify(model_xml=example.model_xml, queries=example.queries, timeout_sec=
 
 ```bash
 PYTHONPATH=src python -m uppaal_mcp.cli phy-extract \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
 
 PYTHONPATH=src python -m uppaal_mcp.cli phy-generate \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode with_observers \
   --layout readable \
   --output-dir .uppaal_mcp_workspace/phy_generated
@@ -791,19 +905,19 @@ PYTHONPATH=src python -m uppaal_mcp.cli phy-verify-property-pack \
   --static-only
 
 PYTHONPATH=src python -m uppaal_mcp.cli phy-verify \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --mode minimal \
   --timeout-sec 30
 
 PYTHONPATH=src python -m uppaal_mcp.cli phy-report \
-  --tex PHY_level_formalization_reviewed-2026-06-06-143000.tex \
+  --tex levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex \
   --output-dir .uppaal_mcp_workspace/phy_report
 ```
 
 Через MCP:
 
 ```text
-contract = phy_extract_contract(tex_path="PHY_level_formalization_reviewed-2026-06-06-143000.tex")
+contract = phy_extract_contract(tex_path="levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex")
 phy_validate_contract(contract_json=contract)
 generated = phy_generate_uppaal_model(contract_json=contract, mode="with_observers", layout="readable")
 phy_verify_contract(contract_json=contract, mode="minimal", timeout_sec=30)
@@ -843,16 +957,16 @@ phy_explain_counterexample(result_json=result, trace_text=result.stdout)
 
 ```bash
 PYTHONPATH=src python3 -m uppaal_mcp.cli mac-extract \
-  --tex MAC_resource_scheduling_formalization.tex
+  --tex levels_tex/MAC_resource_scheduling_formalization.tex
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli mac-generate \
-  --tex MAC_resource_scheduling_formalization.tex \
+  --tex levels_tex/MAC_resource_scheduling_formalization.tex \
   --mode with_observers \
   --layout readable \
   --output-dir .uppaal_mcp_workspace/mac_generated
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli mac-property-pack \
-  --tex MAC_resource_scheduling_formalization.tex \
+  --tex levels_tex/MAC_resource_scheduling_formalization.tex \
   --include-negative \
   --output-dir .uppaal_mcp_workspace/mac_property_pack
 
@@ -862,7 +976,7 @@ PYTHONPATH=src python3 -m uppaal_mcp.cli mac-verify-property-pack \
   --static-only
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli mac-report \
-  --tex MAC_resource_scheduling_formalization.tex \
+  --tex levels_tex/MAC_resource_scheduling_formalization.tex \
   --output-dir .uppaal_mcp_workspace/mac_report
 
 PYTHONPATH=src python3 -m uppaal_mcp.cli mac-validate-benchmarks
@@ -880,7 +994,7 @@ with_negative_scenarios  помечает модель как negative-suite rel
 MAC MCP flow:
 
 ```text
-contract = mac_extract_contract(tex_path="MAC_resource_scheduling_formalization.tex")
+contract = mac_extract_contract(tex_path="levels_tex/MAC_resource_scheduling_formalization.tex")
 mac_validate_contract(contract_json=contract)
 generated = mac_generate_uppaal_model(contract_json=contract, mode="with_observers", layout="readable")
 mac_verify_property_pack(model_xml=generated.model_xml, queries=generated.queries, static_only=true)

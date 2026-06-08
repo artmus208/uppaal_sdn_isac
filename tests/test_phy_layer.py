@@ -39,7 +39,7 @@ from uppaal_mcp.validation import validate_model_text
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ARTICLE_TEX = ROOT / "PHY_level_formalization_reviewed-2026-06-06-143000.tex"
+ARTICLE_TEX = ROOT / "levels_tex" / "PHY_level_formalization_reviewed-2026-06-06-143000.tex"
 FIXTURES = ROOT / "tests" / "fixtures"
 
 

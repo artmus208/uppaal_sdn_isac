@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from uppaal_mcp.layers import available_layer_adapters
@@ -9,6 +10,7 @@ from uppaal_mcp.sdn.benchmarks import generate_benchmark_model, validate_all_ben
 from uppaal_mcp.sdn.extractor import extract_contract_model
 from uppaal_mcp.sdn.generator import generate_uppaal_model
 from uppaal_mcp.sdn.ir import SdnContractModel
+from uppaal_mcp.sdn.layout import validate_generated_layout
 from uppaal_mcp.sdn.property_pack import generate_property_pack
 from uppaal_mcp.sdn.reports import generate_report_bundle
 from uppaal_mcp.sdn.tools import generate_uppaal_from_contract, verify_property_pack
@@ -17,7 +19,7 @@ from uppaal_mcp.validation import validate_model_text
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SDN_TEX = ROOT / "SDN_RIC_control_plane_formalization.tex"
+SDN_TEX = ROOT / "levels_tex" / "SDN_RIC_control_plane_formalization.tex"
 
 
 class SdnLayerTests(unittest.TestCase):
@@ -75,6 +77,25 @@ class SdnLayerTests(unittest.TestCase):
         reports = generate_report_bundle(contract_json=generated.contract, model_xml=generated.model_xml, queries=generated.queries)
         self.assertIn("interface_report.md", reports["reports"])
         self.assertIn("interface_map.md", reports["reports"])
+
+    def test_readable_layout_has_separated_labels_and_loop_lanes(self) -> None:
+        generated = generate_uppaal_model(layout="readable")
+        report = validate_generated_layout(generated.model_xml)
+        self.assertTrue(report.ok, report.errors)
+        self.assertEqual(report.warnings, [])
+        root = ET.fromstring(generated.model_xml)
+        for template in root.findall("template"):
+            for transition in template.findall("transition"):
+                label_points = [
+                    (label.attrib["x"], label.attrib["y"])
+                    for label in transition.findall("label")
+                    if "x" in label.attrib and "y" in label.attrib
+                ]
+                self.assertEqual(len(label_points), len(set(label_points)))
+                source = transition.find("source")
+                target = transition.find("target")
+                if source is not None and target is not None and source.attrib.get("ref") == target.attrib.get("ref"):
+                    self.assertTrue(transition.findall("nail"))
 
     def test_benchmark_suite_positive_and_broken(self) -> None:
         result = validate_all_benchmarks()

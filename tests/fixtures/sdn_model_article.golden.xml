@@ -95,15 +95,15 @@ void select_sdn_policy() { update_policy_counter(); optimistic_reconfig = false;
       <source ref="A_MON_0" />
       <target ref="A_MON_1" />
       <label kind="synchronisation" x="20" y="-20">mac_report?</label>
-      <label kind="assignment" x="20" y="26">c_mon = 0, telemetryClass = TEL_FRESH</label>
-      <label kind="comments" x="20" y="68">MAC report observed</label>
+      <label kind="assignment" x="20" y="28">c_mon = 0, telemetryClass = TEL_FRESH</label>
+      <label kind="comments" x="20" y="74">MAC report observed</label>
     </transition>
     <transition>
       <source ref="A_MON_0" />
       <target ref="A_MON_1" />
       <label kind="synchronisation" x="42" y="4">phy_kpi_report?</label>
-      <label kind="assignment" x="42" y="50">c_mon = 0, telemetryClass = TEL_FRESH</label>
-      <label kind="comments" x="42" y="92">PHY report observed</label>
+      <label kind="assignment" x="42" y="52">c_mon = 0, telemetryClass = TEL_FRESH</label>
+      <label kind="comments" x="42" y="98">PHY report observed</label>
     </transition>
     <transition>
       <source ref="A_MON_1" />
@@ -114,13 +114,13 @@ void select_sdn_policy() { update_policy_counter(); optimistic_reconfig = false;
       <source ref="A_MON_1" />
       <target ref="A_MON_3" />
       <label kind="guard" x="290" y="-64">telemetryClass == TEL_STALE || c_mon == D_mon</label>
-      <label kind="assignment" x="290" y="26">telemetryClass = TEL_STALE, optimistic_reconfig = false</label>
+      <label kind="assignment" x="290" y="28">telemetryClass = TEL_STALE, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_MON_1" />
       <target ref="A_MON_4" />
       <label kind="guard" x="380" y="-64">telemetryClass == TEL_MISSING</label>
-      <label kind="assignment" x="380" y="26">optimistic_reconfig = false</label>
+      <label kind="assignment" x="380" y="28">optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_MON_2" />
@@ -159,116 +159,124 @@ void select_sdn_policy() { update_policy_counter(); optimistic_reconfig = false;
     <transition>
       <source ref="A_RISK_0" />
       <target ref="A_RISK_3" />
-      <label kind="guard" x="200" y="-64">recoveryClass == REC_FAILED || sliceClass == SLICE_VIOLATED || telemetryClass == TEL_MISSING</label>
-      <label kind="assignment" x="200" y="26">classify_risk()</label>
+      <label kind="guard" x="200" y="-64">recoveryClass == REC_FAILED|| sliceClass == SLICE_VIOLATED||
+telemetryClass == TEL_MISSING</label>
+      <label kind="assignment" x="200" y="28">classify_risk()</label>
     </transition>
     <transition>
       <source ref="A_RISK_0" />
       <target ref="A_RISK_2" />
       <label kind="guard" x="110" y="-64">ruleClass == RULE_TIMEOUT || sensing_degradation_pending</label>
-      <label kind="assignment" x="110" y="26">classify_risk()</label>
+      <label kind="assignment" x="110" y="28">classify_risk()</label>
     </transition>
     <transition>
       <source ref="A_RISK_0" />
       <target ref="A_RISK_1" />
       <label kind="guard" x="20" y="-64">telemetryClass == TEL_STALE || sliceClass == SLICE_WARN</label>
-      <label kind="assignment" x="20" y="26">classify_risk()</label>
+      <label kind="assignment" x="20" y="28">classify_risk()</label>
     </transition>
     <transition>
       <source ref="A_RISK_0" />
       <target ref="A_RISK_0" />
-      <label kind="guard" x="-70" y="-64">telemetryClass == TEL_FRESH &amp;&amp; sliceClass == SLICE_OK &amp;&amp; recoveryClass != REC_FAILED &amp;&amp; ruleClass != RULE_TIMEOUT &amp;&amp; !sensing_degradation_pending</label>
-      <label kind="assignment" x="-70" y="26">classify_risk()</label>
+      <label kind="guard" x="-70" y="-64">telemetryClass == TEL_FRESH&amp;&amp; sliceClass == SLICE_OK&amp;&amp; recoveryClass != REC_FAILED&amp;&amp;
+ruleClass != RULE_TIMEOUT&amp;&amp; !sensing_degradation_pending</label>
+      <label kind="assignment" x="-70" y="28">classify_risk()</label>
       <nail x="-90" y="-90" />
       <nail x="90" y="-90" />
     </transition>
     <transition>
       <source ref="A_RISK_1" />
       <target ref="A_RISK_3" />
-      <label kind="guard" x="290" y="-64">recoveryClass == REC_FAILED || sliceClass == SLICE_VIOLATED || telemetryClass == TEL_MISSING</label>
-      <label kind="assignment" x="290" y="26">classify_risk()</label>
+      <label kind="guard" x="290" y="-64">recoveryClass == REC_FAILED|| sliceClass == SLICE_VIOLATED||
+telemetryClass == TEL_MISSING</label>
+      <label kind="assignment" x="290" y="28">classify_risk()</label>
     </transition>
     <transition>
       <source ref="A_RISK_1" />
       <target ref="A_RISK_2" />
-      <label kind="guard" x="200" y="-64">ruleClass == RULE_TIMEOUT || sensing_degradation_pending</label>
-      <label kind="assignment" x="200" y="26">classify_risk()</label>
+      <label kind="guard" x="236" y="36">ruleClass == RULE_TIMEOUT || sensing_degradation_pending</label>
+      <label kind="assignment" x="236" y="128">classify_risk()</label>
     </transition>
     <transition>
       <source ref="A_RISK_1" />
       <target ref="A_RISK_1" />
-      <label kind="guard" x="110" y="-64">telemetryClass == TEL_STALE || sliceClass == SLICE_WARN</label>
-      <label kind="assignment" x="110" y="26">classify_risk()</label>
+      <label kind="guard" x="146" y="36">telemetryClass == TEL_STALE || sliceClass == SLICE_WARN</label>
+      <label kind="assignment" x="146" y="128">classify_risk()</label>
       <nail x="90" y="-90" />
       <nail x="270" y="-90" />
     </transition>
     <transition>
       <source ref="A_RISK_1" />
       <target ref="A_RISK_0" />
-      <label kind="guard" x="20" y="-64">telemetryClass == TEL_FRESH &amp;&amp; sliceClass == SLICE_OK &amp;&amp; recoveryClass != REC_FAILED &amp;&amp; ruleClass != RULE_TIMEOUT &amp;&amp; !sensing_degradation_pending</label>
-      <label kind="assignment" x="20" y="26">classify_risk()</label>
+      <label kind="guard" x="56" y="36">telemetryClass == TEL_FRESH&amp;&amp; sliceClass == SLICE_OK&amp;&amp; recoveryClass != REC_FAILED&amp;&amp;
+ruleClass != RULE_TIMEOUT&amp;&amp; !sensing_degradation_pending</label>
+      <label kind="assignment" x="56" y="128">classify_risk()</label>
       <nail x="180" y="170" />
       <nail x="0" y="170" />
     </transition>
     <transition>
       <source ref="A_RISK_2" />
       <target ref="A_RISK_3" />
-      <label kind="guard" x="380" y="-64">recoveryClass == REC_FAILED || sliceClass == SLICE_VIOLATED || telemetryClass == TEL_MISSING</label>
-      <label kind="assignment" x="380" y="26">classify_risk()</label>
+      <label kind="guard" x="380" y="-64">recoveryClass == REC_FAILED|| sliceClass == SLICE_VIOLATED||
+telemetryClass == TEL_MISSING</label>
+      <label kind="assignment" x="380" y="28">classify_risk()</label>
     </transition>
     <transition>
       <source ref="A_RISK_2" />
       <target ref="A_RISK_2" />
-      <label kind="guard" x="290" y="-64">ruleClass == RULE_TIMEOUT || sensing_degradation_pending</label>
-      <label kind="assignment" x="290" y="26">classify_risk()</label>
+      <label kind="guard" x="326" y="36">ruleClass == RULE_TIMEOUT || sensing_degradation_pending</label>
+      <label kind="assignment" x="326" y="128">classify_risk()</label>
       <nail x="270" y="-90" />
       <nail x="450" y="-90" />
     </transition>
     <transition>
       <source ref="A_RISK_2" />
       <target ref="A_RISK_1" />
-      <label kind="guard" x="200" y="-64">telemetryClass == TEL_STALE || sliceClass == SLICE_WARN</label>
-      <label kind="assignment" x="200" y="26">classify_risk()</label>
+      <label kind="guard" x="272" y="136">telemetryClass == TEL_STALE || sliceClass == SLICE_WARN</label>
+      <label kind="assignment" x="272" y="228">classify_risk()</label>
       <nail x="360" y="170" />
       <nail x="180" y="170" />
     </transition>
     <transition>
       <source ref="A_RISK_2" />
       <target ref="A_RISK_0" />
-      <label kind="guard" x="110" y="-64">telemetryClass == TEL_FRESH &amp;&amp; sliceClass == SLICE_OK &amp;&amp; recoveryClass != REC_FAILED &amp;&amp; ruleClass != RULE_TIMEOUT &amp;&amp; !sensing_degradation_pending</label>
-      <label kind="assignment" x="110" y="26">classify_risk()</label>
+      <label kind="guard" x="182" y="136">telemetryClass == TEL_FRESH&amp;&amp; sliceClass == SLICE_OK&amp;&amp; recoveryClass != REC_FAILED&amp;&amp;
+ruleClass != RULE_TIMEOUT&amp;&amp; !sensing_degradation_pending</label>
+      <label kind="assignment" x="182" y="228">classify_risk()</label>
       <nail x="360" y="170" />
       <nail x="0" y="170" />
     </transition>
     <transition>
       <source ref="A_RISK_3" />
       <target ref="A_RISK_3" />
-      <label kind="guard" x="470" y="-64">recoveryClass == REC_FAILED || sliceClass == SLICE_VIOLATED || telemetryClass == TEL_MISSING</label>
-      <label kind="assignment" x="470" y="26">classify_risk()</label>
+      <label kind="guard" x="470" y="-64">recoveryClass == REC_FAILED|| sliceClass == SLICE_VIOLATED||
+telemetryClass == TEL_MISSING</label>
+      <label kind="assignment" x="470" y="28">classify_risk()</label>
       <nail x="450" y="-90" />
       <nail x="630" y="-90" />
     </transition>
     <transition>
       <source ref="A_RISK_3" />
       <target ref="A_RISK_2" />
-      <label kind="guard" x="380" y="-64">ruleClass == RULE_TIMEOUT || sensing_degradation_pending</label>
-      <label kind="assignment" x="380" y="26">classify_risk()</label>
+      <label kind="guard" x="416" y="36">ruleClass == RULE_TIMEOUT || sensing_degradation_pending</label>
+      <label kind="assignment" x="416" y="128">classify_risk()</label>
       <nail x="540" y="170" />
       <nail x="360" y="170" />
     </transition>
     <transition>
       <source ref="A_RISK_3" />
       <target ref="A_RISK_1" />
-      <label kind="guard" x="290" y="-64">telemetryClass == TEL_STALE || sliceClass == SLICE_WARN</label>
-      <label kind="assignment" x="290" y="26">classify_risk()</label>
+      <label kind="guard" x="362" y="136">telemetryClass == TEL_STALE || sliceClass == SLICE_WARN</label>
+      <label kind="assignment" x="362" y="228">classify_risk()</label>
       <nail x="540" y="170" />
       <nail x="180" y="170" />
     </transition>
     <transition>
       <source ref="A_RISK_3" />
       <target ref="A_RISK_0" />
-      <label kind="guard" x="200" y="-64">telemetryClass == TEL_FRESH &amp;&amp; sliceClass == SLICE_OK &amp;&amp; recoveryClass != REC_FAILED &amp;&amp; ruleClass != RULE_TIMEOUT &amp;&amp; !sensing_degradation_pending</label>
-      <label kind="assignment" x="200" y="26">classify_risk()</label>
+      <label kind="guard" x="308" y="236">telemetryClass == TEL_FRESH&amp;&amp; sliceClass == SLICE_OK&amp;&amp; recoveryClass != REC_FAILED&amp;&amp;
+ruleClass != RULE_TIMEOUT&amp;&amp; !sensing_degradation_pending</label>
+      <label kind="assignment" x="308" y="328">classify_risk()</label>
       <nail x="540" y="170" />
       <nail x="0" y="170" />
     </transition>
@@ -302,57 +310,57 @@ void select_sdn_policy() { update_policy_counter(); optimistic_reconfig = false;
       <source ref="A_POLICY_0" />
       <target ref="A_POLICY_1" />
       <label kind="synchronisation" x="20" y="-20">service_request?</label>
-      <label kind="assignment" x="20" y="26">service_request_pending = true, c_admission = 0, c_dec = 0</label>
-      <label kind="comments" x="20" y="68">service admission</label>
+      <label kind="assignment" x="20" y="28">service_request_pending = true, c_admission = 0, c_dec = 0</label>
+      <label kind="comments" x="20" y="74">service admission</label>
     </transition>
     <transition>
       <source ref="A_POLICY_0" />
       <target ref="A_POLICY_1" />
       <label kind="synchronisation" x="42" y="4">mac_report?</label>
-      <label kind="assignment" x="42" y="50">sensing_degradation_pending = true, c_dec = 0</label>
-      <label kind="comments" x="42" y="92">MAC/ISAC degradation</label>
+      <label kind="assignment" x="42" y="52">sensing_degradation_pending = true, c_dec = 0</label>
+      <label kind="comments" x="42" y="98">MAC/ISAC degradation</label>
     </transition>
     <transition>
       <source ref="A_POLICY_0" />
       <target ref="A_POLICY_1" />
       <label kind="synchronisation" x="64" y="28">phy_kpi_report?</label>
-      <label kind="assignment" x="64" y="74">c_dec = 0</label>
-      <label kind="comments" x="64" y="116">PHY KPI update</label>
+      <label kind="assignment" x="64" y="76">c_dec = 0</label>
+      <label kind="comments" x="64" y="122">PHY KPI update</label>
     </transition>
     <transition>
       <source ref="A_POLICY_1" />
       <target ref="A_POLICY_6" />
       <label kind="guard" x="560" y="-64">gPolReject()</label>
       <label kind="synchronisation" x="560" y="-20">service_reject!</label>
-      <label kind="assignment" x="560" y="26">select_sdn_policy(), service_request_pending = false, optimistic_reconfig = false</label>
+      <label kind="assignment" x="560" y="28">select_sdn_policy(), service_request_pending = false, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_POLICY_1" />
       <target ref="A_POLICY_5" />
       <label kind="guard" x="470" y="-64">!gPolReject() &amp;&amp; gPolConstrained()</label>
       <label kind="synchronisation" x="470" y="-20">service_degraded!</label>
-      <label kind="assignment" x="470" y="26">select_sdn_policy(), service_request_pending = false, optimistic_reconfig = false</label>
+      <label kind="assignment" x="470" y="28">select_sdn_policy(), service_request_pending = false, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_POLICY_1" />
       <target ref="A_POLICY_3" />
       <label kind="guard" x="290" y="-64">!gPolReject() &amp;&amp; !gPolConstrained() &amp;&amp; gPolSensingBoost()</label>
       <label kind="synchronisation" x="290" y="-20">service_degraded!</label>
-      <label kind="assignment" x="290" y="26">select_sdn_policy(), command_pending = true</label>
+      <label kind="assignment" x="290" y="28">select_sdn_policy(), command_pending = true</label>
     </transition>
     <transition>
       <source ref="A_POLICY_1" />
       <target ref="A_POLICY_4" />
       <label kind="guard" x="380" y="-64">!gPolReject() &amp;&amp; !gPolConstrained() &amp;&amp; !gPolSensingBoost() &amp;&amp; gPolCommPrio()</label>
       <label kind="synchronisation" x="380" y="-20">service_accept!</label>
-      <label kind="assignment" x="380" y="26">select_sdn_policy(), service_request_pending = false, command_pending = true</label>
+      <label kind="assignment" x="380" y="28">select_sdn_policy(), service_request_pending = false, command_pending = true</label>
     </transition>
     <transition>
       <source ref="A_POLICY_1" />
       <target ref="A_POLICY_2" />
       <label kind="guard" x="200" y="-64">!gPolReject() &amp;&amp; !gPolConstrained() &amp;&amp; !gPolSensingBoost() &amp;&amp; !gPolCommPrio()</label>
       <label kind="synchronisation" x="200" y="-20">service_accept!</label>
-      <label kind="assignment" x="200" y="26">select_sdn_policy(), service_request_pending = false</label>
+      <label kind="assignment" x="200" y="28">select_sdn_policy(), service_request_pending = false</label>
     </transition>
     <transition>
       <source ref="A_POLICY_2" />
@@ -414,21 +422,21 @@ void select_sdn_policy() { update_policy_counter(); optimistic_reconfig = false;
       <source ref="A_RULE_0" />
       <target ref="A_RULE_1" />
       <label kind="synchronisation" x="20" y="-20">rule_miss?</label>
-      <label kind="assignment" x="20" y="26">ruleClass = RULE_MISS, rule_miss_pending = true, c_rule = 0</label>
+      <label kind="assignment" x="20" y="28">ruleClass = RULE_MISS, rule_miss_pending = true, c_rule = 0</label>
     </transition>
     <transition>
       <source ref="A_RULE_1" />
       <target ref="A_RULE_2" />
       <label kind="guard" x="200" y="-64">gPolReroute()</label>
       <label kind="synchronisation" x="200" y="-20">flow_mod!</label>
-      <label kind="assignment" x="200" y="26">ruleClass = RULE_PENDING, optimistic_reconfig = true</label>
+      <label kind="assignment" x="200" y="28">ruleClass = RULE_PENDING, optimistic_reconfig = true</label>
     </transition>
     <transition>
       <source ref="A_RULE_1" />
       <target ref="A_RULE_6" />
       <label kind="guard" x="560" y="-64">gPolReject() || !reconfig_allowed()</label>
       <label kind="synchronisation" x="560" y="-20">drop_report!</label>
-      <label kind="assignment" x="560" y="26">ruleClass = RULE_DROP, rule_miss_pending = false, optimistic_reconfig = false</label>
+      <label kind="assignment" x="560" y="28">ruleClass = RULE_DROP, rule_miss_pending = false, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_RULE_2" />
@@ -439,16 +447,16 @@ void select_sdn_policy() { update_policy_counter(); optimistic_reconfig = false;
     <transition>
       <source ref="A_RULE_3" />
       <target ref="A_RULE_4" />
-      <label kind="guard" x="560" y="-64">c_rule &lt;= D_rule_ack</label>
-      <label kind="synchronisation" x="560" y="-20">ack?</label>
-      <label kind="assignment" x="560" y="26">ruleClass = RULE_ACKED, rule_miss_pending = false, optimistic_reconfig = false</label>
+      <label kind="guard" x="596" y="36">c_rule &lt;= D_rule_ack</label>
+      <label kind="synchronisation" x="596" y="80">ack?</label>
+      <label kind="assignment" x="596" y="128">ruleClass = RULE_ACKED, rule_miss_pending = false, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_RULE_2" />
       <target ref="A_RULE_5" />
-      <label kind="guard" x="560" y="-64">c_rule == D_rule_install</label>
-      <label kind="synchronisation" x="560" y="-20">timeout_report!</label>
-      <label kind="assignment" x="560" y="26">ruleClass = RULE_TIMEOUT, sdnReason = SDN_RULE_TIMEOUT, serviceImpact = IMPACT_DEGRADED,
+      <label kind="guard" x="632" y="136">c_rule == D_rule_install</label>
+      <label kind="synchronisation" x="632" y="180">timeout_report!</label>
+      <label kind="assignment" x="632" y="228">ruleClass = RULE_TIMEOUT, sdnReason = SDN_RULE_TIMEOUT, serviceImpact = IMPACT_DEGRADED,
 rule_miss_pending = false, optimistic_reconfig = false</label>
     </transition>
     <transition>
@@ -456,7 +464,7 @@ rule_miss_pending = false, optimistic_reconfig = false</label>
       <target ref="A_RULE_5" />
       <label kind="guard" x="650" y="-64">c_rule == D_rule_install</label>
       <label kind="synchronisation" x="650" y="-20">timeout_report!</label>
-      <label kind="assignment" x="650" y="26">ruleClass = RULE_TIMEOUT, sdnReason = SDN_RULE_TIMEOUT, serviceImpact = IMPACT_DEGRADED,
+      <label kind="assignment" x="650" y="28">ruleClass = RULE_TIMEOUT, sdnReason = SDN_RULE_TIMEOUT, serviceImpact = IMPACT_DEGRADED,
 rule_miss_pending = false, optimistic_reconfig = false</label>
     </transition>
     <transition>
@@ -507,41 +515,41 @@ rule_miss_pending = false, optimistic_reconfig = false</label>
       <source ref="A_REC_0" />
       <target ref="A_REC_1" />
       <label kind="synchronisation" x="20" y="-20">link_failure?</label>
-      <label kind="assignment" x="20" y="26">link_failure_pending = true, recoveryClass = REC_STANDBY, c_rec = 0</label>
+      <label kind="assignment" x="20" y="28">link_failure_pending = true, recoveryClass = REC_STANDBY, c_rec = 0</label>
     </transition>
     <transition>
       <source ref="A_REC_0" />
       <target ref="A_REC_1" />
       <label kind="synchronisation" x="42" y="4">node_failure?</label>
-      <label kind="assignment" x="42" y="50">node_failure_pending = true, recoveryClass = REC_REEMBED, c_rec = 0</label>
+      <label kind="assignment" x="42" y="52">node_failure_pending = true, recoveryClass = REC_REEMBED, c_rec = 0</label>
     </transition>
     <transition>
       <source ref="A_REC_1" />
       <target ref="A_REC_2" />
       <label kind="guard" x="200" y="-64">standby_available &amp;&amp; reconfig_allowed()</label>
       <label kind="synchronisation" x="200" y="-20">sdn_policy_cmd!</label>
-      <label kind="assignment" x="200" y="26">command_pending = true, optimistic_reconfig = true</label>
+      <label kind="assignment" x="200" y="28">command_pending = true, optimistic_reconfig = true</label>
     </transition>
     <transition>
       <source ref="A_REC_1" />
       <target ref="A_REC_3" />
       <label kind="guard" x="290" y="-64">alternative_config_exists &amp;&amp; reconfig_allowed()</label>
       <label kind="synchronisation" x="290" y="-20">flow_mod!</label>
-      <label kind="assignment" x="290" y="26">command_pending = true, optimistic_reconfig = true</label>
+      <label kind="assignment" x="290" y="28">command_pending = true, optimistic_reconfig = true</label>
     </transition>
     <transition>
       <source ref="A_REC_1" />
       <target ref="A_REC_4" />
       <label kind="guard" x="380" y="-64">!standby_available &amp;&amp; !alternative_config_exists || !reconfig_allowed()</label>
       <label kind="synchronisation" x="380" y="-20">rollback_cmd!</label>
-      <label kind="assignment" x="380" y="26">recoveryClass = REC_ROLLBACK, c_rollback = 0, optimistic_reconfig = false</label>
+      <label kind="assignment" x="380" y="28">recoveryClass = REC_ROLLBACK, c_rollback = 0, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_REC_2" />
       <target ref="A_REC_0" />
       <label kind="guard" x="110" y="-64">c_rec &lt;= D_recovery</label>
       <label kind="synchronisation" x="110" y="-20">ack?</label>
-      <label kind="assignment" x="110" y="26">recoveryClass = REC_STABLE, link_failure_pending = false, node_failure_pending = false,
+      <label kind="assignment" x="110" y="28">recoveryClass = REC_STABLE, link_failure_pending = false, node_failure_pending = false,
 optimistic_reconfig = false</label>
       <nail x="360" y="170" />
       <nail x="0" y="170" />
@@ -549,9 +557,9 @@ optimistic_reconfig = false</label>
     <transition>
       <source ref="A_REC_3" />
       <target ref="A_REC_0" />
-      <label kind="guard" x="200" y="-64">c_rec &lt;= D_recovery</label>
-      <label kind="synchronisation" x="200" y="-20">ack?</label>
-      <label kind="assignment" x="200" y="26">recoveryClass = REC_STABLE, link_failure_pending = false, node_failure_pending = false,
+      <label kind="guard" x="236" y="36">c_rec &lt;= D_recovery</label>
+      <label kind="synchronisation" x="236" y="80">ack?</label>
+      <label kind="assignment" x="236" y="128">recoveryClass = REC_STABLE, link_failure_pending = false, node_failure_pending = false,
 optimistic_reconfig = false</label>
       <nail x="540" y="170" />
       <nail x="0" y="170" />
@@ -561,21 +569,21 @@ optimistic_reconfig = false</label>
       <target ref="A_REC_4" />
       <label kind="guard" x="470" y="-64">c_rec == D_recovery</label>
       <label kind="synchronisation" x="470" y="-20">rollback_cmd!</label>
-      <label kind="assignment" x="470" y="26">recoveryClass = REC_ROLLBACK, c_rollback = 0, optimistic_reconfig = false</label>
+      <label kind="assignment" x="470" y="28">recoveryClass = REC_ROLLBACK, c_rollback = 0, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_REC_3" />
       <target ref="A_REC_4" />
       <label kind="guard" x="560" y="-64">c_rec == D_recovery</label>
       <label kind="synchronisation" x="560" y="-20">rollback_cmd!</label>
-      <label kind="assignment" x="560" y="26">recoveryClass = REC_ROLLBACK, c_rollback = 0, optimistic_reconfig = false</label>
+      <label kind="assignment" x="560" y="28">recoveryClass = REC_ROLLBACK, c_rollback = 0, optimistic_reconfig = false</label>
     </transition>
     <transition>
       <source ref="A_REC_4" />
       <target ref="A_REC_0" />
-      <label kind="guard" x="290" y="-64">c_rollback &lt;= D_rollback</label>
-      <label kind="synchronisation" x="290" y="-20">ack?</label>
-      <label kind="assignment" x="290" y="26">recoveryClass = REC_STABLE, link_failure_pending = false, node_failure_pending = false</label>
+      <label kind="guard" x="326" y="36">c_rollback &lt;= D_rollback</label>
+      <label kind="synchronisation" x="326" y="80">ack?</label>
+      <label kind="assignment" x="326" y="128">recoveryClass = REC_STABLE, link_failure_pending = false, node_failure_pending = false</label>
       <nail x="720" y="170" />
       <nail x="0" y="170" />
     </transition>
@@ -584,8 +592,9 @@ optimistic_reconfig = false</label>
       <target ref="A_REC_5" />
       <label kind="guard" x="740" y="-64">c_rollback == D_rollback</label>
       <label kind="synchronisation" x="740" y="-20">failure_report!</label>
-      <label kind="assignment" x="740" y="26">recoveryClass = REC_FAILED, sdnReason = SDN_RECOVERY_FAILED, serviceImpact = IMPACT_FAILED,
-failure_report_sent = true, link_failure_pending = false, node_failure_pending = false</label>
+      <label kind="assignment" x="740" y="28">recoveryClass = REC_FAILED, sdnReason = SDN_RECOVERY_FAILED,
+serviceImpact = IMPACT_FAILED, failure_report_sent = true, link_failure_pending = false,
+node_failure_pending = false</label>
     </transition>
   </template>
   <template>
@@ -612,7 +621,7 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <target ref="A_SDN_AGG_1" />
       <label kind="guard" x="20" y="-64">command_pending</label>
       <label kind="synchronisation" x="20" y="-20">sdn_policy_cmd!</label>
-      <label kind="assignment" x="20" y="26">c_ctrl_ack = 0</label>
+      <label kind="assignment" x="20" y="28">c_ctrl_ack = 0</label>
     </transition>
     <transition>
       <source ref="A_SDN_AGG_1" />
@@ -623,14 +632,14 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <target ref="A_SDN_AGG_3" />
       <label kind="guard" x="380" y="-64">c_ctrl_ack &lt;= D_ctrl_ack</label>
       <label kind="synchronisation" x="380" y="-20">ack?</label>
-      <label kind="assignment" x="380" y="26">command_pending = false, lower_ack_received = true</label>
+      <label kind="assignment" x="380" y="28">command_pending = false, lower_ack_received = true</label>
     </transition>
     <transition>
       <source ref="A_SDN_AGG_2" />
       <target ref="A_SDN_AGG_4" />
       <label kind="guard" x="470" y="-64">c_ctrl_ack == D_ctrl_ack</label>
       <label kind="synchronisation" x="470" y="-20">timeout_report!</label>
-      <label kind="assignment" x="470" y="26">command_pending = false, lower_ack_received = false, sdnReason = SDN_RULE_TIMEOUT</label>
+      <label kind="assignment" x="470" y="28">command_pending = false, lower_ack_received = false, sdnReason = SDN_RULE_TIMEOUT</label>
     </transition>
     <transition>
       <source ref="A_SDN_AGG_3" />
@@ -655,7 +664,7 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
       <label kind="synchronisation" x="-70" y="-20">mac_report!</label>
-      <label kind="assignment" x="-70" y="26">telemetryClass = TEL_FRESH</label>
+      <label kind="assignment" x="-70" y="28">telemetryClass = TEL_FRESH</label>
       <nail x="-90" y="-90" />
       <nail x="90" y="-90" />
     </transition>
@@ -663,7 +672,7 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
       <label kind="synchronisation" x="-48" y="4">phy_kpi_report!</label>
-      <label kind="assignment" x="-48" y="50">telemetryClass = TEL_FRESH</label>
+      <label kind="assignment" x="-48" y="52">telemetryClass = TEL_FRESH</label>
       <nail x="-118" y="-90" />
       <nail x="118" y="-90" />
     </transition>
@@ -671,7 +680,7 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
       <label kind="synchronisation" x="-26" y="28">service_request!</label>
-      <label kind="assignment" x="-26" y="74">service_request_pending = true</label>
+      <label kind="assignment" x="-26" y="76">service_request_pending = true</label>
       <nail x="-146" y="-90" />
       <nail x="146" y="-90" />
     </transition>
@@ -686,7 +695,7 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
       <label kind="synchronisation" x="18" y="76">link_failure!</label>
-      <label kind="assignment" x="18" y="122">standby_available = true</label>
+      <label kind="assignment" x="18" y="124">standby_available = true</label>
       <nail x="-202" y="-90" />
       <nail x="202" y="-90" />
     </transition>
@@ -694,7 +703,7 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
       <label kind="synchronisation" x="40" y="100">node_failure!</label>
-      <label kind="assignment" x="40" y="146">alternative_config_exists = true</label>
+      <label kind="assignment" x="40" y="148">alternative_config_exists = true</label>
       <nail x="-230" y="-90" />
       <nail x="230" y="-90" />
     </transition>
@@ -757,42 +766,42 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
     <transition>
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
-      <label kind="assignment" x="238" y="362">telemetryClass = TEL_STALE, optimistic_reconfig = false</label>
+      <label kind="assignment" x="238" y="364">telemetryClass = TEL_STALE, optimistic_reconfig = false</label>
       <nail x="-482" y="-90" />
       <nail x="482" y="-90" />
     </transition>
     <transition>
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
-      <label kind="assignment" x="260" y="386">telemetryClass = TEL_MISSING, optimistic_reconfig = false</label>
+      <label kind="assignment" x="260" y="388">telemetryClass = TEL_MISSING, optimistic_reconfig = false</label>
       <nail x="-510" y="-90" />
       <nail x="510" y="-90" />
     </transition>
     <transition>
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
-      <label kind="assignment" x="282" y="410">sliceClass = SLICE_VIOLATED</label>
+      <label kind="assignment" x="282" y="412">sliceClass = SLICE_VIOLATED</label>
       <nail x="-538" y="-90" />
       <nail x="538" y="-90" />
     </transition>
     <transition>
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
-      <label kind="assignment" x="304" y="434">sensing_degradation_pending = true</label>
+      <label kind="assignment" x="304" y="436">sensing_degradation_pending = true</label>
       <nail x="-566" y="-90" />
       <nail x="566" y="-90" />
     </transition>
     <transition>
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
-      <label kind="assignment" x="326" y="458">standby_available = true, alternative_config_exists = false</label>
+      <label kind="assignment" x="326" y="460">standby_available = true, alternative_config_exists = false</label>
       <nail x="-594" y="-90" />
       <nail x="594" y="-90" />
     </transition>
     <transition>
       <source ref="A_ENV_SDN_0" />
       <target ref="A_ENV_SDN_0" />
-      <label kind="assignment" x="348" y="482">standby_available = false, alternative_config_exists = true</label>
+      <label kind="assignment" x="348" y="484">standby_available = false, alternative_config_exists = true</label>
       <nail x="-622" y="-90" />
       <nail x="622" y="-90" />
     </transition>
@@ -813,12 +822,12 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="ObsRuleMiss_0" />
       <target ref="ObsRuleMiss_1" />
       <label kind="guard" x="20" y="-64">rule_miss_pending</label>
-      <label kind="assignment" x="20" y="26">c_obs_rule = 0</label>
+      <label kind="assignment" x="20" y="28">c_obs_rule = 0</label>
     </transition>
     <transition>
       <source ref="ObsRuleMiss_1" />
       <target ref="ObsRuleMiss_0" />
-      <label kind="guard" x="20" y="-64">ruleClass == RULE_ACKED || ruleClass == RULE_DROP || ruleClass == RULE_TIMEOUT</label>
+      <label kind="guard" x="56" y="36">ruleClass == RULE_ACKED || ruleClass == RULE_DROP || ruleClass == RULE_TIMEOUT</label>
       <nail x="180" y="170" />
       <nail x="0" y="170" />
     </transition>
@@ -844,12 +853,12 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="ObsRecovery_0" />
       <target ref="ObsRecovery_1" />
       <label kind="guard" x="20" y="-64">link_failure_pending || node_failure_pending</label>
-      <label kind="assignment" x="20" y="26">c_obs_rec = 0</label>
+      <label kind="assignment" x="20" y="28">c_obs_rec = 0</label>
     </transition>
     <transition>
       <source ref="ObsRecovery_1" />
       <target ref="ObsRecovery_0" />
-      <label kind="guard" x="20" y="-64">recoveryClass == REC_STABLE || recoveryClass == REC_FAILED</label>
+      <label kind="guard" x="56" y="36">recoveryClass == REC_STABLE || recoveryClass == REC_FAILED</label>
       <nail x="180" y="170" />
       <nail x="0" y="170" />
     </transition>
@@ -875,12 +884,13 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="ObsAdmission_0" />
       <target ref="ObsAdmission_1" />
       <label kind="guard" x="20" y="-64">service_request_pending</label>
-      <label kind="assignment" x="20" y="26">c_obs_admission = 0</label>
+      <label kind="assignment" x="20" y="28">c_obs_admission = 0</label>
     </transition>
     <transition>
       <source ref="ObsAdmission_1" />
       <target ref="ObsAdmission_0" />
-      <label kind="guard" x="20" y="-64">serviceImpact == IMPACT_NONE || serviceImpact == IMPACT_DEGRADED || serviceImpact == IMPACT_REJECTED</label>
+      <label kind="guard" x="56" y="36">serviceImpact == IMPACT_NONE|| serviceImpact == IMPACT_DEGRADED||
+serviceImpact == IMPACT_REJECTED</label>
       <nail x="180" y="170" />
       <nail x="0" y="170" />
     </transition>
@@ -921,12 +931,12 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="ObsCommandAck_0" />
       <target ref="ObsCommandAck_1" />
       <label kind="guard" x="20" y="-64">command_pending</label>
-      <label kind="assignment" x="20" y="26">c_obs_cmd = 0</label>
+      <label kind="assignment" x="20" y="28">c_obs_cmd = 0</label>
     </transition>
     <transition>
       <source ref="ObsCommandAck_1" />
       <target ref="ObsCommandAck_0" />
-      <label kind="guard" x="20" y="-64">!command_pending</label>
+      <label kind="guard" x="56" y="36">!command_pending</label>
       <nail x="180" y="170" />
       <nail x="0" y="170" />
     </transition>
@@ -952,12 +962,13 @@ failure_report_sent = true, link_failure_pending = false, node_failure_pending =
       <source ref="ObsSensingDecision_0" />
       <target ref="ObsSensingDecision_1" />
       <label kind="guard" x="20" y="-64">sensing_degradation_pending</label>
-      <label kind="assignment" x="20" y="26">c_obs_sensing = 0</label>
+      <label kind="assignment" x="20" y="28">c_obs_sensing = 0</label>
     </transition>
     <transition>
       <source ref="ObsSensingDecision_1" />
       <target ref="ObsSensingDecision_0" />
-      <label kind="guard" x="20" y="-64">policyClass == POL_SENS_BOOST || policyClass == POL_CONSTRAINED || policyClass == POL_REJECT</label>
+      <label kind="guard" x="56" y="36">policyClass == POL_SENS_BOOST|| policyClass == POL_CONSTRAINED||
+policyClass == POL_REJECT</label>
       <nail x="180" y="170" />
       <nail x="0" y="170" />
     </transition>
