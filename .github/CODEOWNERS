@@ -1,0 +1,7 @@
+# The repository owner is the final reviewer for shared and integration artifacts.
+* @artmus208
+
+# Coordination rules and the unified manuscript must not be merged unreviewed.
+/.github/ @artmus208
+/manifests/ @artmus208
+/levels_tex/samplepaper.tex @artmus208

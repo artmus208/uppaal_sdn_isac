@@ -1,0 +1,155 @@
+name: Workstream
+description: Register one independently owned P0-P9b workstream and its handoff contract.
+title: "[workstream] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Create one issue per independently owned workstream. Reference the stable
+        atomic review-comment IDs from the response matrix; do not copy or merge
+        review requirements informally. Valid IDs are C01-C06, R01-R07, V01-V05,
+        I01-I06, and D01. Use N/A only for coordination-only work that closes no
+        reviewer requirement. Paths in the write scope are exclusive until handoff.
+        Every workstream PR targets `read`; only the final `read` to `main` PR
+        targets `main`.
+
+  - type: dropdown
+    id: workstream
+    attributes:
+      label: Workstream
+      description: P0 moves from candidate to frozen; P9 is split around final language editing into P9a, P8, and P9b. P5 is RELATED and accepted only after P3.
+      options:
+        - P0 — Baseline (candidate → frozen)
+        - P1 — Validation
+        - P2 — Instantiation and abstraction
+        - P3 — Verification
+        - P4 — Scalability
+        - P5 — End-to-end scenarios (RELATED; accept after P3)
+        - P6 — Literature
+        - P7 — Figures
+        - P9a — Draft integration
+        - P8 — Language and terminology
+        - P9b — Final integration and closure
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and deliverable
+      description: State the one problem this issue solves and the single independently acceptable deliverable it produces.
+      placeholder: Problem; concrete deliverable; explicit out-of-scope boundary
+    validations:
+      required: true
+
+  - type: input
+    id: atomic_comment_ids
+    attributes:
+      label: Atomic review-comment IDs
+      description: Use C01-C06, R01-R07, V01-V05, I01-I06, or D01. List every ID owned by this workstream; use N/A only for coordination-only P0/P9a/P9b work.
+      placeholder: C01, R03, V02; or N/A — coordination-only
+    validations:
+      required: true
+
+  - type: input
+    id: baseline_manifest
+    attributes:
+      label: Baseline manifest and hash
+      description: Give the repository path, baseline ID, and SHA-256 of the baseline manifest consumed by this workstream.
+      placeholder: manifests/baselines/reviewer-r1.yaml; reviewer-r1-candidate; sha256:...
+    validations:
+      required: true
+
+  - type: input
+    id: baseline_sha
+    attributes:
+      label: Baseline commit SHA
+      description: Full 40-character commit SHA used by this workstream. P0 records its candidate SHA until the baseline is frozen.
+      placeholder: 0123456789abcdef0123456789abcdef01234567
+    validations:
+      required: true
+
+  - type: textarea
+    id: inputs
+    attributes:
+      label: Inputs
+      description: List exact source paths, manifests, evidence bundles, issue or PR references, and their versions.
+      placeholder: One versioned input per line
+    validations:
+      required: true
+
+  - type: textarea
+    id: write_scope
+    attributes:
+      label: Exclusive write scope
+      description: List exact repository paths or narrow globs this workstream may change, one per line. The unified manuscript belongs to P9a/P9b; manifest governance requires its own explicit owner.
+      placeholder: path/to/file-or-directory/**
+    validations:
+      required: true
+
+  - type: textarea
+    id: outputs
+    attributes:
+      label: Required outputs
+      description: List every artifact and ready-to-integrate fragment that must be handed off.
+      placeholder: One output path or artifact identifier per line
+    validations:
+      required: true
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and gates
+      description: Name upstream workstream issues, required commit SHAs, and gates. Write "None" only for P0. P5 acceptance must depend on accepted P3 evidence.
+      placeholder: "#12 (P2) at <commit>; Gate 1"
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: State objective pass/fail checks, including exact commands where applicable.
+      placeholder: A reviewer can accept this workstream when...
+    validations:
+      required: true
+
+  - type: input
+    id: owner
+    attributes:
+      label: Owner
+      description: Exactly one GitHub account responsible for producing the outputs.
+      placeholder: "@account"
+    validations:
+      required: true
+
+  - type: input
+    id: reviewer
+    attributes:
+      label: Reviewer
+      description: GitHub account responsible for independent acceptance and handoff approval.
+      placeholder: "@account"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: evidence_class
+    attributes:
+      label: Evidence class
+      description: Choose what kind of evidence acceptance requires. CI unit tests are not UPPAAL model-checking evidence.
+      options:
+        - Machine evidence required
+        - Document or source evidence required
+        - Editorial or coordination evidence required
+        - No evidence required — justify below
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence_requirements
+    attributes:
+      label: Evidence requirements
+      description: Specify required hashes, run IDs, logs, traces, measurements, citations, diffs, or review records. Say explicitly when licensed verifyta execution is required.
+      placeholder: Evidence path, producer, required metadata, and acceptance rule
+    validations:
+      required: true

@@ -1,0 +1,133 @@
+# Постоянные правила совместной работы
+
+Этот файл действует на весь репозиторий. Все участники, ChatGPT/Codex-чаты и
+автоматизированные агенты обязаны соблюдать его до чтения более узких инструкций.
+
+## Источник истины
+
+- Источник истины — Git и GitHub: исходники, Issues, commits, Pull Requests,
+  manifests и сохранённые evidence artifacts.
+- Память ChatGPT, история отдельного чата и устные договорённости не являются
+  источником истины. Существенное решение должно попасть в Issue, PR или файл,
+  находящийся под Git.
+- `manifests/v1.md` задаёт научную декомпозицию P0–P7, P8 и P9a/P9b,
+  зависимости, результаты и критерии приёмки. Он не является журналом текущих
+  назначений.
+- `main` — стабильная ветка. `read` — integration branch текущего reviewer round.
+  Workstream PRs направляются в `read`; финальный integration PR — из `read` в
+  `main`.
+- Перед началом работы прочитай назначенный Issue, этот файл,
+  `CONTRIBUTING.md`, `manifests/v1.md`, `manifests/collaboration-v1.yaml` и
+  активный baseline из `manifests/baselines/`.
+
+Официальная модель Projects рекомендует отдельный чат для каждого конкретного
+результата: <https://learn.chatgpt.com/docs/projects>.
+
+## Одна задача на чат
+
+- Один чат выполняет ровно один конкретный deliverable из одного назначенного
+  GitHub Issue.
+- В первом сообщении чата должны быть указаны Issue, deliverable, `<base-ref>`,
+  base commit, зависимости, acceptance criteria и write scope.
+- Не объединяй в одном чате несколько Issues или несколько независимых
+  deliverables. Если задача распалась, создай отдельные Issues и отдельные чаты.
+- Не начинай незаявленную соседнюю работу. Найденную проблему запиши в Issue или
+  передай интегратору, но не расширяй write scope самовольно.
+
+## Изоляция аккаунтов и рабочих деревьев
+
+- Каждый активный Issue/чат каждого аккаунта работает в собственной ветке и в
+  отдельном Git worktree либо отдельном clone.
+- Одна ветка не используется одновременно двумя аккаунтами или двумя
+  worktrees.
+- Не работай в общем dirty checkout. Перед началом проверь `git status --short`.
+- Не удаляй, не reset-ь, не stash-ь и не перезаписывай чужие незакоммиченные
+  изменения. При dirty checkout создай отдельный чистый worktree/clone.
+- Ветка имеет формат
+  `codex/<account-id>/<issue-number>-<deliverable-slug>`.
+- `<account-id>` — стабильный короткий идентификатор аккаунта, выбранный при
+  onboarding. Не подставляй вымышленное имя участника.
+- После создания Codex-managed worktree создай в нём именованную ветку до
+  первого commit. Поведение worktrees описано здесь:
+  <https://learn.chatgpt.com/docs/environments/git-worktrees>.
+
+## Ownership и write scope
+
+- У каждого Issue и каждого review comment ровно один основной owner.
+- Используй стабильные атомарные ID без reviewer prefix:
+  `C01–C06`, `R01–R07`, `V01–V05`, `I01–I06`, `D01`. Не перенумеровывай и не
+  переиспользуй их; Issue обязан перечислять закрываемые ID. Для чисто
+  координационного Issue без reviewer requirement укажи `N/A — coordination-only`.
+  Префиксы означают `CORE`, `RELATED`, `VALIDATION`, `INDEPENDENT`, `DEFERRED`
+  соответственно.
+- Issue обязан перечислять разрешённые пути в поле `Write scope`.
+- Читать можно весь репозиторий; изменять можно только файлы из `Write scope`.
+- Если нужен файл вне scope, остановись и сначала согласуй изменение Issue.
+- Пересекающиеся write scopes одновременно активных Issues запрещены. Исключение
+  допускается только после явного решения интегратора, записанного в обоих
+  Issues.
+- Общий manifest не используется как часто изменяемый status board. Статусы,
+  блокеры и назначения хранятся в GitHub Issues/PRs.
+- Любой файл в `manifests/` меняется только в отдельном governance Issue с
+  manifest-specific write scope и принятым решением Integrator.
+- Не перезаписывай общие generated artifacts. Для эксперимента используй
+  уникальный каталог или `run_id`, заявленный в Issue.
+
+## Владение рукописью
+
+- Только процессы `P9a Integration draft` и `P9b Final assembly` могут изменять
+  `levels_tex/samplepaper.tex`.
+- `P9a Integration draft` собирает принятые результаты P1–P7 в рукопись.
+- `P8 Language` не изменяет `levels_tex/samplepaper.tex`; он возвращает
+  `editorial patch` как отдельный deliverable в Issue/PR.
+- `P9b Final assembly` применяет принятый `editorial patch`, разрешает конфликты
+  и создаёт финальную версию рукописи.
+- Ни один другой процесс не исправляет текст статьи «заодно».
+
+## Verification evidence
+
+- Static validation не является verification. Успешный XML/parser/property-pack
+  check подтверждает только статическую корректность проверенного аспекта.
+- Нельзя писать `verified`, `passed`, `satisfied` или эквивалентное утверждение о
+  model checking без сохранённого машинного результата.
+- Каждое verification claim обязано ссылаться как минимум на:
+  `run_id`, `status`, `model_hash`, `query_hash` и точную `tool_version`.
+- Для воспроизводимого запуска также сохраняй commit, параметры, instance vector,
+  полную команду, operating environment, hardware и пути к stdout/stderr/trace.
+- Только `status=success` и явный результат конкретного query позволяют заявить,
+  что свойство проверено. `error`, `timeout`, `oom`, отсутствие результата или
+  ручная подстановка версии инструмента означают «не проверено».
+- Результаты разных конфигураций имеют разные `run_id`; если сгенерированный XML
+  изменился, для каждого запуска сохраняется собственный `model_hash`.
+
+## Gates и зависимости
+
+- Не начинай задачу, пока её обязательные зависимости в Issue не приняты.
+- P0 публикует baseline candidate. P1 и P2 проверяют и дополняют его validation,
+  parameter, instantiation и abstraction decisions. Только после принятия P1/P2
+  Gate 1 превращает candidate во frozen baseline.
+- `Gate 1 — Frozen model baseline` считается пройденным только после записи в
+  GitHub решения с base commit, hashes модели/generator/query set, parameter set,
+  instance vector и tool version.
+- P3 и P4 используют принятый Gate 1 baseline.
+- P5 относится к `RELATED`: черновой сценарий можно готовить после P1/P2, но P5
+  закрывается только после P3 и обязан ссылаться на принятый verification run.
+- Gate принимает не автор результата, а назначенный reviewer/integrator.
+- Наличие commit или PR само по себе не означает прохождение gate.
+- `P9a Integration draft` начинается после принятия требуемых результатов
+  P1–P7. `P9b Final assembly` начинается после принятия `P8 Language` editorial
+  patch и всех исправлений интеграционной проверки.
+
+## Изменения, тесты и handoff
+
+- Сохраняй существующие пользовательские изменения и не выполняй разрушительные
+  Git-команды без прямого разрешения.
+- Делай минимальные изменения, относящиеся к deliverable.
+- Перед handoff выполни релевантные тесты из `CONTRIBUTING.md`. Не скрывай
+  failures, skipped tests и ограничения окружения.
+- Перед открытием PR проверь, что diff не содержит файлов вне `Write scope`.
+- Workstream PR направляется в `read`, не в `main`. Только финальный integration
+  PR после `P9b Final assembly` направляется из `read` в `main`.
+- Каждый PR должен заполнить handoff-поля из `CONTRIBUTING.md`, ссылаться на Issue
+  и содержать достаточные команды и evidence для независимой проверки.
+- Автор не объявляет собственный PR интегрированным или gate пройденным.

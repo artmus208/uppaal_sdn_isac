@@ -1,0 +1,603 @@
+schema_version: "1.0"
+kind: multi-account-coordination-contract
+
+metadata:
+  id: reviewer-r1-collaboration
+  status: active
+  scientific_plan: manifests/v1.md
+  baseline_manifest: manifests/baselines/reviewer-r1.yaml
+  repository: https://github.com/artmus208/uppaal_sdn_isac
+  repository_owner: artmus208
+
+principles:
+  - GitHub Issues is the only source of live task state.
+  - Git commits and pull requests are the only source of durable artifacts.
+  - Chat transcripts and model memory are never sources of truth.
+  - One issue has exactly one workstream owner at a time.
+  - One artifact has exactly one primary writer at a time.
+  - A dependency is consumable only after its pull request is merged.
+  - Accepted verification evidence must come from a clean committed tree.
+  - Only P9a and P9b write the unified manuscript.
+
+review_comment_ids:
+  allowed:
+    - C01
+    - C02
+    - C03
+    - C04
+    - C05
+    - C06
+    - R01
+    - R02
+    - R03
+    - R04
+    - R05
+    - R06
+    - R07
+    - V01
+    - V02
+    - V03
+    - V04
+    - V05
+    - I01
+    - I02
+    - I03
+    - I04
+    - I05
+    - I06
+    - D01
+  ownership_rule: Every C, R, V, and I ID is assigned to exactly one primary workstream; deferred D01 has only conditional ownership.
+  deferred_conditional_ownership:
+    D01:
+      default_status: deferred
+      owner_when_activated: P9b
+      activation_source: explicit_coordinator_decision_in_github_issue
+
+sources_of_truth:
+  live_task_state:
+    system: github_issues
+    fields:
+      - assignee
+      - status_label
+      - dependency_state
+      - blocking_reason
+      - task_branch
+      - pull_request
+    prohibited_in_git_manifests:
+      - current_assignee
+      - percent_complete
+      - claim_lease
+  durable_artifacts:
+    system: git
+    required_location: repository_paths_declared_by_the_issue
+    prohibited_only_locations:
+      - chat_message
+      - local_uncommitted_worktree
+      - github_issue_comment
+
+identity:
+  accountable_identity: github_handle
+  agent_session_id:
+    required: false
+    purpose: diagnostic_trace_only
+  secrets:
+    allowed_in_repository: false
+
+roles:
+  coordinator:
+    responsibilities:
+      - maintain this coordination contract
+      - create and assign workstream issues
+      - resolve ownership and dependency conflicts
+      - freeze or supersede baselines
+      - operate Gate 1
+    restrictions:
+      - do not claim scientific results without the responsible workstream PR
+  workstream_owner:
+    responsibilities:
+      - claim one issue through GitHub assignment
+      - work only inside the issue write scope
+      - commit reproducible artifacts
+      - submit the handoff pull request
+    restrictions:
+      - do not edit another workstream's artifacts
+      - do not edit the unified manuscript
+  evidence_reviewer:
+    responsibilities:
+      - independently reproduce or audit P3 and P4 evidence
+      - verify hashes, commands, logs, resources, and result interpretation
+      - approve or reject the evidence pull request
+    separation_of_duties:
+      - must_not_be: evidence_producer_for_the_same_pull_request
+  integrator:
+    responsibilities:
+      - merge accepted outputs into the manuscript
+      - maintain the review-comment response matrix
+      - ensure all claims reference accepted evidence
+      - prepare the final release candidate
+    exclusive_paths:
+      - levels_tex/samplepaper.tex
+      - evidence/integration/**
+
+session_bootstrap:
+  required_reads:
+    - manifests/v1.md
+    - manifests/collaboration-v1.yaml
+    - manifests/baselines/reviewer-r1.yaml
+    - the_assigned_github_issue
+  required_context:
+    - github_issue_number
+    - workstream_id
+    - integration_branch
+    - base_commit_sha
+    - allowed_write_paths
+    - acceptance_criteria
+  start_rule: Do not modify files until the issue is assigned and marked status/claimed.
+  finish_rule: End with a pull request satisfying handoff_contract.
+
+github_workflow:
+  issue_is_unit_of_work: true
+  issue_required_fields:
+    - workstream_id
+    - problem
+    - atomic_comment_ids_or_coordination_na
+    - owner_github_handle
+    - reviewer_github_handle
+    - inputs
+    - outputs
+    - dependencies
+    - allowed_write_paths
+    - acceptance_criteria
+    - baseline_manifest
+    - baseline_commit_sha
+    - evidence_class
+    - evidence_requirements
+  atomic_id_policy:
+    scientific_work:
+      required: true
+      allowed_values: C01-C06, R01-R07, V01-V05, I01-I06, or an explicitly activated D01
+    coordination_only:
+      allowed_workstreams: [P0, P9a, P9b]
+      exact_value: N/A — coordination-only
+      may_claim_reviewer_comment_closure: false
+  labels:
+    workstreams:
+      - workstream/P0
+      - workstream/P1
+      - workstream/P2
+      - workstream/P3
+      - workstream/P4
+      - workstream/P5
+      - workstream/P6
+      - workstream/P7
+      - workstream/P8
+      - workstream/P9a
+      - workstream/P9b
+    states:
+      - status/ready
+      - status/claimed
+      - status/blocked
+      - status/in-review
+      - status/accepted
+    types:
+      - type/governance
+      - type/evidence
+      - type/editorial
+    gates:
+      - gate/1
+      - gate/2
+  claim_transaction:
+    preconditions:
+      - issue_has_no_assignee
+      - issue_has_status_ready
+      - dependencies_required_for_start_are_merged
+    actions:
+      - assign_exactly_one_github_user
+      - replace_status_ready_with_status_claimed
+      - record_task_branch_in_issue
+    later_transitions:
+      - status_claimed_to_status_in_review_when_pull_request_is_ready
+      - status_in_review_to_status_accepted_only_after_merge_gate_passes
+    collision_rule: If any precondition is false, do not start work and contact the coordinator.
+
+git_workflow:
+  stable_branch:
+    name: main
+    policy_direct_push: forbidden
+    github_protection_at_contract_creation: not_configured
+  integration_branch:
+    name: read
+    remote_ref: origin/read
+    observed_head: c731b79ca1a8a02cc158c2bee988023d8b8f0a4f
+    state_at_contract_creation: existing
+    policy_direct_push: forbidden
+    github_protection_at_contract_creation: not_configured
+  task_branch:
+    pattern: "codex/<account-id>/<issue-number>-<deliverable-slug>"
+    base_ref: origin/read
+    base_commit_rule: Use the exact baseline source_commit recorded in the issue; do not branch from a moving local name.
+    one_issue_per_branch: true
+  worktrees:
+    isolation: one_worktree_or_clone_per_active_session
+    path_pattern: "../uppaal_sdn_isac-wt-<issue>"
+    shared_worktree_between_sessions: forbidden
+    consume_other_work_rule: fetch_and_use_merged_commits_only
+  history:
+    force_push_shared_branches: forbidden
+    merge_method: squash
+    delete_task_branch_after_merge: true
+
+global_write_policy:
+  default: deny
+  scope_is_declared_by: github_issue
+  manuscript_writer: integrator_only
+  out_of_scope_change: open_or_link_a_dependency_issue
+  generated_files:
+    rule: Commit only when the issue declares them as outputs and records their producing source hash.
+
+workstreams:
+  P0:
+    name: Baseline
+    owner_role: coordinator
+    start_after: []
+    accept_after: [gate_1]
+    states:
+      candidate:
+        initial: true
+        opens_workstreams: [P1, P2, P6, P7]
+      frozen:
+        initial: false
+        entered_only_by: accepted_gate_1_record
+    write_scope:
+      - manifests/v1.md
+      - manifests/collaboration-v1.yaml
+      - manifests/baselines/**
+    outputs:
+      - candidate_baseline
+      - reproducible_frozen_baseline
+      - gate_1_record
+    acceptance:
+      - baseline_manifest_has_frozen_true
+      - all_baseline_inputs_are_committed_and_hashed
+      - model_query_parameter_and_instance_sets_are_pinned
+
+  P1:
+    name: Validation
+    atomic_comment_ids: [V01, V02, V03, V04, V05]
+    owner_role: workstream_owner
+    start_after: [P0_candidate]
+    accept_after: []
+    write_scope:
+      - evidence/validation/**
+    outputs:
+      - validation_report
+      - parameter_source_table
+    implementation_change_rule: Route model or generator changes to P2 through a linked issue.
+
+  P2:
+    name: Instantiation_and_abstraction
+    atomic_comment_ids: [R01, R02, R05, R06]
+    owner_role: workstream_owner
+    start_after: [P0_candidate]
+    accept_after: []
+    write_scope:
+      - evidence/instantiation/**
+      - src/uppaal_mcp/layers.py
+      - src/uppaal_mcp/integrated/**
+      - src/uppaal_mcp/phy/contract.py
+      - src/uppaal_mcp/phy/defaults.py
+      - src/uppaal_mcp/phy/generator.py
+      - src/uppaal_mcp/phy/ir.py
+      - src/uppaal_mcp/mac/contract.py
+      - src/uppaal_mcp/mac/defaults.py
+      - src/uppaal_mcp/mac/generator.py
+      - src/uppaal_mcp/mac/ir.py
+      - src/uppaal_mcp/sdn/contract.py
+      - src/uppaal_mcp/sdn/defaults.py
+      - src/uppaal_mcp/sdn/generator.py
+      - src/uppaal_mcp/sdn/ir.py
+      - tests/fixtures/**
+      - tests/test_phy_layer.py
+      - tests/test_mac_layer.py
+      - tests/test_sdn_layer.py
+    outputs:
+      - model_scope_specification
+      - integrated_model
+      - interface_contract
+      - instance_vector
+
+  P3:
+    name: Core_verification
+    atomic_comment_ids: [C01, C02, C03, C04, C05, C06]
+    owner_role: workstream_owner
+    required_reviewer_role: evidence_reviewer
+    start_after: [gate_1]
+    accept_after: [gate_1, P4]
+    write_scope:
+      - evidence/verification/**
+      - src/uppaal_mcp/verifyta.py
+      - tests/test_verifyta_parser.py
+    outputs:
+      - verification_evidence_bundle
+    milestones:
+      P3_core_evidence_accepted:
+        covers: [C01, C02, C03, C04, C05]
+        accept_after: [gate_1]
+        unlocks: [P5_final_acceptance]
+      P3_complete:
+        covers: [C01, C02, C03, C04, C05, C06]
+        accept_after: [P4]
+        rationale: C06 is owned by P3 but its practical-verifiability and state-explosion conclusion consumes P4 scalability evidence.
+    immutable_inputs:
+      - frozen_source_hash
+      - frozen_generator_hash
+      - frozen_parameter_set
+      - frozen_instance_vector
+      - frozen_query_set
+    per_configuration_inputs:
+      - model_hash
+      - query_hash
+
+  P4:
+    name: Scalability
+    atomic_comment_ids: [R03, R04]
+    owner_role: workstream_owner
+    required_reviewer_role: evidence_reviewer
+    start_after: [P1, P2, gate_1]
+    accept_after: [P1, P2, gate_1]
+    write_scope:
+      - evidence/scalability/**
+      - src/uppaal_mcp/phy/benchmarks.py
+      - src/uppaal_mcp/mac/benchmarks.py
+      - src/uppaal_mcp/sdn/benchmarks.py
+    outputs:
+      - scalability_resource_report
+      - glonina_comparison
+    immutable_inputs:
+      - frozen_source_hash
+      - frozen_generator_hash
+      - frozen_parameter_set
+      - frozen_query_set
+    per_configuration_inputs:
+      - model_hash
+      - query_hash
+      - instance_vector
+
+  P5:
+    name: End_to_end_scenarios
+    class: RELATED
+    atomic_comment_ids: [R07]
+    owner_role: workstream_owner
+    draft_after: [P1, P2]
+    start_after: [P1, P2]
+    accept_after: [P3_core_evidence_accepted, gate_1]
+    write_scope:
+      - evidence/scenarios/**
+      - src/uppaal_mcp/phy/scenarios.py
+      - src/uppaal_mcp/phy/trace.py
+      - src/uppaal_mcp/mac/scenarios.py
+      - src/uppaal_mcp/mac/trace.py
+      - src/uppaal_mcp/sdn/scenarios.py
+      - src/uppaal_mcp/sdn/trace.py
+    outputs:
+      - end_to_end_scenario_traces
+    acceptance:
+      - every_accepted_scenario_references_an_accepted_verification_run_id
+
+  P6:
+    name: Literature
+    atomic_comment_ids: [I01, I02]
+    owner_role: workstream_owner
+    start_after: [P0_candidate]
+    accept_after: []
+    write_scope:
+      - evidence/literature/**
+      - bibliography/**
+      - monotec2026.bib
+    outputs:
+      - literature_notes
+      - bibtex_database
+
+  P7:
+    name: Figures
+    atomic_comment_ids: [I03, I04, I05]
+    owner_role: workstream_owner
+    start_after: [P0_candidate]
+    accept_after: [gate_1]
+    write_scope:
+      - evidence/figures/**
+      - uppaal_screens/**
+      - src/uppaal_mcp/layout_core.py
+      - src/uppaal_mcp/phy/layout.py
+      - src/uppaal_mcp/mac/layout.py
+      - src/uppaal_mcp/sdn/layout.py
+    outputs:
+      - figure_bundle
+      - placement_map
+    acceptance:
+      - every_model_figure_references_its_per_configuration_model_hash_and_the_frozen_source_and_generator_hashes
+
+  P9a:
+    name: Evidence_integration
+    owner_role: integrator
+    start_after: [P1, P2, P3, P4, P5, P6, P7]
+    accept_after: [P1, P2, P3, P4, P5, P6, P7]
+    write_scope:
+      - levels_tex/samplepaper.tex
+      - evidence/integration/**
+    outputs:
+      - integrated_manuscript_candidate
+      - review_comment_response_matrix
+
+  P8:
+    name: Language_and_terminology_review
+    atomic_comment_ids: [I06]
+    owner_role: workstream_owner
+    start_after: [P9a]
+    accept_after: [P9a]
+    write_scope:
+      - evidence/editorial/**
+    outputs:
+      - editorial_patch
+    manuscript_rule: Do not edit samplepaper.tex; P9b applies accepted editorial changes.
+
+  P9b:
+    name: Final_assembly
+    conditional_comment_ids: [D01]
+    activation_rule: D01 remains deferred and creates no implementation obligation unless the coordinator explicitly activates it in a GitHub Issue assigned to P9b.
+    owner_role: integrator
+    start_after: [P8, gate_2]
+    accept_after: [P8, gate_2]
+    write_scope:
+      - levels_tex/samplepaper.tex
+      - evidence/integration/**
+      - manifests/releases/**
+    outputs:
+      - unified_manuscript
+      - final_response_matrix
+      - release_manifest
+
+gates:
+  gate_1:
+    name: Frozen_model_baseline
+    operator_role: coordinator
+    state_at_contract_creation: pending
+    requires:
+      - P0_candidate_exists
+      - P1_parameter_decisions_accepted
+      - P2_integrated_model_accepted
+      - integrated_model_present
+      - interface_contract_accepted
+      - model_query_parameter_and_instance_hashes_pinned
+      - static_validation_passed
+      - working_verifyta_and_license_confirmed
+      - active_write_scopes_do_not_overlap
+    on_accept:
+      - write_gate_record_with_commit_timestamp_and_owner
+      - set_P0_state_to_frozen
+      - set_baseline_manifest_frozen_true
+    invalidation_rule: Any semantic model, query, parameter, or instance change creates a new baseline and invalidates dependent evidence.
+  gate_2:
+    name: Evidence_complete
+    operator_role: integrator
+    state_at_contract_creation: pending
+    requires:
+      - P3_accepted
+      - P4_accepted
+      - P5_accepted
+      - all_numeric_claims_resolve_to_accepted_run_ids
+      - all_review_comments_have_dispositions
+
+run_evidence_contract:
+  storage_pattern: "evidence/runs/<run_id>/"
+  manifest_filename: run.yaml
+  accepted_run_requires_clean_commit: true
+  hardware_scope: per_run
+  required_fields:
+    identity:
+      - run_id
+      - workstream_id
+      - produced_by_github_handle
+      - reviewed_by_github_handle
+    provenance:
+      - baseline_id
+      - baseline_manifest_sha256
+      - source_commit
+      - source_hash
+      - generator_hash
+      - model_path
+      - model_hash
+      - query_path
+      - query_hash
+      - parameter_set
+      - instance_vector
+    tool:
+      - uppaal_version
+      - verifyta_version_output
+      - exact_command
+      - exit_code
+      - license_status
+    timing:
+      - started_at_utc
+      - finished_at_utc
+      - runtime_seconds
+    hardware:
+      - operating_system
+      - execution_environment
+      - cpu_model
+      - logical_cpu_count
+      - ram_bytes
+      - resource_limit
+    results:
+      - property_id
+      - formal_query
+      - verdict
+      - states_explored
+      - peak_memory_bytes
+      - counterexample_reference
+    logs:
+      - stdout_path
+      - stdout_sha256
+      - stderr_path
+      - stderr_sha256
+  verdicts:
+    - satisfied
+    - violated
+    - timeout
+    - out_of_memory
+    - tool_error
+    - license_blocked
+  blocked_run_rule: A license-blocked or tool-error run is diagnostic evidence, never successful verification evidence.
+
+handoff_contract:
+  transport: pull_request_to_integration_branch
+  required_pull_request_fields:
+    - linked_issue
+    - workstream_id
+    - owner_github_handle
+    - base_commit_sha
+    - head_commit_sha
+    - baseline_id
+    - files_changed
+    - artifacts_and_sha256
+    - reproduction_commands
+    - checks_and_results
+    - acceptance_criteria_checklist
+    - known_limitations
+    - downstream_workstreams_unblocked
+  required_artifacts:
+    - machine_readable_metadata
+    - human_readable_summary
+    - raw_logs_for_experimental_results
+  prohibited:
+    - handoff_only_in_chat
+    - uncommitted_dependency
+    - result_without_provenance
+
+merge_gate:
+  target: read
+  direct_push: forbidden
+  prerequisites:
+    - issue_is_linked
+    - issue_owner_matches_pull_request_owner_or_is_explicitly_handed_off
+    - changed_paths_are_within_write_scope
+    - dependencies_are_merged
+    - acceptance_checklist_is_complete
+    - reproducibility_commands_are_recorded
+    - tests_pass
+    - yaml_manifests_parse
+    - no_unresolved_merge_conflicts
+  additional_for_P3_and_P4:
+    - independent_evidence_reviewer_approval
+    - baseline_hashes_match
+    - raw_logs_are_present
+    - per_run_hardware_is_recorded
+  manuscript_merge_rule: Only P9a and P9b may modify levels_tex/samplepaper.tex.
+  final_release:
+    source_branch: read
+    target_branch: main
+    requires:
+      - gate_2_passed
+      - P8_accepted
+      - P9b_accepted
+      - release_manifest_committed
