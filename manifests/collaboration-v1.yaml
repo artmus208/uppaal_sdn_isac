@@ -489,7 +489,9 @@ gates:
       - all_review_comments_have_dispositions
 
 run_evidence_contract:
-  storage_pattern: "evidence/runs/<run_id>/"
+  storage_pattern_by_workstream:
+    P3: "evidence/verification/runs/<run_id>/"
+    P4: "evidence/scalability/runs/<run_id>/"
   manifest_filename: run.yaml
   accepted_run_requires_clean_commit: true
   hardware_scope: per_run

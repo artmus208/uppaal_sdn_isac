@@ -1,0 +1,190 @@
+[
+  {
+    "name": "structural",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/python",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 0.0521540641784668,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/structural.stdout.txt",
+      "sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/structural.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "unit",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 7.045078992843628,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/unit.stdout.txt",
+      "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/unit.stderr.txt",
+      "sha256": "afd248ea517758275f4fea130eecb718a2c7901aeb790e20f49b440a7e13f243"
+    }
+  },
+  {
+    "name": "pip-check",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 0.6114256381988525,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/pip-check.stdout.txt",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/pip-check.stderr.txt",
+      "sha256": "c2d0c69f8a8a34ce182ad1feb1a6ff03b2548055311927f15f2700d30c898c67"
+    }
+  },
+  {
+    "name": "build-mcp",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 0.8925385475158691,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/build-mcp.stdout.txt",
+      "sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/build-mcp.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "examples",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/uppaal-verifyta",
+      "list-examples"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 0.25768184661865234,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/examples.stdout.txt",
+      "sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/examples.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "version",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/uppaal-verifyta",
+      "version"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 0.2630279064178467,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/version.stdout.txt",
+      "sha256": "0fe9ba78c88414aafbf8a3838b43702dd201143ad3370a684ceaca865aeaa50f"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/version.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "base-audit",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/python",
+      "scripts/check_coordination.py",
+      "--audit-hashes",
+      "--commit",
+      "11bd69bdca9a1209f820258b3732b3c865f79035",
+      "--output",
+      "/tmp/uppaal-artmus208-6/evidence/governance/20260906-baseline/checks/base-hashes.json"
+    ],
+    "exit_code": 1,
+    "runtime_seconds": 0.2641451358795166,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/base-audit.stdout.txt",
+      "sha256": "c9aa7f2f0a45755a8fa76d84bb2db87c5b1c27315d83bf33c8ec305103863442"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/base-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "checkout-audit",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/python",
+      "scripts/check_coordination.py",
+      "--audit-hashes",
+      "--output",
+      "/tmp/uppaal-artmus208-6/evidence/governance/20260906-baseline/checks/checkout-hashes.json"
+    ],
+    "exit_code": 1,
+    "runtime_seconds": 0.10488200187683105,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/checkout-audit.stdout.txt",
+      "sha256": "c9aa7f2f0a45755a8fa76d84bb2db87c5b1c27315d83bf33c8ec305103863442"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/checkout-audit.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "diff-check",
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 0.006814241409301758,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/diff-check.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/diff-check.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "name": "yaml",
+    "command": [
+      "/tmp/uppaal-artmus208-6/.venv/bin/python",
+      "-c",
+      "from pathlib import Path; import yaml; [yaml.safe_load(p.read_bytes()) for p in Path(\"manifests\").rglob(\"*.yaml\")]; print(\"YAML parsed\")"
+    ],
+    "exit_code": 0,
+    "runtime_seconds": 0.08278536796569824,
+    "stdout": {
+      "path": "evidence/governance/20260906-baseline/checks/yaml.stdout.txt",
+      "sha256": "dd46aef256e51121ff44352ec69bff1df9d3b8e8afd33766f1ead803dc486eeb"
+    },
+    "stderr": {
+      "path": "evidence/governance/20260906-baseline/checks/yaml.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]
