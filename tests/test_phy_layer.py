@@ -575,12 +575,10 @@ State: ObsBeamRecovery.Violation A_BM.BeamRecover
 
 
 class PhyMcpRegistrationTests(unittest.TestCase):
-    def test_phy_tools_are_registered_when_mcp_is_installed(self) -> None:
+    def test_phy_tools_are_registered(self) -> None:
         from uppaal_mcp.server import build_mcp
-        try:
-            mcp = build_mcp()
-        except RuntimeError:
-            self.skipTest("mcp package is not installed")
+
+        mcp = build_mcp()
         tools = asyncio.run(mcp.list_tools())
         names = {tool.name for tool in tools}
         self.assertIn("phy_extract_contract", names)

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from importlib.metadata import PackageNotFoundError, version
 from typing import Any
 
 from .config import UppaalConfig
@@ -18,8 +19,20 @@ def build_mcp() -> Any:
     try:
         from mcp.server.fastmcp import FastMCP
     except ImportError as exc:
+        if isinstance(exc, ModuleNotFoundError) and exc.name == "mcp":
+            reason = "The required 'mcp' Python package is not installed."
+        else:
+            try:
+                sdk_version = version("mcp")
+            except PackageNotFoundError:
+                sdk_version = "unknown"
+            reason = (
+                f"Cannot import mcp.server.fastmcp.FastMCP (mcp version {sdk_version}). "
+                f"The SDK installation is incompatible or incomplete: {exc}."
+            )
         raise RuntimeError(
-            "The 'mcp' Python package is not installed. Install with: pip install -e ."
+            f'{reason} Install the supported SDK with: '
+            'python -m pip install "mcp>=1.28,<2"'
         ) from exc
 
     mcp = FastMCP("uppaal-mcp")

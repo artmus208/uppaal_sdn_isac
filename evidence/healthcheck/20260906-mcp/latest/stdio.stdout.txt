@@ -1,0 +1,4796 @@
+{
+  "evidence_class": "software startup diagnostics; no model checking",
+  "status": "success",
+  "sdk_version": "1.29.1",
+  "server_command": [
+    "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\uppaal-mcp.exe"
+  ],
+  "initialize": {
+    "meta": null,
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+      "experimental": {},
+      "logging": null,
+      "prompts": {
+        "listChanged": false
+      },
+      "resources": {
+        "subscribe": false,
+        "listChanged": false
+      },
+      "tools": {
+        "listChanged": false
+      },
+      "completions": null,
+      "tasks": null
+    },
+    "serverInfo": {
+      "name": "uppaal-mcp",
+      "title": null,
+      "version": "1.29.1",
+      "websiteUrl": null,
+      "icons": null
+    },
+    "instructions": null
+  },
+  "tool_count": 76,
+  "tools_list": {
+    "meta": null,
+    "nextCursor": null,
+    "tools": [
+      {
+        "name": "uppaal_version",
+        "title": null,
+        "description": "Return verifyta version and license banner.",
+        "inputSchema": {
+          "properties": {},
+          "title": "uppaal_versionArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "uppaal_validate_model",
+        "title": null,
+        "description": "Statically validate a UPPAAL XML model and optional query file.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "model_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Path"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "query_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Query Path"
+            }
+          },
+          "title": "uppaal_validate_modelArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "uppaal_verify",
+        "title": null,
+        "description": "Run UPPAAL verifyta on model/query text or paths.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "model_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Path"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "query_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Query Path"
+            },
+            "options": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Options"
+            },
+            "options_preset": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Options Preset"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            },
+            "keep_artifacts": {
+              "default": true,
+              "title": "Keep Artifacts",
+              "type": "boolean"
+            }
+          },
+          "title": "uppaal_verifyArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "uppaal_verify_batch",
+        "title": null,
+        "description": "Run several UPPAAL verification jobs sequentially.",
+        "inputSchema": {
+          "properties": {
+            "items": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Items",
+              "type": "array"
+            },
+            "options_preset": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Options Preset"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            }
+          },
+          "required": [
+            "items"
+          ],
+          "title": "uppaal_verify_batchArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "uppaal_verify_batchOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "uppaal_list_examples",
+        "title": null,
+        "description": "List built-in UPPAAL example models.",
+        "inputSchema": {
+          "properties": {},
+          "title": "uppaal_list_examplesArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "uppaal_list_examplesOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "uppaal_get_example",
+        "title": null,
+        "description": "Return a built-in example with model_xml and queries text.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "uppaal_get_exampleArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "uppaal_explain_result",
+        "title": null,
+        "description": "Create a compact human-readable explanation from a verifyta result dict.",
+        "inputSchema": {
+          "properties": {
+            "result": {
+              "additionalProperties": true,
+              "title": "Result",
+              "type": "object"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "uppaal_explain_resultArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_extract_contract",
+        "title": null,
+        "description": "Extract the PHY contract IR from the article LaTeX source.",
+        "inputSchema": {
+          "properties": {
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            }
+          },
+          "title": "phy_extract_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_validate_contract",
+        "title": null,
+        "description": "Validate the PHY contract IR against article invariants.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "phy_validate_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_generate_uppaal_model",
+        "title": null,
+        "description": "Generate a closed UPPAAL A_SYS model from the PHY contract.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative_scenarios": {
+              "default": false,
+              "title": "Include Negative Scenarios",
+              "type": "boolean"
+            },
+            "mode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mode"
+            },
+            "layout": {
+              "default": "readable",
+              "title": "Layout",
+              "type": "string"
+            }
+          },
+          "title": "phy_generate_uppaal_modelArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_validate_layout",
+        "title": null,
+        "description": "Validate that generated PHY model coordinates are readable in UPPAAL GUI.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "phy_validate_layoutArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_export_diagram",
+        "title": null,
+        "description": "Write PHY Graphviz DOT/SVG and readable model maps.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "layout": {
+              "default": "readable",
+              "title": "Layout",
+              "type": "string"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "phy_export_diagramArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_generate_property_pack",
+        "title": null,
+        "description": "Generate the PHY-specific query pack from the contract IR.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative": {
+              "default": false,
+              "title": "Include Negative",
+              "type": "boolean"
+            }
+          },
+          "title": "phy_generate_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_export_property_pack",
+        "title": null,
+        "description": "Write PHY queries.q plus JSON metadata/provenance files.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative": {
+              "default": false,
+              "title": "Include Negative",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "phy_export_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_generate_report",
+        "title": null,
+        "description": "Generate PHY Markdown reports and traceability artifacts in-memory.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "title": "phy_generate_reportArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_export_report",
+        "title": null,
+        "description": "Write PHY reports plus contract/model/query artifacts to a directory.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "phy_export_reportArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_export_run_artifacts",
+        "title": null,
+        "description": "Write a PHY run artifact layout with metadata and cache key.",
+        "inputSchema": {
+          "properties": {
+            "output_root": {
+              "title": "Output Root",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "verifyta_version": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verifyta Version"
+            },
+            "verifyta_command": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verifyta Command"
+            },
+            "options": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Options"
+            },
+            "force": {
+              "default": false,
+              "title": "Force",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "output_root"
+          ],
+          "title": "phy_export_run_artifactsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_verify_contract",
+        "title": null,
+        "description": "Generate and verify the closed PHY A_SYS model with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "mode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mode"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            },
+            "artifact_root": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Artifact Root"
+            },
+            "force": {
+              "default": false,
+              "title": "Force",
+              "type": "boolean"
+            }
+          },
+          "title": "phy_verify_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_verify_property_pack",
+        "title": null,
+        "description": "Verify a PHY property pack against a model, optionally returning PHY explanation.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "model_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Path"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "query_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Query Path"
+            },
+            "explain": {
+              "default": true,
+              "title": "Explain",
+              "type": "boolean"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            },
+            "static_only": {
+              "default": false,
+              "title": "Static Only",
+              "type": "boolean"
+            }
+          },
+          "title": "phy_verify_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_check_no_continuous_guards",
+        "title": null,
+        "description": "Check that generated automata do not use continuous PHY values in guards.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "phy_check_no_continuous_guardsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_check_channel_semantics",
+        "title": null,
+        "description": "Check report/event broadcast and command handshake channel semantics.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "phy_check_channel_semanticsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_check_alpha_profile",
+        "title": null,
+        "description": "Validate an alpha_PHY threshold/profile policy.",
+        "inputSchema": {
+          "properties": {
+            "profile_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile Json"
+            }
+          },
+          "title": "phy_check_alpha_profileArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_explain_counterexample",
+        "title": null,
+        "description": "Explain a verifyta violation in PHY/SDN/ISAC terms.",
+        "inputSchema": {
+          "properties": {
+            "result_json": {
+              "additionalProperties": true,
+              "title": "Result Json",
+              "type": "object"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "required": [
+            "result_json"
+          ],
+          "title": "phy_explain_counterexampleArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_list_profiles",
+        "title": null,
+        "description": "List built-in alpha/deadline profiles.",
+        "inputSchema": {
+          "properties": {},
+          "title": "phy_list_profilesArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "phy_list_profilesOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_get_profile",
+        "title": null,
+        "description": "Return one built-in alpha/deadline profile.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "phy_get_profileArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_list_scenarios",
+        "title": null,
+        "description": "List built-in PHY verification scenarios.",
+        "inputSchema": {
+          "properties": {},
+          "title": "phy_list_scenariosArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "phy_list_scenariosOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_get_scenario",
+        "title": null,
+        "description": "Generate one compact PHY scenario model.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "phy_get_scenarioArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_verify_scenario",
+        "title": null,
+        "description": "Verify one compact PHY scenario with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "phy_verify_scenarioArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_verify_all_scenarios",
+        "title": null,
+        "description": "Verify all built-in compact PHY scenarios with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            }
+          },
+          "title": "phy_verify_all_scenariosArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_list_benchmarks",
+        "title": null,
+        "description": "List PHY benchmark and intentionally broken static scenarios.",
+        "inputSchema": {
+          "properties": {},
+          "title": "phy_list_benchmarksArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "phy_list_benchmarksOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_get_benchmark",
+        "title": null,
+        "description": "Generate one PHY benchmark scenario model.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "phy_get_benchmarkArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "phy_validate_benchmarks",
+        "title": null,
+        "description": "Generate and statically validate all PHY benchmark scenarios.",
+        "inputSchema": {
+          "properties": {
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "title": "phy_validate_benchmarksArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_extract_contract",
+        "title": null,
+        "description": "Extract the MAC contract IR from the article LaTeX source.",
+        "inputSchema": {
+          "properties": {
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            }
+          },
+          "title": "mac_extract_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_validate_contract",
+        "title": null,
+        "description": "Validate the MAC contract IR against article invariants.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "mac_validate_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_generate_uppaal_model",
+        "title": null,
+        "description": "Generate a closed UPPAAL A_SYS_MAC model from the MAC contract.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative_scenarios": {
+              "default": false,
+              "title": "Include Negative Scenarios",
+              "type": "boolean"
+            },
+            "mode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mode"
+            },
+            "layout": {
+              "default": "readable",
+              "title": "Layout",
+              "type": "string"
+            }
+          },
+          "title": "mac_generate_uppaal_modelArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_validate_layout",
+        "title": null,
+        "description": "Validate that generated MAC model coordinates are readable in UPPAAL GUI.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "mac_validate_layoutArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_export_diagram",
+        "title": null,
+        "description": "Write MAC Graphviz DOT/SVG and readable model maps.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "layout": {
+              "default": "readable",
+              "title": "Layout",
+              "type": "string"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "mac_export_diagramArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_generate_property_pack",
+        "title": null,
+        "description": "Generate the MAC-specific query pack from the contract IR.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative": {
+              "default": false,
+              "title": "Include Negative",
+              "type": "boolean"
+            }
+          },
+          "title": "mac_generate_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_export_property_pack",
+        "title": null,
+        "description": "Write MAC queries.q plus JSON metadata/provenance files.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative": {
+              "default": false,
+              "title": "Include Negative",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "mac_export_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_generate_report",
+        "title": null,
+        "description": "Generate MAC Markdown reports and traceability artifacts in-memory.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "title": "mac_generate_reportArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_export_report",
+        "title": null,
+        "description": "Write MAC reports plus contract/model/query artifacts to a directory.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "mac_export_reportArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_export_run_artifacts",
+        "title": null,
+        "description": "Write a MAC run artifact layout with metadata and cache key.",
+        "inputSchema": {
+          "properties": {
+            "output_root": {
+              "title": "Output Root",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "verifyta_version": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verifyta Version"
+            },
+            "verifyta_command": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verifyta Command"
+            },
+            "options": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Options"
+            },
+            "force": {
+              "default": false,
+              "title": "Force",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "output_root"
+          ],
+          "title": "mac_export_run_artifactsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_verify_contract",
+        "title": null,
+        "description": "Generate and verify the closed MAC A_SYS_MAC model with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "mode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mode"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            },
+            "artifact_root": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Artifact Root"
+            },
+            "force": {
+              "default": false,
+              "title": "Force",
+              "type": "boolean"
+            }
+          },
+          "title": "mac_verify_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_verify_property_pack",
+        "title": null,
+        "description": "Verify a MAC property pack against a model, optionally returning MAC explanation.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "model_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Path"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "query_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Query Path"
+            },
+            "explain": {
+              "default": true,
+              "title": "Explain",
+              "type": "boolean"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            },
+            "static_only": {
+              "default": false,
+              "title": "Static Only",
+              "type": "boolean"
+            }
+          },
+          "title": "mac_verify_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_check_alpha_profile",
+        "title": null,
+        "description": "Validate an alpha_MAC threshold/profile policy.",
+        "inputSchema": {
+          "properties": {
+            "profile_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile Json"
+            }
+          },
+          "title": "mac_check_alpha_profileArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_check_channel_semantics",
+        "title": null,
+        "description": "Check MAC report broadcast and command handshake channel semantics.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "mac_check_channel_semanticsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_explain_counterexample",
+        "title": null,
+        "description": "Explain a verifyta violation in MAC scheduling/resource terms.",
+        "inputSchema": {
+          "properties": {
+            "result_json": {
+              "additionalProperties": true,
+              "title": "Result Json",
+              "type": "object"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "required": [
+            "result_json"
+          ],
+          "title": "mac_explain_counterexampleArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_list_scenarios",
+        "title": null,
+        "description": "List built-in MAC verification scenarios.",
+        "inputSchema": {
+          "properties": {},
+          "title": "mac_list_scenariosArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "mac_list_scenariosOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_get_scenario",
+        "title": null,
+        "description": "Generate one compact MAC scenario model.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "mac_get_scenarioArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_verify_scenario",
+        "title": null,
+        "description": "Verify one compact MAC scenario with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "mac_verify_scenarioArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_verify_all_scenarios",
+        "title": null,
+        "description": "Verify all built-in compact MAC scenarios with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            }
+          },
+          "title": "mac_verify_all_scenariosArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_list_benchmarks",
+        "title": null,
+        "description": "List MAC benchmark and intentionally broken static scenarios.",
+        "inputSchema": {
+          "properties": {},
+          "title": "mac_list_benchmarksArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "mac_list_benchmarksOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_get_benchmark",
+        "title": null,
+        "description": "Generate one MAC benchmark scenario model.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "mac_get_benchmarkArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "mac_validate_benchmarks",
+        "title": null,
+        "description": "Generate and statically validate all MAC benchmark scenarios.",
+        "inputSchema": {
+          "properties": {
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "title": "mac_validate_benchmarksArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_extract_contract",
+        "title": null,
+        "description": "Extract the SDN/RIC contract IR from the article LaTeX source.",
+        "inputSchema": {
+          "properties": {
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            }
+          },
+          "title": "sdn_extract_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_validate_contract",
+        "title": null,
+        "description": "Validate the SDN/RIC contract IR against article invariants.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "sdn_validate_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_generate_uppaal_model",
+        "title": null,
+        "description": "Generate a closed UPPAAL A_SYS_SDN model from the SDN/RIC contract.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative_scenarios": {
+              "default": false,
+              "title": "Include Negative Scenarios",
+              "type": "boolean"
+            },
+            "mode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mode"
+            },
+            "layout": {
+              "default": "readable",
+              "title": "Layout",
+              "type": "string"
+            }
+          },
+          "title": "sdn_generate_uppaal_modelArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_validate_layout",
+        "title": null,
+        "description": "Validate that generated SDN/RIC model coordinates are readable in UPPAAL GUI.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "sdn_validate_layoutArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_export_diagram",
+        "title": null,
+        "description": "Write SDN/RIC Graphviz DOT/SVG and readable model maps.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "layout": {
+              "default": "readable",
+              "title": "Layout",
+              "type": "string"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "sdn_export_diagramArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_generate_property_pack",
+        "title": null,
+        "description": "Generate the SDN/RIC-specific query pack from the contract IR.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative": {
+              "default": false,
+              "title": "Include Negative",
+              "type": "boolean"
+            }
+          },
+          "title": "sdn_generate_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_export_property_pack",
+        "title": null,
+        "description": "Write SDN/RIC queries.q plus JSON metadata/provenance files.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "debug_counters": {
+              "default": true,
+              "title": "Debug Counters",
+              "type": "boolean"
+            },
+            "include_negative": {
+              "default": false,
+              "title": "Include Negative",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "sdn_export_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_generate_report",
+        "title": null,
+        "description": "Generate SDN/RIC Markdown reports and traceability artifacts in-memory.",
+        "inputSchema": {
+          "properties": {
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "title": "sdn_generate_reportArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_export_report",
+        "title": null,
+        "description": "Write SDN/RIC reports plus contract/model/query artifacts to a directory.",
+        "inputSchema": {
+          "properties": {
+            "output_dir": {
+              "title": "Output Dir",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "output_dir"
+          ],
+          "title": "sdn_export_reportArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_export_run_artifacts",
+        "title": null,
+        "description": "Write an SDN/RIC run artifact layout with metadata and cache key.",
+        "inputSchema": {
+          "properties": {
+            "output_root": {
+              "title": "Output Root",
+              "type": "string"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "result_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Result Json"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "verifyta_version": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verifyta Version"
+            },
+            "verifyta_command": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Verifyta Command"
+            },
+            "options": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Options"
+            },
+            "force": {
+              "default": false,
+              "title": "Force",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "output_root"
+          ],
+          "title": "sdn_export_run_artifactsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_verify_contract",
+        "title": null,
+        "description": "Generate and verify the closed SDN/RIC A_SYS_SDN model with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "tex_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Text"
+            },
+            "tex_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Tex Path"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "mode": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Mode"
+            },
+            "include_observers": {
+              "default": true,
+              "title": "Include Observers",
+              "type": "boolean"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            },
+            "artifact_root": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Artifact Root"
+            },
+            "force": {
+              "default": false,
+              "title": "Force",
+              "type": "boolean"
+            }
+          },
+          "title": "sdn_verify_contractArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_verify_property_pack",
+        "title": null,
+        "description": "Verify an SDN/RIC property pack against a model, optionally returning SDN explanation.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "model_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Path"
+            },
+            "queries": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Queries"
+            },
+            "query_path": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Query Path"
+            },
+            "explain": {
+              "default": true,
+              "title": "Explain",
+              "type": "boolean"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            },
+            "static_only": {
+              "default": false,
+              "title": "Static Only",
+              "type": "boolean"
+            }
+          },
+          "title": "sdn_verify_property_packArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_check_alpha_profile",
+        "title": null,
+        "description": "Validate an alpha_SDN threshold/profile policy.",
+        "inputSchema": {
+          "properties": {
+            "profile_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile Json"
+            }
+          },
+          "title": "sdn_check_alpha_profileArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_check_channel_semantics",
+        "title": null,
+        "description": "Check SDN/RIC report broadcast and command handshake channel semantics.",
+        "inputSchema": {
+          "properties": {
+            "model_xml": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Model Xml"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "title": "sdn_check_channel_semanticsArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_explain_counterexample",
+        "title": null,
+        "description": "Explain a verifyta violation in SDN/RIC control-plane terms.",
+        "inputSchema": {
+          "properties": {
+            "result_json": {
+              "additionalProperties": true,
+              "title": "Result Json",
+              "type": "object"
+            },
+            "trace_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Trace Text"
+            },
+            "contract_json": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Contract Json"
+            }
+          },
+          "required": [
+            "result_json"
+          ],
+          "title": "sdn_explain_counterexampleArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_list_scenarios",
+        "title": null,
+        "description": "List built-in SDN/RIC verification scenarios.",
+        "inputSchema": {
+          "properties": {},
+          "title": "sdn_list_scenariosArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "sdn_list_scenariosOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_get_scenario",
+        "title": null,
+        "description": "Generate one compact SDN/RIC scenario model.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "sdn_get_scenarioArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_verify_scenario",
+        "title": null,
+        "description": "Verify one compact SDN/RIC scenario with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "sdn_verify_scenarioArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_verify_all_scenarios",
+        "title": null,
+        "description": "Verify all built-in compact SDN/RIC scenarios with verifyta.",
+        "inputSchema": {
+          "properties": {
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            },
+            "timeout_sec": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Timeout Sec"
+            }
+          },
+          "title": "sdn_verify_all_scenariosArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_list_benchmarks",
+        "title": null,
+        "description": "List SDN/RIC benchmark and intentionally broken static scenarios.",
+        "inputSchema": {
+          "properties": {},
+          "title": "sdn_list_benchmarksArguments",
+          "type": "object"
+        },
+        "outputSchema": {
+          "properties": {
+            "result": {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "title": "Result",
+              "type": "array"
+            }
+          },
+          "required": [
+            "result"
+          ],
+          "title": "sdn_list_benchmarksOutput",
+          "type": "object"
+        },
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_get_benchmark",
+        "title": null,
+        "description": "Generate one SDN/RIC benchmark scenario model.",
+        "inputSchema": {
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "title": "sdn_get_benchmarkArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      },
+      {
+        "name": "sdn_validate_benchmarks",
+        "title": null,
+        "description": "Generate and statically validate all SDN/RIC benchmark scenarios.",
+        "inputSchema": {
+          "properties": {
+            "profile": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Profile"
+            }
+          },
+          "title": "sdn_validate_benchmarksArguments",
+          "type": "object"
+        },
+        "outputSchema": null,
+        "icons": null,
+        "annotations": null,
+        "meta": null,
+        "execution": null
+      }
+    ]
+  }
+}
