@@ -1,0 +1,10 @@
+{
+  "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\uppaal_mcp\\.venv\\Scripts\\python.exe",
+  "mcp": "1.27.2",
+  "config_source": "D:\\uppaal_mcp\\src\\uppaal_mcp\\config.py",
+  "config_sha256": "7f220ae4eee33686249fb5668d95b04797062befb473c204d7098c1fa790055b",
+  "server_source": "D:\\uppaal_mcp\\src\\uppaal_mcp\\server.py",
+  "server_sha256": "7420714fa4818f0b011f5f7e70a8924a087fbbca801e342c78b67a9036a8d648",
+  "resolved_verifyta": "D:/UPPAAL/app/bin/verifyta.exe"
+}

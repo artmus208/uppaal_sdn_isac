@@ -1,0 +1,26 @@
+{
+  "config": {
+    "command": "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "args": [
+      "-m",
+      "uppaal_mcp"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-5",
+    "startup_timeout_sec": 20,
+    "tool_timeout_sec": 120,
+    "env": {
+      "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-5\\evidence\\healthcheck\\20260906-config\\run-20260907-native-01\\unused-workspace",
+      "UPPAAL_TIMEOUT_SEC": "60"
+    }
+  },
+  "provenance": {
+    "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+    "executable": "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "mcp": "1.29.1",
+    "config_source": "D:\\uppaal_sdn_isac-carwasher-5\\src\\uppaal_mcp\\config.py",
+    "config_sha256": "fdcfcaec28882391a5f48f1e3215a1809ff1141a23129e9ab03a9343dbfcb996",
+    "server_source": "D:\\uppaal_sdn_isac-carwasher-5\\src\\uppaal_mcp\\server.py",
+    "server_sha256": "7420714fa4818f0b011f5f7e70a8924a087fbbca801e342c78b67a9036a8d648",
+    "resolved_verifyta": "D:\\UPPAAL\\app\\bin\\verifyta.exe"
+  }
+}

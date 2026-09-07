@@ -1,0 +1,18 @@
+{
+  "command": [
+    "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+    "--version"
+  ],
+  "cwd": "D:\\uppaal_sdn_isac-carwasher-5",
+  "returncode": 0,
+  "duration_seconds": 0.03903980000177398,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "version-native-raw.stdout.txt",
+  "stdout_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+  "stderr": "version-native-raw.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

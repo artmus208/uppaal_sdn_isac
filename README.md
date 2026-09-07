@@ -4,7 +4,7 @@
 
 ```text
 src/uppaal_mcp/
-  config.py       env/config + дефолтный UPPAAL 5.0.0 path
+  config.py       env/config + поиск verifyta в PATH и каталогах установки
   paths.py        WSL <-> Windows path conversion
   validation.py   статическая XML/Q проверка
   verifyta.py     verifyta runner + JSON result parser
@@ -25,78 +25,98 @@ uppaal_get_example(name)
 uppaal_explain_result(result)
 ```
 
-Сервер принимает и текст модели/query, и пути к файлам. Для твоей установки UPPAAL ожидаемый путь:
+Сервер принимает и текст модели/query, и пути к файлам. Для текущей native Windows установки executable находится здесь:
 
 ```text
-/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe
+D:/UPPAAL/app/bin/verifyta.exe
 ```
 
-или Windows-вариант:
+Порядок выбора: аргумент `--verifyta-path`, переменная `UPPAAL_VERIFYTA_PATH`,
+совместимая переменная `VERIFYTA_PATH`, `verifyta`/`verifyta.exe` в `PATH`, затем
+известные установки. На Windows проверяются `C:/UPPAAL/app/bin/verifyta.exe`,
+`D:/UPPAAL/app/bin/verifyta.exe` и исторический
+`C:/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe`. На WSL сохранён поиск
+исторического `/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe`.
+Для другой установки укажи полный путь явно. Если ничего не найдено, runner
+получит исторический путь и вернёт диагностику отсутствующего инструмента.
 
-```text
-C:\Program Files (x86)\UPPAAL-5.0.0\bin\verifyta.exe
+## Быстрый запуск на Windows (PowerShell)
+
+В своём чистом clone/worktree создай отдельное окружение. Для уже подготовленной
+`.venv` достаточно команд проверки; пересоздавать её не требуется.
+
+```powershell
+Set-Location D:/uppaal_mcp  # замени на свой clone/worktree
+python -m venv .venv
+& ./.venv/Scripts/python.exe -m pip install -e . 'mcp>=1.28,<2'
+$env:UPPAAL_VERIFYTA_PATH = 'D:/UPPAAL/app/bin/verifyta.exe'
+& ./.venv/Scripts/python.exe -m uppaal_mcp.cli version
+& ./.venv/Scripts/python.exe -m uppaal_mcp.cli list-examples
 ```
 
-Оба варианта поддерживаются.
+Переменная в примере действует только в текущем процессе PowerShell и его
+дочерних процессах. `UPPAAL_MCP_WORKSPACE` задаёт каталог результатов,
+`UPPAAL_TIMEOUT_SEC` — таймаут verifier в секундах (по умолчанию 60).
+Установка требует совместимого MCP SDK; исправление ограничения зависимости
+ведётся в [Issue #3](https://github.com/artmus208/uppaal_sdn_isac/issues/3).
 
-## Быстрый запуск из WSL
+Для Linux/WSL используй Python и пути этой среды; например, из своего checkout:
 
 ```bash
-cd /mnt/c/Users/musta/Desktop/pySources/mcp_uppaal
 python3 -m venv .venv
-. .venv/bin/activate
-pip install -e .
-uppaal-verifyta version
-uppaal-verifyta list-examples
+.venv/bin/python -m pip install -e . 'mcp>=1.28,<2'
+export UPPAAL_VERIFYTA_PATH=/absolute/path/to/verifyta
+.venv/bin/python -m uppaal_mcp.cli version
 ```
 
-Если не ставить пакет, ядро можно гонять так:
+При запуске Windows executable из WSL укажи доступный `/mnt/.../verifyta.exe`;
+Windows interop должен работать в этой WSL-среде. Windows-путь вида
+`D:\UPPAAL\app\bin\verifyta.exe` также преобразуется в `/mnt/d/...`.
 
-```bash
-cd /mnt/c/Users/musta/Desktop/pySources/mcp_uppaal
-PYTHONPATH=src python3 -m uppaal_mcp.cli version
-PYTHONPATH=src python3 -m uppaal_mcp.cli list-examples
+## Подключение к Codex
+
+Рабочая команда stdio-сервера из установленного окружения:
+
+```powershell
+& D:/uppaal_mcp/.venv/Scripts/python.exe -m uppaal_mcp
 ```
 
-## Подключение к Codex через VS Code
-
-Рабочая команда MCP-сервера:
-
-```bash
-cd /mnt/c/Users/musta/Desktop/pySources/mcp_uppaal
-PYTHONPATH=src python3 -m uppaal_mcp
-```
-
-Типовой MCP config:
+В [mcp_conf.conf](mcp_conf.conf) сохранён пример для текущих Windows-путей.
+Перенеси его секции в пользовательский `~/.codex/config.toml` или проектный
+`.codex/config.toml` доверенного проекта, сохранив другие настройки.
+Codex использует поля `command`, `args`, `cwd` и `env` для запуска stdio-сервера;
+файл `mcp_conf.conf` сам по себе автоматически не загружается.
+См. [официальную документацию OpenAI по MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
 
 ```toml
 [mcp_servers.uppaal]
-command = "python3"
+command = "D:/uppaal_mcp/.venv/Scripts/python.exe"
 args = ["-m", "uppaal_mcp"]
-env = {
-  PYTHONPATH = "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/src",
-  UPPAAL_VERIFYTA_PATH = "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
-  UPPAAL_MCP_WORKSPACE = "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace",
-  UPPAAL_TIMEOUT_SEC = "60"
-}
+cwd = "D:/uppaal_mcp"
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+
+[mcp_servers.uppaal.env]
+UPPAAL_VERIFYTA_PATH = "D:/UPPAAL/app/bin/verifyta.exe"
+UPPAAL_MCP_WORKSPACE = "D:/uppaal_mcp/.uppaal_mcp_workspace"
+UPPAAL_TIMEOUT_SEC = "60"
 ```
 
-Если ставишь через `.venv`, лучше так:
-
-```toml
-[mcp_servers.uppaal]
-command = "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.venv/bin/python"
-args = ["-m", "uppaal_mcp"]
-env = {
-  UPPAAL_VERIFYTA_PATH = "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
-  UPPAAL_MCP_WORKSPACE = "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace",
-  UPPAAL_TIMEOUT_SEC = "60"
-}
-```
+Для другого clone/worktree замени `command`, `cwd` и `UPPAAL_MCP_WORKSPACE`
+на его абсолютные пути и установи пакет в выбранную `.venv`.
+Для Linux/WSL `command` обычно заканчивается на `.venv/bin/python`.
+Значение `UPPAAL_VERIFYTA_PATH` в секции `env` можно заменить своим или удалить,
+чтобы использовать поиск в `PATH` и известных каталогах. Для передачи переменной
+из окружения процесса Codex используй `env_vars = ["UPPAAL_VERIFYTA_PATH"]`
+в основной секции сервера и убери её фиксированное значение из `env`.
 
 ## Проверка
 
-Локально проверено:
+Актуальные software-диагностики конфигурации и запуска сохраняются в
+[evidence/healthcheck/20260906-config/](evidence/healthcheck/20260906-config/).
+Команда `version` и запуск MCP не являются model checking.
+
+Исторический WSL-срез (не описывает текущий native Windows запуск):
 
 ```text
 PYTHONPATH=src python3 -m unittest discover -s tests

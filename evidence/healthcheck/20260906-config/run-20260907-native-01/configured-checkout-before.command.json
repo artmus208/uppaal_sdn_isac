@@ -1,0 +1,19 @@
+{
+  "command": [
+    "git",
+    "status",
+    "--short"
+  ],
+  "cwd": "D:\\uppaal_mcp",
+  "returncode": 0,
+  "duration_seconds": 0.06139609999809181,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "configured-checkout-before.stdout.txt",
+  "stdout_sha256": "f73d6b41a9049fa9fcf8eecc9abcd689d724a908f5e642668164ab88cd991b50",
+  "stderr": "configured-checkout-before.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

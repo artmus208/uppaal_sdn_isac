@@ -1,0 +1,29 @@
+{
+  "cwd": "D:/uppaal_sdn_isac-carwasher-5",
+  "venv_creation": {
+    "command": [
+      "D:/uppaal_mcp/.venv/Scripts/python.exe",
+      "-m",
+      "venv",
+      ".venv"
+    ],
+    "returncode": 0
+  },
+  "install": {
+    "command": [
+      ".venv/Scripts/python.exe",
+      "-m",
+      "pip",
+      "install",
+      "-e",
+      ".",
+      "mcp>=1.28,<2"
+    ],
+    "returncode": 0
+  },
+  "raw_logs": {
+    "install.stdout.txt": "f947a72734eb7534eb16ff7bf56e003de5ed4414f76db9fdbc07a2e73438e950",
+    "install.stderr.txt": "648ae96672cbdc6e17382bdd38ac0e83a3af28b6185439fa08688bbada8d9752"
+  },
+  "note": "Only this task worktree .venv was created/installed into. Original environment was used read-only as venv bootstrap interpreter."
+}

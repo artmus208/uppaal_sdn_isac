@@ -1,0 +1,21 @@
+{
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "uppaal_mcp.cli",
+    "version"
+  ],
+  "cwd": "D:\\uppaal_sdn_isac-carwasher-5",
+  "returncode": 0,
+  "duration_seconds": 0.6630303000056301,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "version-default.stdout.txt",
+  "stdout_sha256": "aa21fb526e236f474f9e08c5b95134fe9e68f47b73cfff0ee2fede92df196c37",
+  "stderr": "version-default.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

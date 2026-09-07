@@ -1,0 +1,19 @@
+{
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "-B",
+    "scripts/check_coordination.py"
+  ],
+  "cwd": "D:\\uppaal_sdn_isac-carwasher-5",
+  "returncode": 0,
+  "duration_seconds": 0.10756160000164527,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "coordination.stdout.txt",
+  "stdout_sha256": "85f1f0d4802afe2bc8da170b90e0b7ced04a122973ef97d26257bc72d27750dd",
+  "stderr": "coordination.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

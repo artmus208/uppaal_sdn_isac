@@ -1,0 +1,20 @@
+{
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-c",
+    "\nimport hashlib, importlib.metadata, json, sys\nfrom pathlib import Path\nimport uppaal_mcp.config, uppaal_mcp.server\nprint(json.dumps({\n    'python': sys.version, 'executable': sys.executable,\n    'mcp': importlib.metadata.version('mcp'),\n    'config_source': uppaal_mcp.config.__file__,\n    'config_sha256': hashlib.sha256(Path(uppaal_mcp.config.__file__).read_bytes()).hexdigest(),\n    'server_source': uppaal_mcp.server.__file__,\n    'server_sha256': hashlib.sha256(Path(uppaal_mcp.server.__file__).read_bytes()).hexdigest(),\n    'resolved_verifyta': uppaal_mcp.config.UppaalConfig.from_env().verifyta_path,\n}, indent=2))\n"
+  ],
+  "cwd": "D:\\uppaal_sdn_isac-carwasher-5",
+  "returncode": 0,
+  "duration_seconds": 0.5931057000052533,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "worktree-provenance.stdout.txt",
+  "stdout_sha256": "329cf87761d719a71a60c10d792c4f217d0a674ecc95e77ce7550afb7deddbe2",
+  "stderr": "worktree-provenance.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

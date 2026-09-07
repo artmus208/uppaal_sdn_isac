@@ -1,0 +1,20 @@
+{
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "-m",
+    "pip",
+    "check"
+  ],
+  "cwd": "D:\\uppaal_sdn_isac-carwasher-5",
+  "returncode": 0,
+  "duration_seconds": 0.7920152000006055,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "pip-check.stdout.txt",
+  "stdout_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+  "stderr": "pip-check.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

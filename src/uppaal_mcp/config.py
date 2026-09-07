@@ -10,6 +10,11 @@ from .paths import is_windows_path, windows_to_wsl_path
 
 DEFAULT_WINDOWS_VERIFYTA = r"C:\Program Files (x86)\UPPAAL-5.0.0\bin\verifyta.exe"
 DEFAULT_WSL_VERIFYTA = "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe"
+NATIVE_WINDOWS_VERIFYTA_PATHS = (
+    r"C:\UPPAAL\app\bin\verifyta.exe",
+    r"D:\UPPAAL\app\bin\verifyta.exe",
+    DEFAULT_WINDOWS_VERIFYTA,
+)
 
 
 @dataclass(frozen=True)
@@ -48,18 +53,24 @@ class UppaalConfig:
 
 
 def resolve_verifyta_path(candidate: str | None = None) -> str:
+    """Prefer an explicit selection, then PATH, then known install locations."""
     if candidate:
         return _normalize_candidate(candidate)
-
-    for item in (DEFAULT_WSL_VERIFYTA, DEFAULT_WINDOWS_VERIFYTA):
-        normalized = _normalize_candidate(item)
-        if Path(normalized).exists():
-            return normalized
 
     for executable in ("verifyta", "verifyta.exe"):
         found = shutil.which(executable)
         if found:
             return found
+
+    locations = (
+        NATIVE_WINDOWS_VERIFYTA_PATHS
+        if os.name == "nt"
+        else (DEFAULT_WSL_VERIFYTA, DEFAULT_WINDOWS_VERIFYTA)
+    )
+    for item in locations:
+        normalized = _normalize_candidate(item)
+        if Path(normalized).is_file():
+            return normalized
 
     return _normalize_candidate(DEFAULT_WINDOWS_VERIFYTA)
 
