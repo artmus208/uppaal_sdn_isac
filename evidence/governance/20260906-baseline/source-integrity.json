@@ -1,0 +1,10 @@
+{
+  "base_commit": "11bd69bdca9a1209f820258b3732b3c865f79035",
+  "tested_files": {
+    "manifests/collaboration-v1.yaml": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+    "scripts/check_coordination.py": "c9d360399edbcd3f25c5e5304c09a00d0705a9a92e153a62265d95853c578114",
+    "tests/test_coordination.py": "fe328f062e31c0c3e4328bc18a64763e8394504552da1fcd10033043dcb3b7ea",
+    "evidence/governance/20260906-baseline/audit_hashes.py": "01d1fa959ba3ac36ef85633b68ac435ba5bca4bff8ad669a641b6cba1c2a1989"
+  },
+  "historical_baseline_unchanged": true
+}
