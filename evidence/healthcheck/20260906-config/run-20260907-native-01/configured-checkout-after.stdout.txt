@@ -1,0 +1,5 @@
+ M .uppaal_mcp_workspace/Application_service_layer_uppaal.xml
+ M .uppaal_mcp_workspace/mac_generated/model.xml
+?? .uppaal_mcp_workspace/phy_generated_read/
+?? .uppaal_mcp_workspace/sdn_generated/
+?? "PHY \321\203\321\200\320\276\320\262\320\265\320\275\321\214/"

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-c",
+    "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+  ],
+  "cwd": "D:\\uppaal_sdn_isac-carwasher-5",
+  "returncode": 0,
+  "duration_seconds": 1.8792857000007643,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "build-mcp.stdout.txt",
+  "stdout_sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913",
+  "stderr": "build-mcp.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

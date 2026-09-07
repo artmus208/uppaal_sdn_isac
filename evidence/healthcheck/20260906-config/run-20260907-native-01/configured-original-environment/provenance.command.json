@@ -1,0 +1,23 @@
+{
+  "command": [
+    "D:/uppaal_mcp/.venv/Scripts/python.exe",
+    "-B",
+    "-c",
+    "\nimport hashlib, importlib.metadata, json, sys\nfrom pathlib import Path\nimport uppaal_mcp.config, uppaal_mcp.server\nprint(json.dumps({\n    'python': sys.version, 'executable': sys.executable,\n    'mcp': importlib.metadata.version('mcp'),\n    'config_source': uppaal_mcp.config.__file__,\n    'config_sha256': hashlib.sha256(Path(uppaal_mcp.config.__file__).read_bytes()).hexdigest(),\n    'server_source': uppaal_mcp.server.__file__,\n    'server_sha256': hashlib.sha256(Path(uppaal_mcp.server.__file__).read_bytes()).hexdigest(),\n    'resolved_verifyta': uppaal_mcp.config.UppaalConfig.from_env().verifyta_path,\n}, indent=2))\n"
+  ],
+  "cwd": "D:\\uppaal_mcp",
+  "returncode": 0,
+  "duration_seconds": 0.6265715999979875,
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8",
+    "UPPAAL_VERIFYTA_PATH": "D:/UPPAAL/app/bin/verifyta.exe",
+    "UPPAAL_MCP_WORKSPACE": "D:/uppaal_mcp/.uppaal_mcp_workspace",
+    "UPPAAL_TIMEOUT_SEC": "60"
+  },
+  "PYTHONPATH_removed": true,
+  "stdout": "provenance.stdout.txt",
+  "stdout_sha256": "79380654efbe802518a2e4941c6de7167a87d2ae2630653ef96f9fb01659aa75",
+  "stderr": "provenance.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

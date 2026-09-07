@@ -1,0 +1,19 @@
+{
+  "arguments": {
+    "model_xml": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE nta PUBLIC \"-//Uppaal Team//DTD Flat System 1.6//EN\" \"http://www.it.uu.se/research/group/darts/uppaal/flat-1_6.dtd\">\n<nta>\n  <declaration>\n// Global declarations.\n  </declaration>\n  <template>\n    <name>IdleProcess</name>\n    <location id=\"id0\" x=\"0\" y=\"0\">\n      <name x=\"-20\" y=\"-30\">Idle</name>\n    </location>\n    <init ref=\"id0\"/>\n    <transition>\n      <source ref=\"id0\"/>\n      <target ref=\"id0\"/>\n    </transition>\n  </template>\n  <system>\nP = IdleProcess();\nsystem P;\n  </system>\n</nta>\n",
+    "queries": "A[] not deadlock\nE<> P.Idle\n"
+  },
+  "response": {
+    "meta": null,
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"ok\": true,\n  \"errors\": [],\n  \"warnings\": [],\n  \"templates\": [\n    \"IdleProcess\"\n  ],\n  \"queries\": [\n    \"A[] not deadlock\",\n    \"E<> P.Idle\"\n  ]\n}",
+        "annotations": null,
+        "meta": null
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}

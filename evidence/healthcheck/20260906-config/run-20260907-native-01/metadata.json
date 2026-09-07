@@ -1,0 +1,26 @@
+{
+  "classification": "software configuration diagnostics; no model checking",
+  "started_at_utc": "2026-09-07T05:41:19.706859+00:00",
+  "source_commit": "6aa30316d36fd5ce9948263c6f0edf5b5fee7664",
+  "base_commit": "11bd69bdca9a1209f820258b3732b3c865f79035",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "machine": "AMD64",
+  "processor": "AMD64 Family 23 Model 1 Stepping 1, AuthenticAMD",
+  "logical_cpu_count": 8,
+  "driver_python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "config_sha256": "fdcfcaec28882391a5f48f1e3215a1809ff1141a23129e9ab03a9343dbfcb996",
+  "mcp_conf_sha256": "811e7320fd0541e229f5d1e18ac53145650fcfec72d280b9a33f7b8241ee95ff",
+  "manifest_hashes": {
+    "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+    "manifests/collaboration-v1.yaml": "dfd0d92fd239fcef0c8d3c9deaea79ff0f4c2814ce86c676a7cec0ada62d47d0",
+    "manifests/baselines/reviewer-r1.yaml": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a"
+  },
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-5\\.venv\\Scripts\\python.exe",
+    "evidence/healthcheck/20260906-config/diagnose.py",
+    "--repo",
+    "D:/uppaal_sdn_isac-carwasher-5",
+    "--out",
+    "D:/uppaal_sdn_isac-carwasher-5/evidence/healthcheck/20260906-config/run-20260907-native-01"
+  ]
+}

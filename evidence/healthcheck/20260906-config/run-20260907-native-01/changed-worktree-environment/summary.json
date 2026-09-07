@@ -1,0 +1,24 @@
+{
+  "classification": "version, MCP transport, and static diagnostics only",
+  "status": "success",
+  "checks": [
+    {
+      "check": "initialize/list_tools",
+      "ok": true,
+      "tools": 76
+    },
+    {
+      "check": "version",
+      "ok": true,
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "--version"
+      ]
+    },
+    {
+      "check": "read_only_examples_and_static_validation",
+      "ok": true
+    }
+  ],
+  "session_closed": true
+}
