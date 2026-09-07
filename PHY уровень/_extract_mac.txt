@@ -1,0 +1,160 @@
+## 3. MAC / Resource Scheduling Layer
+
+### 3.1 Назначение и границы уровня
+
+MAC / Resource Scheduling layer (уровень доступа к среде и планирования ресурсов) связывает PHY-уровень с SDN-контроллером. Его задача состоит не в глобальной оптимизации сети, а в локальном принятии решений о выделении радиоресурсов, управлении очередями, обработке перегрузки и передаче команд на PHY. В ISAC-сети этот уровень дополнительно должен учитывать конфликт между communication (передача данных) и sensing (радиозондирование): одни и те же временно-частотные, beamforming (формирование луча) и энергетические ресурсы могут быть нужны для обеих функций. Разделение локального планирования и централизованной политики соответствует общей SDN-архитектуре с разделением data plane (уровня пересылки) и control plane (уровня управления) [9], [10].
+
+Граница уровня задается следующим образом:
+
+- MAC принимает от PHY дискретные отчеты о канале, луче, sensing quality и freshness.
+- MAC принимает от SDN policy command (политическую команду управления), но не выбирает глобальную сетевую политику самостоятельно.
+- MAC выдает PHY команды resource allocation (выделение ресурса), beam update (обновление луча), sensing boost (усиление режима радиозондирования) или constrained mode (ограниченный режим).
+- MAC сообщает SDN агрегированное состояние очередей, потерь, задержек и дефицита ресурсов.
+
+Следовательно, MAC не должен подменять SDN-контроллер. Если в модели MAC сам принимает решения о rerouting (перемаршрутизации), slice migration (переносе сетевого среза) или глобальном recovery (восстановлении), это смешивает уровни и ослабляет формализацию.
+
+### 3.2 Дискретная абстракция MAC
+
+Непрерывные измерения задержки, загрузки, размера очереди и пропускной способности сводятся к конечному состоянию через отображение:
+
+```text
+alpha_MAC : X_MAC_meas x X_MAC_cfg -> X_MAC_disc.
+```
+
+Здесь X_MAC_meas содержит измеряемые величины: queue length (длина очереди), buffer occupancy (заполнение буфера), packet loss (потери пакетов), scheduling delay (задержка планирования), radio resource utilization (использование радиоресурса), HARQ/NACK statistics (статистика повторных передач и отрицательных подтверждений). X_MAC_cfg содержит текущую конфигурацию: размер окна планирования, ограничения политики SDN, приоритеты сервисов, допустимую долю ресурса для sensing и communication.
+
+Конечное множество классов можно задать так:
+
+| Переменная | Значения | Смысл |
+|---|---|---|
+| QueueClass | Q_EMPTY, Q_LOW, Q_MED, Q_HIGH, Q_CRIT | Класс длины очереди |
+| BufferClass | B_SAFE, B_WARN, B_OVERFLOW | Класс заполнения буфера |
+| DelayClass | D_OK, D_WARN, D_DEADLINE_RISK, D_VIOLATED | Класс задержки планирования |
+| DropClass | DROP_NONE, DROP_LOW, DROP_HIGH | Класс потерь пакетов |
+| ResourceClass | RES_FREE, RES_BALANCED, RES_TIGHT, RES_EXHAUSTED | Класс доступности радиоресурсов |
+| SensingDemand | SENS_NOMINAL, SENS_BOOST_REQ, SENS_CRITICAL | Потребность sensing |
+| CommDemand | COMM_NOMINAL, COMM_HIGH, COMM_CRITICAL | Потребность передачи данных |
+| ScheduleMode | SCH_IDLE, SCH_COMM, SCH_SENS, SCH_JOINT, SCH_CONSTRAINED | Режим планирования |
+
+Эти классы не претендуют на точное описание радиофизики. Они задают наблюдаемую дискретную поверхность, на которой проверяются достижимость, дедлайны и отсутствие недопустимых состояний.
+
+### 3.3 Композиция автоматов MAC
+
+MAC-уровень удобно представить как параллельную композицию:
+
+```text
+A_MAC = A_SCH || A_Q || A_BUF || A_RSRC || A_MAC_AGG.
+```
+
+Здесь A_SCH (scheduler automaton, автомат планировщика) выбирает режим распределения ресурса; A_Q (queue automaton, автомат очереди) отслеживает классы очередей; A_BUF (buffer automaton, автомат буфера) отслеживает риск переполнения; A_RSRC (resource automaton, автомат ресурса) контролирует допустимость выделения ресурса между communication и sensing; A_MAC_AGG (aggregate reporter, автомат агрегированного отчета) формирует отчет для SDN.
+
+| Автомат | Основные состояния | Ответственность |
+|---|---|---|
+| A_SCH | Idle, CollectKPI, SelectMode, ApplySchedule, WaitPHYAck, ScheduleFailure | Выбор и применение локального режима планирования |
+| A_Q | QueueNormal, QueueWarning, QueueCritical, QueueDraining | Контроль очередей и риска нарушения задержки |
+| A_BUF | BufferSafe, BufferWarning, BufferOverflow | Контроль переполнения буфера |
+| A_RSRC | ResourceAvailable, ResourceTight, ResourceConflict, ResourceExhausted | Проверка совместимости sensing и communication |
+| A_MAC_AGG | ReportIdle, ReportBuild, ReportSent, ReportStale | Формирование отчета для SDN |
+
+### 3.4 Каналы взаимодействия
+
+Интерфейс MAC задается через синхронизационные каналы и конечные переменные.
+
+Входные каналы:
+
+- phy_kpi_report? — отчет PHY о канале, beam quality (качестве луча), sensing quality и freshness;
+- sdn_policy_cmd? — команда политики от SDN/RIC;
+- service_priority? — приоритет, переданный через SDN от сервисного уровня;
+- mac_tick? — событие начала окна планирования;
+- phy_ack? — подтверждение применения команды на PHY.
+
+Выходные каналы:
+
+- mac_schedule_cmd! — команда распределения ресурса на PHY;
+- beam_update_cmd! — команда обновления луча;
+- sensing_boost_cmd! — команда усиления sensing;
+- constrained_mode_cmd! — команда ограниченного режима;
+- mac_report! — агрегированный отчет для SDN;
+- resource_reject! — явный отказ при невозможности выполнить требование.
+
+### 3.5 Контракт MAC
+
+Контракт MAC задается парой assumption/guarantee (предположение/гарантия):
+
+```text
+C_MAC = (Ass_MAC, Gar_MAC).
+```
+
+Предположения Ass_MAC:
+
+- PHY передает отчеты не реже заданного периода D_phy_report или явно сообщает ReportStale.
+- SDN-команда принадлежит конечному допустимому множеству политик.
+- Сервисный приоритет уже проверен SDN и не противоречит текущей политике допуска.
+- Значения QueueClass, ResourceClass и DelayClass принадлежат конечным доменам alpha_MAC.
+
+Гарантии Gar_MAC:
+
+- Если QueueClass = Q_CRIT или DelayClass = D_DEADLINE_RISK, MAC обязан в течение D_sched перейти в режим SCH_COMM, SCH_JOINT, SCH_CONSTRAINED или выдать resource_reject!.
+- Если SensingDemand = SENS_CRITICAL и политика SDN разрешает sensing priority (приоритет радиозондирования), MAC обязан в течение D_sched выдать sensing_boost_cmd! или constrained_mode_cmd!.
+- Если ResourceClass = RES_EXHAUSTED, MAC не должен молча принимать новый ресурсный запрос; допустимы только explicit reject (явный отказ), constrained mode или запрос SDN-перепланирования.
+- Если BufferClass = B_OVERFLOW, MAC обязан сформировать mac_report! с причиной overflow, а не скрывать потерю пакетов внутри PHY.
+- Любая команда PHY должна получить phy_ack? до D_phy_ack или перейти в ScheduleFailure.
+
+### 3.6 Переходы A_SCH
+
+Схематически поведение планировщика задается так:
+
+```text
+Idle --mac_tick?--> CollectKPI
+CollectKPI --fresh_kpi and policy_ok--> SelectMode
+CollectKPI --stale_kpi--> ConstrainedMode
+SelectMode --resource_ok--> ApplySchedule
+SelectMode --resource_conflict and sensing_priority--> ApplySensingBoost
+SelectMode --resource_conflict and comm_priority--> ApplyCommPriority
+SelectMode --resource_exhausted--> RejectOrAskSDN
+ApplySchedule --mac_schedule_cmd!--> WaitPHYAck
+WaitPHYAck --phy_ack? before D_phy_ack--> Idle
+WaitPHYAck --timeout--> ScheduleFailure
+ScheduleFailure --mac_report!--> Idle
+```
+
+Здесь важно, что MAC не вычисляет новую глобальную сетевую конфигурацию. Он либо применяет локально допустимый режим, либо возвращает SDN отчет о невозможности выполнить контракт при текущих ограничениях.
+
+### 3.7 Временные переменные MAC
+
+Для проверки дедлайнов вводятся часы:
+
+| Часы | Назначение |
+|---|---|
+| c_sched | Время от начала окна планирования до выбора режима |
+| c_phy_ack | Время ожидания подтверждения от PHY |
+| c_queue | Время пребывания в критическом классе очереди |
+| c_buf | Время пребывания в состоянии переполнения буфера |
+| c_report | Возраст последнего MAC-отчета для SDN |
+
+Типовые инварианты:
+
+```text
+CollectKPI:       c_sched <= D_collect
+SelectMode:       c_sched <= D_sched
+WaitPHYAck:       c_phy_ack <= D_phy_ack
+QueueCritical:    c_queue <= D_queue_crit
+ReportBuild:      c_report <= D_mac_report
+```
+
+### 3.8 Верификационные свойства MAC
+
+Для MAC-уровня проверяются свойства safety (безопасность состояний), bounded response (ограниченный отклик) и absence of deadlock (отсутствие тупика).
+
+Примеры свойств:
+
+```text
+A[] not deadlock
+A[] not (BufferOverflow and no mac_report_pending)
+A[] (ResourceClass == RES_EXHAUSTED imply not silent_accept)
+A[] (WaitPHYAck imply c_phy_ack <= D_phy_ack)
+QueueCritical --> eventually_within(D_queue_crit) (QueueDraining or resource_reject or mac_report_sent)
+SENS_CRITICAL --> eventually_within(D_sched) (sensing_boost_cmd or constrained_mode_cmd or resource_reject)
+```
+
+Если требуется оценить частоту потерь, среднюю задержку или вероятность переполнения, обычного timed automaton недостаточно. Для этого нужна стохастическая или priced extension (расширение с вероятностями или стоимостью). В основной статье достаточно указать, что такие метрики не выводятся из автомата напрямую, а входят как внешние классы alpha_MAC.

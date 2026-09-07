@@ -1,0 +1,1780 @@
+
+
+===== PAGE 1 =====
+1
+SensCAP: A Systematic Sensing Capability
+Performance Metric for 6G ISAC
+Guangyi Liu, Liang Ma, Yahui Xue, Lincong Han, Rongyan Xi, Zixiang Han, Hanning Wang, Jing Dong,
+Mengting Lou, Jing Jin, Qixing Wang and Yifei Yuan, Fellow, IEEE
+Abstract—The 6th generation mobile communication system
+(6G) will provide everything as a service (XaaS), where X includes
+communication, sensing, computing, artificial intelligence (AI),
+big data and security and more. Novel features such as sensing
+as a Service (SaaS) will contribute to further realising Internet of
+Everything (IoE). Integrated Sensing and Communication (ISAC)
+is identified as one of the six usage scenarios for 6G by the Inter-
+national Telecommunication Union Radiocommunication Sector
+(ITU-R), and the corresponding studies on the detailed technical
+performance requirements and evaluation methodologies have
+begun in 2024. Although ISAC has become a popular topic,
+there are no systematic performance requirements metrics and
+corresponding evaluation methodologies defined for SaaS in a
+mobile communication system, while conventional key perfor-
+mance indicators (KPI) for radar systems have been borrowed
+currently. Therefore, to fill this gap, this paper proposes SensCAP,
+a systematic CAPability performance metric composed of Sensing
+Capacity, Accuracy and Probability. The sensing capacity reflects
+the comprehensive sensing performance, which can be expressed
+as the number of targets that can be detected per unit area within
+unit time, given Sensing Quality of Service (QoS) requirements
+consisting of sensing accuracy and probability. Furthermore, the
+performance evaluation of the SensCAP is conducted through
+system simulation using proposed evaluation methodologies, and
+the KPI values are suggested as the guidelines for further study
+in ITU-R.
+Index Terms —6G, Integrated Sensing and Communication,
+Quality of Service, Technical Performance Requirements, Evalua-
+tion Methodologies, Test Environments, ITU-R, Standardization.
+I. I NTRODUCTION
+T
+HE-SIXTH-GENERATION (6G) mobile communication
+network will provide a variety of services by embrac-
+ing enhanced communication and novel capabilities including
+sensing, computing, artificial intelligence (AI), big data and
+security. These novel capabilities are native-designed and
+implemented to achieve Internet of Everything (IoE) [1]–[3],
+which is the paradigm shift for 6G. Novel capabilities such
+as sensing and AI, will transform mobile network operators
+from communication-service providers to information-service
+providers, and realize the vision of digital twin and ubiquitous
+intelligence [4]–[6]. Integrated Sensing and Communication
+(ISAC) is one of the major emerging technologies for 6G,
+Manuscript received 1 April, 2024; revised 26 June, 2024; accepted 11 July,
+2024.
+The authors are with China Mobile Research Institute, Beijing, China
+(Corresponding author: Liang Ma, e-mail: maliangyjy@chinamobile.com).
+Copyright (c) 2024 IEEE. Personal use of this material is permitted.
+However, permission to use this material for any other purposes must be
+obtained from the IEEE by sending a request to pubs-permissions@ieee.org.
+and the key use cases include intelligent transportation such
+as vehicle-to-everything (V2X) and unmanned aerial vehicle
+(UA V) economy, as well as smart manufacturing [7], [8], as
+shown in Fig. 1. From the technical perspective, sensing and
+communication have similar data processing flow in terms
+of signal generation, transmission, reception and processing.
+Moreover, communication systems are evolving to higher
+frequencies and larger antenna arrays, which is de facto for
+radar sensing systems. Thus, the integration of sensing and
+communication is an inevitable trend [9]. Different levels of
+integration will lead to various folds of benefits, for example,
+hardware-level integration will lead to cost reduction, signal-
+level integration will save the spectrum and bring performance
+enhancement, and data-level integration will cultivate new
+applications [10]–[12].
+Fig. 1. Typical use cases of ISAC.
+The 6G standardization has entered a new phase. In June
+2023, ITU-R Working Party 5D (WP 5D) finished the Interna-
+tional Mobile Telecommunications-2030 (IMT-2030) Frame-
+work Recommendation [13] after a two-and-a-half-year study.
+This milestone document has defined 6G vision and identified
+6 usage scenarios and 15 key capabilities for 6G. IMT-
+2030 Framework Recommendation has revealed guidelines
+and design principles for 6G, with enhanced as well as novel
+scenarios and capabilities including ISAC. As shown in Fig. 2,
+from 2024 to 2026, ITU-R WP 5D will investigate technical
+performance requirements, evaluation methodologies, test en-
+vironments and evaluation criteria for IMT-2030 (6G), laying
+the foundations for technology proposal evaluation which will
+take place later from 2028 to 2029 [14]. Similar reports have
+been published for previous generations, for example, [15]
+is the technical performance requirements and [16] is the
+evaluation methodology for IMT-2020 (5G). Therefore, the
+technical performance requirements, evaluation methodologies
+and test environments of new IMT-2030 capabilities such
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 2 =====
+2
+Fig. 2. ITU-R IMT-2030 timeline.
+as sensing are vital for the next phase of 6G research and
+standardization.
+There are several key components required to define and
+evaluate the performance of Sensing as a Service (SaaS),
+including technical performance requirement definition, eval-
+uation methodology, test environment, simulation platform
+and configuration, and ISAC channel modelling. Research on
+certain topics has already begun, but with more work to be
+done. In terms of KPI definition, 3rd Generation Partnership
+Project (3GPP) Service and System Aspects Working Group 1
+(SA1) has finished the Feasibility Study on Integrated Sensing
+and Communication [17], 32 use cases and their performance
+requirements have been defined. However, the KPIs defined
+are mostly conventional radar system requirements such as
+accuracy of positioning estimate, sensing resolution, refreshing
+rate, etc. Besides, these KPIs are not technical performance
+requirements but are rather drawn from service demands.
+Regarding the 32 use cases identified, a down-selection fo-
+cusing on the essential ones is needed to define suitable test
+environments for evaluation.
+In terms of ISAC channel modelling, 3GPP Radio Access
+Network Working Group 1 (RAN1) has initiated the study on
+the ISAC channel model since 2024 [18], [19]. The channel
+modelling should be based on measurements and simulation,
+and a number of related studies have been conducted [20]–
+[24]. In addition, the channel correlation between communi-
+cation and sensing is an essential topic to discuss, relevant
+research includes [25]–[28] and more. The 3GPP ISAC chan-
+nel modelling study is still in progress and will pave the way
+for evaluation methodologies once it is finished.
+Regarding evaluation methodology, simulation platform and
+configuration, little work has been completed. The ISAC
+system simulation is the simulation for the entire system of
+both sensing and communication, which encompasses system-
+level simulation and link-level simulation. Although system-
+level and link-level sensing simulations can be borrowed from
+those of communication, the unified ISAC system simulation
+is still absent.
+Therefore, this paper intends to fill the gap in the field of
+KPI definition, evaluation methodology, test environment, sim-
+ulation platform and configuration. To the best of the author’s
+knowledge, currently, there is no publication detailing tech-
+nical performance requirements and evaluation methodologies
+for sensing capabilities. Therefore, the main contribution of
+this paper is to propose a systematic technical performance
+requirement metric for sensing capabilities, as well as corre-
+sponding evaluation methodologies and test environments. For
+the first time, we propose SensCAP, a systematic CAPability
+performance metric composed of Sensing Capacity, Sensing
+Accuracy and Sensing Probability, and their corresponding
+evaluation methodologies. SensCAP reflects the comprehen-
+sive sensing performance, namely, the number of targets that
+can be detected per unit area within unit time, given Sensing
+QoS requirements which consist of sensing accuracy and
+probability. The suggested KPI values of SensCAP are given
+based on ISAC system simulations.
+The rest of the paper is organised as follows and is
+illustrated in Fig. 3: Section II introduces the definition of
+SensCAP. Section III gives the evaluation methodologies for
+SensCAP. Section IV presents the system model and sensing
+processing algorithm which is used for evaluation. Section V
+introduces the test environments, network layouts, simulation
+parameters and the novel unified ISAC system simulation
+platform. Section VI shows simulation results and analysis.
+Section VII concludes this paper by providing SensCAP KPI
+values and suggesting future research directions.
+II. S ENS CAP: D EFINING TECHNICAL PERFORMANCE
+REQUIREMENTS FOR SENSING CAPABILITIES
+In this section, we give the definition of SensCAP which
+is a systematic CAPability performance metric consisting of
+Sensing Capacity, Accuracy and Probability. We first introduce
+sensing probability, which indicates the ability to detect the
+presence of targets and is the prerequisite for accurate sensing.
+Then we discuss sensing accuracy which shows the individual
+sensing performance of certain targets. Sensing probability and
+sensing accuracy build up Sensing QoS. Sensing capacity is
+then defined as the number of targets that can be detected
+given Sensing QoS, which reflects the comprehensive sensing
+performance.
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 3 =====
+3
+Fig. 3. Main contributions and core structure of the paper.
+A. Sensing Probability
+1) Definition: Detection probability and false alarm rate
+are typical radar requirements. For the sensing probability
+defined here, we focus on the detection probability for a given
+false alarm rate. The sensing probability is defined as the
+ratio of successfully detected targets to the total number of
+targets, with a given false alarm rate as the prerequisite for
+obtaining the detection probability. Sensing probability shows
+the ability to detect the presence of sensing targets (STs),
+which is inherent in high-performance sensing.
+The reason for defining sensing probability as above is
+twofold. Firstly, the typical values of false alarm rate are
+smaller than 10−6 [29], which is difficult to evaluate through
+simulations as the target sample size is not large enough in
+ISAC evaluation setups. Secondly, using the false alarm rate
+as the input to acquire detection probability is the proper
+evaluation approach, more discussions are shown below.
+2) Relationship between Detection Probability and False
+Alarm Rate: In this section, we demonstrate the relationship
+between the detection probability and the false alarm rate to
+further elaborate on sensing probability. When detecting the
+presence of a target, one of the following two assumptions
+must hold (
+H0 : y = w,
+H1 : y = s + w, (1)
+where the first assumption indicates that there is only noise
+and the second assumption indicates that there is noise and
+the target, y denotes the observation vector based on N
+sample data. The probability capacity function (PDF) describes
+the observations that need to be tested based on any of the
+hypothetical cases. The py(y|H1) and py(y|H0) are the PDFs
+of the observation vector for the presence and absence of the
+Fig. 4. PDFs under H0 and H1 assumptions.
+target, respectively. Detection probability Pd means a target is
+detected in the presence of a target, and false alarm rate Rf a
+means that a target is detected in the absence of a target. For
+example, as shown in Fig. 4, the two PDFs denote py(y|H0)
+and py(y|H1), where the Pd and Rf a are expressed as the
+area of the two PDFs from the threshold of black line to +∞,
+respectively.
+In the field of radar sensing, the Neyman-Pearson criterion is
+usually used for target detection [30]. Such criterion indicates
+the detection performance is optimized while ensuring that the
+false alarm rate does not exceed the tolerable range, i.e.
+max Pd, s.t. R f a ≤ α, (2)
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 4 =====
+4
+where α is the maximum false alarm rate. This optimization
+problem can be solved by the method of Lagrange multipliers
+as follows
+F = Pd + λ(Rf a − α), (3)
+To find the optimal solution to maximize F , the following
+expressions can be obtained
+py(y|H1)
+py(y|H0)
+H1
+≷
+H0
+− λ, (4)
+where λ is a detection threshold. The decision criteria rep-
+resent the likelihood ratio test [31]. The presence or absence
+of the target depends on the observation y and the detection
+threshold λ. Therefore, we define the sensing probability as
+the detection probability for a given false alarm rate.
+3) Detection Algorithm: For radar sensing systems, one of
+the most commonly used detection algorithms is the constant
+false alarm rate (CFAR) detection algorithm. The CFAR
+detector adaptively determines the detection threshold while
+maintaining a certain number of false alarms [32]. When target
+detection is performed on the received signal, since the noise
+power of different detection units usually changes, the noise
+power of each detection unit needs to be estimated. Hence in
+CFAR detection, we first obtain noise power by calculating the
+average power of the adjacent units, which is effectively the
+noise power of the current detection unit. Next, we choose a
+false alarm rate Rf a that meets the demand, and then calculate
+the detection threshold of the current detection unit according
+to the Rf a and noise power. Finally, we decide whether there
+is a target in the current detection unit based on the detection
+threshold. The detailed mathematical relationship equation is
+as follows
+Sthres = Nru × (R
+− 1
+N
+f a − 1) × pn, (5)
+where Sthres is the detection threshold, Nru denotes the
+number of reference units used to estimate the noise power, pn
+denotes the noise power estimated from Nru reference units,
+and Rf a denotes the given false alarm rate. From (5) we can
+see that the false alarm rate is a prerequisite for obtaining the
+detection probability, and vice versa.
+B. Sensing Accuracy
+1) Definition: Regarding sensing accuracy, we focus on
+localization accuracy and velocity accuracy. The former can
+be derived from range estimation and angle estimation, and the
+latter can be obtained from Doppler estimation. The definition
+of localization/velocity accuracy is the difference between the
+estimated localization/velocity and true values. Such perfor-
+mance requirements can be presented as localization accuracy
+of la m for a given confidence level (@ confidence level),
+and velocity accuracy va m/s @ confidence level, where
+the sensing accuracy can be obtained from the Cumulative
+Distribution Function (CDF) plot of sensing estimation error
+given a typical confidence level of 90%. The expression
+of accuracy @ confidence level is commonly used in the
+performance evaluation such as in 3GPP New Radio (NR)
+positioning [33]. The confidence level of 90% means the
+90th percentile point on the CDF plot of sensing estimation
+error, and the corresponding sensing estimation error at 90th
+percentile point is the value of sensing accuracy.
+Moreover, it should be noted that velocity is a vector with
+direction and magnitude. Thus, at least two receivers are
+involved when estimating velocity using Doppler informa-
+tion. Another approach using only one receiver for velocity
+estimation is to calculate average velocity using the loca-
+tion difference of two time-instances divided by the elapsed
+time. Such a method will reduce certain sensing processing
+complexities at the cost of non-real-time results, and the
+aggregated error introduced by localization estimation may
+degrade the performance. Detailed sensing localization and
+velocity estimation algorithms will be presented in Section
+IV-B.
+2) Cram ´er-Rao Lower Bound (CRLB): As a lower bound
+for the mean square estimation (MSE) of any unbiased estima-
+tor, CRLB is an important tool for the performance evaluation
+of various estimation methods. Thus, CRLB can demonstrate
+the theoretical limit of sensing accuracy. Suppose that there
+are N parameters related to the target to be estimated from
+the received signal y, such as the target’s position, velocity,
+orientation, etc. They form a parameter vector denoted as
+η ∈ CN ×1. Assuming that ˆη is the unbiased estimator of
+η, then the MSE can be lower bounded by the CRLB
+EY |η
+h
+(ˆη − η) (ˆη − η)T
+i
+⪰ J−1
+η , (6)
+where EY |η [·] denotes the conditional expectation operation.
+The matrix Jη is the N ×N Fisher Information Matrix (FIM),
+with elements [34]
+[Jη]i,j = Ey|η
+
+− ∂ log fy|η(y|η)
+∂[η]i
+∂ log fy|η(y|η)
+∂[η]j
+
+, (7)
+where fy|η(y|η) denotes the conditional likelihood function
+of y under the condition of known η.
+In some cases, the position of the target is estimated through
+a series of intermediate parameters like channel parameters,
+containing delay, angle of arrival (AoA) and angle of departure
+(AoD), etc., denoted as ζ. Therefore, the FIM of position
+estimation will be derived from the FIM of channel estimation
+[35]
+Jη = TT JζT =
+ ∂ζ
+∂η
+T
+Jζ
+ ∂ζ
+∂η
+
+, (8)
+where T is the Jacobian matrix representing the derivation
+function of ζ w.r.t. η. The closed-form expression of sensing
+accuracy CRLB is not the focus of this paper, and the detailed
+derivation procedures of it can be easily found in a number of
+publications such as [36]–[38].
+C. Sensing Capacity
+The sensing probability and sensing accuracy form Sens-
+ing QoS, which indicates the sensing service quality that
+users will experience. Working from Sensing QoS, we define
+Sensing Capacity, a systematic sensing performance indicator,
+to demonstrate the comprehensive capabilities of the ISAC
+system. The definition of Sensing Capacity is the number of
+sensing targets that can be detected per unit area within the
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 5 =====
+5
+unit time, given certain Sensing QoS requirements (@Sensing
+QoS) which include sensing accuracy and sensing probability.
+In other words, sensing capacity indicates that ISAC system
+can detect N sensing targets per km2 @localization accuracy
+of la m @velocity accuracy va m/s @detection probability of
+Pd @false alarm rate of Rf a within 1s.
+The sensing resource restraint of 1s (per unit time) is
+required in order to demonstrate the overall performance of
+ISAC systems, for both sensing and communication function-
+alities. However, sensing resource restraint is not rigorous.
+Although it is not strictly limited, the simulation configurations
+should include sensing signal duration as an indication of
+sensing resources used. SensCAP requirements should be met
+within the sensing signal duration which should be less than
+1s. Furthermore, the ratio of sensing signal duration to unit
+time 1s can be perceived as sensing resource utilization. As
+the total time-frequency-space resources available are limited,
+hence the trade-off between communication and sensing per-
+formances exists. The sensing resource utilization should be
+relatively low such that outstanding sensing performances can
+be achieved without compromising communication.
+Sensing capacity is a comprehensive sensing performance
+requirement, with the consideration of different aspects of
+sensing service quality including sensing probability and
+sensing accuracy. Moreover, sensing capacity also takes into
+account communication-signal interference on the sensing
+targets, and poses requirements on sensing resource utilization.
+Therefore, SensCAP is able to demonstrate the comprehensive
+performance of ISAC systems, and can provide guidelines for
+the definition of sensing technical performance requirements.
+III. E VALUATION METHODOLOGIES FOR SENS CAP
+This section gives detailed evaluation methodologies for
+SensCAP. It should be noted that the evaluation of sensing
+probability and sensing accuracy are not mandatory, they
+are used for determining KPI values of Sensing QoS. The
+sensing capacity evaluation given Sensing QoS requirements
+is required for candidate technology evaluation. Furthermore,
+we propose a generic evaluation methodology for sensing,
+which is suitable for not only SensCAP but also other sensing
+metrics. In the evaluation methods, the total number of sensing
+targets that are involved in the simulation is N, and is
+expressed as the number of dropped sensing targets (STs) in
+the remaining parts.
+A. Evaluation Methodology for Sensing Probability
+The evaluation methodology of sensing probability is given
+in Evaluation Methodology 1. It should be noted that the
+simulation results of sensing probability can be obtained
+from the Evaluation Methodology 3 for sensing capacity. The
+evaluation methodology defined here is used to determine the
+requirements for sensing probability and form Sensing QoS.
+B. Evaluation Methodology for Sensing Accuracy
+The evaluation methodology of sensing accuracy is given
+in Evaluation Methodology 2. It should be noted that the
+Evaluation Methodology 1 Evaluation Methodology for
+Sensing Probability
+1: Perform unified ISAC system simulation using the eval-
+uation parameters in TABLE II and III for ISAC test
+environments, given false alarm rate Rf a.
+2: Generate sensing transmit signal, and obtain sensing
+receive signal. Perform sensing signal processing, and
+record whether a target is present or not.
+3: If necessary, run multiple simulation drops by repeating
+Steps 1-2, and record the total number of successfully
+detected targets Ndect.
+4: Calculate the detection probability Pd = Ndect/N for a
+given false alarm rate Rf a, where N is the total number
+of dropped STs.
+simulation results of sensing accuracy are used to obtain the
+requirements for sensing accuracy and form Sensing QoS. Be-
+sides conducting simulations, sensing accuracy requirements
+can be obtained from mathematical calculations based on
+sensing resolution. The sensing accuracy can be perceived as
+plus and minus half of the resolution, where the localization
+resolution is c/2B, velocity resolution is λ/2T (c is the speed
+of light, B is sensing signal bandwidth, λ is the sensing signal
+wavelength, T is the sensing signal duration). Therefore, we
+can get sensing accuracy of c/4B m and λ/4T m/s.
+It should be noted that sensing resolution is not defined for
+sensing performance requirements, the reason is twofold. First,
+we can drop STs such that the inter-ST distance is larger than
+the localization resolution, but such ST dropping would lose
+a certain degree of randomness. Secondly, we can randomly
+drop STs, when two targets are too close to meet the resolution
+requirements, then only one target can be correctly detected,
+and this will be reflected in the sensing probability. Therefore,
+in the SensCAP definition, we didn’t give requirements on
+sensing resolution, with the considerations mentioned above.
+Evaluation Methodology 2 Evaluation Methodology for
+Sensing Accuracy
+1: Perform unified ISAC system simulation using the eval-
+uation parameters in TABLE II and III for ISAC test
+environments with 10 sensing targets dropped per Sensing
+Transmission Reception Point (SensTRxP).
+2: Generate sensing transmit signal, and obtain sensing re-
+ceive signal. Perform sensing signal processing, and obtain
+localization estimation error ∆r and velocity estimation
+error ∆v for each ST.
+3: Plot the CDF curves of ∆r and ∆v, and derive the
+localization accuracy la m and velocity accuracy va m/s
+from the 90th percentile point of the CDF curves, where
+90% is the confidence level of localization accuracy and
+velocity accuracy.
+C. Evaluation Methodology for Sensing Capacity
+Having obtained the Sensing QoS requirements of sensing
+probability and sensing accuracy, we give the evaluation
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 6 =====
+6
+methodology for sensing capacity as shown in Evaluation
+Methodology 3. The term “sensing capacity” can also be
+named “sensing density”, and the “capacity evaluation” or
+“density evaluation” methodologies are not new. For example,
+[39] gives the evaluation method for V oice over Internet
+Protocol (V oIP) capacity, [16] gives the evaluation methods
+for connection density, where the key takeaway from it can
+be applied here. The sensing capacity can be expressed as
+Nc sensing targets per km2 @localization accuracy of la m
+@velocity accuracy va m/s @detection probability of Pd
+@false alarm rate of Rf a within unit time. As illustrated
+in Section II-C, the sensing resource utilization should be
+reported as the ratio of sensing time duration to the unit time,
+in order to demonstrate the overall ISAC performance.
+Evaluation Methodology 3 Evaluation Methodology for
+Sensing Capacity
+1: Perform unified ISAC system simulation using the eval-
+uation parameters in TABLE II and III for ISAC test
+environments with a total number of N sensing targets
+dropped.
+2: Generate sensing transmit signal, obtain sensing receive
+signal, and perform sensing signal processing.
+3: Record whether a target is present or not for a given false
+alarm rate Rf a, and calculate the detection probability
+Pd result, which should be better than sensing probability
+performance requirements Pd.
+4: Calculate the localization estimation error ∆r and velocity
+estimation error ∆v for each ST detected. Plot the CDF
+curves of ∆r and ∆v, derive the percentage R% that
+fulfils both localization accuracy QoS requirement of la m
+and velocity accuracy QoS requirement of va m/s.
+5: If necessary, update N which is the number of dropped
+STs, and repeat Steps 1-4 until at least 90% of the targets
+fulfil Sensing QoS requirements (i.e. R% ≥ 90%).
+6: Calculate the sensing capacity as C = N/A, where A is
+the SensTRxP area.
+D. Generic Evaluation Methodology for Sensing
+Having investigated the evaluation methodologies for sens-
+ing probability, accuracy and capacity, it can be found that
+there are similarities among these. The key concept is first
+to generate sensing transmit signals, and receive signals after
+channel convolution. Then perform sensing signal processing,
+and obtain relevant performance metrics. Therefore, we give
+a generic evaluation methodology for sensing as shown in
+Evaluation Methodology 4. The proposed generic evaluation
+methodology is suitable for evaluating the majority of sensing
+KPIs, and can be used for not only SensCAP but also other
+sensing metrics.
+To elaborate more on the compatibility and generality of
+the proposed Generic Evaluation Methodology for Sensing,
+here we compare Evaluation Methodology 4 with Evaluation
+Methodologies 1 - 3. Regarding the Evaluation Methodology
+1 for sensing probability, there are a total of four steps, the
+procedures are similar to the generic evaluation methodology.
+For Evaluation Methodology 2 of sensing accuracy, three steps
+are presented, Step 3 in the generic evaluation methodology
+is not implemented as there is no necessity to repeat Steps 1-
+2 when evaluating sensing accuracy. In terms of Evaluation
+Methodology 3 for sensing capacity, a total of six steps
+are described, where Steps 2-4 correspond to Step 2 of the
+generic evaluation methodology. Steps 3-4 of the sensing
+capacity evaluation describe the fulfilment of Sensing QoS
+which could be omitted, as the Sensing QoS has already
+been briefly mentioned in Step 5, thus we provide Steps 3-
+4 in the sensing capacity evaluation methodology for clarity
+and better readability. If we consider Steps 2-4 of Evaluation
+Methodologies 3 for sensing capacity as one step, then there
+are four steps in total, which have the same structure as the
+generic evaluation methodology.
+Evaluation Methodology 4 Generic Evaluation Methodology
+for Sensing
+1: Perform unified ISAC system simulation and initialize
+evaluation parameters.
+2: Generate sensing transmit signal, obtain sensing receive
+signal, and perform sensing signal processing.
+3: If necessary, update evaluation parameters, and repeat
+Steps 1-2 until satisfying certain requirements if any.
+4: Obtain relevant sensing performance metrics based on the
+sensing signal processing results.
+IV. S YSTEM MODEL AND SENSING PROCESSING
+This section gives the system model which is used in
+system simulations, and also presents the sensing signal
+processing algorithm. We use 5G New Radio (NR) with
+Orthogonal Frequency-Division Multiplexing (OFDM) signals
+as the foundation of the system model and sensing processing.
+The sensing algorithm described in this section is the basic
+approach of sensing, where the delay and Doppler information
+can be extracted based on the differences between receive and
+transmit signals. Related parameters in this section are shown
+in TABLE I.
+A. System Model
+As shown in Fig. 5, the ISAC network includes I sensing
+TRxPs (SensTRxP) with NT transmitted antennas and NR
+received antennas and J downlink communication TRxPs
+(CommTRxP) with MT antennas. There are also integrated
+sensing and communication TRxPs (ISACTRxP), which can
+be reduced to a SensTRxP or a CommTRxP for a given
+period with the assumption of time-duplexed sensing and
+communication functions. In addition, assume each downlink
+CommTRxP serves one communication user equipment (UE)
+in a given OFDM symbol, denoted as UEj. UEs are equipped
+with MR antennas. Such assumption of one UE served per
+CommTRxP can be easily extended to multiple UEs and we
+use the current assumption for simplicity.
+Regarding sensing process, each SensTRxPi (i = 1, . . . , I)
+transmit sensing reference signals xs,i ∈ CNT ×1 with the
+transmission power of Ps,i. The signal is then reflected by the
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 7 =====
+7
+Parameter Description
+I Number of SensTRxP
+NT Number of sensing transmit antennas
+NR Number of sensing receive antennas
+J Number of CommTRxP as well as the associated UE
+MT Number of communication transmit antennas
+L Number of OFDM symbols
+K Number of subcarriers
+x Transmit signal
+y Receive signal
+w Noise signal
+H Channel state matrix
+ρ Path loss
+Ω Spatial angle consists of elevation and azimuth
+θ Elevation angle
+ϕ Azimuth angle
+fc Center frequency
+Ts OFDM symbol duration
+fD Doppler shift
+∆f Subcarrier spacing
+d Propagation distance of the sensing signal
+v Velocity of the sensing target
+TABLE I
+MAIN PARAMETERS AND CORRESPONDING DESCRIPTIONS .
+sensing target (ST) and received by either itself (monostatic)
+or other SensTRxP (multistatic). The ST could be a connected
+user or a non-connected object. This paper focuses on device-
+free sensing where the targets do not participate in sensing
+signal transmission, reception and processing.
+In terms of communication, each CommTRxPj (j =
+1, . . . , J) transmits communication data signals xc,j ∈
+CMT ×1 with the transmission power of Pc,j to UEj in the
+serving cell.
+Fig. 5. System model.
+For sensing, the signal ys,i received by SensTRxPi is
+presented as follows:
+ys,i =
+IX
+i′=1
+(ys,i,i′ + yss,i,i′) +
+JX
+j=1
+ycs,i,j + ws, (9)
+where w ∈ CNR×1 is the noise signal at SensTRxPi. It
+should be noted that in the system model defined here, the
+cluster interference is seen as noise due to its zero-Doppler
+property. The links between SensTRxPs and STs are line-of-
+sight (LoS). Regarding the non-line-of-sight (NLoS) sensing,
+the assumption we made in this work is that NLOS links
+will lead to much weaker receive signal power, and can be
+considered as noise. Nevertheless, a variety of studies such
+as [40], [41] focus on NLoS sensing, which will not be
+thoroughly discussed here.
+The sensing signals sent from SensTRxPi′, reflected by ST
+and received by SensTRxPi is denoted by
+ys,i,i′ =
+p
+ρs,i,i′Ps,i′Hs,i,i′xs,i′. (10)
+And the sensing signals from SensTRxPi′ directly to
+SensTRxPi, which contains the self-interference (when i′ =
+i) and mutual-interference (when i′ ̸= i), is denoted by
+yss,i,i′ =
+p
+ρss,i,i′Ps,i′Hss,i,i′xs,i′. (11)
+Besides, the interference generated by CommTRxPj on the
+SensTRxPi is denoted by
+ycs,i,j =
+p
+ρcs,i,jPc,jHcs,i,jxc,j. (12)
+In (10) - (12), Hs,i,i′ ∈ CNR×NT , Hss,i,i′ ∈ CNR×NT ,
+Hcs,i,j ∈ CNR×MT , and ρs,i,i′, ρss,i,i′, ρcs,i,j are the
+channel state matrices and path loss for the link from the
+SensTRxPi′ to the SensTRxPi reflected by ST, the link from
+the SensTRxPi′ directly to the SensTRxPi, and the link from
+the CommTRxPj to the SensTRxPi, respectively. The path
+loss is presented as follows [42]:
+ρs,i,i′ = GstGsrλ2σRCS
+(4π)3d2
+i,ST d2
+i′,ST
+,
+ρss,i,i′ = GstGsrλ
+(4π)2d2
+i,i′
+,
+ρcs,i,j = GctGsrλ
+(4π)2d2
+i,j
+, (13)
+where di′,ST , di,ST , di,i′, di,j are the distances from
+the SensTRxPi′ to ST, from ST to SensTRxPi, from
+SensTRxPi′ to SensTRxPi, from CommTRxPj to
+SensTRxPi, respectively. λ is the wavelength, and σRCS is
+the radar cross-section (RCS) of ST. Gst, Gsr, Gct are the
+antenna gains of the SensTRxP’s transmitted array, received
+array and the CommTRxP’s transmitted array, respectively.
+From (9), we can derive the signal-to-interference-plus-
+noise ratio (SINR) of the sensing signal received by
+SensTRxPi:
+SINRs,i = Pr,s,i
+(Ic,i + Iss,i + Pw) , (14)
+where Pw is the noise power, Pr,s,i is the received sensing
+signal power, Ic,i and Iss,i are the interference signal power of
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 8 =====
+8
+the CommTRxPs and SensTRxPs respectively on SensTRxPi:
+Pr,s,i =
+IX
+i′=1
+ρs,i,i′Ps,i′ ∥Hs,i,i′∥2
+F ,
+Iss,i =
+IX
+i′=1
+ρss,i,i′Ps,i′ ∥Hss,i,i′∥2
+F ,
+Ic,i =
+JX
+j=1
+ρcs,i,jPc,j ∥Hcs,i,j∥2
+F . (15)
+For communication, the signal yc,j received by UEj is
+expressed as:
+yc,j =
+p
+ρc,jPc,jHc,jxc,j +
+IX
+i=1
+p
+ρsc,j,iPs,iHsc,j,ixs,i
++
+JX
+j′=1,j′̸=j
+p
+ρcc,j,j′Pc,j′Hcc,j,j′xc,j′ + wc, (16)
+where the first term of the right-hand side is the data sig-
+nal from CommTRxPj, the second term is the interference
+from SensTRxPs, the third term is the interference caused
+by other CommTRxPs to UEj, and the fourth term is the
+noise signal at CommTRxPj. Hc,j, Hcc,j,j′ ∈ CMR×MT ,
+Hsc,j,i ∈ CMR×NT and ρc,j, ρcc,j,j′, ρsc,j,i are the channel
+state matrices and path loss of the link from CommTRxPj to
+UEj, from CommTRxPj′ to UEj, and from the SensTRxPi
+to UEj, respectively. Besides, ρc,j, ρcc,j,j′, ρsc,j,i has similar
+expression as ρcs,i,i′.
+Based on (16), the SINR of the communication signal
+received by UEj is calculated as follows:
+SINRc,j = ρc,jPc,j ∥Hc,j∥2
+F
+(Ic,j + Is,j + Pw) , (17)
+where Ic,j and Is,j are the power of the interference signals
+from other CommTRxPs and the SensTRxPs respectively on
+UEj:
+Ic,j =
+JX
+j′=1,j′̸=j
+ρcc,j,j′Pc,j′ ∥Hcc,j,j′∥2
+F ,
+Is,j =
+IX
+i=1
+ρsc,j,iPs,i ∥Hsc,j,i∥2
+F . (18)
+B. Sensing Algorithm and Signal Processing
+In this section, the location and velocity estimation algo-
+rithm is demonstrated for the cooperative sensing systems
+where multiple monostatic sensing processing is involved, and
+such an algorithm can be reduced to a single monostatic
+processing easily. To obtain the expected sensing results,
+we need to first extract the Angle of Arrival (AoA), signal
+propagation distance and radial velocity from the received
+signal of each SensTRxP.
+Regarding AoA estimation, we can first compensate the
+received signal by using the steering vector of the antenna
+array ai (Ω), i = 1, 2, ..., I, as
+gi (Ω, k, l) = aH
+i (Ω) yi (k, l) , (19)
+where I is the total number of SensTRxPs, and Ω = ( θ, ϕ)
+denotes the spatial angle with θ and ϕ referring to the elevation
+and azimuth angles in spherical coordinates, respectively. By
+calculating the sum power received from each angle as
+hi (Ω) =
+L−1X
+l=0
+K−1X
+k=0
+|gi (Ω, k, l)|2 , (20)
+we can obtain ˆΩi =
+
+ˆθi, ˆϕi
+
+which is the AoA, including the
+elevation and azimuth angles of STs by searching the peaks
+of hi (Ω), where l = 0 , ..., L − 1 and k = 0 , ..., K − 1 are
+the OFDM symbol index and subcarrier index of a resource
+element (RE), with L and K are the total number of OFDM
+symbols and subcarriers respectively.
+We can then estimate signal propagation distance and radial
+velocity by the estimated AoA ˆΩi. Dividing gi in (19) by the
+transmit symbols si, we have
+˜gi (Ω, k, l) = gi (Ω, k, l)
+si
+(21)
+which is equivalent to the sensing channel information plus
+noise and interference. Therefore, we can perform two-
+dimensional discrete Fourier transform (2D-DFT) on ˜gi [43]
+as
+˜Gi (p, q) = 1
+kl
+LX
+l=0
+iX
+k=0
+˜gi (Ω, k, l)
+× e−j(p− l
+2) 2π
+l lej(q−1) 2π
+i k.
+(22)
+The phase induced by the time delay τ and radial velocity can
+be compensated when
+TsfD =
+ 
+ˆpi − l
+2
+
+l , (23)
+τ∆f = (ˆqi − 1)
+k . (24)
+where (ˆpi, ˆqi) is the peak index of OFDM symbols and
+subcarrier in ˜gi, fD is the Doppler offset caused by the radial
+velocity, ∆f is the subcarrier spacing and Ts is the symbol
+duration. The propagation distance ˆdi and the radial velocity
+ˆv∥,i of sensing objects can then be solved as
+ˆv∥,n =
+ 
+ˆpi − l
+2
+
+c
+lTsfc
+, (25)
+ˆdi = (ˆqi − 1) c
+k∆f . (26)
+Based on the AoA ˆΩi =
+
+ˆθi, ˆϕi
+
+, propagation distance ˆdi
+and radial velocity ˆv∥,n estimated by I SensTRxPs, we can
+optimize the position estimation of ST as follows. Assuming
+that the coordinate of SensTRxPi is (xi, yi, zi) and the co-
+ordinate of ST is (x, y, z), we can formulate the optimization
+problem as
+(x, y, z) = min
+x,y,z
+iX
+k=1
+αi
+ ˆdi − 2di
+ +
+iX
+k=1
+βi
+ˆθi − θi
+
++
+iX
+k=1
+γi
+ˆϕi − ϕi
+ ,
+(27)
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 9 =====
+9
+where di =
+q
+(x − xi)2 + (y − yi)2 + (z − zi)2 is the dis-
+tance between SensTRxPi and ST, θi = arccos z−zi
+di
+and
+ϕi = arctan y−yi
+x−xi
+are the elevation and azimuth angle of the
+ST with respect to SensTRxPi, αi, βi and γi are the weighting
+coefficients for the results estimated by SensTRxPi. The
+optimization problem (27) can be quickly solved by using
+the interior-point method with the optimal estimation of ST
+position being (ˆx, ˆy, ˆz) [44].
+Next, we estimate object velocity, denoted as (vx, vy, vz),
+based on the estimated object position (ˆx, ˆy, ˆz) and radial
+velocity ˆv∥,i. The radial velocity of the ST with respect to
+SensTRxPi can be written as
+v∥,i =vxsinˆθicosˆϕi + vysinˆθisinˆϕi + vzcosˆθi, (28)
+where ˆθi and ˆϕi are respectively updated as
+θi = arccos ˆz−zi
+ˆdi
+and ˆϕi = arctan ˆy−yi
+ˆx−xi
+with
+ˆdi =
+q
+(ˆx − xi)2 + (ˆy − yi)2 + (ˆz − zi)2. Therefore,
+we can formulate the optimization problem as
+(vx, vy, vz) = min
+vx,vy,vz
+IX
+i=1
+φi
+ˆv∥,i − v∥,i
+ , (29)
+where φi is the weighting coefficient. The optimization prob-
+lem (29) can be solved again by using the interior-point
+method.
+V. T EST ENVIRONMENTS AND SYSTEM SIMULATIONS
+In this section, we present test environments, network
+layouts, evaluation configurations, and simulation platforms,
+which are important pieces of system simulations.
+A. Test Environments and Network Layouts
+Focusing on the key ISAC use cases as discussed in Section
+I which are V2X, UA V economy and smart manufacturing, we
+define three ISAC test environments:
+• Outdoor - V2X - ISAC: An urban environment with
+high ST density focusing on vehicles. Regarding network
+layout, the Base Stations (BSs) or sites are placed in
+a regular grid, following a hexagonal layout with three
+TRxPs each, the same as the Dense Urban network layout
+in [16]. The STs are randomly dropped on the road lane
+as shown in Fig. 6, the same as the V2X network layout
+in [45].
+• Outdoor - UA V - ISAC: An urban environment with high
+ST density focusing on UA Vs. Regarding network layout,
+the BSs/sites are placed in a regular grid, following
+a hexagonal layout with three TRxPs each, the same
+as the Dense Urban network layout [16] as shown in
+Fig. 7. As Outdoor - V2X - ISAC and Outdoor - UA V
+- ISAC test environments both have dense-urban-style
+network layouts, we could merge these two into Dense
+Urban - ISAC test environments with different evaluation
+configurations.
+• Indoor - Factory- ISAC: An indoor isolated environment
+at factories focusing on Automated Guided Vehicles
+(AGVs) with high ST density. The BSs/sites are placed in
+20-meter spacing as shown in Fig. 8, with a floor surface
+of 120 m × 50 m containing 12 BSs/sites, which is the
+same as the indoor network layout in [16].
+B. Simulation Platforms
+In this section, we give detailed procedures for system-level
+sensing simulation, link-level sensing simulation, and unified
+ISAC system simulation. The proposed unified ISAC system
+simulation is a platform that integrates both system-level and
+link-level sensing simulations, and is vital for KPI definition
+and evaluations of Sensing Capacity @ Sensing QoS. Detailed
+ISAC system simulation platform descriptions are shown in
+Simulation Procedure 1.
+In addition, we also present system-level and link-level
+sensing simulation in Simulation Procedure 2 and 3, which
+is used for Evaluation Methodology 5 in the Appendix B
+(detailed explanation of it will be presented in Section VI). The
+sensing system-level and link-level simulations are similar to
+those for communications, with sensing channel and sensing
+signal processing embedded. Given the absence of mature
+ISAC channel modelling, such system-level and link-level
+sensing simulations can reduce simulation workload, and are
+in nature very similar to the unified ISAC system simulation.
+Besides, the benefit of using system-level simulation plus link-
+level simulation is that we can obtain some intermediate results
+such as SINR to examine the sensing performance.
+Simulation Procedure 1 Unified ISAC System Simulation
+1: Configure simulation parameters and test environments.
+2: Drop BS and initialize BS parameters.
+3: Drop ST and UE, initialize corresponding parameters.
+4: Generate sensing channel, communication channel and
+interference channel respectively, include both large-scale
+and small-scale channels.
+5: Perform ST-BS pairing and UE-BS pairing respectively.
+6: For a given slot, perform resource scheduling and signal
+transmission.
+7: Update channel, SensTRxPs perform sensing signal re-
+ception and processing, CommTRxPs perform communi-
+cation signal reception and processing.
+8: Conduct slot loop of Steps 6-7, and record simulation
+results for different targeted performance indicators.
+Simulation Procedure 2 System-level Simulation
+1: Configure simulation parameters and test environments.
+2: Drop BS and initialize BS parameters.
+3: Drop ST and UE, initialize corresponding parameters.
+4: Generate large-scale sensing channel, communication
+channel and interference channel respectively.
+5: Perform ST-BS pairing and UE-BS pairing respectively.
+6: For a given slot, perform resource scheduling.
+7: Update channel, and calculate SINR.
+8: Conduct slot loop of Steps 6-7, and record SINR results.
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 10 =====
+10
+Fig. 6. Network layout for Outdoor - V2X - ISAC test environment.
+Fig. 7. Network layout for Outdoor - UA V - ISAC test environment.
+Fig. 8. Network layout for Indoor - Factory - ISAC test environment.
+Simulation Procedure 3 Link-level Simulation
+1: Configure simulation parameters and test environments.
+2: Drop BS and initialize BS parameters.
+3: Drop ST and UE, initialize corresponding parameters.
+4: Generate small-scale sensing channel, communication
+channel and interference channel respectively.
+5: Generate transmit signal, convolve with the small-scale
+channel.
+6: Add interference and noise using the SINR results ob-
+tained from the system-level simulations to get the re-
+ceived signal.
+7: Perform sensing signal processing, and record simulation
+results for different targeted performance indicators.
+C. Evaluation Configurations
+Detailed evaluation configurations and simulation parame-
+ters are given in TABLE II and III. In the simulation, we focus
+on sensing processing where the sensing and communication
+functionalities operate at a time-division mode. We choose
+time-division mode because outstanding sensing localization
+performance requires a large bandwidth. Therefore, using
+time-division will provide more bandwidth and is also bene-
+ficial in terms of flexible signal scheduling. We use dedicated
+sensing reference signals in the simulation, and the Gold
+sequence is used for signal generation. Detailed sequence
+generation equation is not the focus of the paper and relevant
+information can be found in [46].
+As discussed in Section III-B, the sensing accuracy and
+resolution depend on time-frequency resources, and sensing
+accuracy can be perceived as plus and minus half of the
+resolution. Considering the localization resolution of c/2B,
+we use 100 MHz and 400 MHz, which will yield localization
+resolution of 1.5 m and 0.375 m for outdoor and indoor
+configurations respectively. Regarding velocity resolution of
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 11 =====
+11
+Parameters Notation Value
+Center Frequency fc 7 GHz
+Bandwidth BW 100 MHz
+Signal duration T 20 ms
+Subcarrier Spacing SCS 60 kHz
+Base station transmit power Pt 52 dBm
+Inter-site distance ISD 200 m
+Base station antenna height hBS 25 m
+Number of vertical antennas M 16
+Number of horizontal antennas N 8
+Number of Polarization P 2
+Number of vertical channels MP 8
+Number of horizontal channels NP 8
+Antenna gain per element Gant 8 dBi
+Antenna element vertical-spacing dant v 0.8λ
+Antenna element horizontal-spacing dant h 0.5λ
+Antenna electrical downtilt angle
+(V2X / UA V) Adt 11° / -11°
+Radar cross section
+(V2X / UA V) RCS 10 m2 /
+0.1 m2
+Sensing target height
+(V2X / UA V) HST
+0 m /
+25 - 100 m
+TABLE II
+SIMULATION PARAMETERS FOR OUTDOOR -ISAC TEST ENVIRONMENTS .
+Parameters Notation Value
+Center Frequency fc 26 GHz
+Bandwidth BW 400 MHz
+Signal duration T 10 ms
+Subcarrier Spacing SCS 120 kHz
+Base station transmit power Pt 24 dBm
+Inter-site distance ISD 20 m
+Base station antenna height hBS 3 m
+Number of vertical antennas M 16
+Number of horizontal antennas N 8
+Number of Polarization P 2
+Number of vertical channels MP 8
+Number of horizontal channels NP 8
+Antenna gain per element Gant 5 dBi
+Antenna element vertical-spacing dant v 0.5λ
+Antenna element horizontal-spacing dant h 0.5λ
+Antenna electrical downtilt angle Adt 90°
+Radar cross section (AGV) RCS 1 m2
+Sensing target height (AGV) HST 0 m
+TABLE III
+SIMULATION PARAMETERS FOR INDOOR -ISAC TEST ENVIRONMENTS .
+λ/2T , we use 20 ms and 10 ms, which will yield velocity
+resolution of 1.07 m and 0.58 m for outdoor and indoor
+configurations respectively.
+It should be noted that as mentioned in Section V-B, system-
+level plus link-level simulations are conducted. Besides, the
+channel coefficient generation procedure is shown in Appendix
+A.
+VI. S IMULATION RESULTS AND ANALYSIS
+This section presents the simulation results of SensCAP. For
+sensing capacity simulations, as illustrated in Section V-B,
+since ISAC channel model is still under research, we use
+system-level plus link-level sensing simulations to reduce the
+simulation workload. The alternative Evaluation Methodology
+5 in the Appendix B is used in the simulation. This is in nature
+very similar to the Evaluation Methodology 3, only with the
+sensing target dropping method changed (refer to Appendix
+B for more details). Also, another advantage of using system-
+level simulation plus link-level simulation is that we can obtain
+some intermediate results such as SINR to investigate the
+sensing performance more closely.
+Regarding the sensing resource utilization, as shown in
+TABLE II and III, the sensing signal duration is 20 ms and
+10 ms for Outdoor-ISAC test environments and Indoor-ISAC
+test environments, therefore, the sensing resource utilization
+is only 2% and 1%, respectively. Such sensing resource
+utilization demonstrates the outstanding ISAC performance for
+both sensing and communication.
+A. Sensing Probability
+This section presents the simulation results of sensing
+probability. TABLE IV demonstrates the sensing detection
+probability given different false alarm rates. It can be observed
+that the sensing detection probability and false alarm rate hold
+a trade-off, where the improvement of one will degrade the
+performance of the other one. This is because a larger false
+alarm rate indicates that the detection threshold has become
+lower, and a lower threshold leads to more targets detected,
+which results in an increased detection probability.
+B. Sensing Accuracy
+This section presents the simulation results of sensing
+accuracy. Fig. 9 - 11 demonstrate the CDF curves of sensing
+localization error and velocity error for different test environ-
+ments. Take the confidence level of 90% for localization and
+70% for velocity, the localization accuracy is 1.44 m, 2.03 m
+and 1.23 m and the velocity accuracy is 1.55 m/s, 4.46 m/s
+and 0.95 m/s for Outdoor - V2X - ISAC test environment,
+Outdoor - UA V - ISAC test environment and Indoor - Factory
+- ISAC test environment, respectively. To get roughly 1 m
+or 1 m/s sensing accuracy, the confidence level we choose
+for velocity accuracy (70%) is lower than that of localization
+accuracy (90%). If we also choose 90% for the confidence
+level of velocity accuracy, for example in the V2X case, this
+will lead to 3 m/s velocity accuracy. This is because the
+velocity is estimated using Doppler estimation results from
+multiple SensTRxPs, one SensTRxP will yield the best SINR
+as well as sensing estimation performances, and the other
+SensTRxPs will have worse performance than the best one.
+Therefore, the velocity performance is degraded when using
+multiple SensTRxPs for velocity estimation. As mentioned in
+Section II-B, another method is to calculate average velocity
+using the location difference of two time-instances divided
+by the elapsed time. This should improve velocity estimation
+performance as only one SensTRxP with the best SINR is used
+for estimation. More simulations and corresponding analyses
+of such methods could be done in the future.
+C. Sensing Capacity
+This section presents the simulation results of sensing
+capacity. Fig. 12 - 14 demonstrate the simulation result of
+sensing SINR that meets Sensing QoS requirements when
+evaluating sensing capacity, for Outdoor - V2X - ISAC test
+environment, Outdoor - UA V - ISAC test environment and
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 12 =====
+12
+False
+Alarm
+Rate
+Test Environments
+Total
+number
+of
+dropped
+STs
+Number
+of suc-
+cessfully
+detected
+STs
+Detection
+Proba-
+bility
+10−3
+Outdoor - V2X -
+ISAC 11040 11040 100%
+Outdoor - UA V -
+ISAC 10500 10500 100%
+Indoor - Factory -
+ISAC 9396 9396 100%
+10−4
+Outdoor - V2X -
+ISAC 11040 11010 99.73%
+Outdoor - UA V -
+ISAC 10500 10495 99.95%
+Indoor - Factory -
+ISAC 9396 9396 100%
+10−5
+Outdoor - V2X -
+ISAC 11040 10890 98.64%
+Outdoor - UA V -
+ISAC 10500 10361 98.68%
+Indoor - Factory -
+ISAC 9396 9396 100%
+10−6
+Outdoor - V2X -
+ISAC 11040 10410 94.29%
+Outdoor - UA V -
+ISAC 10500 9953 94.79%
+Indoor - Factory -
+ISAC 9396 9392 99.96%
+10−7
+Outdoor - V2X -
+ISAC 11040 9390 85.05%
+Outdoor - UA V -
+ISAC 10500 9227 87.88%
+Indoor - Factory -
+ISAC 9396 9301 99.03%
+10−8
+Outdoor - V2X -
+ISAC 11040 8640 78.26%
+Outdoor - UA V -
+ISAC 10500 8353 79.55%
+Indoor - Factory -
+ISAC 9396 8993 95.71%
+10−9
+Outdoor - V2X -
+ISAC 11040 7740 70.11%
+Outdoor - UA V -
+ISAC 10500 7477 71.21%
+Indoor - Factory -
+ISAC 9396 8434 89.76%
+TABLE IV
+SIMULATION RESULTS OF SENSING PROBABILITY .
+Fig. 9. Simulation results of sensing accuracy for Outdoor - V2X - ISAC
+test environment.
+Fig. 10. Simulation results of sensing accuracy for Outdoor - UA V - ISAC
+test environment.
+Fig. 11. Simulation results of sensing accuracy for Indoor - Factory - ISAC
+test environment.
+Indoor - Factory - ISAC test environment, respectively. Fig.
+15 - 16 show the simulation result of the relationship between
+sensing accuracy and SINR for Outdoor - ISAC and Indoor -
+ISAC test environments respectively.
+From the figures, we can find the relationship between
+SINR and sensing accuracy, and also the SINR threshold that
+meets Sensing QoS. The STs are dropped as many as possible
+considering the physical environments and the localization
+resolution (refer to Appendix B for more details). Based on
+the link-level simulation results (Fig. 15 - 16), we can get
+the SINR that corresponds to Sensing QoS requirements. By
+using this SINR as the threshold to analyze the CDF plots of
+system-level simulation results (Fig. 12 - 14), we can get the
+percentage of targets R% that fulfil Sensing QoS requirements.
+Then we can get the number of targets Nc = N × R% that
+fulfil Sensing QoS requirements, and obtain sensing capacity
+C = Nc/A accordingly, where N is the total number of
+dropped STs and A is the SensTRxP area. From the simulation
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 13 =====
+13
+results in this section, we can get the sensing capacity as shown
+in TABLE V.
+Fig. 12. Simulation results of sensing SINR that meets sensing QoS
+requirements when evaluating sensing capacity, given Outdoor - V2X - ISAC
+test environment.
+Fig. 13. Simulation results of sensing SINR that meets sensing QoS
+requirements when evaluating sensing capacity, given Outdoor - UA V - ISAC
+test environment.
+VII. C ONCLUSION
+In summary, for the first time, we propose the technical
+performance requirement metric and corresponding evaluation
+methodologies for 6G ISAC to fill the gap in this area. Specif-
+ically, we propose SensCAP, a systematic Sensing CAPability
+performance metric comprising Sensing Capacity, Sensing
+Accuracy and Sensing Probability. The sensing probability
+and sensing accuracy build up Sensing QoS, which is used
+to formulate sensing capacity. Sensing capacity reflects the
+comprehensive sensing performance, namely, the number of
+targets that can be detected per unit area within unit time given
+Sensing QoS requirements.
+Fig. 14. Simulation result of sensing SINR that meets sensing QoS require-
+ments when evaluating sensing capacity, given for Indoor - Factory - ISAC
+test environment.
+Fig. 15. Simulation results of the relationship between sensing accuracy and
+SINR for Outdoor - ISAC test environments.
+Furthermore, we illustrate evaluation methodologies, test
+environments, evaluation configurations, simulation platforms
+and simulation results for SensCAP. Based on the simulation
+results and analysis, TABLE VI gives the suggested values
+of SensCAP for different test environments. It’s essential that
+the definition and evaluation methodologies of SensCAP can
+be used as a framework for the future standardization of
+ISAC. Different KPI values can be obtained given the research
+outcome on ISAC channel modelling and different simulation
+parameters, which will need more consensus in the industry.
+Regarding future research direction, the definition and eval-
+uation methodologies of SensCAP could be further improved
+by enriching the content of Sensing QoS. For example, sensing
+air interface latency can also be part of Sensing QoS, which
+sets requirements on the time used to transmit the sensing
+signal. Then the definition of sensing capacity can be updated
+as the number of targets that can be detected per unit area
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 14 =====
+14
+Test
+Environments
+Total number of
+dropped STs
+(N)
+Number of
+successfully
+detected STs
+Sensing
+Probability
+Percentage of
+STs that meet
+Sensing QoS
+requirements
+(R%)
+Number of
+targets that
+meet Sensing
+QoS
+requirements
+(Nc =
+N × R%)
+Area (A, in
+km2)
+Sensing
+Capacity
+(C = Nc/A)
+Outdoor - V2X
+- ISAC 368 351
+95.39% @
+10−6 false
+alarm
+42% 155 0.2425 639 per km2
+Outdoor - UA V
+- ISAC 2100 1997
+95.01% @
+10−6 false
+alarm
+29% 609 0.2425 2511 per km2
+Indoor -
+Factory - ISAC 3132 3131
+99.97% @
+10−6 false
+alarm
+87% 2725 0.006 454167 per
+km2
+TABLE V
+SIMULATION RESULTS OF SENSING CAPACITY .
+Technical Performance Requirements Test Environments Suggested KPIs
+Sensing Capacity @ Sensing QoS
+(Sensing Accuracy of la m localization
+accuracy and va m/s velocity accuracy,
+Sensing Probability of Pd detection
+probability and Rf a false alarm rate)
+Outdoor - V2X - ISAC 600 per km2 @ 1.5m localization accuracy of @ 2m/s velocity accuracy
+@ 90% detection probability @ 10−6 false alarm rate
+Outdoor - UA V - ISAC 2500 per km2 @ 2m localization accuracy of @ 5m/s velocity accuracy
+@ 90% detection probability @ 10−6 false alarm rate
+Indoor - Factory - ISAC 400,000 per km2 @ 1.25m localization accuracy of @ 1 m/s velocity accuracy
+@ 95% detection probability @ 10−6 false alarm rate
+TABLE VI
+SUGGESTED KPI VALUES FOR SENS CAP.
+Fig. 16. Simulation results of the relationship between sensing accuracy and
+SINR for Indoor - ISAC test environment.
+given Sensing QoS requirements which include sensing prob-
+ability, accuracy, air interface latency, etc. Such sensing air
+interface latency can be part of the evaluation configurations
+for simulations, which pose stricter requirements than sensing
+resource utilization discussed in Section II-C. Considering the
+3GPP numerology, a typical value of sensing air interface
+latency could be one or multiple times of 10 ms which is
+the length of a single frame. In terms of test environments
+and simulation setups, more representative use cases can be
+further investigated. For example, Outdoor - Rural - ISAC
+which focuses on intrusion detection of hazardous objects on
+highways and railways, and Indoor - Smart Home - ISAC
+which concentrates on home automation and health moni-
+toring. Besides, the channel modelling of ISAC which may
+contain different kinds of interference should be considered
+thoroughly in the system simulation platform in light of
+3GPP progress. Different sensing modes including BS or
+UE monostatic, BS-BS or BS-UE multistatic could also be
+incorporated in the simulations. Furthermore, updated KPI
+values given new test environments, simulation configurations
+and mature ISAC channel model are essential and need to be
+further investigated in the future.
+APPENDIX A
+CHANNEL COEFFICIENT GENERATION
+The detailed sensing channel coefficient generation proce-
+dure is shown in Fig. 17, which refers to [47] as the baseline.
+It should be noted that such channel generation mechanisms
+might be updated in light of the latest 3GPP discussions.
+APPENDIX B
+ALTERNATIVE EVALUATION METHODOLOGY FOR SENSING
+CAPACITY
+The alternative evaluation methodology for Sensing Capac-
+ity is given in Evaluation Methodology 5. As mentioned in
+Section V-B, since ISAC channel model is still under research,
+we use system-level plus link-level sensing simulations to
+reduce the simulation workload. The alternative Evaluation
+Methodology 5 is in nature very similar to the Evaluation
+Methodology 3, only with ST dropping method changed. Here,
+the STs are dropped considering the physical environments and
+the resolution, where the inter-target distance is localization
+resolution. The resolution is pre-defined using equation c/2B
+or utilising the outcome of the resolution simulation, where c is
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 15 =====
+15
+Fig. 17. Channel coefficient generation procedure.
+the speed of light and B is the sensing signal bandwidth. The
+target-dropping methods for different ISAC test environments
+are given as follows:
+• Outdoor - V2X - ISAC: Drop vehicles on each road lane
+considering road configuration for urban grid as shown in
+Fig. 6, assuming the length of a vehicle is 5m and inter-
+vehicle distance is 10m. The total number of vehicles is
+N.
+• Outdoor - UA V - ISAC: Drop N0 = 100 UA Vs per
+SensTRxP, which consists of NCluster = 4 UA V clus-
+ters, each cluster with K = 25 UA Vs (x-axis with 5
+UA Vs multiple y-axis with 5 UA Vs on a two-dimensional
+plane), the inter-target distance for any two UA Vs along
+the x-axis or y-axis is localization resolution, N0 =
+NCluster ×K. The UA V clusters are randomly distributed
+with heights shown in TABLE II. The total number of
+UA Vs isN = NT RxP ×N0, where NT RxP is the number
+of SensTRxP involved in the simulation.
+• Indoor - Factory- ISAC: Drop AGVs with a total number
+of N. The inter-target distance for any two AGVs along
+the x-axis or y-axis is the localization resolution, and
+assuming the AGV size is 1m × 1m.
+The above ST dropping method is given as an example,
+which will lead to a total of N dropped targets. Through
+simulation, we can get R% of the total N targets that meet
+the Sensing QoS requirements, hence the sensing capacity is
+obtained.
+ACKNOWLEDGMENT
+The authors would like to thank the 6G team members
+within the Future Research Lab at the China Mobile Research
+Evaluation Methodology 5 Alternative Evaluation Method-
+ology for Sensing Capacity
+1: Perform system-level simulation using the evaluation pa-
+rameters for ISAC test environments in TABLE II and III,
+and record the receive-end SINR for each sensing target.
+The total number of sensing targets is N, where the inter-
+target distance relates to resolution.
+2: Perform link-level simulation, generate sensing transmit
+signal, and obtain sensing receive signal for each target
+through the sensing channel information which consists of
+ST’s true location and velocity as well as SINR obtained
+in Step 1.
+3: Record whether a target is present or not for a given false
+alarm rate Rf a, and calculate the detection probability
+Pd result, which should be better than sensing probability
+performance requirements Pd.
+4: Calculate the localization estimation error ∆r and velocity
+estimation error ∆v for each ST detected. Plot the CDF
+curves of ∆r and ∆v (or plot CDF of SINR obtained in
+Step 1), and derive the percentage R% that fulfils both
+localization accuracy and velocity accuracy requirements.
+5: Calculate the number of targets Nc = N × R% that meet
+Sensing QoS requirements. Then calculate the sensing
+capacity as C = Nc/A, where A is the SensTRxP area.
+Institute, particularly Chunfeng Cui, Yajuan Wang, Xiaozhou
+Zhang, Zhitian Cheng, Zhiwen Sun, Siying Lv, Songhui Shen
+and Xin Gui.
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 16 =====
+16
+REFERENCES
+[1] D. C. Nguyen, M. Ding, P. N. Pathirana, A. Seneviratne, J. Li, D. Niyato,
+O. Dobre, and H. V . Poor, “6G Internet of Things: A Comprehensive
+Survey,” IEEE Internet of Things Journal , vol. 9, no. 1, pp. 359–383,
+2022.
+[2] Y . Cui, F. Liu, X. Jing, and J. Mu, “Integrating Sensing and Communi-
+cations for Ubiquitous IoT: Applications, Trends, and Challenges,”IEEE
+Network, vol. 35, no. 5, pp. 158–167, 2021.
+[3] Y . Zhou, L. Liu, L. Wang, N. Hui, X. Cui, J. Wu, Y . Peng, Y . Qi, and
+C. Xing, “Service aware 6G: An intelligent and open network based
+on convergence of communication, computing and caching,” Digital
+Communications and Networks , vol. 6, no. 3, pp. 253–260, 2020.
+[4] G. Liu, Y . Huang, N. Li, J. Dong, J. Jin, Q. Wang, and N. Li, “Vision,
+requirements and network architecture of 6G mobile network beyond
+2030,” China Communications, vol. 17, no. 9, pp. 92–104, 2020.
+[5] Y . Qi, Y . Zhou, Y .-F. Liu, L. Liu, and Z. Pan, “Traffic-Aware Task
+Offloading Based on Convergence of Communication and Sensing in
+Vehicular Edge Computing,” IEEE Internet of Things Journal , vol. 8,
+no. 24, pp. 17 762–17 777, 2021.
+[6] Y . Peng, X. Tang, Y . Zhou, Y . Hou, J. Li, Y . Qi, L. Liu, and H. Lin,
+“How to Tame Mobility in Federated Learning Over Mobile Networks?”
+IEEE Transactions on Wireless Communications , vol. 22, no. 12, pp.
+9640–9657, 2023.
+[7] G. Liu, R. Xi, Z. Han, L. Han, X. Zhang, L. Ma, Y . Wang, M. Lou, J. Jin,
+Q. Wang, and J. Wang, “Cooperative Sensing for 6G Mobile Cellular
+Networks: Feasibility, Performance and Field Trial,” IEEE Journal on
+Selected Areas in Communications , pp. 1–1, 2024.
+[8] Z. Wei, H. Qu, Y . Wang, X. Yuan, H. Wu, Y . Du, K. Han, N. Zhang,
+and Z. Feng, “Integrated Sensing and Communication Signals Toward
+5G-A and 6G: A Survey,” IEEE Internet of Things Journal , vol. 10,
+no. 13, pp. 11 068–11 092, 2023.
+[9] F. Liu, C. Masouros, A. P. Petropulu, H. Griffiths, and L. Hanzo, “Joint
+Radar and Communication Design: Applications, State-of-the-Art, and
+the Road Ahead,” IEEE Transactions on Communications, vol. 68, no. 6,
+pp. 3834–3862, 2020.
+[10] J. A. Zhang, F. Liu, C. Masouros, R. W. Heath, Z. Feng, L. Zheng, and
+A. Petropulu, “An Overview of Signal Processing Techniques for Joint
+Communication and Radar Sensing,” IEEE Journal of Selected Topics
+in Signal Processing , vol. 15, no. 6, pp. 1295–1315, 2021.
+[11] L. Ma, C. Pan, Q. Wang, M. Lou, Y . Wang, and T. Jiang, “A Downlink
+Pilot Based Signal Processing Method for Integrated Sensing and
+Communication Towards 6G,” in 2022 IEEE 95th Vehicular Technology
+Conference: (VTC2022-Spring), 2022, pp. 1–5.
+[12] L. Han, J. Jin, Q. Wang, M. Lou, X. Zhang, L. Ma, Y . Wang, Z. Han,
+G. Liu, and X. Yue, “Performance Trade-off for a Novel Integrated
+Localization and Communication System,” in 2023 IEEE 97th Vehicular
+Technology Conference (VTC2023-Spring), 2023, pp. 1–7.
+[13] Framework and overall objectives of the future development of IMT for
+2030 and beyond , Recommendation ITU-R M.2160, 2023.
+[14] ITU-R WP 5D. (2022) IMT towards 2030 and beyond.
+[Online]. Available: https://www.itu.int/en/ITU-R/study-groups/rsg5/
+rwp5d/imt-2030/Pages/default.aspx
+[15] Minimum requirements related to technical performance for IMT-2020
+radio interface(s), Report ITU-R M.2410, 2017.
+[16] Guidelines for evaluation of radio interface technologies for IMT-2020 ,
+Report ITU-R M.2412, 2017.
+[17] Feasibility Study on Integrated Sensing and Communication , 3GPP TR
+22.837, 2023.
+[18] Nokia, “New SID: Study on channel modelling for Integrated Sensing
+And Communication (ISAC) for NR,” 3GPP, Proposal RP-234069, 2023.
+[19] RAN Chair, “Summary for RAN Rel-19 Package: RAN1/2/3-led,” 3GPP,
+Proposal RP-232745, 2023.
+[20] CMCC, BUPT, SEU, and PML, “Discussion on channel modeling
+methodology for ISAC,” 3GPP, Proposal R1-2400342, 2024.
+[21] Z. Chai, Y . Zhang, G. Liu, Y . Liu, J. Wang, T. Jiang, and J. Zhang, “Em-
+pirical path loss channel modeling at 28 ghz for integrated sensing and
+communication system,” in 2023 International Conference on Wireless
+Communications and Signal Processing (WCSP) , 2023, pp. 366–370.
+[22] J. Wang, J. Zhang, Y . Zhang, T. Jiang, L. Yu, and G. Liu, “Empirical
+Analysis of Sensing Channel Characteristics and Environment Effects
+at 28 GHz,” in 2022 IEEE Globecom Workshops (GC Wkshps) , 2022,
+pp. 1323–1328.
+[23] J. Zhang, J. Wang, Y . Zhang, Y . Liu, Z. Chai, G. Liu, and T. Jiang,
+“Integrated Sensing and Communication Channel: Measurements, Char-
+acteristics, and Modeling,” IEEE Communications Magazine , vol. 62,
+no. 6, pp. 98–104, 2024.
+[24] J. Zhang, J. Lin, P. Tang, Y . Zhang, H. Xu, T. Gao, H. Miao, Z. Chai,
+Z. Zhou, Y . Li, H. Gong, Y . Liu, Z. Yuan, X. Liu, L. Tian, S. Yang,
+L. Xia, G. Liu, and P. Zhang, “Channel Measurement, Modeling, and
+Simulation for 6G: A Survey and Tutorial,” in arXiv preprint arXiv:
+2305.16616, 2023.
+[25] Xiaomi and BUPT, “Discussion on ISAC channel model,” 3GPP, Pro-
+posal R1-2400573, 2024.
+[26] Vivo, “Views on Rel-19 ISAC channel modeling,” 3GPP, Proposal R1-
+2400257, 2024.
+[27] Y . Liu, J. Zhang, Y . Zhang, Z. Yuan, and G. Liu, “A Shared Cluster-
+Based Stochastic Channel Model for Integrated Sensing and Communi-
+cation Systems,” IEEE Transactions on Vehicular Technology , vol. 73,
+no. 5, pp. 6032–6044, 2024.
+[28] Y . Liu, J. Zhang, Y . Zhang, H. Gong, T. Jiang, and G. Liu, “How to
+Extend 3D GBSM to Integrated Sensing and Communication Channel
+With Sharing Feature?” IEEE Wireless Communications Letters, pp. 1–1,
+2024.
+[29] M. I. Skolnik, Introduction to Radar Systems , 3rd ed. New York:
+McGraw-Hill, 2001.
+[30] M. A. Richards, Fundamentals of radar signal processing . McGraw-
+Hill Education, 2014.
+[31] L. Xiao, Y . Liu, T. Huang, X. Liu, and X. Wang, “Distributed Target
+Detection With Partial Observation,” IEEE Transactions on Signal
+Processing, vol. 66, no. 6, pp. 1551–1565, 2018.
+[32] J. Chen, S. Zhou, P. K. Varshney, J. Lu, J. Zheng, H. Liu, and H. Su,
+“A Sparsity Based CFAR Algorithm for Dense Radar Targets,” in 2020
+IEEE Radar Conference (RadarConf20) , 2020, pp. 1–6.
+[33] Study on NR positioning support , 3GPP TR 38.855, 2019.
+[34] S. M. Kay, Fundamentals of statistical signal processing. Prentice Hall
+PTR, 1993.
+[35] A. Shahmansoori, G. E. Garcia, G. Destino, G. Seco-Granados,
+and H. Wymeersch, “Position and Orientation Estimation Through
+Millimeter-Wave MIMO in 5G Systems,”IEEE Transactions on Wireless
+Communications, vol. 17, no. 3, pp. 1822–1835, 2018.
+[36] A. Sakhnini, M. Guenach, A. Bourdoux, and S. Pollin, “A Cram ´er-
+Rao Lower Bound for Analyzing the Localization Performance of a
+Multistatic Joint Radar-Communication System,” in 2021 1st IEEE
+International Online Symposium on Joint Communications & Sensing
+(JC&S), 2021, pp. 1–5.
+[37] Z. Wei, Y . Wang, L. Ma, S. Yang, Z. Feng, C. Pan, Q. Zhang, Y . Wang,
+H. Wu, and P. Zhang, “5G PRS-Based Sensing: A Sensing Reference
+Signal Approach for Joint Sensing and Communication System,” IEEE
+Transactions on Vehicular Technology , vol. 72, no. 3, pp. 3250–3263,
+2023.
+[38] A. Liu, Z. Huang, M. Li, Y . Wan, W. Li, T. X. Han, C. Liu, R. Du,
+D. K. P. Tan, J. Lu, Y . Shen, F. Colone, and K. Chetty, “A Survey on
+Fundamental Limits of Integrated Sensing and Communication,” IEEE
+Communications Surveys & Tutorials , vol. 24, no. 2, pp. 994–1034,
+2022.
+[39] Guidelines for evaluation of radio interface technologies for IMT-
+Advanced, Report ITU-R M.2135, 2009.
+[40] Q. Shi, L. Liu, and S. Zhang, “Joint Data Association, NLOS Mitigation,
+and Clutter Suppression for Networked Device-Free Sensing in 6G Cel-
+lular Network,” in ICASSP 2023 - 2023 IEEE International Conference
+on Acoustics, Speech and Signal Processing (ICASSP) , 2023, pp. 1–5.
+[41] X. Wang, L. Han, R. Xi, L. Ma, M. Lou, J. Jin, Q. Wang, G. Liu, and
+J. Wang, “Multipath-Exploited Bistatic Sensing with LoS Blockage in
+MIMO-OFDM systems for 6G,” in 2024 IEEE International Conference
+on Communications Workshops (ICC Workshops), accepted , 2024.
+[42] W. Yang, Y . Chen, N. Cardona, Y . Zhang, Z. Yu, M. Zhang, J. Li,
+Y . Chen, and P. Zhu, “Integrated Sensing and Communication Channel
+Modeling and Measurements: Requirements and Methodologies Toward
+6G Standardization,” IEEE Vehicular Technology Magazine , vol. 19,
+no. 2, pp. 22–30, 2024.
+[43] C. Sturm and W. Wiesbeck, “Waveform Design and Signal Processing
+Aspects for Fusion of Wireless Communications and Radar Sensing,”
+Proceedings of the IEEE , vol. 99, no. 7, pp. 1236–1259, 2011.
+[44] Z. Han, H. Ding, X. Zhang, Y . Wang, M. Lou, J. Jin, Q. Wang, and
+G. Liu, “Multistatic Integrated Sensing and Communication System in
+Cellular Networks,” in 2023 IEEE Globecom Workshops (GC Wkshps) ,
+2023, pp. 123–128.
+[45] Study on evaluation methodology of new Vehicle-to-Everything (V2X)
+use cases for LTE and NR , 3GPP TR 37.885, 2018.
+[46] NR Physical channels and modulation , 3GPP TS 38.211, 2023.
+[47] Study on channel model for frequencies from 0.5 to 100 GHz , 3GPP TR
+38.901, 2019.
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 17 =====
+17
+Guangyi Liu is the Chief Scientist of 6G
+in China Mobile Communication Corporation
+(CMCC), founding member and co-chair of the
+6G Alliance of Network AI (6GANA), vice-chair
+of THz industry alliance in China, and vice-chair
+of the wireless technology working group of IMT-
+2030 (6G) promotion group supported by Ministry
+of Information and Industry Technology of China.
+He has been leading the 6G R&D in CMCC since
+2018. He has led the R&D of 4G’s evolution and
+5G in CMCC from 2006 to 2020. He has acted as
+spectrum working group chair and project coordinator of LTE evolution and
+5G eMBB in Global TD-LTE Initiative (GTI) from 2013 to 2020 and led the
+industrialization and globalization of TD-LTE evolution and 5G eMBB.
+Liang Ma received the B.Eng. degree with First
+Class Honours in Electrical and Electronic Engi-
+neering from University College London, in 2018,
+and the M.Sc. degree with Distinction in Com-
+munications and Signal Processing from Imperial
+College London, in 2019. He has been with Future
+Research Lab, China Mobile Research Institute since
+2020. His research interests include 6G, integrated
+sensing and communication, MIMO, non-orthogonal
+multiple access, and interference management. He is
+a member of the Chinese delegation to ITU-R, and
+is also involved in the work of other standardization organizations including
+3GPP and NGMN, internationally, as well as IMT-2030 (6G) Promotion
+Group and CCSA, domestically.
+Yahui Xue received the M.S. degree in Geode-
+tection and Information Technology from Central
+South University in 2020. He has been with Future
+Research Lab, China Mobile Research Institute since
+2020. His research interests include wireless com-
+munications, integrated sensing and communication
+and multiple input multiple output systems.
+Lincong Han received the B.S. degree in com-
+munication engineering from Shandong University,
+China, in 2017, and the Ph.D. in Communication
+and Information Systems from Beihang University
+in 2023, China. She has been with Future Research
+Lab, China Mobile Research Institute since 2023.
+Her research interests include 6G, integrated sensing
+and communication, MIMO and interference man-
+agement.
+Rongyan Xi received the B.S. degree in communica-
+tion engineering from Shandong University, China,
+in 2017, and the Ph.D. degree in electronic engineer-
+ing from Tsinghua University in 2023, China. She
+has been with Future Research Lab, China Mobile
+Research Institute since 2023. Her research interests
+include 6G, integrated sensing and communication,
+MIMO, target detection, positioning and system de-
+sign.
+Zixiang Han received the Bachelor’s degree in
+Electronic Science and Technology from the Nanjing
+University, Nanjing, China, in 2018 and the Ph.D.
+degree in Electronic and Computer Engineering from
+The Hong Kong University of Science and Technol-
+ogy (HKUST), Hong Kong, in 2022. He is currently
+a project manager with the Future Research Lab,
+China Mobile Research Institute, Beijing, China. His
+current research interests include integrated sens-
+ing and communication, compact MIMO antennas,
+MIMO systems, antenna design and optimization.
+Hanning Wang is a member of technical staff in the
+Future Research Lab, China Mobile Research Insti-
+tute. She received the double B.S. degrees in infor-
+mation engineering from Beijing Institute of Tech-
+nology and Australian National University in 2014,
+and the M.S. degree in electronics and telecom-
+munications engineering from Australian National
+University in 2015. Her current research interests in-
+clude 6G, wireless communication, integrated sens-
+ing and communication, MIMO.
+Jing Dong received the M.S. degree in telecommu-
+nication engineering from Xidian University, Xian,
+China, in 2016. She is currently working at China
+Mobile Research Institute. Her current research in-
+terests include 6G visions and requirements, in-
+tegrated sensing and communication, and multi-
+dimensional integrated networking.
+Mengting Lou is a member of technical staff in the
+Future Research Lab, China Mobile Research Insti-
+tute. She received B.S. and M.S. degrees from Bei-
+jing Jiaotong University in 2015 and 2019, respec-
+tively. Her current research interests include wireless
+communications, integrated sensing and communi-
+cation, virtual multi-input multi-output, sparse array
+and coordinated multi-point transmission.
+Jing Jin is a principal member of technical staff
+in the Future Research Lab, China Mobile Research
+Institute. She received the B.S. and Ph.D. degrees
+from the Beijing University of Posts and Telecom-
+munications in 2006 and 2011, respectively. Her
+research interests include wireless communications,
+MIMO, multiuser beamforming, and interference
+cancellation.
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/
+
+===== PAGE 18 =====
+18
+Qixing Wang received the B.S., M.S., and Ph.D.
+degrees in information and communication engineer-
+ing from Beijing University of Posts and Telecom-
+munications, Beijing, China, in 2002, 2005, and
+2008, respectively. He is a principal member of
+technical staff responsible for 6G in Future Research
+Lab, China Mobile Research Institute. His research
+interests include wireless technology research and
+development, including 5G and 6G.
+Yifei Yuan (Fellow, IEEE) received his Bachelor’s
+and Master’s degrees from Tsinghua University in
+China and Ph.D from Carnegie Mellon University in
+USA. He was with Lucent Technologies Bell Labs
+from 2000 to 2008. From 2008 to 2020, he was with
+ZTE Corporation as a technical director and chief
+engineer, responsible for standards and research of
+LTE-Advanced and 5G. He joined the China Mo-
+bile Research Institute in 2020 as a Chief Expert,
+responsible for 6G. He has extensive publications,
+including 12 books on key air interface technologies
+of 4G, 5G and 6G mobile communications. He has more than 60 granted US
+patents.
+This article has been accepted for publication in IEEE Internet of Things Journal. This is the author's version which has not been fully edited and 
+content may change prior to final publication. Citation information: DOI 10.1109/JIOT.2024.3430502
+This work is licensed under a Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 License. For more information, see https://creativecommons.org/licenses/by-nc-nd/4.0/

@@ -1,0 +1,194 @@
+## 4. SDN Control Plane / RAN Intelligent Controller Layer
+
+### 4.1 Назначение и границы уровня
+
+SDN Control Plane / RAN Intelligent Controller (уровень SDN-управления и интеллектуального контроллера радиодоступа) является центральным уровнем принятия политики. Он получает отчеты от PHY и MAC, принимает сервисные требования от application/service layer, устанавливает правила, инициирует реконфигурацию, обрабатывает rule miss (отсутствие правила), link failure (отказ линии), node failure (отказ узла), sensing degradation (деградацию радиозондирования) и congestion (перегрузку). Такая роль согласуется с SDN-подходом для 5G/6G-сетей, где контроллер управляет политиками, срезами, маршрутами и реконфигурацией, а data plane выполняет установленные правила [9], [10].
+
+В данной формализации RIC не является обучающимся агентом и не заменяет контрактный автомат оптимизационной процедурой. Его решения представлены конечными классами политик, выбираемыми по дискретным входным условиям и проверяемыми через timed automata.
+
+Граница уровня:
+
+- SDN/RIC принимает агрегированные отчеты MAC и PHY.
+- SDN/RIC не управляет отдельными OFDM-symbol (символами ортогонального частотного мультиплексирования) или beam sweep (сканированием лучей) напрямую; он задает политику и ограничения для MAC/PHY.
+- SDN/RIC устанавливает flow rules (правила потоков), slice constraints (ограничения сетевых срезов), recovery actions (действия восстановления) и admission decisions (решения допуска сервиса).
+- SDN/RIC обязан отвечать явно: install+forward, reject/drop with reason, rollback, degraded mode или recovery failure.
+
+### 4.2 Композиция автоматов SDN/RIC
+
+Композиция уровня задается как:
+
+```text
+A_SDN = A_MON || A_RISK || A_POLICY || A_RULE || A_REC || A_SDN_AGG.
+```
+
+где A_MON (monitoring automaton, автомат мониторинга) контролирует свежесть телеметрии; A_RISK (risk classifier, автомат классификации риска) переводит события в класс риска; A_POLICY (policy automaton, автомат политики) выбирает допустимое действие; A_RULE (rule-table automaton, автомат таблицы правил) устанавливает или отклоняет правила; A_REC (recovery automaton, автомат восстановления) обрабатывает отказы и реконфигурации; A_SDN_AGG (aggregate automaton, агрегирующий автомат) формирует команды нижним уровням и ответы сервисному уровню.
+
+| Автомат | Основные состояния | Ответственность |
+|---|---|---|
+| A_MON | MonitorIdle, CollectReports, TelemetryFresh, TelemetryStale, TelemetryMissing | Контроль свежести PHY/MAC-отчетов |
+| A_RISK | RiskLow, RiskMedium, RiskHigh, RiskCritical | Классификация деградации, отказа, перегрузки |
+| A_POLICY | PolicyIdle, Evaluate, NormalMode, SensingBoostMode, CommPriorityMode, ConstrainedMode, RejectByPolicy | Выбор политики управления |
+| A_RULE | RuleStable, RuleMiss, RuleInstallPending, RuleInstalled, RuleAcked, RuleTimeout, RuleDropReason | Обработка rule miss и таблицы правил |
+| A_REC | StableConfig, FailureDetected, StandbySwitch, ReactiveReembedding, Rollback, RecoveryFailed | Восстановление после отказов |
+| A_SDN_AGG | CommandBuild, CommandSent, AwaitAck, Acked, CommandTimeout | Согласование команд и подтверждений |
+
+### 4.3 Дискретная абстракция SDN/RIC
+
+Отображение абстракции задается как:
+
+```text
+alpha_SDN : X_SDN_obs x X_SDN_cfg x X_SVC_req -> X_SDN_disc.
+```
+
+X_SDN_obs содержит отчеты от PHY/MAC: freshness, QueueClass, DelayClass, ResourceClass, SensingQualityClass, LinkState, RuleState. X_SDN_cfg содержит текущую сетевую конфигурацию, правила политики, допустимые recovery-пути и ограничения срезов. X_SVC_req содержит класс сервиса, критичность и SLA.
+
+Конечные классы:
+
+| Переменная | Значения | Смысл |
+|---|---|---|
+| TelemetryClass | TEL_FRESH, TEL_STALE, TEL_MISSING | Свежесть управляющей информации |
+| RiskClass | RISK_LOW, RISK_MED, RISK_HIGH, RISK_CRIT | Класс риска |
+| PolicyClass | POL_NORMAL, POL_SENS_BOOST, POL_COMM_PRIO, POL_CONSTRAINED, POL_REROUTE, POL_REJECT | Класс политики |
+| RuleClass | RULE_OK, RULE_MISS, RULE_PENDING, RULE_ACKED, RULE_TIMEOUT, RULE_DROP | Состояние правила |
+| RecoveryClass | REC_STABLE, REC_STANDBY, REC_REEMBED, REC_ROLLBACK, REC_FAILED | Состояние восстановления |
+| SliceClass | SLICE_OK, SLICE_WARN, SLICE_VIOLATED | Состояние сетевого среза |
+
+### 4.4 Контракт SDN/RIC
+
+Контракт уровня:
+
+```text
+C_SDN = (Ass_SDN, Gar_SDN).
+```
+
+Предположения Ass_SDN:
+
+- MAC передает mac_report! с конечным классом очередей, ресурсов и задержки.
+- PHY через MAC или напрямую передает freshness и sensing-degradation classes.
+- Сервисный уровень передает требование в конечной форме: service class, criticality, latency bound, reliability class.
+- Набор допустимых политик и recovery-конфигураций конечен.
+- Подтверждения от нижних уровней приходят через ack-каналы или истекает заданный timeout.
+
+Гарантии Gar_SDN:
+
+- Rule miss должен завершиться одним из исходов: rule installation + forwarding, drop/reject with explicit reason, timeout report.
+- Link failure должен завершиться одним из исходов: standby switch, reactive re-embedding, rollback to stable configuration, explicit recovery failure.
+- Sensing degradation должен завершиться одним из исходов: sensing boost, constrained mode, rejection by policy.
+- При TEL_STALE или TEL_MISSING контроллер не должен выполнять оптимистичную реконфигурацию, зависящую от свежей телеметрии; допустимы conservative policy (консервативная политика), constrained mode или запрос повторного отчета.
+- Любой service admission request (запрос допуска сервиса) должен получить service_accept! или service_reject! до D_admission.
+- Любая команда нижнему уровню должна получить подтверждение до D_ctrl_ack или перейти в CommandTimeout.
+
+### 4.5 Обработка rule miss
+
+Rule miss является центральным сценарием для SDN-уровня, потому что он связывает data plane (уровень пересылки) и control plane (уровень управления). Формально:
+
+```text
+RuleStable --rule_miss?--> RuleMiss
+RuleMiss --policy_allows_install--> RuleInstallPending
+RuleInstallPending --flow_mod!--> RuleInstalled
+RuleInstalled --ack? before D_rule_ack--> RuleAcked
+RuleInstalled --timeout--> RuleTimeout
+RuleMiss --policy_rejects--> RuleDropReason
+RuleAcked --forward_cmd!--> RuleStable
+RuleDropReason --drop_report!--> RuleStable
+RuleTimeout --timeout_report!--> RuleStable
+```
+
+Слабое место, которое нужно явно закрыть в статье: недопустимо писать только “при rule miss контроллер устанавливает правило”. Это неполный контракт. Должны быть определены как минимум три исхода: установка и пересылка, отказ с причиной, тайм-аут установки. Иначе верификация может пропустить зависание в состоянии RuleInstallPending.
+
+### 4.6 Обработка sensing degradation
+
+Sensing degradation (деградация радиозондирования) приходит снизу как дискретный класс, например SENS_WARN или SENS_FAIL. SDN не вычисляет CRB (нижнюю границу Крамера–Рао), probability of detection (вероятность обнаружения) или sensing capacity (сенсорную пропускную способность). Он принимает уже классифицированное событие и выбирает политически допустимый режим:
+
+```text
+NormalMode --sensing_degradation?--> Evaluate
+Evaluate --policy_allows_boost and resources_available--> SensingBoostMode
+Evaluate --resources_tight--> ConstrainedMode
+Evaluate --policy_denies or resources_exhausted--> RejectByPolicy
+SensingBoostMode --sdn_policy_cmd!--> AwaitAck
+ConstrainedMode --sdn_policy_cmd!--> AwaitAck
+RejectByPolicy --service_reject! or mac_report!--> NormalMode
+```
+
+Это сохраняет разделение уровней: PHY/MAC оценивают техническое состояние, SDN выбирает допустимую политику, service layer получает результат в терминах SLA.
+
+### 4.7 Обработка отказов и реконфигурации
+
+Восстановление задается автоматом A_REC:
+
+```text
+StableConfig --link_failure? or node_failure?--> FailureDetected
+FailureDetected --standby_available--> StandbySwitch
+FailureDetected --standby_unavailable and alternative_config_exists--> ReactiveReembedding
+StandbySwitch --ack? before D_rec--> StableConfig
+ReactiveReembedding --ack? before D_rec--> StableConfig
+StandbySwitch --timeout--> Rollback
+ReactiveReembedding --timeout--> Rollback
+Rollback --rollback_ack? before D_rollback--> StableConfig
+Rollback --timeout--> RecoveryFailed
+RecoveryFailed --failure_report!--> StableConfig or RejectByPolicy
+```
+
+Dynamic timed automata (динамические временные автоматы) здесь нужны только для ограниченной реконфигурации: включение резервного режима, замена абстрактного подузла более детальной моделью, отключение порта, изменение конечной конфигурации [8]. Не следует вводить неограниченное создание узлов или произвольную топологическую эволюцию, потому что это разрушит проверяемость модели.
+
+### 4.8 Временные переменные SDN/RIC
+
+| Часы | Назначение |
+|---|---|
+| c_mon | Возраст последней телеметрии |
+| c_dec | Время выбора политики |
+| c_rule | Время обработки rule miss |
+| c_ctrl_ack | Время ожидания подтверждения от MAC/PHY/data plane |
+| c_rec | Время восстановления после отказа |
+| c_rollback | Время отката к стабильной конфигурации |
+| c_admission | Время ответа на запрос сервиса |
+
+Типовые инварианты:
+
+```text
+CollectReports:        c_mon <= D_mon
+Evaluate:              c_dec <= D_decision
+RuleInstallPending:    c_rule <= D_rule_install
+AwaitAck:              c_ctrl_ack <= D_ctrl_ack
+StandbySwitch:         c_rec <= D_recovery
+ReactiveReembedding:   c_rec <= D_recovery
+Rollback:              c_rollback <= D_rollback
+```
+
+### 4.9 Верификационные свойства SDN/RIC
+
+Примеры свойств:
+
+```text
+A[] not deadlock
+A[] not (RuleInstallPending and c_rule > D_rule_install)
+A[] (RuleMiss imply eventually (RuleAcked or RuleDropReason or RuleTimeout))
+A[] (TEL_STALE imply not optimistic_reconfig)
+A[] (FailureDetected imply eventually (StableConfig or RecoveryFailed))
+A[] (RecoveryFailed imply failure_report_sent)
+A[] (service_request_pending imply c_admission <= D_admission)
+```
+
+Свойства “среднее число rule miss за интервал”, “вероятность успешного восстановления” или “ожидаемая цена реконфигурации” не являются свойствами обычного timed automaton. Их можно проверять только после расширения модели вероятностями, весами или внешней статистикой.
+
+### 4.10 Optional extension: A_SEC
+
+Безопасность не является фокусом основной модели. Поэтому A_SEC (security automaton, автомат безопасности) не включается в базовую композицию A_SDN. Его можно добавить только как расширение:
+
+```text
+A_SDN_EXT = A_SDN || A_SEC.
+```
+
+Минимальный A_SEC не моделирует криптографические протоколы. Он только переводит внешние security alerts (события безопасности) в конечные классы реакции. Такая постановка использует только общую идею SDN/NFV-based monitoring (мониторинга на основе программно-определяемых сетей и виртуализации сетевых функций) из работ по безопасности 6G [11], [12], но не переносит безопасность в центр модели:
+
+```text
+SecurityNominal --threat_alert?--> ThreatObserved
+ThreatObserved --policy_allows_isolation--> IsolateSegment
+ThreatObserved --policy_requires_report_only--> SecurityReport
+IsolateSegment --isolate_cmd!--> AwaitIsolationAck
+AwaitIsolationAck --ack? before D_sec_ack--> SecurityNominal
+AwaitIsolationAck --timeout--> SecurityFailure
+SecurityFailure --security_report!--> SecurityNominal
+```
+
+Такой автомат допустим как optional/extended SDN automaton, но он не должен менять центральную идею статьи. Основная линия остается: PHY, MAC, SDN/RIC и service layer формализуются как иерархия контрактных временных автоматов.

@@ -1,0 +1,131 @@
+## 5. Application / Service Layer
+
+### 5.1 Назначение и границы уровня
+
+Application / Service Layer (прикладной или сервисный уровень) задает требования к сети, а не управляет радиоресурсом напрямую. Он формирует service request (запрос сервиса), SLA constraints (ограничения уровня обслуживания), priority/criticality (приоритет и критичность), а затем получает accept/reject/degraded-service decision (решение о принятии, отказе или деградированном обслуживании). Такое разделение соответствует SDN-подходу, где приложения задают требования через northbound interface (северный интерфейс), а контроллер преобразует их в политики и правила нижних уровней [9], [10].
+
+Для ISAC-сценариев сервисный уровень должен различать два типа требований:
+
+- communication requirements (требования передачи данных): задержка, надежность, пропускная способность, потери;
+- sensing requirements (требования радиозондирования): период обновления, требуемая точность, допустимая свежесть данных, зона наблюдения.
+
+Сервисный уровень не должен напрямую командовать beam management, PRS-pattern (паттерн позиционно-измерительных сигналов) или распределением физических ресурсов. Он задает контракт, а SDN/RIC и MAC решают, можно ли выполнить этот контракт при текущих ограничениях.
+
+### 5.2 Композиция автоматов сервиса
+
+Сервисный уровень задается композицией:
+
+```text
+A_SVC = A_REQ || A_SLA || A_CRIT || A_SVC_AGG.
+```
+
+| Автомат | Основные состояния | Ответственность |
+|---|---|---|
+| A_REQ | ServiceIdle, RequestBuild, RequestPending, Accepted, Rejected, Completed | Жизненный цикл запроса сервиса |
+| A_SLA | SLAOk, SLAWarning, SLAViolated, SLAReported | Контроль выполнения SLA |
+| A_CRIT | NonCritical, Critical, SafetyCritical | Класс критичности сервиса |
+| A_SVC_AGG | DemandBuild, DemandSent, AwaitDecision, DecisionReceived | Передача требований в SDN/RIC |
+
+### 5.3 Дискретная абстракция сервиса
+
+Абстракция задается отображением:
+
+```text
+alpha_SVC : X_SVC_req x X_SVC_obs -> X_SVC_disc.
+```
+
+X_SVC_req содержит исходное требование приложения: latency bound (предел задержки), reliability target (целевая надежность), throughput demand (потребность в пропускной способности), sensing update period (период обновления sensing), sensing accuracy class (класс точности радиозондирования). X_SVC_obs содержит наблюдаемый результат: принято, отклонено, деградировано, SLA нарушен.
+
+Конечные классы:
+
+| Переменная | Значения | Смысл |
+|---|---|---|
+| ServiceClass | SVC_URLLC, SVC_EMBB, SVC_MMTC, SVC_ISAC_SENSING, SVC_UAV, SVC_INDUSTRIAL | Класс сервиса |
+| CriticalityClass | CRIT_LOW, CRIT_MED, CRIT_HIGH, CRIT_SAFETY | Критичность |
+| SLAClass | SLA_OK, SLA_WARN, SLA_VIOLATED | Выполнение SLA |
+| AdmissionClass | ADM_PENDING, ADM_ACCEPTED, ADM_REJECTED, ADM_DEGRADED | Решение допуска |
+| DemandClass | DEMAND_COMM, DEMAND_SENS, DEMAND_JOINT | Тип требования |
+
+### 5.4 Контракт сервисного уровня
+
+Контракт:
+
+```text
+C_SVC = (Ass_SVC, Gar_SVC).
+```
+
+Предположения Ass_SVC:
+
+- SDN/RIC возвращает service_accept!, service_reject! или service_degraded! до D_admission.
+- SLA-наблюдения поступают в дискретной форме SLA_OK, SLA_WARN или SLA_VIOLATED.
+- Сервисный запрос задает конечный класс сервиса, критичности и требований.
+
+Гарантии Gar_SVC:
+
+- Сервис не формирует некорректный запрос вне допустимого множества классов.
+- Если запрос принят, сервисный уровень переходит в Accepted и начинает контроль SLA.
+- Если SLAClass = SLA_WARN, должен быть сформирован sla_warning_report! до D_sla_warn.
+- Если SLAClass = SLA_VIOLATED, должен быть сформирован sla_violation_report! до D_sla_violation.
+- Если запрос отклонен, состояние Rejected должно содержать явную причину: policy_reject, resource_unavailable, stale_telemetry, recovery_failed или deadline_impossible.
+
+### 5.5 Переходы A_REQ и A_SLA
+
+Жизненный цикл запроса:
+
+```text
+ServiceIdle --new_demand?--> RequestBuild
+RequestBuild --service_request!--> RequestPending
+RequestPending --service_accept? before D_admission--> Accepted
+RequestPending --service_degraded? before D_admission--> AcceptedDegraded
+RequestPending --service_reject? before D_admission--> Rejected
+RequestPending --timeout--> Rejected
+Accepted --service_complete?--> Completed
+AcceptedDegraded --service_complete?--> Completed
+Completed --> ServiceIdle
+Rejected --> ServiceIdle
+```
+
+Контроль SLA:
+
+```text
+SLAOk --sla_warn?--> SLAWarning
+SLAWarning --sla_warning_report!--> SLAOk or SLAViolated
+SLAWarning --sla_violation?--> SLAViolated
+SLAViolated --sla_violation_report!--> SLAReported
+SLAReported --service_reconfigure?--> SLAOk or ServiceTerminate
+```
+
+### 5.6 Временные переменные сервиса
+
+| Часы | Назначение |
+|---|---|
+| c_req | Время формирования сервисного запроса |
+| c_admission | Время ожидания решения SDN/RIC |
+| c_sla_warn | Время реакции на предупреждение SLA |
+| c_sla_violation | Время реакции на нарушение SLA |
+| c_session | Время активной сервисной сессии |
+| age_sensing | Возраст последней sensing-информации для сервиса |
+
+Инварианты:
+
+```text
+RequestPending:      c_admission <= D_admission
+SLAWarning:          c_sla_warn <= D_sla_warn
+SLAViolated:         c_sla_violation <= D_sla_violation
+Accepted:            age_sensing <= D_sensing_fresh if DemandClass includes sensing
+```
+
+### 5.7 Верификационные свойства сервиса
+
+Примеры свойств:
+
+```text
+A[] not deadlock
+A[] (RequestPending imply c_admission <= D_admission)
+A[] (RequestPending imply eventually (Accepted or AcceptedDegraded or Rejected))
+A[] (SLAViolated imply eventually sla_violation_report_sent)
+A[] not (Accepted and reason == resource_unavailable)
+A[] (CRIT_SAFETY and SLA_VIOLATED imply eventually (service_reconfigure or service_terminate or violation_report_sent))
+```
+
+Слабое место сервисного уровня в ранней версии модели может возникнуть, если SLA задается только текстово и не переводится в конечные классы. Для timed automata необходимо явно задать конечные классы SLA, criticality и admission outcome. Иначе сервисный уровень не будет формально связан с SDN/RIC.

@@ -1,0 +1,677 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[russian,english]{babel}
+\else
+  \usepackage{fontspec}
+  \usepackage[russian,english]{babel}
+  \setmainfont{DejaVu Serif}
+  \setsansfont{DejaVu Sans}
+  \setmonofont{DejaVu Sans Mono}
+\fi
+\usepackage{amsmath,amssymb}
+\usepackage{array,longtable}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{url}
+
+\geometry{left=18mm,right=18mm,top=16mm,bottom=18mm}
+\setlength{\parindent}{3.5mm}
+\setlength{\parskip}{0.25em}
+\setlist{nosep,leftmargin=5mm}
+\renewcommand{\arraystretch}{1.18}
+\sloppy
+
+\newcommand{\code}[1]{\ifmmode\text{\ttfamily\detokenize{#1}}\else\texttt{\detokenize{#1}}\fi}
+\newcommand{\A}[1]{\mathcal{A}_{#1}}
+\newcommand{\Contract}[1]{\mathcal{C}_{#1}}
+\newcommand{\Env}{\mathcal{A}_{ENV}}
+\pdfstringdefDisableCommands{\def\A#1{A_#1}\def\Contract#1{C_#1}}
+
+\title{Формализация SDN Control Plane / RAN Intelligent Controller в иерархической 6G ISAC-сети}
+\author{Техническая документация уровня}
+\date{8 июня 2026 г.}
+
+\begin{document}
+
+\maketitle
+
+\section*{Аннотация}
+
+Документ задает формальную спецификацию уровня SDN Control Plane / RAN Intelligent Controller (уровень программно-определяемого управления и контроллера радиодоступа) для SDN-управляемой 6G ISAC-сети. Уровень SDN/RIC принимает агрегированные отчеты PHY и MAC, получает сервисные требования, выбирает конечную политику, устанавливает правила, управляет реконфигурацией и возвращает явный результат сервисному уровню. В данной модели SDN/RIC не является AI-agent (агентом искусственного интеллекта), не выполняет обучение и не заменяет timed automata оптимизационной процедурой. Он задается как композиция аппроксимированных контрактных timed automata с конечными классами политики, риска, телеметрии, правил и восстановления.
+
+\section{Назначение и границы уровня}
+
+SDN/RIC является центральным уровнем принятия политики. Он разделяет control plane (уровень управления) и data plane (уровень пересылки), что соответствует SDN-подходу для сетей 5G/6G \cite{mosudi_sdn,zolanvari_sdn}. В ISAC-сценарии контроллер должен учитывать не только пропускную способность и задержку связи, но и качество sensing (радиозондирования): свежесть данных, вероятность обнаружения, точность, покрытие и дефицит sensing-ресурса.
+
+Граница уровня:
+\begin{itemize}
+  \item SDN/RIC принимает агрегированные отчеты MAC и PHY.
+  \item SDN/RIC не управляет отдельными OFDM-symbol (символами ортогонального частотного мультиплексирования) или beam sweep (сканированием лучей) напрямую.
+  \item SDN/RIC устанавливает flow rules (правила потоков), slice constraints (ограничения сетевых срезов), recovery actions (действия восстановления) и admission decisions (решения допуска).
+  \item SDN/RIC обязан отвечать явно: install and forward (установка правила и пересылка), reject/drop with reason (отказ или сброс с причиной), rollback (откат), degraded mode (деградированный режим) или recovery failure (неуспешное восстановление).
+\end{itemize}
+
+Если контроллер описан как ``интеллектуальный'', это не означает использование ИИ. В данной работе интеллектуальность трактуется как наличие конечной проверяемой политики выбора реакции на дискретные классы состояния.
+
+\section{Архитектурное положение SDN/RIC}
+
+Полная композиция уровней:
+\[
+\A{TOTAL}=\A{SVC}\parallel \A{SDN}\parallel \A{MAC}\parallel \A{PHY}\parallel \Env.
+\]
+
+SDN/RIC получает требования сверху и отчеты снизу:
+\[
+Gar_{SVC}\Rightarrow Ass_{SDN},\qquad
+Gar_{MAC}\Rightarrow Ass_{SDN},\qquad
+Gar_{PHY}\Rightarrow Ass_{SDN}.
+\]
+
+Его гарантии служат предположениями для MAC и service layer:
+\[
+Gar_{SDN}\Rightarrow Ass_{MAC},\qquad
+Gar_{SDN}\Rightarrow Ass_{SVC}.
+\]
+
+Локальная среда для модульной проверки:
+\[
+\A{SYS}^{SDN}=\A{SDN}\parallel \A{ENV\_SDN},
+\qquad
+\A{ENV\_SDN}=\pi_{SDN}(\Env).
+\]
+
+Проекция \(\A{ENV\_SDN}\) содержит rule miss (отсутствие правила), link failure (отказ линии), node failure (отказ узла), поступление MAC-отчетов, сервисные запросы и подтверждения нижних уровней. Она должна быть согласована с MAC/PHY-проекциями общей среды.
+
+\section{Базовая модель контрактного автомата}
+
+Каждый компонент SDN/RIC задается как:
+\[
+\A{i}=(L_i,l_i^0,C_i,V_i,E_i,\Inv_i,In_i,Out_i,Ass_i,Gar_i).
+\]
+
+Переход:
+\[
+e=(l,g,a,r,u,l'),
+\]
+где \(g\) --- guard (условие), \(a\) --- синхронизационное действие, \(r\) --- resets (сбросы часов), \(u\) --- обновления конечных переменных. Модель проверяет достижимость, дедлайны и отсутствие тупиков в духе timed automata \cite{alur_dill}. Ограниченная реконфигурация может трактоваться через dynamic timed automata (динамические временные автоматы), но только для конечного набора допустимых вариантов \cite{tigane_dta}.
+
+\section{Дискретная абстракция SDN/RIC}
+
+Абстракция задается отображением:
+\[
+\alpha_{SDN}:X_{SDN}^{obs}\times X_{SDN}^{cfg}\times X_{SVC}^{req}
+\rightarrow X_{SDN}^{disc}.
+\]
+
+\(X_{SDN}^{obs}\) содержит MAC/PHY-отчеты: freshness (свежесть), queue class (класс очереди), delay class (класс задержки), resource class (класс ресурса), sensing quality class (класс качества радиозондирования), link state (состояние линии), rule state (состояние правила). \(X_{SDN}^{cfg}\) содержит политику, допустимые recovery-paths (пути восстановления), таблицы правил и ограничения срезов. \(X_{SVC}^{req}\) содержит сервисный класс, критичность и SLA (service-level agreement, соглашение об уровне обслуживания).
+
+\begin{longtable}{p{0.23\linewidth}p{0.38\linewidth}p{0.31\linewidth}}
+\hline
+\textbf{Переменная} & \textbf{Значения} & \textbf{Смысл}\\
+\hline
+\code{TelemetryClass} & \code{TEL_FRESH}, \code{TEL_STALE}, \code{TEL_MISSING} & Свежесть управляющей информации.\\
+\code{RiskClass} & \code{RISK_LOW}, \code{RISK_MED}, \code{RISK_HIGH}, \code{RISK_CRIT} & Класс риска.\\
+\code{PolicyClass} & \code{POL_NORMAL}, \code{POL_SENS_BOOST}, \code{POL_COMM_PRIO}, \code{POL_CONSTRAINED}, \code{POL_REROUTE}, \code{POL_REJECT} & Класс политики.\\
+\code{RuleClass} & \code{RULE_OK}, \code{RULE_MISS}, \code{RULE_PENDING}, \code{RULE_ACKED}, \code{RULE_TIMEOUT}, \code{RULE_DROP} & Состояние правила.\\
+\code{RecoveryClass} & \code{REC_STABLE}, \code{REC_STANDBY}, \code{REC_REEMBED}, \code{REC_ROLLBACK}, \code{REC_FAILED} & Состояние восстановления.\\
+\code{SliceClass} & \code{SLICE_OK}, \code{SLICE_WARN}, \code{SLICE_VIOLATED} & Состояние сетевого среза.\\
+\hline
+\end{longtable}
+
+\section{Композиция автоматов SDN/RIC}
+
+\[
+\A{SDN}=\A{MON}\parallel \A{RISK}\parallel \A{POLICY}\parallel
+\A{RULE}\parallel \A{REC}\parallel \A{SDN\_AGG}.
+\]
+
+\begin{longtable}{p{0.18\linewidth}p{0.39\linewidth}p{0.35\linewidth}}
+\hline
+\textbf{Автомат} & \textbf{Основные состояния} & \textbf{Ответственность}\\
+\hline
+\(\A{MON}\) & \code{MonitorIdle}, \code{CollectReports}, \code{TelemetryFresh}, \code{TelemetryStale}, \code{TelemetryMissing} & Контроль свежести PHY/MAC-отчетов.\\
+\(\A{RISK}\) & \code{RiskLow}, \code{RiskMedium}, \code{RiskHigh}, \code{RiskCritical} & Классификация деградации, отказа и перегрузки.\\
+\(\A{POLICY}\) & \code{PolicyIdle}, \code{Evaluate}, \code{NormalMode}, \code{SensingBoostMode}, \code{CommPriorityMode}, \code{ConstrainedMode}, \code{RejectByPolicy} & Выбор политики управления.\\
+\(\A{RULE}\) & \code{RuleStable}, \code{RuleMiss}, \code{RuleInstallPending}, \code{RuleInstalled}, \code{RuleAcked}, \code{RuleTimeout}, \code{RuleDropReason} & Обработка rule miss и таблицы правил.\\
+\(\A{REC}\) & \code{StableConfig}, \code{FailureDetected}, \code{StandbySwitch}, \code{ReactiveReembedding}, \code{Rollback}, \code{RecoveryFailed} & Восстановление после отказов.\\
+\(\A{SDN\_AGG}\) & \code{CommandBuild}, \code{CommandSent}, \code{AwaitAck}, \code{Acked}, \code{CommandTimeout} & Согласование команд и подтверждений.\\
+\hline
+\end{longtable}
+
+\section{Политики SDN/RIC}
+
+Политика SDN/RIC является конечной функцией выбора:
+\[
+\Pi_{SDN}:X_{SDN}^{disc}\times X_{SVC}^{disc}\rightarrow \code{PolicyClass}.
+\]
+
+\begin{longtable}{p{0.24\linewidth}p{0.35\linewidth}p{0.33\linewidth}}
+\hline
+\textbf{Политика} & \textbf{Условие выбора} & \textbf{Действие}\\
+\hline
+\code{POL_NORMAL} & Телеметрия свежая, риск низкий, SLA выполняется. & Поддержание текущих правил и срезов.\\
+\code{POL_SENS_BOOST} & Деградация sensing при допустимом ресурсе. & Команда MAC на sensing boost или joint schedule.\\
+\code{POL_COMM_PRIO} & Критический коммуникационный сервис и риск нарушения задержки. & Приоритет связи и возможное временное снижение sensing.\\
+\code{POL_CONSTRAINED} & \code{TEL_STALE}, ограниченный ресурс или неопределенный риск. & Консервативные команды, запрет оптимистичной реконфигурации.\\
+\code{POL_REROUTE} & Link failure или rule miss при доступной альтернативе. & Установка нового правила или переключение на резерв.\\
+\code{POL_REJECT} & Ресурс недоступен, SLA невыполним или политика запрещает действие. & Явный отказ с причиной для service layer.\\
+\hline
+\end{longtable}
+
+Ключевое требование: при \code{TEL_STALE} или \code{TEL_MISSING} контроллер не должен выполнять оптимистичную реконфигурацию, зависящую от свежей телеметрии. Допустимы \code{POL_CONSTRAINED}, повторный запрос отчета или отказ с причиной.
+
+\section{Operational semantics}
+
+\subsection{Часы и инварианты}
+
+\begin{longtable}{p{0.23\linewidth}p{0.67\linewidth}}
+\hline
+\textbf{Часы} & \textbf{Назначение}\\
+\hline
+\(c_{mon}\) & Возраст последней телеметрии.\\
+\(c_{dec}\) & Время выбора политики.\\
+\(c_{rule}\) & Время обработки rule miss.\\
+\(c_{ctrl\_ack}\) & Время ожидания подтверждения от MAC/PHY/data plane.\\
+\(c_{rec}\) & Время восстановления после отказа.\\
+\(c_{rollback}\) & Время отката к стабильной конфигурации.\\
+\(c_{admission}\) & Время ответа на запрос сервиса.\\
+\hline
+\end{longtable}
+
+\[
+\begin{array}{ll}
+\code{CollectReports}: & c_{mon}\le D_{mon},\\
+\code{Evaluate}: & c_{dec}\le D_{decision},\\
+\code{RuleInstallPending}: & c_{rule}\le D_{rule\_install},\\
+\code{AwaitAck}: & c_{ctrl\_ack}\le D_{ctrl\_ack},\\
+\code{StandbySwitch}: & c_{rec}\le D_{recovery},\\
+\code{Rollback}: & c_{rollback}\le D_{rollback}.
+\end{array}
+\]
+
+\subsection{Каналы}
+
+Входные каналы:
+\[
+\{\code{mac_report?},\code{phy_kpi_report?},\code{service_request?},
+\code{rule_miss?},\code{link_failure?},\code{node_failure?},\code{ack?}\}.
+\]
+
+Выходные каналы:
+\[
+\{\code{sdn_policy_cmd!},\code{flow_mod!},\code{forward_cmd!},
+\code{drop_report!},\code{service_accept!},\code{service_degraded!},
+\code{service_reject!},\code{failure_report!},\code{timeout_report!},
+\code{rollback_cmd!}\}.
+\]
+
+\section{Единая интерфейсная таблица SDN/RIC}
+
+Для исключения разрыва между сценариями rule miss, recovery, sensing degradation и service admission вводится единый формат интерфейса:
+\[
+I_{SDN}=(src,dst,ch,sync,payload,deadline,outcome).
+\]
+
+Здесь \(src\) и \(dst\) --- отправитель и получатель, \(ch\) --- канал, \(sync\) --- тип синхронизации, \(payload\) --- конечный набор полей, \(deadline\) --- проверяемый срок, \(outcome\) --- допустимые исходы.
+
+\begin{longtable}{p{0.15\linewidth}p{0.18\linewidth}p{0.20\linewidth}p{0.22\linewidth}p{0.17\linewidth}}
+\hline
+\textbf{Процедура} & \textbf{Вход} & \textbf{Payload} & \textbf{Путь состояний} & \textbf{Исход}\\
+\hline
+Rule miss & Data plane \(\rightarrow\) SDN: \code{rule_miss?} & \code{FlowId}, \code{SliceClass}, \code{ServiceId}, \code{RuleClass} & \code{RuleStable}\(\rightarrow\)\code{RuleMiss}\(\rightarrow\)\code{RuleInstallPending} или \code{RuleDropReason} & \code{flow_mod!}, \code{forward_cmd!}, \code{drop_report!}, \code{timeout_report!}.\\
+Recovery & \(\Env\) или data plane \(\rightarrow\) SDN: \code{link_failure?}, \code{node_failure?} & \code{FaultId}, \code{AffectedSlice}, \code{AffectedService}, \code{RecoveryClass} & \code{StableConfig}\(\rightarrow\)\code{FailureDetected}\(\rightarrow\)\code{StandbySwitch}/\code{ReactiveReembedding}\(\rightarrow\)\code{Rollback} или \code{StableConfig} & \code{sdn_policy_cmd!}, \code{flow_mod!}, \code{rollback_cmd!}, \code{failure_report!}.\\
+Sensing degradation & MAC/PHY \(\rightarrow\) SDN: \code{mac_report?} или \code{phy_kpi_report?} & \code{SensingState}, \code{FreshnessClass}, \code{ResourceClass}, \code{ConflictReason} & \code{NormalMode}\(\rightarrow\)\code{Evaluate}\(\rightarrow\)\code{SensingBoostMode}/\code{ConstrainedMode}/\code{RejectByPolicy} & \code{sdn_policy_cmd!}, \code{service_degraded!}, \code{service_reject!}.\\
+Service admission & Service \(\rightarrow\) SDN: \code{service_request?} & \code{ServiceClass}, \code{CriticalityClass}, \code{DemandClass}, \code{SLAClass} & \code{PolicyIdle}\(\rightarrow\)\code{Evaluate}\(\rightarrow\)\code{NormalMode}/\code{ConstrainedMode}/\code{RejectByPolicy} & \code{service_accept!}, \code{service_degraded!}, \code{service_reject!}.\\
+\hline
+\end{longtable}
+
+Для каждой строки таблицы задается bounded response:
+\[
+request_k\Rightarrow \Diamond_{\le D_k} outcome_k,
+\]
+где \(k\in\{\code{rule},\code{recovery},\code{sensing},\code{admission}\}\). Если процедура затрагивает активный сервис, SDN/RIC обязан передать наверх не только технический отчет, но и service impact (влияние на сервис):
+\[
+impact\in\{\code{NONE},\code{DEGRADED},\code{REJECTED},\code{FAILED}\}.
+\]
+
+Эта таблица является обязательной частью интерфейса. Без нее сценарии могут быть корректны по отдельности, но не согласованы между уровнями: например, \code{RuleTimeout} может не породить service degradation, а sensing failure может остаться только MAC-отчетом без решения admission/rejection.
+
+\section{UPPAAL-спецификация SDN/RIC}
+
+В UPPAAL SDN/RIC реализуется как набор templates, читающих общие переменные отчетов MAC/PHY и сервисных требований. Каналы \code{mac_report?}, \code{service_request?}, \code{rule_miss?} и \code{link_failure?} не несут payload; соответствующие поля записываются в shared variables до синхронизации.
+
+\subsection{Declarations уровня SDN/RIC}
+
+\begin{verbatim}
+// ----- SDN/RIC constants -----
+const int D_mon          = 5;
+const int D_decision     = 5;
+const int D_rule_install = 8;
+const int D_rule_ack     = 5;
+const int D_ctrl_ack     = 5;
+const int D_recovery     = 20;
+const int D_rollback     = 10;
+const int D_admission    = 15;
+const int D_sec_ack      = 10;
+
+// ----- SDN/RIC clocks -----
+clock c_mon, c_dec, c_rule, c_ctrl_ack;
+clock c_rec, c_rollback, c_admission, c_sec_ack;
+
+// ----- SDN/RIC channels -----
+broadcast chan mac_report, phy_kpi_report, service_request;
+broadcast chan service_accept, service_degraded, service_reject;
+chan rule_miss, link_failure, node_failure, ack;
+chan sdn_policy_cmd, flow_mod, forward_cmd, drop_report;
+chan failure_report, timeout_report, rollback_cmd;
+
+// ----- SDN/RIC classes -----
+typedef int[0,2] TelemetryClass_t;
+const TelemetryClass_t TEL_FRESH=0, TEL_STALE=1, TEL_MISSING=2;
+
+typedef int[0,3] RiskClass_t;
+const RiskClass_t RISK_LOW=0, RISK_MED=1, RISK_HIGH=2, RISK_CRIT=3;
+
+typedef int[0,5] PolicyClass_t;
+const PolicyClass_t POL_NORMAL=0, POL_SENS_BOOST=1, POL_COMM_PRIO=2;
+const PolicyClass_t POL_CONSTRAINED=3, POL_REROUTE=4, POL_REJECT=5;
+
+typedef int[0,5] RuleClass_t;
+const RuleClass_t RULE_OK=0, RULE_MISS=1, RULE_PENDING=2;
+const RuleClass_t RULE_ACKED=3, RULE_TIMEOUT=4, RULE_DROP=5;
+
+typedef int[0,4] RecoveryClass_t;
+const RecoveryClass_t REC_STABLE=0, REC_STANDBY=1, REC_REEMBED=2;
+const RecoveryClass_t REC_ROLLBACK=3, REC_FAILED=4;
+
+typedef int[0,2] SliceClass_t;
+const SliceClass_t SLICE_OK=0, SLICE_WARN=1, SLICE_VIOLATED=2;
+
+typedef int[0,3] ServiceImpact_t;
+const ServiceImpact_t IMPACT_NONE=0, IMPACT_DEGRADED=1;
+const ServiceImpact_t IMPACT_REJECTED=2, IMPACT_FAILED=3;
+
+typedef int[0,6] SdnReason_t;
+const SdnReason_t SDN_NONE=0, SDN_STALE_TELEMETRY=1;
+const SdnReason_t SDN_RULE_TIMEOUT=2, SDN_RECOVERY_FAILED=3;
+const SdnReason_t SDN_RESOURCE_LIMITED=4, SDN_SENSING_FAILURE=5;
+const SdnReason_t SDN_POLICY_REJECT=6;
+
+// ----- shared variables: payload replacement -----
+TelemetryClass_t telemetryClass;
+RiskClass_t riskClass;
+PolicyClass_t policyClass;
+RuleClass_t ruleClass;
+RecoveryClass_t recoveryClass;
+SliceClass_t sliceClass;
+ServiceImpact_t serviceImpact;
+SdnReason_t sdnReason;
+
+bool rule_miss_pending = false;
+bool link_failure_pending = false;
+bool node_failure_pending = false;
+bool sensing_degradation_pending = false;
+bool service_request_pending = false;
+bool command_pending = false;
+bool optimistic_reconfig = false;
+bool standby_available = false;
+bool alternative_config_exists = false;
+bool lower_ack_received = false;
+\end{verbatim}
+
+\subsection{Формулы SDN/RIC-метрик}
+
+Риск SDN/RIC задается как целочисленная оценка:
+\[
+\begin{array}{l}
+Risk_{SDN}=3M_{risk}+2M_{tel}+2M_{slice}
++ \mathbf{1}_{\code{RULE_MISS}}+\mathbf{1}_{\code{REC_FAILED}},
+\end{array}
+\]
+где \(M_{risk}\), \(M_{tel}\) и \(M_{slice}\) --- численные коды соответствующих классов. В UPPAAL:
+\begin{verbatim}
+int sdn_risk() {
+  return 3*riskClass + 2*telemetryClass + 2*sliceClass
+       + (ruleClass == RULE_MISS ? 1 : 0)
+       + (recoveryClass == REC_FAILED ? 1 : 0);
+}
+\end{verbatim}
+
+Классификация риска по отчетам:
+\[
+\begin{array}{ll}
+\code{RISK_CRIT}, & \code{REC_FAILED}\vee \code{SLICE_VIOLATED}\vee \code{TEL_MISSING},\\
+\code{RISK_HIGH}, & \code{RULE_TIMEOUT}\vee \code{sensing_degradation_pending},\\
+\code{RISK_MED}, & \code{TEL_STALE}\vee \code{SLICE_WARN},\\
+\code{RISK_LOW}, & \text{иначе}.
+\end{array}
+\]
+
+\subsection{Полные guards политик SDN/RIC}
+
+\begin{verbatim}
+bool telemetry_bad() {
+  return telemetryClass == TEL_STALE || telemetryClass == TEL_MISSING;
+}
+
+bool gPolConstrained() {
+  return telemetry_bad() || riskClass == RISK_HIGH || sliceClass == SLICE_WARN;
+}
+
+bool gPolReject() {
+  return riskClass == RISK_CRIT
+      || sliceClass == SLICE_VIOLATED
+      || recoveryClass == REC_FAILED;
+}
+
+bool gPolReroute() {
+  return (ruleClass == RULE_MISS || link_failure_pending || node_failure_pending)
+      && (standby_available || alternative_config_exists)
+      && !telemetry_bad();
+}
+
+bool gPolSensingBoost() {
+  return sensing_degradation_pending
+      && !telemetry_bad()
+      && riskClass != RISK_CRIT;
+}
+
+bool gPolCommPrio() {
+  return service_request_pending
+      && sliceClass != SLICE_VIOLATED
+      && !telemetry_bad();
+}
+
+void select_sdn_policy() {
+  if (gPolReject()) {
+    policyClass = POL_REJECT;
+    serviceImpact = IMPACT_REJECTED;
+    sdnReason = SDN_POLICY_REJECT;
+  } else if (telemetry_bad()) {
+    policyClass = POL_CONSTRAINED;
+    serviceImpact = IMPACT_DEGRADED;
+    sdnReason = SDN_STALE_TELEMETRY;
+  } else if (gPolReroute()) {
+    policyClass = POL_REROUTE;
+    serviceImpact = IMPACT_NONE;
+    sdnReason = SDN_NONE;
+  } else if (gPolSensingBoost()) {
+    policyClass = POL_SENS_BOOST;
+    serviceImpact = IMPACT_DEGRADED;
+    sdnReason = SDN_SENSING_FAILURE;
+  } else if (gPolCommPrio()) {
+    policyClass = POL_COMM_PRIO;
+    serviceImpact = IMPACT_NONE;
+    sdnReason = SDN_NONE;
+  } else {
+    policyClass = POL_NORMAL;
+    serviceImpact = IMPACT_NONE;
+    sdnReason = SDN_NONE;
+  }
+}
+\end{verbatim}
+
+Запрет оптимистичной реконфигурации при stale-телеметрии:
+\begin{verbatim}
+bool reconfig_allowed() {
+  return telemetryClass == TEL_FRESH
+      && policyClass != POL_CONSTRAINED
+      && policyClass != POL_REJECT;
+}
+\end{verbatim}
+
+\subsection{UPPAAL templates SDN/RIC}
+
+\begin{longtable}{p{0.18\linewidth}p{0.28\linewidth}p{0.24\linewidth}p{0.22\linewidth}}
+\hline
+\textbf{Template} & \textbf{Locations} & \textbf{Invariants} & \textbf{Ключевые edges}\\
+\hline
+\(\A{MON}\) & \code{MonitorIdle}, \code{CollectReports}, \code{TelemetryFresh}, \code{TelemetryStale}, \code{TelemetryMissing} & \code{CollectReports}: \(c_{mon}\le D_{mon}\). & \code{mac_report?}; \code{phy_kpi_report?}; class update.\\
+\(\A{RISK}\) & \code{RiskLow}, \code{RiskMedium}, \code{RiskHigh}, \code{RiskCritical} & Нет отдельных часов. & update from telemetry/rule/recovery/slice classes.\\
+\(\A{POLICY}\) & \code{PolicyIdle}, \code{Evaluate}, \code{NormalMode}, \code{SensingBoostMode}, \code{CommPriorityMode}, \code{ConstrainedMode}, \code{RejectByPolicy} & \code{Evaluate}: \(c_{dec}\le D_{decision}\). & \code{select_sdn_policy()}; command or service outcome.\\
+\(\A{RULE}\) & \code{RuleStable}, \code{RuleMiss}, \code{RuleInstallPending}, \code{RuleInstalled}, \code{RuleAcked}, \code{RuleTimeout}, \code{RuleDropReason} & \code{RuleInstallPending}: \(c_{rule}\le D_{rule_install}\). & \code{rule_miss?}; \code{flow_mod!}; \code{ack?}; timeout.\\
+\(\A{REC}\) & \code{StableConfig}, \code{FailureDetected}, \code{StandbySwitch}, \code{ReactiveReembedding}, \code{Rollback}, \code{RecoveryFailed} & \code{StandbySwitch}: \(c_{rec}\le D_{recovery}\); \code{Rollback}: \(c_{rollback}\le D_{rollback}\). & \code{link_failure?}; \code{node_failure?}; recovery command; rollback.\\
+\(\A{SDN\_AGG}\) & \code{CommandBuild}, \code{CommandSent}, \code{AwaitAck}, \code{Acked}, \code{CommandTimeout} & \code{AwaitAck}: \(c_{ctrl_ack}\le D_{ctrl_ack}\). & set shared payload; \code{sdn_policy_cmd!}; \code{ack?}; timeout.\\
+\hline
+\end{longtable}
+
+Типовой edge rule miss:
+\begin{verbatim}
+RuleStable -> RuleMiss
+  sync rule_miss?
+  update ruleClass = RULE_MISS,
+         rule_miss_pending = true,
+         c_rule = 0;
+
+RuleMiss -> RuleInstallPending
+  guard policyClass == POL_REROUTE && reconfig_allowed()
+  sync flow_mod!
+  update ruleClass = RULE_PENDING;
+
+RuleInstallPending -> RuleAcked
+  guard c_rule <= D_rule_ack
+  sync ack?
+  update ruleClass = RULE_ACKED,
+         rule_miss_pending = false;
+
+RuleInstallPending -> RuleTimeout
+  guard c_rule >= D_rule_install
+  update ruleClass = RULE_TIMEOUT,
+         sdnReason = SDN_RULE_TIMEOUT,
+         serviceImpact = IMPACT_DEGRADED;
+
+RuleMiss -> RuleDropReason
+  guard policyClass == POL_REJECT || !reconfig_allowed()
+  sync drop_report!
+  update ruleClass = RULE_DROP;
+\end{verbatim}
+
+\subsection{Observer-автоматы SDN/RIC}
+
+\begin{verbatim}
+template ObsRuleMiss() {
+  clock x;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting guard rule_miss_pending update x = 0;
+  Waiting -> Idle
+    guard ruleClass == RULE_ACKED
+       || ruleClass == RULE_DROP
+       || ruleClass == RULE_TIMEOUT;
+  Waiting -> Violation guard x > D_rule_install;
+}
+
+template ObsRecovery() {
+  clock x;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard link_failure_pending || node_failure_pending
+    update x = 0;
+  Waiting -> Idle
+    guard recoveryClass == REC_STABLE
+       || recoveryClass == REC_FAILED;
+  Waiting -> Violation guard x > D_recovery + D_rollback;
+}
+
+template ObsAdmission() {
+  clock x;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting guard service_request_pending update x = 0;
+  Waiting -> Idle
+    guard serviceImpact == IMPACT_NONE
+       || serviceImpact == IMPACT_DEGRADED
+       || serviceImpact == IMPACT_REJECTED;
+  Waiting -> Violation guard x > D_admission;
+}
+
+template ObsStaleTelemetry() {
+  state Safe, Violation;
+  init Safe;
+  Safe -> Violation
+    guard (telemetryClass == TEL_STALE || telemetryClass == TEL_MISSING)
+       && optimistic_reconfig;
+}
+\end{verbatim}
+
+Минимальные UPPAAL queries:
+\begin{verbatim}
+A[] not deadlock
+A[] not ObsRuleMiss.Violation
+A[] not ObsRecovery.Violation
+A[] not ObsAdmission.Violation
+A[] not ObsStaleTelemetry.Violation
+A[] (telemetryClass == TEL_STALE imply !optimistic_reconfig)
+\end{verbatim}
+
+\section{Контракт SDN/RIC}
+
+\[
+\Contract{SDN}=(Ass_{SDN},Gar_{SDN}).
+\]
+
+\subsection{Предположения}
+
+\begin{itemize}
+  \item MAC передает \code{mac_report!} с конечными классами очередей, ресурсов и задержки.
+  \item PHY через MAC или напрямую передает freshness и sensing-degradation classes.
+  \item Service layer передает требование в конечной форме: service class, criticality, latency bound и reliability class.
+  \item Набор политик, правил и recovery-конфигураций конечен.
+  \item Подтверждения от нижних уровней приходят через ack-каналы или истекает заданный timeout.
+\end{itemize}
+
+\subsection{Гарантии}
+
+\begin{itemize}
+  \item Rule miss завершается установкой правила, отказом с причиной или timeout report.
+  \item Link failure завершается standby switch, reactive re-embedding, rollback или explicit recovery failure.
+  \item Sensing degradation завершается sensing boost, constrained mode или rejection by policy.
+  \item При stale-телеметрии запрещена оптимистичная реконфигурация.
+  \item Любой service admission request получает \code{service_accept!}, \code{service_degraded!} или \code{service_reject!} до \(D_{admission}\).
+  \item Любая команда нижнему уровню получает подтверждение до \(D_{ctrl\_ack}\) или переходит в \code{CommandTimeout}.
+\end{itemize}
+
+\section{Основные сценарии}
+
+\subsection{Rule miss}
+
+\[
+\begin{array}{rcl}
+\code{RuleStable} & \xrightarrow{\code{rule_miss?}} & \code{RuleMiss},\\
+\code{RuleMiss} & \xrightarrow{\code{policy_allows_install}} & \code{RuleInstallPending},\\
+\code{RuleInstallPending} & \xrightarrow{\code{flow_mod!}} & \code{RuleInstalled},\\
+\code{RuleInstalled} & \xrightarrow{\code{ack?}} & \code{RuleAcked},\\
+\code{RuleInstalled} & \xrightarrow{\code{timeout}} & \code{RuleTimeout},\\
+\code{RuleMiss} & \xrightarrow{\code{policy_rejects}} & \code{RuleDropReason}.
+\end{array}
+\]
+
+Слабое место, которое нельзя оставлять в статье: формулировка ``контроллер устанавливает правило при rule miss'' неполна. Должны быть описаны как минимум установка, отказ с причиной и тайм-аут.
+
+\subsection{Sensing degradation}
+
+\[
+\begin{array}{rcl}
+\code{NormalMode} & \xrightarrow{\code{sensing_degradation?}} & \code{Evaluate},\\
+\code{Evaluate} & \xrightarrow{\code{policy_allows_boost}\land \code{resources_available}} & \code{SensingBoostMode},\\
+\code{Evaluate} & \xrightarrow{\code{resources_tight}} & \code{ConstrainedMode},\\
+\code{Evaluate} & \xrightarrow{\code{policy_denies}\vee \code{resources_exhausted}} & \code{RejectByPolicy}.
+\end{array}
+\]
+
+SDN/RIC не вычисляет CRB (нижнюю границу Крамера--Рао), probability of detection (вероятность обнаружения) или sensing capacity (сенсорную пропускную способность). Он принимает уже классифицированное событие, что согласуется с SensCAP-подходом к систематизации sensing-capability метрик \cite{liu_senscap} и с cooperative sensing (кооперативным радиозондированием) \cite{liu_coop}.
+
+\subsection{Отказ и реконфигурация}
+
+\[
+\begin{array}{rcl}
+\code{StableConfig} & \xrightarrow{\code{link_failure?}\vee \code{node_failure?}} & \code{FailureDetected},\\
+\code{FailureDetected} & \xrightarrow{\code{standby_available}} & \code{StandbySwitch},\\
+\code{FailureDetected} & \xrightarrow{\code{alternative_config_exists}} & \code{ReactiveReembedding},\\
+\code{StandbySwitch} & \xrightarrow{\code{timeout}} & \code{Rollback},\\
+\code{ReactiveReembedding} & \xrightarrow{\code{timeout}} & \code{Rollback},\\
+\code{Rollback} & \xrightarrow{\code{timeout}} & \code{RecoveryFailed}.
+\end{array}
+\]
+
+Dynamic timed automata допустимы только для конечной реконфигурации: переключение на резерв, замена абстрактного компонента, отключение порта, откат. Неограниченное создание узлов разрушает проверяемость.
+
+\section{Optional extension: \(\A{SEC}\)}
+
+Безопасность не является фокусом основной модели. Поэтому \(\A{SEC}\) не входит в базовую композицию \(\A{SDN}\). Допустимое расширение:
+\[
+\A{SDN}^{EXT}=\A{SDN}\parallel \A{SEC}.
+\]
+
+\(\A{SEC}\) не моделирует криптографические протоколы, blockchain (блокчейн), PQC (post-quantum cryptography, постквантовая криптография) или ZTA (zero trust architecture, архитектура нулевого доверия). Он может только переводить внешние security alerts (события безопасности) в конечные реакции; такая постановка использует только общую идею SDN/NFV-мониторинга безопасности, не делая безопасность центральной темой модели \cite{hirsi_sec,jaadouni_sec}:
+\[
+\code{ThreatObserved}\Rightarrow
+\Diamond_{\le D_{sec\_ack}}
+(\code{IsolateSegment}\vee \code{SecurityReport}\vee \code{SecurityFailure}).
+\]
+
+\section{Верификационные свойства и observer-автоматы}
+
+\[
+\begin{array}{l}
+A[]\ \neg\code{deadlock},\\
+A[]\ \neg(\code{RuleInstallPending}\land c_{rule}>D_{rule\_install}),\\
+A[]\ (\code{RuleMiss}\Rightarrow \Diamond(\code{RuleAcked}\vee \code{RuleDropReason}\vee \code{RuleTimeout})),\\
+A[]\ (\code{TEL_STALE}\Rightarrow \neg\code{optimistic_reconfig}),\\
+A[]\ (\code{FailureDetected}\Rightarrow \Diamond(\code{StableConfig}\vee \code{RecoveryFailed})),\\
+A[]\ (\code{RecoveryFailed}\Rightarrow \code{failure_report_sent}),\\
+A[]\ (\code{service_request_pending}\Rightarrow c_{admission}\le D_{admission}).
+\end{array}
+\]
+
+Свойства вида ``вероятность успешного восстановления'', ``среднее число rule miss за интервал'' или ``ожидаемая цена реконфигурации'' не являются свойствами обычных timed automata. Для них нужны вероятностные, стоимостные или внешние статистические расширения.
+
+\section{Ограничения применимости}
+
+\begin{itemize}
+  \item SDN/RIC является контрактным автоматом, а не обучающимся агентом.
+  \item Политики должны быть конечными и полными относительно дискретных входных классов.
+  \item Старая или отсутствующая телеметрия должна вести к консервативному режиму, иначе модель будет оптимистичной.
+  \item Реконфигурация допустима только в конечном пространстве конфигураций.
+  \item Optional security automaton не должен смещать основную работу в сторону безопасности.
+\end{itemize}
+
+\section{Заключение}
+
+SDN/RIC-уровень задается как композиция автоматов мониторинга, риска, политики, правил, восстановления и агрегирования команд. Его центральная роль --- не вычисление радиофизики и не обучение, а проверяемый выбор конечной политики по дискретным отчетам нижних уровней и требованиям сервиса. Главные слабые места формализации: неполные исходы rule miss, оптимистичная реконфигурация при stale-телеметрии и смешение SDN-решений с MAC-расписанием. В данной спецификации эти слабые места закрываются явными состояниями отказа, тайм-аута, ограниченного режима и отката.
+
+\begin{thebibliography}{9}
+
+\bibitem{liu_senscap}
+G. Liu et al., ``SensCAP: A Systematic Sensing Capability Performance Metric for 6G ISAC,'' \emph{IEEE Internet of Things Journal}, vol. 11, no. 18, pp. 29438--29454, 2024, doi: 10.1109/JIOT.2024.3430502.
+
+\bibitem{liu_coop}
+G. Liu et al., ``Cooperative Sensing for 6G ISAC: Concept, Key Technologies, Performance Evaluation, and Field Trial,'' \emph{Engineering}, vol. 56, pp. 130--148, 2026.
+
+\bibitem{alur_dill}
+R. Alur and D. L. Dill, ``A Theory of Timed Automata,'' \emph{Theoretical Computer Science}, vol. 126, no. 2, pp. 183--235, 1994.
+
+\bibitem{tigane_dta}
+T. Tigane, A. Sadovykh, S. Bensalem, and M. Bozga, ``Dynamic Timed Automata for Reconfigurable System Modeling,'' 2023.
+
+\bibitem{mosudi_sdn}
+O. A. Mosudi, S. I. Popoola, A. A. Atayero, and A. A. Elngar, ``SDN for 5G and Beyond: Transforming Network Architecture,'' 2025.
+
+\bibitem{zolanvari_sdn}
+Zolanvari, ``SDN for 5G,'' 2015.
+
+\bibitem{hirsi_sec}
+A. Hirsi, M. Aljanabi, H. Karim, A. H. Ali, and S. Khan, ``SDN Security in 6G: Future Technologies and Research Challenges,'' \emph{International Journal of Intelligent Engineering and Systems}, vol. 19, no. 4, pp. 221--234, 2026.
+
+\bibitem{jaadouni_sec}
+M. E. Jaadouni, A. Amnai, and Y. Fakhri, ``Evolving Security for 6G: Integrating Software-Defined Networking and Network Functions Virtualization for Enhanced Protection,'' \emph{International Journal of Advanced Computer Science and Applications}, vol. 15, no. 9, 2024.
+
+\end{thebibliography}
+
+\end{document}

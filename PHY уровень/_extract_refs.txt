@@ -1,0 +1,25 @@
+## 8. Список источников
+
+[1] Y. Li, Y. Zhang, C. Masouros, S. Pollin, and F. Liu, "Rethinking Signaling Design for ISAC: From Pilot-Based to Payload-Based Sensing," IEEE Communications Standards Magazine, in press, 2026, doi: 10.1109/mcomstd.2025.3645941.
+
+[2] G. Liu et al., "SensCAP: A Systematic Sensing Capability Performance Metric for 6G ISAC," IEEE Internet of Things Journal, vol. 11, no. 18, pp. 29438-29454, 2024, doi: 10.1109/JIOT.2024.3430502.
+
+[3] G. Liu et al., "Cooperative Sensing for 6G ISAC: Concept, Key Technologies, Performance Evaluation, and Field Trial," Engineering, vol. 56, pp. 130-148, 2026.
+
+[4] Y. Huang, J. Xu, M. A. Badiu, G. Chen, J. Coon, and M.-S. Alouini, "ISAC-Enabled Low-Overhead Beam Management: Performance Analysis and Pilot Optimization," IEEE Transactions on Wireless Communications, vol. 25, pp. 10702-10715, 2026, doi: 10.1109/TWC.2026.3653956.
+
+[5] R. Alur and D. L. Dill, "A Theory of Timed Automata," Theoretical Computer Science, vol. 126, no. 2, pp. 183-235, 1994.
+
+[6] UPPAAL Documentation, "Query Semantics: Symbolic Queries," accessed 2026. Available: https://docs.uppaal.org/language-reference/query-semantics/symb_queries/.
+
+[7] M. Anand and S. Vestal, "Formal Modeling and Analysis of the AFDX Frame Management Design," in Proceedings of the IEEE International Conference on Engineering of Complex Computer Systems, 2007.
+
+[8] T. Tigane, A. Sadovykh, S. Bensalem, and M. Bozga, "Dynamic Timed Automata for Reconfigurable System Modeling," 2023.
+
+[9] O. A. Mosudi, S. I. Popoola, A. A. Atayero, and A. A. Elngar, "SDN for 5G and Beyond: Transforming Network Architecture," 2025.
+
+[10] Zolanvari, "SDN for 5G," 2015.
+
+[11] A. Hirsi, M. Aljanabi, H. Karim, A. H. Ali, and S. Khan, "SDN Security in 6G: Future Technologies and Research Challenges," International Journal of Intelligent Engineering and Systems, vol. 19, no. 4, pp. 221-234, 2026.
+
+[12] M. E. Jaadouni, A. Amnai, and Y. Fakhri, "Evolving Security for 6G: Integrating Software-Defined Networking and Network Functions Virtualization for Enhanced Protection," International Journal of Advanced Computer Science and Applications, vol. 15, no. 9, 2024.

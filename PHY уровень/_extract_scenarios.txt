@@ -1,0 +1,88 @@
+## 6. Межуровневые сценарии
+
+### 6.1 Сценарий sensing degradation
+
+Последовательность обработки деградации sensing:
+
+```text
+A_PHY detects SensingQualityClass = SENS_WARN or SENS_FAIL
+A_PHY/A_MAC sends phy_kpi_report! or mac_report!
+A_SDN.A_MON classifies telemetry freshness
+A_SDN.A_POLICY selects POL_SENS_BOOST, POL_CONSTRAINED, or POL_REJECT
+A_MAC applies sensing_boost_cmd! or constrained_mode_cmd!
+A_SVC receives accepted/degraded/rejected service outcome
+```
+
+Проверяемое свойство:
+
+```text
+Sensing degradation must not remain unresolved:
+A[] (sensing_degradation imply eventually (sensing_boost or constrained_mode or explicit_reject))
+```
+
+### 6.2 Сценарий rule miss
+
+Последовательность:
+
+```text
+Data plane raises rule_miss?
+A_SDN.A_RULE enters RuleMiss
+A_SDN.A_POLICY evaluates admissibility
+A_SDN installs rule, drops with reason, or reports timeout
+A_SVC receives service impact if the flow belongs to an active service
+```
+
+Проверяемое свойство:
+
+```text
+A[] (RuleMiss imply eventually (RuleAcked or RuleDropReason or RuleTimeout))
+```
+
+### 6.3 Сценарий link failure
+
+Последовательность:
+
+```text
+A_ENV emits link_failure?
+A_SDN.A_REC enters FailureDetected
+A_SDN tries StandbySwitch or ReactiveReembedding
+If recovery fails, Rollback is attempted
+A_SVC receives degraded/rejected/failed outcome when SLA is affected
+```
+
+Проверяемое свойство:
+
+```text
+A[] (FailureDetected imply eventually (StableConfig or RecoveryFailed))
+A[] (RecoveryFailed imply failure_report_sent)
+```
+
+### 6.4 Сценарий resource conflict between communication and sensing
+
+Последовательность:
+
+```text
+A_MAC observes ResourceClass = RES_TIGHT or RES_EXHAUSTED
+A_MAC compares SensingDemand and CommDemand under SDN policy
+A_MAC applies SCH_JOINT, SCH_COMM, SCH_SENS, SCH_CONSTRAINED, or rejects
+A_SDN receives mac_report! if local scheduling cannot satisfy the contract
+```
+
+Проверяемое свойство:
+
+```text
+A[] not (RES_EXHAUSTED and silent_accept)
+A[] (resource_conflict imply eventually (joint_schedule or constrained_mode or explicit_reject or sdn_report))
+```
+
+## 7. Общие ограничения модели
+
+1. Обычные timed automata проверяют достижимость, дедлайны, отсутствие тупиков, согласованность переходов и bounded response. Они не дают вероятности событий, средние частоты потерь и математическое ожидание стоимости без расширений.
+
+2. Непрерывные величины PHY/MAC должны быть заранее сведены к конечным классам через alpha_PHY и alpha_MAC. Если этого нет, модель не является конечной и ее нельзя корректно проверить стандартными средствами.
+
+3. SDN/RIC в данной работе не является обучающимся или самооптимизирующимся агентом. Он представлен как контрактный автомат, выбирающий одну из конечных политик.
+
+4. Безопасность в основной версии не является самостоятельным фокусом. A_SEC допустим только как optional/extended automaton для внешних alert-событий и не должен расширять работу в сторону криптографической архитектуры.
+
+5. Dynamic timed automata следует применять ограниченно: для реконфигурации, замены абстрактного компонента детализированным, отключения порта, переключения на резерв или отката. Произвольная динамическая топология сделает модель плохо проверяемой.

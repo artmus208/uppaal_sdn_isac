@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "errors": [],
+  "warnings": [],
+  "details": {
+    "templates": {
+      "A_MON": {
+        "location_count": 5,
+        "distinct_location_coordinates": 5,
+        "label_count": 12
+      },
+      "A_RISK": {
+        "location_count": 4,
+        "distinct_location_coordinates": 4,
+        "label_count": 32
+      },
+      "A_POLICY": {
+        "location_count": 7,
+        "distinct_location_coordinates": 7,
+        "label_count": 25
+      },
+      "A_RULE": {
+        "location_count": 7,
+        "distinct_location_coordinates": 7,
+        "label_count": 21
+      },
+      "A_REC": {
+        "location_count": 6,
+        "distinct_location_coordinates": 6,
+        "label_count": 34
+      },
+      "A_SDN_AGG": {
+        "location_count": 5,
+        "distinct_location_coordinates": 5,
+        "label_count": 10
+      },
+      "A_ENV_SDN": {
+        "location_count": 1,
+        "distinct_location_coordinates": 1,
+        "label_count": 25
+      },
+      "ObsRuleMiss": {
+        "location_count": 3,
+        "distinct_location_coordinates": 3,
+        "label_count": 4
+      },
+      "ObsRecovery": {
+        "location_count": 3,
+        "distinct_location_coordinates": 3,
+        "label_count": 4
+      },
+      "ObsAdmission": {
+        "location_count": 3,
+        "distinct_location_coordinates": 3,
+        "label_count": 4
+      },
+      "ObsStaleTelemetry": {
+        "location_count": 2,
+        "distinct_location_coordinates": 2,
+        "label_count": 1
+      },
+      "ObsCommandAck": {
+        "location_count": 3,
+        "distinct_location_coordinates": 3,
+        "label_count": 4
+      },
+      "ObsSensingDecision": {
+        "location_count": 3,
+        "distinct_location_coordinates": 3,
+        "label_count": 4
+      }
+    }
+  }
+}

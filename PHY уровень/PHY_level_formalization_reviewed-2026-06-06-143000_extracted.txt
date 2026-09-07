@@ -1,0 +1,1075 @@
+
+
+=== PAGE 1 ===
+
+Формализация PHY-уровня в иерархической SDN-управляемой
+6G ISAC-сети
+Редакция после формальной рецензии
+6 июня 2026 г.
+Аннотация
+В статье формализуется физический уровень PHY (Physical Layer) для иерархической модели SDN-
+управляемой сети 6G ISAC, где SDN (Software-Defined Networking) используется для оркестрации ресурсов,
+а ISAC (Integrated Sensing and Communication) объединяет передачу данных и радиозондирование среды.
+Модель не является радиофизическим симулятором и не утверждает, что обычные временные автоматы
+вычисляютSINR,CRB,вероятностьобнаруженияилираспределениязадержек. ИзмеренныеPHY-величины
+и конфигурационные параметры сначала оцениваются внешним измерительным или аналитическим слоем,
+затем консервативно отображаются в конечные классы функцией абстракцииαP HY :X meas ×X cf g →X disc.
+Сеть PHY далее задается как композиция контрактных временных автоматов с явными часами, guards, re-
+sets, инвариантами, broadcast-уведомлениямиотчетов, handshake-командами, приоритетамиклассификации,
+environment-stub автоматами и observer-автоматами для bounded deadlines. Такая постановка позволяет
+проверять не радиофизику как таковую, а своевременную реакцию MAC/SDN на классифицированные
+деградации communication и sensing KPI.
+1 Назначение и границы модели
+Физический уровень в 6G ISAC-сети выполняет две связанные функции: обеспечивает передачу данных и
+формирует информацию о физической среде. В отличие от детального моделирования формы сигнала на
+уровне I/Q-отсчетов, в работе используется абстрактная автоматная модель. Ее задача состоит в том, чтобы
+передавать вышестоящим уровням конечный набор KPI (Key Performance Indicators) и событий деградации,
+пригодных для model checking.
+PHY-уровень не выбирает глобальную политику управления ресурсами. Выбор режима выполняется на
+уровнях MAC (Medium Access Control) и SDN. PHY применяет полученные конфигурации, классифицирует
+их последствия и формирует отчеты для контроллера. Поэтому статус модели следует понимать как
+абстрактную контрактную модель PHY для верификации реакций MAC/SDN на деградации ISAC-KPI,
+а не как полную радиофизическую модель 6G-канала.
+Обычные timed automata проверяют дискретную логику переходов во времени: достижимость,
+безопасность, отсутствие тупиков, соблюдение сроков и корректность синхронизации. Они не доказывают
+статистическое утверждение вида “истинная вероятность обнаружения больше 0.95”. Вместо этого
+проверяется условие вида: если внешний PHY-estimator классифицировалP dкакLOW, то автоматASQ
+обязан за заданный срок перейти в состояниеProbabilityLimitedи породить отчетsensing_report!.
+Литературнаябазавэтойредакцииоставленаточечно: signalingdesignдляISAC[1], SensCAPиcooperative
+sensing [2, 3], ISAC-enabled beam management [4], теория timed automata [5], семантика запросов UPPAAL
+[6] и пример применения формальной проверки к сетевой логике [7]. Такой набор привязан к используемым
+утверждениям и не подменяет формальную часть библиографическим перечислением.
+2 Архитектурное положение PHY
+Рассматриваемая сеть задается иерархией:
+Service/Application
+|
+v
+SDN control plane
+|
+1
+
+
+=== PAGE 2 ===
+
+v
+MAC/resource scheduling
+|
+v
+PHY abstraction layer
+|
+v
+Physical environment and external PHY estimators
+Сервисный уровень задает SLA: задержку, пропускную способность, надежность доставки, минимальную
+вероятность обнаружения, допустимую вероятность ложной тревоги, точность зондирования и допустимую
+давность информации. SDN-контроллер выбирает глобальную политику: разбиение ресурсов между связью
+и зондированием, маршрутизацию, восстановление и реконфигурацию. MAC-уровень реализует расписание
+радиоресурсов: плотностьпилотов, распределениесимволовполезнойнагрузки, мощность, MCS(Modulation
+and Coding Scheme) и команды формирования луча.
+PHY является нижним измерительно-оценочным слоем. Он наблюдает радиосреду через внешние оценки,
+классифицирует состояние сигнала, канала, луча и sensing quality, после чего формирует события для
+MAC/SDN. Агрегирующий автоматAP H получает не только отчетASQ, но и отдельные отчетыACH,
+ASIG иABM. Это устраняет архитектурную неоднозначность, при которойAP H использовал communica-
+tion degradation, но формально не имел входов от communication-компонентов.
+Physical environment / estimators
+| | |
+v v v
+A_CH ------> A_SIG ------> A_SQ
+| | |
+v v v
+channel_ signal_ sensing_
+report! report! report!
+\ | /
+\ | /
+v v v
+A_PH
+|
+v
+MAC and SDN control
+A_BM receives beam commands from MAC/SDN
+and publishes beam_report! to A_PH and A_SQ.
+Сигнальные технологии OFDM, OTFS и AFDM не задаются отдельными состояниями PHY. Они
+являются значениями дискретной переменнойWв автоматеASIG. СостоянияASIG описывают режим
+использования сигнала: pilot-based sensing, payload-assisted sensing, reconfiguration и degraded signal mode.
+Это предотвращает искусственное раздувание пространства состояний.
+3 Базовая модель контрактного timed automaton
+Каждый компонент PHY задается как контрактный временной автомат
+Ai = (Li, l0
+i , Ci, Vi, Ei, Invi, Ini, Outi, Assi, Gari),(1)
+гдеLi — конечное множество локаций,l0
+i — начальная локация,Ci — часы,Vi — конечные переменные,Ei
+— переходы,Invi — инварианты локаций,Ini иOuti — входные и выходные каналы,Assi — assumptions
+контракта,Gari — guarantees контракта.
+Переход имеет вид
+e= (l, g, a, r, u, l ′),(2)
+гдеl, l′ ∈L i,g— guard,a∈In i ∪Out i ∪ {τ}— действие синхронизации или внутреннее действие,r⊆Ci —
+множество сбрасываемых часов,u— обновление конечных переменных. Переход разрешен, если истинны
+guardgи инвариант целевой локации после обновленияuи сбросовr.
+Композиция закрытой проверяемой модели задается как синхронное произведение PHY-компонентов и
+абстрактной среды
+ASY S =A CH ∥ A SIG ∥ A BM ∥ A SQ ∥ A P H ∥ A EN V ,(3)
+2
+
+
+=== PAGE 3 ===
+
+гдеAEN V =A EN VCH ∥ A EN VT ARGET ∥ A EN VM AC ∥ A EN VN ET. Handshake-командыx!/x?синхронизируются
+бинарно по UPPAAL-подобной семантике, broadcast-отчеты и broadcast-события рассылаются всем готовым
+слушателям без перехвата, а внутренниеτ-переходы выполняются локально. Общие переменные записи
+отчетов обновляются только отправителем соответствующего отчета; остальные автоматы читают их после
+broadcast-уведомления.
+4 Абстракция непрерывной PHY-физики
+4.1 Измерительный слой, конфигурация и конечные классы
+Непрерывные величины не вычисляются внутри timed automata. Они принадлежат внешнему слою
+измерений, аналитических оценок или симуляции. Для связи используются
+SIN Rc = Sc
+Ic +N 0B ,(4)
+гдеSc — полезная мощность communication-сигнала,Ic — communication-интерференция,N0B— шумовая
+мощность в полосеB.
+Для зондирования используется отдельная величина
+SIN Rs = Ss
+Ic→s +I self +I mutual +N s
+,(5)
+гдеSs — полезная sensing-компонента,Ic→s — интерференция communication-сигнала в sensing-тракте,Iself
+— собственная интерференция,Imutual — взаимная интерференция между sensing-узлами,Ns — шум sensing-
+приемника. Чтобы не смешивать физические измерения и дискретные настройки MAC/SDN, вход estimator-
+слоя разделяется на измерительный вектор и конфигурационный вектор:
+xmeas
+P HY = (Pt, Pr, Sc, Ss, N0, Ns, Ic, Ic→s, Iself , Imutual, Lp, στ , fD,
+B, fc,∆f, ϵ b, pmis,Ω BM , P d, Rf a, Accr, Accv,
+CRB R, CRBv, CRBθ, Cs, AoSBS , AoSCT RL, Acov),
+xcf g
+P HY = (M CS, W, ρp, κDRT , ψcs, ψps, θb, Gb, nB,
+τSSB , TSSB , TP RS, N P RS
+RE , δP RS, St, Sf , Ts, γdet).
+(6)
+Если часть величин не измеряется напрямую, она считается производной от измеренных параметров
+внешнего estimator-слоя. В любом случае конечная автоматная модель получает не вещественные значения
+изxmeas
+P HY и не сырые настройки изxcf g
+P HY, а только конечные классы изXdisc. Поэтому guards автоматов
+далее задаются по class-переменным, а формулы сSIN R,P d,Rf a,CRB,ϵb иΩBM остаются на стороне
+estimator/score-слоя.
+4.2 Функция дискретизации
+Формальный мост между PHY-оценками, конфигурацией и timed automata задается функцией
+αP HY :X meas ×X cf g →X disc.(7)
+Ее результатом является набор bounded int или enum-переменных:
+Xdisc ={SIN RClass, BLERClass, CQIClass, IClass, DopplerClass, DelaySpreadClass, P owerClass,
+DRT Class, P ilotDensityClass, P ayloadSenseClass, P RSClass, BeamErrorClass, BlockageClass,
+P dClass, Rf aClass, AccClass, CRBClass, AoSClass, CapClass, CoverageClass,
+ResourceShareClass, M isClass, BM OverheadClass, ChannelClass, SignalClass, BeamClass,
+SensingState, P HY State}.
+(8)
+Для communication SINR используется, например, следующая классификация:
+SIN RClass=
+
+
+
+OUTAGE, SIN R c < SIN R out,
+LOW, SIN R out ≤SIN R c < SIN R min,
+OK, SIN R min ≤SIN R c < SIN R high,
+HIGH, SIN R c ≥SIN R high.
+(9)
+3
+
+
+=== PAGE 4 ===
+
+Аналогично задаются классы:
+BLERClass∈ {OK,HIGH,CRITICAL},(10)
+CQIClass∈ {GOOD,LIMITED,BAD},(11)
+IClass∈ {OK,HIGH,CRITICAL},(12)
+DopplerClass∈ {OK,HIGH},(13)
+DelaySpreadClass∈ {OK,HIGH},(14)
+P owerClass∈ {OK,LOW,ABSENT},(15)
+DRT Class∈ {OK,BAD},(16)
+P ilotDensityClass∈ {OK,LOW,FAILED},(17)
+P ayloadSenseClass∈ {OK,LIMITED,FAILED},(18)
+P RSClass∈ {OK,LIMITED,FAILED},(19)
+BeamErrorClass∈ {LOCKABLE,UNSTABLE,CRITICAL},(20)
+BlockageClass∈ {NONE,SUSPECTED,CONFIRMED},(21)
+P dClass∈ {OK,LOW,FAILED},(22)
+Rf aClass∈ {OK,HIGH,CRITICAL},(23)
+AccClass∈ {OK,LIMITED,FAILED},(24)
+CRBClass∈ {OK,LOOSE,UNUSABLE},(25)
+AoSClass∈ {FRESH,STALE,EXPIRED},(26)
+CapClass∈ {OK,LIMITED,FAILED},(27)
+CoverageClass∈ {OK,LIMITED,FAILED},(28)
+ResourceShareClass∈ {OK,LIMITED,STARVED},(29)
+M isClass∈ {OK,WARN,CRITICAL},(30)
+BM OverheadClass∈ {OK,HIGH,EXCESSIVE},(31)
+ChannelClass∈ {NOMINAL,INTERFERENCE_LIMITED,MOBILITY_LIMITED,(32)
+MULTIPATH_LIMITED,BLOCKAGE,OUTAGE},(33)
+SignalClass∈ {NOMINAL,PILOT_BASED,PAYLOAD_ASSISTED,(34)
+RECONFIGURING,LIMITED},(35)
+BeamClass∈ {SEARCH,TRACK,LOCKED,PREDICT,(36)
+MISALIGNED,RECOVERING,HO_ASSIST,FAILED},(37)
+SensingState∈ {SensingQoSOk,ProbabilityLimited,FalseAlarmLimited,(38)
+AccuracyLimited,FreshnessLimited,CoverageLimited,(39)
+CapacityLimited,SensingFailure},(40)
+P HY State∈ {PHYNormal,PHYCommunicationDegraded,(41)
+PHYSensingDegraded,PHYJointDegraded,(42)
+PHYRecovery,PHYFailure}.(43)
+ДлявероятностныхистатистическихKPIсемантикаследующая:P d,Rf a,pmis иCRBявляютсяоценками
+estimator-слоя за окно наблюдения, а не вероятностями, доказанными внутри timed automata. Automata
+проверяют реакцию на классы этих оценок.
+4.3 Soundness и консервативность абстракции
+Абстракция выбирается как консервативная over-approximation относительно safety-свойств. Пограничные
+и неопределенные случаи относятся к худшему из соседних классов:
+αP HY (x∈boundary(C good, Cbad)) =C bad.(44)
+Например, приSIN Rc =SIN R min и наличии неопределенности измерения∆SIN Rзначение
+классифицируется какLOW, если нижняя граница доверительного интервала попадает ниже порога. Более
+строго это задается отношением конкретизации
+R⊆(X meas ×X cf g)×X disc,(45)
+где(x, d)∈Rозначает, что дискретный классdпокрывает все допустимые estimator-значения и
+неопределенности дляx. Утверждение о сохранении safety-свойств далее не используется как доказанная
+4
+
+
+=== PAGE 5 ===
+
+теорема автоматически: оно предполагает корректную калибровкуαP HY, включение пограничных случаев
+в худшие классы и покрытие всех concrete transitions соответствующими abstract transitions относительно
+проверяемыхatomicpropositions. Еслиmodelcheckerнаходитcounterexample, онможетбытьлибофизически
+реализуемым сценарием, либо артефактом грубой over-approximation; поэтому counterexample должен
+проверяться обратным воспроизведением на estimator-слое или симуляторе.
+5 Семантика assume–guarantee контрактов
+Контракт автоматаAi трактуется не как описательная таблица, а как условное обязательство:
+Ai |=Ass i ⇒Gar i.(46)
+Если assumptions выполняются, автомат обязан выполнить guarantees в указанных временных границах.
+Если assumption нарушается, автомат публикует соответствующее диагностическое событие из семейства
+contract_violation_ch!,contract_violation_sig!,contract_violation_bm!,contract_violation_sq!,
+contract_violation_ph!и переходит в диагностическую локациюContractViolation_i; guarantees после
+этого не используются как основание для доказательства свойств композиции.
+Для исполнимой UPPAAL-подобной модели обозначенияAssi иGari не являются мета-переменными. Они
+реализуются как конкретные boolean-предикаты над clocks, class-переменными и состояниями environment-
+stub автоматов. Например,Ass_CHозначает, чтоENV_CHпубликуетmeasure_tick!не режеTmeas +
+Jmeas, а все estimator-классы принадлежат объявленным enum-диапазонам;Gar_CHозначает, что после
+каждого принятогоmeasure_tick?доDmeas публикуетсяchannel_report!и обновляетсяChannelClass.
+АналогичноAss_SQ,Gar_SQ,Ass_PHиGar_PHзадаются как проверяемые условия, а не как свободные
+математические ярлыки.
+Композиция корректна, если гарантии поставщика закрывают assumptions потребителя:
+GarCH ⇒Ass SQ, Gar SIG ⇒Ass SQ, Gar BM ⇒Ass SQ,(47)
+GarCH ∧Gar SIG ∧Gar BM ∧Gar SQ ⇒Ass P H, Gar P H ⇒Ass M AC/SDN .(48)
+АвтоматAssumptions Guarantees
+ACH MeasurementsP r, Ic, στ , fD, SIN Rc
+обновляются не режеTmeas; estimator
+возвращает конечные классы.
+ЗаD meas послеmeasure_tick?
+публикуетсяchannel_report!;
+ChannelClassвыбирается по приоритету
+prioCH.
+ASIG MAC/SDN задают допустимые
+W, ρp, M CS, κDRT , ψcs, ψps, а estimator
+возвращаетPilotDensityClass,DRTClass
+иPayloadSenseClass.
+ЗаDsig после конфигурационной команды
+публикуетсяsignal_report!; нарушение
+DRT или BLER переводит автомат в
+SignalLimited.
+ABM Команды луча и SSB/PRS-конфигурации
+конечны;beam_cmd?доставляется за
+Dcmd.
+beam_report!публикуется в каждом
+окне; misalignment порождает
+beam_misaligned!заD BM; неуспешное
+recovery приcrec =D BM порождает
+beam_failure!.
+ASQ На вход поступают свежие
+channel_report?,signal_report?и
+beam_report?.
+ЗаDsense публикуетсяsensing_report!;
+SensingStateвыбирается по приоритету
+prioSQ.
+AP H Все дочерние отчеты доставляются за
+Dchild; clocksaos bs,aos ctrl корректно
+сбрасываются.
+ЗаDreport после деградации публикуется
+phy_kpi_report!; агрегированное
+состояние отражает communication и
+sensing classes.
+6 Operational semantics
+6.1 Часы и resets
+Набор clocks делится на локальные clocks дочерних автоматов и observer clocks. Минимальный набор для
+проверяемой модели:
+5
+
+
+=== PAGE 6 ===
+
+Clock Смысл Reset
+cmeas возраст последнего channel measurementmeasure_tick?,channel_report!
+csig длительность применения signal configura-
+tion
+waveform_config?,
+pilot_config?,signal_report!
+csense время вычисления sensing state из входных
+классов
+channel_report?,
+signal_report?,beam_report?,
+sensing_report!
+creport возраст агрегированного PHY-отчетаphy_kpi_report!
+crec длительность beam recovery вход вBeamRecover
+cssb длительность очередного SSB/beam-search
+окна
+вход вBeamSearchили команда
+ssb_burst_config?
+aosbs локальная давность sensing-информации на
+BS
+sensing_success!
+aosctrl давность sensing-информации у SDN-
+контроллера
+доставка отчета контроллеру
+cobs clock observer-автоматов для deadlinesвход observer в состояние
+ожидания
+Основные инварианты:
+Inv(MeasurePending) :c meas ≤T meas +J meas,(49)
+Inv(SignalReconfiguring) :c sig ≤D sig,(50)
+Inv(SensingEvaluating) :c sense ≤D sense,(51)
+Inv(PHYKpiReporting) :c report ≤D report,(52)
+Inv(BeamRecover) :c rec ≤D BM .(53)
+6.2 Синхронизационные каналы
+Каналы разделяются на бинарные handshake-команды среды и broadcast-уведомления отчетов/событий.
+Это важно для UPPAAL-семантики: один обычный handshakex!синхронизируется только с одним
+x?, тогда как отчетыACH,A SIG,A BM,A SQ иAP H одновременно нужны нескольким потребителям и
+observer-автоматам. Поэтому report/event channels объявляются какbroadcast chan; shared report variables
+обновляютсяотправителемпередпубликацией, аполучателитолькочитаютихпослеbroadcast-уведомления.
+Handshake input from environment, MAC and SDN:
+chan measure_tick, pilot_config, prs_config, ssb_burst_config;
+chan waveform_config, payload_sensing_config, beam_cmd;
+chan extra_ssb_cmd, handover_assist_cmd, power_cmd;
+chan sensing_mode_cmd, recovery_cmd, new_beam_confirmed;
+chan mac_report_delivered, controller_report_delivered;
+Broadcast report notifications:
+broadcast chan channel_report, signal_report, beam_report;
+broadcast chan sensing_report, phy_kpi_report;
+Broadcast degradation, recovery and diagnostic events:
+broadcast chan channel_degraded, signal_degraded, beam_misaligned;
+broadcast chan beam_failure, sensing_degraded, phy_outage;
+broadcast chan degradation_event, recovery_event, mobility_alert;
+broadcast chan multipath_alert, blockage_detected, beam_locked;
+broadcast chan beam_restored, handover_hint, sensing_failure;
+broadcast chan phy_failure, sensing_success, aos_ctrl_expired;
+broadcast chan recovery_start, target_detected;
+broadcast chan contract_violation_ch, contract_violation_sig;
+broadcast chan contract_violation_bm, contract_violation_sq;
+broadcast chan contract_violation_ph;
+В таблицах ниже суффиксы!/?сохраняют направление использования канала. Для broadcast-
+канала записьchannel_report!означает публикацию уведомления, которое не блокируется отсутствием
+6
+
+
+=== PAGE 7 ===
+
+получателя; записьchannel_report?вASQ,A P H или observer означает пассивное получение того
+же уведомления без перехвата события у другого потребителя. Для handshake-команд, напротив,
+recovery_cmd!/recovery_cmd?выполняются парно между environment-stub и соответствующим автоматом.
+ASQ использует broadcast-отчетыACH,A SIG иA BM, поскольку sensing quality зависит от канала,
+сигнальной конфигурации и качества сопровождения луча.
+6.3 Шаблон перехода
+Типовой переход report-автомата имеет одно действие синхронизации. Если нужны и событие деградации,
+и отчет, используются две последовательные дуги через committed/urgent report-pending локацию либо
+одно событиеreport!, в payload которого уже закодирован обновленный класс. В основной спецификации
+выбран второй вариант: degradation flags являются shared boolean/class fields внутри отчета, а отдельные
+событияchannel_degraded!,sensing_degraded!используются только там, где они показаны как отдельные
+переходы. Типовой переход имеет вид
+(l, c≤D∧class=k, report!,{c}, last_class:=k, l ′).(54)
+Если deadline истекает без публикации отчета, observer переходит в violation. Это важно: UPPAAL-запрос
+p−−> qявляетсяunboundedleads-toинезадаетдедлайнсампосебе. Boundedresponseзадаетсяотдельным
+clock или observer-автоматом.
+6.4 Абстрактная среда и закрытая модель
+Для проверкиA[] not deadlock, reachability и deadline-свойств модель должна быть закрыта. Внешние
+входы поэтому задаются не неявно, а environment-stub автоматами с недетерминированным, но
+ограниченным поведением:
+ENV_CH:
+TickWait -- c_env <= T_meas + J_meas / measure_tick! --> TickWait
+update: estimator classes are refreshed before measure_tick!
+ENV_TARGET:
+nondeterministically updates PRSClass, BeamErrorClass,
+BlockageClass and emits target_detected! when a target is visible.
+ENV_MAC:
+emits pilot_config!, waveform_config!, recovery_cmd!,
+extra_ssb_cmd! and new_beam_confirmed! under admissible configs.
+ENV_NET:
+delivers mac_report_delivered! and controller_report_delivered!
+within bounded network delay D_net.
+Если эти автоматы не включены в композицию, спецификация трактуется как open-system contract, а
+свойства формулируются условно: они должны выполняться только приAss_ENV, то есть при соблюдении
+ограничений на частоту измерений, доставку команд, обновление estimator-классов и сетевые задержки.
+7 Автоматы PHY
+7.1 Автомат канала A_CH
+ACH классифицирует состояние канала по дискретным классам, а не по конкурирующим вещественным
+условиям. Чтобы избежать недетерминизма при одновременном выполнении нескольких условий, вводится
+приоритет:
+prioCH :Outage>Blockage>InterferenceLimited>
+MobilityLimited>MultipathLimited>ChannelNominal. (55)
+Функция классификации задается явно:
+ChannelClass=highest_priority_CH(SIN RClass, P owerClass, IClass, DopplerClass, DelaySpreadClass),
+(56)
+гдеOUTAGEвыбирается приSIN RClass=OUTAGE,BLOCKAGE— приP owerClass∈ {LOW,ABSENT}без
+более приоритетного outage,INTERFERENCE_LIMITED— приIClass∈ {HIGH,CRITICAL}без outage/blockage,
+7
+
+
+=== PAGE 8 ===
+
+далее поDopplerClassиDelaySpreadClass. Если estimator одновременно возвращаетIClass=CRITICAL,
+P owerClass=LOWиSIN RClass=OUTAGE, выбираетсяOUTAGE; вещественныеIc иPr в guards автомата не
+используются.
+Локация Guard с учетомprioCH Output / update
+ChannelNominal SIN RClass∈ {OK,HIGH}и нет более
+приоритетных нарушений
+channel_report!,
+ChannelClass:=NOMINAL
+InterferenceLimited IClass∈ {HIGH,CRITICAL}и нет
+Outage,Blockage
+channel_report!,
+ChannelClass:=
+INTERFERENCE_LIMITED
+MobilityLimited DopplerClass=HIGHи нет более
+приоритетных нарушений
+channel_report!,
+ChannelClass:=
+MOBILITY_LIMITED
+MultipathLimited DelaySpreadClass=HIGHи нет более
+приоритетных нарушений
+channel_report!,
+ChannelClass:=
+MULTIPATH_LIMITED
+Blockage P owerClass∈ {LOW,ABSENT}и
+SIN RClass̸=OUTAGE
+channel_report!,
+ChannelClass:=BLOCKAGE
+Outage SIN RClass=OUTAGE channel_report!,
+ChannelClass:=OUTAGE
+Явная схема переходовECH отделяет прием измерения от публикации отчета:
+Any -- measure_tick? / c_meas := 0 --> MeasurePending
+MeasurePending -- guard: ChannelClass’ == NOMINAL
+sync: channel_report!
+update: ChannelClass := NOMINAL, channel_degraded_flag := false,
+c_meas := 0 --> ChannelNominal
+MeasurePending -- guard: ChannelClass’ == INTERFERENCE_LIMITED
+sync: channel_report!
+update: ChannelClass := INTERFERENCE_LIMITED,
+channel_degraded_flag := true, c_meas := 0 --> InterferenceLimited
+MeasurePending -- guard: ChannelClass’ == MOBILITY_LIMITED
+sync: channel_report!
+update: ChannelClass := MOBILITY_LIMITED,
+channel_degraded_flag := true, c_meas := 0 --> MobilityLimited
+MeasurePending -- guard: ChannelClass’ == MULTIPATH_LIMITED
+sync: channel_report!
+update: ChannelClass := MULTIPATH_LIMITED,
+channel_degraded_flag := true, c_meas := 0 --> MultipathLimited
+MeasurePending -- guard: ChannelClass’ == BLOCKAGE
+sync: channel_report!
+update: ChannelClass := BLOCKAGE,
+channel_degraded_flag := true, c_meas := 0 --> Blockage
+MeasurePending -- guard: ChannelClass’ == OUTAGE
+sync: channel_report!
+update: ChannelClass := OUTAGE,
+channel_degraded_flag := true, c_meas := 0 --> Outage
+ЗдесьChannelClass’обозначает результат функцииhighest_priority_CHна свежих class-входах.
+Если требуется отдельный observable alert, он отправляется отдельной последующей broadcast-дугой
+из соответствующей локации, напримерOutage – phy_outage! –> Outage; она не совмещается с
+channel_report!на одном edge.
+7.2 Автомат сигнальной конфигурации A_SIG
+Переменная waveform остается конечной переменной
+W∈ {OFDM,OTFS,AFDM,SC,OTHER}.(57)
+ЛокацииASIG описывают не waveform, а режим эксплуатации сигнала.
+8
+
+
+=== PAGE 9 ===
+
+Локация Guard / invariant Output / transition
+SignalNominal BLERClass=OK,DRT Class=OK signal_report!,
+SignalClass:=NOMINAL;
+приP ilotDensityClass=OK
+возможен переход в
+PilotBasedSensing
+PilotBasedSensing P ilotDensityClass=OK;c sig ≤D sig signal_report!,
+SignalClass:=PILOT_BASED;
+приP ilotDensityClass=LOW
+иP ayloadSenseClass̸=
+FAILEDпереход в
+PayloadAssistedSensing
+PayloadAssistedSensing P ayloadSenseClass̸=FAILED signal_report!,
+SignalClass:=
+PAYLOAD_ASSISTED; при
+DRT Class=BADили
+BLERClass̸=OKпереход
+вSignalLimited
+SignalReconfiguring полученаwaveform_config?или
+pilot_config?;c sig ≤D sig
+signal_report!,
+SignalClass:=RECONFIGURING,
+csig := 0
+SignalLimited BLERClass∈ {HIGH,CRITICAL}
+илиDRT Class=BADили
+P ayloadSenseClass=FAILED
+signal_report!,
+SignalClass:=LIMITED;
+ожидание реконфигурации
+MAC/SDN
+Явная схема переходовESIG:
+Any -- waveform_config? / c_sig := 0 --> SignalReconfiguring
+Any -- pilot_config? / c_sig := 0 --> SignalReconfiguring
+Any -- payload_sensing_config? / c_sig := 0 --> SignalReconfiguring
+SignalReconfiguring -- c_sig <= D_sig
+sync: signal_report!
+update: SignalClass := RECONFIGURING, c_sig := 0 --> SignalNominal
+SignalNominal -- PilotDensityClass == OK && BLERClass == OK && DRTClass == OK
+sync: signal_report!
+update: SignalClass := PILOT_BASED, c_sig := 0 --> PilotBasedSensing
+PilotBasedSensing -- PilotDensityClass == LOW && PayloadSenseClass != FAILED
+sync: signal_report!
+update: SignalClass := PAYLOAD_ASSISTED, c_sig := 0 --> PayloadAssistedSensing
+Any -- BLERClass in {HIGH, CRITICAL} || DRTClass == BAD
+|| PayloadSenseClass == FAILED
+sync: signal_report!
+update: SignalClass := LIMITED, signal_degraded_flag := true,
+c_sig := 0 --> SignalLimited
+SignalLimited -- waveform_config? / c_sig := 0 --> SignalReconfiguring
+Отдельное событиеsignal_degraded!при необходимости выводится отдельной broadcast-дугой из
+SignalLimited; оно не совмещается сsignal_report!на том же переходе.
+7.3 Автомат beam management A_BM
+ABM описываетначальныйпоискнаправления, сопровождениецели, фиксациюузкоголуча, прогнозвыхода
+целизаграницулуча, восстановлениенаправленияипомощьhandover. Онневычисляетоптимальныйbeam-
+forming vector; соответствующая оптимизация остается вне timed automata. Автомат получает конечные
+классыM isClass,BlockageClass,P RSClassиBM OverheadClass, публикуя события для MAC/SDN.
+Классификация рассогласования задается как
+M isClass=
+
+
+
+OK, p mis ≤p warn
+mis ,
+WARN, p warn
+mis < p mis ≤p max
+mis ,
+CRITICAL, p mis > p max
+mis .
+(58)
+9
+
+
+=== PAGE 10 ===
+
+Класс накладных расходов получается из
+ΩBM = min
+
+1, NSSB TSSB +N P RSTP RS +T ctrl +T report
+Tf rame
+
+.(59)
+Ключевая правка касается recovery-deadline. В локацииBeamRecoverдействует инвариантcrec ≤D BM.
+Поэтому переход вBeamFailedне может иметь guardcrec > D BM, так как такое состояние времени
+недостижимо. Корректный guard задается только через clock и классы:
+BeamRecover
+crec=DBM ∧BeamErrorClass̸=LOCKABLE∧BlockageClass̸=CONFIRMED/ beam_f ailure!
+− − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − − →BeamFailed.(60)
+Локация Guard / invariant Output / transition
+BeamSearch широкое сканирование SSB;cssb ≤τ SSB +
+JSSB
+приtarget_detected?
+иP RSClass̸=FAILED:
+BeamClass:=TRACK, переход в
+BeamTrack
+BeamTrack PRS-оценка положения и скоростиприBeamErrorClass=
+LOCKABLE:BeamClass:=
+LOCKED, переход вBeamLock;
+приAccClass=FAILEDили
+BeamErrorClass=CRITICAL:
+BeamClass:=MISALIGNED
+BeamLock M isClass=OK beam_report!,BeamClass:=
+LOCKED; приM isClass=WARN
+илиBlockageClass=SUSPECTED
+переход вBeamPredict
+BeamPredict прогноз выхода цели за границу луча или
+блокировки
+приextra_ssb_cmd?переход в
+BeamRecover,c rec := 0
+BeamMisalign M isClass=CRITICALили
+BeamErrorClass=CRITICAL
+beam_misaligned!; затем
+переход вBeamRecover,crec := 0,
+BeamClass:=RECOVERING
+BeamRecover crec ≤D BM success:BeamErrorClass=
+LOCKABLE,beam_restored!,
+BeamLock; blockage:
+BlockageClass=CONFIRMED,
+handover_hint!,BeamHOAssist;
+timeout:c rec =D BM,
+beam_failure!
+BeamHOAssist требуется помощь handover приnew_beam_confirmed?
+переход вBeamTrack
+BeamFailed recovery не завершен в срок ожиданиеrecovery_cmd?или
+новой MAC/SDN-конфигурации
+Явная схема переходовEBM использует один sync на каждой дуге:
+Any -- beam_cmd? / BeamClass := SEARCH, c_ssb := 0 --> BeamSearch
+BeamSearch -- target_detected? / target_seen := true --> BeamSearchSeen
+BeamSearchSeen -- PRSClass != FAILED
+sync: beam_report!
+update: BeamClass := TRACK --> BeamTrack
+BeamTrack -- BeamErrorClass == LOCKABLE
+sync: beam_report!
+update: BeamClass := LOCKED --> BeamLock
+BeamTrack -- AccClass == FAILED || BeamErrorClass == CRITICAL
+sync: beam_report!
+update: BeamClass := MISALIGNED, beam_degraded_flag := true --> BeamMisalign
+BeamLock -- MisClass == OK
+sync: beam_report!
+update: BeamClass := LOCKED --> BeamLock
+BeamLock -- MisClass == WARN || BlockageClass == SUSPECTED
+10
+
+
+=== PAGE 11 ===
+
+sync: beam_report!
+update: BeamClass := PREDICT --> BeamPredict
+BeamPredict -- extra_ssb_cmd? / c_rec := 0 --> BeamRecoveryStart
+BeamRecoveryStart -- recovery_start!
+update: BeamClass := RECOVERING --> BeamRecover
+BeamMisalign -- beam_misaligned! --> BeamRecoveryStart
+BeamRecover -- BeamErrorClass == LOCKABLE && c_rec <= D_BM
+sync: beam_restored!
+update: BeamClass := LOCKED --> BeamLock
+BeamRecover -- BlockageClass == CONFIRMED && c_rec <= D_BM
+sync: handover_hint!
+update: BeamClass := HO_ASSIST --> BeamHOAssist
+BeamRecover -- c_rec == D_BM && BeamErrorClass != LOCKABLE
+&& BlockageClass != CONFIRMED
+sync: beam_failure!
+update: BeamClass := FAILED --> BeamFailed
+BeamHOAssist -- new_beam_confirmed? / BeamClass := TRACK --> BeamTrack
+BeamFailed -- recovery_cmd? / BeamClass := RECOVERING,
+c_rec := 0 --> BeamRecover
+Периодическийbeam_report!может публиковаться изBeamRecover,BeamHOAssistиBeamFailed
+отдельными self-loop переходами с единственным syncbeam_report!; observer recovery слушает outcome-
+событияbeam_restored!,handover_hint!иbeam_failure!, а не перехватываетbeam_report!.
+КонтрактABM в проверяемой форме:
+Assume:
+n_B is finite;
+SSB/PRS configuration is admissible;
+beam_cmd? is delivered within D_cmd.
+Guarantee:
+if MisClass = CRITICAL then beam_misaligned! is emitted within D_BM;
+if BeamRecover is entered then exactly one of
+beam_restored!, handover_hint!, beam_failure!
+is emitted not later than c_rec = D_BM;
+Omega_BM and BMOverheadClass are included in every beam_report!.
+7.4 Автомат качества зондирования A_SQ
+ASQ получаетchannel_report?,signal_report?иbeam_report?, затем вычисляет конечное состояние
+sensing quality. Все guards задаются по классам, а не по вещественнымP d,Rf a,Accr,Acc v, CRB илиCs.
+prioSQ :SensingFailure>FreshnessLimited>AccuracyLimited>
+ProbabilityLimited>FalseAlarmLimited>CapacityLimited>
+CoverageLimited>SensingQoSOk.
+(61)
+Локация Guard по классам Output / update
+SensingQoSOk все sensing-классы равныOK/FRESHи нет
+более приоритетных нарушений
+sensing_report!,
+SensingState:=
+SensingQoSOk
+ProbabilityLimited P dClass=LOWи нет более приоритетных
+нарушений
+sensing_report!,
+SensingState:=
+ProbabilityLimited
+FalseAlarmLimited Rf aClass=HIGHи нет более приоритетных
+нарушений
+sensing_report!,
+SensingState:=
+FalseAlarmLimited
+AccuracyLimited AccClass=LIMITEDилиCRBClass=LOOSE sensing_report!,
+SensingState:=
+AccuracyLimited
+11
+
+
+=== PAGE 12 ===
+
+FreshnessLimited AoSClass=STALEи нетSensingFailure sensing_report!,
+SensingState:=
+FreshnessLimited
+CoverageLimited CoverageClass=LIMITEDи нет более
+приоритетных нарушений
+sensing_report!,
+SensingState:=
+CoverageLimited
+CapacityLimited CapClass=LIMITEDи нет более
+приоритетных нарушений
+sensing_report!,
+SensingState:=
+CapacityLimited
+SensingFailure P dClass=FAILEDилиRf aClass=CRITICAL
+илиAccClass=FAILEDилиCRBClass=
+UNUSABLEилиAoSClass=EXPIREDили
+CapClass=FAILEDилиCoverageClass=
+FAILEDилиBeamClass=FAILED
+sensing_report!,
+SensingState:=
+SensingFailure
+Детерминированность классификации проверяется счетчиком enabled-guards или явной функцией:
+SensingState=highest_priority_SQ(P dClass, Rf aClass, AccClass, CRBClass,
+AoSClass, CapClass, CoverageClass, BeamClass). (62)
+Явная схема переходовESQ:
+Idle -- channel_report? / input_changed := true, c_sense := 0 --> SensingEvaluating
+Idle -- signal_report? / input_changed := true, c_sense := 0 --> SensingEvaluating
+Idle -- beam_report? / input_changed := true, c_sense := 0 --> SensingEvaluating
+SensingEvaluating -- guard: SensingState’ == SensingQoSOk
+sync: sensing_report!
+update: SensingState := SensingQoSOk,
+sensing_degraded_flag := false, c_sense := 0 --> SensingQoSOk
+SensingEvaluating -- guard: SensingState’ == ProbabilityLimited
+sync: sensing_report!
+update: SensingState := ProbabilityLimited,
+sensing_degraded_flag := true, c_sense := 0 --> ProbabilityLimited
+SensingEvaluating -- guard: SensingState’ == FalseAlarmLimited
+sync: sensing_report!
+update: SensingState := FalseAlarmLimited,
+sensing_degraded_flag := true, c_sense := 0 --> FalseAlarmLimited
+SensingEvaluating -- guard: SensingState’ == AccuracyLimited
+sync: sensing_report!
+update: SensingState := AccuracyLimited,
+sensing_degraded_flag := true, c_sense := 0 --> AccuracyLimited
+SensingEvaluating -- guard: SensingState’ == FreshnessLimited
+sync: sensing_report!
+update: SensingState := FreshnessLimited,
+sensing_degraded_flag := true, c_sense := 0 --> FreshnessLimited
+SensingEvaluating -- guard: SensingState’ == CoverageLimited
+sync: sensing_report!
+update: SensingState := CoverageLimited,
+sensing_degraded_flag := true, c_sense := 0 --> CoverageLimited
+SensingEvaluating -- guard: SensingState’ == CapacityLimited
+sync: sensing_report!
+update: SensingState := CapacityLimited,
+sensing_degraded_flag := true, c_sense := 0 --> CapacityLimited
+SensingEvaluating -- guard: SensingState’ == SensingFailure
+sync: sensing_report!
+update: SensingState := SensingFailure,
+sensing_failure_flag := true, c_sense := 0 --> SensingFailure
+ЗдесьSensingState’— результат функцииhighest_priority_SQ. Broadcast-событияsensing_degraded!
+иsensing_failure!могут публиковаться отдельными self-loop переходами после обновления флагов;
+основной отчет остается единственным sync на report-edge.
+12
+
+
+=== PAGE 13 ===
+
+7.5 Агрегирующий автомат A_PH
+AP H поддерживает две независимые булевы переменные:
+comm_ok≡(ChannelClass∈ {NOMINAL,INTERFERENCE_LIMITED} ∨(63)
+ChannelClass∈ {MOBILITY_LIMITED,MULTIPATH_LIMITED})∧(64)
+SignalClass̸=LIMITED∧BeamClass /∈ {FAILED,MISALIGNED},(65)
+sensing_qos_ok≡SensingState=SensingQoSOk.(66)
+Эти переменные обновляются только после broadcast-уведомленийchannel_report?,signal_report?,
+beam_report?иsensing_report?. Агрегированная переменнаяPHYStateобновляется толькоAP H, чтобы
+остальные автоматы читали единый источник истины.
+Локация Guard Output / transition
+PHYNormal comm_ok∧sensing_qos_ok phy_kpi_report!,
+P HY State:=PHYNormal
+PHYCommunicationDegraded ¬comm_ok∧sensing_qos_ok phy_kpi_report!,
+P HY State:=
+PHYCommunicationDegraded
+PHYSensingDegraded comm_ok∧ ¬sensing_qos_ok phy_kpi_report!,
+P HY State:=
+PHYSensingDegraded
+PHYJointDegraded ¬comm_ok∧ ¬sensing_qos_ok phy_kpi_report!,
+P HY State:=
+PHYJointDegraded
+PHYKpiReporting истекTreport или получено событие
+деградации;creport ≤D report
+публикация
+phy_kpi_report!,
+creport := 0
+PHYRecovery полученаrecovery_cmd? P HY State:=
+PHYRecovery; при
+восстановлении классов
+переход вPHYNormal;
+иначе deadline observer
+фиксирует нарушение
+PHYFailure критический отказ канала, луча или
+sensing-функции
+phy_failure!,
+P HY State:=PHYFailure;
+ожидание внешней
+реконфигурации
+Явная схема переходовEP H:
+Any -- channel_report? / child_update := true, c_report := 0 --> PHYKpiReporting
+Any -- signal_report? / child_update := true, c_report := 0 --> PHYKpiReporting
+Any -- beam_report? / child_update := true, c_report := 0 --> PHYKpiReporting
+Any -- sensing_report? / child_update := true, c_report := 0 --> PHYKpiReporting
+PHYKpiReporting -- comm_ok && sensing_qos_ok && c_report <= D_report
+sync: phy_kpi_report!
+update: PHYState := PHYNormal, c_report := 0 --> PHYNormal
+PHYKpiReporting -- !comm_ok && sensing_qos_ok && c_report <= D_report
+sync: phy_kpi_report!
+update: PHYState := PHYCommunicationDegraded,
+degradation_flag := true, c_report := 0 --> PHYCommunicationDegraded
+PHYKpiReporting -- comm_ok && !sensing_qos_ok && c_report <= D_report
+sync: phy_kpi_report!
+update: PHYState := PHYSensingDegraded,
+degradation_flag := true, c_report := 0 --> PHYSensingDegraded
+PHYKpiReporting -- !comm_ok && !sensing_qos_ok && c_report <= D_report
+sync: phy_kpi_report!
+update: PHYState := PHYJointDegraded,
+degradation_flag := true, c_report := 0 --> PHYJointDegraded
+Any -- recovery_cmd? / PHYState := PHYRecovery --> PHYRecovery
+13
+
+
+=== PAGE 14 ===
+
+Any -- ChannelClass == OUTAGE || BeamClass == FAILED
+|| SensingState == SensingFailure
+sync: phy_failure!
+update: PHYState := PHYFailure --> PHYFailure
+Если нужен отдельныйdegradation_event!, он публикуется дополнительным broadcast self-loop после
+установкиdegradation_flag; основной KPI-отчет остается единственным sync на переходеAP H.
+8 SensCAP, capacity и freshness
+SensCAP трактуется как системная метрика, включающая sensing probability, sensing accuracy и sensing
+capacity [2, 3]. В автоматной модели эти величины не используются как непрерывные guards напрямую; они
+предварительно переводятся в классы.
+Sensing probability задается estimator-слоем как
+P d(Rf a) = Ndet
+N , R f a ≤R max
+f a .(67)
+Для CFAR-приближения порог может быть записан как
+Sthres =N ru
+
+(Rf a)−1/Nru −1
+
+pn.(68)
+Точность зондирования задается через условия
+Pr(∆r≤l a)≥q,Pr(∆v≤v a)≥q v,(69)
+а CRB сохраняется как теоретическая нижняя граница ошибки
+CRB= (CRB R, CRBv, CRBθ).(70)
+Формула sensing capacity должна явно содержать временное окно и требования качества:
+Cs(Qs, T0) = N ∗(Qs, T0)
+A ,(71)
+гдеA— площадь зоны зондирования,T0 — окно оценки,Qs = (la, va, P dmin, Rf amax, q, qv, T0), аN∗(Qs, T0)
+— максимальное число целей, для которого выполняются требования
+P d(Rmax
+f a )≥P d min,(72)
+Pr(∆r≤l a)≥q,(73)
+Pr(∆v≤v a)≥q v.(74)
+Доля ресурсов зондирования задается как
+us = Ts
+T0
+,0< u s ≤1.(75)
+В timed automata используются толькоCapClassиResourceShareClass, напримерOK,LIMITED,FAILED.
+AoS (Age of Sensing) разделяется на локальную и контроллерную метрики:
+AoSBS(t) =t−t last
+sense,(76)
+AoSCT RL(t) =t−t last
+ctrl .(77)
+AoSBS сбрасываетсяпослеsensing_success!, аAoSCT RL —послеcontroller_report_delivered?. Поэтому
+AoSCT RL может быть большеAoSBS при перегрузке, изменении маршрута или задержке обработки на
+edge/cloud-узлах. Для SDN-контроллера именноAoSCT RL является основной freshness-метрикой.
+9 Интерфейс отчетов и PHY-компоненты штрафа
+Минимальный пакет KPI публикуется как сочетание классов и опциональных оцененных численных
+значений. Для model checking существенны классы; численные значения могут использоваться внешним
+SDN-оптимизатором:
+14
+
+
+=== PAGE 15 ===
+
+{
+SINRClass, BLERClass, CQIClass, IClass, DopplerClass,
+DelaySpreadClass, PowerClass, DRTClass, PilotDensityClass,
+PayloadSenseClass, PRSClass, BeamErrorClass, BlockageClass,
+PdClass, RfaClass, AccClass, CRBClass,
+BeamClass, MisClass, BMOverheadClass,
+AoSClass, CoverageClass, CapClass, ResourceShareClass,
+ChannelClass, SignalClass, SensingState, PHYState
+}
+Если SDN-контроллеру требуется численный score, PHY может передавать нормированные компоненты
+нарушения контракта:
+ΠSIN R = max
+
+0, SIN Rmin −SIN R c
+SIN Rmin
+
+,Π BLER = max
+
+0, BLER−BLER max
+BLER max
+
+,(78)
+ΠP d = max
+
+0, P dmin −P d
+P dmin
+
+,Π Rf a = max
+
+0, Rf a−Rf a max
+Rf amax
+
+,(79)
+ΠAcc = max
+
+0, Accr −l a
+la
+
++ max
+
+0, Accv −v a
+va
+
+,Π AoS = max
+
+0, AoSCT RL −AoS max
+AoSmax
+
+,(80)
+ΠCap = max
+
+0, C min
+s −C s
+C mins
+
+.(81)
+Для beam management:
+ΠBM = max
+
+0, ϵb −ϵ max
+ϵmax
+
++ max
+
+0, pmis −p max
+mis
+pmax
+mis
+
++ max
+
+0, ΩBM −Ω max
+BM
+Ωmax
+BM
+
+.(82)
+Агрегированный score
+ΠP HY =
+X
+i
+wiΠi, w i ≥0,
+X
+i
+wi = 1(83)
+не является частью обычного timed automaton, если используется как накопленная стоимость. Его следует
+трактовать либо как внешний SDN-score, вычисляемый после публикации отчета, либо как расширение
+модели до priced/weighted timed automata. В базовой TA-модели проверяются классы нарушений и bounded
+реакции, а не оптимальностьΠP HY.
+10 Верификационные свойства и observer-автоматы
+В UPPAAL-подобной нотации можно задавать reachability и safety-свойства напрямую, но bounded response
+следует выражать observer-автоматами. Unbounded leads-top−−> qговорит только, что изpкогда-нибудь
+следуетq; он не задает срокD. В этой спецификации deadline трактуется как включительный: событие
+на границеc=Dеще допустимо, а нарушение возникает только приc > D. Поэтому observer-локации
+ожидания не имеют invariantc≤D; иначе состояниеc > Dбыло бы недостижимо. Невмешательство
+observers обеспечивается тем, что наблюдаемые report/outcome-события объявлены какbroadcast chan.
+Базовые свойства:
+A[] not deadlock
+E<> A_PH.PHYNormal
+E<> A_PH.PHYSensingDegraded
+E<> A_PH.PHYCommunicationDegraded
+E<> A_PH.PHYJointDegraded
+A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))
+Observer для bounded report после sensing degradation:
+locations: Idle, WaitReport, Violation
+clock: c_obs
+Idle -- sensing_degraded? / c_obs := 0 --> WaitReport
+WaitReport -- phy_kpi_report? guard c_obs <= D_report --> Idle
+WaitReport -- c_obs > D_report --> Violation
+query: A[] not ObsSenseReport.Violation
+15
+
+
+=== PAGE 16 ===
+
+Observer для freshness:
+Idle -- aos_ctrl_expired? / c_obs := 0 --> WaitFreshnessLimited
+WaitFreshnessLimited -- sensing_report? --> Idle
+guard: c_obs <= D_sense && SensingState == FreshnessLimited
+WaitFreshnessLimited -- c_obs > D_sense --> Violation
+query: A[] not ObsFreshness.Violation
+Observer для beam recovery:
+Idle -- recovery_start? / c_obs := 0 --> WaitBeamOutcome
+WaitBeamOutcome -- beam_restored? guard c_obs <= D_BM --> Idle
+WaitBeamOutcome -- handover_hint? guard c_obs <= D_BM --> Idle
+WaitBeamOutcome -- beam_failure? guard c_obs <= D_BM --> Idle
+WaitBeamOutcome -- c_obs > D_BM --> Violation
+query: A[] not ObsBeamRecovery.Violation
+Сучетомисправленногопереходаcrec =D BM вBeamFailedтакжедопустимопроверятьлокальныйinvariant:
+A[] (A_BM.BeamRecover imply c_rec <= D_BM)
+но это не заменяет проверку того, что recovery действительно завершается одним из разрешенных исходов.
+Детерминированность классификаций проверяется через счетчики enabled-guards:
+A[] (ch_enabled_count <= 1)
+A[] (sq_enabled_count <= 1)
+или доказывается синтаксически через приоритетные функцииprioCH иprioSQ.
+Согласованность assume–guarantee контрактов проверяется как отсутствие violation при выполнении
+конкретных boolean-предикатов. В UPPAAL-модели эти предикаты задаются как функции над состояниями
+и классами, напримерass_ch(),gar_ch(),ass_sq()иass_ph():
+bool ass_ch() = ENV_CH.TimingOk && classes_in_range_ch;
+bool gar_ch() = A_CH.Reported && ChannelClass in CHANNEL_ENUM;
+bool ass_sig() = ENV_MAC.ConfigAdmissible && classes_in_range_sig;
+bool gar_sig() = A_SIG.Reported && SignalClass in SIGNAL_ENUM;
+bool ass_bm() = ENV_MAC.BeamCmdAdmissible && classes_in_range_bm;
+bool gar_bm() = A_BM.Reported && BeamClass in BEAM_ENUM;
+bool ass_sq() = fresh_child_reports && gar_ch() && gar_sig() && gar_bm();
+bool gar_sq() = A_SQ.Reported && SensingState in SENSING_ENUM;
+bool ass_ph() = gar_ch() && gar_sig() && gar_bm() && gar_sq();
+A[] (ass_ch() imply not A_CH.ContractViolation_CH)
+A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)
+A[] (ass_bm() imply not A_BM.ContractViolation_BM)
+A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)
+A[] (ass_ph() imply not A_PH.ContractViolation_PH)
+11 Ограничения применимости
+Предложенная формализация намеренно отделяет physical estimation от automata logic. Estimator или
+радиосимулятор оцениваетSIN R,BLER,P d,Rf a,CRB,pmis иΩBM; timed automata получают конечные
+классы и проверяют своевременную реакцию. Если требуется доказывать распределения задержек, частоты
+отказов, среднюю стоимость или вероятность достижения состояния, модель должна быть расширена до
+probabilistic, stochastic или priced timed automata.
+Качество результата зависит от soundness функцииαP HY. Пороговые значения должны выбираться из
+link budget, measurement confidence intervals, требований SLA или калибровочного симулятора. Грубая
+дискретизация может давать ложные counterexamples; слишком оптимистичная дискретизация может
+нарушить сохранение safety-свойств. Поэтому все границы классов в safety-критичных условиях относятся к
+худшему классу, а найденные counterexamples проверяются на физическую реализуемость вне model checker.
+16
+
+
+=== PAGE 17 ===
+
+12 Заключение
+PHY-уровень в SDN-управляемой ISAC-сети целесообразно задавать как композицию аппроксимированных
+контрактных timed automata. В строгой редакции модель содержит явную функциюαP HY, конечные enum-
+классы для continuous и probabilistic KPI, assume–guarantee семантику, синхронизационные каналы, clocks,
+guards, resets, invariants, приоритеты классификации и observer-автоматы для deadlines.
+Состояния автоматов отражают не детальную радиофизику, а проверяемые классы поведения: состояние
+канала, сигнальную конфигурацию, состояние луча, качество зондирования и агрегированное состояние
+PHY. Такая постановка честно ограничивает область применимости timed automata и одновременно делает
+модель полезной для формальной проверки SDN-управляемого поведения 6G ISAC-сети: MAC/SDN
+получает не произвольную таксономию PHY-состояний, а синхронизированную контрактную модель с
+проверяемыми сроками реакции.
+References
+[1] Y. Li, Y. Zhang, C. Masouros, S. Pollin, and F. Liu, “Rethinking Signaling Design for ISAC: From Pilot-Based
+to Payload-Based Sensing,”IEEE Communications Standards Magazine, in press, 2026, doi: 10.1109/mcom-
+std.2025.3645941.
+[2] G. Liu et al., “SensCAP: A Systematic Sensing Capability Performance Metric for 6G ISAC,”IEEE Internet
+of Things Journal, vol. 11, no. 18, pp. 29438–29454, 2024, doi: 10.1109/JIOT.2024.3430502.
+[3] G. Liu et al., “Cooperative Sensing for 6G ISAC: Concept, Key Technologies, Performance Evaluation, and
+Field Trial,”Engineering, vol. 56, pp. 130–148, 2026.
+[4] Y. Huang, J. Xu, M. A. Badiu, G. Chen, J. Coon, and M.-S. Alouini, “ISAC-Enabled Low-Overhead Beam Man-
+agement: Performance Analysis and Pilot Optimization,”IEEE Transactions on Wireless Communications,
+vol. 25, pp. 10702–10715, 2026, doi: 10.1109/TWC.2026.3653956.
+[5] R. Alur and D. L. Dill, “A Theory of Timed Automata,”Theoretical Computer Science, vol. 126, no. 2, pp.
+183–235, 1994.
+[6] UPPAAL Documentation, “Query Semantics: Symbolic Queries,” accessed 2026. Available:https://docs.
+uppaal.org/language-reference/query-semantics/symb_queries/.
+[7] M. Anand and S. Vestal, “Formal Modeling and Analysis of the AFDX Frame Management Design,” inPro-
+ceedings of the IEEE International Conference on Engineering of Complex Computer Systems, 2007.
+17

@@ -1,0 +1,1103 @@
+\documentclass[10pt,a4paper]{article}
+
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T2A]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[russian,english]{babel}
+\else
+  \usepackage{fontspec}
+  \usepackage[russian,english]{babel}
+  \setmainfont{DejaVu Serif}
+  \setsansfont{DejaVu Sans}
+  \setmonofont{DejaVu Sans Mono}
+\fi
+\usepackage{amsmath,amssymb}
+\usepackage{array,longtable}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{url}
+
+\geometry{left=18mm,right=18mm,top=16mm,bottom=18mm}
+\setlength{\parindent}{3.5mm}
+\setlength{\parskip}{0.25em}
+\setlist{nosep,leftmargin=5mm}
+\renewcommand{\arraystretch}{1.18}
+\sloppy
+
+\newcommand{\code}[1]{\ifmmode\text{\ttfamily\detokenize{#1}}\else\texttt{\detokenize{#1}}\fi}
+\newcommand{\A}[1]{\mathcal{A}_{#1}}
+\newcommand{\Contract}[1]{\mathcal{C}_{#1}}
+\newcommand{\Env}{\mathcal{A}_{ENV}}
+\pdfstringdefDisableCommands{\def\A#1{A_#1}\def\Contract#1{C_#1}}
+
+\title{Формализация Application / Service Layer в иерархической SDN-управляемой 6G ISAC-сети}
+\author{Техническая документация уровня}
+\date{8 июня 2026 г.}
+
+\begin{document}
+
+\maketitle
+
+\section*{Аннотация}
+
+Документ задает формальную спецификацию Application / Service Layer (прикладного или сервисного уровня) для SDN-управляемой 6G ISAC-сети. Этот уровень формирует требования к сервису, SLA (service-level agreement, соглашение об уровне обслуживания), критичность и тип нагрузки, но не управляет радиоресурсами напрямую. Он получает от SDN/RIC результат допуска, деградации или отказа и контролирует выполнение SLA в конечных классах. Модель не содержит ИИ и не предполагает автоматического обучения; сервисный уровень описывается как аппроксимированный контрактный timed automaton.
+
+\section{Назначение и границы уровня}
+
+Application / Service Layer задает требования к сети через northbound interface (северный интерфейс) SDN-контроллера. Такое разделение приложений и уровня управления соответствует SDN-архитектуре сетей 5G/6G \cite{mosudi_sdn,zolanvari_sdn}. В ISAC-сети сервис может требовать не только communication QoS (качество передачи данных), но и sensing QoS (качество радиозондирования): период обновления, допустимую свежесть, точность, покрытие зоны и минимальную способность обнаружения малоразмерных БПЛА.
+
+Граница уровня:
+\begin{itemize}
+  \item Сервис формирует request (запрос), criticality (критичность), SLA constraints (ограничения SLA) и demand type (тип требования).
+  \item Сервис не выдает команд \code{beam_update_cmd!}, \code{sensing_boost_cmd!}, \code{flow_mod!} или команд распределения физических ресурсов.
+  \item SDN/RIC отправляет \code{service_accept!}, \code{service_degraded!} или \code{service_reject!}; сервис синхронизируется с ними через \code{service_accept?}, \code{service_degraded?} или \code{service_reject?}.
+  \item Сервис контролирует SLA только в конечных классах, пригодных для model checking (формальной проверки модели).
+\end{itemize}
+
+Если сервисный уровень напрямую управляет beam management (управлением лучом), PRS-pattern (паттерном позиционно-измерительных сигналов) или расписанием OFDM-ресурсов, нарушается разделение уровней. Такие действия должны выполняться через SDN/RIC и MAC.
+
+\section{Архитектурное положение сервисного уровня}
+
+Полная композиция:
+\[
+\A{TOTAL}=\A{SVC}\parallel \A{SDN}\parallel \A{MAC}\parallel \A{PHY}\parallel \Env.
+\]
+
+Сервисный уровень является верхним контрактным компонентом:
+\[
+Gar_{SVC}\Rightarrow Ass_{SDN},\qquad
+Gar_{SDN}\Rightarrow Ass_{SVC}.
+\]
+
+Для локальной проверки:
+\[
+\A{SYS}^{SVC}=\A{SVC}\parallel \A{ENV\_SVC},
+\qquad
+\A{ENV\_SVC}=\pi_{SVC}(\Env).
+\]
+
+\(\A{ENV\_SVC}\) моделирует поступление новых сервисных требований, изменение критичности, завершение сессии и наблюдаемое нарушение SLA. Она не должна противоречить SDN-проекции общей среды: если SDN вернул \code{service_reject!}, сервис не может одновременно перейти в \code{Accepted} без явного degraded-решения.
+
+\section{Базовая модель контрактного автомата}
+
+Компонент сервисного уровня задается как:
+\[
+\A{i}=(L_i,l_i^0,C_i,V_i,E_i,\Inv_i,In_i,Out_i,Ass_i,Gar_i).
+\]
+
+Переход:
+\[
+e=(l,g,a,r,u,l').
+\]
+
+Модель проверяет своевременность реакции на решения SDN/RIC и нарушения SLA в семантике timed automata \cite{alur_dill}. Она не доказывает истинную вероятность обнаружения БПЛА или истинную надежность канала; эти параметры должны поступать в виде конечных классов от нижних уровней и внешнего estimator (измерительного или аналитического оценочного слоя).
+
+\section{Дискретная абстракция сервиса}
+
+\[
+\alpha_{SVC}:X_{SVC}^{req}\times X_{SVC}^{obs}\rightarrow X_{SVC}^{disc}.
+\]
+
+\(X_{SVC}^{req}\) содержит latency bound (границу задержки), reliability target (целевую надежность), throughput demand (потребность в пропускной способности), sensing update period (период обновления sensing), sensing accuracy class (класс точности радиозондирования), coverage requirement (требование покрытия). \(X_{SVC}^{obs}\) содержит наблюдаемый результат: принятие, отказ, деградированный режим, SLA warning (предупреждение SLA), SLA violation (нарушение SLA).
+
+\begin{longtable}{p{0.24\linewidth}p{0.38\linewidth}p{0.30\linewidth}}
+\hline
+\textbf{Переменная} & \textbf{Значения} & \textbf{Смысл}\\
+\hline
+\code{ServiceClass} & \code{SVC_URLLC}, \code{SVC_EMBB}, \code{SVC_MMTC}, \code{SVC_ISAC_SENSING}, \code{SVC_UAV}, \code{SVC_INDUSTRIAL} & Класс сервиса.\\
+\code{CriticalityClass} & \code{CRIT_LOW}, \code{CRIT_MED}, \code{CRIT_HIGH}, \code{CRIT_SAFETY} & Критичность.\\
+\code{SLAClass} & \code{SLA_OK}, \code{SLA_WARN}, \code{SLA_VIOLATED} & Состояние SLA.\\
+\code{AdmissionClass} & \code{ADM_PENDING}, \code{ADM_ACCEPTED}, \code{ADM_REJECTED}, \code{ADM_DEGRADED} & Решение допуска.\\
+\code{DemandClass} & \code{DEMAND_COMM}, \code{DEMAND_SENS}, \code{DEMAND_JOINT} & Тип требования.\\
+\code{FreshnessClass} & \code{FRESH}, \code{STALE}, \code{EXPIRED} & Давность sensing-информации.\\
+\code{DetectionFreshnessClass} & \code{DET_FRESH}, \code{DET_STALE}, \code{DET_EXPIRED} & Актуальность detection-события для текущей цели.\\
+\code{UpdatePeriodClass} & \code{UPD_OK}, \code{UPD_SLOW}, \code{UPD_VIOLATED} & Период обновления sensing-оценок.\\
+\code{FalseAlarmClass} & \code{FA_OK}, \code{FA_HIGH}, \code{FA_CRITICAL} & Класс риска ложной тревоги.\\
+\code{MissedDetectionClass} & \code{MISS_OK}, \code{MISS_HIGH}, \code{MISS_CRITICAL} & Класс риска пропуска цели.\\
+\code{PdClass} & \code{PD_OK}, \code{PD_LOW}, \code{PD_FAILED} & Класс фактически достигнутой вероятности обнаружения.\\
+\code{AccuracyClass} & \code{OK}, \code{LIMITED}, \code{FAILED} & Класс точности оценки положения цели.\\
+\code{CoverageClass} & \code{OK}, \code{LIMITED}, \code{FAILED} & Класс покрытия зоны наблюдения, согласованный с PHY/SDN-интерфейсом.\\
+\code{DegradedReason} & \code{DEG_NONE}, \code{DEG_STALE}, \code{DEG_LOW_PD}, \code{DEG_HIGH_PFA}, \code{DEG_UPDATE_SLOW}, \code{DEG_RESOURCE_LIMITED}, \code{DEG_COMM_LIMITED} & Причина деградированного сервиса.\\
+\hline
+\end{longtable}
+
+\section{Композиция автоматов сервиса}
+
+\[
+\A{SVC}=\A{REQ}\parallel \A{SLA}\parallel \A{CRIT}\parallel \A{SVC\_AGG}.
+\]
+
+\begin{longtable}{p{0.18\linewidth}p{0.39\linewidth}p{0.35\linewidth}}
+\hline
+\textbf{Автомат} & \textbf{Основные состояния} & \textbf{Ответственность}\\
+\hline
+\(\A{REQ}\) & \code{ServiceIdle}, \code{RequestBuild}, \code{RequestReady}, \code{RequestPending}, \code{Accepted}, \code{AcceptedDegraded}, \code{Rejected}, \code{Completed} & Жизненный цикл сервисного запроса.\\
+\(\A{SLA}\) & \code{SLAOk}, \code{SLAWarning}, \code{SLAViolated}, \code{SLAReported} & Контроль выполнения SLA.\\
+\(\A{CRIT}\) & \code{NonCritical}, \code{Critical}, \code{SafetyCritical} & Классификация критичности.\\
+\(\A{SVC\_AGG}\) & \code{DemandBuild}, \code{DemandStored}, \code{AwaitDecision}, \code{DecisionReceived} & Проверка и агрегирование требований перед передачей в SDN/RIC.\\
+\hline
+\end{longtable}
+
+\section{Политики сервисного уровня}
+
+Политики сервисного уровня не являются политиками радиоресурса. Они задают правила формирования требований, деградации и реакции на SLA.
+
+\begin{longtable}{p{0.24\linewidth}p{0.36\linewidth}p{0.32\linewidth}}
+\hline
+\textbf{Политика} & \textbf{Условие} & \textbf{Результат}\\
+\hline
+\code{P_ADMISSION_REQUEST} & Новый сервисный спрос и корректный конечный класс требований. & Формирование \code{service_request!}.\\
+\code{P_ACCEPT_DEGRADED} & SDN/RIC вернул \code{service_degraded!}, а сервис допускает деградацию. & Переход в \code{AcceptedDegraded} с контролем SLA.\\
+\code{P_REJECT_REASON} & SDN/RIC вернул отказ или admission timeout. & Переход в \code{Rejected} с явной причиной.\\
+\code{P_SLA_WARNING} & \code{SLAClass=SLA_WARN}. & Отчет \code{sla_warning_report!} до \(D_{sla\_warn}\).\\
+\code{P_SLA_VIOLATION} & \code{SLAClass=SLA_VIOLATED}. & Отчет \code{sla_violation_report!} до \(D_{sla\_violation}\).\\
+\code{P_SAFETY_CRITICAL} & \code{CRIT_SAFETY} и нарушение sensing/communication SLA. & Запрос реконфигурации, завершение сервиса или аварийный отчет.\\
+\hline
+\end{longtable}
+
+Для темы обнаружения малоразмерных летательных аппаратов важна политика freshness: если sensing-информация устарела, сервис не должен считать детекцию актуальной только потому, что ранее была достигнута высокая вероятность обнаружения. Это соответствует разделению sensing capability (способности радиозондирования) и freshness (свежести информации), используемому в ISAC-метриках \cite{liu_senscap,liu_coop}.
+
+\section{SLA для обнаружения малоразмерных БПЛА}
+
+Для сервиса обнаружения малоразмерных БПЛА вводится специализированный SLA-набор:
+\[
+\begin{array}{l}
+SLA_{UAV}=(D_{admission},D_{event},D_{update},D_{fresh},\\
+\qquad P_D^{min},P_{FA}^{max},P_{Miss}^{max},Acc^{min},Cov^{min}).
+\end{array}
+\]
+
+В обычном timed automaton эти численные параметры не проверяются как вероятностные оценки. Они используются estimator-слоем и SDN/RIC для формирования конечных классов:
+\[
+\begin{array}{l}
+\code{DetectionFreshnessClass},\quad \code{UpdatePeriodClass},\\
+\code{FalseAlarmClass},\quad \code{MissedDetectionClass},\\
+\code{PdClass},\quad \code{AccuracyClass},\quad \code{CoverageClass}.
+\end{array}
+\]
+
+Для safety-critical профиля БПЛА в данной работе используется строгий набор требований \code{REQ_STRICT}. В этом частном случае сервис считает sensing-SLA выполненным только при одновременном выполнении условий:
+\[
+\begin{array}{l}
+SLA^{sens}_{OK}\equiv
+\code{DetectionFreshnessClass=DET_FRESH}\land \code{UpdatePeriodClass=UPD_OK}\\
+\qquad {}\land \code{FalseAlarmClass=FA_OK}\land
+\code{MissedDetectionClass=MISS_OK}\\
+\qquad {}\land \code{PdClass=PD_OK}\land \code{AccuracyClass=OK}\land
+\code{CoverageClass=OK}.
+\end{array}
+\]
+
+Предупреждение SLA для строгого профиля:
+\[
+\begin{array}{l}
+SLA^{sens}_{WARN}\equiv
+\code{DetectionFreshnessClass=DET_STALE}\vee \code{UpdatePeriodClass=UPD_SLOW}\\
+\qquad {}\vee \code{FalseAlarmClass=FA_HIGH}\vee
+\code{MissedDetectionClass=MISS_HIGH}\\
+\qquad {}\vee \code{PdClass=PD_LOW}\vee \code{AccuracyClass=LIMITED}
+\vee \code{CoverageClass=LIMITED}.
+\end{array}
+\]
+
+Нарушение SLA, недопустимое для любого профиля требований:
+\[
+\begin{array}{l}
+SLA^{sens}_{VIOLATED}\equiv
+\code{DetectionFreshnessClass=DET_EXPIRED}\vee \code{UpdatePeriodClass=UPD_VIOLATED}\\
+\qquad {}\vee \code{FalseAlarmClass=FA_CRITICAL}\vee
+\code{MissedDetectionClass=MISS_CRITICAL}\\
+\qquad {}\vee \code{PdClass=PD_FAILED}\vee \code{AccuracyClass=FAILED}\vee
+\code{CoverageClass=FAILED}.
+\end{array}
+\]
+
+Для общего случая \code{REQ_STRICT}/\code{REQ_NORMAL}/\code{REQ_RELAXED} эти выражения реализуются в UPPAAL через predicates \code{pd_req_satisfied()}, \code{pfa_req_satisfied()}, \code{pmiss_req_satisfied()}, \code{freshness_req_satisfied()}, \code{update_req_satisfied()} и \code{quality_req_satisfied()}.
+
+Degraded service (деградированный сервис) допустим только если причина деградации явно указана и не противоречит критичности:
+\[
+\begin{array}{l}
+\code{AcceptedDegraded}\Rightarrow
+\code{DegradedReason}\ne \code{DEG_NONE},\\
+\code{CRIT_SAFETY}\land \code{AcceptedDegraded}
+\Rightarrow SLA^{sens}_{OK}\land \code{DegradedReason=DEG_COMM_LIMITED}.
+\end{array}
+\]
+
+Смысл этого ограничения: для safety-critical detection (критичного обнаружения) нельзя считать сервис допустимо деградированным, если высокая вероятность пропуска цели или просроченная sensing-информация делают обнаружение физически неактуальным.
+
+\section{UPPAAL-спецификация сервисного уровня}
+
+В UPPAAL сервисный уровень работает с конечными SLA-классами и общими переменными, установленными SDN/RIC до синхронизации. Каналы \code{service_accept?}, \code{service_degraded?}, \code{service_reject?} и \code{service_kpi_update?} не передают payload; решение допуска, причина деградации и detection KPI читаются из shared variables. Каналы admission/report/reconfigure задаются как handshake \code{chan}, а события мониторинга и обновления KPI задаются как \code{broadcast chan}.
+
+\subsection{Declarations сервисного уровня}
+
+\begin{verbatim}
+// ----- Service constants -----
+const int D_req              = 3;
+const int D_admission        = 15;
+const int D_event            = 5;
+const int D_update           = 3;
+const int D_fresh            = 10;
+const int D_sla_warn         = 5;
+const int D_sla_violation    = 3;
+const int D_safety           = 2;
+const int D_fresh_report     = 3;
+const int D_update_report    = 3;
+const int D_fa_report        = 3;
+const int D_miss_report      = 2;
+const int D_detect_warn      = 5;
+const int D_detect_violation = 3;
+const int D_sensing_fresh    = 10;
+
+// ----- Service clocks -----
+clock c_req, c_admission, c_sla_warn, c_sla_violation;
+clock c_session, age_sensing, c_detect;
+
+// ----- Service channels -----
+chan service_request, service_accept, service_degraded, service_reject;
+chan sla_warning_report, sla_violation_report;
+chan service_reconfigure, degraded_accept_report, service_terminate;
+broadcast chan new_demand, service_kpi_update, degraded_notice;
+broadcast chan freshness_expired, sla_warn, sla_violation, service_complete;
+
+// ----- Service classes -----
+typedef int[0,5] ServiceClass_t;
+const ServiceClass_t SVC_URLLC=0, SVC_EMBB=1, SVC_MMTC=2;
+const ServiceClass_t SVC_ISAC_SENSING=3, SVC_UAV=4, SVC_INDUSTRIAL=5;
+
+typedef int[0,3] CriticalityClass_t;
+const CriticalityClass_t CRIT_LOW=0, CRIT_MED=1, CRIT_HIGH=2, CRIT_SAFETY=3;
+
+typedef int[0,2] SLAClass_t;
+const SLAClass_t SLA_OK=0, SLA_WARN=1, SLA_VIOLATED=2;
+
+typedef int[0,3] AdmissionClass_t;
+const AdmissionClass_t ADM_PENDING=0, ADM_ACCEPTED=1;
+const AdmissionClass_t ADM_REJECTED=2, ADM_DEGRADED=3;
+
+typedef int[0,2] DemandClass_t;
+const DemandClass_t DEMAND_COMM=0, DEMAND_SENS=1, DEMAND_JOINT=2;
+
+typedef int[0,2] DetectionFreshnessClass_t;
+const DetectionFreshnessClass_t DET_FRESH=0, DET_STALE=1, DET_EXPIRED=2;
+
+typedef int[0,2] UpdatePeriodClass_t;
+const UpdatePeriodClass_t UPD_OK=0, UPD_SLOW=1, UPD_VIOLATED=2;
+
+typedef int[0,2] FalseAlarmClass_t;
+const FalseAlarmClass_t FA_OK=0, FA_HIGH=1, FA_CRITICAL=2;
+
+typedef int[0,2] MissedDetectionClass_t;
+const MissedDetectionClass_t MISS_OK=0, MISS_HIGH=1, MISS_CRITICAL=2;
+
+typedef int[0,2] PdClass_t;
+const PdClass_t PD_OK=0, PD_LOW=1, PD_FAILED=2;
+
+typedef int[0,2] QualityClass_t;
+const QualityClass_t OK=0, LIMITED=1, FAILED=2;
+
+typedef int[0,2] RequirementClass_t;
+const RequirementClass_t REQ_RELAXED=0, REQ_NORMAL=1, REQ_STRICT=2;
+
+typedef int[0,6] DegradedReason_t;
+const DegradedReason_t DEG_NONE=0, DEG_STALE=1, DEG_LOW_PD=2;
+const DegradedReason_t DEG_HIGH_PFA=3, DEG_UPDATE_SLOW=4;
+const DegradedReason_t DEG_RESOURCE_LIMITED=5;
+const DegradedReason_t DEG_COMM_LIMITED=6;
+
+// ----- shared variables: payload replacement -----
+ServiceClass_t serviceClass;
+CriticalityClass_t criticalityClass;
+SLAClass_t slaClass;
+AdmissionClass_t admissionClass;
+DemandClass_t demandClass;
+RequirementClass_t latencyBoundClass;
+RequirementClass_t reliabilityClass;
+RequirementClass_t sensingUpdateBoundClass;
+RequirementClass_t sensingFreshnessBoundClass;
+RequirementClass_t pdMinClass;
+RequirementClass_t pfaMaxClass;
+RequirementClass_t pmissMaxClass;
+RequirementClass_t accuracyBoundClass;
+RequirementClass_t coverageBoundClass;
+DetectionFreshnessClass_t detectionFreshnessClass;
+UpdatePeriodClass_t updatePeriodClass;
+FalseAlarmClass_t falseAlarmClass;
+MissedDetectionClass_t missedDetectionClass;
+PdClass_t pdClass;
+QualityClass_t accuracyClass;
+QualityClass_t coverageClass;
+DegradedReason_t degradedReason;
+
+bool service_request_pending = false;
+bool sla_warning_report_sent = false;
+bool sla_violation_report_sent = false;
+bool degraded_allowed = false;
+bool degraded_accept_pending = false;
+bool violation_report_sent = false;
+bool service_reconfigure_sent = false;
+bool service_terminate_sent = false;
+
+int service_request_seq = 0;
+int sla_warn_seq = 0;
+int sla_violation_seq = 0;
+int freshness_expired_seq = 0;
+int update_violation_seq = 0;
+int fa_critical_seq = 0;
+int miss_critical_seq = 0;
+int safety_violation_seq = 0;
+\end{verbatim}
+
+\noindent Эти переменные являются UPPAAL-представлением payload сервисного запроса \(R_{SVC}\). Например, требование \(P_D^{min}\) не передается через канал \code{service_request!}; перед синхронизацией отправитель устанавливает \code{pdMinClass}, \code{pfaMaxClass}, \code{pmissMaxClass} и остальные shared variables.
+
+\begin{longtable}{p{0.30\linewidth}p{0.24\linewidth}p{0.34\linewidth}}
+\hline
+\textbf{Shared variables} & \textbf{Владелец записи} & \textbf{Синхронизация}\\
+\hline
+\code{serviceClass}, \code{criticalityClass}, \code{demandClass}, request bounds & \(\A{REQ}\) & До \code{service_request!}.\\
+\code{admissionClass} & \(\A{REQ}\), затем \(\A{SDN}/\A{RIC}\) & \(\A{REQ}\) инициализирует \code{ADM_PENDING}; SDN/RIC записывает итог до \code{service_accept!}, \code{service_degraded!} или \code{service_reject!}.\\
+\code{degradedReason}, \code{degraded_allowed} & \(\A{SDN}/\A{RIC}\) & Только SDN/RIC задает разрешение и причину деградации до \code{service_degraded!}.\\
+\code{slaClass}, \code{detectionFreshnessClass}, \code{updatePeriodClass}, \code{falseAlarmClass}, \code{missedDetectionClass}, \code{pdClass}, \code{accuracyClass}, \code{coverageClass} & \(\A{SDN}/\A{RIC}\) или estimator layer & До \code{service_kpi_update!}, \code{sla_warn!}, \code{sla_violation!} или \code{freshness_expired!}.\\
+\code{sla_warning_report_sent}, \code{sla_violation_report_sent}, \code{violation_report_sent}, \code{service_reconfigure_sent}, \code{service_terminate_sent} & \(\A{SLA}\) & После соответствующего report/reconfigure/terminate edge.\\
+\code{*_seq} counters & Отправитель соответствующего события & Счетчики запускают observer-автоматы и не используются как payload.\\
+\hline
+\end{longtable}
+
+\subsection{Формулы сервисных метрик и SLA-классификации}
+
+Целочисленная оценка риска сервиса:
+\[
+\begin{array}{l}
+Risk_{SVC}=3M_{miss}+2M_{fa}+2M_{fresh}+M_{upd}
++M_{acc}+M_{cov}+M_{crit},
+\end{array}
+\]
+где \(M_{miss}\), \(M_{fa}\), \(M_{fresh}\), \(M_{upd}\), \(M_{acc}\), \(M_{cov}\), \(M_{crit}\) --- численные коды соответствующих классов. В UPPAAL:
+\begin{verbatim}
+int svc_risk() {
+  return 3*missedDetectionClass + 2*falseAlarmClass
+       + 2*detectionFreshnessClass + updatePeriodClass
+       + accuracyClass + coverageClass + criticalityClass;
+}
+\end{verbatim}
+
+Функции SLA:
+\begin{verbatim}
+bool detection_kpi_consistent() {
+  return !(pdClass == PD_OK
+           && missedDetectionClass == MISS_CRITICAL)
+      && !(pdClass == PD_FAILED
+           && missedDetectionClass == MISS_OK);
+}
+
+bool pd_req_satisfied() {
+  return (pdMinClass == REQ_STRICT && pdClass == PD_OK)
+      || (pdMinClass == REQ_NORMAL && pdClass != PD_FAILED)
+      || (pdMinClass == REQ_RELAXED);
+}
+
+bool pfa_req_satisfied() {
+  return (pfaMaxClass == REQ_STRICT && falseAlarmClass == FA_OK)
+      || (pfaMaxClass == REQ_NORMAL && falseAlarmClass != FA_CRITICAL)
+      || (pfaMaxClass == REQ_RELAXED);
+}
+
+bool pmiss_req_satisfied() {
+  return (pmissMaxClass == REQ_STRICT && missedDetectionClass == MISS_OK)
+      || (pmissMaxClass == REQ_NORMAL && missedDetectionClass != MISS_CRITICAL)
+      || (pmissMaxClass == REQ_RELAXED);
+}
+
+bool freshness_req_satisfied() {
+  return (sensingFreshnessBoundClass == REQ_STRICT
+          && detectionFreshnessClass == DET_FRESH)
+      || (sensingFreshnessBoundClass == REQ_NORMAL
+          && detectionFreshnessClass != DET_EXPIRED)
+      || (sensingFreshnessBoundClass == REQ_RELAXED);
+}
+
+bool update_req_satisfied() {
+  return (sensingUpdateBoundClass == REQ_STRICT
+          && updatePeriodClass == UPD_OK)
+      || (sensingUpdateBoundClass == REQ_NORMAL
+          && updatePeriodClass != UPD_VIOLATED)
+      || (sensingUpdateBoundClass == REQ_RELAXED);
+}
+
+bool quality_req_satisfied(RequirementClass_t req, QualityClass_t value) {
+  return (req == REQ_STRICT && value == OK)
+      || (req == REQ_NORMAL && value != FAILED)
+      || (req == REQ_RELAXED);
+}
+
+bool sensing_req_satisfied() {
+  return freshness_req_satisfied()
+      && update_req_satisfied()
+      && pd_req_satisfied()
+      && pfa_req_satisfied()
+      && pmiss_req_satisfied()
+      && quality_req_satisfied(accuracyBoundClass, accuracyClass)
+      && quality_req_satisfied(coverageBoundClass, coverageClass);
+}
+
+bool sla_sens_violated() {
+  return !detection_kpi_consistent()
+      || detectionFreshnessClass == DET_EXPIRED
+      || updatePeriodClass == UPD_VIOLATED
+      || falseAlarmClass == FA_CRITICAL
+      || missedDetectionClass == MISS_CRITICAL
+      || pdClass == PD_FAILED
+      || accuracyClass == FAILED
+      || coverageClass == FAILED;
+}
+
+bool sla_sens_warn() {
+  return detection_kpi_consistent()
+      && !sla_sens_violated()
+      && !sensing_req_satisfied();
+}
+
+bool sla_sens_ok() {
+  return detection_kpi_consistent()
+      && sensing_req_satisfied()
+      && !sla_sens_violated();
+}
+\end{verbatim}
+
+\subsection{Полные guards сервисных политик}
+
+\begin{verbatim}
+bool gAdmissionRequest() {
+  return serviceClass == SVC_UAV
+      || serviceClass == SVC_ISAC_SENSING
+      || demandClass == DEMAND_JOINT
+      || demandClass == DEMAND_SENS;
+}
+
+bool gSafetyAllowsDegraded() {
+  return criticalityClass != CRIT_SAFETY
+      || (sla_sens_ok()
+          && degradedReason == DEG_COMM_LIMITED);
+}
+
+bool gAcceptDegraded() {
+  return admissionClass == ADM_DEGRADED
+      && degraded_allowed
+      && degradedReason != DEG_NONE
+      && gSafetyAllowsDegraded();
+}
+
+bool gRejectDegraded() {
+  return admissionClass == ADM_DEGRADED && !gAcceptDegraded();
+}
+
+bool gSlaWarning() {
+  return slaClass == SLA_WARN || sla_sens_warn();
+}
+
+bool gSlaViolation() {
+  return slaClass == SLA_VIOLATED || sla_sens_violated();
+}
+
+bool gSafetyCriticalViolation() {
+  return criticalityClass == CRIT_SAFETY && gSlaViolation();
+}
+
+void build_uav_service_request() {
+  serviceClass = SVC_UAV;
+  criticalityClass = CRIT_SAFETY;
+  slaClass = SLA_OK;
+  admissionClass = ADM_PENDING;
+  demandClass = DEMAND_SENS;
+  latencyBoundClass = REQ_STRICT;
+  reliabilityClass = REQ_STRICT;
+  sensingUpdateBoundClass = REQ_STRICT;
+  sensingFreshnessBoundClass = REQ_STRICT;
+  pdMinClass = REQ_STRICT;
+  pfaMaxClass = REQ_STRICT;
+  pmissMaxClass = REQ_STRICT;
+  accuracyBoundClass = REQ_STRICT;
+  coverageBoundClass = REQ_STRICT;
+  detectionFreshnessClass = DET_FRESH;
+  updatePeriodClass = UPD_OK;
+  falseAlarmClass = FA_OK;
+  missedDetectionClass = MISS_OK;
+  pdClass = PD_OK;
+  accuracyClass = OK;
+  coverageClass = OK;
+}
+
+void note_kpi_update_event() {
+  if (detectionFreshnessClass == DET_EXPIRED)
+    freshness_expired_seq = freshness_expired_seq + 1;
+  if (updatePeriodClass == UPD_VIOLATED)
+    update_violation_seq = update_violation_seq + 1;
+  if (falseAlarmClass == FA_CRITICAL)
+    fa_critical_seq = fa_critical_seq + 1;
+  if (missedDetectionClass == MISS_CRITICAL)
+    miss_critical_seq = miss_critical_seq + 1;
+  if (gSlaWarning())
+    sla_warn_seq = sla_warn_seq + 1;
+  if (gSlaViolation()) {
+    sla_violation_seq = sla_violation_seq + 1;
+    if (criticalityClass == CRIT_SAFETY)
+      safety_violation_seq = safety_violation_seq + 1;
+  }
+}
+
+void note_sla_warning_event() {
+  sla_warn_seq = sla_warn_seq + 1;
+}
+
+void note_sla_violation_event() {
+  sla_violation_seq = sla_violation_seq + 1;
+  if (criticalityClass == CRIT_SAFETY)
+    safety_violation_seq = safety_violation_seq + 1;
+}
+\end{verbatim}
+
+\subsection{UPPAAL templates сервисного уровня}
+
+\begin{longtable}{p{0.18\linewidth}p{0.28\linewidth}p{0.24\linewidth}p{0.22\linewidth}}
+\hline
+\textbf{Template} & \textbf{Locations} & \textbf{Invariants} & \textbf{Ключевые edges}\\
+\hline
+\(\A{REQ}\) & \code{ServiceIdle}, \code{RequestBuild}, \code{RequestReady}, \code{RequestPending}, \code{Accepted}, \code{AcceptedDegraded}, \code{Rejected}, \code{Completed} & \code{RequestBuild}: \(c_{req}\le D_{req}\); \code{RequestReady}: committed; \code{RequestPending}: \(c_{admission}\le D_{admission}\). & \code{new_demand?}; write shared variables; \code{service_request!}; accept/degraded/reject.\\
+\(\A{SLA}\) & \code{SLAOk}, \code{SLAWarning}, \code{SLAViolated}, \code{SLAReported} & \code{SLAWarning}: \(c_{sla_warn}\le D_{sla_warn}\); \code{SLAViolated}: \(c_{sla_violation}\le D_{sla_violation}\). & \code{sla_warn?}; \code{sla_violation?}; warning/violation report.\\
+\(\A{CRIT}\) & \code{NonCritical}, \code{Critical}, \code{SafetyCritical} & Нет отдельных часов. & update criticality; safety response guard.\\
+\(\A{SVC\_AGG}\) & \code{DemandBuild}, \code{DemandStored}, \code{AwaitDecision}, \code{DecisionReceived} & \code{AwaitDecision}: \(c_{admission}\le D_{admission}\). & request consistency check; decision-class read; no direct \code{service_request!}.\\
+\hline
+\end{longtable}
+
+Типовой edge для service request:
+\begin{verbatim}
+state ServiceIdle, RequestBuild, RequestReady, RequestPending;
+committed RequestReady;
+
+ServiceIdle -> RequestBuild
+  sync new_demand?
+  update c_req = 0,
+         build_uav_service_request(),
+         service_request_pending = false,
+         sla_warning_report_sent = false,
+         sla_violation_report_sent = false,
+         violation_report_sent = false,
+         service_reconfigure_sent = false,
+         service_terminate_sent = false;
+
+RequestBuild -> RequestReady
+  guard gAdmissionRequest()
+  update admissionClass = ADM_PENDING,
+         c_req = 0;
+
+RequestReady -> RequestPending
+  sync service_request!
+  update
+         service_request_pending = true,
+         service_request_seq = service_request_seq + 1,
+         c_admission = 0;
+
+RequestPending -> Accepted
+  guard admissionClass == ADM_ACCEPTED
+  sync service_accept?
+  update service_request_pending = false,
+         age_sensing = 0;
+
+RequestPending -> AcceptedDegraded
+  guard gAcceptDegraded()
+  sync service_degraded?
+  update service_request_pending = false,
+         degraded_accept_pending = true;
+
+RequestPending -> Rejected
+  guard admissionClass == ADM_REJECTED || gRejectDegraded()
+  sync service_reject?
+  update service_request_pending = false;
+
+Accepted -> Accepted
+  sync service_kpi_update?
+  update age_sensing = 0,
+         note_kpi_update_event();
+
+AcceptedDegraded -> AcceptedDegraded
+  sync service_kpi_update?
+  update age_sensing = 0,
+         note_kpi_update_event();
+\end{verbatim}
+
+Отчет о принятии деградированного режима реализуется отдельным edge:
+\begin{verbatim}
+AcceptedDegraded -> AcceptedDegraded
+  guard degraded_accept_pending
+  sync degraded_accept_report!
+  update degraded_accept_pending = false,
+         violation_report_sent = false;
+\end{verbatim}
+
+Фрагмент \(\A{SLA}\), который выставляет флаги, используемые observer-автоматами:
+\begin{verbatim}
+SLAOk -> SLAWarning
+  guard gSlaWarning()
+  sync sla_warn?
+  update c_sla_warn = 0,
+         note_sla_warning_event(),
+         sla_warning_report_sent = false;
+
+SLAOk -> SLAViolated
+  guard gSlaViolation()
+  sync sla_violation?
+  update c_sla_violation = 0,
+         note_sla_violation_event(),
+         sla_violation_report_sent = false,
+         violation_report_sent = false,
+         service_reconfigure_sent = false,
+         service_terminate_sent = false;
+
+SLAWarning -> SLAReported
+  guard gSlaWarning() && !gSlaViolation()
+  sync sla_warning_report!
+  update sla_warning_report_sent = true,
+         c_sla_warn = 0;
+
+SLAWarning -> SLAOk
+  guard !gSlaWarning() && !gSlaViolation()
+  sync service_kpi_update?
+  update c_sla_warn = 0;
+
+SLAWarning -> SLAViolated
+  guard gSlaViolation()
+  sync sla_violation?
+  update c_sla_violation = 0,
+         note_sla_violation_event(),
+         sla_violation_report_sent = false,
+         violation_report_sent = false,
+         service_reconfigure_sent = false,
+         service_terminate_sent = false;
+
+SLAReported -> SLAOk
+  guard !gSlaWarning() && !gSlaViolation()
+  sync service_kpi_update?
+  update sla_warning_report_sent = false,
+         sla_violation_report_sent = false,
+         violation_report_sent = false,
+         service_reconfigure_sent = false,
+         service_terminate_sent = false;
+
+SLAViolated -> SLAReported
+  guard gSlaViolation()
+  sync sla_violation_report!
+  update sla_violation_report_sent = true,
+         violation_report_sent = true,
+         c_sla_violation = 0;
+
+SLAViolated -> SLAReported
+  guard gSafetyCriticalViolation()
+  sync service_reconfigure!
+  update service_reconfigure_sent = true,
+         violation_report_sent = true;
+
+SLAViolated -> SLAReported
+  guard gSafetyCriticalViolation()
+  sync service_terminate!
+  update service_terminate_sent = true,
+         violation_report_sent = true;
+\end{verbatim}
+
+\subsection{Observer-автоматы сервисного уровня}
+
+Observer-автоматы запускаются по счетчикам событий \code{*_seq}. Это устраняет неоднозначность guard-only запуска: плохой класс KPI может сохраняться долго, но deadline должен отсчитываться от конкретного события обновления или нарушения, а не от произвольного момента чтения shared variable.
+
+\begin{verbatim}
+template ObsServiceAdmission() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard service_request_seq > seen
+    update seen = service_request_seq, x = 0;
+  Waiting -> Idle
+    guard admissionClass == ADM_ACCEPTED
+       || admissionClass == ADM_DEGRADED
+       || admissionClass == ADM_REJECTED;
+  Waiting -> Violation guard x > D_admission;
+}
+
+template ObsSlaWarningDeadline() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard sla_warn_seq > seen
+    update seen = sla_warn_seq, x = 0;
+  Waiting -> Idle
+    guard sla_warning_report_sent
+       || gSlaViolation();
+  Waiting -> Violation guard x > D_sla_warn;
+}
+
+template ObsSlaViolationDeadline() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard sla_violation_seq > seen
+    update seen = sla_violation_seq, x = 0;
+  Waiting -> Idle
+    guard sla_violation_report_sent
+       || violation_report_sent
+       || service_reconfigure_sent
+       || service_terminate_sent;
+  Waiting -> Violation guard x > D_sla_violation;
+}
+
+template ObsDetectionFreshness() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard freshness_expired_seq > seen
+    update seen = freshness_expired_seq, x = 0;
+  Waiting -> Idle
+    guard sla_violation_report_sent
+       || violation_report_sent
+       || service_reconfigure_sent
+       || service_terminate_sent;
+  Waiting -> Violation guard x > D_fresh_report;
+}
+
+template ObsUpdatePeriodViolation() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard update_violation_seq > seen
+    update seen = update_violation_seq, x = 0;
+  Waiting -> Idle
+    guard sla_violation_report_sent
+       || violation_report_sent
+       || service_reconfigure_sent
+       || service_terminate_sent;
+  Waiting -> Violation guard x > D_update_report;
+}
+
+template ObsFalseAlarmCritical() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard fa_critical_seq > seen
+    update seen = fa_critical_seq, x = 0;
+  Waiting -> Idle
+    guard sla_violation_report_sent
+       || violation_report_sent
+       || service_reconfigure_sent
+       || service_terminate_sent;
+  Waiting -> Violation guard x > D_fa_report;
+}
+
+template ObsMissedDetectionCritical() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard miss_critical_seq > seen
+    update seen = miss_critical_seq, x = 0;
+  Waiting -> Idle
+    guard sla_violation_report_sent
+       || violation_report_sent
+       || service_reconfigure_sent
+       || service_terminate_sent;
+  Waiting -> Violation guard x > D_miss_report;
+}
+
+template ObsSafetyCriticalViolation() {
+  clock x;
+  int seen = 0;
+  state Idle, Waiting, Violation;
+  init Idle;
+  Idle -> Waiting
+    guard safety_violation_seq > seen
+    update seen = safety_violation_seq, x = 0;
+  Waiting -> Idle
+    guard sla_violation_report_sent
+       || violation_report_sent
+       || service_reconfigure_sent
+       || service_terminate_sent
+       || admissionClass == ADM_REJECTED;
+  Waiting -> Violation guard x > D_safety;
+}
+\end{verbatim}
+
+Минимальные UPPAAL queries:
+\begin{verbatim}
+A[] not deadlock
+A[] not ObsServiceAdmission.Violation
+A[] not ObsSlaWarningDeadline.Violation
+A[] not ObsSlaViolationDeadline.Violation
+A[] not ObsDetectionFreshness.Violation
+A[] not ObsUpdatePeriodViolation.Violation
+A[] not ObsFalseAlarmCritical.Violation
+A[] not ObsMissedDetectionCritical.Violation
+A[] not ObsSafetyCriticalViolation.Violation
+A[] detection_kpi_consistent()
+A[] not (criticalityClass == CRIT_SAFETY
+         && missedDetectionClass == MISS_CRITICAL
+         && admissionClass == ADM_DEGRADED)
+A[] not (criticalityClass == CRIT_SAFETY
+         && detectionFreshnessClass == DET_EXPIRED
+         && admissionClass == ADM_DEGRADED)
+A[] not (criticalityClass == CRIT_SAFETY
+         && admissionClass == ADM_DEGRADED
+         && !gSafetyAllowsDegraded())
+A[] not (admissionClass == ADM_ACCEPTED
+         && degradedReason == DEG_RESOURCE_LIMITED)
+\end{verbatim}
+
+\section{Operational semantics}
+
+\subsection{Часы и инварианты}
+
+\begin{longtable}{p{0.24\linewidth}p{0.66\linewidth}}
+\hline
+\textbf{Часы} & \textbf{Назначение}\\
+\hline
+\(c_{req}\) & Время формирования сервисного запроса.\\
+\(c_{admission}\) & Время ожидания решения SDN/RIC.\\
+\(c_{sla\_warn}\) & Время реакции на предупреждение SLA.\\
+\(c_{sla\_violation}\) & Время реакции на нарушение SLA.\\
+\(c_{session}\) & Время активной сервисной сессии.\\
+\(age_{sensing}\) & Возраст последней sensing-информации для сервиса.\\
+\hline
+\end{longtable}
+
+\[
+\begin{array}{ll}
+\code{RequestPending}: & c_{admission}\le D_{admission},\\
+\code{RequestReady}: & \text{committed location},\\
+\code{SLAWarning}: & c_{sla\_warn}\le D_{sla\_warn},\\
+\code{SLAViolated}: & c_{sla\_violation}\le D_{sla\_violation},\\
+\code{Accepted}: & age_{sensing}\le D_{sensing\_fresh}\quad \text{if sensing demand is active},\\
+\code{AcceptedDegraded}: & age_{sensing}\le D_{sensing\_fresh}\quad \text{if sensing demand is active}.
+\end{array}
+\]
+
+\subsection{Каналы}
+
+Входные каналы:
+\[
+\{\code{new_demand?},\code{service_accept?},\code{service_degraded?},
+\code{service_reject?},\code{sla_warn?},\code{sla_violation?},
+\code{service_kpi_update?},\code{degraded_notice?},
+\code{freshness_expired?},\code{service_complete?}\}.
+\]
+
+Выходные каналы:
+\[
+\{\code{service_request!},\code{sla_warning_report!},
+\code{sla_violation_report!},\code{service_reconfigure!},
+\code{degraded_accept_report!},\code{service_terminate!}\}.
+\]
+
+\section{Контракт сервисного уровня}
+
+\[
+\Contract{SVC}=(Ass_{SVC},Gar_{SVC}).
+\]
+
+\subsection{Предположения}
+
+\begin{itemize}
+  \item SDN/RIC возвращает \code{service_accept!}, \code{service_degraded!} или \code{service_reject!} до \(D_{admission}\).
+  \item Только SDN/RIC устанавливает \code{degraded_allowed} и \code{degradedReason}; сервисный автомат не выдает себе разрешение на деградацию.
+  \item SLA-наблюдения поступают в конечной форме \code{SLA_OK}, \code{SLA_WARN} или \code{SLA_VIOLATED}.
+  \item Сервисный запрос задает конечный класс сервиса, критичности и требований.
+  \item SDN/RIC передает detection KPI (показатели обнаружения) только в дискретных классах: \code{DetectionFreshnessClass}, \code{FalseAlarmClass}, \code{MissedDetectionClass}, \code{PdClass}, \code{UpdatePeriodClass}.
+  \item Estimator layer не должен одновременно выдавать противоречивые классы \code{PdClass=PD_OK} и \code{MissedDetectionClass=MISS_CRITICAL}, а также \code{PdClass=PD_FAILED} и \code{MissedDetectionClass=MISS_OK}.
+  \item Нижние уровни не передают сырые физические величины напрямую в сервисный автомат.
+\end{itemize}
+
+\subsection{Гарантии}
+
+\begin{itemize}
+  \item Сервис не формирует запрос вне допустимого множества классов.
+  \item Если запрос принят, сервис переходит в \code{Accepted} или \code{AcceptedDegraded} и начинает контроль SLA.
+  \item Для safety-critical сервиса \code{AcceptedDegraded} допустим только при \code{SLA^{sens}_{OK}} и причине \code{DEG_COMM_LIMITED}; sensing-деградация не маскируется как допустимый degraded mode.
+  \item Если \code{SLAClass=SLA_WARN}, формируется \code{sla_warning_report!} до \(D_{sla\_warn}\).
+  \item Если \code{SLAClass=SLA_VIOLATED}, формируется \code{sla_violation_report!} до \(D_{sla\_violation}\).
+  \item Если \code{FalseAlarmClass=FA_HIGH}, \code{MissedDetectionClass=MISS_HIGH} или \code{PdClass=PD_LOW}, сервис обязан сформировать warning-отчет или запрос реконфигурации до \(D_{detect\_warn}\).
+  \item Если \code{FalseAlarmClass=FA_CRITICAL}, \code{MissedDetectionClass=MISS_CRITICAL}, \code{PdClass=PD_FAILED} или \code{DetectionFreshnessClass=DET_EXPIRED}, сервис обязан сформировать violation-отчет до \(D_{detect\_violation}\).
+  \item Если запрос отклонен, \code{Rejected} содержит причину: \code{policy_reject}, \code{resource_unavailable}, \code{stale_telemetry}, \code{recovery_failed} или \code{deadline_impossible}.
+\end{itemize}
+
+\section{Переходы \(\A{REQ}\) и \(\A{SLA}\)}
+
+Жизненный цикл запроса:
+\[
+\begin{array}{rcl}
+\code{ServiceIdle} & \xrightarrow{\code{new_demand?}} & \code{RequestBuild},\\
+\code{RequestBuild} & \xrightarrow{\text{write shared variables}} & \code{RequestReady},\\
+\code{RequestReady} & \xrightarrow{\code{service_request!}} & \code{RequestPending},\\
+\code{RequestPending} & \xrightarrow{\code{service_accept?}} & \code{Accepted},\\
+\code{RequestPending} & \xrightarrow{\code{service_degraded?}} & \code{AcceptedDegraded},\\
+\code{RequestPending} & \xrightarrow{\code{service_reject?}} & \code{Rejected},\\
+\code{RequestPending} & \xrightarrow{\code{timeout}} & \code{Rejected},\\
+\code{Accepted} & \xrightarrow{\code{service_complete?}} & \code{Completed}.
+\end{array}
+\]
+
+Деградированный режим после принятия сервиса:
+\[
+\begin{array}{rcl}
+\code{Accepted} & \xrightarrow{\code{degraded_notice?}} & \code{AcceptedDegraded},\\
+\code{AcceptedDegraded} & \xrightarrow{\code{service_kpi_update?}\land SLA^{sens}_{OK}} & \code{Accepted},\\
+\code{AcceptedDegraded} & \xrightarrow{\code{sla_violation?}} & \code{SLAViolated},\\
+\code{AcceptedDegraded} & \xrightarrow{\code{freshness_expired?}} & \code{SLAViolated}.
+\end{array}
+\]
+
+Контроль SLA:
+\[
+\begin{array}{rcl}
+\code{SLAOk} & \xrightarrow{\code{sla_warn?}} & \code{SLAWarning},\\
+\code{SLAOk} & \xrightarrow{\code{sla_violation?}} & \code{SLAViolated},\\
+\code{SLAWarning} & \xrightarrow{\code{sla_warning_report!}} & \code{SLAReported},\\
+\code{SLAWarning} & \xrightarrow{\code{service_kpi_update?}\land \neg SLA^{sens}_{WARN}\land \neg SLA^{sens}_{VIOLATED}} & \code{SLAOk},\\
+\code{SLAWarning} & \xrightarrow{\code{sla_violation?}} & \code{SLAViolated},\\
+\code{SLAViolated} & \xrightarrow{\code{sla_violation_report!}} & \code{SLAReported},\\
+\code{SLAViolated} & \xrightarrow{\code{service_reconfigure!}} & \code{SLAReported},\\
+\code{SLAViolated} & \xrightarrow{\code{service_terminate!}} & \code{SLAReported},\\
+\code{SLAReported} & \xrightarrow{\code{service_kpi_update?}\land SLA^{sens}_{OK}} & \code{SLAOk}.
+\end{array}
+\]
+
+\section{Интерфейс требований и отчетов}
+
+Минимальный сервисный запрос:
+\[
+\begin{array}{l}
+R_{SVC}=(\code{ServiceClass},\code{CriticalityClass},\code{DemandClass},\\
+\qquad \code{LatencyBound},\code{ReliabilityClass},\code{SensingUpdateBound},\\
+\qquad \code{SensingFreshnessBound},\code{AccuracyBoundClass},\\
+\qquad \code{CoverageBoundClass},\code{PdMinClass},\code{PfaMaxClass},\\
+\qquad \code{PmissMaxClass}).
+\end{array}
+\]
+
+Минимальный отчет о нарушении:
+\[
+\begin{array}{l}
+V_{SLA}=(\code{SLAClass},\code{ViolationReason},\code{ObservedAge},\\
+\qquad \code{FalseAlarmClass},\code{MissedDetectionClass},\code{PdClass},\\
+\qquad \code{DegradedReason},\code{DecisionRequired}).
+\end{array}
+\]
+
+Для сервиса обнаружения малоразмерных БПЛА критичны не только задержка доставки события, но и давность sensing-информации. Устаревшая информация может быть формально доставлена вовремя, но уже не соответствовать текущему положению цели.
+
+\section{Верификационные свойства и observer-автоматы}
+
+\[
+\begin{array}{l}
+\code{A[] not deadlock},\\
+\code{A[] not ObsServiceAdmission.Violation},\\
+\code{A[] not ObsSlaWarningDeadline.Violation},\\
+\code{A[] not ObsSlaViolationDeadline.Violation},\\
+\code{A[] not ObsDetectionFreshness.Violation},\\
+\code{A[] not ObsUpdatePeriodViolation.Violation},\\
+\code{A[] not ObsFalseAlarmCritical.Violation},\\
+\code{A[] not ObsMissedDetectionCritical.Violation},\\
+\code{A[] not ObsSafetyCriticalViolation.Violation},\\
+\code{A[] detection_kpi_consistent()},\\
+\code{A[] not (criticalityClass == CRIT_SAFETY}\\
+\qquad \code{&& admissionClass == ADM_DEGRADED}\\
+\qquad \code{&& !gSafetyAllowsDegraded())},\\
+\code{A[] not (admissionClass == ADM_ACCEPTED}\\
+\qquad \code{&& degradedReason == DEG_RESOURCE_LIMITED)}.
+\end{array}
+\]
+
+Следующие записи задают математический смысл observer-автоматов; в UPPAAL они реализуются не напрямую через \(\Diamond_{\le D}\), а через соответствующие templates с clock \(x\) и состоянием \code{Violation}.
+
+Для safety-critical сервиса:
+\[
+\code{criticalityClass=CRIT_SAFETY}\land \code{SLAClass=SLA_VIOLATED}\Rightarrow
+\Diamond_{\le D_{safety}}
+(\code{service_reconfigure_sent}\vee \code{service_terminate_sent}\vee
+\code{violation_report_sent}).
+\]
+
+Для freshness:
+\[
+\code{DemandClass=DEMAND_SENS}\land \code{DetectionFreshnessClass=DET_EXPIRED}
+\Rightarrow
+\Diamond_{\le D_{fresh\_report}}
+(\code{sla_violation_report_sent}\vee \code{violation_report_sent}).
+\]
+
+Для периода обновления sensing:
+\[
+\code{UpdatePeriodClass=UPD_VIOLATED}\Rightarrow
+\Diamond_{\le D_{update\_report}}
+(\code{sla_violation_report_sent}\vee \code{violation_report_sent}).
+\]
+
+Для риска ложной тревоги:
+\[
+\code{FalseAlarmClass=FA_CRITICAL}\Rightarrow
+\Diamond_{\le D_{fa\_report}}
+(\code{sla_violation_report_sent}\vee \code{violation_report_sent}).
+\]
+
+Для риска пропуска цели:
+\[
+\code{MissedDetectionClass=MISS_CRITICAL}\Rightarrow
+\Diamond_{\le D_{miss\_report}}
+(\code{service_reconfigure_sent}\vee \code{service_terminate_sent}\vee
+\code{sla_violation_report_sent}).
+\]
+
+\section{Ограничения применимости}
+
+\begin{itemize}
+  \item SLA должен быть переведен в конечные классы; текстовое SLA без \(\alpha_{SVC}\) не проверяется timed automata.
+  \item Сервисный уровень не доказывает физическую вероятность обнаружения и не вычисляет CRB.
+  \item AcceptedDegraded допустим только при явном сервисном разрешении деградированного режима.
+  \item Для БПЛА-сценария detection freshness является отдельным ограничением, а не синонимом вероятности обнаружения.
+  \item False alarm и missed detection задаются как дискретные классы внешней оценки; сервисный автомат не оценивает статистику обнаружения по выборке.
+  \item Если service layer напрямую управляет PHY/MAC, иерархическая формализация нарушается.
+\end{itemize}
+
+\section{Заключение}
+
+Application / Service Layer задается как композиция автоматов запроса, SLA, критичности и агрегирования требований. Его задача --- формализовать сервисные ограничения и проверять своевременное получение решения или отчета о нарушении. Слабое место ранней модели состоит в том, что SLA может остаться текстовым описанием без конечных классов. В данной спецификации это закрыто отображением \(\alpha_{SVC}\), явными классами \code{AdmissionClass}, \code{SLAClass}, \code{CriticalityClass}, \code{DetectionFreshnessClass}, \code{UpdatePeriodClass}, \code{FalseAlarmClass}, \code{MissedDetectionClass} и observer-свойствами для admission, SLA violation, detection freshness, update period, false alarm, missed detection и safety-critical violation.
+
+\begin{thebibliography}{9}
+
+\bibitem{liu_senscap}
+G. Liu et al., ``SensCAP: A Systematic Sensing Capability Performance Metric for 6G ISAC,'' \emph{IEEE Internet of Things Journal}, vol. 11, no. 18, pp. 29438--29454, 2024, doi: 10.1109/JIOT.2024.3430502.
+
+\bibitem{liu_coop}
+G. Liu et al., ``Cooperative Sensing for 6G ISAC: Concept, Key Technologies, Performance Evaluation, and Field Trial,'' \emph{Engineering}, vol. 56, pp. 130--148, 2026.
+
+\bibitem{alur_dill}
+R. Alur and D. L. Dill, ``A Theory of Timed Automata,'' \emph{Theoretical Computer Science}, vol. 126, no. 2, pp. 183--235, 1994.
+
+\bibitem{mosudi_sdn}
+O. A. Mosudi, S. I. Popoola, A. A. Atayero, and A. A. Elngar, ``SDN for 5G and Beyond: Transforming Network Architecture,'' 2025.
+
+\bibitem{zolanvari_sdn}
+Zolanvari, ``SDN for 5G,'' 2015.
+
+\end{thebibliography}
+
+\end{document}
