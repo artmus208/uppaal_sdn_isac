@@ -1,0 +1,29 @@
+{
+  "commands": [
+    {
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-1\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "stdout": "Coordination artifacts are structurally consistent.\r\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-1\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence\\healthcheck\\20260906-remediation\\audit_handoff.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: audit_handoff.py [-h] [--output OUTPUT]\r\n\r\nAudit committed fix scopes and preserve a snapshot of the original checkout.\r\n\r\noptions:\r\n  -h, --help       show this help message and exit\r\n  --output OUTPUT\r\n",
+      "stderr": ""
+    }
+  ],
+  "diagnostic_scripts_parse": true,
+  "scope_audit": "scope-and-artifact-audit.json",
+  "original_checkout_unchanged": true,
+  "four_fix_CI_runs": "success; see results.json"
+}

@@ -1,0 +1,300 @@
+{
+  "diagnostic_class": "read_only_hash_audit_not_model_checking",
+  "observed_at_utc": "2026-09-06T19:12:49.417149+00:00",
+  "source_root": "D:\\uppaal_mcp",
+  "source_commit": "11bd69bdca9a1209f820258b3732b3c865f79035",
+  "input_mode": "exact_checkout_bytes",
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-1\\.venv\\Scripts\\python.exe",
+    "evidence/healthcheck/20260906-remediation/audit_baseline.py",
+    "--repo",
+    "D:/uppaal_mcp",
+    "--output",
+    "evidence/healthcheck/20260906-remediation/current-checkout-hashes.json"
+  ],
+  "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "pyyaml_version": "6.0.3",
+  "manifest_path": "manifests/baselines/reviewer-r1.yaml",
+  "manifest_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+  "baseline_id": "reviewer-r1-candidate",
+  "baseline_frozen": false,
+  "gate_1_status": "pending",
+  "file_pairs": [
+    {
+      "field": "coordination_inputs.scientific_plan",
+      "path": "manifests/v1.md",
+      "expected_sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "actual_sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "coordination_inputs.reviewer_comments",
+      "path": "rewievs/18100004273 - Comments for authors.docx",
+      "expected_sha256": "cc3d28d486710303d46eb81563804b381cdb26abc61b4927bf1e4d16e0da5875",
+      "actual_sha256": "cc3d28d486710303d46eb81563804b381cdb26abc61b4927bf1e4d16e0da5875",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "manuscript.submitted_pdf",
+      "path": "pdfs/018100004273.pdf",
+      "expected_sha256": "31ebd85a51c3ccf858b46088d3e94db11e99ac533e0e130148a0be451efae109",
+      "actual_sha256": "31ebd85a51c3ccf858b46088d3e94db11e99ac533e0e130148a0be451efae109",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "manuscript.editable_source",
+      "path": "levels_tex/samplepaper.tex",
+      "expected_sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "actual_sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "manuscript.layer_sources.application",
+      "path": "levels_tex/Application_service_layer_formalization.tex",
+      "expected_sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807",
+      "actual_sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "manuscript.layer_sources.mac",
+      "path": "levels_tex/MAC_resource_scheduling_formalization.tex",
+      "expected_sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+      "actual_sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "manuscript.layer_sources.phy",
+      "path": "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "expected_sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+      "actual_sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "manuscript.layer_sources.sdn",
+      "path": "levels_tex/SDN_RIC_control_plane_formalization.tex",
+      "expected_sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
+      "actual_sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "models.phy.model",
+      "path": ".uppaal_mcp_workspace/phy_generated/model.xml",
+      "expected_sha256": "d0b5959289a77f0520006d960f59de7811e266ee6ec4273e92cf946177f4e539",
+      "actual_sha256": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd",
+      "exists": true,
+      "matches": false
+    },
+    {
+      "field": "models.phy.queries",
+      "path": ".uppaal_mcp_workspace/phy_generated/queries.q",
+      "expected_sha256": "76973af1e87c5f0605c231ddc03d1aed5a56b582fea5b43e49b12d925388d9de",
+      "actual_sha256": "96a0757a240f6a27b67cffc68bc6aff4866149d614eaf05e95e9c9945c244d53",
+      "exists": true,
+      "matches": false
+    },
+    {
+      "field": "models.phy.generator",
+      "path": "src/uppaal_mcp/phy/generator.py",
+      "expected_sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7",
+      "actual_sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "models.mac.model",
+      "path": ".uppaal_mcp_workspace/mac_generated/model.xml",
+      "expected_sha256": "85b73729d545750cbcfcd72ed0fc65f551f6118c9a1ec9a55f8ba24a4db96e1a",
+      "actual_sha256": "ef8ee3f24f1ca516774187c98fcd7697a35a29042c7143c5e05ffb21ddf68a2d",
+      "exists": true,
+      "matches": false
+    },
+    {
+      "field": "models.mac.queries",
+      "path": ".uppaal_mcp_workspace/mac_generated/queries.q",
+      "expected_sha256": "1d3ba5fd72447d66ae18aefb4bceb4a620564e727da9898b2304c6e4c0f3845d",
+      "actual_sha256": "1d3ba5fd72447d66ae18aefb4bceb4a620564e727da9898b2304c6e4c0f3845d",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "models.mac.generator",
+      "path": "src/uppaal_mcp/mac/generator.py",
+      "expected_sha256": "71fbfd14a40a38a4b47f1681cc38842fb4e22748630bb6cc5c6fe4ba1471956a",
+      "actual_sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+      "exists": true,
+      "matches": false
+    },
+    {
+      "field": "models.sdn.model",
+      "path": ".uppaal_mcp_workspace/sdn_generated_smoke/model.xml",
+      "expected_sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de",
+      "actual_sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "models.sdn.queries",
+      "path": ".uppaal_mcp_workspace/sdn_generated_smoke/queries.q",
+      "expected_sha256": "8bff679ed75692568b79391b3ccfeceda67ae549caa0844215447813527a2f31",
+      "actual_sha256": "8bff679ed75692568b79391b3ccfeceda67ae549caa0844215447813527a2f31",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "models.sdn.generator",
+      "path": "src/uppaal_mcp/sdn/generator.py",
+      "expected_sha256": "bd5bd16b79cd2b4e3a46420f1b2bc57e0577b1c593c63d4fd23a0b7230085580",
+      "actual_sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272",
+      "exists": true,
+      "matches": false
+    },
+    {
+      "field": "models.application.model",
+      "path": ".uppaal_mcp_workspace/Application_service_layer_uppaal.xml",
+      "expected_sha256": "742259bbdeec6c8938d836f901e5356424400599e79894fd1546dd9e619cc9b2",
+      "actual_sha256": "e4b1075a325409c3f6c9d5b136b5d9d1fa6fc7976ab6f2fcb3f5920e178ed6ad",
+      "exists": true,
+      "matches": false
+    },
+    {
+      "field": "generator_runtime.verifyta_wrapper",
+      "path": "src/uppaal_mcp/verifyta.py",
+      "expected_sha256": "4fe19b7dd68fbd10de8e8a615ef946b8d17a8ff457ffef0ad23c25b92c052f8a",
+      "actual_sha256": "4fe19b7dd68fbd10de8e8a615ef946b8d17a8ff457ffef0ad23c25b92c052f8a",
+      "exists": true,
+      "matches": true
+    },
+    {
+      "field": "generator_runtime.mcp_server",
+      "path": "src/uppaal_mcp/server.py",
+      "expected_sha256": "7420714fa4818f0b011f5f7e70a8924a087fbbca801e342c78b67a9036a8d648",
+      "actual_sha256": "7420714fa4818f0b011f5f7e70a8924a087fbbca801e342c78b67a9036a8d648",
+      "exists": true,
+      "matches": true
+    }
+  ],
+  "common_hashes": [
+    {
+      "name": "source_hash",
+      "expected_sha256": "7ef2c09dbcb2e435696e4f67a769cbf9aff5db2e771dc3b080d6745013ec2e86",
+      "actual_sha256": "7ef2c09dbcb2e435696e4f67a769cbf9aff5db2e771dc3b080d6745013ec2e86",
+      "matches": true,
+      "inputs": [
+        {
+          "path": "levels_tex/Application_service_layer_formalization.tex",
+          "sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807"
+        },
+        {
+          "path": "levels_tex/MAC_resource_scheduling_formalization.tex",
+          "sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527"
+        },
+        {
+          "path": "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+          "sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df"
+        },
+        {
+          "path": "levels_tex/SDN_RIC_control_plane_formalization.tex",
+          "sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812"
+        }
+      ]
+    },
+    {
+      "name": "generator_hash",
+      "expected_sha256": "c663808ca7258029f530befdcdf03d7f3d6bffb6916630cf21ffd31661302ac2",
+      "actual_sha256": "a5c0c99f74ee9a35f5bf81737fa964939b91f1347feccf6a1db42d4955a60d0f",
+      "matches": false,
+      "inputs": [
+        {
+          "path": "src/uppaal_mcp/layout_core.py",
+          "sha256": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/alpha.py",
+          "sha256": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/defaults.py",
+          "sha256": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/generator.py",
+          "sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/ir.py",
+          "sha256": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/layout.py",
+          "sha256": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/property_pack.py",
+          "sha256": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/alpha.py",
+          "sha256": "7f77814e3ad6fafa15c32df5e86accfef00995d193fa6182f178802f3ac809e9"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/defaults.py",
+          "sha256": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/generator.py",
+          "sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/ir.py",
+          "sha256": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/layout.py",
+          "sha256": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/property_pack.py",
+          "sha256": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/alpha.py",
+          "sha256": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/defaults.py",
+          "sha256": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/generator.py",
+          "sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/ir.py",
+          "sha256": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/layout.py",
+          "sha256": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/property_pack.py",
+          "sha256": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec"
+        }
+      ]
+    }
+  ],
+  "recorded_file_count": 20,
+  "mismatch_count": 6,
+  "common_hash_mismatch_count": 1,
+  "hash_status": "mismatch",
+  "acceptance": "No scientific verification or gate acceptance implied by hash equality."
+}
