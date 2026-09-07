@@ -1,0 +1,246 @@
+running egg_info
+writing src\uppaal_mcp.egg-info\PKG-INFO
+writing dependency_links to src\uppaal_mcp.egg-info\dependency_links.txt
+writing entry points to src\uppaal_mcp.egg-info\entry_points.txt
+writing requirements to src\uppaal_mcp.egg-info\requires.txt
+writing top-level names to src\uppaal_mcp.egg-info\top_level.txt
+reading manifest file 'src\uppaal_mcp.egg-info\SOURCES.txt'
+writing manifest file 'src\uppaal_mcp.egg-info\SOURCES.txt'
+running bdist_wheel
+running build
+running build_py
+creating build\lib\uppaal_mcp
+copying src\uppaal_mcp\cli.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\config.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\examples.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\layers.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\layout_core.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\paths.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\server.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\validation.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\verifyta.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\__init__.py -> build\lib\uppaal_mcp
+copying src\uppaal_mcp\__main__.py -> build\lib\uppaal_mcp
+creating build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\alpha.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\benchmarks.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\defaults.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\extractor.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\generator.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\ir.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\layout.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\property_pack.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\reports.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\scenarios.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\tools.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\trace.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\validators.py -> build\lib\uppaal_mcp\mac
+copying src\uppaal_mcp\mac\__init__.py -> build\lib\uppaal_mcp\mac
+creating build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\alpha.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\artifacts.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\benchmarks.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\defaults.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\extractor.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\generator.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\ir.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\layout.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\property_pack.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\reports.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\scenarios.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\tools.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\trace.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\validators.py -> build\lib\uppaal_mcp\phy
+copying src\uppaal_mcp\phy\__init__.py -> build\lib\uppaal_mcp\phy
+creating build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\alpha.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\benchmarks.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\defaults.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\extractor.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\generator.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\ir.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\layout.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\property_pack.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\reports.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\scenarios.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\tools.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\trace.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\validators.py -> build\lib\uppaal_mcp\sdn
+copying src\uppaal_mcp\sdn\__init__.py -> build\lib\uppaal_mcp\sdn
+running egg_info
+writing src\uppaal_mcp.egg-info\PKG-INFO
+writing dependency_links to src\uppaal_mcp.egg-info\dependency_links.txt
+writing entry points to src\uppaal_mcp.egg-info\entry_points.txt
+writing requirements to src\uppaal_mcp.egg-info\requires.txt
+writing top-level names to src\uppaal_mcp.egg-info\top_level.txt
+reading manifest file 'src\uppaal_mcp.egg-info\SOURCES.txt'
+writing manifest file 'src\uppaal_mcp.egg-info\SOURCES.txt'
+creating build\lib\uppaal_mcp\builtin_examples\bounded_response
+copying src\uppaal_mcp\builtin_examples\bounded_response\model.xml -> build\lib\uppaal_mcp\builtin_examples\bounded_response
+creating build\lib\uppaal_mcp\builtin_examples\deadlock
+copying src\uppaal_mcp\builtin_examples\deadlock\model.xml -> build\lib\uppaal_mcp\builtin_examples\deadlock
+creating build\lib\uppaal_mcp\builtin_examples\deadlock_free
+copying src\uppaal_mcp\builtin_examples\deadlock_free\model.xml -> build\lib\uppaal_mcp\builtin_examples\deadlock_free
+creating build\lib\uppaal_mcp\builtin_examples\phy_contract_skeleton
+copying src\uppaal_mcp\builtin_examples\phy_contract_skeleton\model.xml -> build\lib\uppaal_mcp\builtin_examples\phy_contract_skeleton
+creating build\lib\uppaal_mcp\builtin_examples\queue_overflow
+copying src\uppaal_mcp\builtin_examples\queue_overflow\model.xml -> build\lib\uppaal_mcp\builtin_examples\queue_overflow
+copying src\uppaal_mcp\builtin_examples\bounded_response\queries.q -> build\lib\uppaal_mcp\builtin_examples\bounded_response
+copying src\uppaal_mcp\builtin_examples\deadlock\queries.q -> build\lib\uppaal_mcp\builtin_examples\deadlock
+copying src\uppaal_mcp\builtin_examples\deadlock_free\queries.q -> build\lib\uppaal_mcp\builtin_examples\deadlock_free
+copying src\uppaal_mcp\builtin_examples\phy_contract_skeleton\queries.q -> build\lib\uppaal_mcp\builtin_examples\phy_contract_skeleton
+copying src\uppaal_mcp\builtin_examples\queue_overflow\queries.q -> build\lib\uppaal_mcp\builtin_examples\queue_overflow
+installing to build\bdist.win-amd64\wheel
+running install
+running install_lib
+creating build\bdist.win-amd64\wheel
+creating build\bdist.win-amd64\wheel\uppaal_mcp
+creating build\bdist.win-amd64\wheel\uppaal_mcp\builtin_examples
+creating build\bdist.win-amd64\wheel\uppaal_mcp\builtin_examples\bounded_response
+copying build\lib\uppaal_mcp\builtin_examples\bounded_response\model.xml -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\bounded_response
+copying build\lib\uppaal_mcp\builtin_examples\bounded_response\queries.q -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\bounded_response
+creating build\bdist.win-amd64\wheel\uppaal_mcp\builtin_examples\deadlock
+copying build\lib\uppaal_mcp\builtin_examples\deadlock\model.xml -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\deadlock
+copying build\lib\uppaal_mcp\builtin_examples\deadlock\queries.q -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\deadlock
+creating build\bdist.win-amd64\wheel\uppaal_mcp\builtin_examples\deadlock_free
+copying build\lib\uppaal_mcp\builtin_examples\deadlock_free\model.xml -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\deadlock_free
+copying build\lib\uppaal_mcp\builtin_examples\deadlock_free\queries.q -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\deadlock_free
+creating build\bdist.win-amd64\wheel\uppaal_mcp\builtin_examples\phy_contract_skeleton
+copying build\lib\uppaal_mcp\builtin_examples\phy_contract_skeleton\model.xml -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\phy_contract_skeleton
+copying build\lib\uppaal_mcp\builtin_examples\phy_contract_skeleton\queries.q -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\phy_contract_skeleton
+creating build\bdist.win-amd64\wheel\uppaal_mcp\builtin_examples\queue_overflow
+copying build\lib\uppaal_mcp\builtin_examples\queue_overflow\model.xml -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\queue_overflow
+copying build\lib\uppaal_mcp\builtin_examples\queue_overflow\queries.q -> build\bdist.win-amd64\wheel\.\uppaal_mcp\builtin_examples\queue_overflow
+copying build\lib\uppaal_mcp\cli.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\config.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\examples.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\layers.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\layout_core.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+creating build\bdist.win-amd64\wheel\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\alpha.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\benchmarks.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\defaults.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\extractor.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\generator.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\ir.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\layout.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\property_pack.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\reports.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\scenarios.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\tools.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\trace.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\validators.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\mac\__init__.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\mac
+copying build\lib\uppaal_mcp\paths.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+creating build\bdist.win-amd64\wheel\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\alpha.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\artifacts.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\benchmarks.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\defaults.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\extractor.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\generator.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\ir.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\layout.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\property_pack.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\reports.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\scenarios.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\tools.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\trace.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\validators.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+copying build\lib\uppaal_mcp\phy\__init__.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\phy
+creating build\bdist.win-amd64\wheel\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\alpha.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\benchmarks.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\defaults.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\extractor.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\generator.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\ir.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\layout.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\property_pack.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\reports.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\scenarios.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\tools.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\trace.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\validators.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\sdn\__init__.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp\sdn
+copying build\lib\uppaal_mcp\server.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\validation.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\verifyta.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\__init__.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+copying build\lib\uppaal_mcp\__main__.py -> build\bdist.win-amd64\wheel\.\uppaal_mcp
+running install_egg_info
+Copying src\uppaal_mcp.egg-info to build\bdist.win-amd64\wheel\.\uppaal_mcp-0.1.0-py3.14.egg-info
+running install_scripts
+creating build\bdist.win-amd64\wheel\uppaal_mcp-0.1.0.dist-info\WHEEL
+creating 'D:\\uppaal_sdn_isac-carwasher-4\\.venv\\cli-build-20260907T000715Z\\.tmp-kuxohugu\\uppaal_mcp-0.1.0-py3-none-any.whl' and adding 'build\\bdist.win-amd64\\wheel' to it
+adding 'uppaal_mcp/__init__.py'
+adding 'uppaal_mcp/__main__.py'
+adding 'uppaal_mcp/cli.py'
+adding 'uppaal_mcp/config.py'
+adding 'uppaal_mcp/examples.py'
+adding 'uppaal_mcp/layers.py'
+adding 'uppaal_mcp/layout_core.py'
+adding 'uppaal_mcp/paths.py'
+adding 'uppaal_mcp/server.py'
+adding 'uppaal_mcp/validation.py'
+adding 'uppaal_mcp/verifyta.py'
+adding 'uppaal_mcp/builtin_examples/bounded_response/model.xml'
+adding 'uppaal_mcp/builtin_examples/bounded_response/queries.q'
+adding 'uppaal_mcp/builtin_examples/deadlock/model.xml'
+adding 'uppaal_mcp/builtin_examples/deadlock/queries.q'
+adding 'uppaal_mcp/builtin_examples/deadlock_free/model.xml'
+adding 'uppaal_mcp/builtin_examples/deadlock_free/queries.q'
+adding 'uppaal_mcp/builtin_examples/phy_contract_skeleton/model.xml'
+adding 'uppaal_mcp/builtin_examples/phy_contract_skeleton/queries.q'
+adding 'uppaal_mcp/builtin_examples/queue_overflow/model.xml'
+adding 'uppaal_mcp/builtin_examples/queue_overflow/queries.q'
+adding 'uppaal_mcp/mac/__init__.py'
+adding 'uppaal_mcp/mac/alpha.py'
+adding 'uppaal_mcp/mac/benchmarks.py'
+adding 'uppaal_mcp/mac/defaults.py'
+adding 'uppaal_mcp/mac/extractor.py'
+adding 'uppaal_mcp/mac/generator.py'
+adding 'uppaal_mcp/mac/ir.py'
+adding 'uppaal_mcp/mac/layout.py'
+adding 'uppaal_mcp/mac/property_pack.py'
+adding 'uppaal_mcp/mac/reports.py'
+adding 'uppaal_mcp/mac/scenarios.py'
+adding 'uppaal_mcp/mac/tools.py'
+adding 'uppaal_mcp/mac/trace.py'
+adding 'uppaal_mcp/mac/validators.py'
+adding 'uppaal_mcp/phy/__init__.py'
+adding 'uppaal_mcp/phy/alpha.py'
+adding 'uppaal_mcp/phy/artifacts.py'
+adding 'uppaal_mcp/phy/benchmarks.py'
+adding 'uppaal_mcp/phy/defaults.py'
+adding 'uppaal_mcp/phy/extractor.py'
+adding 'uppaal_mcp/phy/generator.py'
+adding 'uppaal_mcp/phy/ir.py'
+adding 'uppaal_mcp/phy/layout.py'
+adding 'uppaal_mcp/phy/property_pack.py'
+adding 'uppaal_mcp/phy/reports.py'
+adding 'uppaal_mcp/phy/scenarios.py'
+adding 'uppaal_mcp/phy/tools.py'
+adding 'uppaal_mcp/phy/trace.py'
+adding 'uppaal_mcp/phy/validators.py'
+adding 'uppaal_mcp/sdn/__init__.py'
+adding 'uppaal_mcp/sdn/alpha.py'
+adding 'uppaal_mcp/sdn/benchmarks.py'
+adding 'uppaal_mcp/sdn/defaults.py'
+adding 'uppaal_mcp/sdn/extractor.py'
+adding 'uppaal_mcp/sdn/generator.py'
+adding 'uppaal_mcp/sdn/ir.py'
+adding 'uppaal_mcp/sdn/layout.py'
+adding 'uppaal_mcp/sdn/property_pack.py'
+adding 'uppaal_mcp/sdn/reports.py'
+adding 'uppaal_mcp/sdn/scenarios.py'
+adding 'uppaal_mcp/sdn/tools.py'
+adding 'uppaal_mcp/sdn/trace.py'
+adding 'uppaal_mcp/sdn/validators.py'
+adding 'uppaal_mcp-0.1.0.dist-info/METADATA'
+adding 'uppaal_mcp-0.1.0.dist-info/WHEEL'
+adding 'uppaal_mcp-0.1.0.dist-info/entry_points.txt'
+adding 'uppaal_mcp-0.1.0.dist-info/top_level.txt'
+adding 'uppaal_mcp-0.1.0.dist-info/RECORD'
+removing build\bdist.win-amd64\wheel
+Successfully built uppaal_mcp-0.1.0-py3-none-any.whl

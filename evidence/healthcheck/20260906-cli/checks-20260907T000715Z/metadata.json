@@ -1,0 +1,243 @@
+{
+  "run_id": "cli-regression-20260907T000715Z",
+  "evidence_class": "software regression diagnostics; no model checking performed",
+  "issue": "https://github.com/artmus208/uppaal_sdn_isac/issues/4",
+  "base_commit": "11bd69bdca9a1209f820258b3732b3c865f79035",
+  "head_at_capture": "11bd69bdca9a1209f820258b3732b3c865f79035",
+  "git_status_at_capture": " M src/uppaal_mcp/cli.py\n?? evidence/\n?? tests/test_cli.py\n",
+  "source_snapshot": "Exact working-file hashes; pending software changes are committed with this evidence.",
+  "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "python_executable": "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "processor": "AMD64 Family 23 Model 1 Stepping 1, AuthenticAMD",
+  "cpu_count": 8,
+  "setup_command": "python -m venv .venv; .venv/Scripts/python.exe -m pip install -e . 'mcp>=1,<2' build",
+  "setup_note": "MCP 1.x was constrained explicitly because the separate dependency fix is Issue #3.",
+  "verification_evidence": "N/A; version availability and synthetic response tests do not verify properties",
+  "files_sha256": {
+    "src/uppaal_mcp/cli.py": "5898223edb6a800718364c96d5730bf69d516e8df064303ae32bf0e32bc4f73a",
+    "tests/test_cli.py": "dd331019d1b5b68d30e4d3677cc4f0bbb7df7a567f5b3dbec37ffd5ba5b5d15a",
+    "pyproject.toml": "77914d6e88c5a504c7313f13eaf814f76673b71adec9088214bc671f03a9a6f1",
+    "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+    "manifests/collaboration-v1.yaml": "dfd0d92fd239fcef0c8d3c9deaea79ff0f4c2814ce86c676a7cec0ada62d47d0",
+    "manifests/baselines/reviewer-r1.yaml": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a"
+  },
+  "wheel_sha256": {
+    "uppaal_mcp-0.1.0-py3-none-any.whl": "a67cae93d71f3e8b8cf56b2c5e1a7b693f6a17e9a14eda9cc37ec78cc5939a36"
+  },
+  "commands": [
+    {
+      "name": "pip-check",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 0.872,
+      "stdout": "pip-check.stdout.txt",
+      "stdout_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+      "stderr": "pip-check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pip-freeze",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 0.936,
+      "stdout": "pip-freeze.stdout.txt",
+      "stdout_sha256": "5c8e7dd80e627477d91d0287ef251e3365ec2ad86e77b5b3c98bbdc9792ea4c1",
+      "stderr": "pip-freeze.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 66.181,
+      "stdout": "unit-tests.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "unit-tests.stderr.txt",
+      "stderr_sha256": "12eea9f00b0d254dcef24fcd02a5fdbaa8b13868bf6eb562365fda20d44edf00"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 0.107,
+      "stdout": "coordination.stdout.txt",
+      "stdout_sha256": "85f1f0d4802afe2bc8da170b90e0b7ced04a122973ef97d26257bc72d27750dd",
+      "stderr": "coordination.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "build-mcp",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\python.exe",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 1.943,
+      "stdout": "build-mcp.stdout.txt",
+      "stdout_sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913",
+      "stderr": "build-mcp.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "list-examples",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\uppaal-verifyta.exe",
+        "list-examples"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 0.634,
+      "stdout": "list-examples.stdout.txt",
+      "stdout_sha256": "1af8ad56a27f370f4963277f0705948385ed924cd95a0f691ad2c57880025f1b",
+      "stderr": "list-examples.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "version-missing-tool",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\uppaal-verifyta.exe",
+        "version"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "matches_expectation": true,
+      "elapsed_seconds": 0.644,
+      "stdout": "version-missing-tool.stdout.txt",
+      "stdout_sha256": "ffb418c5ac0d72b809461fe9312cdd2126b899cadee35274800320aa6a4e9c3b",
+      "stderr": "version-missing-tool.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "wheel-build",
+      "command": [
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\Scripts\\python.exe",
+        "-m",
+        "build",
+        "--wheel",
+        "--outdir",
+        "D:\\uppaal_sdn_isac-carwasher-4\\.venv\\cli-build-20260907T000715Z"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 7.161,
+      "stdout": "wheel-build.stdout.txt",
+      "stdout_sha256": "e6ecdd0339031f24b3e453d520ef0c908b54cf5d5c4168b585eaf5280c395ab9",
+      "stderr": "wheel-build.stderr.txt",
+      "stderr_sha256": "5aa9d4661c939ef50a21294d6d516257c9caa2d29129902ed7c37882b8fbdc9f"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-4",
+      "environment_overrides": {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "UPPAAL_VERIFYTA_PATH": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+        "UPPAAL_MCP_WORKSPACE": "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\unused-workspace"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "matches_expectation": true,
+      "elapsed_seconds": 0.057,
+      "stdout": "diff-check.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "diff-check.stderr.txt",
+      "stderr_sha256": "9dafae6a5f700816eaf40eca30e41087a7dedc96f6cf723b2435313d2df4e748"
+    }
+  ],
+  "all_commands_matched_expectations": true,
+  "files_git_object_ids": {
+    "src/uppaal_mcp/cli.py": "8bc9151ca66c3c2243c99201f4bb85f17ae78914",
+    "tests/test_cli.py": "7c1b749c5c30087f442090d210191bf4708dd31e",
+    "pyproject.toml": "4280a004e95d1b218efd0b521bd9d808106168c0",
+    "manifests/v1.md": "45e2d106245c339831be52d830ec4e2caddb8922",
+    "manifests/collaboration-v1.yaml": "a13156554bda2dad95658cd0d7ff6bf2d7f9992e",
+    "manifests/baselines/reviewer-r1.yaml": "c3c7f8c9369fea96b5e4245afaa9fc0f973dadce"
+  }
+}

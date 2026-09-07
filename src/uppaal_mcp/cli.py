@@ -12,8 +12,15 @@ from .sdn import tools as sdn_tools
 from .verifyta import VerifytaRunner
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(prog="uppaal-verifyta")
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        prog="uppaal-verifyta",
+        epilog=(
+            "Exit codes: 0 = successful operation or expected negative check; "
+            "1 = property/check failed; 2 = tool failure or inconclusive result. "
+            "Static-only success does not imply model checking."
+        ),
+    )
     parser.add_argument("--verifyta-path", help="Path to verifyta/verifyta.exe.")
     parser.add_argument("--workspace", help="Workspace for generated run artifacts.")
     parser.add_argument("--timeout-sec", type=float, help="verifyta timeout in seconds.")
@@ -262,11 +269,11 @@ def main() -> None:
     runner = VerifytaRunner(config)
 
     if args.command == "version":
-        print_json(runner.get_version().to_dict())
+        return print_json(runner.get_version().to_dict())
     elif args.command == "list-examples":
-        print_json(list_builtin_examples())
+        return print_json(list_builtin_examples())
     elif args.command == "validate":
-        print_json(runner.validate(model_path=args.model, query_path=args.queries))
+        return print_json(runner.validate(model_path=args.model, query_path=args.queries))
     elif args.command == "verify":
         options = [item for item in args.verifyta_options if item != "--"]
         result = runner.verify(
@@ -275,7 +282,7 @@ def main() -> None:
             options=options,
             options_preset=args.options_preset,
         )
-        print_json(result.to_dict())
+        return print_json(result.to_dict())
     elif args.command == "example":
         item = get_builtin_example(args.name)
         if args.output_dir:
@@ -283,11 +290,11 @@ def main() -> None:
             output.mkdir(parents=True, exist_ok=True)
             (output / "model.xml").write_text(item.model_xml, encoding="utf-8")
             (output / "queries.q").write_text(item.queries, encoding="utf-8")
-            print_json({"output_dir": str(output), **item.to_dict()})
+            return print_json({"output_dir": str(output), **item.to_dict()})
         else:
-            print_json(item.to_dict())
+            return print_json(item.to_dict())
     elif args.command == "phy-extract":
-        print_json(phy_tools.extract_contract(tex_path=args.tex))
+        return print_json(phy_tools.extract_contract(tex_path=args.tex))
     elif args.command == "phy-generate":
         generated = phy_tools.generate_uppaal_from_contract(
             tex_path=args.tex,
@@ -322,13 +329,13 @@ def main() -> None:
                 "alpha_validation": generated["alpha_validation"],
                 "layout_validation": generated["layout_validation"],
             }
-        print_json(generated)
+        return print_json(generated)
     elif args.command == "phy-export-diagram":
         model_xml = None
         if args.model:
             model_xml = Path(args.model).read_text(encoding="utf-8")
         if args.output_dir:
-            print_json(
+            return print_json(
                 phy_tools.export_diagram(
                     output_dir=args.output_dir,
                     model_xml=model_xml,
@@ -337,7 +344,7 @@ def main() -> None:
                 )
             )
         else:
-            print_json(
+            return print_json(
                 phy_tools.generate_diagram(
                     model_xml=model_xml,
                     tex_path=args.tex,
@@ -346,7 +353,7 @@ def main() -> None:
             )
     elif args.command == "phy-property-pack":
         if args.output_dir:
-            print_json(
+            return print_json(
                 phy_tools.export_property_pack(
                     output_dir=args.output_dir,
                     tex_path=args.tex,
@@ -356,7 +363,7 @@ def main() -> None:
                 )
             )
         else:
-            print_json(
+            return print_json(
                 phy_tools.generate_property_pack(
                     contract_json=phy_tools.extract_contract(tex_path=args.tex),
                     include_observers=not args.no_observers,
@@ -372,7 +379,7 @@ def main() -> None:
         if args.trace_text:
             trace_text = Path(args.trace_text).read_text(encoding="utf-8")
         if args.output_dir:
-            print_json(
+            return print_json(
                 phy_tools.export_report(
                     output_dir=args.output_dir,
                     tex_path=args.tex,
@@ -381,7 +388,7 @@ def main() -> None:
                 )
             )
         else:
-            print_json(phy_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+            return print_json(phy_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
     elif args.command == "phy-run-artifacts":
         result_json = None
         if args.result_json:
@@ -389,7 +396,7 @@ def main() -> None:
         trace_text = None
         if args.trace_text:
             trace_text = Path(args.trace_text).read_text(encoding="utf-8")
-        print_json(
+        return print_json(
             phy_tools.export_run_artifacts(
                 output_root=args.output_root,
                 tex_path=args.tex,
@@ -400,9 +407,9 @@ def main() -> None:
             )
         )
     elif args.command == "phy-verify":
-        print_json(phy_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
+        return print_json(phy_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
     elif args.command == "phy-verify-property-pack":
-        print_json(
+        return print_json(
             phy_tools.verify_property_pack(
                 model_path=args.model,
                 query_path=args.queries,
@@ -412,7 +419,7 @@ def main() -> None:
             )
         )
     elif args.command == "phy-list-scenarios":
-        print_json(phy_tools.phy_list_scenarios())
+        return print_json(phy_tools.phy_list_scenarios())
     elif args.command == "phy-scenario":
         scenario = phy_tools.phy_get_scenario(args.name)
         if args.output_dir:
@@ -422,13 +429,13 @@ def main() -> None:
             (output / "queries.q").write_text(scenario["queries"], encoding="utf-8")
             scenario = {key: value for key, value in scenario.items() if key not in {"model_xml", "queries"}}
             scenario["output_dir"] = str(output)
-        print_json(scenario)
+        return print_json(scenario)
     elif args.command == "phy-verify-scenario":
-        print_json(phy_tools.phy_verify_scenario(args.name, timeout_sec=args.timeout_sec))
+        return print_json(phy_tools.phy_verify_scenario(args.name, timeout_sec=args.timeout_sec))
     elif args.command == "phy-verify-all-scenarios":
-        print_json(phy_tools.phy_verify_all_scenarios(timeout_sec=args.timeout_sec))
+        return print_json(phy_tools.phy_verify_all_scenarios(timeout_sec=args.timeout_sec))
     elif args.command == "phy-list-benchmarks":
-        print_json(phy_tools.phy_list_benchmarks())
+        return print_json(phy_tools.phy_list_benchmarks())
     elif args.command == "phy-benchmark":
         benchmark = phy_tools.phy_get_benchmark(args.name)
         if args.output_dir:
@@ -438,11 +445,11 @@ def main() -> None:
             (output / "queries.q").write_text(benchmark["queries"], encoding="utf-8")
             benchmark = {key: value for key, value in benchmark.items() if key not in {"model_xml", "queries"}}
             benchmark["output_dir"] = str(output)
-        print_json(benchmark)
+        return print_json(benchmark)
     elif args.command == "phy-validate-benchmarks":
-        print_json(phy_tools.phy_validate_benchmarks())
+        return print_json(phy_tools.phy_validate_benchmarks())
     elif args.command == "mac-extract":
-        print_json(mac_tools.extract_contract(tex_path=args.tex))
+        return print_json(mac_tools.extract_contract(tex_path=args.tex))
     elif args.command == "mac-generate":
         generated = mac_tools.generate_uppaal_from_contract(
             tex_path=args.tex,
@@ -472,16 +479,16 @@ def main() -> None:
                 "alpha_validation": generated["alpha_validation"],
                 "layout_validation": generated["layout_validation"],
             }
-        print_json(generated)
+        return print_json(generated)
     elif args.command == "mac-export-diagram":
         model_xml = Path(args.model).read_text(encoding="utf-8") if args.model else None
         if args.output_dir:
-            print_json(mac_tools.export_diagram(output_dir=args.output_dir, model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+            return print_json(mac_tools.export_diagram(output_dir=args.output_dir, model_xml=model_xml, tex_path=args.tex, layout=args.layout))
         else:
-            print_json(mac_tools.generate_diagram(model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+            return print_json(mac_tools.generate_diagram(model_xml=model_xml, tex_path=args.tex, layout=args.layout))
     elif args.command == "mac-property-pack":
         if args.output_dir:
-            print_json(
+            return print_json(
                 mac_tools.export_property_pack(
                     output_dir=args.output_dir,
                     tex_path=args.tex,
@@ -491,7 +498,7 @@ def main() -> None:
                 )
             )
         else:
-            print_json(
+            return print_json(
                 mac_tools.generate_property_pack(
                     contract_json=mac_tools.extract_contract(tex_path=args.tex),
                     include_observers=not args.no_observers,
@@ -503,13 +510,13 @@ def main() -> None:
         result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
         trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
         if args.output_dir:
-            print_json(mac_tools.export_report(output_dir=args.output_dir, tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+            return print_json(mac_tools.export_report(output_dir=args.output_dir, tex_path=args.tex, result_json=result_json, trace_text=trace_text))
         else:
-            print_json(mac_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+            return print_json(mac_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
     elif args.command == "mac-run-artifacts":
         result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
         trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
-        print_json(
+        return print_json(
             mac_tools.export_run_artifacts(
                 output_root=args.output_root,
                 tex_path=args.tex,
@@ -520,9 +527,9 @@ def main() -> None:
             )
         )
     elif args.command == "mac-verify":
-        print_json(mac_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
+        return print_json(mac_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
     elif args.command == "mac-verify-property-pack":
-        print_json(
+        return print_json(
             mac_tools.verify_property_pack(
                 model_path=args.model,
                 query_path=args.queries,
@@ -532,7 +539,7 @@ def main() -> None:
             )
         )
     elif args.command == "mac-list-scenarios":
-        print_json(mac_tools.mac_list_scenarios())
+        return print_json(mac_tools.mac_list_scenarios())
     elif args.command == "mac-scenario":
         scenario = mac_tools.mac_get_scenario(args.name)
         if args.output_dir:
@@ -542,13 +549,13 @@ def main() -> None:
             (output / "queries.q").write_text(scenario["queries"], encoding="utf-8")
             scenario = {key: value for key, value in scenario.items() if key not in {"model_xml", "queries"}}
             scenario["output_dir"] = str(output)
-        print_json(scenario)
+        return print_json(scenario)
     elif args.command == "mac-verify-scenario":
-        print_json(mac_tools.mac_verify_scenario(args.name, timeout_sec=args.timeout_sec))
+        return print_json(mac_tools.mac_verify_scenario(args.name, timeout_sec=args.timeout_sec))
     elif args.command == "mac-verify-all-scenarios":
-        print_json(mac_tools.mac_verify_all_scenarios(timeout_sec=args.timeout_sec))
+        return print_json(mac_tools.mac_verify_all_scenarios(timeout_sec=args.timeout_sec))
     elif args.command == "mac-list-benchmarks":
-        print_json(mac_tools.mac_list_benchmarks())
+        return print_json(mac_tools.mac_list_benchmarks())
     elif args.command == "mac-benchmark":
         benchmark = mac_tools.mac_get_benchmark(args.name)
         if args.output_dir:
@@ -558,11 +565,11 @@ def main() -> None:
             (output / "queries.q").write_text(benchmark["queries"], encoding="utf-8")
             benchmark = {key: value for key, value in benchmark.items() if key not in {"model_xml", "queries"}}
             benchmark["output_dir"] = str(output)
-        print_json(benchmark)
+        return print_json(benchmark)
     elif args.command == "mac-validate-benchmarks":
-        print_json(mac_tools.mac_validate_benchmarks())
+        return print_json(mac_tools.mac_validate_benchmarks())
     elif args.command == "sdn-extract":
-        print_json(sdn_tools.extract_contract(tex_path=args.tex))
+        return print_json(sdn_tools.extract_contract(tex_path=args.tex))
     elif args.command == "sdn-generate":
         generated = sdn_tools.generate_uppaal_from_contract(
             tex_path=args.tex,
@@ -594,16 +601,16 @@ def main() -> None:
                 "alpha_validation": generated["alpha_validation"],
                 "layout_validation": generated["layout_validation"],
             }
-        print_json(generated)
+        return print_json(generated)
     elif args.command == "sdn-export-diagram":
         model_xml = Path(args.model).read_text(encoding="utf-8") if args.model else None
         if args.output_dir:
-            print_json(sdn_tools.export_diagram(output_dir=args.output_dir, model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+            return print_json(sdn_tools.export_diagram(output_dir=args.output_dir, model_xml=model_xml, tex_path=args.tex, layout=args.layout))
         else:
-            print_json(sdn_tools.generate_diagram(model_xml=model_xml, tex_path=args.tex, layout=args.layout))
+            return print_json(sdn_tools.generate_diagram(model_xml=model_xml, tex_path=args.tex, layout=args.layout))
     elif args.command == "sdn-property-pack":
         if args.output_dir:
-            print_json(
+            return print_json(
                 sdn_tools.export_property_pack(
                     output_dir=args.output_dir,
                     tex_path=args.tex,
@@ -613,7 +620,7 @@ def main() -> None:
                 )
             )
         else:
-            print_json(
+            return print_json(
                 sdn_tools.generate_property_pack(
                     contract_json=sdn_tools.extract_contract(tex_path=args.tex),
                     include_observers=not args.no_observers,
@@ -625,13 +632,13 @@ def main() -> None:
         result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
         trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
         if args.output_dir:
-            print_json(sdn_tools.export_report(output_dir=args.output_dir, tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+            return print_json(sdn_tools.export_report(output_dir=args.output_dir, tex_path=args.tex, result_json=result_json, trace_text=trace_text))
         else:
-            print_json(sdn_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
+            return print_json(sdn_tools.generate_report(tex_path=args.tex, result_json=result_json, trace_text=trace_text))
     elif args.command == "sdn-run-artifacts":
         result_json = json.loads(Path(args.result_json).read_text(encoding="utf-8")) if args.result_json else None
         trace_text = Path(args.trace_text).read_text(encoding="utf-8") if args.trace_text else None
-        print_json(
+        return print_json(
             sdn_tools.export_run_artifacts(
                 output_root=args.output_root,
                 tex_path=args.tex,
@@ -642,9 +649,9 @@ def main() -> None:
             )
         )
     elif args.command == "sdn-verify":
-        print_json(sdn_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
+        return print_json(sdn_tools.verify_contract(tex_path=args.tex, mode=args.mode, timeout_sec=args.timeout_sec))
     elif args.command == "sdn-verify-property-pack":
-        print_json(
+        return print_json(
             sdn_tools.verify_property_pack(
                 model_path=args.model,
                 query_path=args.queries,
@@ -654,7 +661,7 @@ def main() -> None:
             )
         )
     elif args.command == "sdn-list-scenarios":
-        print_json(sdn_tools.sdn_list_scenarios())
+        return print_json(sdn_tools.sdn_list_scenarios())
     elif args.command == "sdn-scenario":
         scenario = sdn_tools.sdn_get_scenario(args.name)
         if args.output_dir:
@@ -664,13 +671,13 @@ def main() -> None:
             (output / "queries.q").write_text(scenario["queries"], encoding="utf-8")
             scenario = {key: value for key, value in scenario.items() if key not in {"model_xml", "queries"}}
             scenario["output_dir"] = str(output)
-        print_json(scenario)
+        return print_json(scenario)
     elif args.command == "sdn-verify-scenario":
-        print_json(sdn_tools.sdn_verify_scenario(args.name, timeout_sec=args.timeout_sec))
+        return print_json(sdn_tools.sdn_verify_scenario(args.name, timeout_sec=args.timeout_sec))
     elif args.command == "sdn-verify-all-scenarios":
-        print_json(sdn_tools.sdn_verify_all_scenarios(timeout_sec=args.timeout_sec))
+        return print_json(sdn_tools.sdn_verify_all_scenarios(timeout_sec=args.timeout_sec))
     elif args.command == "sdn-list-benchmarks":
-        print_json(sdn_tools.sdn_list_benchmarks())
+        return print_json(sdn_tools.sdn_list_benchmarks())
     elif args.command == "sdn-benchmark":
         benchmark = sdn_tools.sdn_get_benchmark(args.name)
         if args.output_dir:
@@ -680,14 +687,56 @@ def main() -> None:
             (output / "queries.q").write_text(benchmark["queries"], encoding="utf-8")
             benchmark = {key: value for key, value in benchmark.items() if key not in {"model_xml", "queries"}}
             benchmark["output_dir"] = str(output)
-        print_json(benchmark)
+        return print_json(benchmark)
     elif args.command == "sdn-validate-benchmarks":
-        print_json(sdn_tools.sdn_validate_benchmarks())
+        return print_json(sdn_tools.sdn_validate_benchmarks())
 
 
-def print_json(data: object) -> None:
+def print_json(data: object) -> int:
+    """Preserve the JSON response and return its shell exit status."""
     print(json.dumps(data, ensure_ascii=False, indent=2))
+    return _result_exit_code(data)
+
+
+def _result_exit_code(data: object, *, expected_negative: bool = False) -> int:
+    """Return 0 for success, 1 for a failed check, or 2 for no reliable verdict.
+
+    Traverse result envelopes, not descriptive metadata or explanations. Expected
+    negative scenarios/benchmarks succeed only when their own check matches;
+    nested operational failures still take precedence over those expectations.
+    """
+    if isinstance(data, list):
+        return max((_result_exit_code(item) for item in data), default=0)
+    if not isinstance(data, dict):
+        return 0
+
+    expected_negative = expected_negative or (
+        data.get("ok") is True
+        and data.get("expected_status") == "not_satisfied"
+        and data.get("status") == "not_satisfied"
+    )
+    status = data.get("status")
+    code = 1 if data.get("ok") is False else 0
+    if status == "not_satisfied":
+        code = max(code, 0 if expected_negative else 1)
+    elif status is not None and status not in {"ok", "satisfied", "validated", "success"}:
+        code = 2
+
+    # A nonzero tool exit cannot become success merely because it printed a
+    # partial property result before failing.
+    if data.get("returncode") not in (None, 0):
+        code = 2
+    for key in ("result", "results", "runs", "query_results"):
+        nested = data.get(key)
+        items = nested if isinstance(nested, list) else [nested]
+        for item in items:
+            code = max(code, _result_exit_code(item, expected_negative=expected_negative))
+
+    # Validation metadata may describe deliberately invalid generated benchmarks.
+    # Validation commands expose their actual outcome as top-level ok/status;
+    # benchmark suites expose whether the expected validation result matched.
+    return code
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
