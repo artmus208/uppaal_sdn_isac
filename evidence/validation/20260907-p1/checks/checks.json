@@ -1,0 +1,170 @@
+{
+  "evidence_kind": "source_and_software_checks_not_model_checking",
+  "source_commit": "f2f714a26d6b9d9f538ef1a16b53c3e060768a11",
+  "python": "3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "packages": {
+    "mcp": "1.30.0",
+    "PyYAML": "6.0.3"
+  },
+  "environment_overrides": {
+    "PYTHONPATH": "/tmp/uppaal-p1-validation-20260907/src",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "UPPAAL_MCP_WORKSPACE": "/tmp/uppaal-p1-validation-20260907/evidence/validation/20260907-p1/checks/workspace"
+  },
+  "results": [
+    {
+      "name": "inventory",
+      "command": [
+        "/tmp/uppaal-p1-validation-venv/bin/python",
+        "/tmp/uppaal-p1-validation-20260907/evidence/validation/20260907-p1/inventory.py",
+        "--check"
+      ],
+      "cwd": "/tmp/uppaal-p1-validation-20260907",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_s": 0.546,
+      "stdout": {
+        "path": "inventory.stdout.log",
+        "sha256": "23a0a018e0da8a3d4e36862003e3ab6bb020e6ba5b68c6599c30b1f06c7d2cd5"
+      },
+      "stderr": {
+        "path": "inventory.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/uppaal-p1-validation-venv/bin/python",
+        "scripts/check_coordination.py"
+      ],
+      "cwd": "/tmp/uppaal-p1-validation-20260907",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_s": 0.058,
+      "stdout": {
+        "path": "coordination.stdout.log",
+        "sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a"
+      },
+      "stderr": {
+        "path": "coordination.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unittest",
+      "command": [
+        "/tmp/uppaal-p1-validation-venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-p1-validation-20260907",
+      "exit_code": 1,
+      "expected_exit_code": 0,
+      "elapsed_s": 63.089,
+      "stdout": {
+        "path": "unittest.stdout.log",
+        "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
+      },
+      "stderr": {
+        "path": "unittest.stderr.log",
+        "sha256": "86fcf4d5f8f2c9c71b2e845df4d7ce842d59d893196cc615e0f25a086291155c"
+      }
+    },
+    {
+      "name": "mcp-build",
+      "command": [
+        "/tmp/uppaal-p1-validation-venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "cwd": "/tmp/uppaal-p1-validation-20260907",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_s": 0.994,
+      "stdout": {
+        "path": "mcp-build.stdout.log",
+        "sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc"
+      },
+      "stderr": {
+        "path": "mcp-build.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "examples",
+      "command": [
+        "/tmp/uppaal-p1-validation-venv/bin/python",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "cwd": "/tmp/uppaal-p1-validation-20260907",
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "elapsed_s": 0.509,
+      "stdout": {
+        "path": "examples.stdout.log",
+        "sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f"
+      },
+      "stderr": {
+        "path": "examples.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "baseline-audit",
+      "command": [
+        "/tmp/uppaal-p1-validation-venv/bin/python",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "f2f714a26d6b9d9f538ef1a16b53c3e060768a11",
+        "--output",
+        "/tmp/uppaal-p1-validation-20260907/evidence/validation/20260907-p1/checks/baseline-audit.json"
+      ],
+      "cwd": "/tmp/uppaal-p1-validation-20260907",
+      "exit_code": 1,
+      "expected_exit_code": null,
+      "elapsed_s": 0.252,
+      "stdout": {
+        "path": "baseline-audit.stdout.log",
+        "sha256": "21afdd6d82d4d426868573c527efa8f6912d72b7676be30385b9aec9100c85fd"
+      },
+      "stderr": {
+        "path": "baseline-audit.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "verifyta-version",
+      "command": [
+        "/tmp/uppaal-p1-validation-venv/bin/python",
+        "-m",
+        "uppaal_mcp.cli",
+        "--timeout-sec",
+        "15",
+        "version"
+      ],
+      "cwd": "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin",
+      "exit_code": 2,
+      "expected_exit_code": null,
+      "elapsed_s": 0.541,
+      "stdout": {
+        "path": "verifyta-version.stdout.log",
+        "sha256": "c0a2ae00e871cf3b11a334d70a0193e6b3fb1e0f98e337a3d5a33f870d0b905d"
+      },
+      "stderr": {
+        "path": "verifyta-version.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "verification": "not_run"
+}

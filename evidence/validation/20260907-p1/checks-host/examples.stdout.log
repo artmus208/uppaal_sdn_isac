@@ -1,0 +1,32 @@
+[
+  {
+    "name": "bounded_response",
+    "category": "generic",
+    "description": "Controller skeleton with a deadline invariant and Done reachability.",
+    "is_phy": false
+  },
+  {
+    "name": "deadlock",
+    "category": "generic",
+    "description": "Urgent stuck location; A[] not deadlock should be violated.",
+    "is_phy": false
+  },
+  {
+    "name": "deadlock_free",
+    "category": "generic",
+    "description": "Tiny model where time can always pass; A[] not deadlock should be satisfied.",
+    "is_phy": false
+  },
+  {
+    "name": "phy_contract_skeleton",
+    "category": "phy",
+    "description": "Minimal PHY-contract shape: A_CH/A_SIG/A_BM/A_SQ/A_PH plus ENV.",
+    "is_phy": true
+  },
+  {
+    "name": "queue_overflow",
+    "category": "generic",
+    "description": "Small bounded queue model with an reachable Overflow location.",
+    "is_phy": false
+  }
+]

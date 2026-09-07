@@ -1,0 +1,8 @@
+{
+  "artifact_comparison": "match",
+  "timing_parameters": 43,
+  "finite_domains": 59,
+  "files_hashed": 26,
+  "boundary_policy_mismatches": 8,
+  "verification": "not_run"
+}
