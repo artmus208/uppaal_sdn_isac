@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 import subprocess
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
@@ -21,6 +22,19 @@ VERIFYTA_OPTION_PRESETS: dict[str, list[str]] = {
     "trace_on_violation": ["-t0"],
     "diagnostic": ["-t0"],
 }
+
+_ANSI_ESCAPE = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
+_FORMULA_HEADER = re.compile(r"^\s*Verifying formula\s+(\d+)\b", re.IGNORECASE)
+_FORMULA_RESULT = re.compile(
+    r"^\s*(?:--\s*)?Formula (?:is (not satisfied|satisfied|maybe satisfied|inconclusive)"
+    r"|may be (satisfied))\b",
+    re.IGNORECASE,
+)
+_ERROR_DIAGNOSTIC = re.compile(
+    r"^(?:(?:.*:\d+(?::\d+)?:|verifyta(?:\.exe)?:)\s*)?"
+    r"(?:syntax error\b|(?:fatal\s+)?error(?:\s*:|\s+(?!\s*=)|$)|fatal\s*:|out of memory\b)",
+    re.IGNORECASE,
+)
 
 
 @dataclass
@@ -217,7 +231,13 @@ class VerifytaRunner:
             )
 
         outcomes = parse_verifyta_outcomes(completed.stdout, formulas)
-        status = summarize_status(completed.returncode, outcomes, completed.stdout, completed.stderr)
+        status = summarize_status(
+            completed.returncode,
+            outcomes,
+            completed.stdout,
+            completed.stderr,
+            expected_query_count=len(formulas),
+        )
         return VerificationResult(
             status=status,
             returncode=completed.returncode,
@@ -282,20 +302,20 @@ def resolve_verifyta_options(
 
 def parse_verifyta_outcomes(stdout: str, formulas: list[str]) -> list[QueryOutcome]:
     outcomes: list[QueryOutcome] = []
+    current_index: int | None = None
     for line in stdout.splitlines():
-        lowered = line.lower()
-        status = None
-        if "formula is not satisfied" in lowered:
-            status = "not_satisfied"
-        elif "formula is satisfied" in lowered:
-            status = "satisfied"
-        elif "formula may be satisfied" in lowered or "formula is maybe satisfied" in lowered:
-            status = "maybe"
-        elif "formula is inconclusive" in lowered:
-            status = "inconclusive"
-        if status:
-            index = len(outcomes) + 1
-            formula = formulas[index - 1] if index - 1 < len(formulas) else None
+        cleaned = _ANSI_ESCAPE.sub("", line)
+        header = _FORMULA_HEADER.match(cleaned)
+        if header:
+            current_index = int(header.group(1))
+            continue
+        result = _FORMULA_RESULT.match(cleaned)
+        if result:
+            verdict = (result.group(1) or "maybe satisfied").lower()
+            status = {"not satisfied": "not_satisfied", "maybe satisfied": "maybe"}.get(verdict, verdict)
+            # Keep reported identities, including duplicates, for completeness checks.
+            index = current_index if current_index is not None else len(outcomes) + 1
+            formula = formulas[index - 1] if 1 <= index <= len(formulas) else None
             outcomes.append(
                 QueryOutcome(
                     index=index,
@@ -312,7 +332,28 @@ def summarize_status(
     outcomes: list[QueryOutcome],
     stdout: str,
     stderr: str,
+    *,
+    expected_query_count: int | None = None,
 ) -> str:
+    if returncode != 0:
+        return "error"
+    cleaned_output = _ANSI_ESCAPE.sub("", f"{stdout}\n{stderr}")
+    if any(_ERROR_DIAGNOSTIC.search(line.strip()) for line in cleaned_output.splitlines()):
+        return "error"
+
+    indices = [outcome.index for outcome in outcomes]
+    count = expected_query_count if expected_query_count is not None else len(outcomes)
+    expected_indices = list(range(1, count + 1))
+    if sorted(indices) != expected_indices:
+        return "error"
+    headers = [
+        int(match.group(1))
+        for line in _ANSI_ESCAPE.sub("", stdout).splitlines()
+        if (match := _FORMULA_HEADER.match(line))
+    ]
+    if headers and headers != indices:
+        return "error"
+
     if outcomes:
         statuses = {outcome.status for outcome in outcomes}
         if "not_satisfied" in statuses:
@@ -322,11 +363,6 @@ def summarize_status(
         if "maybe" in statuses or "inconclusive" in statuses:
             return "inconclusive"
         return "mixed"
-    combined = f"{stdout}\n{stderr}".lower()
-    if returncode != 0:
-        return "error"
-    if "syntax error" in combined or "error" in combined:
-        return "error"
     return "unknown"
 
 

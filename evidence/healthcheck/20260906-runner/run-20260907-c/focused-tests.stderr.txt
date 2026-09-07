@@ -1,0 +1,39 @@
+test_ansi_output_and_uncertain_verdicts (test_verifyta_parser.VerifytaParserTests.test_ansi_output_and_uncertain_verdicts) ... ok
+test_only_result_lines_are_parsed (test_verifyta_parser.VerifytaParserTests.test_only_result_lines_are_parsed) ... ok
+test_parse_satisfied_and_not_satisfied (test_verifyta_parser.VerifytaParserTests.test_parse_satisfied_and_not_satisfied) ... ok
+test_reported_indices_bind_results_to_the_correct_formula (test_verifyta_parser.VerifytaParserTests.test_reported_indices_bind_results_to_the_correct_formula) ... ok
+test_resolve_verifyta_options_presets (test_verifyta_parser.VerifytaParserTests.test_resolve_verifyta_options_presets) ... ok
+test_summarize_all_satisfied (test_verifyta_parser.VerifytaParserTests.test_summarize_all_satisfied) ... ok
+test_summarize_error_without_outcomes (test_verifyta_parser.VerifytaParserTests.test_summarize_error_without_outcomes) ... ok
+test_complete_negative_results_remain_not_satisfied (test_verifyta_parser.VerifytaRunnerTests.test_complete_negative_results_remain_not_satisfied) ... ok
+test_counts_ignore_query_comments_and_blank_lines (test_verifyta_parser.VerifytaRunnerTests.test_counts_ignore_query_comments_and_blank_lines) ... ok
+test_embedded_queries_and_query_paths_enforce_coverage (test_verifyta_parser.VerifytaRunnerTests.test_embedded_queries_and_query_paths_enforce_coverage) ... ok
+test_error_names_in_paths_traces_and_warnings_are_not_diagnostics (test_verifyta_parser.VerifytaRunnerTests.test_error_names_in_paths_traces_and_warnings_are_not_diagnostics) ... FAIL
+test_headerless_output_still_requires_complete_coverage (test_verifyta_parser.VerifytaRunnerTests.test_headerless_output_still_requires_complete_coverage) ... ok
+test_missing_duplicate_and_extra_results_fail_closed (test_verifyta_parser.VerifytaRunnerTests.test_missing_duplicate_and_extra_results_fail_closed) ... ok
+test_process_errors_override_complete_verdicts (test_verifyta_parser.VerifytaRunnerTests.test_process_errors_override_complete_verdicts) ... ok
+test_repeated_formula_text_is_not_deduplicated (test_verifyta_parser.VerifytaRunnerTests.test_repeated_formula_text_is_not_deduplicated) ... ok
+test_report_complete_success_control (test_verifyta_parser.VerifytaRunnerTests.test_report_complete_success_control) ... ok
+test_report_error_after_first_success (test_verifyta_parser.VerifytaRunnerTests.test_report_error_after_first_success) ... ok
+test_report_error_after_success_returncode_zero (test_verifyta_parser.VerifytaRunnerTests.test_report_error_after_success_returncode_zero) ... ok
+test_report_error_without_outcomes_control (test_verifyta_parser.VerifytaRunnerTests.test_report_error_without_outcomes_control) ... ok
+test_report_incomplete_output_returncode_zero (test_verifyta_parser.VerifytaRunnerTests.test_report_incomplete_output_returncode_zero) ... ok
+test_report_missing_tool_control (test_verifyta_parser.VerifytaRunnerTests.test_report_missing_tool_control) ... ok
+test_report_timeout_after_first_success_control (test_verifyta_parser.VerifytaRunnerTests.test_report_timeout_after_first_success_control) ... ok
+
+======================================================================
+FAIL: test_error_names_in_paths_traces_and_warnings_are_not_diagnostics (test_verifyta_parser.VerifytaRunnerTests.test_error_names_in_paths_traces_and_warnings_are_not_diagnostics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\uppaal_sdn_isac-carwasher-2\tests\test_verifyta_parser.py", line 183, in test_error_names_in_paths_traces_and_warnings_are_not_diagnostics
+    self.assertEqual(result.status, "satisfied")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'error' != 'satisfied'
+- error
++ satisfied
+
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.171s
+
+FAILED (failures=1)

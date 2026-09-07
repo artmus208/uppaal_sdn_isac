@@ -1,0 +1,20 @@
+[
+  {
+    "name": "install",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "install",
+      "--disable-pip-version-check",
+      "-e",
+      ".",
+      "mcp>=1,<2"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-06T19:14:08.304855+00:00",
+    "exit_code": 0,
+    "stdout": "install.stdout.txt",
+    "stderr": "install.stderr.txt"
+  }
+]

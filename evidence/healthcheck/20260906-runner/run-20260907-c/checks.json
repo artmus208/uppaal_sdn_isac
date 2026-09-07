@@ -1,0 +1,155 @@
+[
+  {
+    "name": "focused-tests",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_verifyta_parser.py",
+      "-v"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:10.593969+00:00",
+    "exit_code": 1,
+    "stdout": "focused-tests.stdout.txt",
+    "stderr": "focused-tests.stderr.txt"
+  },
+  {
+    "name": "full-tests",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:11.082342+00:00",
+    "exit_code": 1,
+    "stdout": "full-tests.stdout.txt",
+    "stderr": "full-tests.stderr.txt"
+  },
+  {
+    "name": "coordination",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-B",
+      "scripts/check_coordination.py"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:24.331918+00:00",
+    "exit_code": 0,
+    "stdout": "coordination.stdout.txt",
+    "stderr": "coordination.stderr.txt"
+  },
+  {
+    "name": "build-mcp",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:24.450246+00:00",
+    "exit_code": 0,
+    "stdout": "build-mcp.stdout.txt",
+    "stderr": "build-mcp.stderr.txt"
+  },
+  {
+    "name": "list-examples",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "uppaal_mcp.cli",
+      "list-examples"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:26.535389+00:00",
+    "exit_code": 0,
+    "stdout": "list-examples.stdout.txt",
+    "stderr": "list-examples.stderr.txt"
+  },
+  {
+    "name": "pip-check",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:27.114292+00:00",
+    "exit_code": 0,
+    "stdout": "pip-check.stdout.txt",
+    "stderr": "pip-check.stderr.txt"
+  },
+  {
+    "name": "version-default",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "uppaal_mcp.cli",
+      "version"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:27.938280+00:00",
+    "exit_code": 0,
+    "stdout": "version-default.stdout.txt",
+    "stderr": "version-default.stderr.txt"
+  },
+  {
+    "name": "version-explicit",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "uppaal_mcp.cli",
+      "--verifyta-path",
+      "D:/UPPAAL/app/bin/verifyta.exe",
+      "version"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:28.547673+00:00",
+    "exit_code": 0,
+    "stdout": "version-explicit.stdout.txt",
+    "stderr": "version-explicit.stderr.txt"
+  },
+  {
+    "name": "pip-freeze",
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-2\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:29.278516+00:00",
+    "exit_code": 0,
+    "stdout": "pip-freeze.stdout.txt",
+    "stderr": "pip-freeze.stderr.txt"
+  },
+  {
+    "name": "source-commit",
+    "command": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-2",
+    "started_at_utc": "2026-09-07T00:06:30.110834+00:00",
+    "exit_code": 0,
+    "stdout": "source-commit.stdout.txt",
+    "stderr": "source-commit.stderr.txt"
+  }
+]

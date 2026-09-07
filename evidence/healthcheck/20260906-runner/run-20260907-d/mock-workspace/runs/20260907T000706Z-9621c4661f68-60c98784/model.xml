@@ -1,0 +1,6 @@
+<nta>
+<template><name>P</name><location id="id0"/><init ref="id0"/></template>
+<system>p = P(); system p;</system>
+<queries><query><formula>A[] not deadlock</formula></query>
+<query><formula>E&lt;&gt; true</formula></query></queries>
+</nta>
