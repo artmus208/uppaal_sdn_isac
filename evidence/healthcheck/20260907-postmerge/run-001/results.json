@@ -1,0 +1,274 @@
+{
+  "diagnostic_class": "software_checks_not_model_checking",
+  "source_commit": "f2f714a26d6b9d9f538ef1a16b53c3e060768a11",
+  "environment_label": "wsl-unrestricted",
+  "recorded_at_utc": "2026-09-07T14:52:46.234418+00:00",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Mar 23 2026, 19:04:32) [GCC 13.3.0]",
+  "cpu_count": 8,
+  "workspace_override": "/tmp/uppaal-read-postmerge-20260907/evidence/healthcheck/20260907-postmerge/run-001/workspace",
+  "commands": [
+    {
+      "name": "tracked-diff",
+      "command": [
+        "git",
+        "diff",
+        "HEAD",
+        "--",
+        ".",
+        ":(exclude)evidence/healthcheck/20260907-postmerge/**"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 0.08158060200003092,
+      "stdout": {
+        "path": "tracked-diff.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "tracked-diff.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "install",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "-e",
+        "."
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 10.817336480999984,
+      "stdout": {
+        "path": "install.stdout.txt",
+        "sha256": "bd5d4a99f241cafadd77ef76d705b216cc9f3ef41fb02967367d3e72394b826e"
+      },
+      "stderr": {
+        "path": "install.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "audit-dependency",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "PyYAML==6.0.3"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 1.0300557919999846,
+      "stdout": {
+        "path": "audit-dependency.stdout.txt",
+        "sha256": "536b69addf2d7cfb3c2b1d4b61a6400408d9d0f6f32cf95ff3630bea31abb0c6"
+      },
+      "stderr": {
+        "path": "audit-dependency.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 0.515164239999649,
+      "stdout": {
+        "path": "pip-check.stdout.txt",
+        "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+      },
+      "stderr": {
+        "path": "pip-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "packages",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "-m",
+        "pip",
+        "list",
+        "--format=json"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 0.4157404620000307,
+      "stdout": {
+        "path": "packages.stdout.txt",
+        "sha256": "8d6abb20234fa499427270450b3ccb9f82fbf4d0a67fe5b02e37785d9bd40965"
+      },
+      "stderr": {
+        "path": "packages.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "structural",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "scripts/check_coordination.py"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 0.03885961700052576,
+      "stdout": {
+        "path": "structural.stdout.txt",
+        "sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a"
+      },
+      "stderr": {
+        "path": "structural.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "yaml",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "-c",
+        "from pathlib import Path; import yaml; [yaml.safe_load(p.read_bytes()) for p in Path(\"manifests\").rglob(\"*.yaml\")]; print(\"YAML parsed\")"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 0.08880105400021421,
+      "stdout": {
+        "path": "yaml.stdout.txt",
+        "sha256": "dd46aef256e51121ff44352ec69bff1df9d3b8e8afd33766f1ead803dc486eeb"
+      },
+      "stderr": {
+        "path": "yaml.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "unit",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 31.53596226100035,
+      "stdout": {
+        "path": "unit.stdout.txt",
+        "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
+      },
+      "stderr": {
+        "path": "unit.stderr.txt",
+        "sha256": "2f7b64c3276d4895ec7f1994668830feedbe9558f45cf38388ef74d12b907d64"
+      }
+    },
+    {
+      "name": "build-mcp",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 0.7591335739998613,
+      "stdout": {
+        "path": "build-mcp.stdout.txt",
+        "sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc"
+      },
+      "stderr": {
+        "path": "build-mcp.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "examples",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 0.3571961879997616,
+      "stdout": {
+        "path": "examples.stdout.txt",
+        "sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f"
+      },
+      "stderr": {
+        "path": "examples.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "stdio",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "/tmp/uppaal-read-postmerge-20260907/evidence/healthcheck/20260907-postmerge/stdio_smoke.py"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 0,
+      "runtime_seconds": 1.3912900459999946,
+      "stdout": {
+        "path": "stdio.stdout.txt",
+        "sha256": "7a2d2fc3559aa631903dbe047b0d8d5e2e07f6a18b647fe51517d949d0b0114c"
+      },
+      "stderr": {
+        "path": "stdio.stderr.txt",
+        "sha256": "3d1200d8d1876914493d924ad02f804a75cb93cb6433a6e7474d8ee3da4bed6c"
+      }
+    },
+    {
+      "name": "baseline-audit",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/python",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "f2f714a26d6b9d9f538ef1a16b53c3e060768a11",
+        "--output",
+        "/tmp/uppaal-read-postmerge-20260907/evidence/healthcheck/20260907-postmerge/run-001/baseline-hashes.json"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 1,
+      "runtime_seconds": 0.23385496699938813,
+      "stdout": {
+        "path": "baseline-audit.stdout.txt",
+        "sha256": "21afdd6d82d4d426868573c527efa8f6912d72b7676be30385b9aec9100c85fd"
+      },
+      "stderr": {
+        "path": "baseline-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "version",
+      "command": [
+        "/tmp/uppaal-read-postmerge-20260907/.venv/bin/uppaal-verifyta",
+        "version"
+      ],
+      "cwd": "/tmp/uppaal-read-postmerge-20260907",
+      "exit_code": 2,
+      "runtime_seconds": 15.387441257999853,
+      "stdout": {
+        "path": "version.stdout.txt",
+        "sha256": "c2ead6c33fbe13b2e09418494810feef6f5b8d0b941774263e50b29cf68e9623"
+      },
+      "stderr": {
+        "path": "version.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ]
+}
