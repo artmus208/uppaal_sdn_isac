@@ -1,0 +1,28 @@
+[
+  {
+    "command": [
+      "D:\\uppaal_sdn_isac-carwasher-1\\.venv\\Scripts\\python.exe",
+      "-B",
+      "scripts/check_coordination.py"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-1",
+    "exit_code": 0,
+    "stdout": "coordination.stdout.txt",
+    "stderr": "coordination.stderr.txt"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "cwd": "D:\\uppaal_sdn_isac-carwasher-1",
+    "exit_code": 0,
+    "stdout": "diff-check.stdout.txt",
+    "stderr": "diff-check.stderr.txt"
+  },
+  {
+    "check": "Independent current-byte audit matches every original healthcheck hash pair and aggregate",
+    "result": "match"
+  }
+]

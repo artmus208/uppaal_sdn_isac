@@ -1,0 +1,145 @@
+{
+  "snapshot_utc": "2026-09-07 05:47:00 UTC",
+  "issue": 1,
+  "owner": "carwasher",
+  "evidence_class": "software_diagnostics_and_coordination_not_model_checking",
+  "base_ref": "origin/read",
+  "base_commit": "11bd69bdca9a1209f820258b3732b3c865f79035",
+  "target_branch": "read",
+  "tasks": [
+    {
+      "priority": "P1",
+      "report_item": 1,
+      "issue": 2,
+      "pr": 8,
+      "branch": "codex/carwasher/2-runner-status",
+      "head": "12fc7532e92c109210e23428b56a83b7ef1c4cd8",
+      "worktree": "D:/uppaal_sdn_isac-carwasher-2",
+      "evidence": "evidence/healthcheck/20260906-runner/README.md",
+      "unit_tests": 92,
+      "skipped": 0,
+      "write_scope": [
+        "src/uppaal_mcp/verifyta.py",
+        "tests/test_verifyta_parser.py",
+        "evidence/healthcheck/20260906-runner/**"
+      ],
+      "status": "prepared_for_independent_review",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/8"
+    },
+    {
+      "priority": "P1",
+      "report_item": 2,
+      "issue": 3,
+      "pr": 7,
+      "branch": "codex/carwasher/3-mcp-startup",
+      "head": "d3aca84df1109e497483f0d781ea67f4b3e56aaf",
+      "worktree": "D:/uppaal_sdn_isac-carwasher-3",
+      "evidence": "evidence/healthcheck/20260906-mcp/README.md",
+      "unit_tests_per_environment": 80,
+      "sdk_versions": [
+        "1.28.0",
+        "1.29.1"
+      ],
+      "stdio_tools": 76,
+      "skipped": 0,
+      "write_scope": [
+        "pyproject.toml",
+        "src/uppaal_mcp/server.py",
+        "tests/test_phy_layer.py",
+        "tests/test_mcp_startup.py",
+        "evidence/healthcheck/20260906-mcp/**"
+      ],
+      "status": "prepared_for_independent_review",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/7"
+    },
+    {
+      "priority": "P2",
+      "report_item": 3,
+      "issue": 4,
+      "pr": 9,
+      "branch": "codex/carwasher/4-cli-exit",
+      "head": "4a0e71277f01743940ded28a931def94d3918518",
+      "worktree": "D:/uppaal_sdn_isac-carwasher-4",
+      "evidence": "evidence/healthcheck/20260906-cli/README.md",
+      "unit_tests": 86,
+      "skipped": 0,
+      "write_scope": [
+        "src/uppaal_mcp/cli.py",
+        "tests/test_cli.py",
+        "evidence/healthcheck/20260906-cli/**"
+      ],
+      "status": "prepared_for_independent_review",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/9"
+    },
+    {
+      "priority": "P2",
+      "report_item": 4,
+      "issue": 5,
+      "pr": 10,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/10",
+      "branch": "codex/carwasher/5-native-config",
+      "head": "e7fa4b395ce8e2721e765192065a9de7307416b2",
+      "worktree": "D:/uppaal_sdn_isac-carwasher-5",
+      "evidence": "evidence/healthcheck/20260906-config/README.md",
+      "unit_tests": 85,
+      "skipped": 0,
+      "stdio_tools_per_environment": 76,
+      "write_scope": [
+        "src/uppaal_mcp/config.py",
+        "mcp_conf.conf",
+        "tests/test_config.py",
+        "README.md",
+        "evidence/healthcheck/20260906-config/**"
+      ],
+      "status": "prepared_for_independent_review"
+    }
+  ],
+  "ci": [
+    {
+      "issue": 2,
+      "pr": 8,
+      "head": "12fc7532e92c109210e23428b56a83b7ef1c4cd8",
+      "workflow_run_id": 34069049715,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34069049715"
+    },
+    {
+      "issue": 3,
+      "pr": 7,
+      "head": "d3aca84df1109e497483f0d781ea67f4b3e56aaf",
+      "workflow_run_id": 34068886158,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34068886158"
+    },
+    {
+      "issue": 4,
+      "pr": 9,
+      "head": "4a0e71277f01743940ded28a931def94d3918518",
+      "workflow_run_id": 34069052788,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34069052788"
+    },
+    {
+      "issue": 5,
+      "pr": 10,
+      "head": "e7fa4b395ce8e2721e765192065a9de7307416b2",
+      "workflow_run_id": 34087971552,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34087971552"
+    }
+  ],
+  "baseline": {
+    "issue": 6,
+    "status": "pending_integrator_decision",
+    "frozen": false,
+    "gate_1": "pending",
+    "checkout_hash_mismatch_count": 6,
+    "git_commit_hash_mismatch_count": 7,
+    "common_hash_mismatch_count": 1
+  },
+  "acceptance": "independent_review_pending"
+}
