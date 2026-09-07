@@ -1,0 +1,17 @@
+{
+  "status": "tool_not_found",
+  "returncode": null,
+  "command": [
+    "D:\\uppaal_sdn_isac-carwasher-4\\evidence\\healthcheck\\20260906-cli\\checks-20260907T000715Z\\missing-verifyta",
+    "--version"
+  ],
+  "model_path": null,
+  "query_path": null,
+  "stdout": "",
+  "stderr": "[WinError 2] Не удается найти указанный файл",
+  "elapsed_ms": null,
+  "timeout_sec": null,
+  "query_results": [],
+  "validation": null,
+  "artifact_dir": null
+}

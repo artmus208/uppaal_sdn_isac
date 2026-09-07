@@ -1,0 +1,13 @@
+* Creating isolated environment: venv+pip...
+* Installing packages in isolated environment:
+  - setuptools>=68
+  - wheel
+* Getting build dependencies for wheel...
+* Installed build dependency versions:
+  - setuptools==84.0.0
+  - wheel==0.48.0
+* Building wheel...
+warning: build_py: byte-compiling is disabled, skipping.
+
+warning: install_lib: byte-compiling is disabled, skipping.
+
