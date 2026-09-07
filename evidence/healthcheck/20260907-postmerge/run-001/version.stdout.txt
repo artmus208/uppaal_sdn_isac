@@ -1,0 +1,17 @@
+{
+  "status": "timeout",
+  "returncode": null,
+  "command": [
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+    "--version"
+  ],
+  "model_path": null,
+  "query_path": null,
+  "stdout": "",
+  "stderr": "",
+  "elapsed_ms": null,
+  "timeout_sec": 15,
+  "query_results": [],
+  "validation": null,
+  "artifact_dir": null
+}

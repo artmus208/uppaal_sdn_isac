@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+    "--version"
+  ],
+  "cwd": "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin",
+  "timeout_sec": 20,
+  "exit_code": 0,
+  "executable_sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "runtime_seconds": 0.12445424199995614,
+  "recorded_at_utc": "2026-09-07T14:55:21.837922+00:00",
+  "environment_label": "wsl-unrestricted-windows-cwd",
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

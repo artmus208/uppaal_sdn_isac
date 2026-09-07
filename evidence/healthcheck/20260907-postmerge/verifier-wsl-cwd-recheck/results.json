@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+    "--version"
+  ],
+  "cwd": "/tmp/uppaal-read-postmerge-20260907",
+  "timeout_sec": 20,
+  "exit_code": "timeout",
+  "executable_sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "runtime_seconds": 20.075569862999146,
+  "recorded_at_utc": "2026-09-07T14:56:06.224754+00:00",
+  "environment_label": "wsl-unrestricted",
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

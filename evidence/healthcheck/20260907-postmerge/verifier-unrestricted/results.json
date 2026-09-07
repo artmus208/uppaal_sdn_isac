@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/mnt/c/Windows/System32/cmd.exe",
+    "/d",
+    "/c",
+    "ver"
+  ],
+  "timeout_sec": 15,
+  "exit_code": 0,
+  "runtime_seconds": 0.06355209899993497,
+  "recorded_at_utc": "2026-09-07T14:53:32.434750+00:00",
+  "environment_label": "wsl-unrestricted",
+  "stdout": {
+    "path": "stdout.txt",
+    "sha256": "3326c24d51da86401fc32568914cc9586533cb238eecdc966a56f07ad35d2daa"
+  },
+  "stderr": {
+    "path": "stderr.txt",
+    "sha256": "0e37125e731dc1d40c91f1bd35e238c5f7012f42fe7282a30a01cb53c4d5cb16"
+  }
+}
