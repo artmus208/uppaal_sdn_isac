@@ -1,0 +1,11 @@
+The initial reproduction process installed the environment successfully, then
+failed to import uppaal_mcp in that same Python process: ModuleNotFoundError:
+No module named 'uppaal_mcp'. The newly installed editable .pth was not loaded
+into the process that had started before installation. The reproducer now
+selects its repository's src directory explicitly before its diagnostic imports.
+Installation stdout/stderr and checks.json here are from that initial attempt.
+The next run directory contains the completed diagnostics and tests.
+
+Before installation, a direct focused unittest command also failed with the
+same missing-package import error. No runner assertion failed in either setup
+attempt; the package had not yet been imported.

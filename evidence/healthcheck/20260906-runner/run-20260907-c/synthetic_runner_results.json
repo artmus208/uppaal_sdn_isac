@@ -1,0 +1,321 @@
+{
+  "evidence_class": "synthetic software regression diagnostics; not model checking",
+  "real_verifyta_executed": false,
+  "requested_query_count": 2,
+  "cases": [
+    {
+      "case": "complete_success_control",
+      "expected_status": "satisfied",
+      "matches_expectation": true,
+      "synthetic_input": {
+        "returncode": 0,
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\nVerifying formula 2 at queries.q:2\n-- Formula is satisfied.\n",
+        "stderr": "",
+        "exception": null
+      },
+      "result": {
+        "status": "satisfied",
+        "returncode": 0,
+        "command": [
+          "mock-verifyta",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-4a6e30a6\\model.xml",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-4a6e30a6\\queries.q"
+        ],
+        "model_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-4a6e30a6\\model.xml",
+        "query_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-4a6e30a6\\queries.q",
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\nVerifying formula 2 at queries.q:2\n-- Formula is satisfied.\n",
+        "stderr": "",
+        "elapsed_ms": 0,
+        "timeout_sec": 1.0,
+        "query_results": [
+          {
+            "index": 1,
+            "formula": "A[] not deadlock",
+            "status": "satisfied",
+            "raw_line": "-- Formula is satisfied."
+          },
+          {
+            "index": 2,
+            "formula": "E<> true",
+            "status": "satisfied",
+            "raw_line": "-- Formula is satisfied."
+          }
+        ],
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": [],
+          "templates": [
+            "P"
+          ],
+          "queries": [
+            "A[] not deadlock",
+            "E<> true"
+          ]
+        },
+        "artifact_dir": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-4a6e30a6"
+      }
+    },
+    {
+      "case": "error_after_first_success",
+      "expected_status": "error",
+      "matches_expectation": true,
+      "synthetic_input": {
+        "returncode": 1,
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\nVerifying formula 2 at queries.q:2\n",
+        "stderr": "syntax error in second query\n",
+        "exception": null
+      },
+      "result": {
+        "status": "error",
+        "returncode": 1,
+        "command": [
+          "mock-verifyta",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-55027d38\\model.xml",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-55027d38\\queries.q"
+        ],
+        "model_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-55027d38\\model.xml",
+        "query_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-55027d38\\queries.q",
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\nVerifying formula 2 at queries.q:2\n",
+        "stderr": "syntax error in second query\n",
+        "elapsed_ms": 0,
+        "timeout_sec": 1.0,
+        "query_results": [
+          {
+            "index": 1,
+            "formula": "A[] not deadlock",
+            "status": "satisfied",
+            "raw_line": "-- Formula is satisfied."
+          }
+        ],
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": [],
+          "templates": [
+            "P"
+          ],
+          "queries": [
+            "A[] not deadlock",
+            "E<> true"
+          ]
+        },
+        "artifact_dir": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-55027d38"
+      }
+    },
+    {
+      "case": "incomplete_output_returncode_zero",
+      "expected_status": "error",
+      "matches_expectation": true,
+      "synthetic_input": {
+        "returncode": 0,
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\n",
+        "stderr": "",
+        "exception": null
+      },
+      "result": {
+        "status": "error",
+        "returncode": 0,
+        "command": [
+          "mock-verifyta",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-50b22aba\\model.xml",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-50b22aba\\queries.q"
+        ],
+        "model_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-50b22aba\\model.xml",
+        "query_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-50b22aba\\queries.q",
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\n",
+        "stderr": "",
+        "elapsed_ms": 0,
+        "timeout_sec": 1.0,
+        "query_results": [
+          {
+            "index": 1,
+            "formula": "A[] not deadlock",
+            "status": "satisfied",
+            "raw_line": "-- Formula is satisfied."
+          }
+        ],
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": [],
+          "templates": [
+            "P"
+          ],
+          "queries": [
+            "A[] not deadlock",
+            "E<> true"
+          ]
+        },
+        "artifact_dir": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-50b22aba"
+      }
+    },
+    {
+      "case": "error_after_success_returncode_zero",
+      "expected_status": "error",
+      "matches_expectation": true,
+      "synthetic_input": {
+        "returncode": 0,
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\n",
+        "stderr": "error: second query failed\n",
+        "exception": null
+      },
+      "result": {
+        "status": "error",
+        "returncode": 0,
+        "command": [
+          "mock-verifyta",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-8e4423d8\\model.xml",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-8e4423d8\\queries.q"
+        ],
+        "model_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-8e4423d8\\model.xml",
+        "query_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-8e4423d8\\queries.q",
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\n",
+        "stderr": "error: second query failed\n",
+        "elapsed_ms": 0,
+        "timeout_sec": 1.0,
+        "query_results": [
+          {
+            "index": 1,
+            "formula": "A[] not deadlock",
+            "status": "satisfied",
+            "raw_line": "-- Formula is satisfied."
+          }
+        ],
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": [],
+          "templates": [
+            "P"
+          ],
+          "queries": [
+            "A[] not deadlock",
+            "E<> true"
+          ]
+        },
+        "artifact_dir": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-8e4423d8"
+      }
+    },
+    {
+      "case": "error_without_outcomes_control",
+      "expected_status": "error",
+      "matches_expectation": true,
+      "synthetic_input": {
+        "returncode": 2,
+        "stdout": "",
+        "stderr": "syntax error\n",
+        "exception": null
+      },
+      "result": {
+        "status": "error",
+        "returncode": 2,
+        "command": [
+          "mock-verifyta",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-d1af8cda\\model.xml",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-d1af8cda\\queries.q"
+        ],
+        "model_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-d1af8cda\\model.xml",
+        "query_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-d1af8cda\\queries.q",
+        "stdout": "",
+        "stderr": "syntax error\n",
+        "elapsed_ms": 0,
+        "timeout_sec": 1.0,
+        "query_results": [],
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": [],
+          "templates": [
+            "P"
+          ],
+          "queries": [
+            "A[] not deadlock",
+            "E<> true"
+          ]
+        },
+        "artifact_dir": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-d1af8cda"
+      }
+    },
+    {
+      "case": "timeout_after_first_success_control",
+      "expected_status": "timeout",
+      "matches_expectation": true,
+      "synthetic_input": {
+        "returncode": null,
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\n",
+        "stderr": "synthetic timeout\n",
+        "exception": "TimeoutExpired"
+      },
+      "result": {
+        "status": "timeout",
+        "returncode": null,
+        "command": [
+          "mock-verifyta",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1a1226a1\\model.xml",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1a1226a1\\queries.q"
+        ],
+        "model_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1a1226a1\\model.xml",
+        "query_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1a1226a1\\queries.q",
+        "stdout": "Verifying formula 1 at queries.q:1\n-- Formula is satisfied.\n",
+        "stderr": "synthetic timeout\n",
+        "elapsed_ms": 0,
+        "timeout_sec": 1.0,
+        "query_results": [],
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": [],
+          "templates": [
+            "P"
+          ],
+          "queries": [
+            "A[] not deadlock",
+            "E<> true"
+          ]
+        },
+        "artifact_dir": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1a1226a1"
+      }
+    },
+    {
+      "case": "missing_tool_control",
+      "expected_status": "tool_not_found",
+      "matches_expectation": true,
+      "synthetic_input": {
+        "returncode": null,
+        "stdout": "",
+        "stderr": "synthetic missing verifier",
+        "exception": "FileNotFoundError"
+      },
+      "result": {
+        "status": "tool_not_found",
+        "returncode": null,
+        "command": [
+          "mock-verifyta",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1f78a7c6\\model.xml",
+          "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1f78a7c6\\queries.q"
+        ],
+        "model_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1f78a7c6\\model.xml",
+        "query_path": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1f78a7c6\\queries.q",
+        "stdout": "",
+        "stderr": "synthetic missing verifier",
+        "elapsed_ms": null,
+        "timeout_sec": 1.0,
+        "query_results": [],
+        "validation": {
+          "ok": true,
+          "errors": [],
+          "warnings": [],
+          "templates": [
+            "P"
+          ],
+          "queries": [
+            "A[] not deadlock",
+            "E<> true"
+          ]
+        },
+        "artifact_dir": "D:\\uppaal_sdn_isac-carwasher-2\\evidence\\healthcheck\\20260906-runner\\run-20260907-c\\mock-workspace\\runs\\20260907T000610Z-9621c4661f68-1f78a7c6"
+      }
+    }
+  ]
+}
