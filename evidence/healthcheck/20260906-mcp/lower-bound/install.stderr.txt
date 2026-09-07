@@ -1,0 +1,3 @@
+
+[notice] A new release of pip is available: 26.1.1 -> 26.2.1
+[notice] To update, run: C:\Users\pEw\AppData\Local\Temp\uppaal-mcp-issue3-0sqksl12\venv\Scripts\python.exe -m pip install --upgrade pip

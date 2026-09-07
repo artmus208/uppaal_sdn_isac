@@ -1,0 +1,168 @@
+{
+  "run_id": "latest",
+  "issue": "https://github.com/artmus208/uppaal_sdn_isac/issues/3",
+  "evidence_class": "software diagnostics; no model checking or gate acceptance",
+  "base_commit": "11bd69bdca9a1209f820258b3732b3c865f79035",
+  "source_commit": "7242cb1c9012a379d043933d7d8670b73026f336",
+  "initial_git_status": "",
+  "source_sha256": {
+    "pyproject.toml": "32f849f6e3a9d8bff897f1e324be6723bd0a0fc521ea2e0f853e092089b70f76",
+    "src/uppaal_mcp/server.py": "913b01d706abb204d4e6ecda5adc68396874854c6240a73050a3fda694e643be",
+    "tests/test_phy_layer.py": "50c53d93d00a38a4e2a78856c9bdf8eabeaec6ec90188cd2a32a15d60b8e072e",
+    "tests/test_mcp_startup.py": "e8107b843afe1502263c01352728ed9d0c0cdefda52d55849d83bac92d17d576",
+    "manifests/baselines/reviewer-r1.yaml": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+    "evidence/healthcheck/20260906-mcp/reproduce.py": "0568d000e95ee2e8bca75c852fedef7d9d841926969a6684be56b2010e4bb367",
+    "evidence/healthcheck/20260906-mcp/smoke.py": "a6981b78b58ae33533042fc9b4f7c9c4a4fe8322667ab2357d6ca435cb989074"
+  },
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+    "bootstrap_executable": "C:\\Users\\pEw\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+    "cpu": "AMD64 Family 23 Model 1 Stepping 1, AuthenticAMD",
+    "logical_cpu_count": 8,
+    "venv": "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv",
+    "overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONUTF8": "1"
+    },
+    "removed": [
+      "PYTHONPATH",
+      "PYTHONHOME"
+    ]
+  },
+  "sdk_requested": "pyproject.toml constraint, normal resolution",
+  "started_at_utc": "2026-09-06T19:14:04.635367+00:00",
+  "commands": [
+    {
+      "name": "create-venv",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "venv",
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 6.7831861000013305,
+      "stdout": "create-venv.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "create-venv.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "install",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "install",
+        "-e",
+        "."
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 25.27790450000066,
+      "stdout": "install.stdout.txt",
+      "stdout_sha256": "46db2a02a26197fa2097dbf03ae9247e5f792417ec7b83b109de9e7065a70e15",
+      "stderr": "install.stderr.txt",
+      "stderr_sha256": "97d75ed8a59ad4624d3391f68e0b18b20090a58f59e7c2cf903dc1f606408c12"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 0.9040026000002399,
+      "stdout": "pip-check.stdout.txt",
+      "stdout_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf",
+      "stderr": "pip-check.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pip-freeze",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze",
+        "--all"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 0.9824616000005335,
+      "stdout": "pip-freeze.stdout.txt",
+      "stdout_sha256": "147509c8bc11d0d9f217288a061830e7e1baa1c97d05c5304efbf89ef99a3fd2",
+      "stderr": "pip-freeze.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "build-mcp",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\python.exe",
+        "-c",
+        "import asyncio,json; from importlib.metadata import version; from uppaal_mcp.server import build_mcp; server=build_mcp(); print(json.dumps({'sdk_version':version('mcp'),'server_name':server.name,'tools':[tool.name for tool in asyncio.run(server.list_tools())]},indent=2))"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 2.348691200000758,
+      "stdout": "build-mcp.stdout.txt",
+      "stdout_sha256": "73c8f6c5a9d70263eba579c1b217adc7538eb560ca2fa52d00aa5d0b2f19d15a",
+      "stderr": "build-mcp.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 17.088092100000722,
+      "stdout": "unit-tests.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "unit-tests.stderr.txt",
+      "stderr_sha256": "b841ee7978200335d6c3824b2a32e3d049be42586964c3ac9c4a54047a084a85"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 0.12028090000058,
+      "stdout": "coordination.stdout.txt",
+      "stdout_sha256": "85f1f0d4802afe2bc8da170b90e0b7ced04a122973ef97d26257bc72d27750dd",
+      "stderr": "coordination.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "stdio",
+      "command": [
+        "C:\\Users\\pEw\\AppData\\Local\\Temp\\uppaal-mcp-issue3-3oi2ila3\\venv\\Scripts\\python.exe",
+        "D:\\uppaal_sdn_isac-carwasher-3\\evidence\\healthcheck\\20260906-mcp\\smoke.py"
+      ],
+      "cwd": "D:\\uppaal_sdn_isac-carwasher-3",
+      "exit_code": 0,
+      "elapsed_sec": 4.024817299999995,
+      "stdout": "stdio.stdout.txt",
+      "stdout_sha256": "4a85f5644ef74cc1e1a88ae9a65d2ac1e0b7a63e66505b0aaf739a2260218f95",
+      "stderr": "stdio.stderr.txt",
+      "stderr_sha256": "5a6c9b8841c84acbdf39e143c5b685ba4fa734d9a19baaa455389de78b19491a"
+    }
+  ],
+  "status": "success",
+  "finished_at_utc": "2026-09-06T19:15:02.169557+00:00"
+}
