@@ -1,0 +1,937 @@
+{
+  "channels": {
+    "bus_policy": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_POLICY_0"
+      ],
+      "receivers": [
+        "mac_A_SCH_0"
+      ]
+    },
+    "bus_ctrl_request": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_SDN_AGG_0"
+      ],
+      "receivers": [
+        "boundary_B_POLICY_0"
+      ]
+    },
+    "bus_ctrl_ack": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_POLICY_0"
+      ],
+      "receivers": [
+        "sdn_A_SDN_AGG_0"
+      ]
+    },
+    "bus_rec_policy_request": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_REC_0"
+      ],
+      "receivers": [
+        "boundary_B_POLICY_0"
+      ]
+    },
+    "bus_rec_policy_ack": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_POLICY_0"
+      ],
+      "receivers": [
+        "sdn_A_REC_0"
+      ]
+    },
+    "bus_rec_flow_request": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_REC_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "bus_rec_flow_ack": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_FAULT_0"
+      ],
+      "receivers": [
+        "sdn_A_REC_0"
+      ]
+    },
+    "bus_rollback_request": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_REC_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "bus_rec_rollback_ack": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_FAULT_0"
+      ],
+      "receivers": [
+        "sdn_A_REC_0"
+      ]
+    },
+    "bus_rule_ack": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_FAULT_0"
+      ],
+      "receivers": [
+        "sdn_A_RULE_0"
+      ]
+    },
+    "bus_admit_request": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_ADMISSION_0"
+      ],
+      "receivers": [
+        "sdn_A_POLICY_0"
+      ]
+    },
+    "bus_new_sample": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_E_PHY_INPUT_0"
+      ],
+      "receivers": [
+        "boundary_B_KPI_0"
+      ]
+    },
+    "bus_new_mac_sample": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_E_MAC_LOAD_0"
+      ],
+      "receivers": [
+        "boundary_B_KPI_0"
+      ]
+    },
+    "phy_beam_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_BM_0"
+      ]
+    },
+    "phy_controller_report_delivered": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "phy_A_PH_0"
+      ]
+    },
+    "phy_extra_ssb_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_BM_0"
+      ]
+    },
+    "phy_handover_assist_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_BM_0"
+      ]
+    },
+    "phy_mac_report_delivered": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "phy_A_PH_0"
+      ]
+    },
+    "phy_measure_tick": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_PHY_INPUT_0"
+      ],
+      "receivers": [
+        "phy_A_CH_0"
+      ]
+    },
+    "phy_new_beam_confirmed": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_BM_0"
+      ]
+    },
+    "phy_payload_sensing_config": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_SIG_0"
+      ]
+    },
+    "phy_pilot_config": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_SIG_0"
+      ]
+    },
+    "phy_power_cmd": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_PHY_MAC_0"
+      ],
+      "receivers": [
+        "phy_A_CH_0"
+      ]
+    },
+    "phy_prs_config": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_SIG_0"
+      ]
+    },
+    "phy_recovery_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_BM_0",
+        "phy_A_PH_0"
+      ]
+    },
+    "phy_sensing_mode_cmd": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_PHY_MAC_0"
+      ],
+      "receivers": [
+        "phy_A_SIG_0"
+      ]
+    },
+    "phy_ssb_burst_config": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": [
+        "phy_A_BM_0"
+      ]
+    },
+    "phy_waveform_config": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_PHY_MAC_0"
+      ],
+      "receivers": [
+        "phy_A_SIG_0"
+      ]
+    },
+    "phy_aos_ctrl_expired": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "obs_phy_ObsFreshness_0"
+      ]
+    },
+    "phy_beam_failure": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_BM_0"
+      ],
+      "receivers": [
+        "obs_phy_ObsBeamRecovery_0"
+      ]
+    },
+    "phy_beam_locked": {
+      "kind": "broadcast",
+      "senders": [],
+      "receivers": []
+    },
+    "phy_beam_misaligned": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_BM_0"
+      ],
+      "receivers": []
+    },
+    "phy_beam_report": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_BM_0"
+      ],
+      "receivers": [
+        "phy_A_PH_0",
+        "phy_A_SQ_0"
+      ]
+    },
+    "phy_beam_restored": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_BM_0"
+      ],
+      "receivers": [
+        "obs_phy_ObsBeamRecovery_0"
+      ]
+    },
+    "phy_blockage_detected": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_CH_0"
+      ],
+      "receivers": []
+    },
+    "phy_channel_degraded": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_CH_0"
+      ],
+      "receivers": []
+    },
+    "phy_channel_report": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_CH_0"
+      ],
+      "receivers": [
+        "phy_A_PH_0",
+        "phy_A_SQ_0"
+      ]
+    },
+    "phy_contract_violation_bm": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_BM_0"
+      ],
+      "receivers": []
+    },
+    "phy_contract_violation_ch": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_CH_0"
+      ],
+      "receivers": []
+    },
+    "phy_contract_violation_ph": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_PH_0"
+      ],
+      "receivers": []
+    },
+    "phy_contract_violation_sig": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_SIG_0"
+      ],
+      "receivers": []
+    },
+    "phy_contract_violation_sq": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_SQ_0"
+      ],
+      "receivers": []
+    },
+    "phy_degradation_event": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_PH_0"
+      ],
+      "receivers": []
+    },
+    "phy_handover_hint": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_BM_0"
+      ],
+      "receivers": [
+        "obs_phy_ObsBeamRecovery_0"
+      ]
+    },
+    "phy_mobility_alert": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_CH_0"
+      ],
+      "receivers": []
+    },
+    "phy_multipath_alert": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_CH_0"
+      ],
+      "receivers": []
+    },
+    "phy_phy_failure": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_PH_0"
+      ],
+      "receivers": []
+    },
+    "phy_phy_kpi_report": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_PH_0"
+      ],
+      "receivers": [
+        "boundary_B_KPI_0",
+        "obs_phy_ObsSenseReport_0"
+      ]
+    },
+    "phy_phy_outage": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_CH_0"
+      ],
+      "receivers": []
+    },
+    "phy_recovery_event": {
+      "kind": "broadcast",
+      "senders": [],
+      "receivers": []
+    },
+    "phy_recovery_start": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_BM_0"
+      ],
+      "receivers": [
+        "obs_phy_ObsBeamRecovery_0"
+      ]
+    },
+    "phy_sensing_degraded": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_SQ_0"
+      ],
+      "receivers": [
+        "obs_phy_ObsSenseReport_0"
+      ]
+    },
+    "phy_sensing_failure": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_SQ_0"
+      ],
+      "receivers": []
+    },
+    "phy_sensing_report": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_SQ_0"
+      ],
+      "receivers": [
+        "obs_phy_ObsFreshness_0",
+        "phy_A_PH_0"
+      ]
+    },
+    "phy_sensing_success": {
+      "kind": "broadcast",
+      "senders": [],
+      "receivers": []
+    },
+    "phy_signal_degraded": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_SIG_0"
+      ],
+      "receivers": []
+    },
+    "phy_signal_report": {
+      "kind": "broadcast",
+      "senders": [
+        "phy_A_SIG_0"
+      ],
+      "receivers": [
+        "phy_A_PH_0",
+        "phy_A_SQ_0"
+      ]
+    },
+    "phy_target_detected": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_E_PHY_INPUT_0"
+      ],
+      "receivers": [
+        "phy_A_BM_0"
+      ]
+    },
+    "mac_phy_kpi_report": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "mac_A_SCH_0"
+      ]
+    },
+    "mac_mac_report": {
+      "kind": "broadcast",
+      "senders": [
+        "mac_A_BUF_0",
+        "mac_A_MAC_AGG_0",
+        "mac_A_SCH_0"
+      ],
+      "receivers": [
+        "boundary_B_KPI_0"
+      ]
+    },
+    "mac_mac_tick": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_MAC_LOAD_0"
+      ],
+      "receivers": [
+        "mac_A_SCH_0"
+      ]
+    },
+    "mac_sdn_policy_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "mac_service_priority": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "mac_phy_ack": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_PHY_MAC_0"
+      ],
+      "receivers": [
+        "mac_A_SCH_0"
+      ]
+    },
+    "mac_mac_schedule_cmd": {
+      "kind": "binary",
+      "senders": [
+        "mac_A_SCH_0"
+      ],
+      "receivers": [
+        "boundary_B_PHY_MAC_0"
+      ]
+    },
+    "mac_beam_update_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "mac_sensing_boost_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "mac_constrained_mode_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "mac_resource_reject": {
+      "kind": "binary",
+      "senders": [
+        "mac_A_Q_0",
+        "mac_A_RSRC_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "sdn_mac_report": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "sdn_A_MON_0",
+        "sdn_A_POLICY_0"
+      ]
+    },
+    "sdn_phy_kpi_report": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "sdn_A_MON_0",
+        "sdn_A_POLICY_0"
+      ]
+    },
+    "sdn_service_request": {
+      "kind": "broadcast",
+      "senders": [],
+      "receivers": []
+    },
+    "sdn_service_accept": {
+      "kind": "broadcast",
+      "senders": [
+        "sdn_A_POLICY_0"
+      ],
+      "receivers": [
+        "boundary_B_ADMISSION_0"
+      ]
+    },
+    "sdn_service_degraded": {
+      "kind": "broadcast",
+      "senders": [
+        "sdn_A_POLICY_0"
+      ],
+      "receivers": [
+        "boundary_B_ADMISSION_0"
+      ]
+    },
+    "sdn_service_reject": {
+      "kind": "broadcast",
+      "senders": [
+        "sdn_A_POLICY_0"
+      ],
+      "receivers": [
+        "boundary_B_ADMISSION_0"
+      ]
+    },
+    "sdn_rule_miss": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_FAULT_0"
+      ],
+      "receivers": [
+        "sdn_A_RULE_0"
+      ]
+    },
+    "sdn_link_failure": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_FAULT_0"
+      ],
+      "receivers": [
+        "sdn_A_REC_0"
+      ]
+    },
+    "sdn_node_failure": {
+      "kind": "binary",
+      "senders": [
+        "boundary_E_FAULT_0"
+      ],
+      "receivers": [
+        "sdn_A_REC_0"
+      ]
+    },
+    "sdn_ack": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "sdn_sdn_policy_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "sdn_flow_mod": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_RULE_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "sdn_forward_cmd": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_RULE_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "sdn_drop_report": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_RULE_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "sdn_failure_report": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_REC_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "sdn_timeout_report": {
+      "kind": "binary",
+      "senders": [
+        "sdn_A_RULE_0",
+        "sdn_A_SDN_AGG_0"
+      ],
+      "receivers": [
+        "boundary_E_FAULT_0"
+      ]
+    },
+    "sdn_rollback_cmd": {
+      "kind": "binary",
+      "senders": [],
+      "receivers": []
+    },
+    "app_service_request": {
+      "kind": "binary",
+      "senders": [
+        "app_Req_0"
+      ],
+      "receivers": [
+        "boundary_B_ADMISSION_0"
+      ]
+    },
+    "app_service_accept": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_ADMISSION_0"
+      ],
+      "receivers": [
+        "app_Req_0"
+      ]
+    },
+    "app_service_degraded": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_ADMISSION_0"
+      ],
+      "receivers": [
+        "app_Req_0"
+      ]
+    },
+    "app_service_reject": {
+      "kind": "binary",
+      "senders": [
+        "boundary_B_ADMISSION_0"
+      ],
+      "receivers": [
+        "app_Req_0"
+      ]
+    },
+    "app_sla_warning_report": {
+      "kind": "binary",
+      "senders": [
+        "app_Sla_0"
+      ],
+      "receivers": [
+        "boundary_E_SERVICE_0"
+      ]
+    },
+    "app_sla_violation_report": {
+      "kind": "binary",
+      "senders": [
+        "app_Sla_0"
+      ],
+      "receivers": [
+        "boundary_E_SERVICE_0"
+      ]
+    },
+    "app_service_reconfigure": {
+      "kind": "binary",
+      "senders": [
+        "app_Sla_0"
+      ],
+      "receivers": [
+        "boundary_E_SERVICE_0"
+      ]
+    },
+    "app_degraded_accept_report": {
+      "kind": "binary",
+      "senders": [
+        "app_Req_0"
+      ],
+      "receivers": [
+        "boundary_E_SERVICE_0"
+      ]
+    },
+    "app_service_terminate": {
+      "kind": "binary",
+      "senders": [
+        "app_Sla_0"
+      ],
+      "receivers": [
+        "boundary_E_SERVICE_0"
+      ]
+    },
+    "app_new_demand": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_E_SERVICE_0"
+      ],
+      "receivers": [
+        "app_Req_0"
+      ]
+    },
+    "app_service_kpi_update": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "app_Req_0",
+        "app_Sla_0"
+      ]
+    },
+    "app_degraded_notice": {
+      "kind": "broadcast",
+      "senders": [],
+      "receivers": [
+        "app_Req_0"
+      ]
+    },
+    "app_freshness_expired": {
+      "kind": "broadcast",
+      "senders": [],
+      "receivers": []
+    },
+    "app_sla_warn": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "app_Sla_0"
+      ]
+    },
+    "app_sla_violation": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_B_KPI_0"
+      ],
+      "receivers": [
+        "app_Sla_0"
+      ]
+    },
+    "app_service_complete": {
+      "kind": "broadcast",
+      "senders": [
+        "boundary_E_SERVICE_0"
+      ],
+      "receivers": [
+        "app_Req_0"
+      ]
+    }
+  },
+  "process_map": {
+    "phy": {
+      "A_CH": "phy_A_CH_0",
+      "A_SIG": "phy_A_SIG_0",
+      "A_BM": "phy_A_BM_0",
+      "A_SQ": "phy_A_SQ_0",
+      "A_PH": "phy_A_PH_0",
+      "ObsSenseReport": "obs_phy_ObsSenseReport_0",
+      "ObsFreshness": "obs_phy_ObsFreshness_0",
+      "ObsBeamRecovery": "obs_phy_ObsBeamRecovery_0"
+    },
+    "mac": {
+      "A_SCH": "mac_A_SCH_0",
+      "A_Q": "mac_A_Q_0",
+      "A_BUF": "mac_A_BUF_0",
+      "A_RSRC": "mac_A_RSRC_0",
+      "A_MAC_AGG": "mac_A_MAC_AGG_0",
+      "ObsPhyAck": "obs_mac_ObsPhyAck_0",
+      "ObsQueueCritical": "obs_mac_ObsQueueCritical_0",
+      "ObsSensingCritical": "obs_mac_ObsSensingCritical_0",
+      "ObsBufferOverflow": "obs_mac_ObsBufferOverflow_0",
+      "ObsMacReportFreshness": "obs_mac_ObsMacReportFreshness_0"
+    },
+    "sdn": {
+      "A_MON": "sdn_A_MON_0",
+      "A_RISK": "sdn_A_RISK_0",
+      "A_POLICY": "sdn_A_POLICY_0",
+      "A_RULE": "sdn_A_RULE_0",
+      "A_REC": "sdn_A_REC_0",
+      "A_SDN_AGG": "sdn_A_SDN_AGG_0",
+      "ObsRuleMiss": "obs_sdn_ObsRuleMiss_0",
+      "ObsRecovery": "obs_sdn_ObsRecovery_0",
+      "ObsAdmission": "obs_sdn_ObsAdmission_0",
+      "ObsStaleTelemetry": "obs_sdn_ObsStaleTelemetry_0",
+      "ObsCommandAck": "obs_sdn_ObsCommandAck_0",
+      "ObsSensingDecision": "obs_sdn_ObsSensingDecision_0"
+    },
+    "app": {
+      "Req": "app_Req_0",
+      "Sla": "app_Sla_0",
+      "Crit": "app_Crit_0",
+      "Agg": "app_Agg_0",
+      "ObsAdmission": "obs_app_ObsAdmission_0",
+      "ObsWarn": "obs_app_ObsWarn_0",
+      "ObsViolation": "obs_app_ObsViolation_0",
+      "ObsFresh": "obs_app_ObsFresh_0",
+      "ObsUpdate": "obs_app_ObsUpdate_0",
+      "ObsFa": "obs_app_ObsFa_0",
+      "ObsMiss": "obs_app_ObsMiss_0",
+      "ObsSafety": "obs_app_ObsSafety_0"
+    }
+  },
+  "system_order": [
+    "phy_A_CH_0",
+    "phy_A_SIG_0",
+    "phy_A_BM_0",
+    "phy_A_SQ_0",
+    "phy_A_PH_0",
+    "mac_A_SCH_0",
+    "mac_A_Q_0",
+    "mac_A_BUF_0",
+    "mac_A_RSRC_0",
+    "mac_A_MAC_AGG_0",
+    "sdn_A_MON_0",
+    "sdn_A_RISK_0",
+    "sdn_A_POLICY_0",
+    "sdn_A_RULE_0",
+    "sdn_A_REC_0",
+    "sdn_A_SDN_AGG_0",
+    "app_Req_0",
+    "app_Sla_0",
+    "app_Crit_0",
+    "app_Agg_0",
+    "boundary_E_PHY_INPUT_0",
+    "boundary_E_MAC_LOAD_0",
+    "boundary_E_FAULT_0",
+    "boundary_E_SERVICE_0",
+    "boundary_B_PHY_MAC_0",
+    "boundary_B_POLICY_0",
+    "boundary_B_ADMISSION_0",
+    "boundary_B_KPI_0",
+    "obs_phy_ObsSenseReport_0",
+    "obs_phy_ObsFreshness_0",
+    "obs_phy_ObsBeamRecovery_0",
+    "obs_mac_ObsPhyAck_0",
+    "obs_mac_ObsQueueCritical_0",
+    "obs_mac_ObsSensingCritical_0",
+    "obs_mac_ObsBufferOverflow_0",
+    "obs_mac_ObsMacReportFreshness_0",
+    "obs_sdn_ObsRuleMiss_0",
+    "obs_sdn_ObsRecovery_0",
+    "obs_sdn_ObsAdmission_0",
+    "obs_sdn_ObsStaleTelemetry_0",
+    "obs_sdn_ObsCommandAck_0",
+    "obs_sdn_ObsSensingDecision_0",
+    "obs_app_ObsAdmission_0",
+    "obs_app_ObsWarn_0",
+    "obs_app_ObsViolation_0",
+    "obs_app_ObsFresh_0",
+    "obs_app_ObsUpdate_0",
+    "obs_app_ObsFa_0",
+    "obs_app_ObsMiss_0",
+    "obs_app_ObsSafety_0"
+  ]
+}
