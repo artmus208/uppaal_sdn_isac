@@ -1,0 +1,12 @@
+pip-check: exit=0; timeout=False
+versions: exit=0; timeout=False
+generate: exit=1; timeout=False
+coordination: exit=0; timeout=False
+yaml: exit=0; timeout=False
+unit-tests: exit=1; timeout=False
+mcp-construction: exit=0; timeout=False
+examples: exit=0; timeout=False
+diff-check: exit=0; timeout=False
+verifyta-version: exit=0; timeout=False
+verifyta-help: exit=0; timeout=False
+compile-only: exit=1; timeout=False

@@ -1,0 +1,205 @@
+{
+  "run_id": "reviewer-run-002",
+  "issue": 19,
+  "evidence_class": "software_and_compile_only_diagnostics",
+  "verification_status": "not_run",
+  "cwd": "/tmp/uppaal-carwasher-19-evidence-20260908",
+  "source_commit": "635c3ba6cd0c5acb3f010e2df949dd89265db9ac",
+  "worktree_status_at_start": "",
+  "operating_environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "/usr/bin/python3.12",
+  "hardware": {
+    "cpu": "x86_64",
+    "logical_cpu_count": 8,
+    "ram_bytes": 8251904000
+  },
+  "environment_overrides": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "core.autocrlf": "false"
+  },
+  "git_override_reason": "Exact-byte audit fixture isolation; process-only, no Git config changed.",
+  "commands": [
+    {
+      "name": "pip-check",
+      "command": [
+        "/usr/bin/python3.12",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:30.326043+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.111694+00:00",
+      "runtime_seconds": 0.7856466879998152,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "pip-check.stdout.log",
+      "stdout_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "stderr_path": "pip-check.stderr.log",
+      "stderr_sha256": "c2d0c69f8a8a34ce182ad1feb1a6ff03b2548055311927f15f2700d30c898c67"
+    },
+    {
+      "name": "versions",
+      "command": [
+        "/usr/bin/python3.12",
+        "-c",
+        "import sys,importlib.metadata as m; print(sys.version); print(\"mcp=\"+m.version(\"mcp\")); print(\"PyYAML=\"+m.version(\"PyYAML\"))"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.112121+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.265335+00:00",
+      "runtime_seconds": 0.153220336999766,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "versions.stdout.log",
+      "stdout_sha256": "ac2ddb05896929308f03a74a68cf087808bae52f6bd883be29ab2953ddbd5636",
+      "stderr_path": "versions.stderr.log",
+      "stderr_sha256": "504057ababa6c904e1d03b8d39ac11598d4b47f77eadf7e11dc3d9d0312e5182"
+    },
+    {
+      "name": "generate",
+      "command": [
+        "/usr/bin/python3.12",
+        "-B",
+        "-m",
+        "uppaal_mcp.integrated.generator",
+        "--output",
+        "/tmp/uppaal-carwasher-19-evidence-20260908/evidence/instantiation/20260908-p2-integrated/reviewer-run-002/generated"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.265822+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.296041+00:00",
+      "runtime_seconds": 0.03022942300003706,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "generate.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "generate.stderr.log",
+      "stderr_sha256": "1167513af5d93b050b108abfe4549c5704dd064c758ce2cd7b6868b6fd2ecd84"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/usr/bin/python3.12",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.296732+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.348963+00:00",
+      "runtime_seconds": 0.052232158000151685,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "coordination.stdout.log",
+      "stdout_sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a",
+      "stderr_path": "coordination.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "yaml",
+      "command": [
+        "/usr/bin/python3.12",
+        "-c",
+        "import pathlib,yaml; files=sorted(pathlib.Path(\"manifests\").rglob(\"*.yaml\")); [yaml.safe_load(p.read_text(encoding=\"utf-8\")) for p in files]; print(len(files),\"YAML manifests parsed\")"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.349437+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.469899+00:00",
+      "runtime_seconds": 0.12047488600001088,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "yaml.stdout.log",
+      "stdout_sha256": "0af93f145690325428f312b744ee3b07b5e8b70312c2589c174d3da8936eba43",
+      "stderr_path": "yaml.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/usr/bin/python3.12",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.470722+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.751699+00:00",
+      "runtime_seconds": 0.280978401000084,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "unit-tests.stdout.log",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "stderr_path": "unit-tests.stderr.log",
+      "stderr_sha256": "4e6fc75e44fc5e3ee78cd1423935e77d765b37953d12b9d7a956993f8bee12c2"
+    },
+    {
+      "name": "mcp-construction",
+      "command": [
+        "/usr/bin/python3.12",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.752208+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.866846+00:00",
+      "runtime_seconds": 0.11464512500015189,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "mcp-construction.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "mcp-construction.stderr.log",
+      "stderr_sha256": "b18d5aec7ed22a5543fc8f81bd5381ae3a30762d80a79c9357feb1a3720dc0e1"
+    },
+    {
+      "name": "examples",
+      "command": [
+        "/usr/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.867399+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.868243+00:00",
+      "runtime_seconds": 0.0008426090003013087,
+      "exit_code": null,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "examples.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "examples.stderr.log",
+      "stderr_sha256": "81b4f49e4dc996d4110d16de348b040232d58739d4f77c60f263c2e1bc63161f"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "dc7eeb05f1fd3f2a4775428b1cd250363893128d...HEAD"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:08:31.868815+00:00",
+      "finished_at_utc": "2026-09-08T08:08:31.926627+00:00",
+      "runtime_seconds": 0.057813516999885906,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "diff-check.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "diff-check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "compile_only_status": "not_available: no executable supplied"
+}

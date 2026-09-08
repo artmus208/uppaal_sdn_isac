@@ -1,0 +1,1 @@
+/usr/bin/python3.12: Error while finding module specification for 'uppaal_mcp.integrated.generator' (ModuleNotFoundError: No module named 'uppaal_mcp')

@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/generator.py", line 159, in <module>
+    main()
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/generator.py", line 146, in main
+    result=generate()
+           ^^^^^^^^^^
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/generator.py", line 28, in generate
+    vector, inventory, inputs, source_queries, provenance = load(root)
+                                                            ^^^^^^^^^^
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/inputs.py", line 38, in load
+    raise ValueError(f'pinned source changed: {name}')
+ValueError: pinned source changed: AGENTS.md

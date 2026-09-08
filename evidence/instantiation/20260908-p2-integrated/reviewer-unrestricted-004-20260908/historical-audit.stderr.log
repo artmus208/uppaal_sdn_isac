@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/tmp/issue19-native-handoff/evidence/instantiation/20260908-p2-integrated/audit.py", line 34, in <module>
+    main()
+  File "/tmp/issue19-native-handoff/evidence/instantiation/20260908-p2-integrated/audit.py", line 17, in main
+    current=generate(ROOT)
+            ^^^^^^^^^^^^^^
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/generator.py", line 28, in generate
+    vector, inventory, inputs, source_queries, provenance = load(root)
+                                                            ^^^^^^^^^^
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/inputs.py", line 38, in load
+    raise ValueError(f'pinned source changed: {name}')
+ValueError: pinned source changed: AGENTS.md
