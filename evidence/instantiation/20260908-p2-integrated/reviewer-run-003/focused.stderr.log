@@ -1,0 +1,24 @@
+test_integrated_ack_endpoints_are_distinct (test_sdn_layer.IntegratedCandidateTests.test_integrated_ack_endpoints_are_distinct) ... ok
+test_integrated_admission_request_payload_is_complete (test_sdn_layer.IntegratedCandidateTests.test_integrated_admission_request_payload_is_complete) ... ok
+test_integrated_admission_stages_fields_before_receiver_guard (test_sdn_layer.IntegratedCandidateTests.test_integrated_admission_stages_fields_before_receiver_guard) ... ok
+test_integrated_determinism_and_partition (test_sdn_layer.IntegratedCandidateTests.test_integrated_determinism_and_partition) ... ok
+test_integrated_duplicate_schedule_does_not_overwrite_mailbox (test_sdn_layer.IntegratedCandidateTests.test_integrated_duplicate_schedule_does_not_overwrite_mailbox) ... ok
+test_integrated_identifier_tokens_preserve_shadowing_and_members (test_sdn_layer.IntegratedCandidateTests.test_integrated_identifier_tokens_preserve_shadowing_and_members) ... ok
+test_integrated_joint_schedule_requires_both_deliveries (test_sdn_layer.IntegratedCandidateTests.test_integrated_joint_schedule_requires_both_deliveries) ... ok
+test_integrated_kpi_age_includes_transport_delay_and_bad_quality (test_sdn_layer.IntegratedCandidateTests.test_integrated_kpi_age_includes_transport_delay_and_bad_quality) ... ok
+test_integrated_kpi_deadline_prevents_unrecorded_indefinite_wait (test_sdn_layer.IntegratedCandidateTests.test_integrated_kpi_deadline_prevents_unrecorded_indefinite_wait) ... ok
+test_integrated_missing_phy_receiver_records_loss_and_no_ack (test_sdn_layer.IntegratedCandidateTests.test_integrated_missing_phy_receiver_records_loss_and_no_ack) ... ok
+test_integrated_monitor_counters_are_finite_latches (test_sdn_layer.IntegratedCandidateTests.test_integrated_monitor_counters_are_finite_latches) ... ok
+test_integrated_no_late_ack_or_idle_schedule_success (test_sdn_layer.IntegratedCandidateTests.test_integrated_no_late_ack_or_idle_schedule_success) ... ok
+test_integrated_policy_payload_precedes_mac_receiver (test_sdn_layer.IntegratedCandidateTests.test_integrated_policy_payload_precedes_mac_receiver) ... ok
+test_integrated_query_process_references_exist (test_sdn_layer.IntegratedCandidateTests.test_integrated_query_process_references_exist) ... ok
+test_integrated_rejects_changed_source_and_specification (test_sdn_layer.IntegratedCandidateTests.test_integrated_rejects_changed_source_and_specification) ... ok
+test_integrated_replay_rejects_unsupported_expressions (test_sdn_layer.IntegratedCandidateTests.test_integrated_replay_rejects_unsupported_expressions) ... ok
+test_integrated_sampling_stages_private_values_before_publication (test_sdn_layer.IntegratedCandidateTests.test_integrated_sampling_stages_private_values_before_publication) ... ok
+test_integrated_unresolved_app_admission_has_real_timeout (test_sdn_layer.IntegratedCandidateTests.test_integrated_unresolved_app_admission_has_real_timeout) ... ok
+test_symlinked_venv_preserves_interpreter_and_cli (test_sdn_layer.IntegratedRecorderTests.test_symlinked_venv_preserves_interpreter_and_cli) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 1.223s
+
+OK
