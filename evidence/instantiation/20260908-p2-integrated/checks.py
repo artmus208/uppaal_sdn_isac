@@ -27,7 +27,7 @@ def main():
     args=parser.parse_args()
     output=args.output.resolve()
     # Resolving a venv executable symlink selects the base interpreter instead.
-    python=str(args.python.absolute())
+    python=os.path.abspath(args.python)
     env=os.environ.copy()
     env['PYTHONDONTWRITEBYTECODE']='1'
     env['PYTHONUTF8']='1'

@@ -355,7 +355,8 @@ class IntegratedRecorderTests(unittest.TestCase):
         import subprocess
         import tempfile
         import venv
-        from unittest.mock import patch
+        from types import SimpleNamespace
+        from unittest.mock import Mock, patch
 
         if os.name == "nt":
             self.skipTest("Unix executable symlink regression")
@@ -395,8 +396,9 @@ class IntegratedRecorderTests(unittest.TestCase):
             argv = ["checks.py", "--output", str(output), "--python",
                     os.path.relpath(python, Path.cwd())]
             with patch.object(recorder.sys, "argv", argv), \
-                 patch.object(recorder.subprocess, "check_output", side_effect=["", "test-commit\n"]), \
-                 patch.object(recorder.subprocess, "run", side_effect=run_probe), \
+                 patch.object(recorder, "subprocess", SimpleNamespace(
+                     check_output=Mock(side_effect=["", "test-commit\n"]),
+                     run=run_probe, TimeoutExpired=subprocess.TimeoutExpired)), \
                  contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(recorder.main(), 0)
             report = json.loads((output / "checks.json").read_text())
