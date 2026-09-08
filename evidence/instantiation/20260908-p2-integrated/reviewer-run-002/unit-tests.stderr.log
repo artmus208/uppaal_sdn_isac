@@ -1,0 +1,155 @@
+test_cli (unittest.loader._FailedTest.test_cli) ... ERROR
+test_config (unittest.loader._FailedTest.test_config) ... ERROR
+test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... ok
+test_invalid_input_and_construction (test_coordination.HashAuditTests.test_invalid_input_and_construction) ... ok
+test_missing_input_and_immutable_output (test_coordination.HashAuditTests.test_missing_input_and_immutable_output) ... Hash audit error: [Errno 17] File exists: '/tmp/tmpbrma7sp0/result.json'
+ok
+test_canonical_storage (test_coordination.RunStorageTests.test_canonical_storage) ... ok
+test_invalid_mappings (test_coordination.RunStorageTests.test_invalid_mappings) ... ok
+test_mac_layer (unittest.loader._FailedTest.test_mac_layer) ... ERROR
+test_mcp_startup (unittest.loader._FailedTest.test_mcp_startup) ... ERROR
+test_paths (unittest.loader._FailedTest.test_paths) ... ERROR
+test_phy_layer (unittest.loader._FailedTest.test_phy_layer) ... ERROR
+test_sdn_layer (unittest.loader._FailedTest.test_sdn_layer) ... ERROR
+test_validation (unittest.loader._FailedTest.test_validation) ... ERROR
+test_verifyta_parser (unittest.loader._FailedTest.test_verifyta_parser) ... ERROR
+
+======================================================================
+ERROR: test_cli (unittest.loader._FailedTest.test_cli)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_cli
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_cli.py", line 12, in <module>
+    from uppaal_mcp.examples import get_builtin_example
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_config (unittest.loader._FailedTest.test_config)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_config
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_config.py", line 7, in <module>
+    from uppaal_mcp import config
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_mac_layer (unittest.loader._FailedTest.test_mac_layer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_mac_layer
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_mac_layer.py", line 7, in <module>
+    from uppaal_mcp.mac.alpha import check_no_continuous_guards, default_profile, validate_threshold_policy
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_mcp_startup (unittest.loader._FailedTest.test_mcp_startup)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_mcp_startup
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_mcp_startup.py", line 10, in <module>
+    from uppaal_mcp.server import build_mcp
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_paths (unittest.loader._FailedTest.test_paths)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_paths
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_paths.py", line 4, in <module>
+    from uppaal_mcp.paths import (
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_phy_layer (unittest.loader._FailedTest.test_phy_layer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_phy_layer
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_phy_layer.py", line 8, in <module>
+    from uppaal_mcp.phy.alpha import (
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_sdn_layer (unittest.loader._FailedTest.test_sdn_layer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_sdn_layer
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_sdn_layer.py", line 7, in <module>
+    from uppaal_mcp.layers import available_layer_adapters
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_validation (unittest.loader._FailedTest.test_validation)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_validation
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_validation.py", line 3, in <module>
+    from uppaal_mcp.examples import EXAMPLE_DESCRIPTIONS, get_builtin_example, list_builtin_examples
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_verifyta_parser (unittest.loader._FailedTest.test_verifyta_parser)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_verifyta_parser
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/loader.py", line 394, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/loader.py", line 337, in _get_module_from_name
+    __import__(name)
+  File "/tmp/uppaal-carwasher-19-evidence-20260908/tests/test_verifyta_parser.py", line 7, in <module>
+    from uppaal_mcp.config import UppaalConfig
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.133s
+
+FAILED (errors=9)

@@ -1,0 +1,27 @@
+{
+  "source_commit": "635c3ba6cd0c5acb3f010e2df949dd89265db9ac",
+  "evidence_class": "failed_software_diagnostics",
+  "verification_status": "not_run",
+  "focused_command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_sdn_layer.py",
+    "-k",
+    "IntegratedCandidateTests",
+    "-v"
+  ],
+  "focused_exit_code": 0,
+  "focused_tests": 18,
+  "recorder_exit_code": 1,
+  "cpu_model": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "audit_status": "not_run_missing_generated_output",
+  "verifyta_version": "not_available_not_probed",
+  "license_status": "not_probed"
+}
