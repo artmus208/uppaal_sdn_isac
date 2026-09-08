@@ -2,7 +2,7 @@
 
 Owner: `carwasher`, after the user-authorized handoff from `artmus208` recorded in
 [Issue #19](https://github.com/artmus208/uppaal_sdn_isac/issues/19).
-Branch: `codex/carwasher/19-integrated-candidate`; PR target: `read`.
+Continuation branch: `codex/carwasher/19-integrated-evidence`; PR target: `read`.
 Base: `dc7eeb05f1fd3f2a4775428b1cd250363893128d`.
 Specification/source audit: [Issue #17 package](../20260907-p2-scope/README.md),
 input commit `7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb`.
@@ -55,9 +55,13 @@ global Git settings are not changed. The recorder also sets `PYTHONUTF8=1` and
 
 ## Artifacts and checks
 
-`checks-native-01/checks.json` is the final run record; raw logs are alongside it.
-`checks-native-01/generated/` contains `model.xml`, `queries.q`, `composition.json`
-and its hash index. `composition.json` records input hashes, implementation hashes,
+No completed final run is present. [reviewer-run-002](reviewer-run-002/README.md)
+records the historical loss of the venv interpreter; the subsequent
+[recorder regression attempt](reviewer-recorder-blocked-003/README.md) stopped
+on a new test harness error. The formerly referenced `checks-native-01` does not
+exist. A future successful run must supply `checks.json`, raw logs and
+`generated/model.xml`, `queries.q`, `composition.json` and its hash index.
+`composition.json` records input hashes, implementation hashes,
 the generator-hash construction, entity/process vector, ordering, parameters,
 channel endpoints, candidate query mapping and exact before/after XML for every
 adapted retained template/declaration. Source commit identifies the implementation
@@ -65,7 +69,7 @@ commit that produced the output; later evidence-only commits do not change its
 model/query/generator hashes.
 
 ```text
-.venv/Scripts/python.exe -B evidence/instantiation/20260908-p2-integrated/audit.py evidence/instantiation/20260908-p2-integrated/checks-native-01
+.venv/Scripts/python.exe -B evidence/instantiation/20260908-p2-integrated/audit.py evidence/instantiation/20260908-p2-integrated/reviewer-run-new
 ```
 
 The audit regenerates XML/query bytes, checks implementation/input hashes and all
