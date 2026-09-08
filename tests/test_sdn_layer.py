@@ -345,5 +345,65 @@ class IntegratedCandidateTests(unittest.TestCase):
             self.assertIn(name,[x.findtext('name') for x in r.processes[p].findall('location')])
 
 
+class IntegratedRecorderTests(unittest.TestCase):
+    def test_symlinked_venv_preserves_interpreter_and_cli(self):
+        import contextlib
+        import importlib.util
+        import io
+        import json
+        import os
+        import subprocess
+        import tempfile
+        import venv
+        from unittest.mock import patch
+
+        if os.name == "nt":
+            self.skipTest("Unix executable symlink regression")
+        spec = importlib.util.spec_from_file_location(
+            "integrated_checks", ROOT / "evidence/instantiation/20260908-p2-integrated/checks.py"
+        )
+        recorder = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(recorder)
+        real_run = subprocess.run
+        with tempfile.TemporaryDirectory() as directory:
+            work = Path(directory)
+            env_dir = work / "venv"
+            venv.EnvBuilder(with_pip=False, symlinks=True).create(env_dir)
+            python = env_dir / "bin/python"
+            self.assertTrue(python.is_symlink())
+            cli = python.parent / "uppaal-verifyta"
+            probe = "import sys; print(sys.prefix)"
+            cli.write_text(f"#!{python}\n{probe}\n", encoding="utf-8")
+            cli.chmod(0o755)
+            observed = []
+
+            def run_probe(command, **kwargs):
+                observed.append(command)
+                if command[0] == "git":
+                    return subprocess.CompletedProcess(command, 0, b"", b"")
+                if command[-1] == "list-examples":
+                    self.assertEqual(command[0], str(cli))
+                    result = real_run(command, **kwargs)
+                else:
+                    self.assertEqual(command[0], str(python))
+                    result = real_run([command[0], "-c", probe], **kwargs)
+                self.assertEqual(result.returncode, 0, result.stderr)
+                self.assertEqual(result.stdout.decode().strip(), str(env_dir))
+                return result
+
+            output = work / "run"
+            argv = ["checks.py", "--output", str(output), "--python",
+                    os.path.relpath(python, Path.cwd())]
+            with patch.object(recorder.sys, "argv", argv), \
+                 patch.object(recorder.subprocess, "check_output", side_effect=["", "test-commit\n"]), \
+                 patch.object(recorder.subprocess, "run", side_effect=run_probe), \
+                 contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(recorder.main(), 0)
+            report = json.loads((output / "checks.json").read_text())
+            self.assertEqual(report["python"], str(python))
+            self.assertEqual(len(observed), 9)
+            self.assertTrue(all(item["exit_code"] == 0 for item in report["commands"]))
+
+
 if __name__ == "__main__":
     unittest.main()
