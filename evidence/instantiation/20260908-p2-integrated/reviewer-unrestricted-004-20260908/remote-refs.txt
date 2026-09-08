@@ -1,0 +1,2 @@
+426cf570138231765b21d518f9d20289e2b11b63		branch 'read' of https://github.com/artmus208/uppaal_sdn_isac
+6604af040b16c9c3c0e6ceb78b7f52df7172f185		branch 'codex/carwasher/19-integrated-candidate' of https://github.com/artmus208/uppaal_sdn_isac

@@ -1,0 +1,20 @@
+setUpClass (test_sdn_layer.IntegratedCandidateTests) ... ERROR
+
+======================================================================
+ERROR: setUpClass (test_sdn_layer.IntegratedCandidateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/issue19-native-handoff/tests/test_sdn_layer.py", line 126, in setUpClass
+    cls.candidate = generate(ROOT)
+                    ^^^^^^^^^^^^^^
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/generator.py", line 28, in generate
+    vector, inventory, inputs, source_queries, provenance = load(root)
+                                                            ^^^^^^^^^^
+  File "/tmp/issue19-native-handoff/src/uppaal_mcp/integrated/inputs.py", line 38, in load
+    raise ValueError(f'pinned source changed: {name}')
+ValueError: pinned source changed: AGENTS.md
+
+----------------------------------------------------------------------
+Ran 0 tests in 0.023s
+
+FAILED (errors=1)

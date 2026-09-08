@@ -1,0 +1,42 @@
+{
+  "source_commit": "6f88b49a99d74dd1a5a1d96005d9838b1579c6be",
+  "remote_equivalent_commit": "87d1b1055e2ff320715c8792ce468f4b42775d0f",
+  "identical_tree": "b10e31df888520089f86a7b9eaeb5e841db05181",
+  "recorder_exit_code": 0,
+  "focused": {
+    "command": [
+      ".venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_sdn_layer.py",
+      "-k",
+      "Integrated",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 21,
+    "skips": 0
+  },
+  "audit": {
+    "command": [
+      ".venv/bin/python",
+      "-B",
+      "evidence/instantiation/20260908-p2-integrated/audit.py",
+      "evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908"
+    ],
+    "exit_code": 0
+  },
+  "full_suite": {
+    "tests": 147,
+    "exit_code": 0,
+    "skips": 0
+  },
+  "historical_model_query_bytes_unchanged": true,
+  "verification_status": "not_run",
+  "license_model_checking_status": "not_tested"
+}

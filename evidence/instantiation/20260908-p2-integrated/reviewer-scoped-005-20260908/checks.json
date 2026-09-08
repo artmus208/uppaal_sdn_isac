@@ -1,0 +1,495 @@
+{
+  "run_id": "reviewer-scoped-005-20260908",
+  "issue": 19,
+  "evidence_class": "software_and_compile_only_diagnostics",
+  "verification_status": "not_run",
+  "cwd": "/tmp/issue19-scoped",
+  "source_commit": "6f88b49a99d74dd1a5a1d96005d9838b1579c6be",
+  "worktree_status_at_start": "",
+  "operating_environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "/tmp/issue19-scoped/.venv/bin/python",
+  "hardware": {
+    "cpu": "x86_64",
+    "logical_cpu_count": 8,
+    "ram_bytes": 8251904000
+  },
+  "environment_overrides": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "core.autocrlf": "false"
+  },
+  "git_override_reason": "Exact-byte audit fixture isolation; process-only, no Git config changed.",
+  "commands": [
+    {
+      "name": "pip-check",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:27:54.261473+00:00",
+      "finished_at_utc": "2026-09-08T14:27:54.892105+00:00",
+      "runtime_seconds": 0.6306268139996973,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "pip-check.stdout.log",
+      "stdout_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "stderr_path": "pip-check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "versions",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/python",
+        "-c",
+        "import sys,importlib.metadata as m; print(sys.version); print(\"mcp=\"+m.version(\"mcp\")); print(\"PyYAML=\"+m.version(\"PyYAML\"))"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:27:54.892496+00:00",
+      "finished_at_utc": "2026-09-08T14:27:54.958048+00:00",
+      "runtime_seconds": 0.06555903899970872,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "versions.stdout.log",
+      "stdout_sha256": "614e71060f6a6aed1a9c5b2f7bd4730c8bac84d64292fdad1422338cc6c22663",
+      "stderr_path": "versions.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "generate",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/python",
+        "-B",
+        "-m",
+        "uppaal_mcp.integrated.generator",
+        "--output",
+        "/tmp/issue19-scoped/evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/generated"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:27:54.958474+00:00",
+      "finished_at_utc": "2026-09-08T14:27:55.347067+00:00",
+      "runtime_seconds": 0.3885996259996318,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "generate.stdout.log",
+      "stdout_sha256": "d095a56c0f63f36dc16de7f0bbefd676c045241912658f88f95bee0a5d47d238",
+      "stderr_path": "generate.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/python",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:27:55.349049+00:00",
+      "finished_at_utc": "2026-09-08T14:27:55.389141+00:00",
+      "runtime_seconds": 0.040094972999213496,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "coordination.stdout.log",
+      "stdout_sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a",
+      "stderr_path": "coordination.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "yaml",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/python",
+        "-c",
+        "import pathlib,yaml; files=sorted(pathlib.Path(\"manifests\").rglob(\"*.yaml\")); [yaml.safe_load(p.read_text(encoding=\"utf-8\")) for p in files]; print(len(files),\"YAML manifests parsed\")"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:27:55.390890+00:00",
+      "finished_at_utc": "2026-09-08T14:27:55.482714+00:00",
+      "runtime_seconds": 0.09183303799909481,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "yaml.stdout.log",
+      "stdout_sha256": "0af93f145690325428f312b744ee3b07b5e8b70312c2589c174d3da8936eba43",
+      "stderr_path": "yaml.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:27:55.484593+00:00",
+      "finished_at_utc": "2026-09-08T14:28:27.535477+00:00",
+      "runtime_seconds": 32.05088553600035,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "unit-tests.stdout.log",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "stderr_path": "unit-tests.stderr.log",
+      "stderr_sha256": "ab725fbcd37c6c525d56ffa01c3f2c76cb27d90a07a547752765d06e72670beb"
+    },
+    {
+      "name": "mcp-construction",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:28:27.537513+00:00",
+      "finished_at_utc": "2026-09-08T14:28:28.246873+00:00",
+      "runtime_seconds": 0.709356879000552,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "mcp-construction.stdout.log",
+      "stdout_sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+      "stderr_path": "mcp-construction.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "examples",
+      "command": [
+        "/tmp/issue19-scoped/.venv/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:28:28.248793+00:00",
+      "finished_at_utc": "2026-09-08T14:28:28.747400+00:00",
+      "runtime_seconds": 0.4986125049999828,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "examples.stdout.log",
+      "stdout_sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+      "stderr_path": "examples.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "dc7eeb05f1fd3f2a4775428b1cd250363893128d...HEAD"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:28:28.749195+00:00",
+      "finished_at_utc": "2026-09-08T14:28:28.760189+00:00",
+      "runtime_seconds": 0.011001742999724229,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "diff-check.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "diff-check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "verifyta-version",
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "--version"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:28:28.762617+00:00",
+      "finished_at_utc": "2026-09-08T14:28:28.859137+00:00",
+      "runtime_seconds": 0.09651112000028661,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "verifyta-version.stdout.log",
+      "stdout_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+      "stderr_path": "verifyta-version.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "verifyta-help",
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "--help"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T14:28:28.861108+00:00",
+      "finished_at_utc": "2026-09-08T14:28:28.912822+00:00",
+      "runtime_seconds": 0.05172386099911819,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "verifyta-help.stdout.log",
+      "stdout_sha256": "930017fb677dcead4e7b7baef29264a97a92dbe7f4f0e914f79d85687d50a73b",
+      "stderr_path": "verifyta-help.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "compile-only",
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\issue19-scoped\\evidence\\instantiation\\20260908-p2-integrated\\reviewer-scoped-005-20260908\\generated\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\issue19-scoped\\evidence\\instantiation\\20260908-p2-integrated\\reviewer-scoped-005-20260908\\generated\\queries.q"
+      ],
+      "environment_overrides": {
+        "UPPAAL_COMPILE_ONLY": "1",
+        "WSLENV": "PATHEXT/l:COMSPEC/p:SYSTEMROOT/p:SYSTEMDRIVE:USERNAME:USERDOMAIN:USERPROFILE/p:PROGRAMFILES/p:PROGRAMFILES(X86)/p:PROGRAMW6432/p:PROGRAMDATA/p:LOCALAPPDATA/p:APPDATA/p:POWERSHELL:PWSH:HTTP_PROXY:HTTPS_PROXY:NO_PROXY:NODE_TLS_REJECT_UNAUTHORIZED:UPPAAL_COMPILE_ONLY/w"
+      },
+      "started_at_utc": "2026-09-08T14:28:28.915108+00:00",
+      "finished_at_utc": "2026-09-08T14:28:29.971988+00:00",
+      "runtime_seconds": 1.0568845759989927,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "compile-only.stdout.log",
+      "stdout_sha256": "a4f627bf7e6a7fa9d42a55f14004ae3de392ffd37768ae5981202d78a713df00",
+      "stderr_path": "compile-only.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "model_hash": "2b6928bda92bfb9bad5c74e91cf78c0b15beb4e7300bea401de8b4dc2cf592a4",
+  "query_hash": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9",
+  "generator_hash": "3a949a322f5404816e94966882b300f9d30b34af6605b1617289bccb8fc13aa8",
+  "parameter_set": {
+    "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+    "D_cmd": 1,
+    "D_bus": 1,
+    "T_input": 5,
+    "T_mac_tick": 5,
+    "T_demand": 1,
+    "T_complete": 40,
+    "fault_window": [
+      12,
+      13
+    ],
+    "max_fault_events": 1,
+    "max_requests_per_service": 1,
+    "max_outstanding_per_command_kind": 1,
+    "freshness_warn_age": 5,
+    "freshness_expire_age": 10,
+    "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+  },
+  "instance_vector": {
+    "schema_version": 1,
+    "configuration_id": "p2-single-uav-abstract-v1-proposal",
+    "source_commit": "7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb",
+    "status": "proposed_not_implemented_not_accepted",
+    "baseline_id": "reviewer-r1-candidate",
+    "physical_time_scale_seconds": null,
+    "time_unit": "abstract_model_unit",
+    "entities": {
+      "base_stations": 1,
+      "devices_total": 1,
+      "uav_devices_subset": 1,
+      "radio_links": 1,
+      "sensing_targets": 1,
+      "sdn_ric_controllers": 1,
+      "service_sessions": 1,
+      "aggregate_queue_classes": 1,
+      "explicit_packet_queues": 0,
+      "explicit_handover_destination_cells": 0
+    },
+    "bindings": {
+      "device_0": {
+        "kind": "UAV",
+        "serving_bs": 0,
+        "link": 0,
+        "service": 0
+      },
+      "link_0": {
+        "bs": 0,
+        "device": 0,
+        "target": 0
+      },
+      "service_0": {
+        "controller": 0,
+        "device": 0,
+        "class": "SVC_UAV"
+      }
+    },
+    "groups_in_system_order": [
+      {
+        "group": "phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "A_CH",
+          "A_SIG",
+          "A_BM",
+          "A_SQ",
+          "A_PH"
+        ]
+      },
+      {
+        "group": "mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "A_SCH",
+          "A_Q",
+          "A_BUF",
+          "A_RSRC",
+          "A_MAC_AGG"
+        ]
+      },
+      {
+        "group": "sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "A_MON",
+          "A_RISK",
+          "A_POLICY",
+          "A_RULE",
+          "A_REC",
+          "A_SDN_AGG"
+        ]
+      },
+      {
+        "group": "app",
+        "source": "stored:app",
+        "retain": [
+          "Req",
+          "Sla",
+          "Crit",
+          "Agg"
+        ]
+      },
+      {
+        "group": "boundary",
+        "source": "new_templates_required",
+        "retain": [
+          "E_PHY_INPUT",
+          "E_MAC_LOAD",
+          "E_FAULT",
+          "E_SERVICE",
+          "B_PHY_MAC",
+          "B_POLICY",
+          "B_ADMISSION",
+          "B_KPI"
+        ]
+      },
+      {
+        "group": "obs_phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "ObsSenseReport",
+          "ObsFreshness",
+          "ObsBeamRecovery"
+        ]
+      },
+      {
+        "group": "obs_mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "ObsPhyAck",
+          "ObsQueueCritical",
+          "ObsSensingCritical",
+          "ObsBufferOverflow",
+          "ObsMacReportFreshness"
+        ]
+      },
+      {
+        "group": "obs_sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "ObsRuleMiss",
+          "ObsRecovery",
+          "ObsAdmission",
+          "ObsStaleTelemetry",
+          "ObsCommandAck",
+          "ObsSensingDecision"
+        ]
+      },
+      {
+        "group": "obs_app",
+        "source": "stored:app",
+        "retain": [
+          "ObsAdmission",
+          "ObsWarn",
+          "ObsViolation",
+          "ObsFresh",
+          "ObsUpdate",
+          "ObsFa",
+          "ObsMiss",
+          "ObsSafety"
+        ]
+      }
+    ],
+    "remove": {
+      "generated:phy:with_observers": [
+        "ENV_CH",
+        "ENV_TARGET",
+        "ENV_MAC",
+        "ENV_NET"
+      ],
+      "generated:mac:with_observers": [
+        "A_ENV_MAC"
+      ],
+      "generated:sdn:with_observers": [
+        "A_ENV_SDN"
+      ],
+      "stored:app": [
+        "Sdn",
+        "Env",
+        "Kpi",
+        "Sink"
+      ]
+    },
+    "new_template_contracts": "interface-contract.md#boundary-processes",
+    "application_placeholders_retained_without_behavior": [
+      "app_Crit_0",
+      "app_Agg_0"
+    ],
+    "optional_security_instances": 0,
+    "extended_phy_observers": 0,
+    "count_per_retained_process": 1,
+    "qualified_process_name": "<group>_<original_process>_0",
+    "expected_process_counts": {
+      "core": 20,
+      "boundary": 8,
+      "observers": 22,
+      "total": 50
+    },
+    "parameter_policy": {
+      "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+      "D_cmd": 1,
+      "D_bus": 1,
+      "T_input": 5,
+      "T_mac_tick": 5,
+      "T_demand": 1,
+      "T_complete": 40,
+      "fault_window": [
+        12,
+        13
+      ],
+      "max_fault_events": 1,
+      "max_requests_per_service": 1,
+      "max_outstanding_per_command_kind": 1,
+      "freshness_warn_age": 5,
+      "freshness_expire_age": 10,
+      "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+    },
+    "implementation_preconditions": [
+      "replace standalone environments with specified boundary processes",
+      "namespace declarations and localize component clocks",
+      "resolve service channel kinds and pre-synchronization payload staging",
+      "separate rule and controller acknowledgements",
+      "add missing lower-layer policy/command and KPI mappings",
+      "retain failure and timeout behavior including absent receivers",
+      "review APP placeholder scope and lack of complete service lifecycle",
+      "obtain independent parameter/interface decision before Gate 1"
+    ]
+  },
+  "tool_version_output": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "compile_only_status": "success"
+}

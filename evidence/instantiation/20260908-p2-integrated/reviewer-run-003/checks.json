@@ -1,0 +1,494 @@
+{
+  "run_id": "reviewer-run-003",
+  "issue": 19,
+  "evidence_class": "software_and_compile_only_diagnostics",
+  "verification_status": "not_run",
+  "cwd": "/tmp/uppaal-carwasher-19-evidence-20260908",
+  "source_commit": "2dc471df9f2c029c0de1036774d6cf8724b8e896",
+  "worktree_status_at_start": "",
+  "operating_environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+  "hardware": {
+    "cpu": "x86_64",
+    "logical_cpu_count": 8,
+    "ram_bytes": 8251904000
+  },
+  "environment_overrides": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "core.autocrlf": "false"
+  },
+  "git_override_reason": "Exact-byte audit fixture isolation; process-only, no Git config changed.",
+  "commands": [
+    {
+      "name": "pip-check",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:38:21.653592+00:00",
+      "finished_at_utc": "2026-09-08T08:38:22.257464+00:00",
+      "runtime_seconds": 0.6038652350007396,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "pip-check.stdout.log",
+      "stdout_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "stderr_path": "pip-check.stderr.log",
+      "stderr_sha256": "c2d0c69f8a8a34ce182ad1feb1a6ff03b2548055311927f15f2700d30c898c67"
+    },
+    {
+      "name": "versions",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+        "-c",
+        "import sys,importlib.metadata as m; print(sys.version); print(\"mcp=\"+m.version(\"mcp\")); print(\"PyYAML=\"+m.version(\"PyYAML\"))"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:38:22.257930+00:00",
+      "finished_at_utc": "2026-09-08T08:38:22.320399+00:00",
+      "runtime_seconds": 0.06247534500016627,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "versions.stdout.log",
+      "stdout_sha256": "614e71060f6a6aed1a9c5b2f7bd4730c8bac84d64292fdad1422338cc6c22663",
+      "stderr_path": "versions.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "generate",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+        "-B",
+        "-m",
+        "uppaal_mcp.integrated.generator",
+        "--output",
+        "/tmp/uppaal-carwasher-19-evidence-20260908/evidence/instantiation/20260908-p2-integrated/reviewer-run-003/generated"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:38:22.320881+00:00",
+      "finished_at_utc": "2026-09-08T08:38:22.692893+00:00",
+      "runtime_seconds": 0.3720160410002791,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "generate.stdout.log",
+      "stdout_sha256": "ccea7913bbcebce3c3011a79216b5ddb86e55328bced7740292c9244366c3fc0",
+      "stderr_path": "generate.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:38:22.694778+00:00",
+      "finished_at_utc": "2026-09-08T08:38:22.769569+00:00",
+      "runtime_seconds": 0.07479577199956111,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "coordination.stdout.log",
+      "stdout_sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a",
+      "stderr_path": "coordination.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "yaml",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+        "-c",
+        "import pathlib,yaml; files=sorted(pathlib.Path(\"manifests\").rglob(\"*.yaml\")); [yaml.safe_load(p.read_text(encoding=\"utf-8\")) for p in files]; print(len(files),\"YAML manifests parsed\")"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:38:22.771775+00:00",
+      "finished_at_utc": "2026-09-08T08:38:22.866608+00:00",
+      "runtime_seconds": 0.09483307899972715,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "yaml.stdout.log",
+      "stdout_sha256": "0af93f145690325428f312b744ee3b07b5e8b70312c2589c174d3da8936eba43",
+      "stderr_path": "yaml.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:38:22.868390+00:00",
+      "finished_at_utc": "2026-09-08T08:39:24.556787+00:00",
+      "runtime_seconds": 61.68840850400011,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "unit-tests.stdout.log",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "stderr_path": "unit-tests.stderr.log",
+      "stderr_sha256": "45326728d1fafe06a9cadbdf02be79fee8df2fb9f8184b45a8f2c1df40614282"
+    },
+    {
+      "name": "mcp-construction",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:39:24.559408+00:00",
+      "finished_at_utc": "2026-09-08T08:39:25.286384+00:00",
+      "runtime_seconds": 0.7269648109995615,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "mcp-construction.stdout.log",
+      "stdout_sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+      "stderr_path": "mcp-construction.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "examples",
+      "command": [
+        "/tmp/uppaal-carwasher-19-evidence-20260908/.venv/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:39:25.288146+00:00",
+      "finished_at_utc": "2026-09-08T08:39:25.625566+00:00",
+      "runtime_seconds": 0.3374255689996062,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "examples.stdout.log",
+      "stdout_sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+      "stderr_path": "examples.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "dc7eeb05f1fd3f2a4775428b1cd250363893128d...HEAD"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:39:25.627304+00:00",
+      "finished_at_utc": "2026-09-08T08:39:25.681892+00:00",
+      "runtime_seconds": 0.054593561000729096,
+      "exit_code": 0,
+      "timeout": false,
+      "status": "success",
+      "stdout_path": "diff-check.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "diff-check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "verifyta-version",
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "--version"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:39:25.685030+00:00",
+      "finished_at_utc": "2026-09-08T08:39:25.694143+00:00",
+      "runtime_seconds": 0.009113494000303035,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "verifyta-version.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "verifyta-version.stderr.log",
+      "stderr_sha256": "bfdb9252d8d107c6cee3fbf9e16aba25d67856a00e2bd0f84686000886defa86"
+    },
+    {
+      "name": "verifyta-help",
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "--help"
+      ],
+      "environment_overrides": {},
+      "started_at_utc": "2026-09-08T08:39:25.695965+00:00",
+      "finished_at_utc": "2026-09-08T08:39:25.705960+00:00",
+      "runtime_seconds": 0.01000010299958376,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "verifyta-help.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "verifyta-help.stderr.log",
+      "stderr_sha256": "18fb902e6026a5ba08a8989cf5e53a271cd7ec3a057bb600e2b4e6248d211795"
+    },
+    {
+      "name": "compile-only",
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "/tmp/uppaal-carwasher-19-evidence-20260908/evidence/instantiation/20260908-p2-integrated/reviewer-run-003/generated/model.xml",
+        "/tmp/uppaal-carwasher-19-evidence-20260908/evidence/instantiation/20260908-p2-integrated/reviewer-run-003/generated/queries.q"
+      ],
+      "environment_overrides": {
+        "UPPAAL_COMPILE_ONLY": "1"
+      },
+      "started_at_utc": "2026-09-08T08:39:25.707824+00:00",
+      "finished_at_utc": "2026-09-08T08:39:25.717857+00:00",
+      "runtime_seconds": 0.01003640299950348,
+      "exit_code": 1,
+      "timeout": false,
+      "status": "error",
+      "stdout_path": "compile-only.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "compile-only.stderr.log",
+      "stderr_sha256": "9f3f19a57d04a54d48faa419e96ac7af0c8a96131b1b3cebf872a2cceb0ba7ab"
+    }
+  ],
+  "model_hash": "2b6928bda92bfb9bad5c74e91cf78c0b15beb4e7300bea401de8b4dc2cf592a4",
+  "query_hash": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9",
+  "generator_hash": "9cef416c0126b87eedc76d9d01670a6f60f86e9063c7db5863a35f29d21d93a8",
+  "parameter_set": {
+    "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+    "D_cmd": 1,
+    "D_bus": 1,
+    "T_input": 5,
+    "T_mac_tick": 5,
+    "T_demand": 1,
+    "T_complete": 40,
+    "fault_window": [
+      12,
+      13
+    ],
+    "max_fault_events": 1,
+    "max_requests_per_service": 1,
+    "max_outstanding_per_command_kind": 1,
+    "freshness_warn_age": 5,
+    "freshness_expire_age": 10,
+    "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+  },
+  "instance_vector": {
+    "schema_version": 1,
+    "configuration_id": "p2-single-uav-abstract-v1-proposal",
+    "source_commit": "7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb",
+    "status": "proposed_not_implemented_not_accepted",
+    "baseline_id": "reviewer-r1-candidate",
+    "physical_time_scale_seconds": null,
+    "time_unit": "abstract_model_unit",
+    "entities": {
+      "base_stations": 1,
+      "devices_total": 1,
+      "uav_devices_subset": 1,
+      "radio_links": 1,
+      "sensing_targets": 1,
+      "sdn_ric_controllers": 1,
+      "service_sessions": 1,
+      "aggregate_queue_classes": 1,
+      "explicit_packet_queues": 0,
+      "explicit_handover_destination_cells": 0
+    },
+    "bindings": {
+      "device_0": {
+        "kind": "UAV",
+        "serving_bs": 0,
+        "link": 0,
+        "service": 0
+      },
+      "link_0": {
+        "bs": 0,
+        "device": 0,
+        "target": 0
+      },
+      "service_0": {
+        "controller": 0,
+        "device": 0,
+        "class": "SVC_UAV"
+      }
+    },
+    "groups_in_system_order": [
+      {
+        "group": "phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "A_CH",
+          "A_SIG",
+          "A_BM",
+          "A_SQ",
+          "A_PH"
+        ]
+      },
+      {
+        "group": "mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "A_SCH",
+          "A_Q",
+          "A_BUF",
+          "A_RSRC",
+          "A_MAC_AGG"
+        ]
+      },
+      {
+        "group": "sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "A_MON",
+          "A_RISK",
+          "A_POLICY",
+          "A_RULE",
+          "A_REC",
+          "A_SDN_AGG"
+        ]
+      },
+      {
+        "group": "app",
+        "source": "stored:app",
+        "retain": [
+          "Req",
+          "Sla",
+          "Crit",
+          "Agg"
+        ]
+      },
+      {
+        "group": "boundary",
+        "source": "new_templates_required",
+        "retain": [
+          "E_PHY_INPUT",
+          "E_MAC_LOAD",
+          "E_FAULT",
+          "E_SERVICE",
+          "B_PHY_MAC",
+          "B_POLICY",
+          "B_ADMISSION",
+          "B_KPI"
+        ]
+      },
+      {
+        "group": "obs_phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "ObsSenseReport",
+          "ObsFreshness",
+          "ObsBeamRecovery"
+        ]
+      },
+      {
+        "group": "obs_mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "ObsPhyAck",
+          "ObsQueueCritical",
+          "ObsSensingCritical",
+          "ObsBufferOverflow",
+          "ObsMacReportFreshness"
+        ]
+      },
+      {
+        "group": "obs_sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "ObsRuleMiss",
+          "ObsRecovery",
+          "ObsAdmission",
+          "ObsStaleTelemetry",
+          "ObsCommandAck",
+          "ObsSensingDecision"
+        ]
+      },
+      {
+        "group": "obs_app",
+        "source": "stored:app",
+        "retain": [
+          "ObsAdmission",
+          "ObsWarn",
+          "ObsViolation",
+          "ObsFresh",
+          "ObsUpdate",
+          "ObsFa",
+          "ObsMiss",
+          "ObsSafety"
+        ]
+      }
+    ],
+    "remove": {
+      "generated:phy:with_observers": [
+        "ENV_CH",
+        "ENV_TARGET",
+        "ENV_MAC",
+        "ENV_NET"
+      ],
+      "generated:mac:with_observers": [
+        "A_ENV_MAC"
+      ],
+      "generated:sdn:with_observers": [
+        "A_ENV_SDN"
+      ],
+      "stored:app": [
+        "Sdn",
+        "Env",
+        "Kpi",
+        "Sink"
+      ]
+    },
+    "new_template_contracts": "interface-contract.md#boundary-processes",
+    "application_placeholders_retained_without_behavior": [
+      "app_Crit_0",
+      "app_Agg_0"
+    ],
+    "optional_security_instances": 0,
+    "extended_phy_observers": 0,
+    "count_per_retained_process": 1,
+    "qualified_process_name": "<group>_<original_process>_0",
+    "expected_process_counts": {
+      "core": 20,
+      "boundary": 8,
+      "observers": 22,
+      "total": 50
+    },
+    "parameter_policy": {
+      "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+      "D_cmd": 1,
+      "D_bus": 1,
+      "T_input": 5,
+      "T_mac_tick": 5,
+      "T_demand": 1,
+      "T_complete": 40,
+      "fault_window": [
+        12,
+        13
+      ],
+      "max_fault_events": 1,
+      "max_requests_per_service": 1,
+      "max_outstanding_per_command_kind": 1,
+      "freshness_warn_age": 5,
+      "freshness_expire_age": 10,
+      "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+    },
+    "implementation_preconditions": [
+      "replace standalone environments with specified boundary processes",
+      "namespace declarations and localize component clocks",
+      "resolve service channel kinds and pre-synchronization payload staging",
+      "separate rule and controller acknowledgements",
+      "add missing lower-layer policy/command and KPI mappings",
+      "retain failure and timeout behavior including absent receivers",
+      "review APP placeholder scope and lack of complete service lifecycle",
+      "obtain independent parameter/interface decision before Gate 1"
+    ]
+  },
+  "tool_version_output": "",
+  "compile_only_status": "error"
+}

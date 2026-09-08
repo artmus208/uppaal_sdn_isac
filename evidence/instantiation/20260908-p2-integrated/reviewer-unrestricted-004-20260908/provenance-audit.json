@@ -1,0 +1,133 @@
+{
+  "source_commit": "6604af040b16c9c3c0e6ceb78b7f52df7172f185",
+  "comparison_source_commit": "2dc471df9f2c029c0de1036774d6cf8724b8e896",
+  "implementation_and_tests_unchanged": true,
+  "pinned_source_drift": [
+    {
+      "path": "AGENTS.md",
+      "expected": "cb2ed0d4b60678bfe9e8153c626dce28d1cd17d201154eac954c729047845c78",
+      "actual": "e4fde1df5f51a582d2b0f06daef9a2a98d3a96195c3201584d7d5e801d038b28"
+    }
+  ],
+  "historical_raw_log_checks": [
+    {
+      "path": "pip-check.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "pip-check.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "versions.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "versions.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "generate.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "generate.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "coordination.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "coordination.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "yaml.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "yaml.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "unit-tests.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "unit-tests.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "mcp-construction.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "mcp-construction.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "examples.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "examples.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "diff-check.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "diff-check.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "verifyta-version.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "verifyta-version.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "verifyta-help.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "verifyta-help.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "compile-only.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "compile-only.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "focused.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "focused.stderr.log",
+      "matches": true
+    },
+    {
+      "path": "audit.stdout.log",
+      "matches": true
+    },
+    {
+      "path": "audit.stderr.log",
+      "matches": true
+    }
+  ],
+  "read_commit": "426cf570138231765b21d518f9d20289e2b11b63",
+  "out_of_scope_paths": [
+    "AGENTS.md",
+    "promts/08.09.2026-11.03.md",
+    "promts/08.09.2026-issue19-recorder-continuation.md"
+  ],
+  "model_checking": "not_run"
+}
