@@ -1,117 +1,81 @@
 # P2 integrated single-UAV candidate — Issue #19
 
-Owner: `artmus208`, after the user-authorized evidence handoff from `carwasher` recorded in
-[Issue #19](https://github.com/artmus208/uppaal_sdn_isac/issues/19).
-Continuation branch: `codex/artmus208/19-native-evidence-handoff`; PR target: `read`.
-Base: `dc7eeb05f1fd3f2a4775428b1cd250363893128d`.
-Specification/source audit: [Issue #17 package](../20260907-p2-scope/README.md),
-input commit `7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb`.
-Atomic requirements: R01/R02/R05/R06, implementation continuation; independent
-scientific acceptance and overall P2 completion remain pending.
+Owner: artmus208. Branch: `codex/artmus208/19-scoped-candidate`; PR target: `read`.
+Scoped base: `426cf570138231765b21d518f9d20289e2b11b63`.
+Historical implementation base: `dc7eeb05f1fd3f2a4775428b1cd250363893128d`.
+Dependencies: merged PR #16 (P1 source audit) and #18 (P2 specification).
+Baseline: reviewer-r1-candidate, frozen:false; scientific acceptance and Gate 1 pending.
+IDs R01/R02/R05/R06 remain implementation continuation of #17.
 
-The generator composes the pinned default PHY/MAC/SDN models and stored APP XML,
-retaining 20 core processes and 22 observers and replacing ten standalone
-environment/stub instances with eight boundary processes. It emits one XML,
-candidate queries and a machine-readable composition map. Existing layer
-generators, the specification, manuscripts and manifests are read-only inputs.
+## Current result
 
-Implementation: `src/uppaal_mcp/integrated/`. Read [decisions.md](decisions.md)
-before interpreting the candidate. `tests/test_sdn_layer.py` contains the
-`IntegratedCandidateTests` software regressions. `replay.py` executes selected
-concrete edges for those tests; it is not an UPPAAL interpreter or model checker.
+[reviewer-scoped-005-20260908](reviewer-scoped-005-20260908/README.md) records
+21 focused tests and the full 147-test suite, no errors/failures/skips, exit 0.
+Every recorder command, compile-only and static audit exited 0 outside sandbox.
+The model and query bytes match historical run-003: 20 core + 8 boundary +
+22 observer processes. No property checking, scientific acceptance or gate claim.
+
+The user authorized the scoped continuation in #19. Only AGENTS.md is classified
+as operational context: its historical and actual hashes are saved separately in
+`context_document_hashes`. All remaining inventory entries, both specification
+JSON files, scientific manifests and model/generator sources remain strict pins.
+Regression tests check that documentation drift preserves XML/query bytes and
+model/specification/manifest mutations still fail. The audit also checks recorded
+context hashes. The original specification and AGENTS.md are read-only.
+
+This branch was constructed from current read and only the three permitted paths
+were transferred. The prior AGENTS.md/two promts PR scope violation is absent.
+Previous branches and historical run files were preserved unchanged.
 
 ## Reproduction
 
-Use Python 3.10+ in a checkout containing the pinned specification and source
-files. Source/specification changes are rejected; new populations/profiles are
-unsupported, rather than silently treated as this candidate. On native Windows:
+Use a fresh isolated venv (Python 3.10+) in a clean checkout:
 
-```text
-py -3.14 -m venv .venv
-.venv/Scripts/python.exe -m pip install -e . PyYAML
-.venv/Scripts/python.exe -B -m uppaal_mcp.integrated.generator --output evidence/instantiation/20260908-p2-integrated/reviewer-generated-new
-.venv/Scripts/python.exe -B -m unittest discover -s tests -p test_sdn_layer.py -k IntegratedCandidateTests -v
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -e . PyYAML
+.venv/bin/python -B -m unittest discover -s tests -p test_sdn_layer.py -k Integrated -v
+.venv/bin/python -B evidence/instantiation/20260908-p2-integrated/checks.py --output evidence/instantiation/20260908-p2-integrated/reviewer-new --python .venv/bin/python --verifyta '/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe'
+.venv/bin/python -B evidence/instantiation/20260908-p2-integrated/audit.py evidence/instantiation/20260908-p2-integrated/reviewer-new
 ```
 
-Output directories must be new: generation and check recording refuse to
-overwrite existing directories. On Unix substitute `.venv/bin/python`.
-For the full evidence recorder, begin with a clean committed tree:
+Save focused logs outside the checkout until the recorder starts. Use a new
+output directory. On native Windows substitute .venv/Scripts/python.exe and the
+actual verifier path. Omit --verifyta if unavailable; it is recorded as unavailable.
+On WSL, the recorder translates paths with wslpath and forwards
+UPPAAL_COMPILE_ONLY via WSLENV; on native Windows it sets the variable directly.
+Only compilation is requested, not property exploration.
 
-```text
-py -3.14 -B evidence/instantiation/20260908-p2-integrated/checks.py --output evidence/instantiation/20260908-p2-integrated/reviewer-run-new --python .venv/Scripts/python.exe --install --verifyta D:/UPPAAL/app/bin/verifyta.exe
-```
+Recorder commands retain process-only core.autocrlf=false, PYTHONUTF8=1 and
+PYTHONDONTWRITEBYTECODE=1; inherited PYTHONPATH is cleared. See checks.json for
+exact commands, timings, environment, hardware and stdout/stderr hashes.
+The generated composition records source/implementation/context hashes,
+parameters, instance/query/process/endpoint maps and exact adaptation records.
+The source implementation commit and its published equivalent tree are in
+summary.json. Audit checks XML/query reproduction and provenance/log integrity.
 
-Omit `--verifyta` if unavailable; that limitation is recorded explicitly.
-The recorder sets `UPPAAL_COMPILE_ONLY=1` only for the compiler invocation. It
-saves the tool's actual version/help output, exact commands, source commit,
-environment, hardware, timestamps, exit codes and stdout/stderr hashes.
-Compilation does not execute the candidate queries. No property verdict, runtime
-scaling result or verification claim follows from a successful compilation.
-
-The full software suite uses process-only `core.autocrlf=false`, matching the
-documented exact-byte fixture requirement in the input package. Repository and
-global Git settings are not changed. The recorder also sets `PYTHONUTF8=1` and
-`PYTHONDONTWRITEBYTECODE=1` and clears an inherited `PYTHONPATH`.
-
-## Artifacts and checks
-
-No successful final run is present. [reviewer-run-002](reviewer-run-002/README.md)
-records the historical loss of the venv interpreter; the subsequent
-[recorder regression attempt](reviewer-recorder-blocked-003/README.md) stopped
-on a new test harness error. The formerly referenced `checks-native-01` does not
-exist in this Git checkpoint. The repaired recorder and 19 focused tests were
-published with [reviewer-run-003](reviewer-run-003/README.md): full suite 145 tests,
-one MCP initialization timeout; static audit exit 0, verifier interop exit 1.
-The new [unrestricted diagnostic](reviewer-unrestricted-004-20260908/README.md)
-uses unchanged implementation/test bytes at published `6604af0`. MCP initializes
-and verifier version/help exit 0 outside sandbox, but generation and audit reject
-changed pinned `AGENTS.md`. Full suite: 127 tests, one class-setup error, no skips.
-This is not a successful reproduction of all 145 historical tests.
-The inherited diff also contains three out-of-scope paths: PR publication awaits
-an Integrator decision; see [prepared handoff](handoff-pr-body.md).
-A future successful run must supply `checks.json`, raw logs and
-`generated/model.xml`, `queries.q`, `composition.json` and its hash index.
-`composition.json` records input hashes, implementation hashes,
-the generator-hash construction, entity/process vector, ordering, parameters,
-channel endpoints, candidate query mapping and exact before/after XML for every
-adapted retained template/declaration. Source commit identifies the implementation
-commit that produced the output; later evidence-only commits do not change its
-model/query/generator hashes.
-
-```text
-.venv/Scripts/python.exe -B evidence/instantiation/20260908-p2-integrated/audit.py evidence/instantiation/20260908-p2-integrated/reviewer-run-new
-```
-
-The audit regenerates XML/query bytes, checks implementation/input hashes and all
-raw-log hashes. It does not infer scientific acceptance. Development directories
-`dev-*` are ignored, and are not acceptance evidence.
-
-## Acceptance mapping
+## Criterion mapping
 
 | Criterion #19 | Artifact | Command/result | Limitation |
 |---|---|---|---|
-| Deterministic 20+8+22 composition | run-003 generated/model.xml and composition.json | Historical focused and audit exit 0 | Current pin drift prevents regeneration |
-| Remove stubs; namespace symbols/clocks | xmlutil.py; adaptation records | Historical lexical/partition regressions exit 0 | Independent semantic review pending |
-| Typed ACKs, admission, command/policy routes, losses | adapt.py, boundary.py; endpoint map | Historical concrete edge regressions exit 0 | Replay is not timed model checking |
-| Finite inputs, source age, observer/events | decisions.md; composition.json | Historical age/deadline/sampling tests exit 0 | APP placeholders, coalesced events, abstract bounds remain |
-| Parameters, queries, provenance, input rejection | inputs.py; run-003 composition.json; new provenance-audit.json | New collect_diagnostic.py exit 0; one pinned mismatch | AGENTS.md needs Integrator provenance decision; pins unchanged |
-| Behavioral/static checks; verifier diagnostics | Both runs' raw logs | New suite exit 1; version/help exit 0; compile-only exit 1 | 127 tests, one setup error; no generated XML or syntax verdict |
-| CONTRIBUTING checks and scoped handoff | New checks.json, SHA256SUMS; handoff-pr-body.md | pip/coordination/YAML/MCP/examples/diff exit 0 | Suite/audit blocked; three inherited out-of-scope paths prevent PR |
+| Deterministic 20+8+22 composition | generated/model.xml and composition.json | focused and audit exit 0 | Candidate, no scientific acceptance |
+| Remove stubs; namespace symbols/clocks | xmlutil.py; exact adaptation records | lexical/partition regressions exit 0 | Supported pinned scalar dialect only |
+| Typed ACKs, admission, routes, losses | adapt.py, boundary.py; endpoint map | concrete edge regressions exit 0 | Replay is not timed model checking |
+| Finite inputs, source age, observer/events | decisions.md; composition.json | age/deadline/sampling regressions exit 0 | APP placeholders, coalesced events, abstract bounds remain |
+| Parameters, queries, provenance, rejection | inputs.py; composition.json | drift/integrity/mutation regressions and audit exit 0 | Only AGENTS.md is non-model context; all other pins strict |
+| Behavioral/static and verifier diagnostics | new raw logs | 147 tests, compile-only exit 0 | No property verdict or model-checking license probe |
+| CONTRIBUTING and scoped handoff | checks.json, SHA256SUMS; handoff-pr-body.md | all recorder commands and diff check exit 0 | Independent draft review still required |
 
-Independent review must evaluate the semantic changes and limitations below; this
-checklist describes implementation evidence, not acceptance by the author.
+## Historical diagnostics and limits
 
-## Limits
+run-002 and recorder-blocked-003 preserve recorder failures. run-003 preserves
+19 focused tests/static audit exit 0, full suite with MCP timeout and WSL interop
+failure. unrestricted-004 preserves the later AGENTS.md pin rejection.
+These immutable records describe their source checkpoints; do not rerun a newer
+generator over them and expect implementation/context metadata to match.
 
-This is an abstract single-BS/single-UAV/controller/service candidate. Time units
-are not calibrated; the finite sample domain includes physically inconsistent
-tuples except the two explicitly excluded detection contradictions. APP Crit/Agg
-remain zero-transition placeholders. Reconfiguration is recorded, not implemented
-as an application lifecycle. Existing core zero-time cycles and policy
-location/value disagreements remain visible. Oldest-outstanding event latches
-coalesce repeated monitoring events; this is an observer adaptation requiring
-review, not an abstraction-soundness proof.
-
-P1/P2 scientific acceptance, baseline supersession and Gate 1 are pending. No
-verification run is produced, and no query is reported as verified. P3/P4 remain
-subject to the manifest gates.
+Read [decisions.md](decisions.md) for semantic review obligations. This remains
+an abstract single-BS/single-UAV/controller/service envelope, with uncalibrated
+time units, finite samples, APP Crit/Agg placeholders, unimplemented application
+reconfiguration and coalesced observer events. P1/P2 acceptance and Gate 1 remain
+pending; P3/P4 are not unblocked by software tests or compile-only diagnostics.

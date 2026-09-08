@@ -1,57 +1,42 @@
-# P2: preserve unrestricted diagnostics and identify provenance/scope blockers
+The integrated candidate previously rejected an updated AGENTS.md before generation, and its inherited branch included three paths outside #19 scope. This branch starts from current read, contains only the assigned paths, and records AGENTS.md as operational context while preserving strict model/specification/manifest pins. Model and query bytes remain identical to historical run-003.
 
-Prepared draft body only; do not open until Integrator resolves the inherited
-out-of-scope diff. Published `6604af0` rejects its pinned AGENTS.md before model
-generation. Outside sandbox, MCP initializes and real verifyta version/help work;
-the current full suite still fails on that source-pin mismatch.
+## Handoff
+- Issue: #19, keep open for independent review. Process P2; IDs R01/R02/R05/R06.
+- Owner: artmus208, user-authorized ownership and scoped continuation recorded in #19.
+- Branch: codex/artmus208/19-scoped-candidate; target: read.
+- Base commit: 426cf570138231765b21d518f9d20289e2b11b63 (origin/read); historical base dc7eeb05f1fd3f2a4775428b1cd250363893128d.
+- Tested local implementation: 6f88b49a99d74dd1a5a1d96005d9838b1579c6be; published equivalent: 87d1b1055e2ff320715c8792ce468f4b42775d0f. Identical tree b10e31df888520089f86a7b9eaeb5e841db05181; API commit metadata differs.
+- Final head: see final #19 handoff comment and this PR head ref.
+- Write scope / changed paths: src/uppaal_mcp/integrated/**, tests/test_sdn_layer.py, evidence/instantiation/20260908-p2-integrated/** only. No AGENTS.md, promts, manifest or standalone generator edits.
+- Baseline: manifests/baselines/reviewer-r1.yaml; reviewer-r1-candidate; SHA256 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a; frozen:false.
+- Dependencies: P0 candidate, merged PR #16 and #18; no scientific acceptance inferred.
+- Artifacts: evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/{checks.json,summary.json,SHA256SUMS,generated/,raw logs}; README criterion mapping and decisions.md.
+- Model hash: 2b6928bda92bfb9bad5c74e91cf78c0b15beb4e7300bea401de8b4dc2cf592a4.
+- Query hash: af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9.
 
-- Issue: #19 (keep open); Process: P2; IDs R01/R02/R05/R06.
-- Deliverable: integrated single-UAV software/static evidence and review handoff.
-- Owner: artmus208, explicit user-authorized handoff recorded in #19.
-- Branch: `codex/artmus208/19-native-evidence-handoff`; target: `read`.
-- Base ref/commit: origin/read / `dc7eeb05f1fd3f2a4775428b1cd250363893128d`.
-- Current read: `426cf570138231765b21d518f9d20289e2b11b63`.
-- Tested head: `6604af040b16c9c3c0e6ceb78b7f52df7172f185`.
-- Handoff head: exact published SHA in the final #19 handoff comment; obtain
-  with `git rev-parse origin/codex/artmus208/19-native-evidence-handoff`.
-- Write scope: src/uppaal_mcp/integrated/**; tests/test_sdn_layer.py;
-  evidence/instantiation/20260908-p2-integrated/**.
-- This continuation changes only the evidence directory. Full inherited diff
-  additionally includes AGENTS.md, promts/08.09.2026-11.03.md and
-  promts/08.09.2026-issue19-recorder-continuation.md: PR blocked.
-- Baseline: manifests/baselines/reviewer-r1.yaml, reviewer-r1-candidate,
-  SHA256 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a;
-  frozen:false, Gate 1 pending.
-- Dependencies: published P0 candidate; merged PR #16 and #18 confirmed via
-  GitHub. No scientific acceptance inferred from merges.
+## Validation and reproduction
+Fresh isolated venv on unrestricted WSL, Python 3.12.3 / MCP 1.30.0 / PyYAML 6.0.3. 21 focused tests and all 147 suite tests exit 0, without skips/errors/failures. Recorder exit 0: generation, pip consistency, versions, coordination, YAML, MCP construction, examples, diff check, real verifier version/help/compile-only. Static audit exit 0.
 
-Artifacts: evidence/instantiation/20260908-p2-integrated/README.md contains all
-seven criterion mappings. reviewer-run-003 retains historical generated XML,
-query/composition maps, focused results (19 tests exit 0) and static audit exit 0.
-reviewer-unrestricted-004-20260908 contains checks.json, raw logs, dependency
-freeze, provenance-audit.json, collector and SHA256SUMS. Its README records exact
-reproduction commands and limitations. Audit shows implementation/test bytes
-unchanged from `2dc471d`; historical raw logs match recorded hashes.
+Actual verifier: UPPAAL 5.0.0 rev. 714BA9DB36F49691 (June 2023), Windows executable via WSL. Recorder now translates paths and explicitly forwards UPPAAL_COMPILE_ONLY through WSLENV. Transport regression checks prevent losing that flag. No model-checking query or model-checking license probe was run.
 
-New check outcomes: fresh isolated install exit 0 outside sandbox; focused exit
-5 (zero tests, class setup error), generation exit 1, full suite exit 1 (127 tests,
-one setup error, no skips). MCP stdio test completes. Pip consistency, versions,
-coordination, YAML, MCP construction, examples, diff-check and real verifyta
-version/help exit 0. Historical regeneration audit exit 1. Compile-only exit 1:
-XML absent after generation failure. New model audit unavailable for that reason.
-Actual tool output is UPPAAL 5.0.0 rev. 714BA9DB36F49691, June 2023.
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -e . PyYAML
+.venv/bin/python -B -m unittest discover -s tests -p test_sdn_layer.py -k Integrated -v
+.venv/bin/python -B evidence/instantiation/20260908-p2-integrated/checks.py --output evidence/instantiation/20260908-p2-integrated/reviewer-new --python .venv/bin/python --verifyta '/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe'
+.venv/bin/python -B evidence/instantiation/20260908-p2-integrated/audit.py evidence/instantiation/20260908-p2-integrated/reviewer-new
+```
 
-Verification evidence: N/A, status not_run, no new model_hash/query_hash because
-generation failed; no model-checking verdict or license availability claim.
-Software/static evidence does not close scientific P2 criteria.
+Use a clean committed checkout and new output directory. Save focused logs outside checkout until recording begins. Native Windows uses its own python/verifier paths. Exact commands, overrides, timestamps and log hashes are in checks.json; complete dependency freeze and hardware are saved.
 
-Reviewer reproduction: fetch the handoff branch and verify its SHA, read both
-run READMEs and decisions.md; verify SHA256SUMS; inspect provenance-audit.json.
-Resolve AGENTS.md pin drift and full PR scope with the independent Integrator
-before a new generation/full-suite/audit run in a unique directory. Do not waive
-behavioral regressions or silently replace the specification inventory.
+## Acceptance checklist and limits
+- [x] Deterministic 20 core + 8 boundary + 22 observer composition and historical XML/query byte equality.
+- [x] Namespace/stub removal and explicit adaptation records.
+- [x] Typed ACK, staged payload, transport loss/deadline and source-age regressions.
+- [x] Explicit abstract bounds, placeholders and observer limitations.
+- [x] Instance/parameter/query/provenance maps and strict unsupported-input rejection; operational AGENTS.md hashes separately retained.
+- [x] Full software/static checks and separate real compile-only diagnostics.
+- [x] Scoped draft handoff; historical evidence unchanged.
+- [ ] Independent scientific acceptance of P2; reviewer/integrator decision and Gate 1 remain pending.
 
-Acceptance checklist: all seven criteria have artifacts/results or explicit
-blockers in README; final successful reproduction, scoped PR, independent
-scientific review and Gate 1 remain incomplete. No downstream scientific
-workstream is unblocked. No merge is requested in this blocked state.
+Verification status: not_run. Compile-only is not model checking. Replay tests do not prove timed properties. Uncalibrated abstract bounds, finite sample envelope, APP Crit/Agg placeholders, coalesced observer events and unimplemented application reconfiguration remain. No scientific downstream workstream is unblocked. Prior scope/provenance blockers are resolved for draft review; no merge or gate self-acceptance requested.
