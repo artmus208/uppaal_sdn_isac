@@ -1,0 +1,792 @@
+{
+  "captured_at_utc": "2026-09-08T21:03:09.359Z",
+  "repository": "artmus208/uppaal_sdn_isac",
+  "base_commit": "bb5741b45480944630e1116fb7435effb2026655",
+  "note": "Normalized GitHub connector payloads; PR diff omitted, review/discussion bodies retained.",
+  "open_issues": {
+    "issues": [
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+        "title": "P2: implement the integrated single-UAV candidate composition",
+        "issue_number": 19,
+        "body": "Process: P2 — Instantiation and abstraction\nDeliverable: Reproducible integrated single-BS/single-UAV candidate model generator with explicit boundary processes, adapted interfaces, instance/query mapping and implementation evidence.\nAtomic IDs: R01, R02, R05, R06 — continuation of P2; specification ownership remains #17, this issue owns implementation evidence, no independent duplicate closure.\nOwner account: artmus208 (account-id: artmus208)\nReviewer / Integrator: independent reviewer required before scientific acceptance.\nBase ref: origin/read\nBase commit: 426cf570138231765b21d518f9d20289e2b11b63 (scoped continuation; historical base dc7eeb05f1fd3f2a4775428b1cd250363893128d)\nTarget branch: read\nBaseline manifest: manifests/baselines/reviewer-r1.yaml\nBaseline ID: reviewer-r1-candidate; frozen:false\nDependencies: published P0 candidate, merged P2 specification PR #18 (9d34e54f49311e9c430834b419ac9c88abc6dba9), merged P1 source-audit PR #16. These are implementation inputs; scientific P1/P2 acceptance and Gate 1 are not claimed.\nRequired gate: ordinary implementation review. Gate 1 remains required for P3/P4.\nWrite scope:\n- src/uppaal_mcp/integrated/**\n- tests/test_sdn_layer.py\n- evidence/instantiation/20260908-p2-integrated/**\nRead-only inputs: evidence/instantiation/20260907-p2-scope/**, P1 evidence, existing layer generators/models, manifests, manuscript.\nOut of scope: manuscript/manifests edits; global configuration; existing standalone generator semantics; physical calibration; P3/P4 verification claims.\nAcceptance criteria:\n- Deterministically construct one integrated XML from the pinned default PHY/MAC/SDN and APP inputs; retain the specified 20 core and 22 observer processes and implement the eight boundary processes.\n- Remove standalone environments/stubs; namespace symbols and clocks with identifier-aware transformation and explicit shadow handling; record every semantic adaptation.\n- Implement typed rule/control ACKs, staged admission payloads and failure/timeout paths, MAC/PHY schedule delivery, policy input, finite sampled environment, source-age KPI delivery and explicit losses.\n- Preserve candidate abstract bounds/one-session scope and APP placeholders as declared limitations; make observer adaptations and finite event handling explicit.\n- Emit instance/parameter/query maps and per-artifact hashes; validate source provenance and reject unsupported composition inputs.\n- Include meaningful structural and behavioral regression checks for payload ordering, ACK correlation, missing receivers/deadline loss and namespace/reference safety. Record available real verifier syntax diagnostics separately from verification evidence.\n- Run applicable CONTRIBUTING software/static checks, preserve failures/limitations, submit scoped draft PR to read. Do not self-accept science, gate, or model-checking claims.\nExpected artifacts: Python generator/composition implementation, regression coverage, unique evidence directory with generated XML/queries, implementation decisions, provenance and raw check logs.\nEvidence class: candidate integrated implementation plus static/software diagnostics.\nVerification required: no scientific P3 verification; verifier syntax/type diagnostics when available.\nStatus: claimed\nAuthorization: user explicitly directed continuation of the execution plan after confirming PR #18 is merged. The merged proposed interface contract is implemented as a candidate, subject to later scientific acceptance.\nScope audit: open issues inspected on 2026-09-08; none owns the three paths above. #17 owns only its specification directory.\n\nTask branch: codex/carwasher/19-integrated-candidate\nIsolated worktree: D:/uppaal_sdn_isac-carwasher-19\n\n## Authorized ownership handoff — 2026-09-08\n\nThe user explicitly instructed carwasher to take over if the deliverable was unfinished. GitHub recheck found this Issue open/claimed, no linked implementation PR, and the previous remote branch codex/artmus208/19-integrated-candidate still at the base dc7eeb05f1fd3f2a4775428b1cd250363893128d. No committed implementation is available to consume. Any uncommitted files in the former /tmp/uppaal-p2-integrated-20260908 environment remain inaccessible and are not overwritten.\n\ncarwasher is the sole active writer from this handoff; the prior author session must not continue writing this Issue concurrently. Existing scope, base, dependencies and acceptance criteria are unchanged. All implementation criteria remain to be demonstrated. Previous branch is preserved; new work uses the named isolated Windows worktree above. Original D:/uppaal_mcp has a user AGENTS.md edit and is read-only for this deliverable. Scientific acceptance and Gate 1 remain pending.\n\n\n## Authorized recorder continuation — 2026-09-08\n\nThe user authorized repair of the recorder regression harness, continued software/static checks, and publication of this diagnostic specifically in Issue #19. Work continues in the isolated clone `/tmp/uppaal-carwasher-19-evidence-20260908`, branch `codex/carwasher/19-integrated-evidence`; owner/account-id remains carwasher.\n\nHistorical run `reviewer-run-002` lost the venv through executable symlink resolution. Local diagnostic commit `8b3f924c0b10a5d6210bbebfdd79e427ce3f3d9b` preserves a subsequent regression-harness StopIteration error; neither is a model defect. After the explicit continuation authorization, the harness was isolated from global subprocess/platform calls and recorder executable handling now uses os.path.abspath without symlink dereferencing. Commit `2dc471d` contains this repair; focused Integrated tests: 19 tests, exit 0. Full software/static recording is in progress in a new `reviewer-run-003`. These commits are currently local, not yet published.\n\nNo model-checking or gate acceptance is claimed. The earlier failed diagnostic directory is preserved; the source checkout was clean at the start of the new run. Final evidence/audit and draft PR to read remain outstanding.\n\n\n## User-authorized scoped continuation — 2026-09-08\n\nThe user approved creating a fresh branch from current read, transferring only the three existing write-scope paths, and separating operational-document provenance from model-input enforcement. Branch: codex/artmus208/19-scoped-candidate; clone /tmp/issue19-scoped. Prior branches/evidence remain preserved. AGENTS.md is operational context: record its pinned historical and actual hashes separately without blocking model generation when it changes. All other pinned inputs, including specification inventory/vector, model/generator sources, baseline and scientific manifests remain enforced. Do not edit AGENTS.md, manifests or the specification package. Add regression coverage proving documentation-only drift leaves XML/query bytes unchanged and model/specification mutations still fail. This authorization permits implementation and draft review, not independent scientific acceptance or Gate 1. New run ID: reviewer-scoped-005-20260908; full focused/suite/recorder/audit required from a clean checkpoint.\n",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+        "display_title": "P2: implement the integrated single-UAV candidate composition"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+        "title": "P2: specify model instances, composition and abstraction (R01, R02, R05, R06)",
+        "issue_number": 17,
+        "body": "Process: P2 — Instantiation and abstraction\nDeliverable: One reviewable model-scope specification defining the candidate instance vector, composition/interface requirements and a detailed automaton abstraction analysis. This is the model_scope_specification output of P2, not the entire P2 implementation or Gate 1.\nAtomic IDs: R01, R02, R05, R06 — primary P2 requirements addressed by this specification; closure requires independent review and any required implementation evidence.\nOwner account: carwasher (account-id: carwasher)\nReviewer: independent scientific reviewer pending assignment; author cannot accept own result.\nIntegrator: repository maintainer; explicit acceptance required.\nBase ref: origin/read\nBase commit: 7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb\nTarget branch: read\nBaseline manifest: manifests/baselines/reviewer-r1.yaml\nBaseline ID: reviewer-r1-candidate\nBaseline manifest SHA256: 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a\nDependencies: published P0 candidate available at the pinned commit. P2 start_after is P0_candidate; P1 acceptance and Gate 1 are not start prerequisites. PR #16 is merged and its P1 observations may be inspected, but Issue #15 remains in-review and those decisions are not treated as scientifically accepted.\nRequired gate: independent specification review; no freeze or verification acceptance.\nWrite scope:\n- evidence/instantiation/20260907-p2-scope/**\nRead-only inputs: all existing source, model XML, formalizations, manuscripts, manifests, P1 evidence and other workstreams.\nOut of scope: source/generator changes; integrated-model implementation; manuscript and manifest changes; empirical calibration; verification runs; Gate 1 acceptance. Required implementation work must receive a separately scoped Issue/chat and remain under P2 ownership.\nAcceptance criteria:\n- Inventory actual templates/process instances and identify which base station/device/UAV/service entities are explicit, aggregated or absent, with source commit/path/hash references.\n- Define an explicit candidate instance vector and deterministic composition specification sufficient to construct a test configuration, distinguishing proposed decisions from current implementation.\n- Specify channel endpoints, direction, kind, shared-data ownership, indexing and initialization obligations across PHY/MAC/SDN/APP/ENV/OBS. Identify conflicts and unresolved choices rather than asserting that standalone projections form an integrated model.\n- Analyze one existing automaton in detail: locations, transitions, guards, invariants, updates, synchronization, clock resets and environment assumptions.\n- Explain which finite domains and abstraction choices bound the discrete structure and which aspects remain outside scope. Do not present syntactic counts or estimated products as explored states or model-checking evidence.\n- Give an explicit disposition for relevant P1 findings and record decisions requiring scientific review or subsequent P2 implementation; do not silently accept P1 or alter its artifacts.\n- Supply reproducible inventory/static checks, machine-readable provenance and a human-readable report; run relevant CONTRIBUTING checks and preserve failures and environment limits.\nExpected artifacts: model-scope-specification.md, instance-vector.json, interface requirements, reproducible inventory/check scripts and metadata/logs, README with reproduction commands and limitations, all inside Write scope.\nEvidence class: source audit and candidate model specification; static checks only.\nVerification required: no.\nStatus: in-review\nAuthorization: user explicitly requested work according to repository manifests after the P2 onboarding proposal. This Issue prepares the separate P2 chat required by AGENTS.md and CONTRIBUTING.md.\nScope check: no open Issue found claiming evidence/instantiation/20260907-p2-scope/** at creation. Existing P0/P1 scopes remain unchanged.\nKnown baseline limitation: historical candidate describes a dirty snapshot and is not frozen. The base commit above pins inspected inputs without superseding or rewriting that baseline.\n\nTask branch: codex/carwasher/17-model-scope\nPrepared worktree: D:/uppaal_sdn_isac-carwasher-17\nSession state: user resumed execution of this assigned deliverable after the prepared handoff. Work proceeds only in D:/uppaal_sdn_isac-carwasher-17 on codex/carwasher/17-model-scope. Assignment and clean base were rechecked before edits. AGENTS.md edits in the original checkout are not part of this Issue. Do not start a second concurrent session for this Issue.\n\n## Specification handoff\n\nDraft PR: https://github.com/artmus208/uppaal_sdn_isac/pull/18\nHead commit: 9d34e54f49311e9c430834b419ac9c88abc6dba9\nBranch/worktree: codex/carwasher/17-model-scope / D:/uppaal_sdn_isac-carwasher-17\nDelivered package: evidence/instantiation/20260907-p2-scope/README.md\nCompleted specification criteria: exact-source instance inventory (38 files, 14 XML surfaces); explicit entity/process vector; proposed interface ownership/staging/failure rules; complete six-location/nine-edge MAC scheduler analysis; finite-abstraction claim limits; P1 dispositions and implementation obligations.\nValidation: 126 unit tests, no errors/failures/skips; all ten recorded installation/static/software check commands exit 0. Checks use documented process-only core.autocrlf=false. All 36 changed paths are within scope; 35 indexed package hashes match.\nFindings: four APP/SDN channel-kind conflicts, absent real MAC policy/PHY command peers, competing SDN ACK consumers, APP placeholders and always-good KPI stub. Proposed 50-process composition includes eight unimplemented boundary templates and is not a verified model.\nRemaining: independent scientific reviewer assignment and specification acceptance; subsequent separately scoped P2 implementation of integrated XML/interfaces with reviewed parameter/observer decisions. No reviewer ID is self-closed and no Gate 1/P3/P4 readiness is claimed.\nOriginal AGENTS.md local change was preserved outside this worktree and is not part of this PR.\n\nCI: [run 34157759141](https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34157759141) completed successfully for head `9d34e54f49311e9c430834b419ac9c88abc6dba9`. This is software/coordination CI, not scientific verification or gate acceptance.\n",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+        "display_title": "P2: specify model instances, composition and abstraction (R01, R02, R05, R06)"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+        "title": "P1: document validation method and parameter provenance (V01–V05)",
+        "issue_number": 15,
+        "body": "Process: P1 — Validation\nDeliverable: Validation report and complete parameter-source/calibration table for the current four-layer candidate, addressing V01–V05 as one reviewable evidence package.\nAtomic IDs: V01, V02, V03, V04, V05 (primary scientific ownership; no closure until independent acceptance).\nOwner account: artmus208 (account-id: artmus208)\nReviewer / Integrator: independent scientific reviewer required; pending assignment.\nBase ref: origin/read\nBase commit: f2f714a26d6b9d9f538ef1a16b53c3e060768a11\nTarget branch: read\nBaseline manifest: manifests/baselines/reviewer-r1.yaml\nBaseline ID/hash: reviewer-r1-candidate / 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a\nDependencies: published P0 candidate in read; governance procedure PR #12 merged. Frozen baseline is not required to start P1. Existing candidate drift must be explicit; the exact commit above pins inspected inputs.\nWrite scope:\n- evidence/validation/20260907-p1/**\nRead-only inputs: manuscripts, layer formalizations, generators/defaults/alpha profiles, model XML, reviews and manifests.\nOut of scope: model/generator fixes (route to P2), manuscript edits, manifest refresh, model checking, Gate 1 acceptance and fabricated empirical validation.\nAcceptance criteria:\n- Inventory every model timing/capacity/retry constant and abstraction threshold in declared source surfaces with exact source/hash/line references.\n- Distinguish source definition, illustrative engineering values, physical calibration and normative external requirements; never infer a universal physical threshold from a class name.\n- Give each significant parameter either an applicable primary source or an explicit calibration method with units, input measurements, boundary rules and unresolved decisions.\n- Define adequacy validation of individual automata and composition, separate from model checking.\n- Specify a reproducible NS-3/OMNeT++/external-trace data exchange and independent validation workflow; clearly separate proposed work and demonstrated checks.\n- Cite primary sources with versions/sections and document their applicability to deadlines and GOOD/WEAK/OUTAGE/FRESH/STALE concepts.\n- Record coverage checks, relevant repository checks, unresolved P2 inputs and any remaining empirical evidence needed for P1 acceptance.\nExpected artifacts: validation-report.md, parameter table (machine-readable and human-readable), primary-source notes, reproducible inventory/coverage script and evidence logs.\nEvidence class: scientific validation specification and source audit, not verification.\nVerification required: no.\nStatus: in-review\nAuthorization: user requested continuing substantive reviewer work after software remediation. This continuation handles only this P1 deliverable.\n\n## Review handoff\n\nDraft PR #16: https://github.com/artmus208/uppaal_sdn_isac/pull/16\nHead: `285fd1edd322eab2188cb2aec06c4238860cb4ac`.\nBranch: `codex/artmus208/15-validation-parameters`.\nReport and reproducible package: `evidence/validation/20260907-p1/README.md`.\nDelivered: inventory (43 timings, 59 finite domains), calibration/source methods, eight reproduced boundary-policy mismatches, adequacy and external-trace comparison specification.\nChecks: host 126 tests passed, no skips; sandbox stdio timeout preserved. Historical baseline 9/20 hashes plus generator aggregate mismatch; current verifyta --version times out on host, no verification claimed.\nIndependent scientific reviewer/integrator remains unassigned. P1 and V01–V05 are not self-accepted; Issue remains open. Required P2 decisions and empirical claim limits are itemized in the report. No Gate 1 or downstream acceptance is implied.\n",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+        "display_title": "P1: document validation method and parameter provenance (V01–V05)"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/13",
+        "title": "P0: validate combined read after healthcheck merges",
+        "issue_number": 13,
+        "body": "Process: P0 — post-merge software diagnostics\nDeliverable: Reproducible report for the combined read branch after healthcheck PRs #7–#12.\nAtomic IDs: N/A — coordination-only\nOwner account: artmus208 (account-id: artmus208)\nReviewer / Integrator: independent maintainer review required; not assigned by this report.\nBase ref: origin/read\nBase commit: f2f714a26d6b9d9f538ef1a16b53c3e060768a11\nTarget branch: read\nInputs: AGENTS.md, CONTRIBUTING.md, manifests/v1.md, manifests/collaboration-v1.yaml, manifests/baselines/reviewer-r1.yaml; merged PRs #7–#12 and their evidence.\nDependencies: PRs #7–#12 merged into read (confirmed through GitHub). No scientific gate dependency for software diagnostics.\nWrite scope:\n- evidence/healthcheck/20260907-postmerge/**\nRead-only inputs: all source, models, manifests, prior evidence and original dirty checkout.\nOut of scope: implementation fixes, baseline replacement/freeze, scientific P1/P2 work, model checking, manuscript changes, changes to global configuration or license.\nAcceptance criteria:\n- Pin clean combined source commit and merged dependency SHAs.\n- Record clean installation, pip check, full unit suite and structural/YAML checks.\n- Exercise actual installed MCP stdio initialize/list_tools and read-only calls.\n- Probe real verifyta availability; preserve actual errors and distinguish sandbox restrictions, executable availability, license readiness and model checking.\n- Save exact commands, exit codes, environment, raw logs and hashes in unique outputs.\n- Report known blockers and next scientific work without claiming Gate 1 acceptance.\nExpected artifacts: reproduction scripts, README, machine-readable results, raw logs and integrity index in the declared scope.\nVerification required: no; software diagnostics only.\nStatus: in-review\nAuthorization: user requested acting on the proposed combined-read checks after confirming all PRs merged. This is the single deliverable for this continuation; scientific work needs separate assigned Issues/chats.\nTask branch: codex/artmus208/13-postmerge-checks\nHandoff: https://github.com/artmus208/uppaal_sdn_isac/pull/14\nHead commit: a8f82d50c58b2c03ceb24c20b5e9183046adf170\nCompleted: clean declared-dependency install (MCP 1.30.0), 126 tests without skips/failures, structural/YAML checks and installed MCP stdio (76 tools, four read-only calls). Exact logs/hashes are committed within scope.\nKnown limitation: verifyta --version times out from WSL /tmp cwd (CLI 15 seconds, direct retry 20 seconds), while the same binary and CLI succeed from Windows installation cwd. Windows cmd.exe interop works. Internal cause not established; implementation remedy requires a separately scoped runner task. Historical baseline audit remains mismatched (9/20 plus generator aggregate). No model checking or Gate 1 acceptance.\nEvidence directories: run-001, verifier-unrestricted, verifier-windows-cwd, verifier-wsl-cwd-recheck, verifier-cli-windows-cwd. Report complete, independent review pending.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/13",
+        "display_title": "P0: validate combined read after healthcheck merges"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+        "title": "P0 governance decision: baseline drift and disjoint run-evidence paths",
+        "issue_number": 6,
+        "body": "Process: P0 — governance\nDeliverable: An independently accepted decision for replacing the stale candidate baseline and reconciling run-evidence storage with workstream scopes.\nAtomic IDs: N/A — coordination-only\nOwner: artmus208 (account-id: artmus208)\nReviewer / Integrator: repository maintainer; cannot be the author of the same gate result\nBase ref: origin/read\nBase commit: 11bd69bdca9a1209f820258b3732b3c865f79035\nTarget branch: read\nInputs: #1; manifests/baselines/reviewer-r1.yaml; manifests/collaboration-v1.yaml; healthcheck baseline_hash_comparison.json.\nDependencies: an explicit integrator decision authorizing exact manifest changes; scientific freeze additionally requires accepted P1/P2 results and all Gate 1 inputs.\nWrite scope (activated by Integrator decision on 2026-09-07):\n- manifests/baselines/reviewer-r1.yaml\n- manifests/collaboration-v1.yaml\n- scripts/check_coordination.py\n- tests/test_coordination.py\n- evidence/governance/20260906-baseline/**\nRead-only: article, models, generators, original diagnostic files.\nProblem: healthcheck found 6/20 exact file hashes plus aggregate generator hash differ from the historical dirty candidate capture. Current baseline is candidate/frozen:false and Gate 1 pending, with no canonical parameters, instance vector, query set, accepted interface contract or integrated model. Passing structural checks does not prove hash identity. Contract storage_pattern evidence/runs/<run_id>/ lies outside typical P3/P4 scopes.\nConcrete proposed decision:\n1. Keep the historical candidate capture identifiable; do not silently replace its hashes or mark frozen.\n2. Select an exact clean committed model/generator source after necessary accepted changes, then supersede the candidate explicitly, retaining candidate/frozen:false until P1/P2 acceptance and an independent Gate 1 decision. Record current native Windows availability as a dated diagnostic; historical WSL license failure is environment-specific.\n3. Choose disjoint storage: evidence/verification/runs/<run_id>/ for P3 and evidence/scalability/runs/<run_id>/ for P4. Align run_evidence_contract with those existing workstream scopes and add structural regression coverage. Alternative retained central runs paths must have explicitly non-overlapping per-issue run_id scopes.\n4. Add an explicit hash-audit mode that checks every stored file/common hash and reports historical candidate drift separately from structural coordination validity; never call the old dirty capture reproducible.\nAcceptance criteria:\n- Integrator records accepted exact proposal and assigns one owner before manifest changes.\n- No candidate metadata becomes frozen without required acceptance.\n- Every expected/current hash is independently auditable, with exact byte-vs-Git-blob provenance.\n- P3/P4 run storage falls within non-overlapping scopes.\nExpected artifacts: decision and scoped governance PR, with machine-readable hash audit.\nVerification required: no (governance); new P3 results remain blocked on scientific Gate 1.\nStatus: in-review\nManifest write prohibition source: AGENTS.md Ownership and write scope: any manifests file changes only in a dedicated governance Issue with manifest-specific scope and an accepted Integrator decision.\n\nReviewable proposal and evidence now committed: https://github.com/artmus208/uppaal_sdn_isac/blob/0e237aa8bfd87a79c86459af14db521f44092bbc/evidence/healthcheck/20260906-remediation/governance-proposal.md\nCoordination handoff: https://github.com/artmus208/uppaal_sdn_isac/pull/11.\nThe read-only auditor confirms 6/20 historical baseline hash mismatches in current checkout bytes, 7/20 in exact base commit blobs, and one aggregate generator mismatch in each. It returns exit 1 on drift and never rewrites manifests. The software fixes are PR #8, #7, #9, #10 and each CI has succeeded; their acceptance does not freeze this baseline.\nIntegrator accepted the proposal on 2026-09-07 and assigned artmus208; see decision comment. Scientific P1/P2 and Gate 1 requirements remain unchanged. Implementation PR requires independent review.\nTask branch: codex/artmus208/6-baseline-governance\n\nImplementation handoff: https://github.com/artmus208/uppaal_sdn_isac/pull/12\nHead commit: fc94060430889dbf13213c34963493125724a82a. 79 tests, no skips/failures; structural checks pass; base/checkout hash audits report expected historical drift (7/20 plus generator aggregate). Decision, exact commands, hashes and raw logs committed under evidence/governance/20260906-baseline/. Historical baseline unchanged; supersession awaits accepted scientific inputs. Independent implementation review pending; Gate 1 remains pending.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+        "display_title": "P0 governance decision: baseline drift and disjoint run-evidence paths"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/5",
+        "title": "P2 healthcheck: provide usable native Windows verifyta and MCP configuration",
+        "issue_number": 5,
+        "body": "Process: P0 — local runtime configuration support\nDeliverable: A usable, documented native Windows MCP configuration and predictable verifyta path resolution.\nAtomic IDs: N/A — coordination-only; no scientific reviewer requirement closed.\nOwner account: carwasher (account-id: carwasher)\nReviewer / Integrator: pending independent maintainer assignment\nBase ref: origin/read\nBase commit: 11bd69bdca9a1209f820258b3732b3c865f79035\nTarget branch: read\nInputs: #1 and healthcheck REPORT.md; actual executable D:/UPPAAL/app/bin/verifyta.exe; existing stale WSL-only mcp_conf.conf; active candidate baseline read-only.\nDependencies: none for isolated implementation. Runtime configured environment must use a supported MCP version (pin is prepared independently in #3).\nRequired gate: normal PR review; no scientific gate claimed.\nWrite scope:\n- src/uppaal_mcp/config.py\n- mcp_conf.conf\n- tests/test_config.py\n- evidence/healthcheck/20260906-config/**\n- README.md\nRead-only inputs: all manifests, model sources, original diagnostics.\nOut of scope: global user environment changes, unrelated app settings, license changes, manifests and baseline freezing.\nAcceptance criteria:\n- Explicit and environment verifyta paths retain precedence.\n- Native Windows discovery supports the actual D:/UPPAAL/app/bin/verifyta.exe installation without depending on missing C: defaults; available PATH is respected.\n- mcp_conf.conf no longer points to the absent /mnt/c/Users/musta checkout; use documented Windows config/template for the actual project environment with a workable Python invocation.\n- Unit path-selection cases are deterministic on any OS.\n- Save actual version command output and real stdio startup smoke in the scoped evidence directory; version/startup are diagnostics, not model-checking evidence.\n- Document portable environment override setup and test with a supported MCP SDK.\nExpected artifacts: source/config/test changes and reproducible diagnostic logs/metadata in evidence/healthcheck/20260906-config/.\nEvidence class: software configuration diagnostics\nVerification required: no\nStatus: in-review\nTask branch: codex/carwasher/5-native-config (issue number substituted before start)\nAuthorization: prioritized fixes requested by user; scoped by #1.\n\nHandoff: https://github.com/artmus208/uppaal_sdn_isac/pull/10; head e7fa4b395ce8e2721e765192065a9de7307416b2. 85 tests, no skips; actual native version and separately identified original/changed stdio environments completed. Source and original environment preserved. Independent review pending; no scientific gate accepted.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/5",
+        "display_title": "P2 healthcheck: provide usable native Windows verifyta and MCP configuration"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/4",
+        "title": "P2 healthcheck: propagate operation failures through CLI exit status",
+        "issue_number": 4,
+        "body": "Process: P0 — software reliability support; healthcheck priorities P1/P2 are severity, not scientific workstream IDs.\nDeliverable: A CLI exit-status contract implemented and checked with real child-process tests.\nAtomic IDs: N/A — coordination-only; no scientific reviewer requirement closed.\nOwner account: carwasher (account-id: carwasher)\nReviewer: pending independent maintainer assignment\nIntegrator: repository maintainer, acceptance pending\nBase ref: origin/read\nBase commit: 11bd69bdca9a1209f820258b3732b3c865f79035\nTarget branch: read\nInputs: #1; D:/uppaal_mcp_healthcheck_20260906_184139/REPORT.md and original diagnostics; AGENTS.md, CONTRIBUTING.md and active manifests/baselines/reviewer-r1.yaml (candidate, read-only).\nDependencies: none for this isolated software fix. Does not start P3 or depend on scientific Gate 1. Independent scopes do not overlap.\nRequired gate: normal PR review; no scientific gate acceptance is claimed.\nWrite scope:\n- src/uppaal_mcp/cli.py\n- tests/test_cli.py\n- evidence/healthcheck/20260906-cli/**\nOut of scope: other source files, manifests, manuscript, generated model artifacts, scientific model-checking claims.\nAcceptance criteria:\nActual CLI child processes return nonzero for error, timeout, tool_not_found, unknown/inconclusive and failed aggregate operations, while preserving JSON output. Define/document behavior for successfully computed negative property verdicts and valid static-only checks. Version and verification commands are covered, plus shared dispatch paths where applicable. Existing unit suite and coordination check pass.\nExpected artifacts: scoped implementation/tests and evidence/healthcheck/20260906-cli/ README plus machine-readable diagnostics/logs.\nEvidence class: software regression diagnostics, not verification evidence\nVerification required: no\nStatus: in-review\nTask branch: codex/carwasher/4-cli-exit (issue number substituted at worktree creation)\nAuthorization: requested prioritized healthcheck remediation, coordinated in #1.\n\nHandoff: https://github.com/artmus208/uppaal_sdn_isac/pull/9; head 4a0e71277f01743940ded28a931def94d3918518. All 86 unit tests pass without skips, including 12 new methods executing real CLI child processes. Actual installed/module invocations cover missing tools, listing, static property checks, negative benchmarks and aggregates. Coordination, pip check, FastMCP smoke, example listing and wheel build return 0. The installed missing-tool version probe returns expected exit 2. All 18 raw-log hashes match stored blobs. Independent review pending; no scientific gate accepted.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/4",
+        "display_title": "P2 healthcheck: propagate operation failures through CLI exit status"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/3",
+        "title": "P1 healthcheck: make fresh MCP installation start reliably",
+        "issue_number": 3,
+        "body": "Process: P0 — software reliability support; healthcheck priorities P1/P2 are severity, not scientific workstream IDs.\nDeliverable: A reproducibly installable and startup-tested MCP server.\nAtomic IDs: N/A — coordination-only; no scientific reviewer requirement closed.\nOwner account: carwasher (account-id: carwasher)\nReviewer: pending independent maintainer assignment\nIntegrator: repository maintainer, acceptance pending\nBase ref: origin/read\nBase commit: 11bd69bdca9a1209f820258b3732b3c865f79035\nTarget branch: read\nInputs: #1; D:/uppaal_mcp_healthcheck_20260906_184139/REPORT.md and original diagnostics; AGENTS.md, CONTRIBUTING.md and active manifests/baselines/reviewer-r1.yaml (candidate, read-only).\nDependencies: none for this isolated software fix. Does not start P3 or depend on scientific Gate 1. Independent scopes do not overlap.\nRequired gate: normal PR review; no scientific gate acceptance is claimed.\nWrite scope:\n- pyproject.toml\n- src/uppaal_mcp/server.py\n- tests/test_phy_layer.py\n- tests/test_mcp_startup.py\n- evidence/healthcheck/20260906-mcp/**\nOut of scope: other source files, manifests, manuscript, generated model artifacts, scientific model-checking claims.\nAcceptance criteria:\nDeclare a compatible supported MCP SDK range based on actual APIs. A fresh isolated editable install passes pip check, build_mcp, unit suite, and a real stdio initialize/list_tools smoke. Required startup tests fail on absent or incompatible required MCP dependency instead of skipping. Startup errors distinguish missing/incompatible dependencies accurately.\nExpected artifacts: scoped implementation/tests and evidence/healthcheck/20260906-mcp/ README plus machine-readable diagnostics/logs.\nEvidence class: software regression diagnostics, not verification evidence\nVerification required: no\nStatus: in-review\nTask branch: codex/carwasher/3-mcp-startup (issue number substituted at worktree creation)\nAuthorization: requested prioritized healthcheck remediation, coordinated in #1.\n\nHandoff: draft PR https://github.com/artmus208/uppaal_sdn_isac/pull/7 from codex/carwasher/3-mcp-startup; head d3aca84df1109e497483f0d781ea67f4b3e56aaf. Native Windows / Python 3.14.5 clean-install checks passed with MCP 1.28.0 and 1.29.1, 80 tests per environment, no skips, real stdio, 76 tools. Independent reviewer assignment/acceptance pending; no scientific gate accepted.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/3",
+        "display_title": "P1 healthcheck: make fresh MCP installation start reliably"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/2",
+        "title": "P1 healthcheck: reject failed or incomplete verifyta runs",
+        "issue_number": 2,
+        "body": "Process: P0 — software reliability support; healthcheck priorities P1/P2 are severity, not scientific workstream IDs.\nDeliverable: A fail-closed VerifytaRunner with regression tests and reproducible diagnostic evidence.\nAtomic IDs: N/A — coordination-only; no scientific reviewer requirement closed.\nOwner account: carwasher (account-id: carwasher)\nReviewer: pending independent maintainer assignment\nIntegrator: repository maintainer, acceptance pending\nBase ref: origin/read\nBase commit: 11bd69bdca9a1209f820258b3732b3c865f79035\nTarget branch: read\nInputs: #1; D:/uppaal_mcp_healthcheck_20260906_184139/REPORT.md and original diagnostics; AGENTS.md, CONTRIBUTING.md and active manifests/baselines/reviewer-r1.yaml (candidate, read-only).\nDependencies: none for this isolated software fix. Does not start P3 or depend on scientific Gate 1. Independent scopes do not overlap.\nRequired gate: normal PR review; no scientific gate acceptance is claimed.\nWrite scope:\n- src/uppaal_mcp/verifyta.py\n- tests/test_verifyta_parser.py\n- evidence/healthcheck/20260906-runner/**\nOut of scope: other source files, manifests, manuscript, generated model artifacts, scientific model-checking claims.\nAcceptance criteria:\nNonzero process exits and explicit error diagnostics take precedence over partial verdicts. Only a complete, correctly indexed set of submitted query results may yield satisfied/not_satisfied/inconclusive. Missing, duplicate, or extra results fail closed; raw partial evidence is retained. Regressions cover seven report cases and parser edge cases. Existing test suite and coordination check pass.\nExpected artifacts: scoped implementation/tests and evidence/healthcheck/20260906-runner/ README plus machine-readable diagnostics/logs.\nEvidence class: software regression diagnostics, not verification evidence\nVerification required: no\nStatus: in-review\nTask branch: codex/carwasher/2-runner-status (issue number substituted at worktree creation)\nAuthorization: requested prioritized healthcheck remediation, coordinated in #1.\n\nHandoff: https://github.com/artmus208/uppaal_sdn_isac/pull/8; head 12fc7532e92c109210e23428b56a83b7ef1c4cd8. 22 focused tests and all 92 unit tests completed without skips/failures. All seven synthetic cases from the healthcheck match expected statuses. Coordination, pip check, MCP construction and example listing return 0. ANSI output, headerless output, negative/uncertain verdicts and harmless error names in paths/warnings are covered. Independent review pending; no scientific gate accepted.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/2",
+        "display_title": "P1 healthcheck: reject failed or incomplete verifyta runs"
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/1",
+        "title": "P0 coordination: prioritize and hand off 2026-09-06 healthcheck remediation",
+        "issue_number": 1,
+        "body": "Process: P0 — coordination support\nDeliverable: A reproducible remediation handoff for the confirmed findings in the local healthcheck REPORT.md, with separate Issues, branches and worktrees for independent fixes, ordered by severity.\nAtomic IDs: N/A — coordination-only. No reviewer requirement is closed by this work.\nOwner account: carwasher (account-id: carwasher)\nReviewer / Integrator: repository maintainer; independent acceptance required, no gate is claimed by the owner.\nBase ref: origin/read\nBase commit: 11bd69bdca9a1209f820258b3732b3c865f79035\nTarget branch: read\nInputs: AGENTS.md, CONTRIBUTING.md, manifests/v1.md, manifests/collaboration-v1.yaml, manifests/baselines/reviewer-r1.yaml; D:/uppaal_mcp_healthcheck_20260906_184139/REPORT.md and its saved diagnostics (read-only).\nDependencies: none for coordination and software diagnostics. P1/P2 acceptance and Gate 1 remain required for scientific verification and baseline freezing.\nWrite scope:\n- evidence/healthcheck/20260906-remediation/**\nRead-only inputs: all manifests, model sources, original dirty checkout and original healthcheck evidence.\nOut of scope: manuscript edits, accepted model-checking claims, baseline freezing or gate approval, direct pushes to read/main.\nAcceptance criteria:\n- Separate scoped issues track runner false positives, MCP installation/startup, CLI exit codes, and local configuration.\n- Reversible fixes are prepared and tested in isolated worktrees.\n- Each fix has reproducible software-test results and an independent review handoff.\n- Baseline drift and evidence-path governance conflict are documented with a concrete proposal for the integrator; no false freeze or acceptance.\n- Original checkout and original diagnostic evidence are preserved.\nExpected artifacts: evidence/healthcheck/20260906-remediation/README.md, machine-readable task/result index.\nEvidence class: software diagnostics and coordination, not model-checking evidence.\nVerification required: no\nStatus: in-review\nAuthorization: user requested resolving the report findings by priority and supplied AGENTS.md instructions requiring separate Issues for separate deliverables.\n\nTask branch: codex/carwasher/1-healthcheck-handoff\nHandoff: https://github.com/artmus208/uppaal_sdn_isac/pull/11; head 0e237aa8bfd87a79c86459af14db521f44092bbc.\nFix PRs by report order: #8 (runner), #7 (MCP install/startup), #9 (CLI), #10 (native config). All four CI runs succeeded; local suites 92 / 80 per SDK / 86 / 85, without skips. Original 60 modified/untracked files and status preserved. Independent review pending.\nRemaining governance: #6. Concrete proposal and full hash audits are committed in evidence/healthcheck/20260906-remediation/.\nAdditional observation for separate future assignment: MAC/SDN reports may display individual partial verdicts independently of an overall failed run. No adjacent report implementation was started.\nNo scientific gate or verification claim is accepted by this handoff.",
+        "state": null,
+        "user": null,
+        "assignees": null,
+        "labels": null,
+        "milestone": null,
+        "state_reason": null,
+        "comments": null,
+        "created_at": null,
+        "updated_at": null,
+        "closed_at": null,
+        "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/1",
+        "display_title": "P0 coordination: prioritize and hand off 2026-09-06 healthcheck remediation"
+      }
+    ]
+  },
+  "issue6": {
+    "issue": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+      "title": "P0 governance decision: baseline drift and disjoint run-evidence paths",
+      "issue_number": 6,
+      "body": "Process: P0 — governance\nDeliverable: An independently accepted decision for replacing the stale candidate baseline and reconciling run-evidence storage with workstream scopes.\nAtomic IDs: N/A — coordination-only\nOwner: artmus208 (account-id: artmus208)\nReviewer / Integrator: repository maintainer; cannot be the author of the same gate result\nBase ref: origin/read\nBase commit: 11bd69bdca9a1209f820258b3732b3c865f79035\nTarget branch: read\nInputs: #1; manifests/baselines/reviewer-r1.yaml; manifests/collaboration-v1.yaml; healthcheck baseline_hash_comparison.json.\nDependencies: an explicit integrator decision authorizing exact manifest changes; scientific freeze additionally requires accepted P1/P2 results and all Gate 1 inputs.\nWrite scope (activated by Integrator decision on 2026-09-07):\n- manifests/baselines/reviewer-r1.yaml\n- manifests/collaboration-v1.yaml\n- scripts/check_coordination.py\n- tests/test_coordination.py\n- evidence/governance/20260906-baseline/**\nRead-only: article, models, generators, original diagnostic files.\nProblem: healthcheck found 6/20 exact file hashes plus aggregate generator hash differ from the historical dirty candidate capture. Current baseline is candidate/frozen:false and Gate 1 pending, with no canonical parameters, instance vector, query set, accepted interface contract or integrated model. Passing structural checks does not prove hash identity. Contract storage_pattern evidence/runs/<run_id>/ lies outside typical P3/P4 scopes.\nConcrete proposed decision:\n1. Keep the historical candidate capture identifiable; do not silently replace its hashes or mark frozen.\n2. Select an exact clean committed model/generator source after necessary accepted changes, then supersede the candidate explicitly, retaining candidate/frozen:false until P1/P2 acceptance and an independent Gate 1 decision. Record current native Windows availability as a dated diagnostic; historical WSL license failure is environment-specific.\n3. Choose disjoint storage: evidence/verification/runs/<run_id>/ for P3 and evidence/scalability/runs/<run_id>/ for P4. Align run_evidence_contract with those existing workstream scopes and add structural regression coverage. Alternative retained central runs paths must have explicitly non-overlapping per-issue run_id scopes.\n4. Add an explicit hash-audit mode that checks every stored file/common hash and reports historical candidate drift separately from structural coordination validity; never call the old dirty capture reproducible.\nAcceptance criteria:\n- Integrator records accepted exact proposal and assigns one owner before manifest changes.\n- No candidate metadata becomes frozen without required acceptance.\n- Every expected/current hash is independently auditable, with exact byte-vs-Git-blob provenance.\n- P3/P4 run storage falls within non-overlapping scopes.\nExpected artifacts: decision and scoped governance PR, with machine-readable hash audit.\nVerification required: no (governance); new P3 results remain blocked on scientific Gate 1.\nStatus: in-review\nManifest write prohibition source: AGENTS.md Ownership and write scope: any manifests file changes only in a dedicated governance Issue with manifest-specific scope and an accepted Integrator decision.\n\nReviewable proposal and evidence now committed: https://github.com/artmus208/uppaal_sdn_isac/blob/0e237aa8bfd87a79c86459af14db521f44092bbc/evidence/healthcheck/20260906-remediation/governance-proposal.md\nCoordination handoff: https://github.com/artmus208/uppaal_sdn_isac/pull/11.\nThe read-only auditor confirms 6/20 historical baseline hash mismatches in current checkout bytes, 7/20 in exact base commit blobs, and one aggregate generator mismatch in each. It returns exit 1 on drift and never rewrites manifests. The software fixes are PR #8, #7, #9, #10 and each CI has succeeded; their acceptance does not freeze this baseline.\nIntegrator accepted the proposal on 2026-09-07 and assigned artmus208; see decision comment. Scientific P1/P2 and Gate 1 requirements remain unchanged. Implementation PR requires independent review.\nTask branch: codex/artmus208/6-baseline-governance\n\nImplementation handoff: https://github.com/artmus208/uppaal_sdn_isac/pull/12\nHead commit: fc94060430889dbf13213c34963493125724a82a. 79 tests, no skips/failures; structural checks pass; base/checkout hash audits report expected historical drift (7/20 plus generator aggregate). Decision, exact commands, hashes and raw logs committed under evidence/governance/20260906-baseline/. Historical baseline unchanged; supersession awaits accepted scientific inputs. Independent implementation review pending; Gate 1 remains pending.",
+      "state": "open",
+      "user": {
+        "login": "carwasher",
+        "name": "carwasher",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/52461796?v=4",
+        "id": 52461796
+      },
+      "assignees": [
+        {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        }
+      ],
+      "labels": [
+        {
+          "name": "workstream/P0",
+          "color": "ededed",
+          "description": null
+        },
+        {
+          "name": "type/governance",
+          "color": "ededed",
+          "description": null
+        },
+        {
+          "name": "status/in-review",
+          "color": "ededed",
+          "description": null
+        }
+      ],
+      "milestone": null,
+      "state_reason": null,
+      "comments": 1,
+      "created_at": "2026-09-06T19:10:06Z",
+      "updated_at": "2026-09-07T14:33:58Z",
+      "closed_at": null,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+      "display_title": "P0 governance decision: baseline drift and disjoint run-evidence paths"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+    "title": "P0 governance decision: baseline drift and disjoint run-evidence paths",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+    "display_title": "P0 governance decision: baseline drift and disjoint run-evidence paths"
+  },
+  "issue15": {
+    "issue": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+      "title": "P1: document validation method and parameter provenance (V01–V05)",
+      "issue_number": 15,
+      "body": "Process: P1 — Validation\nDeliverable: Validation report and complete parameter-source/calibration table for the current four-layer candidate, addressing V01–V05 as one reviewable evidence package.\nAtomic IDs: V01, V02, V03, V04, V05 (primary scientific ownership; no closure until independent acceptance).\nOwner account: artmus208 (account-id: artmus208)\nReviewer / Integrator: independent scientific reviewer required; pending assignment.\nBase ref: origin/read\nBase commit: f2f714a26d6b9d9f538ef1a16b53c3e060768a11\nTarget branch: read\nBaseline manifest: manifests/baselines/reviewer-r1.yaml\nBaseline ID/hash: reviewer-r1-candidate / 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a\nDependencies: published P0 candidate in read; governance procedure PR #12 merged. Frozen baseline is not required to start P1. Existing candidate drift must be explicit; the exact commit above pins inspected inputs.\nWrite scope:\n- evidence/validation/20260907-p1/**\nRead-only inputs: manuscripts, layer formalizations, generators/defaults/alpha profiles, model XML, reviews and manifests.\nOut of scope: model/generator fixes (route to P2), manuscript edits, manifest refresh, model checking, Gate 1 acceptance and fabricated empirical validation.\nAcceptance criteria:\n- Inventory every model timing/capacity/retry constant and abstraction threshold in declared source surfaces with exact source/hash/line references.\n- Distinguish source definition, illustrative engineering values, physical calibration and normative external requirements; never infer a universal physical threshold from a class name.\n- Give each significant parameter either an applicable primary source or an explicit calibration method with units, input measurements, boundary rules and unresolved decisions.\n- Define adequacy validation of individual automata and composition, separate from model checking.\n- Specify a reproducible NS-3/OMNeT++/external-trace data exchange and independent validation workflow; clearly separate proposed work and demonstrated checks.\n- Cite primary sources with versions/sections and document their applicability to deadlines and GOOD/WEAK/OUTAGE/FRESH/STALE concepts.\n- Record coverage checks, relevant repository checks, unresolved P2 inputs and any remaining empirical evidence needed for P1 acceptance.\nExpected artifacts: validation-report.md, parameter table (machine-readable and human-readable), primary-source notes, reproducible inventory/coverage script and evidence logs.\nEvidence class: scientific validation specification and source audit, not verification.\nVerification required: no.\nStatus: in-review\nAuthorization: user requested continuing substantive reviewer work after software remediation. This continuation handles only this P1 deliverable.\n\n## Review handoff\n\nDraft PR #16: https://github.com/artmus208/uppaal_sdn_isac/pull/16\nHead: `285fd1edd322eab2188cb2aec06c4238860cb4ac`.\nBranch: `codex/artmus208/15-validation-parameters`.\nReport and reproducible package: `evidence/validation/20260907-p1/README.md`.\nDelivered: inventory (43 timings, 59 finite domains), calibration/source methods, eight reproduced boundary-policy mismatches, adequacy and external-trace comparison specification.\nChecks: host 126 tests passed, no skips; sandbox stdio timeout preserved. Historical baseline 9/20 hashes plus generator aggregate mismatch; current verifyta --version times out on host, no verification claimed.\nIndependent scientific reviewer/integrator remains unassigned. P1 and V01–V05 are not self-accepted; Issue remains open. Required P2 decisions and empirical claim limits are itemized in the report. No Gate 1 or downstream acceptance is implied.\n",
+      "state": "open",
+      "user": {
+        "login": "artmus208",
+        "name": "artmus208",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+        "id": 59034340
+      },
+      "assignees": [
+        {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        }
+      ],
+      "labels": [
+        {
+          "name": "status/in-review",
+          "color": "ededed",
+          "description": null
+        },
+        {
+          "name": "workstream/P1",
+          "color": "ededed",
+          "description": null
+        }
+      ],
+      "milestone": null,
+      "state_reason": null,
+      "comments": 0,
+      "created_at": "2026-09-07T18:12:56Z",
+      "updated_at": "2026-09-07T18:34:50Z",
+      "closed_at": null,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+      "display_title": "P1: document validation method and parameter provenance (V01–V05)"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+    "title": "P1: document validation method and parameter provenance (V01–V05)",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+    "display_title": "P1: document validation method and parameter provenance (V01–V05)"
+  },
+  "issue17": {
+    "issue": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+      "title": "P2: specify model instances, composition and abstraction (R01, R02, R05, R06)",
+      "issue_number": 17,
+      "body": "Process: P2 — Instantiation and abstraction\nDeliverable: One reviewable model-scope specification defining the candidate instance vector, composition/interface requirements and a detailed automaton abstraction analysis. This is the model_scope_specification output of P2, not the entire P2 implementation or Gate 1.\nAtomic IDs: R01, R02, R05, R06 — primary P2 requirements addressed by this specification; closure requires independent review and any required implementation evidence.\nOwner account: carwasher (account-id: carwasher)\nReviewer: independent scientific reviewer pending assignment; author cannot accept own result.\nIntegrator: repository maintainer; explicit acceptance required.\nBase ref: origin/read\nBase commit: 7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb\nTarget branch: read\nBaseline manifest: manifests/baselines/reviewer-r1.yaml\nBaseline ID: reviewer-r1-candidate\nBaseline manifest SHA256: 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a\nDependencies: published P0 candidate available at the pinned commit. P2 start_after is P0_candidate; P1 acceptance and Gate 1 are not start prerequisites. PR #16 is merged and its P1 observations may be inspected, but Issue #15 remains in-review and those decisions are not treated as scientifically accepted.\nRequired gate: independent specification review; no freeze or verification acceptance.\nWrite scope:\n- evidence/instantiation/20260907-p2-scope/**\nRead-only inputs: all existing source, model XML, formalizations, manuscripts, manifests, P1 evidence and other workstreams.\nOut of scope: source/generator changes; integrated-model implementation; manuscript and manifest changes; empirical calibration; verification runs; Gate 1 acceptance. Required implementation work must receive a separately scoped Issue/chat and remain under P2 ownership.\nAcceptance criteria:\n- Inventory actual templates/process instances and identify which base station/device/UAV/service entities are explicit, aggregated or absent, with source commit/path/hash references.\n- Define an explicit candidate instance vector and deterministic composition specification sufficient to construct a test configuration, distinguishing proposed decisions from current implementation.\n- Specify channel endpoints, direction, kind, shared-data ownership, indexing and initialization obligations across PHY/MAC/SDN/APP/ENV/OBS. Identify conflicts and unresolved choices rather than asserting that standalone projections form an integrated model.\n- Analyze one existing automaton in detail: locations, transitions, guards, invariants, updates, synchronization, clock resets and environment assumptions.\n- Explain which finite domains and abstraction choices bound the discrete structure and which aspects remain outside scope. Do not present syntactic counts or estimated products as explored states or model-checking evidence.\n- Give an explicit disposition for relevant P1 findings and record decisions requiring scientific review or subsequent P2 implementation; do not silently accept P1 or alter its artifacts.\n- Supply reproducible inventory/static checks, machine-readable provenance and a human-readable report; run relevant CONTRIBUTING checks and preserve failures and environment limits.\nExpected artifacts: model-scope-specification.md, instance-vector.json, interface requirements, reproducible inventory/check scripts and metadata/logs, README with reproduction commands and limitations, all inside Write scope.\nEvidence class: source audit and candidate model specification; static checks only.\nVerification required: no.\nStatus: in-review\nAuthorization: user explicitly requested work according to repository manifests after the P2 onboarding proposal. This Issue prepares the separate P2 chat required by AGENTS.md and CONTRIBUTING.md.\nScope check: no open Issue found claiming evidence/instantiation/20260907-p2-scope/** at creation. Existing P0/P1 scopes remain unchanged.\nKnown baseline limitation: historical candidate describes a dirty snapshot and is not frozen. The base commit above pins inspected inputs without superseding or rewriting that baseline.\n\nTask branch: codex/carwasher/17-model-scope\nPrepared worktree: D:/uppaal_sdn_isac-carwasher-17\nSession state: user resumed execution of this assigned deliverable after the prepared handoff. Work proceeds only in D:/uppaal_sdn_isac-carwasher-17 on codex/carwasher/17-model-scope. Assignment and clean base were rechecked before edits. AGENTS.md edits in the original checkout are not part of this Issue. Do not start a second concurrent session for this Issue.\n\n## Specification handoff\n\nDraft PR: https://github.com/artmus208/uppaal_sdn_isac/pull/18\nHead commit: 9d34e54f49311e9c430834b419ac9c88abc6dba9\nBranch/worktree: codex/carwasher/17-model-scope / D:/uppaal_sdn_isac-carwasher-17\nDelivered package: evidence/instantiation/20260907-p2-scope/README.md\nCompleted specification criteria: exact-source instance inventory (38 files, 14 XML surfaces); explicit entity/process vector; proposed interface ownership/staging/failure rules; complete six-location/nine-edge MAC scheduler analysis; finite-abstraction claim limits; P1 dispositions and implementation obligations.\nValidation: 126 unit tests, no errors/failures/skips; all ten recorded installation/static/software check commands exit 0. Checks use documented process-only core.autocrlf=false. All 36 changed paths are within scope; 35 indexed package hashes match.\nFindings: four APP/SDN channel-kind conflicts, absent real MAC policy/PHY command peers, competing SDN ACK consumers, APP placeholders and always-good KPI stub. Proposed 50-process composition includes eight unimplemented boundary templates and is not a verified model.\nRemaining: independent scientific reviewer assignment and specification acceptance; subsequent separately scoped P2 implementation of integrated XML/interfaces with reviewed parameter/observer decisions. No reviewer ID is self-closed and no Gate 1/P3/P4 readiness is claimed.\nOriginal AGENTS.md local change was preserved outside this worktree and is not part of this PR.\n\nCI: [run 34157759141](https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34157759141) completed successfully for head `9d34e54f49311e9c430834b419ac9c88abc6dba9`. This is software/coordination CI, not scientific verification or gate acceptance.\n",
+      "state": "open",
+      "user": {
+        "login": "carwasher",
+        "name": "carwasher",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/52461796?v=4",
+        "id": 52461796
+      },
+      "assignees": [
+        {
+          "login": "carwasher",
+          "name": "carwasher",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/52461796?v=4",
+          "id": 52461796
+        }
+      ],
+      "labels": [
+        {
+          "name": "status/in-review",
+          "color": "ededed",
+          "description": null
+        },
+        {
+          "name": "workstream/P2",
+          "color": "ededed",
+          "description": null
+        }
+      ],
+      "milestone": null,
+      "state_reason": null,
+      "comments": 0,
+      "created_at": "2026-09-07T19:21:41Z",
+      "updated_at": "2026-09-07T20:02:18Z",
+      "closed_at": null,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+      "display_title": "P2: specify model instances, composition and abstraction (R01, R02, R05, R06)"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+    "title": "P2: specify model instances, composition and abstraction (R01, R02, R05, R06)",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+    "display_title": "P2: specify model instances, composition and abstraction (R01, R02, R05, R06)"
+  },
+  "issue19": {
+    "issue": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+      "title": "P2: implement the integrated single-UAV candidate composition",
+      "issue_number": 19,
+      "body": "Process: P2 — Instantiation and abstraction\nDeliverable: Reproducible integrated single-BS/single-UAV candidate model generator with explicit boundary processes, adapted interfaces, instance/query mapping and implementation evidence.\nAtomic IDs: R01, R02, R05, R06 — continuation of P2; specification ownership remains #17, this issue owns implementation evidence, no independent duplicate closure.\nOwner account: artmus208 (account-id: artmus208)\nReviewer / Integrator: independent reviewer required before scientific acceptance.\nBase ref: origin/read\nBase commit: 426cf570138231765b21d518f9d20289e2b11b63 (scoped continuation; historical base dc7eeb05f1fd3f2a4775428b1cd250363893128d)\nTarget branch: read\nBaseline manifest: manifests/baselines/reviewer-r1.yaml\nBaseline ID: reviewer-r1-candidate; frozen:false\nDependencies: published P0 candidate, merged P2 specification PR #18 (9d34e54f49311e9c430834b419ac9c88abc6dba9), merged P1 source-audit PR #16. These are implementation inputs; scientific P1/P2 acceptance and Gate 1 are not claimed.\nRequired gate: ordinary implementation review. Gate 1 remains required for P3/P4.\nWrite scope:\n- src/uppaal_mcp/integrated/**\n- tests/test_sdn_layer.py\n- evidence/instantiation/20260908-p2-integrated/**\nRead-only inputs: evidence/instantiation/20260907-p2-scope/**, P1 evidence, existing layer generators/models, manifests, manuscript.\nOut of scope: manuscript/manifests edits; global configuration; existing standalone generator semantics; physical calibration; P3/P4 verification claims.\nAcceptance criteria:\n- Deterministically construct one integrated XML from the pinned default PHY/MAC/SDN and APP inputs; retain the specified 20 core and 22 observer processes and implement the eight boundary processes.\n- Remove standalone environments/stubs; namespace symbols and clocks with identifier-aware transformation and explicit shadow handling; record every semantic adaptation.\n- Implement typed rule/control ACKs, staged admission payloads and failure/timeout paths, MAC/PHY schedule delivery, policy input, finite sampled environment, source-age KPI delivery and explicit losses.\n- Preserve candidate abstract bounds/one-session scope and APP placeholders as declared limitations; make observer adaptations and finite event handling explicit.\n- Emit instance/parameter/query maps and per-artifact hashes; validate source provenance and reject unsupported composition inputs.\n- Include meaningful structural and behavioral regression checks for payload ordering, ACK correlation, missing receivers/deadline loss and namespace/reference safety. Record available real verifier syntax diagnostics separately from verification evidence.\n- Run applicable CONTRIBUTING software/static checks, preserve failures/limitations, submit scoped draft PR to read. Do not self-accept science, gate, or model-checking claims.\nExpected artifacts: Python generator/composition implementation, regression coverage, unique evidence directory with generated XML/queries, implementation decisions, provenance and raw check logs.\nEvidence class: candidate integrated implementation plus static/software diagnostics.\nVerification required: no scientific P3 verification; verifier syntax/type diagnostics when available.\nStatus: claimed\nAuthorization: user explicitly directed continuation of the execution plan after confirming PR #18 is merged. The merged proposed interface contract is implemented as a candidate, subject to later scientific acceptance.\nScope audit: open issues inspected on 2026-09-08; none owns the three paths above. #17 owns only its specification directory.\n\nTask branch: codex/carwasher/19-integrated-candidate\nIsolated worktree: D:/uppaal_sdn_isac-carwasher-19\n\n## Authorized ownership handoff — 2026-09-08\n\nThe user explicitly instructed carwasher to take over if the deliverable was unfinished. GitHub recheck found this Issue open/claimed, no linked implementation PR, and the previous remote branch codex/artmus208/19-integrated-candidate still at the base dc7eeb05f1fd3f2a4775428b1cd250363893128d. No committed implementation is available to consume. Any uncommitted files in the former /tmp/uppaal-p2-integrated-20260908 environment remain inaccessible and are not overwritten.\n\ncarwasher is the sole active writer from this handoff; the prior author session must not continue writing this Issue concurrently. Existing scope, base, dependencies and acceptance criteria are unchanged. All implementation criteria remain to be demonstrated. Previous branch is preserved; new work uses the named isolated Windows worktree above. Original D:/uppaal_mcp has a user AGENTS.md edit and is read-only for this deliverable. Scientific acceptance and Gate 1 remain pending.\n\n\n## Authorized recorder continuation — 2026-09-08\n\nThe user authorized repair of the recorder regression harness, continued software/static checks, and publication of this diagnostic specifically in Issue #19. Work continues in the isolated clone `/tmp/uppaal-carwasher-19-evidence-20260908`, branch `codex/carwasher/19-integrated-evidence`; owner/account-id remains carwasher.\n\nHistorical run `reviewer-run-002` lost the venv through executable symlink resolution. Local diagnostic commit `8b3f924c0b10a5d6210bbebfdd79e427ce3f3d9b` preserves a subsequent regression-harness StopIteration error; neither is a model defect. After the explicit continuation authorization, the harness was isolated from global subprocess/platform calls and recorder executable handling now uses os.path.abspath without symlink dereferencing. Commit `2dc471d` contains this repair; focused Integrated tests: 19 tests, exit 0. Full software/static recording is in progress in a new `reviewer-run-003`. These commits are currently local, not yet published.\n\nNo model-checking or gate acceptance is claimed. The earlier failed diagnostic directory is preserved; the source checkout was clean at the start of the new run. Final evidence/audit and draft PR to read remain outstanding.\n\n\n## User-authorized scoped continuation — 2026-09-08\n\nThe user approved creating a fresh branch from current read, transferring only the three existing write-scope paths, and separating operational-document provenance from model-input enforcement. Branch: codex/artmus208/19-scoped-candidate; clone /tmp/issue19-scoped. Prior branches/evidence remain preserved. AGENTS.md is operational context: record its pinned historical and actual hashes separately without blocking model generation when it changes. All other pinned inputs, including specification inventory/vector, model/generator sources, baseline and scientific manifests remain enforced. Do not edit AGENTS.md, manifests or the specification package. Add regression coverage proving documentation-only drift leaves XML/query bytes unchanged and model/specification mutations still fail. This authorization permits implementation and draft review, not independent scientific acceptance or Gate 1. New run ID: reviewer-scoped-005-20260908; full focused/suite/recorder/audit required from a clean checkpoint.\n",
+      "state": "open",
+      "user": {
+        "login": "artmus208",
+        "name": "artmus208",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+        "id": 59034340
+      },
+      "assignees": [
+        {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        }
+      ],
+      "labels": [
+        {
+          "name": "status/in-review",
+          "color": "ededed",
+          "description": null
+        },
+        {
+          "name": "workstream/P2",
+          "color": "ededed",
+          "description": null
+        }
+      ],
+      "milestone": null,
+      "state_reason": null,
+      "comments": 6,
+      "created_at": "2026-09-08T03:05:09Z",
+      "updated_at": "2026-09-08T20:52:05Z",
+      "closed_at": null,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+      "display_title": "P2: implement the integrated single-UAV candidate composition"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+    "title": "P2: implement the integrated single-UAV candidate composition",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+    "display_title": "P2: implement the integrated single-UAV candidate composition"
+  },
+  "issue21": {
+    "issue": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/21",
+      "title": "P0: audit integrated candidate readiness for Gate 1",
+      "issue_number": 21,
+      "body": "Process: P0 — Gate 1 readiness audit\nDeliverable: Evidence-backed readiness matrix and proposed next baseline for independent Integrator review of the merged integrated candidate.\nAtomic IDs: N/A — coordination-only\nOwner account: artmus208 (account-id: artmus208; authenticated GitHub profile checked)\nReviewer / Integrator: independent scientific reviewer pending assignment; must be independent of authors of the scientific inputs and this report. No self-acceptance.\nBase ref: origin/read\nBase commit: bb5741b45480944630e1116fb7435effb2026655 (GitHub and HTTPS ls-remote checked)\nTarget branch: read\nInput manifests: AGENTS.md, CONTRIBUTING.md, manifests/v1.md, manifests/collaboration-v1.yaml, manifests/baselines/reviewer-r1.yaml (reviewer-r1-candidate, frozen:false; exact hashes recorded in report).\nInputs: #6 and Integrator decision; #15/#17/#19 comments; PR #16/#18/#20 including reviews; P1 validation, P2 specification and integrated reviewer-scoped-005-20260908 evidence.\nDependencies: published P0 candidate and merged PR #16/#18/#20 confirmed. Scientific P1/P2 acceptance is an audit subject, not a prerequisite to this readiness-only report.\nRequired gate: none for audit; Gate 1 required before P3/P4.\nWrite scope:\n- evidence/governance/20260908-gate1-readiness/**\nRead-only inputs: every other repository path, manifests, models, historical evidence and original dirty checkout.\nOut of scope: model fixes, manifest edits/freeze, scientific acceptance, closing scientific IDs/issues, P3/P4, model checking or licensing smoke.\nAcceptance criteria:\n- Every current Gate 1 requirement maps to precise artifact/commit/hash, independent decision or concrete blocker, status and responsible role/next action.\n- Reproduce generation and static audit from exact clean committed inputs in unique run gate1-readiness-001-20260909; compare 20 core + 8 boundary + 22 observers, source/context/implementation hashes, XML/query bytes and parameter/query/instance maps.\n- Preserve exact commands, exit codes, versions, provenance and logs; perform CONTRIBUTING handoff checks, distinguish static/software results from model checking.\n- Resolve evidence status for abstract bounds/units, equality policy, APP placeholders, source-age/observer adaptation, finite environment and event coalescing without changing the model.\n- Publish README, machine-readable readiness matrix and human-readable decision proposal with concrete proposed baseline pins and claim limits.\n- Prove scope isolation; preserve historical artifacts; named clean branch checkpoint available remotely or by verified full bundle; draft PR to read.\nExpected artifacts: README.md, readiness-matrix.json, decision-proposal.md, proposed-baseline.json, reproducible audit/command logs, GitHub decision snapshots and integrity index within scope.\nEvidence class: governance readiness plus static/software audit, not scientific acceptance or verification.\nVerification required: no. Any future minimal licensing smoke requires a separately contracted runner task before execution.\nStatus: claimed\nAuthorization: user supplied promts/08.09.2026-p0-gate1-readiness.md explicitly authorizing separate Issue creation, isolated work, report publication and draft PR.\nScope audit: all 10 currently open Issues inspected; none claims evidence/governance/20260908-gate1-readiness/**. No existing readiness Issue found across all issues.\nTask branch: codex/artmus208/21-gate1-readiness\nIsolated clone: /tmp/gate1-readiness-20260908\n",
+      "state": "open",
+      "user": {
+        "login": "artmus208",
+        "name": "artmus208",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+        "id": 59034340
+      },
+      "assignees": [
+        {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        }
+      ],
+      "labels": [
+        {
+          "name": "status/claimed",
+          "color": "ededed",
+          "description": null
+        },
+        {
+          "name": "workstream/P0",
+          "color": "ededed",
+          "description": null
+        },
+        {
+          "name": "type/governance",
+          "color": "ededed",
+          "description": null
+        }
+      ],
+      "milestone": null,
+      "state_reason": null,
+      "comments": 0,
+      "created_at": "2026-09-08T21:01:27Z",
+      "updated_at": "2026-09-08T21:01:59Z",
+      "closed_at": null,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/21",
+      "display_title": "P0: audit integrated candidate readiness for Gate 1"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/21",
+    "title": "P0: audit integrated candidate readiness for Gate 1",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/21",
+    "display_title": "P0: audit integrated candidate readiness for Gate 1"
+  },
+  "comments6": {
+    "comments": [
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6#issuecomment-5572059620",
+        "body": "Integrator decision — 2026-09-07: accepted for implementation, explicitly confirmed by the repository maintainer in the current session.\n\nAccept the exact governance-proposal.md at commit 0e237aa8bfd87a79c86459af14db521f44092bbc: preserve the historical candidate; supersede it only after selecting accepted clean committed model/generator inputs; keep frozen:false until scientific P1/P2 and independent Gate 1 acceptance; use evidence/verification/runs/<run_id>/ (P3) and evidence/scalability/runs/<run_id>/ (P4); add structural containment tests and a separate exact-byte/Git-blob hash audit.\n\nOwner/account-id: artmus208. Task branch: codex/artmus208/6-baseline-governance. Base ref: origin/read. Base commit: 11bd69bdca9a1209f820258b3732b3c865f79035. Target: read. Activate precisely the proposed Write scope in this Issue. No implementation dependency on merging the independent healthcheck PRs; they remain review inputs only. This decision authorizes the replacement procedure, not immediate selection of an unaccepted model or replacement of historical hashes.\n\nDeliverable: scoped governance implementation, decision record and reproducible hash audit. Acceptance: disjoint contained run paths; auditable file/common hashes with explicit provenance; historical candidate preserved and unfrozen. Scientific Gate 1 and implementation PR acceptance are not granted by this decision; the resulting implementation requires independent review.",
+        "user": {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        },
+        "id": 5572059620,
+        "pull_request_review_id": null,
+        "in_reply_to_id": null,
+        "created_at": null,
+        "updated_at": null,
+        "review": null,
+        "side": null,
+        "line": null,
+        "start_line": null,
+        "path": null
+      }
+    ],
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+    "title": "artmus208/uppaal_sdn_isac Issue #6 comments",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+    "display_title": "artmus208/uppaal_sdn_isac Issue #6 comments"
+  },
+  "comments15": {
+    "comments": [],
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+    "title": "artmus208/uppaal_sdn_isac Issue #15 comments",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+    "display_title": "artmus208/uppaal_sdn_isac Issue #15 comments"
+  },
+  "comments17": {
+    "comments": [],
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+    "title": "artmus208/uppaal_sdn_isac Issue #17 comments",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+    "display_title": "artmus208/uppaal_sdn_isac Issue #17 comments"
+  },
+  "comments19": {
+    "comments": [
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19#issuecomment-5579176637",
+        "body": "Ownership handoff authorized by the user on 2026-09-08: carwasher takes over this unfinished deliverable as the sole writer. Rechecked: no implementation PR and prior remote branch remains at base dc7eeb05f1fd3f2a4775428b1cd250363893128d. New branch/worktree: codex/carwasher/19-integrated-candidate / D:/uppaal_sdn_isac-carwasher-19. Scope, base and acceptance criteria are unchanged. Previous local uncommitted work is inaccessible and will not be overwritten; the former session must not continue concurrently. Next step: implement and test the candidate composition, record provenance/limitations, and hand off a draft PR to read.",
+        "user": {
+          "login": "carwasher",
+          "name": "carwasher",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/52461796?v=4",
+          "id": 52461796
+        },
+        "id": 5579176637,
+        "pull_request_review_id": null,
+        "in_reply_to_id": null,
+        "created_at": null,
+        "updated_at": null,
+        "review": null,
+        "side": null,
+        "line": null,
+        "start_line": null,
+        "path": null
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19#issuecomment-5586295828",
+        "body": "Native-evidence continuation authorized by the linked user task. Assignee remains carwasher; PR #16/#18 are merged and read is 426cf570138231765b21d518f9d20289e2b11b63. Isolated clone /tmp/issue19-native-handoff, local branch codex/carwasher/19-native-evidence-handoff from published 6604af040b16c9c3c0e6ceb78b7f52df7172f185; original dirty checkout untouched. Reserved run_id reviewer-unrestricted-004-20260908 inside evidence/instantiation/20260908-p2-integrated/. Windows cmd fails with UtilBindVsockAnyPort inside sandbox, succeeds outside (Windows 10.0.19045.6456); full software/compile-only comparison will run outside sandbox on unchanged implementation/test bytes. PR blocker: inherited full diff to read contains AGENTS.md, promts/08.09.2026-11.03.md and promts/08.09.2026-issue19-recorder-continuation.md outside #19 scope. Integrator must resolve scope/branch organization in a recorded decision; this iteration will not reorganize branches or open an out-of-scope PR. No scientific acceptance or model checking claimed.",
+        "user": {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        },
+        "id": 5586295828,
+        "pull_request_review_id": null,
+        "in_reply_to_id": null,
+        "created_at": null,
+        "updated_at": null,
+        "review": null,
+        "side": null,
+        "line": null,
+        "start_line": null,
+        "path": null
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19#issuecomment-5586341623",
+        "body": "Authorized ownership handoff: the user explicitly approved transferring this evidence-handoff to artmus208 and publishing its branch. artmus208 is now the sole writer/assignee for this continuation; carwasher sessions must not write concurrently. New branch codex/artmus208/19-native-evidence-handoff, isolated clone /tmp/issue19-native-handoff, starting checkpoint 6604af040b16c9c3c0e6ceb78b7f52df7172f185. Historical base/scope/dependencies unchanged. New diagnostic run completed outside sandbox: MCP startup did not time out; real verifyta version/help exit 0. Generation/focused setup/static audit fail because the published checkpoint changed pinned AGENTS.md; full suite 127 tests, one setup error, no skips. Integrated implementation/test bytes match historical 2dc471d. No pin relaxation, scope expansion, model checking or gate acceptance. Independent Integrator decision is required for provenance drift and inherited out-of-scope paths before a PR can be opened.",
+        "user": {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        },
+        "id": 5586341623,
+        "pull_request_review_id": null,
+        "in_reply_to_id": null,
+        "created_at": null,
+        "updated_at": null,
+        "review": null,
+        "side": null,
+        "line": null,
+        "start_line": null,
+        "path": null
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19#issuecomment-5586385137",
+        "body": "Evidence handoff checkpoint completed (blocked, not scientific acceptance).\n\nOwner: artmus208. Branch: codex/artmus208/19-native-evidence-handoff. HEAD f493aedf8cf04dafecf88849c65236e19e721e7e; historical base dc7eeb05f1fd3f2a4775428b1cd250363893128d; source tested 6604af040b16c9c3c0e6ceb78b7f52df7172f185. Isolated /tmp/issue19-native-handoff working tree clean. Read and candidate remote SHAs confirmed by HTTPS fetch; read remains 426cf570138231765b21d518f9d20289e2b11b63.\n\nNew run: evidence/instantiation/20260908-p2-integrated/reviewer-unrestricted-004-20260908. Full recorder exit 1; 127 tests, one IntegratedCandidate class setup error, no skips. Focused exit 5, zero tests. Generator and historical regeneration audit exit 1: pinned source changed: AGENTS.md. Implementation/tests identical to historical 2dc471d; all historical raw-log hashes match. MCP stdio initialization/list-tools completes outside sandbox. Pip/versions/coordination/YAML/MCP construction/examples/diff-check and real verifyta version/help exit 0. Actual UPPAAL 5.0.0 rev. 714BA9DB36F49691, June 2023. Compile-only exit 1 because generated XML does not exist; no syntax or model-checking success. No P3/P4 or license-availability claim.\n\nREADME now maps all seven criteria to artifacts/results/limitations. Prepared PR body: evidence/instantiation/20260908-p2-integrated/handoff-pr-body.md. All 42 continuation paths are scoped; all 39 diagnostic artifact hashes match. Historical files unchanged. Full inherited diff still contains AGENTS.md and two promts files outside scope, so no PR was opened, per task instructions. Integrator must resolve provenance pin drift and inherited scope, then Reviewer/Runner must repeat focused/full recorder/audit from a clean approved checkpoint in a new run directory. Gate 1 remains pending; nothing scientific is unblocked.\n\nDurable transport: SSH timed out; HTTPS fetch works but push has no credentials (terminal prompts disabled). Complete-history Git bundle exported and git bundle verify exited 0 at /mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/evidence/instantiation/20260908-p2-integrated/handoff-004-20260908/issue19-native-evidence.bundle (Windows C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\evidence\\instantiation\\20260908-p2-integrated\\handoff-004-20260908\\issue19-native-evidence.bundle). Bundle ref points to exact HEAD above; diagnostic files and PR body also copied beside it. Owner can import and publish this ref from a credentialed checkout. The new branch is NOT yet on GitHub; old published candidate remains untouched.",
+        "user": {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        },
+        "id": 5586385137,
+        "pull_request_review_id": null,
+        "in_reply_to_id": null,
+        "created_at": null,
+        "updated_at": null,
+        "review": null,
+        "side": null,
+        "line": null,
+        "start_line": null,
+        "path": null
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19#issuecomment-5586653510",
+        "body": "Durable handoff update: publication now succeeded through the authenticated GitHub connector (artmus208). Canonical remote branch codex/artmus208/19-native-evidence-handoff now resolves to c8fefc53114e3dffea329540c02b60e159be52d4; branch lookup independently confirmed the SHA.\n\nThis API-created commit has exactly the same Git tree 09a77c6c1c0140c42c3e67fa7e052635c4114d4f and parent 6604af040b16c9c3c0e6ceb78b7f52df7172f185 as local/bundled f493aedf8cf04dafecf88849c65236e19e721e7e. All file bytes are identical; only commit metadata/SHA differ. The earlier bundle remains a valid backup, while the published branch is now the durable source of truth. Local clone remains clean at f493aed; no tests rerun because content did not change.\n\nFetch: git fetch origin codex/artmus208/19-native-evidence-handoff. Review commit: https://github.com/artmus208/uppaal_sdn_isac/commit/c8fefc53114e3dffea329540c02b60e159be52d4 . Historical transport-unavailable statements in the saved artifact describe the earlier attempt and are superseded by this comment. Git CLI still reports HTTPS connection reset / SSH publickey denial; connector transport completed publication.\n\nAll check results and blockers from the preceding handoff remain unchanged. No PR opened: Integrator still needs to resolve pinned AGENTS.md drift and three inherited out-of-scope paths. No scope expansion, pin relaxation, merge or scientific gate acceptance.",
+        "user": {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        },
+        "id": 5586653510,
+        "pull_request_review_id": null,
+        "in_reply_to_id": null,
+        "created_at": null,
+        "updated_at": null,
+        "review": null,
+        "side": null,
+        "line": null,
+        "start_line": null,
+        "path": null
+      },
+      {
+        "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19#issuecomment-5591702476",
+        "body": "Scoped handoff published: draft PR #20 https://github.com/artmus208/uppaal_sdn_isac/pull/20 to read. Owner artmus208. Branch codex/artmus208/19-scoped-candidate; final remote HEAD 4399fd6c25c10ef8f488bc0dca408fc191e34c5c; base 426cf570138231765b21d518f9d20289e2b11b63. Exact tree 2999195d20573e456e58b03178e7ae7910dffb7b matches local/bundled dcd6767cc3056b2167770cbfa2179b275684356e; only API commit metadata differs. Local checkout was clean at checkpoint; its /tmp path is unavailable in the resumed execution environment. Remote branch is now the durable source of truth; full final bundle also preserved in the earlier handoff directory.\n\nBoth former blockers resolved: new diff contains only the three assigned scopes; AGENTS.md is explicit operational context with historical/actual hashes, all model/specification/manifest pins remain strict. All 21 focused and 147 suite tests exit 0, no skips/errors; recorder, static audit and real compile-only exit 0. XML/query bytes unchanged from run-003. Complete raw compiler output (8,142,017 bytes) published; blob cb9fb7f7082bbc00e64003a41dbb442cf37cde67 matched local Git hash. All run SHA256SUMS validated before publication, complete published tree matched local tree. Run reviewer-scoped-005-20260908 under evidence/instantiation/20260908-p2-integrated/ contains full commands, hashes, versions, hardware and logs.\n\nThe prior ref-update attempt was automatically rejected because the usage limit was exhausted; after the user's continuation request, ref update succeeded and branch SHA was independently checked. No tests repeated during publication. Next step: independent reviewer examines PR #20 and decisions.md, reproduces evidence and records acceptance. No merge, P2 scientific acceptance, model checking, or Gate 1 claimed.",
+        "user": {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        },
+        "id": 5591702476,
+        "pull_request_review_id": null,
+        "in_reply_to_id": null,
+        "created_at": null,
+        "updated_at": null,
+        "review": null,
+        "side": null,
+        "line": null,
+        "start_line": null,
+        "path": null
+      }
+    ],
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+    "title": "artmus208/uppaal_sdn_isac Issue #19 comments",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+    "display_title": "artmus208/uppaal_sdn_isac Issue #19 comments"
+  },
+  "reviews16": {
+    "reviews": []
+  },
+  "reviews18": {
+    "reviews": []
+  },
+  "reviews20": {
+    "reviews": []
+  },
+  "pr16": {
+    "pull_request": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/16",
+      "number": 16,
+      "state": "closed",
+      "merged": true,
+      "mergeable": false,
+      "draft": false,
+      "body": "The reviewer asks how model thresholds/deadlines are justified and how automata are validated against network behavior. This P1 package inventories 43 timing parameters and 59 finite domains, specifies calibration and trace-comparison methods, and reproduces eight equality cases where the demo classifier contradicts its declared worse-class policy.\n\nThis is a validation specification/source audit. Physical calibration, an executed simulator adapter and model checking are not claimed.\n\n## Coordination\n\n- Linked Issue: #15; keep open until independent P1 acceptance.\n- Workstream / atomic IDs: P1 / V01–V05.\n- Owner: @artmus208. Independent scientific reviewer/integrator: pending assignment; draft for that reason.\n- Base ref / commit: origin/read / `f2f714a26d6b9d9f538ef1a16b53c3e060768a11`.\n- Head commit: `285fd1edd322eab2188cb2aec06c4238860cb4ac`.\n- Source branch: `codex/artmus208/15-validation-parameters`; target: `read`.\n- Input manifest: `manifests/baselines/reviewer-r1.yaml`; ID `reviewer-r1-candidate`; SHA256 `89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a`.\n- Dependencies: published P0 candidate and merged governance PR #12. Gate 1 is not a prerequisite for P1 and remains pending.\n\n## Scope and deliverable\n\nExclusive write scope: `evidence/validation/20260907-p1/**`; all 41 changed files are within it.\n\nRead `README.md`, `validation-report.md`, `parameter-table.md` and `sources.md` in that directory. The remaining files are the reproducible inventory/check scripts, machine inventory, installation/check logs and checksums. Models, generators, manifests and manuscript are unchanged.\n\n## Evidence and reproduction\n\n- Source hashes and line references: `inventory.json`.\n- Report SHA256: `23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c`.\n- Parameter table SHA256: `1b15e97bdd7044fb21f165e0b113c25f98193efb9375acb32f16e85228a4b9f6`.\n- Inventory SHA256: `b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4`.\n- Full artifact hashes: `SHA256SUMS`, SHA256 `57010129f2a3896dd195b9be39deb75a346087024c3732ee7b549477e61974d1`.\n- Published tree `8179c971edb1f99b8140b7c7a29d575b87a61135` equals the locally checked tree. GitHub created the publication commit; logs pin the unchanged input source commit.\n- Verification run_id/status/model_hash/query_hash/tool_version: N/A; no model checking performed.\n\nFrom the PR checkout:\n\n```bash\nPYTHONDONTWRITEBYTECODE=1 python3 evidence/validation/20260907-p1/inventory.py --check\npython3 -m venv /tmp/uppaal-p1-review-venv\n/tmp/uppaal-p1-review-venv/bin/python -m pip install . PyYAML\n/tmp/uppaal-p1-review-venv/bin/python evidence/validation/20260907-p1/checks.py --output /tmp/uppaal-p1-review-checks\n```\n\nUse a new output directory. Version diagnostic is optional; exact host/sandbox commands and cwd are in the recorded `checks.json` files.\n\n## Checks and limitations\n\n- GitHub [CI run 34152177868](https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34152177868): completed successfully for head `285fd1edd322eab2188cb2aec06c4238860cb4ac`.\n\n- Inventory comparison, source references and 40 artifact hashes match; scope and whitespace checks clean.\n- Host run: **126 unit tests, zero failures/errors/skips**, exit 0; MCP construction and examples exit 0; coordination structure exit 0.\n- Sandbox run: one MCP stdio initialization timeout. Preserved, then resolved by host rerun without source changes.\n- Historical baseline audit: exit 1, 9/20 file hashes plus generator aggregate mismatch. Not a frozen baseline.\n- Current verifyta version diagnostic: sandbox WSL socket error, host 15-second timeout, CLI exit 2 in both. No version or license success inferred.\n- Initial sandbox dependency download failed on network permissions; isolated host installation succeeded (MCP 1.30.0 / PyYAML 6.0.3).\n\n## Acceptance coverage and handoff\n\n- [x] Inventory timing values, finite-domain obligations and symbolic estimator parameters with source provenance.\n- [x] Separate illustrative, policy, normative and calibrated quantities; specify methods instead of inventing calibrated values.\n- [x] Define calibration inputs/units/boundaries and automaton/composition adequacy methodology.\n- [x] Specify external-trace exchange and independent comparison, separating proposed from demonstrated work.\n- [x] Pin primary-source versions/locators and their applicability.\n- [x] Record checks, known failures and remaining empirical/P2 decisions.\n- [ ] Independent scientific reviewer assigned and acceptance recorded.\n\nP2 inputs: equality policy, missing/invalid measurements, incomplete STALE/SUSPECTED mapping, SINR/Rfa units, receipt age versus information age, unbound D_cmd and cross-layer timing/parameter selection. These are documented findings; no neighboring source fixes are included.\n\nThe reviewer must decide whether an explicitly abstract case study is sufficient or deployment calibration is required. V01–V05 are not marked closed; P1 is not self-accepted. No downstream gate is passed; P3/P4 remain dependent on Gate 1.",
+      "title": "P1: validation methodology and provenance for model parameters",
+      "base": "read",
+      "base_sha": "f2f714a26d6b9d9f538ef1a16b53c3e060768a11",
+      "head": "codex/artmus208/15-validation-parameters",
+      "head_sha": "285fd1edd322eab2188cb2aec06c4238860cb4ac",
+      "head_repo_id": 1262280628,
+      "head_repo_full_name": "artmus208/uppaal_sdn_isac",
+      "merge_commit_sha": "7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb",
+      "user": {
+        "login": "artmus208",
+        "name": "artmus208",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+        "id": 59034340
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "comments": [],
+      "created_at": "2026-09-07T18:34:28Z",
+      "updated_at": "2026-09-07T18:38:18Z",
+      "closed_at": "2026-09-07T18:38:18Z",
+      "merged_at": "2026-09-07T18:38:18Z",
+      "commits": 1,
+      "changed_files": 41,
+      "additions": 16797,
+      "deletions": 0,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/16",
+      "display_title": "P1: validation methodology and provenance for model parameters"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/16",
+    "title": "P1: validation methodology and provenance for model parameters",
+    "comments": null,
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/16",
+    "display_title": "P1: validation methodology and provenance for model parameters"
+  },
+  "pr18": {
+    "pull_request": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/18",
+      "number": 18,
+      "state": "closed",
+      "merged": true,
+      "mergeable": false,
+      "draft": false,
+      "body": "The current PHY/MAC/SDN projections and APP XML do not define a working four-layer composition: four service channels disagree on binary/broadcast kind, MAC has no real SDN policy receiver or PHY command peer, and APP retains stubs/placeholders. This P2 specification records the actual instances and proposes an explicit single-BS/single-UAV/controller/service configuration, with ownership, interface and failure rules for the subsequent implementation.\n\n## Handoff contract\n\n- Issue: #17; leave open until independent specification acceptance.\n- Process/deliverable: P2 model_scope_specification, addressing R01/R02/R05/R06 as a candidate specification.\n- Owner account: carwasher. Independent scientific reviewer/integrator: pending assignment.\n- Base ref/commit: origin/read / `7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb`.\n- Head commit: `9d34e54f49311e9c430834b419ac9c88abc6dba9`.\n- Source branch: `codex/carwasher/17-model-scope`; target: `read`.\n- Baseline: `manifests/baselines/reviewer-r1.yaml`, ID `reviewer-r1-candidate`, SHA256 `89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a`.\n- Dependencies: published P0 candidate; PR #16 is merged, but P1 scientific acceptance in #15 remains pending. P2 may start from candidate; no Gate 1 claimed.\n- Write scope / changed paths: all 36 files are under `evidence/instantiation/20260907-p2-scope/**`. Staged bytes matched working bytes; committed scope and whitespace checks succeeded.\n\n## Artifacts and provenance\n\nRead README.md, model-scope-specification.md, interface-contract.md and decisions.md in the scoped directory. inventory.py reproduces 38 pinned source-file checks and 14 XML surfaces; inventory.json records exact hashes, process ordering, declarations and channel endpoints. instance-vector.json specifies the proposed 50 processes (20 core, eight unimplemented boundary processes, 22 observers). scheduler-analysis.md and its generated nine-edge table analyze existing MAC A_SCH.\n\n- Specification SHA256: `524850cba776dd8290cf3f249628823f90150cdc31ee2b868a3e5407835e9d40`.\n- Vector SHA256: `ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45`.\n- SHA256SUMS index SHA256: `0a922b24a267d23c5156026c09b748ab61701018b3d15c9766a470a4d0e5ea25`; 35 other package files indexed and checked.\n- Exact command arrays, environment, timestamps, exit codes and raw-log hashes: checks-native-01/checks.json.\n- Verification evidence run_id/status/model_hash/query_hash/tool_version: N/A; no verifyta invocation or model checking. XML hashes are static provenance only.\n\n## Reproduction and results\n\nFrom this PR checkout:\n\n```text\npython -B evidence/instantiation/20260907-p2-scope/inventory.py --check\npython -B evidence/instantiation/20260907-p2-scope/check_spec.py\npython -B evidence/instantiation/20260907-p2-scope/integrity.py --check\n```\n\nFor isolated installation/full checks on native Windows:\n\n```text\npy -3.14 -m venv .venv\npy -3.14 -B evidence/instantiation/20260907-p2-scope/checks.py --output evidence/instantiation/20260907-p2-scope/reviewer-new --python .venv/Scripts/python.exe --install\n```\n\nUse a new output directory; README gives Unix path substitutions. All ten recorded commands exited 0. Fresh editable install resolved MCP 1.30.0/PyYAML 6.0.3; pip check succeeded. Full suite: **126 tests, no failures/errors/skips**, 61.128 seconds, including real MCP stdio regression. Inventory, vector/partition checks, three invalid-vector probes, coordination, YAML parsing, MCP construction and installed examples completed successfully.\n\nKnown environment limitation: the recorder applies **process-only core.autocrlf=false** for exact-byte Git test fixtures, isolating them from the system input setting. No global/repository configuration changed; results are conditional on that recorded override. The initial diff check preceded staging; final staged and committed checks were also clean.\n\n## Acceptance checklist and limits\n\n- [x] Actual instances and physical-entity interpretation with source hashes.\n- [x] Explicit candidate vector, ordering and construction requirements.\n- [x] Channel kinds, endpoints, shared-data owners, initialization and failure rules.\n- [x] Complete nine-edge A_SCH analysis and clock/reset implications.\n- [x] Finite abstraction analysis without treating syntactic counts as explored states.\n- [x] P1 dispositions and required implementation/review decisions.\n- [x] Reproduction, scoped logs/hashes and limitations.\n- [ ] Independent scientific reviewer assignment and acceptance.\n\nThis PR does not implement the integrated model or adapters, calibrate physical parameters, prove abstraction soundness, freeze a baseline, close R01/R02/R05/R06, or unblock P3/P4. Those remain governed by the manifest and independent review. Out-of-scope findings and the next P2 implementation obligations are recorded in decisions.md; no adjacent source, manuscript or manifest changes are included.\n\nCI: [run 34157759141](https://github.com/artmus208/uppaal_sdn_isac/actions/runs/34157759141) completed successfully for head `9d34e54f49311e9c430834b419ac9c88abc6dba9`. This is software/coordination CI, not scientific verification or gate acceptance.\n",
+      "title": "P2: specify candidate instances, composition interfaces and abstraction",
+      "base": "read",
+      "base_sha": "7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb",
+      "head": "codex/carwasher/17-model-scope",
+      "head_sha": "9d34e54f49311e9c430834b419ac9c88abc6dba9",
+      "head_repo_id": 1262280628,
+      "head_repo_full_name": "artmus208/uppaal_sdn_isac",
+      "merge_commit_sha": "dc7eeb05f1fd3f2a4775428b1cd250363893128d",
+      "user": {
+        "login": "carwasher",
+        "name": "carwasher",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/52461796?v=4",
+        "id": 52461796
+      },
+      "requested_reviewers": [
+        {
+          "login": "artmus208",
+          "name": "artmus208",
+          "email": null,
+          "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+          "id": 59034340
+        }
+      ],
+      "requested_team_reviewers": null,
+      "comments": [],
+      "created_at": "2026-09-07T20:00:48Z",
+      "updated_at": "2026-09-08T02:53:37Z",
+      "closed_at": "2026-09-08T02:53:37Z",
+      "merged_at": "2026-09-08T02:53:37Z",
+      "commits": 1,
+      "changed_files": 36,
+      "additions": 21414,
+      "deletions": 0,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/18",
+      "display_title": "P2: specify candidate instances, composition interfaces and abstraction"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/18",
+    "title": "P2: specify candidate instances, composition interfaces and abstraction",
+    "comments": null,
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/18",
+    "display_title": "P2: specify candidate instances, composition interfaces and abstraction"
+  },
+  "pr20": {
+    "pull_request": {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/20",
+      "number": 20,
+      "state": "closed",
+      "merged": true,
+      "mergeable": false,
+      "draft": false,
+      "body": "The integrated candidate previously rejected an updated AGENTS.md before generation, and its inherited branch included three paths outside #19 scope. This branch starts from current read, contains only the assigned paths, and records AGENTS.md as operational context while preserving strict model/specification/manifest pins. Model and query bytes remain identical to historical run-003.\n\n## Handoff\n\n- Issue: #19, keep open for independent review. Process P2; IDs R01/R02/R05/R06.\n- Owner: artmus208, user-authorized ownership and scoped continuation recorded in #19.\n- Branch: codex/artmus208/19-scoped-candidate; target: read.\n- Base commit: 426cf570138231765b21d518f9d20289e2b11b63 (origin/read); historical base dc7eeb05f1fd3f2a4775428b1cd250363893128d.\n- Tested local implementation: 6f88b49a99d74dd1a5a1d96005d9838b1579c6be; published equivalent: 87d1b1055e2ff320715c8792ce468f4b42775d0f. Identical tree b10e31df888520089f86a7b9eaeb5e841db05181; API commit metadata differs.\n- Final head: 4399fd6c25c10ef8f488bc0dca408fc191e34c5c. Local final dcd6767cc3056b2167770cbfa2179b275684356e has identical tree 2999195d20573e456e58b03178e7ae7910dffb7b; API publication changes commit metadata only.\n- Write scope / changed paths: src/uppaal_mcp/integrated/**, tests/test_sdn_layer.py, evidence/instantiation/20260908-p2-integrated/** only. No AGENTS.md, promts, manifest or standalone generator edits.\n- Baseline: manifests/baselines/reviewer-r1.yaml; reviewer-r1-candidate; SHA256 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a; frozen:false.\n- Dependencies: P0 candidate, merged PR #16 and #18; no scientific acceptance inferred.\n- Artifacts: evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/{checks.json,summary.json,SHA256SUMS,generated/,raw logs}; README criterion mapping and decisions.md.\n- Model hash: 2b6928bda92bfb9bad5c74e91cf78c0b15beb4e7300bea401de8b4dc2cf592a4.\n- Query hash: af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9.\n\n## Validation and reproduction\n\nFresh isolated venv on unrestricted WSL, Python 3.12.3 / MCP 1.30.0 / PyYAML 6.0.3. 21 focused tests and all 147 suite tests exit 0, without skips/errors/failures. Recorder exit 0: generation, pip consistency, versions, coordination, YAML, MCP construction, examples, diff check, real verifier version/help/compile-only. Static audit exit 0.\n\nActual verifier: UPPAAL 5.0.0 rev. 714BA9DB36F49691 (June 2023), Windows executable via WSL. Recorder now translates paths and explicitly forwards UPPAAL_COMPILE_ONLY through WSLENV. Transport regression checks prevent losing that flag. No model-checking query or model-checking license probe was run.\n\n```sh\npython3 -m venv .venv\n.venv/bin/python -m pip install -e . PyYAML\n.venv/bin/python -B -m unittest discover -s tests -p test_sdn_layer.py -k Integrated -v\n.venv/bin/python -B evidence/instantiation/20260908-p2-integrated/checks.py --output evidence/instantiation/20260908-p2-integrated/reviewer-new --python .venv/bin/python --verifyta '/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe'\n.venv/bin/python -B evidence/instantiation/20260908-p2-integrated/audit.py evidence/instantiation/20260908-p2-integrated/reviewer-new\n```\n\nUse a clean committed checkout and new output directory. Save focused logs outside checkout until recording begins. Native Windows uses its own python/verifier paths. Exact commands, overrides, timestamps and log hashes are in checks.json; complete dependency freeze and hardware are saved.\n\n## Acceptance checklist and limits\n\n- [x] Deterministic 20 core + 8 boundary + 22 observer composition and historical XML/query byte equality.\n- [x] Namespace/stub removal and explicit adaptation records.\n- [x] Typed ACK, staged payload, transport loss/deadline and source-age regressions.\n- [x] Explicit abstract bounds, placeholders and observer limitations.\n- [x] Instance/parameter/query/provenance maps and strict unsupported-input rejection; operational AGENTS.md hashes separately retained.\n- [x] Full software/static checks and separate real compile-only diagnostics.\n- [x] Scoped draft handoff; historical evidence unchanged.\n- [ ] Independent scientific acceptance of P2; reviewer/integrator decision and Gate 1 remain pending.\n\nVerification status: not_run. Compile-only is not model checking. Replay tests do not prove timed properties. Uncalibrated abstract bounds, finite sample envelope, APP Crit/Agg placeholders, coalesced observer events and unimplemented application reconfiguration remain. No scientific downstream workstream is unblocked. Prior scope/provenance blockers are resolved for draft review; no merge or gate self-acceptance requested.\n",
+      "title": "P2: add scoped integrated candidate and reproducible static evidence",
+      "base": "read",
+      "base_sha": "426cf570138231765b21d518f9d20289e2b11b63",
+      "head": "codex/artmus208/19-scoped-candidate",
+      "head_sha": "4399fd6c25c10ef8f488bc0dca408fc191e34c5c",
+      "head_repo_id": 1262280628,
+      "head_repo_full_name": "artmus208/uppaal_sdn_isac",
+      "merge_commit_sha": "bb5741b45480944630e1116fb7435effb2026655",
+      "user": {
+        "login": "artmus208",
+        "name": "artmus208",
+        "email": null,
+        "avatar_url": "https://avatars.githubusercontent.com/u/59034340?v=4",
+        "id": 59034340
+      },
+      "requested_reviewers": null,
+      "requested_team_reviewers": null,
+      "comments": [],
+      "created_at": "2026-09-08T20:51:33Z",
+      "updated_at": "2026-09-08T20:52:45Z",
+      "closed_at": "2026-09-08T20:52:45Z",
+      "merged_at": "2026-09-08T20:52:45Z",
+      "commits": 2,
+      "changed_files": 157,
+      "additions": 288696,
+      "deletions": 0,
+      "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/20",
+      "display_title": "P2: add scoped integrated candidate and reproducible static evidence"
+    },
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/20",
+    "title": "P2: add scoped integrated candidate and reproducible static evidence",
+    "comments": null,
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/20",
+    "display_title": "P2: add scoped integrated candidate and reproducible static evidence"
+  },
+  "pr_comments16": {
+    "comments": [],
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/16",
+    "title": "artmus208/uppaal_sdn_isac PR #16 comments",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/16",
+    "display_title": "artmus208/uppaal_sdn_isac PR #16 comments"
+  },
+  "pr_comments18": {
+    "comments": [],
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/18",
+    "title": "artmus208/uppaal_sdn_isac PR #18 comments",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/18",
+    "display_title": "artmus208/uppaal_sdn_isac PR #18 comments"
+  },
+  "pr_comments20": {
+    "comments": [],
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/20",
+    "title": "artmus208/uppaal_sdn_isac PR #20 comments",
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/pull/20",
+    "display_title": "artmus208/uppaal_sdn_isac PR #20 comments"
+  }
+}

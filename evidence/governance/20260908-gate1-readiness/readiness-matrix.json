@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "issue": 21,
+  "base_commit": "bb5741b45480944630e1116fb7435effb2026655",
+  "snapshot_at_utc": "2026-09-08T21:03:09.359Z",
+  "overall_readiness": "blocked",
+  "status_definitions": {
+    "ready": "Artifact/check demonstrated for this row only; not scientific acceptance.",
+    "blocked": "Known required decision or accepted pin is missing.",
+    "not-demonstrated": "Required capability has no qualifying evidence; neither success nor present failure inferred."
+  },
+  "rows": [
+    {
+      "requirement": "P0_candidate_exists",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "ready",
+      "evidence": [
+        {
+          "path": "manifests/baselines/reviewer-r1.yaml",
+          "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/github-snapshot.json",
+          "sha256": "db41b37233f1b871d01ef9e3490d2e9d8f405fb13985c961e5bd2e7312ab702e",
+          "commit": "containing_report_commit"
+        }
+      ],
+      "independent_decision_reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/6#issuecomment-5572059620",
+      "finding": "Historical candidate exists in merged read; #6 authorizes preservation/supersession procedure only.",
+      "required_role": "Independent Integrator",
+      "next_action": "Retain historical candidate when selecting its reviewed successor."
+    },
+    {
+      "requirement": "P1_parameter_decisions_accepted",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "blocked",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/github-snapshot.json",
+          "sha256": "db41b37233f1b871d01ef9e3490d2e9d8f405fb13985c961e5bd2e7312ab702e",
+          "commit": "containing_report_commit"
+        },
+        {
+          "path": "evidence/validation/20260907-p1/validation-report.md",
+          "sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/parameter-set.json",
+          "sha256": "33b3c54bb51090f40b85e3b1e795cf6ef8ebf2c1affe8de6047fe93370d26911",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Issue #15 has no comments; PR #16 has no reviews/discussion decisions. Method and abstract values are supplied, acceptance is absent.",
+      "required_role": "Independent P1 scientific reviewer / Integrator",
+      "next_action": "Record whether abstract units/bounds and calibration-method-only claims suffice; accept or reject exact P1 package and chosen parameter set in #15."
+    },
+    {
+      "requirement": "P2_integrated_model_accepted",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "blocked",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/github-snapshot.json",
+          "sha256": "db41b37233f1b871d01ef9e3490d2e9d8f405fb13985c961e5bd2e7312ab702e",
+          "commit": "containing_report_commit"
+        },
+        {
+          "path": "evidence/instantiation/20260907-p2-scope/decisions.md",
+          "sha256": "22d7ba4b526f01408c4aa23fbb04533a86d43b8d6549ff75f19466e2ae27a68d",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        },
+        {
+          "path": "evidence/instantiation/20260908-p2-integrated/decisions.md",
+          "sha256": "b68f126ea158bd69cedeb060a2092946cba4506a8b51d09122bf90f691d77221",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Merged #18/#20 and successful software checks do not supply a scientific decision; reviews/discussion timelines are empty and #19 comments only hand off candidate evidence.",
+      "required_role": "Independent P2 scientific reviewer / Integrator",
+      "next_action": "Accept/reject specification #17 and implementation #19 with explicit dispositions for the semantic questions in decision-proposal.md."
+    },
+    {
+      "requirement": "integrated_model_present",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "ready",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/generated/model.xml",
+          "sha256": "2b6928bda92bfb9bad5c74e91cf78c0b15beb4e7300bea401de8b4dc2cf592a4",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/comparison.json",
+          "sha256": "50c5efeb659ae1af4f9d3f0b6b759f0beb96afbdc09cf9c915e1ce52b1e8e8c2",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Exact regenerated integrated XML contains 50 processes: 20 core, eight boundary and 22 observers; bytes equal merged PR #20.",
+      "required_role": "Independent P2 reviewer",
+      "next_action": "Use these exact bytes as the candidate under review; scientific acceptance is tracked separately."
+    },
+    {
+      "requirement": "interface_contract_accepted",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "blocked",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/github-snapshot.json",
+          "sha256": "db41b37233f1b871d01ef9e3490d2e9d8f405fb13985c961e5bd2e7312ab702e",
+          "commit": "containing_report_commit"
+        },
+        {
+          "path": "evidence/instantiation/20260907-p2-scope/interface-contract.md",
+          "sha256": "9b625912c264cdaa09da73adcb322b696b1be371031da6aff01da80fc02ffe51",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/interface-map.json",
+          "sha256": "3c61d92e236fc6e8d2dd19ad9b741dfa869a0f8a20d4e7d5644e6317f5b8e299",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Proposed contract and implementation maps exist; no independent acceptance of ownership, mappings, staging, age or event semantics is recorded.",
+      "required_role": "Independent P2 reviewer",
+      "next_action": "Explicitly accept or require corrections to interface-contract.md plus implemented adaptations; review policy/location ambiguity, admission and observer semantics."
+    },
+    {
+      "requirement": "model_query_parameter_and_instance_hashes_pinned",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "blocked",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/proposed-baseline.json",
+          "sha256": "da860c59b483ac35ebe6fb8524ebad0c47b0fdcad6854449ef25d23c70c8cdab",
+          "commit": "containing_report_commit"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/comparison.json",
+          "sha256": "50c5efeb659ae1af4f9d3f0b6b759f0beb96afbdc09cf9c915e1ce52b1e8e8c2",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "manifests/baselines/reviewer-r1.yaml",
+          "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "All candidate byte hashes/maps are available, but the active historical manifest has null canonical sets and no integrated-model pin; proposal is not an accepted successor.",
+      "required_role": "Coordinator with independent Integrator decision",
+      "next_action": "After science/license decisions, create separate manifest-specific supersession Issue; freeze accepted hashes without rewriting historical evidence."
+    },
+    {
+      "requirement": "static_validation_passed",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "ready",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/checks.json",
+          "sha256": "5a8714a1e7d9f07c842f82988d7d4b06e74d34049a6da2eeaaa800ae3532cf67",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/comparison.json",
+          "sha256": "50c5efeb659ae1af4f9d3f0b6b759f0beb96afbdc09cf9c915e1ce52b1e8e8c2",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/checks.json",
+          "sha256": "bc957616729f475016699c59f7694ebc53a378575ca3cffa9a91ded85eebea0e",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Fresh generation, XML/location/query references, all metadata except execution commit, 47 source files, 113 historical checksums and original static audit agree; 147 software tests exit 0. Historical real compile-only exit 0 applies to identical XML/query bytes.",
+      "required_role": "Independent evidence reviewer",
+      "next_action": "Audit recorded raw logs and reproduce in a new directory; do not turn static results into property verdicts."
+    },
+    {
+      "requirement": "working_verifyta_and_license_confirmed",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "not-demonstrated",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/verifyta-version.stdout.log",
+          "sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/summary.json",
+          "sha256": "aeaa4f173b01264d67f4237a0b1d76c165e7e407e9ee6da3e93079c5d0d84029",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        },
+        {
+          "path": "evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/checks.json",
+          "sha256": "bc957616729f475016699c59f7694ebc53a378575ca3cffa9a91ded85eebea0e",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Real version exits 0; historical compile-only exits 0. Both runs explicitly lack a model-checking license probe, so present license availability is unknown.",
+      "required_role": "Authorized Runner, reviewed by independent Integrator",
+      "next_action": "Create a separate narrowly scoped runner contract for a minimal licensing smoke, with exact model/query/command, environment and claim limits; execute only under that contract."
+    },
+    {
+      "requirement": "active_write_scopes_do_not_overlap",
+      "requirement_source": "manifests/collaboration-v1.yaml#gates.gate_1.requires",
+      "status": "ready",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/scope-audit.json",
+          "sha256": "4daeac62bc7e8ff43710b9cff45fced8c0c83a63abfcab42b0fd436c4feaaef9",
+          "commit": "containing_report_commit"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/github-snapshot.json",
+          "sha256": "db41b37233f1b871d01ef9e3490d2e9d8f405fb13985c961e5bd2e7312ab702e",
+          "commit": "containing_report_commit"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "No pair overlaps among the conservatively treated ten open Issues plus #21, at recorded capture time.",
+      "required_role": "Coordinator",
+      "next_action": "Recheck active scopes before new assignments and freeze; scope of #6 includes shared manifest paths and requires coordination before a successor Issue."
+    },
+    {
+      "requirement": "canonical_manuscript_source_and_hash",
+      "requirement_source": "manifests/v1.md#4-P0-Baseline; CONTRIBUTING.md#10-Gates",
+      "status": "blocked",
+      "evidence": [
+        {
+          "path": "levels_tex/samplepaper.tex",
+          "sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        },
+        {
+          "path": "pdfs/018100004273.pdf",
+          "sha256": "31ebd85a51c3ccf858b46088d3e94db11e99ac533e0e130148a0be451efae109",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        },
+        {
+          "path": "manifests/baselines/reviewer-r1.yaml",
+          "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Source and PDF exact hashes recorded, but inspected inputs provide no explicit successor canonical-source selection or build/PDF-comparison disposition. No equivalence or mismatch inferred.",
+      "required_role": "Independent Integrator / manuscript owner",
+      "next_action": "Select canonical source and record build status plus PDF comparison result or explicit unresolved disposition in the successor baseline; manuscript edits, if needed, belong to P9a/P9b."
+    },
+    {
+      "requirement": "source_generator_hashes_and_clean_provenance",
+      "requirement_source": "manifests/v1.md#4-P0-Baseline; CONTRIBUTING.md#10-Gates",
+      "status": "ready",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/comparison.json",
+          "sha256": "50c5efeb659ae1af4f9d3f0b6b759f0beb96afbdc09cf9c915e1ce52b1e8e8c2",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/proposed-baseline.json",
+          "sha256": "da860c59b483ac35ebe6fb8524ebad0c47b0fdcad6854449ef25d23c70c8cdab",
+          "commit": "containing_report_commit"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "All 39 strict inputs, seven implementation files and operational AGENTS bytes equal base Git blobs; source and generator aggregate constructions are explicit and distinct from historical definitions.",
+      "required_role": "Independent Integrator",
+      "next_action": "Approve the hash constructions and exact selected bytes before inserting them in a successor manifest."
+    },
+    {
+      "requirement": "query_ids_and_scientific_coverage",
+      "requirement_source": "manifests/v1.md#4-P0-Baseline; CONTRIBUTING.md#10-Gates",
+      "status": "blocked",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/query-map.json",
+          "sha256": "cee791090504547e87f8fa8266445d5e0727dd8a77bb7dec45e0bc31be12b96f",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/validation/20260907-p1/validation-report.md",
+          "sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "81 unique query IDs, no excluded source query, and valid process/location references. Coverage acceptance is absent: finite queue/resource labels are not numerical queue/retry bounds required by C01; modified observers need claim review.",
+      "required_role": "Independent scientific reviewer with P1/P2 owners",
+      "next_action": "Map accepted candidate queries to intended C01/C02 claims and explicitly resolve absent numeric queue/retry semantics before freezing; no P3 work starts here."
+    },
+    {
+      "requirement": "tool_version_and_execution_parameters_recorded",
+      "requirement_source": "manifests/v1.md#4-P0-Baseline; CONTRIBUTING.md#10-Gates",
+      "status": "ready",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/checks.json",
+          "sha256": "5a8714a1e7d9f07c842f82988d7d4b06e74d34049a6da2eeaaa800ae3532cf67",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/verifyta-version.stdout.log",
+          "sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+          "commit": "780ba277a78d0962d980a7baf9bcd88867569dc1"
+        },
+        {
+          "path": "evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/checks.json",
+          "sha256": "bc957616729f475016699c59f7694ebc53a378575ca3cffa9a91ded85eebea0e",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "Current version and exact audit commands/overrides are saved; historical compile-only command/flag is pinned. Future model-checking options remain unselected, explicitly so.",
+      "required_role": "Runner / Coordinator",
+      "next_action": "Select and record later model-checking options and per-run resource limits under the appropriate contract after Gate 1; version success does not resolve license row."
+    },
+    {
+      "requirement": "independent_gate_record_commit_time_owner",
+      "requirement_source": "manifests/v1.md#4-P0-Baseline; CONTRIBUTING.md#10-Gates",
+      "status": "blocked",
+      "evidence": [
+        {
+          "path": "evidence/governance/20260908-gate1-readiness/github-snapshot.json",
+          "sha256": "db41b37233f1b871d01ef9e3490d2e9d8f405fb13985c961e5bd2e7312ab702e",
+          "commit": "containing_report_commit"
+        },
+        {
+          "path": "manifests/baselines/reviewer-r1.yaml",
+          "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+          "commit": "bb5741b45480944630e1116fb7435effb2026655"
+        }
+      ],
+      "independent_decision_reference": null,
+      "finding": "No accepted Gate 1 decision exists in inspected references; historical gate is pending/frozen:false. #6 decision authorizes procedure only.",
+      "required_role": "Independent Integrator and Gate 1 coordinator",
+      "next_action": "After every blocker is resolved, record accepted/rejected with exact commit, timestamp, reviewer identity, source/generator/model/query hashes, parameter set and vector in a separate governance Issue."
+    }
+  ],
+  "verification_status": "not_run",
+  "gate_1_accepted": false
+}

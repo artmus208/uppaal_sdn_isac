@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "configuration_id": "p2-single-uav-abstract-v1-proposal",
+  "source_commit": "7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb",
+  "status": "proposed_not_implemented_not_accepted",
+  "baseline_id": "reviewer-r1-candidate",
+  "physical_time_scale_seconds": null,
+  "time_unit": "abstract_model_unit",
+  "entities": {
+    "base_stations": 1,
+    "devices_total": 1,
+    "uav_devices_subset": 1,
+    "radio_links": 1,
+    "sensing_targets": 1,
+    "sdn_ric_controllers": 1,
+    "service_sessions": 1,
+    "aggregate_queue_classes": 1,
+    "explicit_packet_queues": 0,
+    "explicit_handover_destination_cells": 0
+  },
+  "bindings": {
+    "device_0": {
+      "kind": "UAV",
+      "serving_bs": 0,
+      "link": 0,
+      "service": 0
+    },
+    "link_0": {
+      "bs": 0,
+      "device": 0,
+      "target": 0
+    },
+    "service_0": {
+      "controller": 0,
+      "device": 0,
+      "class": "SVC_UAV"
+    }
+  },
+  "groups_in_system_order": [
+    {
+      "group": "phy",
+      "source": "generated:phy:with_observers",
+      "retain": [
+        "A_CH",
+        "A_SIG",
+        "A_BM",
+        "A_SQ",
+        "A_PH"
+      ]
+    },
+    {
+      "group": "mac",
+      "source": "generated:mac:with_observers",
+      "retain": [
+        "A_SCH",
+        "A_Q",
+        "A_BUF",
+        "A_RSRC",
+        "A_MAC_AGG"
+      ]
+    },
+    {
+      "group": "sdn",
+      "source": "generated:sdn:with_observers",
+      "retain": [
+        "A_MON",
+        "A_RISK",
+        "A_POLICY",
+        "A_RULE",
+        "A_REC",
+        "A_SDN_AGG"
+      ]
+    },
+    {
+      "group": "app",
+      "source": "stored:app",
+      "retain": [
+        "Req",
+        "Sla",
+        "Crit",
+        "Agg"
+      ]
+    },
+    {
+      "group": "boundary",
+      "source": "new_templates_required",
+      "retain": [
+        "E_PHY_INPUT",
+        "E_MAC_LOAD",
+        "E_FAULT",
+        "E_SERVICE",
+        "B_PHY_MAC",
+        "B_POLICY",
+        "B_ADMISSION",
+        "B_KPI"
+      ]
+    },
+    {
+      "group": "obs_phy",
+      "source": "generated:phy:with_observers",
+      "retain": [
+        "ObsSenseReport",
+        "ObsFreshness",
+        "ObsBeamRecovery"
+      ]
+    },
+    {
+      "group": "obs_mac",
+      "source": "generated:mac:with_observers",
+      "retain": [
+        "ObsPhyAck",
+        "ObsQueueCritical",
+        "ObsSensingCritical",
+        "ObsBufferOverflow",
+        "ObsMacReportFreshness"
+      ]
+    },
+    {
+      "group": "obs_sdn",
+      "source": "generated:sdn:with_observers",
+      "retain": [
+        "ObsRuleMiss",
+        "ObsRecovery",
+        "ObsAdmission",
+        "ObsStaleTelemetry",
+        "ObsCommandAck",
+        "ObsSensingDecision"
+      ]
+    },
+    {
+      "group": "obs_app",
+      "source": "stored:app",
+      "retain": [
+        "ObsAdmission",
+        "ObsWarn",
+        "ObsViolation",
+        "ObsFresh",
+        "ObsUpdate",
+        "ObsFa",
+        "ObsMiss",
+        "ObsSafety"
+      ]
+    }
+  ],
+  "remove": {
+    "generated:phy:with_observers": [
+      "ENV_CH",
+      "ENV_TARGET",
+      "ENV_MAC",
+      "ENV_NET"
+    ],
+    "generated:mac:with_observers": [
+      "A_ENV_MAC"
+    ],
+    "generated:sdn:with_observers": [
+      "A_ENV_SDN"
+    ],
+    "stored:app": [
+      "Sdn",
+      "Env",
+      "Kpi",
+      "Sink"
+    ]
+  },
+  "new_template_contracts": "interface-contract.md#boundary-processes",
+  "application_placeholders_retained_without_behavior": [
+    "app_Crit_0",
+    "app_Agg_0"
+  ],
+  "optional_security_instances": 0,
+  "extended_phy_observers": 0,
+  "count_per_retained_process": 1,
+  "qualified_process_name": "<group>_<original_process>_0",
+  "expected_process_counts": {
+    "core": 20,
+    "boundary": 8,
+    "observers": 22,
+    "total": 50
+  },
+  "parameter_policy": {
+    "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+    "D_cmd": 1,
+    "D_bus": 1,
+    "T_input": 5,
+    "T_mac_tick": 5,
+    "T_demand": 1,
+    "T_complete": 40,
+    "fault_window": [
+      12,
+      13
+    ],
+    "max_fault_events": 1,
+    "max_requests_per_service": 1,
+    "max_outstanding_per_command_kind": 1,
+    "freshness_warn_age": 5,
+    "freshness_expire_age": 10,
+    "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+  },
+  "implementation_preconditions": [
+    "replace standalone environments with specified boundary processes",
+    "namespace declarations and localize component clocks",
+    "resolve service channel kinds and pre-synchronization payload staging",
+    "separate rule and controller acknowledgements",
+    "add missing lower-layer policy/command and KPI mappings",
+    "retain failure and timeout behavior including absent receivers",
+    "review APP placeholder scope and lack of complete service lifecycle",
+    "obtain independent parameter/interface decision before Gate 1"
+  ]
+}

@@ -1,0 +1,460 @@
+[
+  {
+    "id": "phy-01",
+    "source": "A[] not deadlock",
+    "candidate": "A[] not deadlock",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-02",
+    "source": "E<> A_PH.PHYNormal",
+    "candidate": "E<> phy_A_PH_0.PHYNormal",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-03",
+    "source": "E<> A_PH.PHYSensingDegraded",
+    "candidate": "E<> phy_A_PH_0.PHYSensingDegraded",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-04",
+    "source": "E<> A_PH.PHYCommunicationDegraded",
+    "candidate": "E<> phy_A_PH_0.PHYCommunicationDegraded",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-05",
+    "source": "E<> A_PH.PHYJointDegraded",
+    "candidate": "E<> phy_A_PH_0.PHYJointDegraded",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-06",
+    "source": "A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))",
+    "candidate": "A[] (phy_A_PH_0.PHYNormal imply (phy_comm_ok && phy_sensing_qos_ok))",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-07",
+    "source": "A[] (ch_enabled_count <= 1)",
+    "candidate": "A[] (phy_ch_enabled_count <= 1)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-08",
+    "source": "A[] (sq_enabled_count <= 1)",
+    "candidate": "A[] (phy_sq_enabled_count <= 1)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-09",
+    "source": "A[] (A_BM.BeamRecover imply c_rec <= D_BM)",
+    "candidate": "A[] (phy_A_BM_0.BeamRecover imply phy_c_rec <= phy_D_BM)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-10",
+    "source": "A[] not ObsSenseReport.Violation",
+    "candidate": "A[] not obs_phy_ObsSenseReport_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-11",
+    "source": "A[] not ObsFreshness.Violation",
+    "candidate": "A[] not obs_phy_ObsFreshness_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-12",
+    "source": "A[] not ObsBeamRecovery.Violation",
+    "candidate": "A[] not obs_phy_ObsBeamRecovery_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-13",
+    "source": "A[] (ass_ch() imply not A_CH.ContractViolation_CH)",
+    "candidate": "A[] (phy_ass_ch() imply not phy_A_CH_0.ContractViolation_CH)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-14",
+    "source": "A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)",
+    "candidate": "A[] (phy_ass_sig() imply not phy_A_SIG_0.ContractViolation_SIG)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-15",
+    "source": "A[] (ass_bm() imply not A_BM.ContractViolation_BM)",
+    "candidate": "A[] (phy_ass_bm() imply not phy_A_BM_0.ContractViolation_BM)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-16",
+    "source": "A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)",
+    "candidate": "A[] (phy_ass_sq() imply not phy_A_SQ_0.ContractViolation_SQ)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "phy-17",
+    "source": "A[] (ass_ph() imply not A_PH.ContractViolation_PH)",
+    "candidate": "A[] (phy_ass_ph() imply not phy_A_PH_0.ContractViolation_PH)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-01",
+    "source": "A[] not deadlock",
+    "candidate": "A[] not deadlock",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-02",
+    "source": "A[] (resourceClass == RES_EXHAUSTED imply !silent_accept)",
+    "candidate": "A[] (mac_resourceClass == mac_RES_EXHAUSTED imply !mac_silent_accept)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-03",
+    "source": "A[] (A_SCH.WaitPHYAck imply c_phy_ack <= D_phy_ack)",
+    "candidate": "A[] (mac_A_SCH_0.WaitPHYAck imply mac_c_phy_ack <= mac_D_phy_ack)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-04",
+    "source": "A[] not ObsPhyAck.Violation",
+    "candidate": "A[] not obs_mac_ObsPhyAck_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-05",
+    "source": "A[] not ObsQueueCritical.Violation",
+    "candidate": "A[] not obs_mac_ObsQueueCritical_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-06",
+    "source": "A[] not ObsSensingCritical.Violation",
+    "candidate": "A[] not obs_mac_ObsSensingCritical_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-07",
+    "source": "E<> A_SCH.SelectMode",
+    "candidate": "E<> mac_A_SCH_0.SelectMode",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-08",
+    "source": "E<> A_MAC_AGG.ReportSent",
+    "candidate": "E<> mac_A_MAC_AGG_0.ReportSent",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "mac-09",
+    "source": "A[] policy_enabled_count >= 1",
+    "candidate": "A[] mac_policy_enabled_count >= 1",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-01",
+    "source": "A[] not deadlock",
+    "candidate": "A[] not deadlock",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-02",
+    "source": "A[] (A_RULE.RuleInstallPending imply c_rule <= D_rule_install)",
+    "candidate": "A[] (sdn_A_RULE_0.RuleInstallPending imply sdn_c_rule <= sdn_D_rule_install)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-03",
+    "source": "A[] (telemetryClass == TEL_STALE imply !optimistic_reconfig)",
+    "candidate": "A[] (sdn_telemetryClass == sdn_TEL_STALE imply !sdn_optimistic_reconfig)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-04",
+    "source": "A[] (telemetryClass == TEL_MISSING imply !optimistic_reconfig)",
+    "candidate": "A[] (sdn_telemetryClass == sdn_TEL_MISSING imply !sdn_optimistic_reconfig)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-05",
+    "source": "A[] (recoveryClass == REC_FAILED imply failure_report_sent)",
+    "candidate": "A[] (sdn_recoveryClass == sdn_REC_FAILED imply sdn_failure_report_sent)",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-06",
+    "source": "A[] not ObsRuleMiss.Violation",
+    "candidate": "A[] not obs_sdn_ObsRuleMiss_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-07",
+    "source": "A[] not ObsRecovery.Violation",
+    "candidate": "A[] not obs_sdn_ObsRecovery_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-08",
+    "source": "A[] not ObsAdmission.Violation",
+    "candidate": "A[] not obs_sdn_ObsAdmission_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-09",
+    "source": "A[] not ObsStaleTelemetry.Violation",
+    "candidate": "A[] not obs_sdn_ObsStaleTelemetry_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-10",
+    "source": "E<> A_POLICY.Evaluate",
+    "candidate": "E<> sdn_A_POLICY_0.Evaluate",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-11",
+    "source": "E<> A_RULE.RuleTimeout",
+    "candidate": "E<> sdn_A_RULE_0.RuleTimeout",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-12",
+    "source": "E<> A_REC.RecoveryFailed",
+    "candidate": "E<> sdn_A_REC_0.RecoveryFailed",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "sdn-13",
+    "source": "A[] policy_enabled_count >= 1",
+    "candidate": "A[] sdn_policy_enabled_count >= 1",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-01",
+    "source": "A[] not deadlock",
+    "candidate": "A[] not deadlock",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-02",
+    "source": "A[] not ObsAdmission.Violation",
+    "candidate": "A[] not obs_app_ObsAdmission_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-03",
+    "source": "A[] not ObsWarn.Violation",
+    "candidate": "A[] not obs_app_ObsWarn_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-04",
+    "source": "A[] not ObsViolation.Violation",
+    "candidate": "A[] not obs_app_ObsViolation_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-05",
+    "source": "A[] not ObsFresh.Violation",
+    "candidate": "A[] not obs_app_ObsFresh_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-06",
+    "source": "A[] not ObsUpdate.Violation",
+    "candidate": "A[] not obs_app_ObsUpdate_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-07",
+    "source": "A[] not ObsFa.Violation",
+    "candidate": "A[] not obs_app_ObsFa_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-08",
+    "source": "A[] not ObsMiss.Violation",
+    "candidate": "A[] not obs_app_ObsMiss_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-09",
+    "source": "A[] not ObsSafety.Violation",
+    "candidate": "A[] not obs_app_ObsSafety_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-10",
+    "source": "A[] detection_kpi_consistent()",
+    "candidate": "A[] app_detection_kpi_consistent()",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-11",
+    "source": "A[] not (criticalityClass == CRIT_SAFETY && admissionClass == ADM_DEGRADED && !gSafetyAllowsDegraded())",
+    "candidate": "A[] not (app_criticalityClass == app_CRIT_SAFETY && app_admissionClass == app_ADM_DEGRADED && !app_gSafetyAllowsDegraded())",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-12",
+    "source": "E<> Req.Accepted",
+    "candidate": "E<> app_Req_0.Accepted",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-13",
+    "source": "E<> Req.AcceptedDegraded",
+    "candidate": "E<> app_Req_0.AcceptedDegraded",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "app-14",
+    "source": "E<> Req.Rejected",
+    "candidate": "E<> app_Req_0.Rejected",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_phy_ObsSenseReport_0",
+    "candidate": "E<> obs_phy_ObsSenseReport_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_phy_ObsFreshness_0",
+    "candidate": "E<> obs_phy_ObsFreshness_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_phy_ObsBeamRecovery_0",
+    "candidate": "E<> obs_phy_ObsBeamRecovery_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_mac_ObsPhyAck_0",
+    "candidate": "E<> obs_mac_ObsPhyAck_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_mac_ObsQueueCritical_0",
+    "candidate": "E<> obs_mac_ObsQueueCritical_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_mac_ObsSensingCritical_0",
+    "candidate": "E<> obs_mac_ObsSensingCritical_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_mac_ObsBufferOverflow_0",
+    "candidate": "E<> obs_mac_ObsBufferOverflow_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_mac_ObsMacReportFreshness_0",
+    "candidate": "E<> obs_mac_ObsMacReportFreshness_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_sdn_ObsRuleMiss_0",
+    "candidate": "E<> obs_sdn_ObsRuleMiss_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_sdn_ObsRecovery_0",
+    "candidate": "E<> obs_sdn_ObsRecovery_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_sdn_ObsAdmission_0",
+    "candidate": "E<> obs_sdn_ObsAdmission_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_sdn_ObsStaleTelemetry_0",
+    "candidate": "E<> obs_sdn_ObsStaleTelemetry_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_sdn_ObsCommandAck_0",
+    "candidate": "E<> obs_sdn_ObsCommandAck_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_sdn_ObsSensingDecision_0",
+    "candidate": "E<> obs_sdn_ObsSensingDecision_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsAdmission_0",
+    "candidate": "E<> obs_app_ObsAdmission_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsWarn_0",
+    "candidate": "E<> obs_app_ObsWarn_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsViolation_0",
+    "candidate": "E<> obs_app_ObsViolation_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsFresh_0",
+    "candidate": "E<> obs_app_ObsFresh_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsUpdate_0",
+    "candidate": "E<> obs_app_ObsUpdate_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsFa_0",
+    "candidate": "E<> obs_app_ObsFa_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsMiss_0",
+    "candidate": "E<> obs_app_ObsMiss_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "reach-obs_app_ObsSafety_0",
+    "candidate": "E<> obs_app_ObsSafety_0.Violation",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "integrated-01",
+    "candidate": "A[] not bus_protocol_error",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "integrated-02",
+    "candidate": "E<> app_Req_0.Accepted",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "integrated-03",
+    "candidate": "E<> bus_admission_timeout",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "integrated-04",
+    "candidate": "E<> bus_schedule_loss",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "integrated-05",
+    "candidate": "E<> bus_fault_delivered",
+    "status": "candidate_unverified"
+  },
+  {
+    "id": "integrated-06",
+    "candidate": "A[] not deadlock",
+    "status": "candidate_unverified"
+  }
+]

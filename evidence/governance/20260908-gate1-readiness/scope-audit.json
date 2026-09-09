@@ -1,0 +1,108 @@
+{
+  "captured_at_utc": "2026-09-08T21:03:09.359Z",
+  "source": {
+    "path": "evidence/governance/20260908-gate1-readiness/github-snapshot.json",
+    "sha256": "db41b37233f1b871d01ef9e3490d2e9d8f405fb13985c961e5bd2e7312ab702e",
+    "commit": "containing_report_commit"
+  },
+  "conservative_active_set": "All open Issues, including in-review historical work, plus #21.",
+  "scopes": [
+    {
+      "issue": 19,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+      "paths": [
+        "src/uppaal_mcp/integrated/**",
+        "tests/test_sdn_layer.py",
+        "evidence/instantiation/20260908-p2-integrated/**"
+      ]
+    },
+    {
+      "issue": 17,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+      "paths": [
+        "evidence/instantiation/20260907-p2-scope/**"
+      ]
+    },
+    {
+      "issue": 15,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+      "paths": [
+        "evidence/validation/20260907-p1/**"
+      ]
+    },
+    {
+      "issue": 13,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/13",
+      "paths": [
+        "evidence/healthcheck/20260907-postmerge/**"
+      ]
+    },
+    {
+      "issue": 6,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+      "paths": [
+        "manifests/baselines/reviewer-r1.yaml",
+        "manifests/collaboration-v1.yaml",
+        "scripts/check_coordination.py",
+        "tests/test_coordination.py",
+        "evidence/governance/20260906-baseline/**"
+      ]
+    },
+    {
+      "issue": 5,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/5",
+      "paths": [
+        "src/uppaal_mcp/config.py",
+        "mcp_conf.conf",
+        "tests/test_config.py",
+        "evidence/healthcheck/20260906-config/**",
+        "README.md"
+      ]
+    },
+    {
+      "issue": 4,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/4",
+      "paths": [
+        "src/uppaal_mcp/cli.py",
+        "tests/test_cli.py",
+        "evidence/healthcheck/20260906-cli/**"
+      ]
+    },
+    {
+      "issue": 3,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/3",
+      "paths": [
+        "pyproject.toml",
+        "src/uppaal_mcp/server.py",
+        "tests/test_phy_layer.py",
+        "tests/test_mcp_startup.py",
+        "evidence/healthcheck/20260906-mcp/**"
+      ]
+    },
+    {
+      "issue": 2,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/2",
+      "paths": [
+        "src/uppaal_mcp/verifyta.py",
+        "tests/test_verifyta_parser.py",
+        "evidence/healthcheck/20260906-runner/**"
+      ]
+    },
+    {
+      "issue": 1,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/1",
+      "paths": [
+        "evidence/healthcheck/20260906-remediation/**"
+      ]
+    },
+    {
+      "issue": 21,
+      "reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/21",
+      "paths": [
+        "evidence/governance/20260908-gate1-readiness/**"
+      ]
+    }
+  ],
+  "conflicts": [],
+  "limitation": "Snapshot only; recheck live Issues before future freeze or new assignments."
+}

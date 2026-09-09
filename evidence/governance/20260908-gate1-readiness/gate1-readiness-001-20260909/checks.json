@@ -1,0 +1,265 @@
+{
+  "run_id": "gate1-readiness-001-20260909",
+  "issue": 21,
+  "base_commit": "bb5741b45480944630e1116fb7435effb2026655",
+  "source_commit": "fa23946ac2fe52e2c157751cf9e6fe88e6179220",
+  "worktree_status_at_start": "",
+  "base_to_execution_changed_paths": [
+    "evidence/governance/20260908-gate1-readiness/.gitattributes",
+    "evidence/governance/20260908-gate1-readiness/README.md",
+    "evidence/governance/20260908-gate1-readiness/audit.py",
+    "evidence/governance/20260908-gate1-readiness/github-snapshot.json"
+  ],
+  "cwd": "/tmp/gate1-readiness-20260908",
+  "evidence_class": "static_and_software_readiness",
+  "verification_status": "not_run",
+  "licensing_model_checking_status": "not_tested",
+  "python": "/tmp/gate1-readiness-20260908/.venv/bin/python",
+  "operating_environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "hardware": {
+    "cpu": "x86_64",
+    "logical_cpu_count": 8,
+    "ram_bytes": 8251891712
+  },
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUTF8": "1",
+    "core.autocrlf": "false"
+  },
+  "commands": [
+    {
+      "name": "versions",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-c",
+        "import sys,importlib.metadata as m; print(sys.version); print(\"mcp=\"+m.version(\"mcp\")); print(\"PyYAML=\"+m.version(\"PyYAML\"))"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:28.946332+00:00",
+      "finished_at_utc": "2026-09-08T21:05:29.042162+00:00",
+      "runtime_seconds": 0.09582729699991432,
+      "status": "success",
+      "stdout_path": "versions.stdout.log",
+      "stdout_sha256": "614e71060f6a6aed1a9c5b2f7bd4730c8bac84d64292fdad1422338cc6c22663",
+      "stderr_path": "versions.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:29.042558+00:00",
+      "finished_at_utc": "2026-09-08T21:05:29.677409+00:00",
+      "runtime_seconds": 0.6348477309999225,
+      "status": "success",
+      "stdout_path": "pip-check.stdout.log",
+      "stdout_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "stderr_path": "pip-check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "pip-freeze",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:29.677843+00:00",
+      "finished_at_utc": "2026-09-08T21:05:30.195449+00:00",
+      "runtime_seconds": 0.5176120659999697,
+      "status": "success",
+      "stdout_path": "pip-freeze.stdout.log",
+      "stdout_sha256": "532fc7afe3fa804713c4eb1fa7a75d9bd7bdae24c52e924f843dbe1ef750b53b",
+      "stderr_path": "pip-freeze.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "generate",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-B",
+        "-m",
+        "uppaal_mcp.integrated.generator",
+        "--output",
+        "/tmp/gate1-readiness-20260908/evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909/generated"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:30.195884+00:00",
+      "finished_at_utc": "2026-09-08T21:05:30.599653+00:00",
+      "runtime_seconds": 0.40377484399994046,
+      "status": "success",
+      "stdout_path": "generate.stdout.log",
+      "stdout_sha256": "0171133019371c02e4539f30e31ec71e296d26e9fb3e9f1fc7ac6681b3419f3d",
+      "stderr_path": "generate.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "compare",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-B",
+        "/tmp/gate1-readiness-20260908/evidence/governance/20260908-gate1-readiness/audit.py",
+        "--output",
+        "/tmp/gate1-readiness-20260908/evidence/governance/20260908-gate1-readiness/gate1-readiness-001-20260909",
+        "--compare-only"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:30.600437+00:00",
+      "finished_at_utc": "2026-09-08T21:05:30.915722+00:00",
+      "runtime_seconds": 0.3152908389999993,
+      "status": "success",
+      "stdout_path": "compare.stdout.log",
+      "stdout_sha256": "e1deb422ca2fc55d82a77f5768da58d19fd594e172be7c6db278c990d57aa6e7",
+      "stderr_path": "compare.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "historical-audit",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-B",
+        "evidence/instantiation/20260908-p2-integrated/audit.py",
+        "/tmp/gate1-readiness-20260908/evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:30.916215+00:00",
+      "finished_at_utc": "2026-09-08T21:05:31.336822+00:00",
+      "runtime_seconds": 0.420613354000011,
+      "status": "success",
+      "stdout_path": "historical-audit.stdout.log",
+      "stdout_sha256": "9a823dc12d8ede452551cf04ac863e22423d0ca1d7f1e31c2b159aca5def4df2",
+      "stderr_path": "historical-audit.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:31.337368+00:00",
+      "finished_at_utc": "2026-09-08T21:05:31.411017+00:00",
+      "runtime_seconds": 0.07365621999997529,
+      "status": "success",
+      "stdout_path": "coordination.stdout.log",
+      "stdout_sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a",
+      "stderr_path": "coordination.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "yaml",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-c",
+        "import pathlib,yaml; p=list(pathlib.Path(\"manifests\").rglob(\"*.yaml\")); [yaml.safe_load(x.read_text()) for x in p]; print(len(p),\"YAML manifests parsed\")"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:31.411541+00:00",
+      "finished_at_utc": "2026-09-08T21:05:31.503493+00:00",
+      "runtime_seconds": 0.09195944900000086,
+      "status": "success",
+      "stdout_path": "yaml.stdout.log",
+      "stdout_sha256": "0af93f145690325428f312b744ee3b07b5e8b70312c2589c174d3da8936eba43",
+      "stderr_path": "yaml.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:05:31.504043+00:00",
+      "finished_at_utc": "2026-09-08T21:06:05.449133+00:00",
+      "runtime_seconds": 33.94509731300002,
+      "status": "success",
+      "stdout_path": "unit-tests.stdout.log",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "stderr_path": "unit-tests.stderr.log",
+      "stderr_sha256": "4523d227a725c96c21f8ae6784e32fd70920893eb2a242faac7768d507f5c7de"
+    },
+    {
+      "name": "mcp-construction",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:06:05.449760+00:00",
+      "finished_at_utc": "2026-09-08T21:06:06.270648+00:00",
+      "runtime_seconds": 0.8208946360000482,
+      "status": "success",
+      "stdout_path": "mcp-construction.stdout.log",
+      "stdout_sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+      "stderr_path": "mcp-construction.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "examples",
+      "command": [
+        "/tmp/gate1-readiness-20260908/.venv/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:06:06.271183+00:00",
+      "finished_at_utc": "2026-09-08T21:06:06.652773+00:00",
+      "runtime_seconds": 0.3815994369999771,
+      "status": "success",
+      "stdout_path": "examples.stdout.log",
+      "stdout_sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+      "stderr_path": "examples.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "bb5741b45480944630e1116fb7435effb2026655...HEAD"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:06:06.653549+00:00",
+      "finished_at_utc": "2026-09-08T21:06:06.659662+00:00",
+      "runtime_seconds": 0.0061172580000175,
+      "status": "success",
+      "stdout_path": "diff-check.stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_path": "diff-check.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "verifyta-version",
+      "command": [
+        "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "started_at_utc": "2026-09-08T21:06:06.660747+00:00",
+      "finished_at_utc": "2026-09-08T21:06:07.528432+00:00",
+      "runtime_seconds": 0.8676877579999882,
+      "status": "success",
+      "stdout_path": "verifyta-version.stdout.log",
+      "stdout_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+      "stderr_path": "verifyta-version.stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
