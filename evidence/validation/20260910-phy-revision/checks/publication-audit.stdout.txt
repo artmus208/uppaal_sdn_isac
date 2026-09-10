@@ -1,0 +1,77 @@
+{
+  "kind": "publication_integrity_audit",
+  "base_commit": "4480f1087b93f48541a925590ae82ca86fa4b808",
+  "hashes": {
+    "validation-report.md": "cabda2a06ef942f7d572a1bf8db8396f522ca2c86f60440d0357f678f2403b8b",
+    "validation-report.before-phy-revision-20260910.md": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+    "validation-report.phy-revision-20260910.patch": "28b8033e25816f758ea6f116ec27eb88f7df2b51490cdb97f6f51d46a26de460",
+    "validation-report.phy-revision-20260910.json": "7e51be5a26bb98c9137404dc31a85b8b076ed5e416ae52bea27f3d8955e55e94"
+  },
+  "patch_reconstruction": "exact",
+  "historical_P1": "unchanged",
+  "local_links": [
+    {
+      "document": "validation-report.md",
+      "target": "validation-report.before-phy-revision-20260910.md"
+    },
+    {
+      "document": "README.md",
+      "target": "validation-report.md"
+    },
+    {
+      "document": "README.md",
+      "target": "issue-contract.md"
+    },
+    {
+      "document": "README.md",
+      "target": "validation-report.before-phy-revision-20260910.md"
+    },
+    {
+      "document": "README.md",
+      "target": "validation-report.md"
+    },
+    {
+      "document": "README.md",
+      "target": "validation-report.before-phy-revision-20260910.md"
+    },
+    {
+      "document": "README.md",
+      "target": "validation-report.phy-revision-20260910.patch"
+    },
+    {
+      "document": "README.md",
+      "target": "validation-report.phy-revision-20260910.json"
+    },
+    {
+      "document": "README.md",
+      "target": "check_publication.py"
+    },
+    {
+      "document": "README.md",
+      "target": "run_checks.py"
+    }
+  ],
+  "changed_paths": [
+    "evidence/validation/20260910-phy-revision/.gitattributes",
+    "evidence/validation/20260910-phy-revision/README.md",
+    "evidence/validation/20260910-phy-revision/check_publication.py",
+    "evidence/validation/20260910-phy-revision/checks.json",
+    "evidence/validation/20260910-phy-revision/checks/dependencies.stderr.txt",
+    "evidence/validation/20260910-phy-revision/checks/dependencies.stdout.txt",
+    "evidence/validation/20260910-phy-revision/checks/pip-check.stderr.txt",
+    "evidence/validation/20260910-phy-revision/checks/pip-check.stdout.txt",
+    "evidence/validation/20260910-phy-revision/checks/publication-audit.stderr.txt",
+    "evidence/validation/20260910-phy-revision/checks/publication-audit.stdout.txt",
+    "evidence/validation/20260910-phy-revision/checks/python-version.stderr.txt",
+    "evidence/validation/20260910-phy-revision/checks/python-version.stdout.txt",
+    "evidence/validation/20260910-phy-revision/issue-contract.md",
+    "evidence/validation/20260910-phy-revision/run_checks.py",
+    "evidence/validation/20260910-phy-revision/validation-report.before-phy-revision-20260910.md",
+    "evidence/validation/20260910-phy-revision/validation-report.md",
+    "evidence/validation/20260910-phy-revision/validation-report.phy-revision-20260910.json",
+    "evidence/validation/20260910-phy-revision/validation-report.phy-revision-20260910.patch"
+  ],
+  "scope_check": "success",
+  "verification": "not_run",
+  "scientific_acceptance": "not_claimed"
+}
