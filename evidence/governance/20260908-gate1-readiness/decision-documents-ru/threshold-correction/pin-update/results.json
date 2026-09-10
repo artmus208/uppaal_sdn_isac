@@ -1,0 +1,22 @@
+{
+  "source_commit": "9850f667be786dfb7b1c553b21f6a056e4b1a1c7",
+  "command": [
+    "/tmp/threshold-env/bin/python",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+  "exit_code": 0,
+  "model_hash": "2b6928bda92bfb9bad5c74e91cf78c0b15beb4e7300bea401de8b4dc2cf592a4",
+  "query_hash": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9",
+  "model_matches_previous": true,
+  "queries_match_previous": true,
+  "verification": "not performed",
+  "previous_query_file": "evidence/instantiation/20260908-p2-integrated/reviewer-scoped-005-20260908/generated/queries.q",
+  "previous_query_hash": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9"
+}

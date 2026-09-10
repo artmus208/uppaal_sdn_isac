@@ -134,6 +134,7 @@ def default_profile(name: str = "default") -> dict:
 def classify_sample(meas: dict, cfg: dict | None = None, profile: dict | None = None) -> dict:
     """Small deterministic classifier for examples and MCP smoke tests.
 
+    Equality belongs to the worse adjacent class, including the configured age limit.
     This is not a radio estimator. It only demonstrates the alpha_PHY contract:
     continuous values are converted outside UPPAAL into finite classes.
     """
@@ -146,10 +147,10 @@ def classify_sample(meas: dict, cfg: dict | None = None, profile: dict | None = 
     blockage = bool(meas.get("blockage", False))
     result = {
         "profile": profile["name"],
-        "SINRClass": "OUTAGE" if sinr < 0 else "LOW" if sinr < 10 else "OK" if sinr < 25 else "HIGH",
-        "PdClass": "FAILED" if pd < 0.5 else "LOW" if pd < 0.9 else "OK",
-        "RfaClass": "CRITICAL" if rfa > 0.2 else "HIGH" if rfa > 0.05 else "OK",
-        "AoSClass": "EXPIRED" if aos > float(cfg.get("AoS_max", 10)) else "FRESH",
+        "SINRClass": "OUTAGE" if sinr <= 0 else "LOW" if sinr <= 10 else "OK" if sinr <= 25 else "HIGH",
+        "PdClass": "FAILED" if pd <= 0.5 else "LOW" if pd <= 0.9 else "OK",
+        "RfaClass": "CRITICAL" if rfa >= 0.2 else "HIGH" if rfa >= 0.05 else "OK",
+        "AoSClass": "EXPIRED" if aos >= float(cfg.get("AoS_max", 10)) else "FRESH",
         "BlockageClass": "CONFIRMED" if blockage else "NONE",
         "boundary_policy": profile["boundary_policy"],
     }
