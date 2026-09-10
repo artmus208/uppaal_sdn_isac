@@ -1,7 +1,6 @@
 """The amendment changes one exact pin; it never disables source validation."""
 import hashlib
 from pathlib import Path
-import subprocess
 import unittest
 from unittest.mock import patch
 from uppaal_mcp.integrated.inputs import load, SOURCE_PIN_REVISIONS
@@ -16,7 +15,9 @@ class PinRevisionTests(unittest.TestCase):
         self.assertEqual(provenance[SOURCE], SOURCE_PIN_REVISIONS[SOURCE][1])
 
     def test_old_and_unreviewed_sources_are_rejected(self):
-        old = subprocess.check_output(['git', 'show', 'bb5741b45480944630e1116fb7435effb2026655:' + SOURCE], cwd=ROOT)
+        # Keep this regression runnable in shallow CI checkouts, without Git history.
+        old = (ROOT / 'evidence/governance/20260908-gate1-readiness/'
+               'decision-documents-ru/threshold-correction/ci-fix/phy-alpha-before.txt').read_bytes()
         self.assertEqual(hashlib.sha256(old).hexdigest(), SOURCE_PIN_REVISIONS[SOURCE][0])
         read = Path.read_bytes
         for raw in (old, (ROOT / SOURCE).read_bytes() + b'\n# unreviewed edit\n'):
