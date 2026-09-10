@@ -1,0 +1,35 @@
+{
+  "kind": "P1_report_publication",
+  "issue": 26,
+  "owner": "carwasher",
+  "base_ref": "read",
+  "base_commit": "4480f1087b93f48541a925590ae82ca86fa4b808",
+  "branch": "codex/carwasher/26-phy-report-revision",
+  "write_scope": "evidence/validation/20260910-phy-revision/**",
+  "original_revision_record": "validation-report.phy-revision-20260910.json",
+  "publication_transform": "none; four local artifacts copied byte-for-byte",
+  "input_hashes": {
+    "AGENTS.md": "e4fde1df5f51a582d2b0f06daef9a2a98d3a96195c3201584d7d5e801d038b28",
+    "CONTRIBUTING.md": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+    "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+    "manifests/collaboration-v1.yaml": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+    "manifests/baselines/reviewer-r1.yaml": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+    "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+    "evidence/validation/20260907-p1/validation-report.md": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+    "evidence/validation/20260907-p1/parameter-table.md": "1b15e97bdd7044fb21f165e0b113c25f98193efb9375acb32f16e85228a4b9f6",
+    "evidence/validation/20260907-p1/inventory.json": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4",
+    "evidence/instantiation/20260907-p2-scope/decisions.md": "22d7ba4b526f01408c4aa23fbb04533a86d43b8d6549ff75f19466e2ae27a68d",
+    "evidence/instantiation/20260908-p2-integrated/decisions.md": "b68f126ea158bd69cedeb060a2092946cba4506a8b51d09122bf90f691d77221"
+  },
+  "PR24_snapshot": {
+    "date_UTC": "2026-09-10",
+    "state": "open",
+    "merged": false,
+    "head": "601de5344a0f856a75470192629790efe027b0f3",
+    "consumed_as_base": false
+  },
+  "verification": "not_run",
+  "empirical_validation": "not_run",
+  "scientific_acceptance": "pending_independent_review",
+  "Gate1": "not_claimed"
+}

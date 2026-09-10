@@ -1,0 +1,65 @@
+{
+  "kind": "local_PHY_report_revision",
+  "created_at_utc": "2026-09-10T13:28:27.338867+00:00",
+  "target": "/mnt/d/ПЗ психология/validation-report.md",
+  "original_path": "/mnt/d/ПЗ психология/validation-report.before-phy-revision-20260910.md",
+  "original_sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+  "revised_sha256": "cabda2a06ef942f7d572a1bf8db8396f522ca2c86f60440d0357f678f2403b8b",
+  "patch_path": "/mnt/d/ПЗ психология/validation-report.phy-revision-20260910.patch",
+  "patch_sha256": "28b8033e25816f758ea6f116ec27eb88f7df2b51490cdb97f6f51d46a26de460",
+  "source_commit": "4480f1087b93f48541a925590ae82ca86fa4b808",
+  "PHY_TeX_sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+  "checks": {
+    "all_43_timing_names_retained": true,
+    "PHY_timing_constants_checked": 12,
+    "PHY_domains_retained": 28,
+    "math_display_pairs": 10,
+    "local_links_checked": 1,
+    "duplicate_adjacent_nonempty_lines": 0,
+    "patch_reproduces_exact_revised_bytes": true,
+    "original_backup_unchanged": true,
+    "CFAR_algebraic_identity_examples": [
+      {
+        "training_cells": 1,
+        "design_probability": 0.001,
+        "factor": 999.0,
+        "recovered_probability": 0.001
+      },
+      {
+        "training_cells": 1,
+        "design_probability": 1e-06,
+        "factor": 999999.0,
+        "recovered_probability": 1e-06
+      },
+      {
+        "training_cells": 16,
+        "design_probability": 0.001,
+        "factor": 8.638824416951874,
+        "recovered_probability": 0.000999999999999999
+      },
+      {
+        "training_cells": 16,
+        "design_probability": 1e-06,
+        "factor": 21.94197929058648,
+        "recovered_probability": 1.0000000000000014e-06
+      },
+      {
+        "training_cells": 32,
+        "design_probability": 0.001,
+        "factor": 7.710008344055026,
+        "recovered_probability": 0.0009999999999999998
+      },
+      {
+        "training_cells": 32,
+        "design_probability": 1e-06,
+        "factor": 17.277648833903747,
+        "recovered_probability": 9.999999999999978e-07
+      }
+    ]
+  },
+  "verification": "not_run",
+  "empirical_validation": "not_run",
+  "repository_sources_modified": false,
+  "status": "author_local_revision_not_independent_acceptance",
+  "note": "CFAR examples are algebraic sanity checks of the stated conditional coefficient, not detector simulations or measurements. Software tests from Issue #25 do not validate the scientific claims of this local revision."
+}
