@@ -1,0 +1,16 @@
+{
+  "authorization": "Прямое поручение пользователя: согласованно обновить привязку и повторить проверки",
+  "date": "2026-09-10",
+  "base_commit": "b01324c5a998220ffd76be0b628486152ef6c621",
+  "path": "src/uppaal_mcp/phy/alpha.py",
+  "old_sha256": "7f77814e3ad6fafa15c32df5e86accfef00995d193fa6182f178802f3ac809e9",
+  "new_sha256": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e",
+  "rule": "При равенстве порогу выбирается худший соседний класс",
+  "scope": [
+    "src/uppaal_mcp/integrated/inputs.py",
+    "tests/test_integrated_pin_revision.py",
+    "evidence/governance/20260908-gate1-readiness/decision-documents-ru/**"
+  ],
+  "acceptance": "Точная новая сумма принимается; старая и произвольная изменённая версия отклоняются; сборка и программные проверки повторяются",
+  "gate_1": "Не принимается этим изменением"
+}

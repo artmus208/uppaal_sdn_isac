@@ -1,0 +1,33 @@
+{
+  "source_commit": "e27ab64f14a6c94866bbda59bdbeb325f24b41a7",
+  "checks": [
+    {
+      "name": "thresholds",
+      "command": [
+        "/tmp/threshold-env/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_phy_threshold_boundaries.py",
+        "-v"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "full",
+      "command": [
+        "/tmp/threshold-env/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1
+    }
+  ]
+}

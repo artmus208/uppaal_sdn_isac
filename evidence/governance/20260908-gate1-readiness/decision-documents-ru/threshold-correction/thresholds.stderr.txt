@@ -1,0 +1,8 @@
+test_all_threshold_neighbours (test_phy_threshold_boundaries.ThresholdTests.test_all_threshold_neighbours) ... ok
+test_custom_age_limit (test_phy_threshold_boundaries.ThresholdTests.test_custom_age_limit) ... ok
+test_interval_interiors (test_phy_threshold_boundaries.ThresholdTests.test_interval_interiors) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK

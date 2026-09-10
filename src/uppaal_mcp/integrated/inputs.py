@@ -14,6 +14,14 @@ PINS = {
     'inventory.json': 'ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195',
     'instance-vector.json': 'ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45',
 }
+# User-authorized amendment, 2026-09-10: conservative threshold equality.
+# Preserve the historical inventory; accept only the exact replacement bytes.
+SOURCE_PIN_REVISIONS = {
+    'src/uppaal_mcp/phy/alpha.py': (
+        '7f77814e3ad6fafa15c32df5e86accfef00995d193fa6182f178802f3ac809e9',
+        'cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e',
+    ),
+}
 # Explicit operational context only; scientific manifests and all model inputs
 # remain strict pins. Keep both historical and observed bytes in the evidence.
 CONTEXT_DOCUMENTS = frozenset({'AGENTS.md'})
@@ -43,9 +51,15 @@ def load(root: Path):
                              'actual_sha256': sha(raw),
                              'role': 'operational_context_not_model_input'}
             continue
-        if sha(raw) != record['sha256']:
+        expected = record['sha256']
+        if name in SOURCE_PIN_REVISIONS:
+            historical, replacement = SOURCE_PIN_REVISIONS[name]
+            if expected != historical:
+                raise ValueError(f'unsupported source revision origin: {name}')
+            expected = replacement
+        if sha(raw) != expected:
             raise ValueError(f'pinned source changed: {name}')
-        provenance[name] = record['sha256']
+        provenance[name] = expected
     models, queries = {}, {}
     for layer in ('phy', 'mac', 'sdn', 'app'):
         key = 'stored:app' if layer == 'app' else f'generated:{layer}:with_observers'
