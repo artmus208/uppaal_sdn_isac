@@ -1,0 +1,80 @@
+{
+  "threshold_equalities": [
+    {
+      "input": "SINR_c",
+      "value": 0,
+      "expected": "OUTAGE",
+      "actual": "OUTAGE"
+    },
+    {
+      "input": "SINR_c",
+      "value": 10,
+      "expected": "LOW",
+      "actual": "LOW"
+    },
+    {
+      "input": "SINR_c",
+      "value": 25,
+      "expected": "OK",
+      "actual": "OK"
+    },
+    {
+      "input": "Pd",
+      "value": 0.5,
+      "expected": "FAILED",
+      "actual": "FAILED"
+    },
+    {
+      "input": "Pd",
+      "value": 0.9,
+      "expected": "LOW",
+      "actual": "LOW"
+    },
+    {
+      "input": "Rfa",
+      "value": 0.05,
+      "expected": "HIGH",
+      "actual": "HIGH"
+    },
+    {
+      "input": "Rfa",
+      "value": 0.2,
+      "expected": "CRITICAL",
+      "actual": "CRITICAL"
+    },
+    {
+      "input": "AoS_CTRL",
+      "value": 10,
+      "expected": "EXPIRED",
+      "actual": "EXPIRED"
+    }
+  ],
+  "omitted_measurements": {
+    "profile": "default",
+    "SINRClass": "OK",
+    "PdClass": "OK",
+    "RfaClass": "OK",
+    "AoSClass": "FRESH",
+    "BlockageClass": "NONE",
+    "boundary_policy": "worse_class"
+  },
+  "nonfinite_nan_input": {
+    "profile": "default",
+    "SINRClass": "HIGH",
+    "PdClass": "OK",
+    "RfaClass": "OK",
+    "AoSClass": "FRESH",
+    "BlockageClass": "NONE",
+    "boundary_policy": "worse_class"
+  },
+  "out_of_domain_input": {
+    "profile": "default",
+    "SINRClass": "OK",
+    "PdClass": "OK",
+    "RfaClass": "OK",
+    "AoSClass": "FRESH",
+    "BlockageClass": "NONE",
+    "boundary_policy": "worse_class"
+  },
+  "interpretation": "Equality correction present. Missing/nonfinite/domain validation proposed by report is not implemented in the excluded demo mapper; these results do not describe the finite environment validity handling."
+}
