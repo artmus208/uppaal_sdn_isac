@@ -1,0 +1,683 @@
+[
+  {
+    "name": "old",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\old-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\old.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\old.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:11.696794+00:00",
+    "runtime_seconds": 0.10068351600784808,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "old.stdout.txt",
+    "stderr": "old.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "afaea5e4705c749b85f2ffa8fa405840eb9660345cf956cb7e2d56bfa81cbca6",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-001-20260916-old",
+    "source_commit": "1babf8c382586c77b902e732f2d8f550f737f3de",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-001-20260916/run.json",
+    "model_path": "runs/ack-001-20260916/old.xml",
+    "query_path": "runs/ack-001-20260916/old.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 3,
+      "bridge_deadline": 1
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-001-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      }
+    ]
+  },
+  {
+    "name": "fixed",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\fixed-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\fixed.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\fixed.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:11.841393+00:00",
+    "runtime_seconds": 0.09104831899458077,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed.stdout.txt",
+    "stderr": "fixed.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "46bde0a83594cd97ce6f4c52a79166e9736533c2627cdd63e4cda1c2bca97c43",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-001-20260916-fixed",
+    "source_commit": "1babf8c382586c77b902e732f2d8f550f737f3de",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-001-20260916/run.json",
+    "model_path": "runs/ack-001-20260916/fixed.xml",
+    "query_path": "runs/ack-001-20260916/fixed.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 3,
+      "bridge_deadline": 1
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-001-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      }
+    ]
+  },
+  {
+    "name": "late_timeout",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_timeout-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_timeout.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_timeout.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:11.949525+00:00",
+    "runtime_seconds": 0.09383534600783605,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_timeout.stdout.txt",
+    "stderr": "late_timeout.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "76dc02226f0fbb5abcc87224c97760c839dd7d158f86c0b847f9eb89fd9c65b3",
+    "query_hash": "ca969848586317513488bc28f99937f1e2a06ec77adad740834a391cf25bd122",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-001-20260916-late_timeout",
+    "source_commit": "1babf8c382586c77b902e732f2d8f550f737f3de",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-001-20260916/run.json",
+    "model_path": "runs/ack-001-20260916/late_timeout.xml",
+    "query_path": "runs/ack-001-20260916/late_timeout.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 4,
+      "bridge_deadline": 1
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-001-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+        "verdict": "not_available",
+        "trace_reference": null
+      }
+    ]
+  },
+  {
+    "name": "late_ack",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_ack-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_ack.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_ack.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:12.060667+00:00",
+    "runtime_seconds": 0.09520676000101957,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_ack.stdout.txt",
+    "stderr": "late_ack.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "111b7700612c05555c2bea59f71cb94216ffdd7b520d268287d32d7ab86f58ed",
+    "query_hash": "5e823c3d978537088d98a700aca715db6594027b82c25cbcc4a8f9d8fdd532de",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+      "E<> mac_A_SCH_0.Idle && mac_obs_ack_late && !mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-001-20260916-late_ack",
+    "source_commit": "1babf8c382586c77b902e732f2d8f550f737f3de",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-001-20260916/run.json",
+    "model_path": "runs/ack-001-20260916/late_ack.xml",
+    "query_path": "runs/ack-001-20260916/late_ack.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 4,
+      "bridge_deadline": 4
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-001-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+        "verdict": "not_available",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && mac_obs_ack_late && !mac_phy_ack_timeout",
+        "verdict": "not_available",
+        "trace_reference": null
+      }
+    ]
+  },
+  {
+    "name": "old",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\old-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\old.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\old.q"
+    ],
+    "started_at_utc": "2026-09-16T20:01:17.821297+00:00",
+    "runtime_seconds": 0.19972631099517457,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "old.stdout.txt",
+    "stderr": "old.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "512652234b3c61fe41928d93d79d992afc8d83edde61a823b13dbc6c6f14667d",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-002-20260916-old",
+    "source_commit": "7bc0dda318795d8c3b9848565152b54d74c9b846",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-002-20260916/run.json",
+    "model_path": "runs/ack-002-20260916/old.xml",
+    "query_path": "runs/ack-002-20260916/old.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 3,
+      "bridge_deadline": 1
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-002-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "NOT satisfied",
+        "trace_reference": "runs/ack-002-20260916/old-trace-1"
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/old-trace-2"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/old-trace-3"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/old-trace-4"
+      }
+    ]
+  },
+  {
+    "name": "fixed",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\fixed-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\fixed.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\fixed.q"
+    ],
+    "started_at_utc": "2026-09-16T20:01:18.035209+00:00",
+    "runtime_seconds": 0.17854966399318073,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed.stdout.txt",
+    "stderr": "fixed.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "ba6a93052c23eaf6ed5eb56cf6d7090d84feff30ed1b867820d9d6635875c378",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-002-20260916-fixed",
+    "source_commit": "7bc0dda318795d8c3b9848565152b54d74c9b846",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-002-20260916/run.json",
+    "model_path": "runs/ack-002-20260916/fixed.xml",
+    "query_path": "runs/ack-002-20260916/fixed.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 3,
+      "bridge_deadline": 1
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-002-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "satisfied",
+        "trace_reference": null
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/fixed-trace-2"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/fixed-trace-3"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/fixed-trace-4"
+      }
+    ]
+  },
+  {
+    "name": "late_timeout",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\late_timeout-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\late_timeout.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\late_timeout.q"
+    ],
+    "started_at_utc": "2026-09-16T20:01:18.229587+00:00",
+    "runtime_seconds": 0.2209927519870689,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_timeout.stdout.txt",
+    "stderr": "late_timeout.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "4162dccb3ad97d388d97777e7dccfb5119aac6e22796b28e89fe47ef386e00f4",
+    "query_hash": "ca969848586317513488bc28f99937f1e2a06ec77adad740834a391cf25bd122",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-002-20260916-late_timeout",
+    "source_commit": "7bc0dda318795d8c3b9848565152b54d74c9b846",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-002-20260916/run.json",
+    "model_path": "runs/ack-002-20260916/late_timeout.xml",
+    "query_path": "runs/ack-002-20260916/late_timeout.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 4,
+      "bridge_deadline": 1
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-002-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "NOT satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_timeout-trace-1"
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_timeout-trace-2"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_timeout-trace-3"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_timeout-trace-4"
+      },
+      {
+        "query": "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_timeout-trace-5"
+      }
+    ]
+  },
+  {
+    "name": "late_ack",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\late_ack-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\late_ack.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-002-20260916\\late_ack.q"
+    ],
+    "started_at_utc": "2026-09-16T20:01:18.465477+00:00",
+    "runtime_seconds": 0.2312676309957169,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_ack.stdout.txt",
+    "stderr": "late_ack.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "f6839315a5d5247b6860d05541cc5b76b2cf87b45e3eea104c8531392a646bf5",
+    "query_hash": "5e823c3d978537088d98a700aca715db6594027b82c25cbcc4a8f9d8fdd532de",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+      "E<> mac_A_SCH_0.Idle && mac_obs_ack_late && !mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer",
+    "run_id": "ack-002-20260916-late_ack",
+    "source_commit": "7bc0dda318795d8c3b9848565152b54d74c9b846",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "environment_reference": "runs/ack-002-20260916/run.json",
+    "model_path": "runs/ack-002-20260916/late_ack.xml",
+    "query_path": "runs/ack-002-20260916/late_ack.q",
+    "parameter_set": {
+      "monitor_deadline": 3,
+      "functional_deadline": 4,
+      "bridge_deadline": 4
+    },
+    "instance_vector": {
+      "scheduler": 1,
+      "bridge": 1,
+      "observer": 1,
+      "replacement_test_peer": 1
+    },
+    "artifact_directory": "runs/ack-002-20260916",
+    "evidence_class": "focused corrective diagnostic; not full integrated-model verification",
+    "result_per_query": [
+      {
+        "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+        "verdict": "NOT satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_ack-trace-1"
+      },
+      {
+        "query": "E<> fixture_completed == 2",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_ack-trace-2"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_ack-trace-3"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_ack-trace-4"
+      },
+      {
+        "query": "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_ack-trace-5"
+      },
+      {
+        "query": "E<> mac_A_SCH_0.Idle && mac_obs_ack_late && !mac_phy_ack_timeout",
+        "verdict": "satisfied",
+        "trace_reference": "runs/ack-002-20260916/late_ack-trace-6"
+      }
+    ]
+  }
+]
