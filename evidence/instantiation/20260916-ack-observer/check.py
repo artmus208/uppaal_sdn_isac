@@ -64,7 +64,7 @@ def focused(xml, kind):
     for sync in ['mac_mac_tick!', 'mac_phy_kpi_report!', 'mac_mac_report?',
                  'phy_waveform_config?', 'phy_sensing_mode_cmd?', 'phy_power_cmd?']:
         edge(env, 'Ready', 'Ready', sync=sync)
-    nta.append(env)
+    nta.insert(list(nta).index(nta.find('system')), env)
     for t in nta.findall('template'):
         normalize_order(t)
     nta.find('system').text = ('mac_A_SCH_0=mac_Template_A_SCH();\n'
@@ -73,7 +73,7 @@ def focused(xml, kind):
         'peer=AckTestPeer();\n'
         'system mac_A_SCH_0, obs_mac_ObsPhyAck_0, boundary_B_PHY_MAC_0, peer;')
     ET.indent(nta)
-    return ET.tostring(nta, encoding='utf-8', xml_declaration=True)
+    return ET.tostring(nta, encoding='utf-8', xml_declaration=True, short_empty_elements=False) + b'\n'
 
 
 def winpath(p):
@@ -129,7 +129,7 @@ def main():
     version = execute('version', [args.verifyta, '--version']).decode(errors='replace')
     # Exact whole integrated XML is parsed by the real engine using an explicit
     # trivial query. This is deliberately NOT the ACK property of the whole model.
-    (out/'parse-only.q').write_text('A[] true\n')
+    (out/'parse-only.q').write_text('E<> true\n')
     execute('integrated-parser', [args.verifyta, '-q', winpath(out/'integrated-model.xml'), winpath(out/'parse-only.q')], ['satisfied'])
     old = subprocess.check_output(['git', 'show', BASE+':'+MODEL_PATH], cwd=ROOT)
     for kind, source in [('old', old), ('fixed', c.model_xml.encode()), ('late_timeout', c.model_xml.encode()), ('late_ack', c.model_xml.encode())]:
@@ -168,7 +168,7 @@ def main():
          'parameter_set':c.metadata['parameter_set'], 'instance_vector':c.metadata['instance_vector'],
          'model_hash':SHA(c.model_xml.encode()), 'query_hash':SHA(c.queries.encode()),
          'source_hashes':c.metadata['source_hashes'], 'implementation_sources':c.metadata['implementation_sources'],
-         'claim_limits':'Focused diagnostics only. Full integrated ACK query not evaluated. A[] true only checks engine parsing/execution. No Gate 1/P3 acceptance.',
+         'claim_limits':'Focused diagnostics only. Full integrated ACK query not evaluated. E<> true only checks engine parsing/execution. No Gate 1/P3 acceptance.',
          'all_expected_verdicts_match':all(x.get('matches_expectation', True) for x in commands),
          'all_commands_exit_zero':all(x['exit_code']==0 for x in commands)})
     (out/'SHA256SUMS').write_text(''.join(f'{SHA(p.read_bytes())}  {p.name}\n' for p in sorted(out.iterdir()) if p.is_file()))

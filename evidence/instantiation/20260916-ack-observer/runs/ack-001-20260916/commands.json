@@ -1,0 +1,280 @@
+[
+  {
+    "name": "version",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "--version"
+    ],
+    "started_at_utc": "2026-09-16T19:59:10.926085+00:00",
+    "runtime_seconds": 0.7355846450082026,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "version.stdout.txt",
+    "stderr": "version.stderr.txt"
+  },
+  {
+    "name": "integrated-parser",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\integrated-model.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\parse-only.q"
+    ],
+    "started_at_utc": "2026-09-16T19:59:11.665818+00:00",
+    "runtime_seconds": 60.00604810200457,
+    "exit_code": null,
+    "status": "timeout",
+    "verdicts": [],
+    "expected": [
+      "satisfied"
+    ],
+    "stdout": "integrated-parser.stdout.txt",
+    "stderr": "integrated-parser.stderr.txt",
+    "matches_expectation": false
+  },
+  {
+    "name": "old",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\old-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\old.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\old.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:11.696794+00:00",
+    "runtime_seconds": 0.10068351600784808,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "old.stdout.txt",
+    "stderr": "old.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "afaea5e4705c749b85f2ffa8fa405840eb9660345cf956cb7e2d56bfa81cbca6",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "fixed",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\fixed-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\fixed.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\fixed.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:11.841393+00:00",
+    "runtime_seconds": 0.09104831899458077,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed.stdout.txt",
+    "stderr": "fixed.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "46bde0a83594cd97ce6f4c52a79166e9736533c2627cdd63e4cda1c2bca97c43",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "late_timeout",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_timeout-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_timeout.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_timeout.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:11.949525+00:00",
+    "runtime_seconds": 0.09383534600783605,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_timeout.stdout.txt",
+    "stderr": "late_timeout.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "76dc02226f0fbb5abcc87224c97760c839dd7d158f86c0b847f9eb89fd9c65b3",
+    "query_hash": "ca969848586317513488bc28f99937f1e2a06ec77adad740834a391cf25bd122",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "late_ack",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_ack-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_ack.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-001-20260916\\late_ack.q"
+    ],
+    "started_at_utc": "2026-09-16T20:00:12.060667+00:00",
+    "runtime_seconds": 0.09520676000101957,
+    "exit_code": 1,
+    "status": "error",
+    "verdicts": [],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_ack.stdout.txt",
+    "stderr": "late_ack.stderr.txt",
+    "matches_expectation": false,
+    "model_hash": "111b7700612c05555c2bea59f71cb94216ffdd7b520d268287d32d7ab86f58ed",
+    "query_hash": "5e823c3d978537088d98a700aca715db6594027b82c25cbcc4a8f9d8fdd532de",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+      "E<> mac_A_SCH_0.Idle && mac_obs_ack_late && !mac_phy_ack_timeout"
+    ],
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "software",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "started_at_utc": "2026-09-16T20:00:12.157392+00:00",
+    "runtime_seconds": 24.679515707990504,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "software.stdout.txt",
+    "stderr": "software.stderr.txt"
+  },
+  {
+    "name": "mcp",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "started_at_utc": "2026-09-16T20:00:36.837306+00:00",
+    "runtime_seconds": 0.7445924549974734,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "mcp.stdout.txt",
+    "stderr": "mcp.stderr.txt"
+  },
+  {
+    "name": "examples",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/uppaal-verifyta",
+      "list-examples"
+    ],
+    "started_at_utc": "2026-09-16T20:00:37.582287+00:00",
+    "runtime_seconds": 0.35010179999517277,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "examples.stdout.txt",
+    "stderr": "examples.stderr.txt"
+  },
+  {
+    "name": "coordination",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_coordination.py",
+      "-v"
+    ],
+    "started_at_utc": "2026-09-16T20:00:37.932767+00:00",
+    "runtime_seconds": 0.23289262800244614,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "coordination.stdout.txt",
+    "stderr": "coordination.stderr.txt"
+  },
+  {
+    "name": "diff",
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "9f98a3138d1cc421fb2f58678cd7a6c6d94dea8d",
+      "--",
+      "src",
+      "tests"
+    ],
+    "started_at_utc": "2026-09-16T20:00:38.166083+00:00",
+    "runtime_seconds": 0.004441545010195114,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "diff.stdout.txt",
+    "stderr": "diff.stderr.txt"
+  }
+]

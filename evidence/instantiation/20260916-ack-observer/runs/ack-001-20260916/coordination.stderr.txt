@@ -1,0 +1,11 @@
+test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... ok
+test_invalid_input_and_construction (test_coordination.HashAuditTests.test_invalid_input_and_construction) ... ok
+test_missing_input_and_immutable_output (test_coordination.HashAuditTests.test_missing_input_and_immutable_output) ... Hash audit error: [Errno 17] File exists: '/tmp/tmptiqwdyvq/result.json'
+ok
+test_canonical_storage (test_coordination.RunStorageTests.test_canonical_storage) ... ok
+test_invalid_mappings (test_coordination.RunStorageTests.test_invalid_mappings) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.169s
+
+OK
