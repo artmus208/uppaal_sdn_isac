@@ -57,6 +57,9 @@ def focused(xml, kind):
             set_label(tr, 'guard', g)
         if kind == 'late_ack':
             nta.find('declaration').text = nta.findtext('declaration').replace('bus_D_cmd=1', 'bus_D_cmd=4')
+            bridge = next(t for t in nta.findall('template') if t.findtext('name') == 'Boundary_B_PHY_MAC')
+            for tr in bridge.findall('transition'):
+                set_label(tr, 'guard', label(tr, 'guard').replace('mac_c_phy_ack <= mac_D_phy_ack', 'mac_c_phy_ack <= 4'))
     env = template('AckTestPeer', ['Ready'])
     for sync in ['mac_mac_tick!', 'mac_phy_kpi_report!', 'mac_mac_report?',
                  'phy_waveform_config?', 'phy_sensing_mode_cmd?', 'phy_power_cmd?']:
