@@ -1,0 +1,291 @@
+{
+  "source": {
+    "phy.D_meas": {
+      "role": "abstract_stage_budget",
+      "interval": "measure_tick → channel_report; c_meas=0 при приёме и результате",
+      "limit": "Отчёт разрешён до 5, инвариант MeasurePending допускает 6; после 5 результат закрыт guard. Нет доказательства прогресса."
+    },
+    "phy.D_sig": {
+      "role": "abstract_stage_budget",
+      "interval": "waveform_config → signal_report; c_sig=0 при каждой конфигурации",
+      "limit": "Повторная конфигурация сбрасывает текущий срок; не per-command oldest-outstanding контракт."
+    },
+    "phy.D_sense": {
+      "role": "abstract_stage_budget",
+      "interval": "Приём child report в Idle → sensing_report; c_sense=0 при входе",
+      "limit": "ObsFreshness измеряет иной интервал: aos_ctrl_expired → sensing_report с FRESHNESSLIMITED. Не суммировать как одинаковые этапы."
+    },
+    "phy.D_report": {
+      "role": "abstract_stage_budget",
+      "interval": "Приём child report → phy_kpi_report; каждый принятый child report, включая self-loop в PHYKpiReporting, сбрасывает c_report",
+      "limit": "Повторные child reports перезапускают срок; это latest-trigger, не oldest-outstanding. ObsSenseReport стартует sensing_degraded, endpoints отличаются."
+    },
+    "phy.D_BM": {
+      "role": "abstract_stage_budget",
+      "interval": "Вход recovery_cmd либо misalignment/extra_ssb → beam_restored/handover_hint/beam_failure; c_rec",
+      "limit": "ObsBeamRecovery стартует recovery_start, который не совпадает со всеми сбросами core. Recovery_cmd не имеет отправителя в выбранном составе; другие входы проверять отдельно."
+    },
+    "phy.D_child": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    "phy.D_net": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    "phy.T_report": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    "phy.J_SSB": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    "phy.tau_SSB": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    "phy.T_meas": {
+      "role": "location_envelope",
+      "interval": "Верхняя граница нахождения MeasurePending: c_meas <= T_meas + J_meas = 6",
+      "limit": "Это не период измерений. Внешние попытки задаёт T_input=5."
+    },
+    "phy.J_meas": {
+      "role": "location_envelope",
+      "interval": "Добавка +1 к верхней границе MeasurePending",
+      "limit": "Односторонний запас, не симметричный jitter и не нижняя граница периода."
+    },
+    "mac.D_collect": {
+      "role": "abstract_stage_budget",
+      "interval": "mac_tick → PHY report либо fallback; c_sched=0 на tick",
+      "limit": "На report c_sched сбрасывается заново; сбор и SelectMode — отдельные интервалы. Missing/stale разрешает ранний fallback."
+    },
+    "mac.D_sched": {
+      "role": "abstract_stage_budget",
+      "interval": "Вход SelectMode после KPI → ApplySchedule/отказ; новый c_sched",
+      "limit": "2+5 ограничивает только последовательные стадии до ApplySchedule. В ApplySchedule нет инварианта; 2+5+3 не end-to-end срок от tick. ObsSensingCritical имеет иной flag-trigger."
+    },
+    "mac.D_phy_ack": {
+      "role": "accepted_monitor_contract",
+      "interval": "Отправка MAC мосту → соответствующий ACK либо ScheduleFailure; оба часа=0 на отправке",
+      "limit": "Принятое исправление #30/#31: граница <=3, sticky late, последовательные транзакции; полное ACK-свойство не проверено."
+    },
+    "mac.D_queue_crit": {
+      "role": "abstract_stage_budget",
+      "interval": "Вход QueueCritical → QueueDraining или resource_reject; c_queue=0",
+      "limit": "Начало по обнаружению queueClass, не по физическому приходу пакета; ресурсный отказ на =10. Flag-polling observer требует отдельного соответствия."
+    },
+    "mac.D_buf_report": {
+      "role": "abstract_stage_budget",
+      "interval": "Вход BufferOverflow → mac_report либо уход при устранении overflow; c_buf=0",
+      "limit": "Инвариант/отчёт =4; нет численной ёмкости очереди. Flag-polling observer не принят как per-event доказательство."
+    },
+    "mac.D_mac_report": {
+      "role": "abstract_stage_budget",
+      "interval": "ReportIdle → ReportBuild сбрасывает c_report; публикация до 5 либо ReportStale на =5",
+      "limit": "ReportStale не имеет инварианта: это не гарантированный срок публикации от установки pending."
+    },
+    "mac.D_phy_report": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления",
+      "limit": "Фактический source-age задаётся B_KPI, не этой константой."
+    },
+    "sdn.D_mon": {
+      "role": "abstract_stage_budget",
+      "interval": "Приём MAC/PHY report в MonitorIdle → классификация telemetry; c_mon=0 при приёме",
+      "limit": "CollectReports <=5; missing/stale может разрешаться раньше. Это ожидание/классификация после report, не период мониторинга."
+    },
+    "sdn.D_decision": {
+      "role": "abstract_stage_budget",
+      "interval": "Приём service request/MAC report/PHY report в PolicyIdle → outcome; c_dec=0",
+      "limit": "Evaluate <=5. Нормальная принятая транзакция admission имеет транспорт+evaluation+транспорт <=7; существующий ObsSensingDecision измеряет flag-trigger."
+    },
+    "sdn.D_rule_install": {
+      "role": "abstract_stage_budget",
+      "interval": "rule_miss → установка/forward/timeout; c_rule=0 при miss",
+      "limit": "RuleMiss и RuleInstalled без инвариантов; timeout на =8 может быть пропущен при задержке. Число 8 не доказывает обязательного разрешения."
+    },
+    "sdn.D_rule_ack": {
+      "role": "abstract_stage_budget",
+      "interval": "Тот же c_rule от rule_miss → ACK в RuleInstalled",
+      "limit": "ACK <=5, install <=8: общий начальный момент, не сумма 8+5. D_bus=1 отсчитывается от flow_mod, не от rule_miss."
+    },
+    "sdn.D_ctrl_ack": {
+      "role": "abstract_stage_budget",
+      "interval": "Отправка bus_ctrl_request из CommandBuild → ACK/timeout; c_ctrl_ack=0 на отправке",
+      "limit": "CommandSent без инварианта перед AwaitAck<=5; observer стартует по command_pending раньше или позже отправки. Нужен разбор задержки входа в AwaitAck и исходов."
+    },
+    "sdn.D_recovery": {
+      "role": "abstract_stage_budget",
+      "interval": "link/node_failure сбрасывает c_rec → standby/reembedding исход или rollback на =20",
+      "limit": "FailureDetected без инварианта; прямой rollback может начинаться позже. ObsRecovery отдельно опрашивает flags. Полный срок 30 не обоснован."
+    },
+    "sdn.D_rollback": {
+      "role": "abstract_stage_budget",
+      "interval": "Отправка rollback_cmd сбрасывает c_rollback → ACK или RecoveryFailed на =10",
+      "limit": "Сумма 20+10 применима к ветке перехода на rollback при c_rec=20; не ограничивает произвольное ожидание перед прямым rollback."
+    },
+    "sdn.D_admission": {
+      "role": "observer_requirement",
+      "interval": "Только ObsAdmission: обнаружение pending → обнаружение serviceImpact; c_obs_admission",
+      "limit": "Core admission использует D_decision=5. Observer принимает NONE/DEGRADED/REJECTED без завершения pending; начальное NONE уже удовлетворяет response guard. Четвёртое значение FAILED исключено."
+    },
+    "sdn.D_sec_ack": {
+      "role": "inactive_declaration",
+      "interval": "Не используется: A_SEC исключён из instance vector",
+      "limit": "Не распространять bound на выключенное расширение."
+    },
+    "app.D_req": {
+      "role": "abstract_stage_budget",
+      "interval": "new_demand → RequestReady через RequestBuild; c_req=0 на demand и при подготовке",
+      "limit": "RequestReady без инварианта. Это срок подготовки, не отправки и не всей admission."
+    },
+    "app.D_admission": {
+      "role": "abstract_stage_budget",
+      "interval": "service_request → accept/degraded/reject либо явный timeout; c_admission=0 на отправке",
+      "limit": "Timeout в RequestPending на =15. B_ADMISSION total стартует на той же отправке; APP observer имеет producer-age, но завершение опрашивается позднее."
+    },
+    "app.D_event": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    "app.D_update": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    "app.D_fresh": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    "app.D_detect_warn": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    "app.D_detect_violation": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    "app.D_sensing_fresh": {
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    "app.D_sla_warn": {
+      "role": "abstract_stage_budget",
+      "interval": "Полученное sla_warn → warning report либо переход в violation; core c_sla_warn и oldest-event age",
+      "limit": "SLAWarning <=5; observer использует coalescing latch, завершение определяется flags. Новые события не сбрасывают pending age."
+    },
+    "app.D_sla_violation": {
+      "role": "abstract_stage_budget",
+      "interval": "Полученное sla_violation → report/reconfigure/terminate; core c_sla_violation и oldest-event age",
+      "limit": "SLAViolated <=3; report-consumption не означает выполнение reconfiguration. Flags не привязаны к отдельной повторной транзакции."
+    },
+    "app.D_safety": {
+      "role": "observer_requirement",
+      "interval": "Первое pending событие safety_violation → report/reconfigure/terminate/rejection; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    "app.D_fresh_report": {
+      "role": "observer_requirement",
+      "interval": "Первое pending событие freshness_expired → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    "app.D_update_report": {
+      "role": "observer_requirement",
+      "interval": "Первое pending событие update_violation → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    "app.D_fa_report": {
+      "role": "observer_requirement",
+      "interval": "Первое pending событие fa_critical → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    "app.D_miss_report": {
+      "role": "observer_requirement",
+      "interval": "Первое pending событие miss_critical → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    }
+  },
+  "integration": {
+    "layer_profiles": {
+      "role": "configuration_selection",
+      "interval": "Pinned default profiles PHY/MAC/SDN, APP из stored XML",
+      "limit": "Полный набор 43 строк выше; enum codes не временные параметры."
+    },
+    "D_cmd": {
+      "role": "abstract_environment_assumption",
+      "interval": "MAC send / bridge receive → последовательные PHY handshakes + ACK; единый clock x=0",
+      "limit": "Все фазы внутри 1, не по 1 на handshake. На =1 возможны доставка или loss; после потери MAC ждёт свой timeout=3."
+    },
+    "D_bus": {
+      "role": "abstract_environment_assumption",
+      "interval": "Локальные transport attempts от snapshot/accept до deliver/ACK либо loss",
+      "limit": "B_POLICY и dataplane не сбрасывают x между фазами; admission request/response сбрасываются отдельно. KPI p/m — отдельные clocks."
+    },
+    "T_input": {
+      "role": "abstract_environment_assumption",
+      "interval": "Попытка генерации PHY каждые 5; tick reset при попытке",
+      "limit": "Выбор loss/miss разрешён даже при готовности; pipeline busy сохраняет старый возраст. Период попыток, не гарантированных samples."
+    },
+    "T_mac_tick": {
+      "role": "abstract_environment_assumption",
+      "interval": "Попытка MAC tick каждые 5; local tick=0",
+      "limit": "Потеря binary tick допустима; не гарантия завершения расписания."
+    },
+    "T_demand": {
+      "role": "abstract_environment_assumption",
+      "interval": "Один offer new_demand при bus_time=1",
+      "limit": "Broadcast может быть не принят. Это абсолютное время от начала модели."
+    },
+    "T_complete": {
+      "role": "abstract_environment_assumption",
+      "interval": "Один offer service_complete при bus_time=40; раннее завершение по terminate",
+      "limit": "Не гарантированная длительность сервиса и не конечный горизонт исполнения всей модели."
+    },
+    "fault_window": {
+      "role": "abstract_environment_assumption",
+      "interval": "Не более одного выбранного fault offer при bus_time в [12,13]",
+      "limit": "Ветка без отказа и drop разрешены; часы от начала модели, не от service start."
+    },
+    "max_fault_events": {
+      "role": "finite_scope",
+      "interval": "Один проход ветки выбора fault",
+      "limit": "Структурное ограничение автомата, не clock bound."
+    },
+    "max_requests_per_service": {
+      "role": "finite_scope",
+      "interval": "Один new_demand; один admission mailbox",
+      "limit": "Повторного сервиса нет."
+    },
+    "max_outstanding_per_command_kind": {
+      "role": "finite_scope",
+      "interval": "Single-slot bridges и typed ACK/open flags",
+      "limit": "Не численный retry budget; повтор при busy не должен перезаписать mailbox."
+    },
+    "freshness_warn_age": {
+      "role": "abstract_environment_assumption",
+      "interval": "Возраст PHY source <5 fresh, >=5 stale до 10",
+      "limit": "Сброс при генерации, не при доставке; latest overwrite инвалидирует предыдущую доставку; не max transport delay."
+    },
+    "freshness_expire_age": {
+      "role": "abstract_environment_assumption",
+      "interval": "Возраст PHY source >=10 expired",
+      "limit": "До первого sample missing; delivery не омолаживает источник. Два возраста разных источников не превращаются в одну физическую метрику."
+    },
+    "justification": {
+      "role": "claim_boundary",
+      "interval": "Заданные choices абстрактного эксперимента",
+      "limit": "Нет физической калибровки, нормативного дедлайна или доказанного консервативного профиля."
+    }
+  }
+}

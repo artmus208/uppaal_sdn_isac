@@ -1,0 +1,54 @@
+{
+  "evidence_class": "software_and_static_validation_not_model_checking",
+  "source_commit": "bf6367101b70f8616c0cca6f85982cff1870771e",
+  "working_tree_at_start": "clean",
+  "python": "3.14.4",
+  "environment": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "code_hashes": {
+    "evidence/validation/20260917-v03-timing/audit.py": "e42cbcc46c93e714111b817a82c1da5164561b137e53cd661c7bf0dd740e468a",
+    "evidence/validation/20260917-v03-timing/check_audit.py": "e092f98b1d64ed08a17c6115d5da6c584f6300a1a7db76dd9eeb98d9bb8a27c5",
+    "evidence/validation/20260917-v03-timing/contracts.json": "2f66cffdf02795af1af14401cb3cb8418f42ac47ff99a17cf32d3c567fbe67f6"
+  },
+  "results": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "evidence/validation/20260917-v03-timing/audit.py"
+      ],
+      "exit_code": 0,
+      "stdout": "audit.stdout.txt",
+      "stderr": "audit.stderr.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "evidence/validation/20260917-v03-timing/check_audit.py"
+      ],
+      "exit_code": 0,
+      "stdout": "audit-integrity.stdout.txt",
+      "stderr": "audit-integrity.stderr.txt"
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "stdout": "coordination.stdout.txt",
+      "stderr": "coordination.stderr.txt"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "diff.stdout.txt",
+      "stderr": "diff.stderr.txt"
+    }
+  ]
+}

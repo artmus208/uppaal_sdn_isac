@@ -1,0 +1,9 @@
+test_changed_model_is_rejected (__main__.AuditIntegrity.test_changed_model_is_rejected) ... ok
+test_clean_saved_outputs (__main__.AuditIntegrity.test_clean_saved_outputs) ... ok
+test_missing_integration_contract_is_rejected (__main__.AuditIntegrity.test_missing_integration_contract_is_rejected) ... ok
+test_stale_generated_output_is_rejected (__main__.AuditIntegrity.test_stale_generated_output_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 6.190s
+
+OK

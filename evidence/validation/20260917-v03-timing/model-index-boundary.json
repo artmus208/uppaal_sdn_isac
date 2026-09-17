@@ -1,0 +1,4487 @@
+{
+  "input_model_sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446",
+  "records": [
+    {
+      "id": "Boundary_E_PHY_INPUT:declaration",
+      "kind": "declaration",
+      "template": "Boundary_E_PHY_INPUT",
+      "text": "clock tick; bool target_due=false;\nint[0,3] p0=0;\nint[0,2] p1=0;\nint[0,2] p2=0;\nint[0,2] p3=0;\nint[0,1] p4=0;\nint[0,1] p5=0;\nint[0,2] p6=0;\nint[0,1] p7=0;\nint[0,2] p8=0;\nint[0,2] p9=0;\nint[0,2] p10=0;\nint[0,2] p11=0;\nint[0,2] p12=0;\nint[0,2] p13=0;\nint[0,2] p14=0;\nint[0,2] p15=0;\nint[0,2] p16=0;\nint[0,2] p17=0;\nint[0,2] p18=0;\nint[0,2] p19=0;\nint[0,2] p20=0;\nint[0,2] p21=0;\nint[0,2] p22=0;"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Wait",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Wait",
+      "invariant": "tick <= bus_T_input",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Publish",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Publish",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Target",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Target",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample0",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample0",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample1",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample1",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample2",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample2",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample3",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample3",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample4",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample4",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample5",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample5",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample6",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample6",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample7",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample7",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample8",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample8",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample9",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample9",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample10",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample10",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample11",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample11",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample12",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample12",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample13",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample13",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample14",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample14",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample15",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample15",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample16",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample16",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample17",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample17",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample18",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample18",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample19",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample19",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample20",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample20",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample21",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample21",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample22",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample22",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:location:Sample23",
+      "kind": "location",
+      "template": "Boundary_E_PHY_INPUT",
+      "location": "Sample23",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:0",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Wait",
+      "target": "Sample0",
+      "guard": "tick == bus_T_input && !phy_channel_report_pending && !phy_signal_report_pending && !phy_sensing_report_pending && !phy_phy_kpi_report_pending",
+      "assignment": "tick=0"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:1",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample0",
+      "target": "Sample1",
+      "select": "value:int[0,3]",
+      "assignment": "p0=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:2",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample1",
+      "target": "Sample2",
+      "select": "value:int[0,2]",
+      "assignment": "p1=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:3",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample2",
+      "target": "Sample3",
+      "select": "value:int[0,2]",
+      "assignment": "p2=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:4",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample3",
+      "target": "Sample4",
+      "select": "value:int[0,2]",
+      "assignment": "p3=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:5",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample4",
+      "target": "Sample5",
+      "select": "value:int[0,1]",
+      "assignment": "p4=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:6",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample5",
+      "target": "Sample6",
+      "select": "value:int[0,1]",
+      "assignment": "p5=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:7",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample6",
+      "target": "Sample7",
+      "select": "value:int[0,2]",
+      "assignment": "p6=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:8",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample7",
+      "target": "Sample8",
+      "select": "value:int[0,1]",
+      "assignment": "p7=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:9",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample8",
+      "target": "Sample9",
+      "select": "value:int[0,2]",
+      "assignment": "p8=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:10",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample9",
+      "target": "Sample10",
+      "select": "value:int[0,2]",
+      "assignment": "p9=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:11",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample10",
+      "target": "Sample11",
+      "select": "value:int[0,2]",
+      "assignment": "p10=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:12",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample11",
+      "target": "Sample12",
+      "select": "value:int[0,2]",
+      "assignment": "p11=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:13",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample12",
+      "target": "Sample13",
+      "select": "value:int[0,2]",
+      "assignment": "p12=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:14",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample13",
+      "target": "Sample14",
+      "select": "value:int[0,2]",
+      "assignment": "p13=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:15",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample14",
+      "target": "Sample15",
+      "select": "value:int[0,2]",
+      "assignment": "p14=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:16",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample15",
+      "target": "Sample16",
+      "select": "value:int[0,2]",
+      "assignment": "p15=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:17",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample16",
+      "target": "Sample17",
+      "select": "value:int[0,2]",
+      "assignment": "p16=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:18",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample17",
+      "target": "Sample18",
+      "select": "value:int[0,2]",
+      "assignment": "p17=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:19",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample18",
+      "target": "Sample19",
+      "select": "value:int[0,2]",
+      "assignment": "p18=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:20",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample19",
+      "target": "Sample20",
+      "select": "value:int[0,2]",
+      "assignment": "p19=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:21",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample20",
+      "target": "Sample21",
+      "select": "value:int[0,2]",
+      "assignment": "p20=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:22",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample21",
+      "target": "Sample22",
+      "select": "value:int[0,2]",
+      "assignment": "p21=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:23",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample22",
+      "target": "Sample23",
+      "select": "value:int[0,2]",
+      "assignment": "p22=value"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:24",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Sample23",
+      "target": "Publish",
+      "select": "miss:int[0,2], scenario:int[0,3]",
+      "guard": "!(p13 == phy_PDCLASS_OK && miss == 2) && !(p13 == phy_PDCLASS_FAILED && miss == 0)",
+      "assignment": "phy_SINRClass=p0, phy_BLERClass=p1, phy_CQIClass=p2, phy_IClass=p3, phy_DopplerClass=p4, phy_DelaySpreadClass=p5, phy_PowerClass=p6, phy_DRTClass=p7, phy_PilotDensityClass=p8, phy_PayloadSenseClass=p9, phy_PRSClass=p10, phy_BeamErrorClass=p11, phy_BlockageClass=p12, phy_PdClass=p13, phy_RfaClass=p14, phy_AccClass=p15, phy_CRBClass=p16, phy_AoSClass=p17, phy_CapClass=p18, phy_CoverageClass=p19, phy_ResourceShareClass=p20, phy_MisClass=p21, phy_BMOverheadClass=p22, bus_missed_detection=miss, phy_env_scenario=scenario, phy_input_changed=true, bus_phy_age=0, bus_phy_valid=true"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:25",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Wait",
+      "target": "Wait",
+      "guard": "tick == bus_T_input",
+      "assignment": "tick=0, bus_input_missed=true"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:26",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Publish",
+      "target": "Target",
+      "synchronisation": "bus_new_sample!",
+      "assignment": "phy_target_seen=true, target_due=true"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:27",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Target",
+      "target": "Wait",
+      "synchronisation": "phy_measure_tick!"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:28",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Target",
+      "target": "Wait",
+      "assignment": "bus_input_missed=true, bus_phy_valid=false"
+    },
+    {
+      "id": "Boundary_E_PHY_INPUT:edge:29",
+      "kind": "edge",
+      "template": "Boundary_E_PHY_INPUT",
+      "source": "Wait",
+      "target": "Wait",
+      "guard": "target_due",
+      "synchronisation": "phy_target_detected!",
+      "assignment": "target_due=false"
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:declaration",
+      "kind": "declaration",
+      "template": "Boundary_E_MAC_LOAD",
+      "text": "clock tick;"
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:location:Wait",
+      "kind": "location",
+      "template": "Boundary_E_MAC_LOAD",
+      "location": "Wait",
+      "invariant": "tick <= bus_T_mac_tick",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:location:Publish",
+      "kind": "location",
+      "template": "Boundary_E_MAC_LOAD",
+      "location": "Publish",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:location:Offer",
+      "kind": "location",
+      "template": "Boundary_E_MAC_LOAD",
+      "location": "Offer",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:edge:0",
+      "kind": "edge",
+      "template": "Boundary_E_MAC_LOAD",
+      "source": "Wait",
+      "target": "Publish",
+      "select": "m0:int[0,4], m1:int[0,2], m2:int[0,3], m3:int[0,2], m4:int[0,3], m5:int[0,2], m6:int[0,2]",
+      "guard": "tick == bus_T_mac_tick",
+      "assignment": "mac_queueClass=m0, mac_bufferClass=m1, mac_delayClass=m2, mac_dropClass=m3, mac_resourceClass=m4, mac_sensingDemand=m5, mac_commDemand=m6, tick=0, bus_mac_age=0, bus_mac_valid=true"
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:edge:1",
+      "kind": "edge",
+      "template": "Boundary_E_MAC_LOAD",
+      "source": "Publish",
+      "target": "Offer",
+      "synchronisation": "bus_new_mac_sample!"
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:edge:2",
+      "kind": "edge",
+      "template": "Boundary_E_MAC_LOAD",
+      "source": "Offer",
+      "target": "Wait",
+      "synchronisation": "mac_mac_tick!"
+    },
+    {
+      "id": "Boundary_E_MAC_LOAD:edge:3",
+      "kind": "edge",
+      "template": "Boundary_E_MAC_LOAD",
+      "source": "Offer",
+      "target": "Wait",
+      "assignment": "bus_tick_missed=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:declaration",
+      "kind": "declaration",
+      "template": "Boundary_E_FAULT",
+      "text": "clock x; bool lose=false;"
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Before_Idle",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Before_Idle",
+      "invariant": "bus_time <= 13",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Before_Forward",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Before_Forward",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Before_Ack",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Before_Ack",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Before_RecFlow",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Before_RecFlow",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Before_Rollback",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Before_Rollback",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Rule_Idle",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Rule_Idle",
+      "invariant": "bus_time <= 13",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Rule_Forward",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Rule_Forward",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Rule_Ack",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Rule_Ack",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Rule_RecFlow",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Rule_RecFlow",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Rule_Rollback",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Rule_Rollback",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Link_Idle",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Link_Idle",
+      "invariant": "bus_time <= 13",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Link_Forward",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Link_Forward",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Link_Ack",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Link_Ack",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Link_RecFlow",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Link_RecFlow",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Link_Rollback",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Link_Rollback",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Node_Idle",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Node_Idle",
+      "invariant": "bus_time <= 13",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Node_Forward",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Node_Forward",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Node_Ack",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Node_Ack",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Node_RecFlow",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Node_RecFlow",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Node_Rollback",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Node_Rollback",
+      "invariant": "bus_time <= 13 && x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Done_Idle",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Done_Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Done_Forward",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Done_Forward",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Done_Ack",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Done_Ack",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Done_RecFlow",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Done_RecFlow",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:location:Done_Rollback",
+      "kind": "location",
+      "template": "Boundary_E_FAULT",
+      "location": "Done_Rollback",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:0",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Rule_Idle",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:1",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Done_Idle",
+      "synchronisation": "sdn_rule_miss!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:2",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Done_Idle",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:3",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Link_Idle",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:4",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Done_Idle",
+      "synchronisation": "sdn_link_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:5",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Done_Idle",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:6",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Node_Idle",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:7",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Done_Idle",
+      "synchronisation": "sdn_node_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:8",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Done_Idle",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:9",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Done_Idle",
+      "guard": "bus_time >= 12 && bus_time <= 13"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:10",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Rule_Forward",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:11",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Done_Forward",
+      "synchronisation": "sdn_rule_miss!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:12",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Done_Forward",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:13",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Link_Forward",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:14",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Done_Forward",
+      "synchronisation": "sdn_link_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:15",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Done_Forward",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:16",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Node_Forward",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:17",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Done_Forward",
+      "synchronisation": "sdn_node_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:18",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Done_Forward",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:19",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Done_Forward",
+      "guard": "bus_time >= 12 && bus_time <= 13"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:20",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Rule_Ack",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:21",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Done_Ack",
+      "synchronisation": "sdn_rule_miss!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:22",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Done_Ack",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:23",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Link_Ack",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:24",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Done_Ack",
+      "synchronisation": "sdn_link_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:25",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Done_Ack",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:26",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Node_Ack",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:27",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Done_Ack",
+      "synchronisation": "sdn_node_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:28",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Done_Ack",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:29",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Done_Ack",
+      "guard": "bus_time >= 12 && bus_time <= 13"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:30",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Rule_RecFlow",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:31",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Done_RecFlow",
+      "synchronisation": "sdn_rule_miss!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:32",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Done_RecFlow",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:33",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Link_RecFlow",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:34",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Done_RecFlow",
+      "synchronisation": "sdn_link_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:35",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Done_RecFlow",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:36",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Node_RecFlow",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:37",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Done_RecFlow",
+      "synchronisation": "sdn_node_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:38",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Done_RecFlow",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:39",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Done_RecFlow",
+      "guard": "bus_time >= 12 && bus_time <= 13"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:40",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Rule_Rollback",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:41",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Done_Rollback",
+      "synchronisation": "sdn_rule_miss!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:42",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Done_Rollback",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:43",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Link_Rollback",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:44",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Done_Rollback",
+      "synchronisation": "sdn_link_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:45",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Done_Rollback",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:46",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Node_Rollback",
+      "select": "standby:int[0,1], alternative:int[0,1]",
+      "guard": "bus_time >= 12 && bus_time <= 13",
+      "assignment": "sdn_standby_available=(standby == 1), sdn_alternative_config_exists=(alternative == 1)"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:47",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Done_Rollback",
+      "synchronisation": "sdn_node_failure!",
+      "assignment": "bus_fault_delivered=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:48",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Done_Rollback",
+      "guard": "bus_time == 13",
+      "assignment": "bus_fault_dropped=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:49",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Done_Rollback",
+      "guard": "bus_time >= 12 && bus_time <= 13"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:50",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Before_Forward",
+      "select": "loss:int[0,1]",
+      "synchronisation": "sdn_flow_mod?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:51",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Before_Ack",
+      "synchronisation": "sdn_forward_cmd?",
+      "assignment": "bus_forward_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:52",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Before_Idle",
+      "guard": "!lose && sdn_rule_miss_pending && sdn_c_rule <= sdn_D_rule_ack",
+      "synchronisation": "bus_rule_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:53",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Before_RecFlow",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rec_flow_request?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:54",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Before_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_flow_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:55",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Before_Rollback",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rollback_request?",
+      "assignment": "lose=(loss == 1), x=0, bus_rollback_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:56",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Before_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_rollback_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:57",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Before_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:58",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Before_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:59",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Before_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:60",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Before_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:61",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Before_Idle",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:62",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Before_Idle",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:63",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Before_Idle",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:64",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Idle",
+      "target": "Before_Idle",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:65",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Before_Forward",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:66",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Before_Forward",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:67",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Before_Forward",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:68",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Forward",
+      "target": "Before_Forward",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:69",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Before_Ack",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:70",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Before_Ack",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:71",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Before_Ack",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:72",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Ack",
+      "target": "Before_Ack",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:73",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Before_RecFlow",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:74",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Before_RecFlow",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:75",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Before_RecFlow",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:76",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_RecFlow",
+      "target": "Before_RecFlow",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:77",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Before_Rollback",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:78",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Before_Rollback",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:79",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Before_Rollback",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:80",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Before_Rollback",
+      "target": "Before_Rollback",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:81",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Rule_Forward",
+      "select": "loss:int[0,1]",
+      "synchronisation": "sdn_flow_mod?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:82",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Rule_Ack",
+      "synchronisation": "sdn_forward_cmd?",
+      "assignment": "bus_forward_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:83",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Rule_Idle",
+      "guard": "!lose && sdn_rule_miss_pending && sdn_c_rule <= sdn_D_rule_ack",
+      "synchronisation": "bus_rule_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:84",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Rule_RecFlow",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rec_flow_request?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:85",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Rule_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_flow_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:86",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Rule_Rollback",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rollback_request?",
+      "assignment": "lose=(loss == 1), x=0, bus_rollback_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:87",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Rule_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_rollback_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:88",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Rule_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:89",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Rule_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:90",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Rule_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:91",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Rule_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:92",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Rule_Idle",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:93",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Rule_Idle",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:94",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Rule_Idle",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:95",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Idle",
+      "target": "Rule_Idle",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:96",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Rule_Forward",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:97",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Rule_Forward",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:98",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Rule_Forward",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:99",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Forward",
+      "target": "Rule_Forward",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:100",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Rule_Ack",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:101",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Rule_Ack",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:102",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Rule_Ack",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:103",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Ack",
+      "target": "Rule_Ack",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:104",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Rule_RecFlow",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:105",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Rule_RecFlow",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:106",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Rule_RecFlow",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:107",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_RecFlow",
+      "target": "Rule_RecFlow",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:108",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Rule_Rollback",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:109",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Rule_Rollback",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:110",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Rule_Rollback",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:111",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Rule_Rollback",
+      "target": "Rule_Rollback",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:112",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Link_Forward",
+      "select": "loss:int[0,1]",
+      "synchronisation": "sdn_flow_mod?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:113",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Link_Ack",
+      "synchronisation": "sdn_forward_cmd?",
+      "assignment": "bus_forward_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:114",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Link_Idle",
+      "guard": "!lose && sdn_rule_miss_pending && sdn_c_rule <= sdn_D_rule_ack",
+      "synchronisation": "bus_rule_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:115",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Link_RecFlow",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rec_flow_request?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:116",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Link_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_flow_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:117",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Link_Rollback",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rollback_request?",
+      "assignment": "lose=(loss == 1), x=0, bus_rollback_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:118",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Link_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_rollback_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:119",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Link_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:120",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Link_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:121",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Link_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:122",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Link_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:123",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Link_Idle",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:124",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Link_Idle",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:125",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Link_Idle",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:126",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Idle",
+      "target": "Link_Idle",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:127",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Link_Forward",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:128",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Link_Forward",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:129",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Link_Forward",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:130",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Forward",
+      "target": "Link_Forward",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:131",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Link_Ack",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:132",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Link_Ack",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:133",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Link_Ack",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:134",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Ack",
+      "target": "Link_Ack",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:135",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Link_RecFlow",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:136",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Link_RecFlow",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:137",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Link_RecFlow",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:138",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_RecFlow",
+      "target": "Link_RecFlow",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:139",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Link_Rollback",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:140",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Link_Rollback",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:141",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Link_Rollback",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:142",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Link_Rollback",
+      "target": "Link_Rollback",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:143",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Node_Forward",
+      "select": "loss:int[0,1]",
+      "synchronisation": "sdn_flow_mod?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:144",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Node_Ack",
+      "synchronisation": "sdn_forward_cmd?",
+      "assignment": "bus_forward_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:145",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Node_Idle",
+      "guard": "!lose && sdn_rule_miss_pending && sdn_c_rule <= sdn_D_rule_ack",
+      "synchronisation": "bus_rule_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:146",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Node_RecFlow",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rec_flow_request?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:147",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Node_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_flow_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:148",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Node_Rollback",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rollback_request?",
+      "assignment": "lose=(loss == 1), x=0, bus_rollback_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:149",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Node_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_rollback_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:150",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Node_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:151",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Node_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:152",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Node_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:153",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Node_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:154",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Node_Idle",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:155",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Node_Idle",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:156",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Node_Idle",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:157",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Idle",
+      "target": "Node_Idle",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:158",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Node_Forward",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:159",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Node_Forward",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:160",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Node_Forward",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:161",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Forward",
+      "target": "Node_Forward",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:162",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Node_Ack",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:163",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Node_Ack",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:164",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Node_Ack",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:165",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Ack",
+      "target": "Node_Ack",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:166",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Node_RecFlow",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:167",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Node_RecFlow",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:168",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Node_RecFlow",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:169",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_RecFlow",
+      "target": "Node_RecFlow",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:170",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Node_Rollback",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:171",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Node_Rollback",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:172",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Node_Rollback",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:173",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Node_Rollback",
+      "target": "Node_Rollback",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:174",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Idle",
+      "target": "Done_Forward",
+      "select": "loss:int[0,1]",
+      "synchronisation": "sdn_flow_mod?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:175",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Forward",
+      "target": "Done_Ack",
+      "synchronisation": "sdn_forward_cmd?",
+      "assignment": "bus_forward_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:176",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Ack",
+      "target": "Done_Idle",
+      "guard": "!lose && sdn_rule_miss_pending && sdn_c_rule <= sdn_D_rule_ack",
+      "synchronisation": "bus_rule_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:177",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Idle",
+      "target": "Done_RecFlow",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rec_flow_request?",
+      "assignment": "lose=(loss == 1), x=0"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:178",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_RecFlow",
+      "target": "Done_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_flow_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:179",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Idle",
+      "target": "Done_Rollback",
+      "select": "loss:int[0,1]",
+      "synchronisation": "bus_rollback_request?",
+      "assignment": "lose=(loss == 1), x=0, bus_rollback_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:180",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Rollback",
+      "target": "Done_Idle",
+      "guard": "!lose",
+      "synchronisation": "bus_rec_rollback_ack!"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:181",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Forward",
+      "target": "Done_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:182",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Ack",
+      "target": "Done_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:183",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_RecFlow",
+      "target": "Done_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:184",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Rollback",
+      "target": "Done_Idle",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_dataplane_loss=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:185",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Idle",
+      "target": "Done_Idle",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:186",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Idle",
+      "target": "Done_Idle",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:187",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Idle",
+      "target": "Done_Idle",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:188",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Idle",
+      "target": "Done_Idle",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:189",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Forward",
+      "target": "Done_Forward",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:190",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Forward",
+      "target": "Done_Forward",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:191",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Forward",
+      "target": "Done_Forward",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:192",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Forward",
+      "target": "Done_Forward",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:193",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Ack",
+      "target": "Done_Ack",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:194",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Ack",
+      "target": "Done_Ack",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:195",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Ack",
+      "target": "Done_Ack",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:196",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Ack",
+      "target": "Done_Ack",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:197",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_RecFlow",
+      "target": "Done_RecFlow",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:198",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_RecFlow",
+      "target": "Done_RecFlow",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:199",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_RecFlow",
+      "target": "Done_RecFlow",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:200",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_RecFlow",
+      "target": "Done_RecFlow",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:201",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Rollback",
+      "target": "Done_Rollback",
+      "synchronisation": "sdn_drop_report?",
+      "assignment": "bus_rule_drop_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:202",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Rollback",
+      "target": "Done_Rollback",
+      "synchronisation": "sdn_failure_report?",
+      "assignment": "bus_failure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:203",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Rollback",
+      "target": "Done_Rollback",
+      "synchronisation": "sdn_timeout_report?",
+      "assignment": "bus_timeout_recorded=true"
+    },
+    {
+      "id": "Boundary_E_FAULT:edge:204",
+      "kind": "edge",
+      "template": "Boundary_E_FAULT",
+      "source": "Done_Rollback",
+      "target": "Done_Rollback",
+      "synchronisation": "mac_resource_reject?",
+      "assignment": "bus_resource_reject_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:location:Demand",
+      "kind": "location",
+      "template": "Boundary_E_SERVICE",
+      "location": "Demand",
+      "invariant": "bus_time <= bus_T_demand",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_SERVICE:location:DemandCheck",
+      "kind": "location",
+      "template": "Boundary_E_SERVICE",
+      "location": "DemandCheck",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_SERVICE:location:Run",
+      "kind": "location",
+      "template": "Boundary_E_SERVICE",
+      "location": "Run",
+      "invariant": "bus_time <= bus_T_complete",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_SERVICE:location:CompleteCheck",
+      "kind": "location",
+      "template": "Boundary_E_SERVICE",
+      "location": "CompleteCheck",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_SERVICE:location:Done",
+      "kind": "location",
+      "template": "Boundary_E_SERVICE",
+      "location": "Done",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_SERVICE:location:Terminate",
+      "kind": "location",
+      "template": "Boundary_E_SERVICE",
+      "location": "Terminate",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:0",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Demand",
+      "target": "DemandCheck",
+      "guard": "bus_time == bus_T_demand",
+      "synchronisation": "app_new_demand!"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:1",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "DemandCheck",
+      "target": "Run",
+      "assignment": "bus_demand_dropped = !bus_demand_delivered"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:2",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Run",
+      "target": "CompleteCheck",
+      "guard": "bus_time == bus_T_complete",
+      "synchronisation": "app_service_complete!"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:3",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "CompleteCheck",
+      "target": "Done",
+      "assignment": "bus_complete_dropped = !bus_complete_delivered"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:4",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Demand",
+      "target": "Demand",
+      "synchronisation": "app_sla_warning_report?",
+      "assignment": "bus_warning_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:5",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Demand",
+      "target": "Demand",
+      "synchronisation": "app_sla_violation_report?",
+      "assignment": "bus_violation_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:6",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Demand",
+      "target": "Demand",
+      "synchronisation": "app_service_reconfigure?",
+      "assignment": "bus_reconfigure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:7",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Demand",
+      "target": "Demand",
+      "synchronisation": "app_degraded_accept_report?",
+      "assignment": "bus_degraded_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:8",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Demand",
+      "target": "Demand",
+      "synchronisation": "app_service_terminate?",
+      "assignment": "bus_terminate_recorded=true, bus_termination_pending=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:9",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Demand",
+      "target": "Terminate",
+      "guard": "bus_termination_pending",
+      "assignment": "bus_termination_pending=false"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:10",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Run",
+      "target": "Run",
+      "synchronisation": "app_sla_warning_report?",
+      "assignment": "bus_warning_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:11",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Run",
+      "target": "Run",
+      "synchronisation": "app_sla_violation_report?",
+      "assignment": "bus_violation_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:12",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Run",
+      "target": "Run",
+      "synchronisation": "app_service_reconfigure?",
+      "assignment": "bus_reconfigure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:13",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Run",
+      "target": "Run",
+      "synchronisation": "app_degraded_accept_report?",
+      "assignment": "bus_degraded_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:14",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Run",
+      "target": "Run",
+      "synchronisation": "app_service_terminate?",
+      "assignment": "bus_terminate_recorded=true, bus_termination_pending=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:15",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Run",
+      "target": "Terminate",
+      "guard": "bus_termination_pending",
+      "assignment": "bus_termination_pending=false"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:16",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "app_sla_warning_report?",
+      "assignment": "bus_warning_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:17",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "app_sla_violation_report?",
+      "assignment": "bus_violation_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:18",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "app_service_reconfigure?",
+      "assignment": "bus_reconfigure_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:19",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "app_degraded_accept_report?",
+      "assignment": "bus_degraded_recorded=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:20",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "app_service_terminate?",
+      "assignment": "bus_terminate_recorded=true, bus_termination_pending=true"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:21",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Done",
+      "target": "Terminate",
+      "guard": "bus_termination_pending",
+      "assignment": "bus_termination_pending=false"
+    },
+    {
+      "id": "Boundary_E_SERVICE:edge:22",
+      "kind": "edge",
+      "template": "Boundary_E_SERVICE",
+      "source": "Terminate",
+      "target": "Done",
+      "synchronisation": "app_service_complete!"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:declaration",
+      "kind": "declaration",
+      "template": "Boundary_B_PHY_MAC",
+      "text": "clock x; int[0,4] mode=0;"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:location:Idle",
+      "kind": "location",
+      "template": "Boundary_B_PHY_MAC",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:location:First",
+      "kind": "location",
+      "template": "Boundary_B_PHY_MAC",
+      "location": "First",
+      "invariant": "x <= bus_D_cmd",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:location:Second",
+      "kind": "location",
+      "template": "Boundary_B_PHY_MAC",
+      "location": "Second",
+      "invariant": "x <= bus_D_cmd",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:location:Ack",
+      "kind": "location",
+      "template": "Boundary_B_PHY_MAC",
+      "location": "Ack",
+      "invariant": "x <= bus_D_cmd",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:location:Drain",
+      "kind": "location",
+      "template": "Boundary_B_PHY_MAC",
+      "location": "Drain",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:0",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Idle",
+      "target": "First",
+      "synchronisation": "mac_mac_schedule_cmd?",
+      "assignment": "mode=mac_scheduleMode, x=0"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:1",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "First",
+      "target": "Ack",
+      "guard": "mode == mac_SCH_COMM",
+      "synchronisation": "phy_waveform_config!"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:2",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "First",
+      "target": "Ack",
+      "guard": "mode == mac_SCH_SENS",
+      "synchronisation": "phy_sensing_mode_cmd!"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:3",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "First",
+      "target": "Second",
+      "guard": "mode == mac_SCH_JOINT",
+      "synchronisation": "phy_waveform_config!"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:4",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Second",
+      "target": "Ack",
+      "synchronisation": "phy_sensing_mode_cmd!"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:5",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "First",
+      "target": "Ack",
+      "guard": "mode == mac_SCH_CONSTRAINED",
+      "synchronisation": "phy_power_cmd!"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:6",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "First",
+      "target": "Drain",
+      "guard": "mode == mac_SCH_IDLE",
+      "assignment": "bus_schedule_loss=true"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:7",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Ack",
+      "target": "Drain",
+      "guard": "mac_phy_command_pending && mac_c_phy_ack <= mac_D_phy_ack",
+      "synchronisation": "mac_phy_ack!"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:8",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "First",
+      "target": "Drain",
+      "guard": "x == bus_D_cmd",
+      "assignment": "bus_schedule_loss=true"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:9",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "First",
+      "target": "First",
+      "synchronisation": "mac_mac_schedule_cmd?",
+      "assignment": "bus_protocol_error=true"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:10",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Second",
+      "target": "Drain",
+      "guard": "x == bus_D_cmd",
+      "assignment": "bus_schedule_loss=true"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:11",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Second",
+      "target": "Second",
+      "synchronisation": "mac_mac_schedule_cmd?",
+      "assignment": "bus_protocol_error=true"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:12",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Ack",
+      "target": "Drain",
+      "guard": "x == bus_D_cmd",
+      "assignment": "bus_schedule_loss=true"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:13",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Ack",
+      "target": "Ack",
+      "synchronisation": "mac_mac_schedule_cmd?",
+      "assignment": "bus_protocol_error=true"
+    },
+    {
+      "id": "Boundary_B_PHY_MAC:edge:14",
+      "kind": "edge",
+      "template": "Boundary_B_PHY_MAC",
+      "source": "Drain",
+      "target": "Idle",
+      "guard": "!bus_schedule_open"
+    },
+    {
+      "id": "Boundary_B_POLICY:declaration",
+      "kind": "declaration",
+      "template": "Boundary_B_POLICY",
+      "text": "clock x; bool recovery=false;"
+    },
+    {
+      "id": "Boundary_B_POLICY:location:Idle",
+      "kind": "location",
+      "template": "Boundary_B_POLICY",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_POLICY:location:Stage",
+      "kind": "location",
+      "template": "Boundary_B_POLICY",
+      "location": "Stage",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_POLICY:location:Offer",
+      "kind": "location",
+      "template": "Boundary_B_POLICY",
+      "location": "Offer",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_POLICY:location:Ack",
+      "kind": "location",
+      "template": "Boundary_B_POLICY",
+      "location": "Ack",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_POLICY:location:Drain",
+      "kind": "location",
+      "template": "Boundary_B_POLICY",
+      "location": "Drain",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:0",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Idle",
+      "target": "Stage",
+      "synchronisation": "bus_ctrl_request?",
+      "assignment": "bus_policy_value=sdn_policyClass, recovery=false, x=0"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:1",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Idle",
+      "target": "Stage",
+      "synchronisation": "bus_rec_policy_request?",
+      "assignment": "bus_policy_value=sdn_policyClass, recovery=true, x=0"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:2",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Stage",
+      "target": "Offer",
+      "assignment": "bus_allow_comm=(bus_policy_value == sdn_POL_COMM_PRIO || bus_policy_value == sdn_POL_NORMAL || bus_policy_value == sdn_POL_REROUTE), bus_allow_sensing=(bus_policy_value == sdn_POL_SENS_BOOST || bus_policy_value == sdn_POL_NORMAL || bus_policy_value == sdn_POL_REROUTE)"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:3",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Offer",
+      "target": "Ack",
+      "synchronisation": "bus_policy!"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:4",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Ack",
+      "target": "Drain",
+      "guard": "!recovery && sdn_command_pending && sdn_c_ctrl_ack <= sdn_D_ctrl_ack",
+      "synchronisation": "bus_ctrl_ack!"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:5",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Ack",
+      "target": "Drain",
+      "guard": "recovery && sdn_c_rec <= sdn_D_recovery",
+      "synchronisation": "bus_rec_policy_ack!"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:6",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Offer",
+      "target": "Drain",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_policy_loss=true"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:7",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Ack",
+      "target": "Drain",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_policy_loss=true"
+    },
+    {
+      "id": "Boundary_B_POLICY:edge:8",
+      "kind": "edge",
+      "template": "Boundary_B_POLICY",
+      "source": "Drain",
+      "target": "Idle",
+      "guard": "(!recovery && !bus_ctrl_open) || (recovery && !bus_rec_policy_open)"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:declaration",
+      "kind": "declaration",
+      "template": "Boundary_B_ADMISSION",
+      "text": "clock x, total; int[0,3] outcome=0;"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:Idle",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:StageRequest",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "StageRequest",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:OfferRequest",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "OfferRequest",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:AwaitOutcome",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "AwaitOutcome",
+      "invariant": "total <= app_D_admission",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:StageOutcome",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "StageOutcome",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:Safety",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "Safety",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:OfferOutcome",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "OfferOutcome",
+      "invariant": "x <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:location:Done",
+      "kind": "location",
+      "template": "Boundary_B_ADMISSION",
+      "location": "Done",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:0",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Idle",
+      "target": "StageRequest",
+      "synchronisation": "app_service_request?",
+      "assignment": "bus_request_service=app_serviceClass, bus_request_criticality=app_criticalityClass, bus_request_demand=app_demandClass, bus_request_latency=app_latencyBoundClass, bus_request_reliability=app_reliabilityClass, bus_request_update=app_sensingUpdateBoundClass, bus_request_freshness=app_sensingFreshnessBoundClass, bus_request_pd=app_pdMinClass, bus_request_fa=app_pfaMaxClass, bus_request_miss=app_pmissMaxClass, bus_request_accuracy=app_accuracyBoundClass, bus_request_coverage=app_coverageBoundClass, x=0, total=0"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:1",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "StageRequest",
+      "target": "OfferRequest"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:2",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferRequest",
+      "target": "AwaitOutcome",
+      "synchronisation": "bus_admit_request!"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:3",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferRequest",
+      "target": "Done",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_admission_loss=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:4",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "AwaitOutcome",
+      "target": "StageOutcome",
+      "guard": "sdn_service_request_pending",
+      "synchronisation": "sdn_service_accept?",
+      "assignment": "outcome=1, bus_reason=sdn_sdnReason, x=0"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:5",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Idle",
+      "target": "Idle",
+      "synchronisation": "sdn_service_accept?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:6",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferRequest",
+      "target": "OfferRequest",
+      "synchronisation": "sdn_service_accept?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:7",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "sdn_service_accept?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:8",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "AwaitOutcome",
+      "target": "AwaitOutcome",
+      "guard": "!sdn_service_request_pending",
+      "synchronisation": "sdn_service_accept?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:9",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "AwaitOutcome",
+      "target": "StageOutcome",
+      "guard": "sdn_service_request_pending",
+      "synchronisation": "sdn_service_reject?",
+      "assignment": "outcome=2, bus_reason=sdn_sdnReason, x=0"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:10",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Idle",
+      "target": "Idle",
+      "synchronisation": "sdn_service_reject?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:11",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferRequest",
+      "target": "OfferRequest",
+      "synchronisation": "sdn_service_reject?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:12",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "sdn_service_reject?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:13",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "AwaitOutcome",
+      "target": "AwaitOutcome",
+      "guard": "!sdn_service_request_pending",
+      "synchronisation": "sdn_service_reject?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:14",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "AwaitOutcome",
+      "target": "StageOutcome",
+      "guard": "sdn_service_request_pending",
+      "synchronisation": "sdn_service_degraded?",
+      "assignment": "outcome=3, bus_reason=sdn_sdnReason, x=0"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:15",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Idle",
+      "target": "Idle",
+      "synchronisation": "sdn_service_degraded?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:16",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferRequest",
+      "target": "OfferRequest",
+      "synchronisation": "sdn_service_degraded?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:17",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Done",
+      "target": "Done",
+      "synchronisation": "sdn_service_degraded?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:18",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "AwaitOutcome",
+      "target": "AwaitOutcome",
+      "guard": "!sdn_service_request_pending",
+      "synchronisation": "sdn_service_degraded?",
+      "assignment": "bus_unsolicited_outcome=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:19",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "AwaitOutcome",
+      "target": "Done",
+      "guard": "total == app_D_admission",
+      "assignment": "bus_admission_timeout=true"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:20",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "StageOutcome",
+      "target": "Safety",
+      "assignment": "app_admissionClass=outcome, app_degraded_allowed=(outcome == app_ADM_DEGRADED), app_degradedReason=(bus_reason == sdn_SDN_STALE_TELEMETRY ? app_DEG_STALE : (bus_reason == sdn_SDN_RESOURCE_LIMITED ? app_DEG_RESOURCE_LIMITED : app_DEG_COMM_LIMITED))"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:21",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Safety",
+      "target": "OfferOutcome",
+      "guard": "outcome != app_ADM_DEGRADED || app_gSafetyAllowsDegraded()"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:22",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "Safety",
+      "target": "OfferOutcome",
+      "guard": "outcome == app_ADM_DEGRADED && !app_gSafetyAllowsDegraded()",
+      "assignment": "outcome=app_ADM_REJECTED, app_admissionClass=app_ADM_REJECTED, app_degraded_allowed=false"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:23",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferOutcome",
+      "target": "Done",
+      "guard": "outcome == 1 && app_service_request_pending",
+      "synchronisation": "app_service_accept!"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:24",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferOutcome",
+      "target": "Done",
+      "guard": "outcome == 2 && app_service_request_pending",
+      "synchronisation": "app_service_reject!"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:25",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferOutcome",
+      "target": "Done",
+      "guard": "outcome == 3 && app_service_request_pending",
+      "synchronisation": "app_service_degraded!"
+    },
+    {
+      "id": "Boundary_B_ADMISSION:edge:26",
+      "kind": "edge",
+      "template": "Boundary_B_ADMISSION",
+      "source": "OfferOutcome",
+      "target": "Done",
+      "guard": "x == bus_D_bus",
+      "assignment": "bus_admission_loss=true"
+    },
+    {
+      "id": "Boundary_B_KPI:declaration",
+      "kind": "declaration",
+      "template": "Boundary_B_KPI",
+      "text": "clock p, m, n; int[0,2] band=2; bool publishing=false;"
+    },
+    {
+      "id": "Boundary_B_KPI:location:Expired",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Expired",
+      "invariant": "p <= bus_D_bus && m <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:Fresh",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Fresh",
+      "invariant": "bus_phy_age <= 5 && p <= bus_D_bus && m <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:Stale",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Stale",
+      "invariant": "bus_phy_age <= 10 && p <= bus_D_bus && m <= bus_D_bus",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:Map",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Map",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:Mac",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Mac",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:Sdn",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Sdn",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:App",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "App",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:Notify",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Notify",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:MacNotice",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "MacNotice",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:CtrlNotice",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "CtrlNotice",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:Return",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "Return",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:location:MacOnly",
+      "kind": "location",
+      "template": "Boundary_B_KPI",
+      "location": "MacOnly",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "Boundary_B_KPI:edge:0",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Expired",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:1",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Expired",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:2",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Expired",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:3",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:4",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:5",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:6",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:7",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:8",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Stale",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:9",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Stale",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:10",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Stale",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:11",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:12",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Map",
+      "target": "Map",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:13",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Map",
+      "target": "Map",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:14",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Map",
+      "target": "Map",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:15",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Map",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:16",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Mac",
+      "target": "Mac",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:17",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Mac",
+      "target": "Mac",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:18",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Mac",
+      "target": "Mac",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:19",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Mac",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:20",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Sdn",
+      "target": "Sdn",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:21",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Sdn",
+      "target": "Sdn",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:22",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Sdn",
+      "target": "Sdn",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:23",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Sdn",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:24",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "App",
+      "target": "App",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:25",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "App",
+      "target": "App",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:26",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "App",
+      "target": "App",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:27",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "App",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:28",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Notify",
+      "target": "Notify",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:29",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Notify",
+      "target": "Notify",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:30",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Notify",
+      "target": "Notify",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:31",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Notify",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:32",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacNotice",
+      "target": "MacNotice",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:33",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacNotice",
+      "target": "MacNotice",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:34",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacNotice",
+      "target": "MacNotice",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:35",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacNotice",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:36",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "CtrlNotice",
+      "target": "CtrlNotice",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:37",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "CtrlNotice",
+      "target": "CtrlNotice",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:38",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "CtrlNotice",
+      "target": "CtrlNotice",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:39",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "CtrlNotice",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:40",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Return",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:41",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Return",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:42",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Return",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:43",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:44",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacOnly",
+      "target": "MacOnly",
+      "synchronisation": "phy_phy_kpi_report?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=true, p=0, bus_pd=phy_PdClass, bus_fa=phy_RfaClass, bus_acc=phy_AccClass, bus_coverage=phy_CoverageClass, bus_share=phy_ResourceShareClass, bus_miss=bus_missed_detection, bus_sensing_bad=phy_sensing_degraded_flag"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:45",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacOnly",
+      "target": "MacOnly",
+      "synchronisation": "mac_mac_report?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=true, m=0, bus_queue=(mac_queueClass == mac_Q_CRIT ? 3 : (mac_queueClass == mac_Q_HIGH ? 2 : 0)), bus_resource=mac_resourceClass"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:46",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacOnly",
+      "target": "MacOnly",
+      "synchronisation": "bus_new_mac_sample?",
+      "assignment": "bus_mac_overwrite=(bus_mac_overwrite || bus_mac_pending), bus_mac_pending=false, bus_mac_delivery_valid=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:47",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacOnly",
+      "target": "Fresh",
+      "synchronisation": "bus_new_sample?",
+      "assignment": "bus_phy_overwrite=(bus_phy_overwrite || bus_phy_pending), bus_phy_pending=false, bus_phy_delivery_valid=false, publishing=false, band=0, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:48",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Stale",
+      "guard": "bus_phy_age == 5",
+      "assignment": "band=1, mac_kpiFreshnessClass=(bus_phy_delivery_valid ? mac_KPI_STALE : mac_KPI_MISSING), sdn_telemetryClass=(bus_phy_delivery_valid ? sdn_TEL_STALE : sdn_TEL_MISSING), app_detectionFreshnessClass=(bus_phy_delivery_valid ? app_DET_STALE : app_DET_EXPIRED)"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:49",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Notify",
+      "guard": "bus_phy_age == 10",
+      "synchronisation": "phy_aos_ctrl_expired!",
+      "assignment": "band=2, mac_kpiFreshnessClass=mac_KPI_MISSING, sdn_telemetryClass=sdn_TEL_MISSING, app_detectionFreshnessClass=app_DET_EXPIRED, app_updatePeriodClass=app_UPD_VIOLATED, app_note_kpi_update_event()"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:50",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Map",
+      "guard": "bus_phy_pending && bus_phy_valid && p <= bus_D_bus",
+      "assignment": "bus_phy_pending=false, bus_phy_delivery_valid=true, publishing=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:51",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "guard": "bus_phy_pending && p == bus_D_bus",
+      "assignment": "bus_phy_pending=false, bus_phy_loss=true, p=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:52",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "guard": "!bus_phy_pending && p == bus_D_bus",
+      "assignment": "p=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:53",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "MacOnly",
+      "guard": "bus_mac_pending && bus_mac_valid && m <= bus_D_bus",
+      "assignment": "bus_mac_pending=false, bus_mac_delivery_valid=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:54",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "guard": "bus_mac_pending && m == bus_D_bus",
+      "assignment": "bus_mac_pending=false, bus_mac_loss=true, m=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:55",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Fresh",
+      "target": "Fresh",
+      "guard": "!bus_mac_pending && m == bus_D_bus",
+      "assignment": "m=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:56",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Map",
+      "guard": "bus_phy_pending && bus_phy_valid && p <= bus_D_bus",
+      "assignment": "bus_phy_pending=false, bus_phy_delivery_valid=true, publishing=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:57",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Stale",
+      "guard": "bus_phy_pending && p == bus_D_bus",
+      "assignment": "bus_phy_pending=false, bus_phy_loss=true, p=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:58",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Stale",
+      "guard": "!bus_phy_pending && p == bus_D_bus",
+      "assignment": "p=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:59",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "MacOnly",
+      "guard": "bus_mac_pending && bus_mac_valid && m <= bus_D_bus",
+      "assignment": "bus_mac_pending=false, bus_mac_delivery_valid=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:60",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Stale",
+      "guard": "bus_mac_pending && m == bus_D_bus",
+      "assignment": "bus_mac_pending=false, bus_mac_loss=true, m=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:61",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Stale",
+      "target": "Stale",
+      "guard": "!bus_mac_pending && m == bus_D_bus",
+      "assignment": "m=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:62",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Map",
+      "guard": "bus_phy_pending && bus_phy_valid && p <= bus_D_bus",
+      "assignment": "bus_phy_pending=false, bus_phy_delivery_valid=true, publishing=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:63",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Expired",
+      "guard": "bus_phy_pending && p == bus_D_bus",
+      "assignment": "bus_phy_pending=false, bus_phy_loss=true, p=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:64",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Expired",
+      "guard": "!bus_phy_pending && p == bus_D_bus",
+      "assignment": "p=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:65",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "MacOnly",
+      "guard": "bus_mac_pending && bus_mac_valid && m <= bus_D_bus",
+      "assignment": "bus_mac_pending=false, bus_mac_delivery_valid=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:66",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Expired",
+      "guard": "bus_mac_pending && m == bus_D_bus",
+      "assignment": "bus_mac_pending=false, bus_mac_loss=true, m=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:67",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Expired",
+      "target": "Expired",
+      "guard": "!bus_mac_pending && m == bus_D_bus",
+      "assignment": "m=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:68",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Map",
+      "target": "Mac",
+      "guard": "bus_phy_age < 5",
+      "assignment": "band=0, mac_kpiFreshnessClass=0, sdn_telemetryClass=0, app_detectionFreshnessClass=0, app_updatePeriodClass=(0 == 0 ? app_UPD_OK : (0 == 1 ? app_UPD_SLOW : app_UPD_VIOLATED)), mac_mappedResourceClass=(bus_share == phy_RESOURCESHARECLASS_STARVED ? mac_RES_EXHAUSTED : (bus_share == phy_RESOURCESHARECLASS_LIMITED ? mac_RES_TIGHT : mac_resourceClass)), app_pdClass=bus_pd, app_falseAlarmClass=bus_fa, app_accuracyClass=bus_acc, app_coverageClass=bus_coverage, app_missedDetectionClass=bus_miss, sdn_sensing_degradation_pending=bus_sensing_bad, bus_mac_report_consumed=false, bus_sdn_report_consumed=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:69",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Map",
+      "target": "Mac",
+      "guard": "bus_phy_age >= 5 && bus_phy_age < 10",
+      "assignment": "band=1, mac_kpiFreshnessClass=1, sdn_telemetryClass=1, app_detectionFreshnessClass=1, app_updatePeriodClass=(1 == 0 ? app_UPD_OK : (1 == 1 ? app_UPD_SLOW : app_UPD_VIOLATED)), mac_mappedResourceClass=(bus_share == phy_RESOURCESHARECLASS_STARVED ? mac_RES_EXHAUSTED : (bus_share == phy_RESOURCESHARECLASS_LIMITED ? mac_RES_TIGHT : mac_resourceClass)), app_pdClass=bus_pd, app_falseAlarmClass=bus_fa, app_accuracyClass=bus_acc, app_coverageClass=bus_coverage, app_missedDetectionClass=bus_miss, sdn_sensing_degradation_pending=bus_sensing_bad, bus_mac_report_consumed=false, bus_sdn_report_consumed=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:70",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Map",
+      "target": "Mac",
+      "guard": "bus_phy_age >= 10",
+      "assignment": "band=2, mac_kpiFreshnessClass=2, sdn_telemetryClass=2, app_detectionFreshnessClass=2, app_updatePeriodClass=(2 == 0 ? app_UPD_OK : (2 == 1 ? app_UPD_SLOW : app_UPD_VIOLATED)), mac_mappedResourceClass=(bus_share == phy_RESOURCESHARECLASS_STARVED ? mac_RES_EXHAUSTED : (bus_share == phy_RESOURCESHARECLASS_LIMITED ? mac_RES_TIGHT : mac_resourceClass)), app_pdClass=bus_pd, app_falseAlarmClass=bus_fa, app_accuracyClass=bus_acc, app_coverageClass=bus_coverage, app_missedDetectionClass=bus_miss, sdn_sensing_degradation_pending=bus_sensing_bad, bus_mac_report_consumed=false, bus_sdn_report_consumed=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:71",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Mac",
+      "target": "Sdn",
+      "synchronisation": "mac_phy_kpi_report!"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:72",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Sdn",
+      "target": "App",
+      "synchronisation": "sdn_phy_kpi_report!"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:73",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "App",
+      "target": "Notify",
+      "synchronisation": "app_service_kpi_update!"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:74",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Notify",
+      "target": "MacNotice",
+      "guard": "app_gSlaViolation()",
+      "synchronisation": "app_sla_violation!",
+      "assignment": "n=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:75",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Notify",
+      "target": "MacNotice",
+      "guard": "app_gSlaWarning() && !app_gSlaViolation()",
+      "synchronisation": "app_sla_warn!",
+      "assignment": "n=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:76",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Notify",
+      "target": "MacNotice",
+      "guard": "!app_gSlaWarning() && !app_gSlaViolation()",
+      "assignment": "n=0"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:77",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacNotice",
+      "target": "CtrlNotice",
+      "guard": "publishing && bus_mac_report_consumed",
+      "synchronisation": "phy_mac_report_delivered!"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:78",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacNotice",
+      "target": "CtrlNotice",
+      "guard": "!publishing || !bus_mac_report_consumed"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:79",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacNotice",
+      "target": "CtrlNotice",
+      "assignment": "bus_phy_loss=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:80",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "CtrlNotice",
+      "target": "Return",
+      "guard": "publishing && bus_sdn_report_consumed",
+      "synchronisation": "phy_controller_report_delivered!"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:81",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "CtrlNotice",
+      "target": "Return",
+      "guard": "!publishing || !bus_sdn_report_consumed"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:82",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "CtrlNotice",
+      "target": "Return",
+      "assignment": "bus_phy_loss=true"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:83",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "MacOnly",
+      "target": "Return",
+      "synchronisation": "sdn_mac_report!",
+      "assignment": "sdn_sliceClass=(bus_resource == mac_RES_EXHAUSTED ? sdn_SLICE_VIOLATED : (bus_queue >= 2 ? sdn_SLICE_WARN : sdn_SLICE_OK))"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:84",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Fresh",
+      "guard": "bus_phy_valid && bus_phy_age < 5",
+      "assignment": "band=0, publishing=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:85",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Stale",
+      "guard": "bus_phy_valid && bus_phy_age >= 5 && bus_phy_age < 10",
+      "assignment": "band=1, publishing=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:86",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Expired",
+      "guard": "bus_phy_age >= 10",
+      "assignment": "band=2, publishing=false"
+    },
+    {
+      "id": "Boundary_B_KPI:edge:87",
+      "kind": "edge",
+      "template": "Boundary_B_KPI",
+      "source": "Return",
+      "target": "Expired",
+      "guard": "!bus_phy_valid",
+      "assignment": "band=2, publishing=false"
+    }
+  ]
+}

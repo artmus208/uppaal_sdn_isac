@@ -1,0 +1,1619 @@
+{
+  "evidence_class": "static_validation_not_model_checking",
+  "inspected_commit": "49b33764b27b343b9354b234e4b4523430201872",
+  "inputs": {
+    "model": {
+      "path": "evidence/instantiation/20260916-ack-observer/runs/ack-review-003-20260917/integrated-model.xml",
+      "sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446"
+    },
+    "queries": {
+      "path": "evidence/instantiation/20260916-ack-observer/runs/ack-review-003-20260917/integrated-queries.q",
+      "sha256": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9"
+    },
+    "candidate": {
+      "path": "evidence/governance/20260910-p1-p2-review/candidate-inputs.json",
+      "sha256": "bd712ebb280253827093433d67951a2d9927e1cf52bed5cc9b1c2266980d2968"
+    },
+    "adaptation": {
+      "path": "src/uppaal_mcp/integrated/adapt.py",
+      "sha256": "ad2884ff0b37338b8ea1aaacbd1a7b3c0248d924b798bb21a5116eda9b5d346b"
+    },
+    "boundary": {
+      "path": "src/uppaal_mcp/integrated/boundary.py",
+      "sha256": "02c8a1686957f59ab6253a6b6b0fbe134948f53c6daf1e4925034fab65930b9f"
+    },
+    "manifest": {
+      "path": "manifests/v1.md",
+      "sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075"
+    },
+    "collaboration": {
+      "path": "manifests/collaboration-v1.yaml",
+      "sha256": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0"
+    },
+    "baseline": {
+      "path": "manifests/baselines/reviewer-r1.yaml",
+      "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a"
+    }
+  },
+  "historical_candidate_model_hash": "2b6928bda92bfb9bad5c74e91cf78c0b15beb4e7300bea401de8b4dc2cf592a4",
+  "time_scale_seconds": null,
+  "source_timing_count": 43,
+  "integration_entry_count": 14,
+  "source_timings": [
+    {
+      "parameter": "phy.D_meas",
+      "symbol": "phy_D_meas",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "phy_Template_A_CH:edge:15",
+        "phy_Template_A_CH:edge:16",
+        "phy_Template_A_CH:edge:17",
+        "phy_Template_A_CH:edge:18"
+      ],
+      "clock_names": [
+        "phy_c_meas"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_CH:location:MeasurePending",
+        "phy_Template_A_CH:edge:0",
+        "phy_Template_A_CH:edge:3",
+        "phy_Template_A_CH:edge:5",
+        "phy_Template_A_CH:edge:7",
+        "phy_Template_A_CH:edge:9",
+        "phy_Template_A_CH:edge:11",
+        "phy_Template_A_CH:edge:13",
+        "phy_Template_A_CH:edge:15",
+        "phy_Template_A_CH:edge:16",
+        "phy_Template_A_CH:edge:17",
+        "phy_Template_A_CH:edge:18"
+      ],
+      "xml_lines": [
+        53,
+        929,
+        940,
+        949,
+        958
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "measure_tick → channel_report; c_meas=0 при приёме и результате",
+      "limit": "Отчёт разрешён до 5, инвариант MeasurePending допускает 6; после 5 результат закрыт guard. Нет доказательства прогресса."
+    },
+    {
+      "parameter": "phy.D_sig",
+      "symbol": "phy_D_sig",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "phy_Template_A_SIG:location:SignalReconfiguring",
+        "phy_Template_A_SIG:edge:30"
+      ],
+      "clock_names": [
+        "phy_c_sig"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_SIG:location:SignalReconfiguring",
+        "phy_Template_A_SIG:edge:0",
+        "phy_Template_A_SIG:edge:1",
+        "phy_Template_A_SIG:edge:2",
+        "phy_Template_A_SIG:edge:3",
+        "phy_Template_A_SIG:edge:4",
+        "phy_Template_A_SIG:edge:5",
+        "phy_Template_A_SIG:edge:6",
+        "phy_Template_A_SIG:edge:7",
+        "phy_Template_A_SIG:edge:8",
+        "phy_Template_A_SIG:edge:9",
+        "phy_Template_A_SIG:edge:10",
+        "phy_Template_A_SIG:edge:11",
+        "phy_Template_A_SIG:edge:12",
+        "phy_Template_A_SIG:edge:13",
+        "phy_Template_A_SIG:edge:14",
+        "phy_Template_A_SIG:edge:15",
+        "phy_Template_A_SIG:edge:16",
+        "phy_Template_A_SIG:edge:17",
+        "phy_Template_A_SIG:edge:18",
+        "phy_Template_A_SIG:edge:19",
+        "phy_Template_A_SIG:edge:20",
+        "phy_Template_A_SIG:edge:21",
+        "phy_Template_A_SIG:edge:22",
+        "phy_Template_A_SIG:edge:23",
+        "phy_Template_A_SIG:edge:24",
+        "phy_Template_A_SIG:edge:25",
+        "phy_Template_A_SIG:edge:26",
+        "phy_Template_A_SIG:edge:27",
+        "phy_Template_A_SIG:edge:28",
+        "phy_Template_A_SIG:edge:29",
+        "phy_Template_A_SIG:edge:30",
+        "phy_Template_A_SIG:edge:31",
+        "phy_Template_A_SIG:edge:32",
+        "phy_Template_A_SIG:edge:33",
+        "phy_Template_A_SIG:edge:35"
+      ],
+      "xml_lines": [
+        54,
+        1076,
+        1326
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "waveform_config → signal_report; c_sig=0 при каждой конфигурации",
+      "limit": "Повторная конфигурация сбрасывает текущий срок; не per-command oldest-outstanding контракт."
+    },
+    {
+      "parameter": "phy.D_sense",
+      "symbol": "phy_D_sense",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "phy_Template_A_SQ:location:SensingEvaluating",
+        "phy_Template_A_SQ:edge:3",
+        "phy_Template_A_SQ:edge:4",
+        "phy_Template_A_SQ:edge:5",
+        "phy_Template_A_SQ:edge:6",
+        "phy_Template_ObsFreshness:edge:2",
+        "phy_Template_ObsFreshness:edge:3",
+        "phy_Template_ObsFreshness:edge:4"
+      ],
+      "clock_names": [
+        "phy_c_obs_fresh",
+        "phy_c_sense"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_SQ:location:SensingEvaluating",
+        "phy_Template_A_SQ:edge:0",
+        "phy_Template_A_SQ:edge:1",
+        "phy_Template_A_SQ:edge:2",
+        "phy_Template_A_SQ:edge:3",
+        "phy_Template_A_SQ:edge:4",
+        "phy_Template_A_SQ:edge:5",
+        "phy_Template_A_SQ:edge:6",
+        "phy_Template_ObsFreshness:edge:0",
+        "phy_Template_ObsFreshness:edge:2",
+        "phy_Template_ObsFreshness:edge:3",
+        "phy_Template_ObsFreshness:edge:4"
+      ],
+      "xml_lines": [
+        55,
+        1981,
+        2036,
+        2046,
+        2058,
+        2068,
+        6948,
+        6956,
+        6961
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Приём child report в Idle → sensing_report; c_sense=0 при входе",
+      "limit": "ObsFreshness измеряет иной интервал: aos_ctrl_expired → sensing_report с FRESHNESSLIMITED. Не суммировать как одинаковые этапы."
+    },
+    {
+      "parameter": "phy.D_report",
+      "symbol": "phy_D_report",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "phy_Template_A_PH:location:PHYKpiReporting",
+        "phy_Template_A_PH:edge:56",
+        "phy_Template_A_PH:edge:57",
+        "phy_Template_A_PH:edge:58",
+        "phy_Template_A_PH:edge:59",
+        "phy_Template_ObsSenseReport:edge:2",
+        "phy_Template_ObsSenseReport:edge:3",
+        "phy_Template_ObsSenseReport:edge:4"
+      ],
+      "clock_names": [
+        "phy_c_obs_sense",
+        "phy_c_report"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_PH:location:PHYKpiReporting",
+        "phy_Template_A_PH:edge:0",
+        "phy_Template_A_PH:edge:1",
+        "phy_Template_A_PH:edge:2",
+        "phy_Template_A_PH:edge:3",
+        "phy_Template_A_PH:edge:7",
+        "phy_Template_A_PH:edge:8",
+        "phy_Template_A_PH:edge:9",
+        "phy_Template_A_PH:edge:10",
+        "phy_Template_A_PH:edge:14",
+        "phy_Template_A_PH:edge:15",
+        "phy_Template_A_PH:edge:16",
+        "phy_Template_A_PH:edge:17",
+        "phy_Template_A_PH:edge:21",
+        "phy_Template_A_PH:edge:22",
+        "phy_Template_A_PH:edge:23",
+        "phy_Template_A_PH:edge:24",
+        "phy_Template_A_PH:edge:28",
+        "phy_Template_A_PH:edge:29",
+        "phy_Template_A_PH:edge:30",
+        "phy_Template_A_PH:edge:31",
+        "phy_Template_A_PH:edge:35",
+        "phy_Template_A_PH:edge:36",
+        "phy_Template_A_PH:edge:37",
+        "phy_Template_A_PH:edge:38",
+        "phy_Template_A_PH:edge:42",
+        "phy_Template_A_PH:edge:43",
+        "phy_Template_A_PH:edge:44",
+        "phy_Template_A_PH:edge:45",
+        "phy_Template_A_PH:edge:49",
+        "phy_Template_A_PH:edge:50",
+        "phy_Template_A_PH:edge:51",
+        "phy_Template_A_PH:edge:52",
+        "phy_Template_A_PH:edge:56",
+        "phy_Template_A_PH:edge:57",
+        "phy_Template_A_PH:edge:58",
+        "phy_Template_A_PH:edge:59",
+        "phy_Template_ObsSenseReport:edge:0",
+        "phy_Template_ObsSenseReport:edge:2",
+        "phy_Template_ObsSenseReport:edge:3",
+        "phy_Template_ObsSenseReport:edge:4"
+      ],
+      "xml_lines": [
+        56,
+        2232,
+        2679,
+        2691,
+        2701,
+        2711,
+        6898,
+        6906,
+        6911
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Приём child report → phy_kpi_report; каждый принятый child report, включая self-loop в PHYKpiReporting, сбрасывает c_report",
+      "limit": "Повторные child reports перезапускают срок; это latest-trigger, не oldest-outstanding. ObsSenseReport стартует sensing_degraded, endpoints отличаются."
+    },
+    {
+      "parameter": "phy.D_BM",
+      "symbol": "phy_D_BM",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "phy_Template_A_BM:location:BeamRecover",
+        "phy_Template_A_BM:edge:53",
+        "phy_Template_A_BM:edge:54",
+        "phy_Template_A_BM:edge:55",
+        "phy_Template_ObsBeamRecovery:edge:4",
+        "phy_Template_ObsBeamRecovery:edge:5",
+        "phy_Template_ObsBeamRecovery:edge:6",
+        "phy_Template_ObsBeamRecovery:edge:7",
+        "phy_Template_ObsBeamRecovery:edge:8",
+        "phy_Template_ObsBeamRecovery:edge:9",
+        "phy_Template_ObsBeamRecovery:edge:10",
+        "queries"
+      ],
+      "clock_names": [
+        "mac_c_phy_ack",
+        "phy_c_obs_beam",
+        "phy_c_rec",
+        "sdn_c_rule"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_BM:location:BeamRecover",
+        "phy_Template_A_BM:edge:2",
+        "phy_Template_A_BM:edge:6",
+        "phy_Template_A_BM:edge:10",
+        "phy_Template_A_BM:edge:14",
+        "phy_Template_A_BM:edge:18",
+        "phy_Template_A_BM:edge:22",
+        "phy_Template_A_BM:edge:26",
+        "phy_Template_A_BM:edge:30",
+        "phy_Template_A_BM:edge:34",
+        "phy_Template_A_BM:edge:38",
+        "phy_Template_A_BM:edge:42",
+        "phy_Template_A_BM:edge:50",
+        "phy_Template_A_BM:edge:52",
+        "phy_Template_A_BM:edge:53",
+        "phy_Template_A_BM:edge:54",
+        "phy_Template_A_BM:edge:55",
+        "mac_Template_A_SCH:location:WaitPHYAck",
+        "mac_Template_A_SCH:edge:2",
+        "mac_Template_A_SCH:edge:4",
+        "mac_Template_A_SCH:edge:5",
+        "mac_Template_A_SCH:edge:6",
+        "mac_Template_A_SCH:edge:7",
+        "mac_Template_A_SCH:edge:9",
+        "mac_Template_A_SCH:edge:10",
+        "sdn_Template_A_RULE:location:RuleInstallPending",
+        "sdn_Template_A_RULE:edge:0",
+        "sdn_Template_A_RULE:edge:3",
+        "sdn_Template_A_RULE:edge:4",
+        "sdn_Template_A_RULE:edge:5",
+        "sdn_Template_A_RULE:edge:6",
+        "Boundary_E_FAULT:edge:52",
+        "Boundary_E_FAULT:edge:83",
+        "Boundary_E_FAULT:edge:114",
+        "Boundary_E_FAULT:edge:145",
+        "Boundary_E_FAULT:edge:176",
+        "Boundary_B_PHY_MAC:edge:7",
+        "phy_Template_ObsBeamRecovery:edge:0",
+        "phy_Template_ObsBeamRecovery:edge:4",
+        "phy_Template_ObsBeamRecovery:edge:5",
+        "phy_Template_ObsBeamRecovery:edge:6",
+        "phy_Template_ObsBeamRecovery:edge:7",
+        "phy_Template_ObsBeamRecovery:edge:8",
+        "phy_Template_ObsBeamRecovery:edge:9",
+        "phy_Template_ObsBeamRecovery:edge:10",
+        "queries"
+      ],
+      "xml_lines": [
+        57,
+        1447,
+        1850,
+        1860,
+        1870,
+        7021,
+        7029,
+        7034,
+        7039,
+        7044,
+        7049,
+        7054
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Вход recovery_cmd либо misalignment/extra_ssb → beam_restored/handover_hint/beam_failure; c_rec",
+      "limit": "ObsBeamRecovery стартует recovery_start, который не совпадает со всеми сбросами core. Recovery_cmd не имеет отправителя в выбранном составе; другие входы проверять отдельно."
+    },
+    {
+      "parameter": "phy.D_child",
+      "symbol": "phy_D_child",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        58
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    {
+      "parameter": "phy.D_net",
+      "symbol": "phy_D_net",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        59
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    {
+      "parameter": "phy.T_meas",
+      "symbol": "phy_T_meas",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "phy_Template_A_CH:location:MeasurePending"
+      ],
+      "clock_names": [
+        "phy_c_meas"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_CH:location:MeasurePending",
+        "phy_Template_A_CH:edge:0",
+        "phy_Template_A_CH:edge:3",
+        "phy_Template_A_CH:edge:5",
+        "phy_Template_A_CH:edge:7",
+        "phy_Template_A_CH:edge:9",
+        "phy_Template_A_CH:edge:11",
+        "phy_Template_A_CH:edge:13",
+        "phy_Template_A_CH:edge:15",
+        "phy_Template_A_CH:edge:16",
+        "phy_Template_A_CH:edge:17",
+        "phy_Template_A_CH:edge:18"
+      ],
+      "xml_lines": [
+        60,
+        794
+      ],
+      "role": "location_envelope",
+      "interval": "Верхняя граница нахождения MeasurePending: c_meas <= T_meas + J_meas = 6",
+      "limit": "Это не период измерений. Внешние попытки задаёт T_input=5."
+    },
+    {
+      "parameter": "phy.J_meas",
+      "symbol": "phy_J_meas",
+      "value": 1,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "phy_Template_A_CH:location:MeasurePending"
+      ],
+      "clock_names": [
+        "phy_c_meas"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_CH:location:MeasurePending",
+        "phy_Template_A_CH:edge:0",
+        "phy_Template_A_CH:edge:3",
+        "phy_Template_A_CH:edge:5",
+        "phy_Template_A_CH:edge:7",
+        "phy_Template_A_CH:edge:9",
+        "phy_Template_A_CH:edge:11",
+        "phy_Template_A_CH:edge:13",
+        "phy_Template_A_CH:edge:15",
+        "phy_Template_A_CH:edge:16",
+        "phy_Template_A_CH:edge:17",
+        "phy_Template_A_CH:edge:18"
+      ],
+      "xml_lines": [
+        61,
+        794
+      ],
+      "role": "location_envelope",
+      "interval": "Добавка +1 к верхней границе MeasurePending",
+      "limit": "Односторонний запас, не симметричный jitter и не нижняя граница периода."
+    },
+    {
+      "parameter": "phy.T_report",
+      "symbol": "phy_T_report",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        62
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    {
+      "parameter": "phy.J_SSB",
+      "symbol": "phy_J_SSB",
+      "value": 1,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        63
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    {
+      "parameter": "phy.tau_SSB",
+      "symbol": "phy_tau_SSB",
+      "value": 4,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        64
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Не обосновывает доставку/период/SSB в этой конфигурации. См. bus_D_bus и bus_T_input."
+    },
+    {
+      "parameter": "mac.D_collect",
+      "symbol": "mac_D_collect",
+      "value": 2,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "mac_Template_A_SCH:location:CollectKPI",
+        "mac_Template_A_SCH:edge:2"
+      ],
+      "clock_names": [
+        "mac_c_phy_ack",
+        "mac_c_sched"
+      ],
+      "clock_refs": [
+        "global:other",
+        "mac_Template_A_SCH:location:CollectKPI",
+        "mac_Template_A_SCH:location:SelectMode",
+        "mac_Template_A_SCH:location:WaitPHYAck",
+        "mac_Template_A_SCH:edge:0",
+        "mac_Template_A_SCH:edge:1",
+        "mac_Template_A_SCH:edge:2",
+        "mac_Template_A_SCH:edge:4",
+        "mac_Template_A_SCH:edge:5",
+        "mac_Template_A_SCH:edge:6",
+        "mac_Template_A_SCH:edge:7",
+        "mac_Template_A_SCH:edge:9",
+        "mac_Template_A_SCH:edge:10",
+        "Boundary_B_PHY_MAC:edge:7",
+        "queries"
+      ],
+      "xml_lines": [
+        343,
+        2821,
+        2855
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "mac_tick → PHY report либо fallback; c_sched=0 на tick",
+      "limit": "На report c_sched сбрасывается заново; сбор и SelectMode — отдельные интервалы. Missing/stale разрешает ранний fallback."
+    },
+    {
+      "parameter": "mac.D_sched",
+      "symbol": "mac_D_sched",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "mac_Template_A_SCH:location:SelectMode",
+        "mac_Template_ObsSensingCritical:edge:1",
+        "mac_Template_ObsSensingCritical:edge:2"
+      ],
+      "clock_names": [
+        "mac_c_obs_sensing",
+        "mac_c_sched"
+      ],
+      "clock_refs": [
+        "global:other",
+        "mac_Template_A_SCH:location:CollectKPI",
+        "mac_Template_A_SCH:location:SelectMode",
+        "mac_Template_A_SCH:edge:0",
+        "mac_Template_A_SCH:edge:1",
+        "mac_Template_A_SCH:edge:2",
+        "mac_Template_ObsSensingCritical:edge:0",
+        "mac_Template_ObsSensingCritical:edge:1",
+        "mac_Template_ObsSensingCritical:edge:2"
+      ],
+      "xml_lines": [
+        344,
+        2825,
+        7133,
+        7140
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Вход SelectMode после KPI → ApplySchedule/отказ; новый c_sched",
+      "limit": "2+5 ограничивает только последовательные стадии до ApplySchedule. В ApplySchedule нет инварианта; 2+5+3 не end-to-end срок от tick. ObsSensingCritical имеет иной flag-trigger."
+    },
+    {
+      "parameter": "mac.D_phy_ack",
+      "symbol": "mac_D_phy_ack",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "mac_Template_A_SCH:location:WaitPHYAck",
+        "mac_Template_A_SCH:edge:6",
+        "mac_Template_A_SCH:edge:7",
+        "mac_Template_A_SCH:edge:9",
+        "mac_Template_A_SCH:edge:10",
+        "Boundary_B_PHY_MAC:edge:7",
+        "mac_Template_ObsPhyAck:edge:1",
+        "queries"
+      ],
+      "clock_names": [
+        "mac_c_obs_ack",
+        "mac_c_phy_ack",
+        "phy_c_rec",
+        "sdn_c_rule"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_BM:location:BeamRecover",
+        "phy_Template_A_BM:edge:2",
+        "phy_Template_A_BM:edge:6",
+        "phy_Template_A_BM:edge:10",
+        "phy_Template_A_BM:edge:14",
+        "phy_Template_A_BM:edge:18",
+        "phy_Template_A_BM:edge:22",
+        "phy_Template_A_BM:edge:26",
+        "phy_Template_A_BM:edge:30",
+        "phy_Template_A_BM:edge:34",
+        "phy_Template_A_BM:edge:38",
+        "phy_Template_A_BM:edge:42",
+        "phy_Template_A_BM:edge:50",
+        "phy_Template_A_BM:edge:52",
+        "phy_Template_A_BM:edge:53",
+        "phy_Template_A_BM:edge:54",
+        "phy_Template_A_BM:edge:55",
+        "mac_Template_A_SCH:location:WaitPHYAck",
+        "mac_Template_A_SCH:edge:2",
+        "mac_Template_A_SCH:edge:4",
+        "mac_Template_A_SCH:edge:5",
+        "mac_Template_A_SCH:edge:6",
+        "mac_Template_A_SCH:edge:7",
+        "mac_Template_A_SCH:edge:9",
+        "mac_Template_A_SCH:edge:10",
+        "sdn_Template_A_RULE:location:RuleInstallPending",
+        "sdn_Template_A_RULE:edge:0",
+        "sdn_Template_A_RULE:edge:3",
+        "sdn_Template_A_RULE:edge:4",
+        "sdn_Template_A_RULE:edge:5",
+        "sdn_Template_A_RULE:edge:6",
+        "Boundary_E_FAULT:edge:52",
+        "Boundary_E_FAULT:edge:83",
+        "Boundary_E_FAULT:edge:114",
+        "Boundary_E_FAULT:edge:145",
+        "Boundary_E_FAULT:edge:176",
+        "Boundary_B_PHY_MAC:edge:7",
+        "mac_Template_ObsPhyAck:edge:1",
+        "queries"
+      ],
+      "xml_lines": [
+        345,
+        2832,
+        2886,
+        2896,
+        2915,
+        2925,
+        5971,
+        7074
+      ],
+      "role": "accepted_monitor_contract",
+      "interval": "Отправка MAC мосту → соответствующий ACK либо ScheduleFailure; оба часа=0 на отправке",
+      "limit": "Принятое исправление #30/#31: граница <=3, sticky late, последовательные транзакции; полное ACK-свойство не проверено."
+    },
+    {
+      "parameter": "mac.D_queue_crit",
+      "symbol": "mac_D_queue_crit",
+      "value": 10,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "mac_Template_A_Q:location:QueueCritical",
+        "mac_Template_A_Q:edge:3",
+        "mac_Template_A_Q:edge:4",
+        "mac_Template_ObsQueueCritical:edge:1",
+        "mac_Template_ObsQueueCritical:edge:2"
+      ],
+      "clock_names": [
+        "mac_c_obs_queue",
+        "mac_c_queue"
+      ],
+      "clock_refs": [
+        "global:other",
+        "mac_Template_A_Q:location:QueueCritical",
+        "mac_Template_A_Q:edge:1",
+        "mac_Template_A_Q:edge:2",
+        "mac_Template_A_Q:edge:3",
+        "mac_Template_A_Q:edge:4",
+        "mac_Template_ObsQueueCritical:edge:0",
+        "mac_Template_ObsQueueCritical:edge:1",
+        "mac_Template_ObsQueueCritical:edge:2"
+      ],
+      "xml_lines": [
+        346,
+        2979,
+        3005,
+        3011,
+        7099,
+        7106
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Вход QueueCritical → QueueDraining или resource_reject; c_queue=0",
+      "limit": "Начало по обнаружению queueClass, не по физическому приходу пакета; ресурсный отказ на =10. Flag-polling observer требует отдельного соответствия."
+    },
+    {
+      "parameter": "mac.D_buf_report",
+      "symbol": "mac_D_buf_report",
+      "value": 4,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "mac_Template_A_BUF:location:BufferOverflow",
+        "mac_Template_A_BUF:edge:4",
+        "mac_Template_ObsBufferOverflow:edge:1",
+        "mac_Template_ObsBufferOverflow:edge:2"
+      ],
+      "clock_names": [
+        "mac_c_buf",
+        "mac_c_obs_buf"
+      ],
+      "clock_refs": [
+        "global:other",
+        "mac_Template_A_BUF:location:BufferOverflow",
+        "mac_Template_A_BUF:edge:1",
+        "mac_Template_A_BUF:edge:2",
+        "mac_Template_A_BUF:edge:4",
+        "mac_Template_ObsBufferOverflow:edge:0",
+        "mac_Template_ObsBufferOverflow:edge:1",
+        "mac_Template_ObsBufferOverflow:edge:2"
+      ],
+      "xml_lines": [
+        347,
+        3042,
+        3072,
+        7166,
+        7173
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Вход BufferOverflow → mac_report либо уход при устранении overflow; c_buf=0",
+      "limit": "Инвариант/отчёт =4; нет численной ёмкости очереди. Flag-polling observer не принят как per-event доказательство."
+    },
+    {
+      "parameter": "mac.D_mac_report",
+      "symbol": "mac_D_mac_report",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "mac_Template_A_MAC_AGG:location:ReportBuild",
+        "mac_Template_A_MAC_AGG:edge:1",
+        "mac_Template_A_MAC_AGG:edge:2",
+        "mac_Template_ObsMacReportFreshness:edge:1",
+        "mac_Template_ObsMacReportFreshness:edge:2"
+      ],
+      "clock_names": [
+        "mac_c_obs_report",
+        "mac_c_report"
+      ],
+      "clock_refs": [
+        "global:other",
+        "mac_Template_A_MAC_AGG:location:ReportBuild",
+        "mac_Template_A_MAC_AGG:edge:0",
+        "mac_Template_A_MAC_AGG:edge:1",
+        "mac_Template_A_MAC_AGG:edge:2",
+        "mac_Template_ObsMacReportFreshness:edge:0",
+        "mac_Template_ObsMacReportFreshness:edge:1",
+        "mac_Template_ObsMacReportFreshness:edge:2"
+      ],
+      "xml_lines": [
+        348,
+        3155,
+        3173,
+        3180,
+        7199,
+        7206
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "ReportIdle → ReportBuild сбрасывает c_report; публикация до 5 либо ReportStale на =5",
+      "limit": "ReportStale не имеет инварианта: это не гарантированный срок публикации от установки pending."
+    },
+    {
+      "parameter": "mac.D_phy_report",
+      "symbol": "mac_D_phy_report",
+      "value": 10,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        349
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления",
+      "limit": "Фактический source-age задаётся B_KPI, не этой константой."
+    },
+    {
+      "parameter": "sdn.D_mon",
+      "symbol": "sdn_D_mon",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "sdn_Template_A_MON:location:CollectReports",
+        "sdn_Template_A_MON:edge:2",
+        "sdn_Template_A_MON:edge:3"
+      ],
+      "clock_names": [
+        "sdn_c_mon"
+      ],
+      "clock_refs": [
+        "global:other",
+        "sdn_Template_A_MON:location:CollectReports",
+        "sdn_Template_A_MON:edge:0",
+        "sdn_Template_A_MON:edge:1",
+        "sdn_Template_A_MON:edge:2",
+        "sdn_Template_A_MON:edge:3"
+      ],
+      "xml_lines": [
+        418,
+        3206,
+        3237,
+        3242
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Приём MAC/PHY report в MonitorIdle → классификация telemetry; c_mon=0 при приёме",
+      "limit": "CollectReports <=5; missing/stale может разрешаться раньше. Это ожидание/классификация после report, не период мониторинга."
+    },
+    {
+      "parameter": "sdn.D_decision",
+      "symbol": "sdn_D_decision",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "sdn_Template_A_POLICY:location:Evaluate",
+        "sdn_Template_ObsSensingDecision:edge:2"
+      ],
+      "clock_names": [
+        "sdn_c_dec",
+        "sdn_c_obs_sensing"
+      ],
+      "clock_refs": [
+        "global:other",
+        "sdn_Template_A_POLICY:location:Evaluate",
+        "sdn_Template_A_POLICY:edge:0",
+        "sdn_Template_A_POLICY:edge:1",
+        "sdn_Template_A_POLICY:edge:2",
+        "sdn_Template_ObsSensingDecision:edge:0",
+        "sdn_Template_ObsSensingDecision:edge:2"
+      ],
+      "xml_lines": [
+        419,
+        3417,
+        7390
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Приём service request/MAC report/PHY report в PolicyIdle → outcome; c_dec=0",
+      "limit": "Evaluate <=5. Нормальная принятая транзакция admission имеет транспорт+evaluation+транспорт <=7; существующий ObsSensingDecision измеряет flag-trigger."
+    },
+    {
+      "parameter": "sdn.D_rule_install",
+      "symbol": "sdn_D_rule_install",
+      "value": 8,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "sdn_Template_A_RULE:location:RuleInstallPending",
+        "sdn_Template_A_RULE:edge:3",
+        "sdn_Template_A_RULE:edge:5",
+        "sdn_Template_A_RULE:edge:6",
+        "sdn_Template_ObsRuleMiss:edge:2",
+        "queries"
+      ],
+      "clock_names": [
+        "mac_c_phy_ack",
+        "phy_c_rec",
+        "sdn_c_obs_rule",
+        "sdn_c_rule"
+      ],
+      "clock_refs": [
+        "global:other",
+        "phy_Template_A_BM:location:BeamRecover",
+        "phy_Template_A_BM:edge:2",
+        "phy_Template_A_BM:edge:6",
+        "phy_Template_A_BM:edge:10",
+        "phy_Template_A_BM:edge:14",
+        "phy_Template_A_BM:edge:18",
+        "phy_Template_A_BM:edge:22",
+        "phy_Template_A_BM:edge:26",
+        "phy_Template_A_BM:edge:30",
+        "phy_Template_A_BM:edge:34",
+        "phy_Template_A_BM:edge:38",
+        "phy_Template_A_BM:edge:42",
+        "phy_Template_A_BM:edge:50",
+        "phy_Template_A_BM:edge:52",
+        "phy_Template_A_BM:edge:53",
+        "phy_Template_A_BM:edge:54",
+        "phy_Template_A_BM:edge:55",
+        "mac_Template_A_SCH:location:WaitPHYAck",
+        "mac_Template_A_SCH:edge:2",
+        "mac_Template_A_SCH:edge:4",
+        "mac_Template_A_SCH:edge:5",
+        "mac_Template_A_SCH:edge:6",
+        "mac_Template_A_SCH:edge:7",
+        "mac_Template_A_SCH:edge:9",
+        "mac_Template_A_SCH:edge:10",
+        "sdn_Template_A_RULE:location:RuleInstallPending",
+        "sdn_Template_A_RULE:edge:0",
+        "sdn_Template_A_RULE:edge:3",
+        "sdn_Template_A_RULE:edge:4",
+        "sdn_Template_A_RULE:edge:5",
+        "sdn_Template_A_RULE:edge:6",
+        "Boundary_E_FAULT:edge:52",
+        "Boundary_E_FAULT:edge:83",
+        "Boundary_E_FAULT:edge:114",
+        "Boundary_E_FAULT:edge:145",
+        "Boundary_E_FAULT:edge:176",
+        "Boundary_B_PHY_MAC:edge:7",
+        "sdn_Template_ObsRuleMiss:edge:0",
+        "sdn_Template_ObsRuleMiss:edge:2",
+        "queries"
+      ],
+      "xml_lines": [
+        420,
+        3536,
+        3574,
+        3587,
+        3597,
+        7239
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "rule_miss → установка/forward/timeout; c_rule=0 при miss",
+      "limit": "RuleMiss и RuleInstalled без инвариантов; timeout на =8 может быть пропущен при задержке. Число 8 не доказывает обязательного разрешения."
+    },
+    {
+      "parameter": "sdn.D_rule_ack",
+      "symbol": "sdn_D_rule_ack",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "sdn_Template_A_RULE:edge:4",
+        "Boundary_E_FAULT:edge:52",
+        "Boundary_E_FAULT:edge:83",
+        "Boundary_E_FAULT:edge:114",
+        "Boundary_E_FAULT:edge:145",
+        "Boundary_E_FAULT:edge:176"
+      ],
+      "clock_names": [
+        "sdn_c_rule"
+      ],
+      "clock_refs": [
+        "global:other",
+        "sdn_Template_A_RULE:location:RuleInstallPending",
+        "sdn_Template_A_RULE:edge:0",
+        "sdn_Template_A_RULE:edge:3",
+        "sdn_Template_A_RULE:edge:4",
+        "sdn_Template_A_RULE:edge:5",
+        "sdn_Template_A_RULE:edge:6",
+        "Boundary_E_FAULT:edge:52",
+        "Boundary_E_FAULT:edge:83",
+        "Boundary_E_FAULT:edge:114",
+        "Boundary_E_FAULT:edge:145",
+        "Boundary_E_FAULT:edge:176",
+        "queries"
+      ],
+      "xml_lines": [
+        421,
+        3580,
+        4813,
+        5002,
+        5191,
+        5380,
+        5569
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Тот же c_rule от rule_miss → ACK в RuleInstalled",
+      "limit": "ACK <=5, install <=8: общий начальный момент, не сумма 8+5. D_bus=1 отсчитывается от flow_mod, не от rule_miss."
+    },
+    {
+      "parameter": "sdn.D_ctrl_ack",
+      "symbol": "sdn_D_ctrl_ack",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "sdn_Template_A_SDN_AGG:location:AwaitAck",
+        "sdn_Template_A_SDN_AGG:edge:2",
+        "sdn_Template_A_SDN_AGG:edge:3",
+        "Boundary_B_POLICY:edge:4",
+        "sdn_Template_ObsCommandAck:edge:2"
+      ],
+      "clock_names": [
+        "sdn_c_ctrl_ack",
+        "sdn_c_obs_cmd"
+      ],
+      "clock_refs": [
+        "global:other",
+        "sdn_Template_A_SDN_AGG:location:AwaitAck",
+        "sdn_Template_A_SDN_AGG:edge:0",
+        "sdn_Template_A_SDN_AGG:edge:2",
+        "sdn_Template_A_SDN_AGG:edge:3",
+        "Boundary_B_POLICY:edge:4",
+        "sdn_Template_ObsCommandAck:edge:0",
+        "sdn_Template_ObsCommandAck:edge:2"
+      ],
+      "xml_lines": [
+        422,
+        3744,
+        3767,
+        3774,
+        6063,
+        7356
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Отправка bus_ctrl_request из CommandBuild → ACK/timeout; c_ctrl_ack=0 на отправке",
+      "limit": "CommandSent без инварианта перед AwaitAck<=5; observer стартует по command_pending раньше или позже отправки. Нужен разбор задержки входа в AwaitAck и исходов."
+    },
+    {
+      "parameter": "sdn.D_recovery",
+      "symbol": "sdn_D_recovery",
+      "value": 20,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "sdn_Template_A_REC:location:StandbySwitch",
+        "sdn_Template_A_REC:location:ReactiveReembedding",
+        "sdn_Template_A_REC:edge:5",
+        "sdn_Template_A_REC:edge:6",
+        "sdn_Template_A_REC:edge:7",
+        "sdn_Template_A_REC:edge:8",
+        "Boundary_B_POLICY:edge:5",
+        "sdn_Template_ObsRecovery:edge:2"
+      ],
+      "clock_names": [
+        "sdn_c_obs_rec",
+        "sdn_c_rec",
+        "sdn_c_rollback"
+      ],
+      "clock_refs": [
+        "global:other",
+        "sdn_Template_A_REC:location:StandbySwitch",
+        "sdn_Template_A_REC:location:ReactiveReembedding",
+        "sdn_Template_A_REC:location:Rollback",
+        "sdn_Template_A_REC:edge:0",
+        "sdn_Template_A_REC:edge:1",
+        "sdn_Template_A_REC:edge:4",
+        "sdn_Template_A_REC:edge:5",
+        "sdn_Template_A_REC:edge:6",
+        "sdn_Template_A_REC:edge:7",
+        "sdn_Template_A_REC:edge:8",
+        "sdn_Template_A_REC:edge:9",
+        "sdn_Template_A_REC:edge:10",
+        "Boundary_B_POLICY:edge:5",
+        "sdn_Template_ObsRecovery:edge:0",
+        "sdn_Template_ObsRecovery:edge:2"
+      ],
+      "xml_lines": [
+        423,
+        3634,
+        3638,
+        3686,
+        3695,
+        3704,
+        3711,
+        6069,
+        7272
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "link/node_failure сбрасывает c_rec → standby/reembedding исход или rollback на =20",
+      "limit": "FailureDetected без инварианта; прямой rollback может начинаться позже. ObsRecovery отдельно опрашивает flags. Полный срок 30 не обоснован."
+    },
+    {
+      "parameter": "sdn.D_rollback",
+      "symbol": "sdn_D_rollback",
+      "value": 10,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "sdn_Template_A_REC:location:Rollback",
+        "sdn_Template_A_REC:edge:9",
+        "sdn_Template_A_REC:edge:10",
+        "sdn_Template_ObsRecovery:edge:2"
+      ],
+      "clock_names": [
+        "sdn_c_obs_rec",
+        "sdn_c_rollback"
+      ],
+      "clock_refs": [
+        "global:other",
+        "sdn_Template_A_REC:location:Rollback",
+        "sdn_Template_A_REC:edge:4",
+        "sdn_Template_A_REC:edge:7",
+        "sdn_Template_A_REC:edge:8",
+        "sdn_Template_A_REC:edge:9",
+        "sdn_Template_A_REC:edge:10",
+        "sdn_Template_ObsRecovery:edge:0",
+        "sdn_Template_ObsRecovery:edge:2"
+      ],
+      "xml_lines": [
+        424,
+        3642,
+        3718,
+        3727,
+        7272
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Отправка rollback_cmd сбрасывает c_rollback → ACK или RecoveryFailed на =10",
+      "limit": "Сумма 20+10 применима к ветке перехода на rollback при c_rec=20; не ограничивает произвольное ожидание перед прямым rollback."
+    },
+    {
+      "parameter": "sdn.D_admission",
+      "symbol": "sdn_D_admission",
+      "value": 15,
+      "unit": "abstract_model_unit",
+      "usage": "observer_only",
+      "direct_refs": [
+        "sdn_Template_ObsAdmission:edge:2"
+      ],
+      "clock_names": [
+        "sdn_c_obs_admission"
+      ],
+      "clock_refs": [
+        "global:other",
+        "sdn_Template_ObsAdmission:edge:0",
+        "sdn_Template_ObsAdmission:edge:2"
+      ],
+      "xml_lines": [
+        425,
+        7306
+      ],
+      "role": "observer_requirement",
+      "interval": "Только ObsAdmission: обнаружение pending → обнаружение serviceImpact; c_obs_admission",
+      "limit": "Core admission использует D_decision=5. Observer принимает NONE/DEGRADED/REJECTED без завершения pending; начальное NONE уже удовлетворяет response guard. Четвёртое значение FAILED исключено."
+    },
+    {
+      "parameter": "sdn.D_sec_ack",
+      "symbol": "sdn_D_sec_ack",
+      "value": 10,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        426
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется: A_SEC исключён из instance vector",
+      "limit": "Не распространять bound на выключенное расширение."
+    },
+    {
+      "parameter": "app.D_req",
+      "symbol": "app_D_req",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "app_A_REQ:location:RequestBuild"
+      ],
+      "clock_names": [
+        "app_c_req"
+      ],
+      "clock_refs": [
+        "global:other",
+        "app_A_REQ:location:RequestBuild",
+        "app_A_REQ:edge:0",
+        "app_A_REQ:edge:1"
+      ],
+      "xml_lines": [
+        490,
+        3800
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "new_demand → RequestReady через RequestBuild; c_req=0 на demand и при подготовке",
+      "limit": "RequestReady без инварианта. Это срок подготовки, не отправки и не всей admission."
+    },
+    {
+      "parameter": "app.D_admission",
+      "symbol": "app_D_admission",
+      "value": 15,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "app_A_REQ:location:RequestPending",
+        "app_A_REQ:edge:13",
+        "Boundary_B_ADMISSION:location:AwaitOutcome",
+        "Boundary_B_ADMISSION:edge:19",
+        "app_ObsServiceAdmission:edge:2"
+      ],
+      "clock_names": [
+        "app_c_admission",
+        "app_service_request_seq_age",
+        "total"
+      ],
+      "clock_refs": [
+        "function:raise_app_service_request_seq",
+        "global:other",
+        "app_A_REQ:location:RequestPending",
+        "app_A_REQ:edge:2",
+        "app_A_REQ:edge:13",
+        "Boundary_B_ADMISSION:declaration",
+        "Boundary_B_ADMISSION:location:AwaitOutcome",
+        "Boundary_B_ADMISSION:edge:0",
+        "Boundary_B_ADMISSION:edge:19",
+        "app_ObsServiceAdmission:edge:2"
+      ],
+      "xml_lines": [
+        491,
+        3808,
+        3916,
+        6106,
+        6244,
+        7422
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "service_request → accept/degraded/reject либо явный timeout; c_admission=0 на отправке",
+      "limit": "Timeout в RequestPending на =15. B_ADMISSION total стартует на той же отправке; APP observer имеет producer-age, но завершение опрашивается позднее."
+    },
+    {
+      "parameter": "app.D_event",
+      "symbol": "app_D_event",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        492
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    {
+      "parameter": "app.D_update",
+      "symbol": "app_D_update",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        493
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    {
+      "parameter": "app.D_fresh",
+      "symbol": "app_D_fresh",
+      "value": 10,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        494
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    {
+      "parameter": "app.D_sla_warn",
+      "symbol": "app_D_sla_warn",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "app_A_SLA:location:SLAWarning",
+        "app_ObsSlaWarningDeadline:edge:2"
+      ],
+      "clock_names": [
+        "app_c_sla_warn",
+        "app_sla_warn_seq_age"
+      ],
+      "clock_refs": [
+        "function:raise_app_sla_warn_seq",
+        "global:other",
+        "app_A_SLA:location:SLAWarning",
+        "app_A_SLA:edge:0",
+        "app_A_SLA:edge:2",
+        "app_A_SLA:edge:3",
+        "app_A_SLA:edge:10",
+        "app_ObsSlaWarningDeadline:edge:2"
+      ],
+      "xml_lines": [
+        495,
+        3927,
+        7452
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Полученное sla_warn → warning report либо переход в violation; core c_sla_warn и oldest-event age",
+      "limit": "SLAWarning <=5; observer использует coalescing latch, завершение определяется flags. Новые события не сбрасывают pending age."
+    },
+    {
+      "parameter": "app.D_sla_violation",
+      "symbol": "app_D_sla_violation",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "core_or_boundary",
+      "direct_refs": [
+        "app_A_SLA:location:SLAViolated",
+        "app_ObsSlaViolationDeadline:edge:2"
+      ],
+      "clock_names": [
+        "app_c_sla_violation",
+        "app_sla_violation_seq_age"
+      ],
+      "clock_refs": [
+        "function:raise_app_sla_violation_seq",
+        "global:other",
+        "app_A_SLA:location:SLAViolated",
+        "app_A_SLA:edge:1",
+        "app_A_SLA:edge:4",
+        "app_A_SLA:edge:6",
+        "app_A_SLA:edge:9",
+        "app_ObsSlaViolationDeadline:edge:2"
+      ],
+      "xml_lines": [
+        496,
+        3931,
+        7482
+      ],
+      "role": "abstract_stage_budget",
+      "interval": "Полученное sla_violation → report/reconfigure/terminate; core c_sla_violation и oldest-event age",
+      "limit": "SLAViolated <=3; report-consumption не означает выполнение reconfiguration. Flags не привязаны к отдельной повторной транзакции."
+    },
+    {
+      "parameter": "app.D_safety",
+      "symbol": "app_D_safety",
+      "value": 2,
+      "unit": "abstract_model_unit",
+      "usage": "observer_only",
+      "direct_refs": [
+        "app_ObsSafetyCriticalViolation:edge:2"
+      ],
+      "clock_names": [
+        "app_safety_violation_seq_age"
+      ],
+      "clock_refs": [
+        "function:raise_app_safety_violation_seq",
+        "global:other",
+        "app_ObsSafetyCriticalViolation:edge:2"
+      ],
+      "xml_lines": [
+        497,
+        7632
+      ],
+      "role": "observer_requirement",
+      "interval": "Первое pending событие safety_violation → report/reconfigure/terminate/rejection; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    {
+      "parameter": "app.D_fresh_report",
+      "symbol": "app_D_fresh_report",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "observer_only",
+      "direct_refs": [
+        "app_ObsDetectionFreshness:edge:2"
+      ],
+      "clock_names": [
+        "app_freshness_expired_seq_age"
+      ],
+      "clock_refs": [
+        "function:raise_app_freshness_expired_seq",
+        "global:other",
+        "app_ObsDetectionFreshness:edge:2"
+      ],
+      "xml_lines": [
+        498,
+        7512
+      ],
+      "role": "observer_requirement",
+      "interval": "Первое pending событие freshness_expired → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    {
+      "parameter": "app.D_update_report",
+      "symbol": "app_D_update_report",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "observer_only",
+      "direct_refs": [
+        "app_ObsUpdatePeriodViolation:edge:2"
+      ],
+      "clock_names": [
+        "app_update_violation_seq_age"
+      ],
+      "clock_refs": [
+        "function:raise_app_update_violation_seq",
+        "global:other",
+        "app_ObsUpdatePeriodViolation:edge:2"
+      ],
+      "xml_lines": [
+        499,
+        7542
+      ],
+      "role": "observer_requirement",
+      "interval": "Первое pending событие update_violation → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    {
+      "parameter": "app.D_fa_report",
+      "symbol": "app_D_fa_report",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "observer_only",
+      "direct_refs": [
+        "app_ObsFalseAlarmCritical:edge:2"
+      ],
+      "clock_names": [
+        "app_fa_critical_seq_age"
+      ],
+      "clock_refs": [
+        "function:raise_app_fa_critical_seq",
+        "global:other",
+        "app_ObsFalseAlarmCritical:edge:2"
+      ],
+      "xml_lines": [
+        500,
+        7572
+      ],
+      "role": "observer_requirement",
+      "interval": "Первое pending событие fa_critical → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    {
+      "parameter": "app.D_miss_report",
+      "symbol": "app_D_miss_report",
+      "value": 2,
+      "unit": "abstract_model_unit",
+      "usage": "observer_only",
+      "direct_refs": [
+        "app_ObsMissedDetectionCritical:edge:2"
+      ],
+      "clock_names": [
+        "app_miss_critical_seq_age"
+      ],
+      "clock_refs": [
+        "function:raise_app_miss_critical_seq",
+        "global:other",
+        "app_ObsMissedDetectionCritical:edge:2"
+      ],
+      "xml_lines": [
+        501,
+        7602
+      ],
+      "role": "observer_requirement",
+      "interval": "Первое pending событие miss_critical → report/reconfigure/terminate; producer-owned *_seq_age",
+      "limit": "Срок только observer; повторения coalesce без сброса oldest age. Позднее polling завершения/старые flags требуют соответствия выбранному контракту."
+    },
+    {
+      "parameter": "app.D_detect_warn",
+      "symbol": "app_D_detect_warn",
+      "value": 5,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        502
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    {
+      "parameter": "app.D_detect_violation",
+      "symbol": "app_D_detect_violation",
+      "value": 3,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        503
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    },
+    {
+      "parameter": "app.D_sensing_fresh",
+      "symbol": "app_D_sensing_fresh",
+      "value": 10,
+      "unit": "abstract_model_unit",
+      "usage": "declaration_only",
+      "direct_refs": [],
+      "clock_names": [],
+      "clock_refs": [],
+      "xml_lines": [
+        504
+      ],
+      "role": "inactive_declaration",
+      "interval": "Не используется вне объявления в выбранном XML/queries",
+      "limit": "Декларация не реализует числовой SLA; часть решений использует классы и literal source-age 5/10."
+    }
+  ],
+  "integration": [
+    {
+      "parameter": "layer_profiles",
+      "value": "default profiles recorded in inventory.json; APP constants from stored:app",
+      "role": "configuration_selection",
+      "interval": "Pinned default profiles PHY/MAC/SDN, APP из stored XML",
+      "limit": "Полный набор 43 строк выше; enum codes не временные параметры."
+    },
+    {
+      "parameter": "D_cmd",
+      "value": 1,
+      "role": "abstract_environment_assumption",
+      "interval": "MAC send / bridge receive → последовательные PHY handshakes + ACK; единый clock x=0",
+      "limit": "Все фазы внутри 1, не по 1 на handshake. На =1 возможны доставка или loss; после потери MAC ждёт свой timeout=3."
+    },
+    {
+      "parameter": "D_bus",
+      "value": 1,
+      "role": "abstract_environment_assumption",
+      "interval": "Локальные transport attempts от snapshot/accept до deliver/ACK либо loss",
+      "limit": "B_POLICY и dataplane не сбрасывают x между фазами; admission request/response сбрасываются отдельно. KPI p/m — отдельные clocks."
+    },
+    {
+      "parameter": "T_input",
+      "value": 5,
+      "role": "abstract_environment_assumption",
+      "interval": "Попытка генерации PHY каждые 5; tick reset при попытке",
+      "limit": "Выбор loss/miss разрешён даже при готовности; pipeline busy сохраняет старый возраст. Период попыток, не гарантированных samples."
+    },
+    {
+      "parameter": "T_mac_tick",
+      "value": 5,
+      "role": "abstract_environment_assumption",
+      "interval": "Попытка MAC tick каждые 5; local tick=0",
+      "limit": "Потеря binary tick допустима; не гарантия завершения расписания."
+    },
+    {
+      "parameter": "T_demand",
+      "value": 1,
+      "role": "abstract_environment_assumption",
+      "interval": "Один offer new_demand при bus_time=1",
+      "limit": "Broadcast может быть не принят. Это абсолютное время от начала модели."
+    },
+    {
+      "parameter": "T_complete",
+      "value": 40,
+      "role": "abstract_environment_assumption",
+      "interval": "Один offer service_complete при bus_time=40; раннее завершение по terminate",
+      "limit": "Не гарантированная длительность сервиса и не конечный горизонт исполнения всей модели."
+    },
+    {
+      "parameter": "fault_window",
+      "value": [
+        12,
+        13
+      ],
+      "role": "abstract_environment_assumption",
+      "interval": "Не более одного выбранного fault offer при bus_time в [12,13]",
+      "limit": "Ветка без отказа и drop разрешены; часы от начала модели, не от service start."
+    },
+    {
+      "parameter": "max_fault_events",
+      "value": 1,
+      "role": "finite_scope",
+      "interval": "Один проход ветки выбора fault",
+      "limit": "Структурное ограничение автомата, не clock bound."
+    },
+    {
+      "parameter": "max_requests_per_service",
+      "value": 1,
+      "role": "finite_scope",
+      "interval": "Один new_demand; один admission mailbox",
+      "limit": "Повторного сервиса нет."
+    },
+    {
+      "parameter": "max_outstanding_per_command_kind",
+      "value": 1,
+      "role": "finite_scope",
+      "interval": "Single-slot bridges и typed ACK/open flags",
+      "limit": "Не численный retry budget; повтор при busy не должен перезаписать mailbox."
+    },
+    {
+      "parameter": "freshness_warn_age",
+      "value": 5,
+      "role": "abstract_environment_assumption",
+      "interval": "Возраст PHY source <5 fresh, >=5 stale до 10",
+      "limit": "Сброс при генерации, не при доставке; latest overwrite инвалидирует предыдущую доставку; не max transport delay."
+    },
+    {
+      "parameter": "freshness_expire_age",
+      "value": 10,
+      "role": "abstract_environment_assumption",
+      "interval": "Возраст PHY source >=10 expired",
+      "limit": "До первого sample missing; delivery не омолаживает источник. Два возраста разных источников не превращаются в одну физическую метрику."
+    },
+    {
+      "parameter": "justification",
+      "value": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules.",
+      "role": "claim_boundary",
+      "interval": "Заданные choices абстрактного эксперимента",
+      "limit": "Нет физической калибровки, нормативного дедлайна или доказанного консервативного профиля."
+    }
+  ],
+  "method_limits": "Lexical references, not reachability or data-flow proof. Function refs retained; clock_refs conservatively include similarly named local clocks with explicit template scope. Declaration-only means no lexical use outside const declarations in selected XML/queries; no claim about other profiles."
+}
