@@ -1,0 +1,71 @@
+{
+  "base_commit": "49b33764b27b343b9354b234e4b4523430201872",
+  "supplement_commit": "4bf759fe7b76cf6c57d0d40e89ad238c9a1141e7",
+  "inputs": [
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "evidence/instantiation/20260916-ack-observer/runs/ack-review-003-20260917/integrated-model.xml",
+      "sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "src/uppaal_mcp/integrated/adapt.py",
+      "sha256": "ad2884ff0b37338b8ea1aaacbd1a7b3c0248d924b798bb21a5116eda9b5d346b"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "src/uppaal_mcp/integrated/boundary.py",
+      "sha256": "02c8a1686957f59ab6253a6b6b0fbe134948f53c6daf1e4925034fab65930b9f"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "src/uppaal_mcp/sdn/generator.py",
+      "sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "src/uppaal_mcp/integrated/generator.py",
+      "sha256": "b3466175848d20b5bb0c38f1956d4614b08efa31f7a38bf5380edffb0f1a99b5"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "AGENTS.md",
+      "sha256": "e4fde1df5f51a582d2b0f06daef9a2a98d3a96195c3201584d7d5e801d038b28"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "CONTRIBUTING.md",
+      "sha256": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "manifests/v1.md",
+      "sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "manifests/collaboration-v1.yaml",
+      "sha256": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0"
+    },
+    {
+      "commit": "49b33764b27b343b9354b234e4b4523430201872",
+      "path": "manifests/baselines/reviewer-r1.yaml",
+      "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a"
+    },
+    {
+      "commit": "4bf759fe7b76cf6c57d0d40e89ad238c9a1141e7",
+      "path": "evidence/validation/20260917-v03-timing/timing-inventory.json",
+      "sha256": "482223fb6dcc607aa0cdf284609a1a16659be157959cd18cfadd33199864d39d"
+    },
+    {
+      "commit": "4bf759fe7b76cf6c57d0d40e89ad238c9a1141e7",
+      "path": "evidence/validation/20260917-v03-timing/README.md",
+      "sha256": "e9214098cc70e2a0b70419508e173354185803cb3e28c991918d58a03c51e75f"
+    },
+    {
+      "commit": "4bf759fe7b76cf6c57d0d40e89ad238c9a1141e7",
+      "path": "evidence/validation/20260917-v03-timing/contracts.json",
+      "sha256": "2f66cffdf02795af1af14401cb3cb8418f42ac47ff99a17cf32d3c567fbe67f6"
+    }
+  ]
+}

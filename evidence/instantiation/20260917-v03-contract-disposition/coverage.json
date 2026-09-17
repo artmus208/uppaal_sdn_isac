@@ -1,0 +1,637 @@
+{
+  "source_timings": [
+    {
+      "parameter": "phy.D_meas",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "phy-measurement",
+      "disposition": "separate_correction_required",
+      "reason": "D_meas=5 / envelope=6: retain both historical values as observed; no report-by-5 or deadlock-freedom claim. Separately choose explicit timeout/failure at 5 or justified guard/envelope change before such claim.",
+      "source_refs": [
+        "phy_Template_A_CH:edge:15",
+        "phy_Template_A_CH:edge:16",
+        "phy_Template_A_CH:edge:17",
+        "phy_Template_A_CH:edge:18"
+      ]
+    },
+    {
+      "parameter": "phy.D_sig",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "phy-latest",
+      "disposition": "stage_assumption",
+      "reason": "Latest waveform_config/child report restarts its stage clock. Declare superseded/coalesced inputs; no response for each older event and no total deadline across repeated resets.",
+      "source_refs": [
+        "phy_Template_A_SIG:location:SignalReconfiguring",
+        "phy_Template_A_SIG:edge:30"
+      ]
+    },
+    {
+      "parameter": "phy.D_sense",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "phy-observers",
+      "disposition": "separate_correction_required",
+      "reason": "Keep core stage budget; independently align sensing_degraded/aos_ctrl_expired/recovery_start with actual core trigger coverage and matching outcomes before observer claims. D_BM recovery_cmd has no sender, but other recovery inputs remain relevant.",
+      "source_refs": [
+        "phy_Template_A_SQ:location:SensingEvaluating",
+        "phy_Template_A_SQ:edge:3",
+        "phy_Template_A_SQ:edge:4",
+        "phy_Template_A_SQ:edge:5",
+        "phy_Template_A_SQ:edge:6",
+        "phy_Template_ObsFreshness:edge:2",
+        "phy_Template_ObsFreshness:edge:3",
+        "phy_Template_ObsFreshness:edge:4"
+      ]
+    },
+    {
+      "parameter": "phy.D_report",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "phy-latest",
+      "disposition": "stage_assumption",
+      "reason": "Latest waveform_config/child report restarts its stage clock. Declare superseded/coalesced inputs; no response for each older event and no total deadline across repeated resets.",
+      "source_refs": [
+        "phy_Template_A_PH:location:PHYKpiReporting",
+        "phy_Template_A_PH:edge:56",
+        "phy_Template_A_PH:edge:57",
+        "phy_Template_A_PH:edge:58",
+        "phy_Template_A_PH:edge:59",
+        "phy_Template_ObsSenseReport:edge:2",
+        "phy_Template_ObsSenseReport:edge:3",
+        "phy_Template_ObsSenseReport:edge:4"
+      ]
+    },
+    {
+      "parameter": "phy.D_BM",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "phy-observers",
+      "disposition": "separate_correction_required",
+      "reason": "Keep core stage budget; independently align sensing_degraded/aos_ctrl_expired/recovery_start with actual core trigger coverage and matching outcomes before observer claims. D_BM recovery_cmd has no sender, but other recovery inputs remain relevant.",
+      "source_refs": [
+        "phy_Template_A_BM:location:BeamRecover",
+        "phy_Template_A_BM:edge:53",
+        "phy_Template_A_BM:edge:54",
+        "phy_Template_A_BM:edge:55",
+        "phy_Template_ObsBeamRecovery:edge:4",
+        "phy_Template_ObsBeamRecovery:edge:5",
+        "phy_Template_ObsBeamRecovery:edge:6",
+        "phy_Template_ObsBeamRecovery:edge:7",
+        "phy_Template_ObsBeamRecovery:edge:8",
+        "phy_Template_ObsBeamRecovery:edge:9",
+        "phy_Template_ObsBeamRecovery:edge:10",
+        "queries"
+      ]
+    },
+    {
+      "parameter": "phy.D_child",
+      "value": 5,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "phy.D_net",
+      "value": 5,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "phy.T_meas",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "phy-measurement",
+      "disposition": "separate_correction_required",
+      "reason": "D_meas=5 / envelope=6: retain both historical values as observed; no report-by-5 or deadlock-freedom claim. Separately choose explicit timeout/failure at 5 or justified guard/envelope change before such claim.",
+      "source_refs": [
+        "phy_Template_A_CH:location:MeasurePending"
+      ]
+    },
+    {
+      "parameter": "phy.J_meas",
+      "value": 1,
+      "usage": "core_or_boundary",
+      "group": "phy-measurement",
+      "disposition": "separate_correction_required",
+      "reason": "D_meas=5 / envelope=6: retain both historical values as observed; no report-by-5 or deadlock-freedom claim. Separately choose explicit timeout/failure at 5 or justified guard/envelope change before such claim.",
+      "source_refs": [
+        "phy_Template_A_CH:location:MeasurePending"
+      ]
+    },
+    {
+      "parameter": "phy.T_report",
+      "value": 5,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "phy.J_SSB",
+      "value": 1,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "phy.tau_SSB",
+      "value": 4,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "mac.D_collect",
+      "value": 2,
+      "usage": "core_or_boundary",
+      "group": "mac-stage",
+      "disposition": "stage_assumption",
+      "reason": "D_collect and D_sched are stages with separate resets. ApplySchedule wait outside send-based ACK interval; no 2+5+3 global deadline.",
+      "source_refs": [
+        "mac_Template_A_SCH:location:CollectKPI",
+        "mac_Template_A_SCH:edge:2"
+      ]
+    },
+    {
+      "parameter": "mac.D_sched",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "mac-stage",
+      "disposition": "stage_assumption",
+      "reason": "D_collect and D_sched are stages with separate resets. ApplySchedule wait outside send-based ACK interval; no 2+5+3 global deadline.",
+      "source_refs": [
+        "mac_Template_A_SCH:location:SelectMode",
+        "mac_Template_ObsSensingCritical:edge:1",
+        "mac_Template_ObsSensingCritical:edge:2"
+      ]
+    },
+    {
+      "parameter": "mac.D_phy_ack",
+      "value": 3,
+      "usage": "core_or_boundary",
+      "group": "mac-ack",
+      "disposition": "preserve_accepted_correction",
+      "reason": "Preserve #31 send-to-matching-ACK-or-ScheduleFailure<=3; do not rerun existing verifier cases without a discrepancy.",
+      "source_refs": [
+        "mac_Template_A_SCH:location:WaitPHYAck",
+        "mac_Template_A_SCH:edge:6",
+        "mac_Template_A_SCH:edge:7",
+        "mac_Template_A_SCH:edge:9",
+        "mac_Template_A_SCH:edge:10",
+        "Boundary_B_PHY_MAC:edge:7",
+        "mac_Template_ObsPhyAck:edge:1",
+        "queries"
+      ]
+    },
+    {
+      "parameter": "mac.D_queue_crit",
+      "value": 10,
+      "usage": "core_or_boundary",
+      "group": "mac-observers",
+      "disposition": "separate_correction_required",
+      "reason": "Queue/buffer/report start/end polling remains unresolved. Preserve core phase bounds; ReportStale publication is unbounded, so D_mac_report is build-only. No blanket observer acceptance.",
+      "source_refs": [
+        "mac_Template_A_Q:location:QueueCritical",
+        "mac_Template_A_Q:edge:3",
+        "mac_Template_A_Q:edge:4",
+        "mac_Template_ObsQueueCritical:edge:1",
+        "mac_Template_ObsQueueCritical:edge:2"
+      ]
+    },
+    {
+      "parameter": "mac.D_buf_report",
+      "value": 4,
+      "usage": "core_or_boundary",
+      "group": "mac-observers",
+      "disposition": "separate_correction_required",
+      "reason": "Queue/buffer/report start/end polling remains unresolved. Preserve core phase bounds; ReportStale publication is unbounded, so D_mac_report is build-only. No blanket observer acceptance.",
+      "source_refs": [
+        "mac_Template_A_BUF:location:BufferOverflow",
+        "mac_Template_A_BUF:edge:4",
+        "mac_Template_ObsBufferOverflow:edge:1",
+        "mac_Template_ObsBufferOverflow:edge:2"
+      ]
+    },
+    {
+      "parameter": "mac.D_mac_report",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "mac-observers",
+      "disposition": "separate_correction_required",
+      "reason": "Queue/buffer/report start/end polling remains unresolved. Preserve core phase bounds; ReportStale publication is unbounded, so D_mac_report is build-only. No blanket observer acceptance.",
+      "source_refs": [
+        "mac_Template_A_MAC_AGG:location:ReportBuild",
+        "mac_Template_A_MAC_AGG:edge:1",
+        "mac_Template_A_MAC_AGG:edge:2",
+        "mac_Template_ObsMacReportFreshness:edge:1",
+        "mac_Template_ObsMacReportFreshness:edge:2"
+      ]
+    },
+    {
+      "parameter": "mac.D_phy_report",
+      "value": 10,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "sdn.D_mon",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "sdn-monitor",
+      "disposition": "stage_assumption",
+      "reason": "D_mon bounds CollectReports classification after receipt, not report generation or monitoring period.",
+      "source_refs": [
+        "sdn_Template_A_MON:location:CollectReports",
+        "sdn_Template_A_MON:edge:2",
+        "sdn_Template_A_MON:edge:3"
+      ]
+    },
+    {
+      "parameter": "sdn.D_decision",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "sdn-decision",
+      "disposition": "stage_assumption_and_separate_observer_correction",
+      "reason": "Evaluate<=5 is a stage. SensingDecision pending/policy-class polling needs separate event correlation; unsolicited policy outcomes are not admission completion.",
+      "source_refs": [
+        "sdn_Template_A_POLICY:location:Evaluate",
+        "sdn_Template_ObsSensingDecision:edge:2"
+      ]
+    },
+    {
+      "parameter": "sdn.D_rule_install",
+      "value": 8,
+      "usage": "core_or_boundary",
+      "group": "sdn-rule",
+      "disposition": "separate_correction_required",
+      "reason": "Install<=8 and ACK<=5 start at same rule_miss; not 8+5. RuleMiss/RuleInstalled waiting and ==8 timeout require explicit dispatch/outcome contract in a separate correction; retain numbers until reviewed.",
+      "source_refs": [
+        "sdn_Template_A_RULE:location:RuleInstallPending",
+        "sdn_Template_A_RULE:edge:3",
+        "sdn_Template_A_RULE:edge:5",
+        "sdn_Template_A_RULE:edge:6",
+        "sdn_Template_ObsRuleMiss:edge:2",
+        "queries"
+      ]
+    },
+    {
+      "parameter": "sdn.D_rule_ack",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "sdn-rule",
+      "disposition": "separate_correction_required",
+      "reason": "Install<=8 and ACK<=5 start at same rule_miss; not 8+5. RuleMiss/RuleInstalled waiting and ==8 timeout require explicit dispatch/outcome contract in a separate correction; retain numbers until reviewed.",
+      "source_refs": [
+        "sdn_Template_A_RULE:edge:4",
+        "Boundary_E_FAULT:edge:52",
+        "Boundary_E_FAULT:edge:83",
+        "Boundary_E_FAULT:edge:114",
+        "Boundary_E_FAULT:edge:145",
+        "Boundary_E_FAULT:edge:176"
+      ]
+    },
+    {
+      "parameter": "sdn.D_ctrl_ack",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "sdn-control",
+      "disposition": "separate_correction_required",
+      "reason": "Control ACK age starts on bus_ctrl_request, not command_pending. Review CommandSent unbounded waiting and stale/typed outcomes separately; preserve 5 as desired send-based bound.",
+      "source_refs": [
+        "sdn_Template_A_SDN_AGG:location:AwaitAck",
+        "sdn_Template_A_SDN_AGG:edge:2",
+        "sdn_Template_A_SDN_AGG:edge:3",
+        "Boundary_B_POLICY:edge:4",
+        "sdn_Template_ObsCommandAck:edge:2"
+      ]
+    },
+    {
+      "parameter": "sdn.D_recovery",
+      "value": 20,
+      "usage": "core_or_boundary",
+      "group": "recovery",
+      "disposition": "correction_specified",
+      "reason": "Recovery accepted-failure to local outcome<=30, dispatch/failure by20, rollback<=10. Functional correction and passive recorder separately specified in contracts.md.",
+      "source_refs": [
+        "sdn_Template_A_REC:location:StandbySwitch",
+        "sdn_Template_A_REC:location:ReactiveReembedding",
+        "sdn_Template_A_REC:edge:5",
+        "sdn_Template_A_REC:edge:6",
+        "sdn_Template_A_REC:edge:7",
+        "sdn_Template_A_REC:edge:8",
+        "Boundary_B_POLICY:edge:5",
+        "sdn_Template_ObsRecovery:edge:2"
+      ]
+    },
+    {
+      "parameter": "sdn.D_rollback",
+      "value": 10,
+      "usage": "core_or_boundary",
+      "group": "recovery",
+      "disposition": "correction_specified",
+      "reason": "Recovery accepted-failure to local outcome<=30, dispatch/failure by20, rollback<=10. Functional correction and passive recorder separately specified in contracts.md.",
+      "source_refs": [
+        "sdn_Template_A_REC:location:Rollback",
+        "sdn_Template_A_REC:edge:9",
+        "sdn_Template_A_REC:edge:10",
+        "sdn_Template_ObsRecovery:edge:2"
+      ]
+    },
+    {
+      "parameter": "sdn.D_admission",
+      "value": 15,
+      "usage": "observer_only",
+      "group": "admission",
+      "disposition": "correction_specified",
+      "reason": "APP send-to-accepted-outcome-or-local-timeout<=15; separate SDN receive-to-emission<=15 observer. Event-correlated recording; conditional transports+Evaluate<=7.",
+      "source_refs": [
+        "sdn_Template_ObsAdmission:edge:2"
+      ]
+    },
+    {
+      "parameter": "sdn.D_sec_ack",
+      "value": 10,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "app.D_req",
+      "value": 3,
+      "usage": "core_or_boundary",
+      "group": "app-build",
+      "disposition": "stage_assumption",
+      "reason": "D_req<=3 bounds RequestBuild only. RequestReady wait outside admission; no demand-to-send deadline.",
+      "source_refs": [
+        "app_A_REQ:location:RequestBuild"
+      ]
+    },
+    {
+      "parameter": "app.D_admission",
+      "value": 15,
+      "usage": "core_or_boundary",
+      "group": "admission",
+      "disposition": "correction_specified",
+      "reason": "APP send-to-accepted-outcome-or-local-timeout<=15; separate SDN receive-to-emission<=15 observer. Event-correlated recording; conditional transports+Evaluate<=7.",
+      "source_refs": [
+        "app_A_REQ:location:RequestPending",
+        "app_A_REQ:edge:13",
+        "Boundary_B_ADMISSION:location:AwaitOutcome",
+        "Boundary_B_ADMISSION:edge:19",
+        "app_ObsServiceAdmission:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_event",
+      "value": 5,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "app.D_update",
+      "value": 3,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "app.D_fresh",
+      "value": 10,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "app.D_sla_warn",
+      "value": 5,
+      "usage": "core_or_boundary",
+      "group": "app-events",
+      "disposition": "separate_correction_required",
+      "reason": "Oldest outstanding coalesced episodes, not per-notification guarantees. Match response events and atomic close; do not use stale flags/observer clearing. SLA core bounds and observer-only requirements are distinct.",
+      "source_refs": [
+        "app_A_SLA:location:SLAWarning",
+        "app_ObsSlaWarningDeadline:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_sla_violation",
+      "value": 3,
+      "usage": "core_or_boundary",
+      "group": "app-events",
+      "disposition": "separate_correction_required",
+      "reason": "Oldest outstanding coalesced episodes, not per-notification guarantees. Match response events and atomic close; do not use stale flags/observer clearing. SLA core bounds and observer-only requirements are distinct.",
+      "source_refs": [
+        "app_A_SLA:location:SLAViolated",
+        "app_ObsSlaViolationDeadline:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_safety",
+      "value": 2,
+      "usage": "observer_only",
+      "group": "app-events",
+      "disposition": "separate_correction_required",
+      "reason": "Oldest outstanding coalesced episodes, not per-notification guarantees. Match response events and atomic close; do not use stale flags/observer clearing. SLA core bounds and observer-only requirements are distinct.",
+      "source_refs": [
+        "app_ObsSafetyCriticalViolation:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_fresh_report",
+      "value": 3,
+      "usage": "observer_only",
+      "group": "app-events",
+      "disposition": "separate_correction_required",
+      "reason": "Oldest outstanding coalesced episodes, not per-notification guarantees. Match response events and atomic close; do not use stale flags/observer clearing. SLA core bounds and observer-only requirements are distinct.",
+      "source_refs": [
+        "app_ObsDetectionFreshness:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_update_report",
+      "value": 3,
+      "usage": "observer_only",
+      "group": "app-events",
+      "disposition": "separate_correction_required",
+      "reason": "Oldest outstanding coalesced episodes, not per-notification guarantees. Match response events and atomic close; do not use stale flags/observer clearing. SLA core bounds and observer-only requirements are distinct.",
+      "source_refs": [
+        "app_ObsUpdatePeriodViolation:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_fa_report",
+      "value": 3,
+      "usage": "observer_only",
+      "group": "app-events",
+      "disposition": "separate_correction_required",
+      "reason": "Oldest outstanding coalesced episodes, not per-notification guarantees. Match response events and atomic close; do not use stale flags/observer clearing. SLA core bounds and observer-only requirements are distinct.",
+      "source_refs": [
+        "app_ObsFalseAlarmCritical:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_miss_report",
+      "value": 2,
+      "usage": "observer_only",
+      "group": "app-events",
+      "disposition": "separate_correction_required",
+      "reason": "Oldest outstanding coalesced episodes, not per-notification guarantees. Match response events and atomic close; do not use stale flags/observer clearing. SLA core bounds and observer-only requirements are distinct.",
+      "source_refs": [
+        "app_ObsMissedDetectionCritical:edge:2"
+      ]
+    },
+    {
+      "parameter": "app.D_detect_warn",
+      "value": 5,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "app.D_detect_violation",
+      "value": 3,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    },
+    {
+      "parameter": "app.D_sensing_fresh",
+      "value": 10,
+      "usage": "declaration_only",
+      "group": "inactive",
+      "disposition": "inapplicable",
+      "reason": "Declaration-only in selected XML/query set; not an implemented constraint. A_SEC disabled; retain source declaration without transferring a guarantee.",
+      "source_refs": []
+    }
+  ],
+  "integration": [
+    {
+      "parameter": "layer_profiles",
+      "value": "default profiles recorded in inventory.json; APP constants from stored:app",
+      "group": "configuration",
+      "disposition": "claim_boundary",
+      "reason": "Abstract profile selection and justification; time scale unspecified; no physical calibration or universal deadlines."
+    },
+    {
+      "parameter": "D_cmd",
+      "value": 1,
+      "group": "transport",
+      "disposition": "environment_assumption",
+      "reason": "Per-bridge interval from actual accept/snapshot; delivery or loss at equality. D_cmd covers entire schedule route, D_bus phases as documented; no forced delivery."
+    },
+    {
+      "parameter": "D_bus",
+      "value": 1,
+      "group": "transport",
+      "disposition": "environment_assumption",
+      "reason": "Per-bridge interval from actual accept/snapshot; delivery or loss at equality. D_cmd covers entire schedule route, D_bus phases as documented; no forced delivery."
+    },
+    {
+      "parameter": "T_input",
+      "value": 5,
+      "group": "offers",
+      "disposition": "environment_assumption",
+      "reason": "Periodic attempts may be missed; demand/completion/fault are absolute offers, not guaranteed reception/duration. Fault window inclusive [12,13]; no-fault/drop permitted."
+    },
+    {
+      "parameter": "T_mac_tick",
+      "value": 5,
+      "group": "offers",
+      "disposition": "environment_assumption",
+      "reason": "Periodic attempts may be missed; demand/completion/fault are absolute offers, not guaranteed reception/duration. Fault window inclusive [12,13]; no-fault/drop permitted."
+    },
+    {
+      "parameter": "T_demand",
+      "value": 1,
+      "group": "offers",
+      "disposition": "environment_assumption",
+      "reason": "Periodic attempts may be missed; demand/completion/fault are absolute offers, not guaranteed reception/duration. Fault window inclusive [12,13]; no-fault/drop permitted."
+    },
+    {
+      "parameter": "T_complete",
+      "value": 40,
+      "group": "offers",
+      "disposition": "environment_assumption",
+      "reason": "Periodic attempts may be missed; demand/completion/fault are absolute offers, not guaranteed reception/duration. Fault window inclusive [12,13]; no-fault/drop permitted."
+    },
+    {
+      "parameter": "fault_window",
+      "value": [
+        12,
+        13
+      ],
+      "group": "offers",
+      "disposition": "environment_assumption",
+      "reason": "Periodic attempts may be missed; demand/completion/fault are absolute offers, not guaranteed reception/duration. Fault window inclusive [12,13]; no-fault/drop permitted."
+    },
+    {
+      "parameter": "max_fault_events",
+      "value": 1,
+      "group": "finite",
+      "disposition": "scope_assumption",
+      "reason": "One session/request/fault, one outstanding slot per command kind. These are finite structural bounds, not retry/timing guarantees; wider use requires a separate model."
+    },
+    {
+      "parameter": "max_requests_per_service",
+      "value": 1,
+      "group": "finite",
+      "disposition": "scope_assumption",
+      "reason": "One session/request/fault, one outstanding slot per command kind. These are finite structural bounds, not retry/timing guarantees; wider use requires a separate model."
+    },
+    {
+      "parameter": "max_outstanding_per_command_kind",
+      "value": 1,
+      "group": "finite",
+      "disposition": "scope_assumption",
+      "reason": "One session/request/fault, one outstanding slot per command kind. These are finite structural bounds, not retry/timing guarantees; wider use requires a separate model."
+    },
+    {
+      "parameter": "freshness_warn_age",
+      "value": 5,
+      "group": "freshness",
+      "disposition": "environment_assumption",
+      "reason": "Age from source generation; <5 fresh, [5,10) stale, >=10 expired; missing before first sample. Delivery does not reset age; latest overwrite remains explicit."
+    },
+    {
+      "parameter": "freshness_expire_age",
+      "value": 10,
+      "group": "freshness",
+      "disposition": "environment_assumption",
+      "reason": "Age from source generation; <5 fresh, [5,10) stale, >=10 expired; missing before first sample. Delivery does not reset age; latest overwrite remains explicit."
+    },
+    {
+      "parameter": "justification",
+      "value": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules.",
+      "group": "configuration",
+      "disposition": "claim_boundary",
+      "reason": "Abstract profile selection and justification; time scale unspecified; no physical calibration or universal deadlines."
+    }
+  ]
+}
