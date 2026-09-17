@@ -5,9 +5,9 @@ Owner каждой будущей correction — **artmus208**. Reviewer дол�
 
 Два последовательных deliverables:
 
-1. Recovery: функциональный failure-to-outcome контракт 20/10 и отдельно пассивный
+1. [#35 — Recovery](https://github.com/artmus208/uppaal_sdn_isac/issues/35): функциональный failure-to-outcome контракт 20/10 и отдельно пассивный
    recorder; targeted original/recorder-only/functional-fixed diagnostics.
-2. Admission: пассивная корреляция APP/SDN начала и исхода, сохранение 15/5 и
+2. [#36 — Admission](https://github.com/artmus208/uppaal_sdn_isac/issues/36): пассивная корреляция APP/SDN начала и исхода, сохранение 15/5 и
    two-transport semantics; targeted diagnostics без изменения service policy.
 
 Планируемые production scopes обоих пересекаются по integrated/adapt.py и могут
@@ -33,3 +33,5 @@ PHY measurement/observers, MAC polling/report, SDN rule/control/sensing и ос�
 APP latches перечислены в triage.md как отдельные незакрытые correction needs.
 Они не включаются «заодно» в два следующих patches. До их реализации сначала
 создать отдельные scoped задачи и принять их endpoints/claim scope.
+
+Порядок активации: независимое принятие #33 → освобождение scope → #35 → принятие/merge #35 → новый base и scope check → #36. Оба Issue созданы и назначены artmus208, status/blocked.
