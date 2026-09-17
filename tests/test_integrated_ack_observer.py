@@ -115,5 +115,59 @@ class AckObserverTests(unittest.TestCase):
             self.assertFalse(label(tr, 'synchronisation'))
 
 
+class AckEvidenceRunnerTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('ack_evidence_runner', ROOT / 'evidence/instantiation/20260916-ack-observer/check.py')
+        cls.runner = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(cls.runner)
+
+    def command(self, code, expected=None, limit=5):
+        import os
+        import sys
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            stdout, record = self.runner.run_command(out, 'test', [sys.executable, '-c', code], expected, limit, dict(os.environ))
+            self.assertEqual((out/'test.stdout.txt').read_bytes(), stdout)
+            self.assertTrue((out/'test.stderr.txt').exists())
+            return record
+
+    def test_nonzero_command_fails_runner(self):
+        rec = self.command('import sys; print("failed"); sys.exit(7)')
+        self.assertEqual(rec['exit_code'], 7)
+        self.assertEqual(self.runner.run_exit_code([rec]), 1)
+
+    def test_timeout_keeps_partial_output_and_fails_runner(self):
+        rec = self.command('import time; print("started", flush=True); time.sleep(10)', limit=0.2)
+        self.assertEqual(rec['status'], 'timeout')
+        self.assertEqual(self.runner.run_exit_code([rec]), 1)
+        self.assertEqual(rec['timeout_seconds'], 0.2)
+
+    def test_unexpected_verdict_with_zero_exit_fails_runner(self):
+        rec = self.command('print("-- Formula is NOT satisfied.")', ['satisfied'])
+        self.assertEqual(rec['exit_code'], 0)
+        self.assertEqual(self.runner.run_exit_code([rec]), 1)
+
+    def test_expected_negative_control_is_success(self):
+        rec = self.command('print("-- Formula is NOT satisfied.")', ['NOT satisfied'])
+        self.assertEqual(self.runner.run_exit_code([rec]), 0)
+
+    def test_missing_verdict_fails_runner(self):
+        rec = self.command('print("no result")', ['satisfied'])
+        self.assertEqual(self.runner.run_exit_code([rec]), 1)
+
+    def test_missing_executable_is_recorded_as_error(self):
+        import os
+        import tempfile
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            _, rec = self.runner.run_command(out, 'missing', [str(out/'absent-executable')], None, 5, dict(os.environ))
+            self.assertEqual(rec['status'], 'error')
+            self.assertTrue((out/'missing.stderr.txt').read_bytes())
+            self.assertEqual(self.runner.run_exit_code([rec]), 1)
+
+
 if __name__ == '__main__':
     unittest.main()
