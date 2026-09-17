@@ -1,0 +1,303 @@
+{
+  "run_id": "ack-review-003-20260917",
+  "source_commit": "d6cee9bb6f6f97f7914e358506d5f09239756329",
+  "base_commit": "9f98a3138d1cc421fb2f58678cd7a6c6d94dea8d",
+  "source_tree_clean_at_start": true,
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "operating_environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "cpu_model": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+  "logical_cpu_count": 8,
+  "ram_bytes": 8251899904,
+  "hardware_scope": "WSL host reports; Windows executable accessed through WSL interop",
+  "resource_limit": {
+    "software_seconds": 300.0,
+    "other_command_seconds": 60,
+    "memory": "no explicit cap"
+  },
+  "runner_exit_code": 0,
+  "peak_memory": "not_available",
+  "states_explored": "not_available",
+  "parameter_set": {
+    "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+    "D_cmd": 1,
+    "D_bus": 1,
+    "T_input": 5,
+    "T_mac_tick": 5,
+    "T_demand": 1,
+    "T_complete": 40,
+    "fault_window": [
+      12,
+      13
+    ],
+    "max_fault_events": 1,
+    "max_requests_per_service": 1,
+    "max_outstanding_per_command_kind": 1,
+    "freshness_warn_age": 5,
+    "freshness_expire_age": 10,
+    "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+  },
+  "instance_vector": {
+    "schema_version": 1,
+    "configuration_id": "p2-single-uav-abstract-v1-proposal",
+    "source_commit": "7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb",
+    "status": "proposed_not_implemented_not_accepted",
+    "baseline_id": "reviewer-r1-candidate",
+    "physical_time_scale_seconds": null,
+    "time_unit": "abstract_model_unit",
+    "entities": {
+      "base_stations": 1,
+      "devices_total": 1,
+      "uav_devices_subset": 1,
+      "radio_links": 1,
+      "sensing_targets": 1,
+      "sdn_ric_controllers": 1,
+      "service_sessions": 1,
+      "aggregate_queue_classes": 1,
+      "explicit_packet_queues": 0,
+      "explicit_handover_destination_cells": 0
+    },
+    "bindings": {
+      "device_0": {
+        "kind": "UAV",
+        "serving_bs": 0,
+        "link": 0,
+        "service": 0
+      },
+      "link_0": {
+        "bs": 0,
+        "device": 0,
+        "target": 0
+      },
+      "service_0": {
+        "controller": 0,
+        "device": 0,
+        "class": "SVC_UAV"
+      }
+    },
+    "groups_in_system_order": [
+      {
+        "group": "phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "A_CH",
+          "A_SIG",
+          "A_BM",
+          "A_SQ",
+          "A_PH"
+        ]
+      },
+      {
+        "group": "mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "A_SCH",
+          "A_Q",
+          "A_BUF",
+          "A_RSRC",
+          "A_MAC_AGG"
+        ]
+      },
+      {
+        "group": "sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "A_MON",
+          "A_RISK",
+          "A_POLICY",
+          "A_RULE",
+          "A_REC",
+          "A_SDN_AGG"
+        ]
+      },
+      {
+        "group": "app",
+        "source": "stored:app",
+        "retain": [
+          "Req",
+          "Sla",
+          "Crit",
+          "Agg"
+        ]
+      },
+      {
+        "group": "boundary",
+        "source": "new_templates_required",
+        "retain": [
+          "E_PHY_INPUT",
+          "E_MAC_LOAD",
+          "E_FAULT",
+          "E_SERVICE",
+          "B_PHY_MAC",
+          "B_POLICY",
+          "B_ADMISSION",
+          "B_KPI"
+        ]
+      },
+      {
+        "group": "obs_phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "ObsSenseReport",
+          "ObsFreshness",
+          "ObsBeamRecovery"
+        ]
+      },
+      {
+        "group": "obs_mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "ObsPhyAck",
+          "ObsQueueCritical",
+          "ObsSensingCritical",
+          "ObsBufferOverflow",
+          "ObsMacReportFreshness"
+        ]
+      },
+      {
+        "group": "obs_sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "ObsRuleMiss",
+          "ObsRecovery",
+          "ObsAdmission",
+          "ObsStaleTelemetry",
+          "ObsCommandAck",
+          "ObsSensingDecision"
+        ]
+      },
+      {
+        "group": "obs_app",
+        "source": "stored:app",
+        "retain": [
+          "ObsAdmission",
+          "ObsWarn",
+          "ObsViolation",
+          "ObsFresh",
+          "ObsUpdate",
+          "ObsFa",
+          "ObsMiss",
+          "ObsSafety"
+        ]
+      }
+    ],
+    "remove": {
+      "generated:phy:with_observers": [
+        "ENV_CH",
+        "ENV_TARGET",
+        "ENV_MAC",
+        "ENV_NET"
+      ],
+      "generated:mac:with_observers": [
+        "A_ENV_MAC"
+      ],
+      "generated:sdn:with_observers": [
+        "A_ENV_SDN"
+      ],
+      "stored:app": [
+        "Sdn",
+        "Env",
+        "Kpi",
+        "Sink"
+      ]
+    },
+    "new_template_contracts": "interface-contract.md#boundary-processes",
+    "application_placeholders_retained_without_behavior": [
+      "app_Crit_0",
+      "app_Agg_0"
+    ],
+    "optional_security_instances": 0,
+    "extended_phy_observers": 0,
+    "count_per_retained_process": 1,
+    "qualified_process_name": "<group>_<original_process>_0",
+    "expected_process_counts": {
+      "core": 20,
+      "boundary": 8,
+      "observers": 22,
+      "total": 50
+    },
+    "parameter_policy": {
+      "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+      "D_cmd": 1,
+      "D_bus": 1,
+      "T_input": 5,
+      "T_mac_tick": 5,
+      "T_demand": 1,
+      "T_complete": 40,
+      "fault_window": [
+        12,
+        13
+      ],
+      "max_fault_events": 1,
+      "max_requests_per_service": 1,
+      "max_outstanding_per_command_kind": 1,
+      "freshness_warn_age": 5,
+      "freshness_expire_age": 10,
+      "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+    },
+    "implementation_preconditions": [
+      "replace standalone environments with specified boundary processes",
+      "namespace declarations and localize component clocks",
+      "resolve service channel kinds and pre-synchronization payload staging",
+      "separate rule and controller acknowledgements",
+      "add missing lower-layer policy/command and KPI mappings",
+      "retain failure and timeout behavior including absent receivers",
+      "review APP placeholder scope and lack of complete service lifecycle",
+      "obtain independent parameter/interface decision before Gate 1"
+    ]
+  },
+  "model_hash": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446",
+  "query_hash": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9",
+  "source_hashes": {
+    "evidence/instantiation/20260907-p2-scope/inventory.json": "ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195",
+    "evidence/instantiation/20260907-p2-scope/instance-vector.json": "ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45",
+    ".uppaal_mcp_workspace/Application_service_layer_uppaal.xml": "fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f",
+    ".uppaal_mcp_workspace/mac_generated/model.xml": "e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7",
+    ".uppaal_mcp_workspace/phy_generated/model.xml": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd",
+    ".uppaal_mcp_workspace/sdn_generated_smoke/model.xml": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de",
+    "CONTRIBUTING.md": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+    "evidence/validation/20260907-p1/inventory.json": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4",
+    "evidence/validation/20260907-p1/validation-report.md": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+    "levels_tex/Application_service_layer_formalization.tex": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807",
+    "levels_tex/MAC_resource_scheduling_formalization.tex": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+    "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+    "levels_tex/SDN_RIC_control_plane_formalization.tex": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
+    "manifests/baselines/reviewer-r1.yaml": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+    "manifests/collaboration-v1.yaml": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+    "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+    "src/uppaal_mcp/layers.py": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec",
+    "src/uppaal_mcp/layout_core.py": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471",
+    "src/uppaal_mcp/mac/__init__.py": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+    "src/uppaal_mcp/mac/alpha.py": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7",
+    "src/uppaal_mcp/mac/defaults.py": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b",
+    "src/uppaal_mcp/mac/generator.py": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+    "src/uppaal_mcp/mac/ir.py": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49",
+    "src/uppaal_mcp/mac/layout.py": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244",
+    "src/uppaal_mcp/mac/property_pack.py": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0",
+    "src/uppaal_mcp/phy/__init__.py": "7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868",
+    "src/uppaal_mcp/phy/alpha.py": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e",
+    "src/uppaal_mcp/phy/defaults.py": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c",
+    "src/uppaal_mcp/phy/generator.py": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7",
+    "src/uppaal_mcp/phy/ir.py": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54",
+    "src/uppaal_mcp/phy/layout.py": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5",
+    "src/uppaal_mcp/phy/property_pack.py": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6",
+    "src/uppaal_mcp/sdn/__init__.py": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+    "src/uppaal_mcp/sdn/alpha.py": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f",
+    "src/uppaal_mcp/sdn/defaults.py": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70",
+    "src/uppaal_mcp/sdn/generator.py": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272",
+    "src/uppaal_mcp/sdn/ir.py": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25",
+    "src/uppaal_mcp/sdn/layout.py": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8",
+    "src/uppaal_mcp/sdn/property_pack.py": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec"
+  },
+  "implementation_sources": {
+    "src/uppaal_mcp/integrated/__init__.py": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7",
+    "src/uppaal_mcp/integrated/adapt.py": "ad2884ff0b37338b8ea1aaacbd1a7b3c0248d924b798bb21a5116eda9b5d346b",
+    "src/uppaal_mcp/integrated/boundary.py": "02c8a1686957f59ab6253a6b6b0fbe134948f53c6daf1e4925034fab65930b9f",
+    "src/uppaal_mcp/integrated/generator.py": "b3466175848d20b5bb0c38f1956d4614b08efa31f7a38bf5380edffb0f1a99b5",
+    "src/uppaal_mcp/integrated/inputs.py": "cd863ed8e26e0bc535142100d9ccc2a6d2c56f144682e38bc0ee2cebc909c23b",
+    "src/uppaal_mcp/integrated/replay.py": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103",
+    "src/uppaal_mcp/integrated/xmlutil.py": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b"
+  },
+  "claim_limits": "Focused diagnostics only. Full integrated ACK query not evaluated. E<> true only checks engine parsing/execution. No Gate 1/P3 acceptance. Safety does not imply inevitable completion on time-blocked or zero-time infinite traces.",
+  "all_expected_verdicts_match": true,
+  "all_commands_exit_zero": true
+}

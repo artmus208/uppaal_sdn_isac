@@ -1,0 +1,32 @@
+[
+  {
+    "run_id": "ack-review-003-20260917",
+    "command": [
+      ".venv/bin/python",
+      "-B",
+      "evidence/instantiation/20260916-ack-observer/check.py",
+      "--run-id",
+      "ack-review-003-20260917",
+      "--software-timeout",
+      "300"
+    ],
+    "actual_process_exit_code": 0,
+    "source": "agent execution tool process completion result; not inferred from UPPAAL text",
+    "record_reference": "runs/ack-review-003-20260917/run.json"
+  },
+  {
+    "run_id": "ack-runner-timeout-004-20260917",
+    "command": [
+      ".venv/bin/python",
+      "-B",
+      "evidence/instantiation/20260916-ack-observer/check.py",
+      "--run-id",
+      "ack-runner-timeout-004-20260917",
+      "--software-timeout",
+      "0.001"
+    ],
+    "actual_process_exit_code": 1,
+    "source": "agent execution tool process completion result; not inferred from UPPAAL text",
+    "record_reference": "runs/ack-runner-timeout-004-20260917/run.json"
+  }
+]

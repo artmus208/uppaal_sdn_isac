@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import re
+from copy import deepcopy
 import xml.etree.ElementTree as ET
 from .xmlutil import append_update, edge, label, loc_id, location, set_label, source_name
 
@@ -14,6 +15,9 @@ def remove_assignment(tr, expression):
 def adapt_layer(layer, declaration, templates):
     if layer == 'mac':
         declaration = declaration.replace('mac_kpiFreshnessClass = mac_KPI_FRESH', 'mac_kpiFreshnessClass = mac_KPI_MISSING')
+        declaration += ('\n// Passive ACK instrumentation, written only by the scheduler.\n'
+                        'bool mac_obs_ack_active = false;\n'
+                        'bool mac_obs_ack_late = false;\n')
     if layer == 'sdn':
         declaration = declaration.replace('sdn_telemetryClass = sdn_TEL_FRESH', 'sdn_telemetryClass = sdn_TEL_MISSING')
     if layer == 'app':
@@ -40,6 +44,15 @@ def adapt_layer(layer, declaration, templates):
     for process, t in templates.items():
         prefix = f'obs_{layer}_' if process.startswith(f'obs_{layer}_') else f'{layer}_'
         original = process.removeprefix(prefix).removesuffix('_0')
+        if layer == 'mac' and original == 'ObsPhyAck':
+            # No polling/reset/clear transition: a completed late transaction
+            # stays recorded even if the observer runs after the next command.
+            for node in list(t):
+                if node.tag == 'transition' or (node.tag == 'location' and node.findtext('name') == 'Wait'):
+                    t.remove(node)
+            edge(t, 'Idle', 'Violation', guard='mac_obs_ack_late')
+            edge(t, 'Idle', 'Violation',
+                 guard='mac_obs_ack_active && mac_c_obs_ack > mac_D_phy_ack')
         if layer == 'app' and original.startswith('Obs'):
             trigger = next(tr for tr in t.findall('transition') if '_seq >' in label(tr, 'guard'))
             event_name = re.search(r'app_\w+_seq', label(trigger, 'guard'))[0]
@@ -102,9 +115,19 @@ def adapt_layer(layer, declaration, templates):
                     remove_assignment(tr, 'sdn_command_pending = true')
             if layer == 'mac' and original == 'A_SCH':
                 if sync == 'mac_mac_schedule_cmd!':
-                    append_update(tr, 'mac_c_phy_ack = 0, bus_schedule_open = true')
+                    append_update(tr, 'mac_c_phy_ack = 0, bus_schedule_open = true, '
+                                  'mac_c_obs_ack = 0, mac_obs_ack_active = true')
                 if source_name(t, tr) == 'WaitPHYAck':
-                    append_update(tr, 'bus_schedule_open = false')
+                    # Partition the original completion edge into exhaustive,
+                    # disjoint clock regions. No added delay, sync or invariant.
+                    # Clock comparisons belong in guards, not bool assignments.
+                    old_guard = label(tr, 'guard')
+                    append_update(tr, 'bus_schedule_open = false, mac_obs_ack_active = false')
+                    late = deepcopy(tr)
+                    set_label(tr, 'guard', f'({old_guard}) && mac_c_obs_ack <= mac_D_phy_ack')
+                    set_label(late, 'guard', f'({old_guard}) && mac_c_obs_ack > mac_D_phy_ack')
+                    append_update(late, 'mac_obs_ack_late = true')
+                    t.append(late)
                 if sync == 'mac_phy_kpi_report?':
                     # CollectKPI invariant already bounds c_sched; broadcast input
                     # cannot legally contain a clock guard in UPPAAL.

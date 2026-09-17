@@ -1,0 +1,2 @@
+# Preserve verifier's exact bytes (CRLF/control sequences) and machine traces.
+runs/** -text -whitespace
