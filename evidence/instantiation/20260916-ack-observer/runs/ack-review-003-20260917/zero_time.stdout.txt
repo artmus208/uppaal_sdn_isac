@@ -1,0 +1,19 @@
+[2K
+Verifying formula 1 at \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time.q:1
+[2K -- Formula is satisfied.
+ -- Writing witness trace to \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time-trace-1
+[2K
+Verifying formula 2 at \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time.q:2
+[2K -- Formula is satisfied.
+ -- Writing witness trace to \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time-trace-2
+[2K
+Verifying formula 3 at \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time.q:3
+[2K -- Formula is satisfied.
+ -- Writing witness trace to \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time-trace-3
+[2K
+Verifying formula 4 at \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time.q:4
+[2K -- Formula is satisfied.
+ -- Writing witness trace to \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time-trace-4
+[2K
+Verifying formula 5 at \\wsl.localhost\Ubuntu\tmp\ack-observer-fix\evidence\instantiation\20260916-ack-observer\runs\ack-review-003-20260917\zero_time.q:5
+[2K -- Formula is satisfied.
