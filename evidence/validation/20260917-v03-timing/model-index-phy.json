@@ -1,0 +1,2790 @@
+{
+  "input_model_sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446",
+  "records": [
+    {
+      "id": "phy_Template_A_CH:location:ChannelNominal",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "ChannelNominal",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:location:MeasurePending",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "MeasurePending",
+      "invariant": "phy_c_meas <= phy_T_meas + phy_J_meas",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:location:InterferenceLimited",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "InterferenceLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:location:MobilityLimited",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "MobilityLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:location:MultipathLimited",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "MultipathLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:location:Blockage",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "Blockage",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:location:Outage",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "Outage",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:location:ContractViolation_CH",
+      "kind": "location",
+      "template": "phy_Template_A_CH",
+      "location": "ContractViolation_CH",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_CH:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "ChannelNominal",
+      "target": "MeasurePending",
+      "synchronisation": "phy_measure_tick?",
+      "assignment": "phy_c_meas = 0, phy_channel_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "ChannelNominal",
+      "target": "ChannelNominal",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MeasurePending",
+      "target": "MeasurePending",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "InterferenceLimited",
+      "target": "MeasurePending",
+      "synchronisation": "phy_measure_tick?",
+      "assignment": "phy_c_meas = 0, phy_channel_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "InterferenceLimited",
+      "target": "InterferenceLimited",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:5",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MobilityLimited",
+      "target": "MeasurePending",
+      "synchronisation": "phy_measure_tick?",
+      "assignment": "phy_c_meas = 0, phy_channel_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:6",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MobilityLimited",
+      "target": "MobilityLimited",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:7",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MultipathLimited",
+      "target": "MeasurePending",
+      "synchronisation": "phy_measure_tick?",
+      "assignment": "phy_c_meas = 0, phy_channel_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:8",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MultipathLimited",
+      "target": "MultipathLimited",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:9",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Blockage",
+      "target": "MeasurePending",
+      "synchronisation": "phy_measure_tick?",
+      "assignment": "phy_c_meas = 0, phy_channel_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:10",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Blockage",
+      "target": "Blockage",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:11",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Outage",
+      "target": "MeasurePending",
+      "synchronisation": "phy_measure_tick?",
+      "assignment": "phy_c_meas = 0, phy_channel_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:12",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Outage",
+      "target": "Outage",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:13",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "ContractViolation_CH",
+      "target": "MeasurePending",
+      "synchronisation": "phy_measure_tick?",
+      "assignment": "phy_c_meas = 0, phy_channel_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:14",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "ContractViolation_CH",
+      "target": "ContractViolation_CH",
+      "synchronisation": "phy_power_cmd?"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:15",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MeasurePending",
+      "target": "ChannelNominal",
+      "guard": "phy_env_scenario == phy_SCENARIO_NORMAL && phy_c_meas <= phy_D_meas",
+      "synchronisation": "phy_channel_report!",
+      "assignment": "phy_ChannelClass = phy_highest_priority_CH(), phy_channel_degraded_flag = false,\nphy_ch_enabled_count = 1, phy_channel_report_pending = false, phy_c_meas = 0"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:16",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MeasurePending",
+      "target": "InterferenceLimited",
+      "guard": "phy_env_scenario == phy_SCENARIO_COMM_DEGRADED && phy_c_meas <= phy_D_meas",
+      "synchronisation": "phy_channel_report!",
+      "assignment": "phy_ChannelClass = phy_highest_priority_CH(), phy_channel_degraded_flag = true,\nphy_ch_enabled_count = 1, phy_channel_report_pending = false, phy_c_meas = 0"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:17",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MeasurePending",
+      "target": "MobilityLimited",
+      "guard": "phy_env_scenario == phy_SCENARIO_SENSING_DEGRADED && phy_c_meas <= phy_D_meas",
+      "synchronisation": "phy_channel_report!",
+      "assignment": "phy_ChannelClass = phy_highest_priority_CH(), phy_channel_degraded_flag = true,\nphy_ch_enabled_count = 1, phy_channel_report_pending = false, phy_c_meas = 0"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:18",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MeasurePending",
+      "target": "Outage",
+      "guard": "phy_env_scenario == phy_SCENARIO_JOINT_DEGRADED && phy_c_meas <= phy_D_meas",
+      "synchronisation": "phy_channel_report!",
+      "assignment": "phy_ChannelClass = phy_highest_priority_CH(), phy_channel_degraded_flag = true,\nphy_ch_enabled_count = 1, phy_channel_report_pending = false, phy_c_meas = 0"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:19",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "InterferenceLimited",
+      "target": "InterferenceLimited",
+      "synchronisation": "phy_channel_degraded!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:20",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MobilityLimited",
+      "target": "MobilityLimited",
+      "synchronisation": "phy_mobility_alert!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:21",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MultipathLimited",
+      "target": "MultipathLimited",
+      "synchronisation": "phy_multipath_alert!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:22",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Blockage",
+      "target": "Blockage",
+      "synchronisation": "phy_blockage_detected!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:23",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Outage",
+      "target": "Outage",
+      "synchronisation": "phy_phy_outage!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:24",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "ChannelNominal",
+      "target": "ContractViolation_CH",
+      "guard": "!phy_ass_ch()",
+      "synchronisation": "phy_contract_violation_ch!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:25",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MeasurePending",
+      "target": "ContractViolation_CH",
+      "guard": "!phy_ass_ch()",
+      "synchronisation": "phy_contract_violation_ch!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:26",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "InterferenceLimited",
+      "target": "ContractViolation_CH",
+      "guard": "!phy_ass_ch()",
+      "synchronisation": "phy_contract_violation_ch!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:27",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MobilityLimited",
+      "target": "ContractViolation_CH",
+      "guard": "!phy_ass_ch()",
+      "synchronisation": "phy_contract_violation_ch!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:28",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "MultipathLimited",
+      "target": "ContractViolation_CH",
+      "guard": "!phy_ass_ch()",
+      "synchronisation": "phy_contract_violation_ch!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:29",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Blockage",
+      "target": "ContractViolation_CH",
+      "guard": "!phy_ass_ch()",
+      "synchronisation": "phy_contract_violation_ch!"
+    },
+    {
+      "id": "phy_Template_A_CH:edge:30",
+      "kind": "edge",
+      "template": "phy_Template_A_CH",
+      "source": "Outage",
+      "target": "ContractViolation_CH",
+      "guard": "!phy_ass_ch()",
+      "synchronisation": "phy_contract_violation_ch!"
+    },
+    {
+      "id": "phy_Template_A_SIG:location:SignalNominal",
+      "kind": "location",
+      "template": "phy_Template_A_SIG",
+      "location": "SignalNominal",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SIG:location:PilotBasedSensing",
+      "kind": "location",
+      "template": "phy_Template_A_SIG",
+      "location": "PilotBasedSensing",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SIG:location:PayloadAssistedSensing",
+      "kind": "location",
+      "template": "phy_Template_A_SIG",
+      "location": "PayloadAssistedSensing",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SIG:location:SignalReconfiguring",
+      "kind": "location",
+      "template": "phy_Template_A_SIG",
+      "location": "SignalReconfiguring",
+      "invariant": "phy_c_sig <= phy_D_sig",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SIG:location:SignalLimited",
+      "kind": "location",
+      "template": "phy_Template_A_SIG",
+      "location": "SignalLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SIG:location:ContractViolation_SIG",
+      "kind": "location",
+      "template": "phy_Template_A_SIG",
+      "location": "ContractViolation_SIG",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalNominal",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_waveform_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalNominal",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_pilot_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalNominal",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_prs_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalNominal",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_payload_sensing_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalNominal",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_sensing_mode_cmd?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:5",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PilotBasedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_waveform_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:6",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PilotBasedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_pilot_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:7",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PilotBasedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_prs_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:8",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PilotBasedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_payload_sensing_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:9",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PilotBasedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_sensing_mode_cmd?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:10",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PayloadAssistedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_waveform_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:11",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PayloadAssistedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_pilot_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:12",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PayloadAssistedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_prs_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:13",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PayloadAssistedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_payload_sensing_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:14",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PayloadAssistedSensing",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_sensing_mode_cmd?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:15",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalReconfiguring",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_waveform_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:16",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalReconfiguring",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_pilot_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:17",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalReconfiguring",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_prs_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:18",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalReconfiguring",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_payload_sensing_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:19",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalReconfiguring",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_sensing_mode_cmd?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:20",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_waveform_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:21",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_pilot_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:22",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_prs_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:23",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_payload_sensing_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:24",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_sensing_mode_cmd?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:25",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "ContractViolation_SIG",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_waveform_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:26",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "ContractViolation_SIG",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_pilot_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:27",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "ContractViolation_SIG",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_prs_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:28",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "ContractViolation_SIG",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_payload_sensing_config?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:29",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "ContractViolation_SIG",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_sensing_mode_cmd?",
+      "assignment": "phy_c_sig = 0, phy_signal_report_pending = true"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:30",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalReconfiguring",
+      "target": "SignalNominal",
+      "guard": "phy_c_sig <= phy_D_sig",
+      "synchronisation": "phy_signal_report!",
+      "assignment": "phy_SignalClass = phy_SIGNALCLASS_RECONFIGURING, phy_signal_report_pending = false,\nphy_c_sig = 0"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:31",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalNominal",
+      "target": "PilotBasedSensing",
+      "guard": "phy_PilotDensityClass == phy_PILOTDENSITYCLASS_OK && phy_BLERClass == phy_BLERCLASS_OK && phy_DRTClass == phy_DRTCLASS_OK",
+      "synchronisation": "phy_signal_report!",
+      "assignment": "phy_SignalClass = phy_SIGNALCLASS_PILOT_BASED, phy_signal_report_pending = false,\nphy_c_sig = 0"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:32",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PilotBasedSensing",
+      "target": "PayloadAssistedSensing",
+      "guard": "phy_PilotDensityClass == phy_PILOTDENSITYCLASS_LOW && phy_PayloadSenseClass != phy_PAYLOADSENSECLASS_FAILED",
+      "synchronisation": "phy_signal_report!",
+      "assignment": "phy_SignalClass = phy_SIGNALCLASS_PAYLOAD_ASSISTED, phy_signal_report_pending = false,\nphy_c_sig = 0"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:33",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PayloadAssistedSensing",
+      "target": "SignalLimited",
+      "guard": "phy_BLERClass != phy_BLERCLASS_OK || phy_DRTClass == phy_DRTCLASS_BAD || phy_PayloadSenseClass == phy_PAYLOADSENSECLASS_FAILED",
+      "synchronisation": "phy_signal_report!",
+      "assignment": "phy_SignalClass = phy_SIGNALCLASS_LIMITED, phy_signal_report_pending = false,\nphy_signal_degraded_flag = true, phy_c_sig = 0"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:34",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "SignalLimited",
+      "synchronisation": "phy_signal_degraded!"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:35",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "SignalReconfiguring",
+      "synchronisation": "phy_waveform_config?",
+      "assignment": "phy_c_sig = 0"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:36",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalNominal",
+      "target": "ContractViolation_SIG",
+      "guard": "!phy_ass_sig()",
+      "synchronisation": "phy_contract_violation_sig!"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:37",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PilotBasedSensing",
+      "target": "ContractViolation_SIG",
+      "guard": "!phy_ass_sig()",
+      "synchronisation": "phy_contract_violation_sig!"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:38",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "PayloadAssistedSensing",
+      "target": "ContractViolation_SIG",
+      "guard": "!phy_ass_sig()",
+      "synchronisation": "phy_contract_violation_sig!"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:39",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalReconfiguring",
+      "target": "ContractViolation_SIG",
+      "guard": "!phy_ass_sig()",
+      "synchronisation": "phy_contract_violation_sig!"
+    },
+    {
+      "id": "phy_Template_A_SIG:edge:40",
+      "kind": "edge",
+      "template": "phy_Template_A_SIG",
+      "source": "SignalLimited",
+      "target": "ContractViolation_SIG",
+      "guard": "!phy_ass_sig()",
+      "synchronisation": "phy_contract_violation_sig!"
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamSearch",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamSearch",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamSearchSeen",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamSearchSeen",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamTrack",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamTrack",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamLock",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamLock",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamPredict",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamPredict",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamMisalign",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamMisalign",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamRecoveryStart",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamRecoveryStart",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamRecover",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamRecover",
+      "invariant": "phy_c_rec <= phy_D_BM",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamHOAssist",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamHOAssist",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:BeamFailed",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "BeamFailed",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:location:ContractViolation_BM",
+      "kind": "location",
+      "template": "phy_Template_A_BM",
+      "location": "ContractViolation_BM",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_BM:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearch",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearch",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearch",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearch",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearchSeen",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:5",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearchSeen",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:6",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearchSeen",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:7",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearchSeen",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:8",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamTrack",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:9",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamTrack",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:10",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamTrack",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:11",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamTrack",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:12",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamLock",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:13",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamLock",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:14",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamLock",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:15",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamLock",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:16",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamPredict",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:17",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamPredict",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:18",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamPredict",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:19",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamPredict",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:20",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamMisalign",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:21",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamMisalign",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:22",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamMisalign",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:23",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamMisalign",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:24",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecoveryStart",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:25",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecoveryStart",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:26",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecoveryStart",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:27",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecoveryStart",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:28",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:29",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:30",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:31",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:32",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamHOAssist",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:33",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamHOAssist",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:34",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamHOAssist",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:35",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamHOAssist",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:36",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamFailed",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:37",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamFailed",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:38",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamFailed",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:39",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamFailed",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:40",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "ContractViolation_BM",
+      "target": "BeamSearch",
+      "synchronisation": "phy_beam_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:41",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "ContractViolation_BM",
+      "target": "BeamSearch",
+      "synchronisation": "phy_ssb_burst_config?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_SEARCH, phy_c_ssb = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:42",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "ContractViolation_BM",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING, phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:43",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "ContractViolation_BM",
+      "target": "BeamHOAssist",
+      "synchronisation": "phy_handover_assist_cmd?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:44",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearch",
+      "target": "BeamSearchSeen",
+      "synchronisation": "phy_target_detected?",
+      "assignment": "phy_target_seen = true"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:45",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearchSeen",
+      "target": "BeamTrack",
+      "guard": "phy_PRSClass != phy_PRSCLASS_FAILED",
+      "synchronisation": "phy_beam_report!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_TRACK"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:46",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamTrack",
+      "target": "BeamLock",
+      "guard": "phy_BeamErrorClass == phy_BEAMERRORCLASS_LOCKABLE",
+      "synchronisation": "phy_beam_report!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_LOCKED"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:47",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamTrack",
+      "target": "BeamMisalign",
+      "guard": "phy_AccClass == phy_ACCCLASS_FAILED || phy_BeamErrorClass == phy_BEAMERRORCLASS_CRITICAL",
+      "synchronisation": "phy_beam_report!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_MISALIGNED, phy_beam_degraded_flag = true"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:48",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamLock",
+      "target": "BeamLock",
+      "guard": "phy_MisClass == phy_MISCLASS_OK",
+      "synchronisation": "phy_beam_report!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_LOCKED"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:49",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamLock",
+      "target": "BeamPredict",
+      "guard": "phy_MisClass == phy_MISCLASS_WARN || phy_BlockageClass == phy_BLOCKAGECLASS_SUSPECTED",
+      "synchronisation": "phy_beam_report!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_PREDICT"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:50",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamPredict",
+      "target": "BeamRecoveryStart",
+      "synchronisation": "phy_extra_ssb_cmd?",
+      "assignment": "phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:51",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecoveryStart",
+      "target": "BeamRecover",
+      "synchronisation": "phy_recovery_start!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_RECOVERING"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:52",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamMisalign",
+      "target": "BeamRecoveryStart",
+      "synchronisation": "phy_beam_misaligned!",
+      "assignment": "phy_c_rec = 0"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:53",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "BeamLock",
+      "guard": "phy_BeamErrorClass == phy_BEAMERRORCLASS_LOCKABLE && phy_c_rec <= phy_D_BM",
+      "synchronisation": "phy_beam_restored!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_LOCKED"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:54",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "BeamHOAssist",
+      "guard": "phy_BlockageClass == phy_BLOCKAGECLASS_CONFIRMED && phy_c_rec <= phy_D_BM",
+      "synchronisation": "phy_handover_hint!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_HO_ASSIST"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:55",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "BeamFailed",
+      "guard": "phy_c_rec == phy_D_BM && phy_BeamErrorClass != phy_BEAMERRORCLASS_LOCKABLE && phy_BlockageClass != phy_BLOCKAGECLASS_CONFIRMED",
+      "synchronisation": "phy_beam_failure!",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_FAILED"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:56",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamHOAssist",
+      "target": "BeamTrack",
+      "synchronisation": "phy_new_beam_confirmed?",
+      "assignment": "phy_BeamClass = phy_BEAMCLASS_TRACK"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:57",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearch",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:58",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamSearchSeen",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:59",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamTrack",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:60",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamLock",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:61",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamPredict",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:62",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamMisalign",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:63",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecoveryStart",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:64",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamRecover",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:65",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamHOAssist",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_BM:edge:66",
+      "kind": "edge",
+      "template": "phy_Template_A_BM",
+      "source": "BeamFailed",
+      "target": "ContractViolation_BM",
+      "guard": "!phy_ass_bm()",
+      "synchronisation": "phy_contract_violation_bm!"
+    },
+    {
+      "id": "phy_Template_A_SQ:location:Idle",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:SensingEvaluating",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "SensingEvaluating",
+      "invariant": "phy_c_sense <= phy_D_sense",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:SensingQoSOk",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "SensingQoSOk",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:ProbabilityLimited",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "ProbabilityLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:FalseAlarmLimited",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "FalseAlarmLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:AccuracyLimited",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "AccuracyLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:FreshnessLimited",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "FreshnessLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:CoverageLimited",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "CoverageLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:CapacityLimited",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "CapacityLimited",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:SensingFailure",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "SensingFailure",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:location:ContractViolation_SQ",
+      "kind": "location",
+      "template": "phy_Template_A_SQ",
+      "location": "ContractViolation_SQ",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "Idle",
+      "target": "SensingEvaluating",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_input_changed = true, phy_sensing_report_pending = true, phy_c_sense = 0"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "Idle",
+      "target": "SensingEvaluating",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_input_changed = true, phy_sensing_report_pending = true, phy_c_sense = 0"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "Idle",
+      "target": "SensingEvaluating",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_input_changed = true, phy_sensing_report_pending = true, phy_c_sense = 0"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingEvaluating",
+      "target": "SensingQoSOk",
+      "guard": "phy_env_scenario == phy_SCENARIO_NORMAL && phy_c_sense <= phy_D_sense",
+      "synchronisation": "phy_sensing_report!",
+      "assignment": "phy_SensingState = phy_highest_priority_SQ(), phy_sensing_report_pending = false,\nphy_sensing_degraded_flag = false, phy_sensing_qos_ok = true, phy_sq_enabled_count = 1,\nphy_c_sense = 0"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingEvaluating",
+      "target": "SensingQoSOk",
+      "guard": "phy_env_scenario == phy_SCENARIO_COMM_DEGRADED && phy_c_sense <= phy_D_sense",
+      "synchronisation": "phy_sensing_report!",
+      "assignment": "phy_SensingState = phy_highest_priority_SQ(), phy_sensing_report_pending = false,\nphy_sensing_degraded_flag = false, phy_sensing_qos_ok = true, phy_sq_enabled_count = 1,\nphy_c_sense = 0"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:5",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingEvaluating",
+      "target": "FreshnessLimited",
+      "guard": "phy_env_scenario == phy_SCENARIO_SENSING_DEGRADED && phy_c_sense <= phy_D_sense",
+      "synchronisation": "phy_sensing_report!",
+      "assignment": "phy_SensingState = phy_highest_priority_SQ(), phy_sensing_report_pending = false,\nphy_sensing_degraded_flag = true, phy_sensing_qos_ok = false, phy_sq_enabled_count = 1,\nphy_c_sense = 0"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:6",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingEvaluating",
+      "target": "SensingFailure",
+      "guard": "phy_env_scenario == phy_SCENARIO_JOINT_DEGRADED && phy_c_sense <= phy_D_sense",
+      "synchronisation": "phy_sensing_report!",
+      "assignment": "phy_SensingState = phy_highest_priority_SQ(), phy_sensing_report_pending = false,\nphy_sensing_failure_flag = true, phy_sensing_qos_ok = false, phy_sq_enabled_count = 1,\nphy_c_sense = 0"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:7",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "ProbabilityLimited",
+      "target": "ProbabilityLimited",
+      "synchronisation": "phy_sensing_degraded!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:8",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "FalseAlarmLimited",
+      "target": "FalseAlarmLimited",
+      "synchronisation": "phy_sensing_degraded!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:9",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "AccuracyLimited",
+      "target": "AccuracyLimited",
+      "synchronisation": "phy_sensing_degraded!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:10",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "FreshnessLimited",
+      "target": "FreshnessLimited",
+      "synchronisation": "phy_sensing_degraded!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:11",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "CoverageLimited",
+      "target": "CoverageLimited",
+      "synchronisation": "phy_sensing_degraded!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:12",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "CapacityLimited",
+      "target": "CapacityLimited",
+      "synchronisation": "phy_sensing_degraded!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:13",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingFailure",
+      "target": "SensingFailure",
+      "synchronisation": "phy_sensing_failure!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:14",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "Idle",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:15",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingEvaluating",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:16",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingQoSOk",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:17",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "ProbabilityLimited",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:18",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "FalseAlarmLimited",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:19",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "AccuracyLimited",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:20",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "FreshnessLimited",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:21",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "CoverageLimited",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:22",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "CapacityLimited",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_SQ:edge:23",
+      "kind": "edge",
+      "template": "phy_Template_A_SQ",
+      "source": "SensingFailure",
+      "target": "ContractViolation_SQ",
+      "guard": "!phy_ass_sq()",
+      "synchronisation": "phy_contract_violation_sq!"
+    },
+    {
+      "id": "phy_Template_A_PH:location:PHYNormal",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "PHYNormal",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:location:PHYCommunicationDegraded",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "PHYCommunicationDegraded",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:location:PHYSensingDegraded",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "PHYSensingDegraded",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:location:PHYJointDegraded",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "PHYJointDegraded",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:location:PHYKpiReporting",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "PHYKpiReporting",
+      "invariant": "phy_c_report <= phy_D_report",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:location:PHYRecovery",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "PHYRecovery",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:location:PHYFailure",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "PHYFailure",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:location:ContractViolation_PH",
+      "kind": "location",
+      "template": "phy_Template_A_PH",
+      "location": "ContractViolation_PH",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_A_PH:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "PHYNormal",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:5",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "PHYNormal",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:6",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:7",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:8",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:9",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:10",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:11",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYCommunicationDegraded",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:12",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYCommunicationDegraded",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:13",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:14",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:15",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:16",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:17",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:18",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYSensingDegraded",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:19",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYSensingDegraded",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:20",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:21",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:22",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:23",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:24",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:25",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYJointDegraded",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:26",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYJointDegraded",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:27",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:28",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:29",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:30",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:31",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:32",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:33",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:34",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:35",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:36",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:37",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:38",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:39",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:40",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:41",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:42",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:43",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:44",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:45",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:46",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "PHYFailure",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:47",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "PHYFailure",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:48",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:49",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "ContractViolation_PH",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_channel_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:50",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "ContractViolation_PH",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_signal_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:51",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "ContractViolation_PH",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_beam_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:52",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "ContractViolation_PH",
+      "target": "PHYKpiReporting",
+      "synchronisation": "phy_sensing_report?",
+      "assignment": "phy_child_update = true, phy_phy_kpi_report_pending = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:53",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "ContractViolation_PH",
+      "target": "ContractViolation_PH",
+      "synchronisation": "phy_mac_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:54",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "ContractViolation_PH",
+      "target": "ContractViolation_PH",
+      "synchronisation": "phy_controller_report_delivered?"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:55",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "ContractViolation_PH",
+      "target": "PHYRecovery",
+      "synchronisation": "phy_recovery_cmd?",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYRECOVERY"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:56",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYNormal",
+      "guard": "phy_env_scenario == phy_SCENARIO_NORMAL && phy_c_report <= phy_D_report",
+      "synchronisation": "phy_phy_kpi_report!",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYNORMAL, phy_phy_kpi_report_pending = false,\nphy_comm_ok = true, phy_sensing_qos_ok = true, phy_degradation_flag = false,\nphy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:57",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYCommunicationDegraded",
+      "guard": "phy_env_scenario == phy_SCENARIO_COMM_DEGRADED && phy_c_report <= phy_D_report",
+      "synchronisation": "phy_phy_kpi_report!",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYCOMMUNICATIONDEGRADED,\nphy_phy_kpi_report_pending = false, phy_comm_ok = false, phy_sensing_qos_ok = true,\nphy_degradation_flag = true, phy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:58",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYSensingDegraded",
+      "guard": "phy_env_scenario == phy_SCENARIO_SENSING_DEGRADED && phy_c_report <= phy_D_report",
+      "synchronisation": "phy_phy_kpi_report!",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYSENSINGDEGRADED, phy_phy_kpi_report_pending = false,\nphy_comm_ok = true, phy_sensing_qos_ok = false, phy_degradation_flag = true,\nphy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:59",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYJointDegraded",
+      "guard": "phy_env_scenario == phy_SCENARIO_JOINT_DEGRADED && phy_c_report <= phy_D_report",
+      "synchronisation": "phy_phy_kpi_report!",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYJOINTDEGRADED, phy_phy_kpi_report_pending = false,\nphy_comm_ok = false, phy_sensing_qos_ok = false, phy_degradation_flag = true,\nphy_c_report = 0"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:60",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "PHYFailure",
+      "guard": "phy_ChannelClass == phy_CHANNELCLASS_OUTAGE || phy_BeamClass == phy_BEAMCLASS_FAILED || phy_SensingState == phy_SENSINGSTATE_SENSINGFAILURE",
+      "synchronisation": "phy_phy_failure!",
+      "assignment": "phy_PHYState = phy_PHYSTATE_PHYFAILURE"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:61",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "PHYCommunicationDegraded",
+      "synchronisation": "phy_degradation_event!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:62",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "PHYSensingDegraded",
+      "synchronisation": "phy_degradation_event!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:63",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "PHYJointDegraded",
+      "synchronisation": "phy_degradation_event!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:64",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYNormal",
+      "target": "ContractViolation_PH",
+      "guard": "!phy_ass_ph()",
+      "synchronisation": "phy_contract_violation_ph!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:65",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYCommunicationDegraded",
+      "target": "ContractViolation_PH",
+      "guard": "!phy_ass_ph()",
+      "synchronisation": "phy_contract_violation_ph!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:66",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYSensingDegraded",
+      "target": "ContractViolation_PH",
+      "guard": "!phy_ass_ph()",
+      "synchronisation": "phy_contract_violation_ph!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:67",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYJointDegraded",
+      "target": "ContractViolation_PH",
+      "guard": "!phy_ass_ph()",
+      "synchronisation": "phy_contract_violation_ph!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:68",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYKpiReporting",
+      "target": "ContractViolation_PH",
+      "guard": "!phy_ass_ph()",
+      "synchronisation": "phy_contract_violation_ph!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:69",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYRecovery",
+      "target": "ContractViolation_PH",
+      "guard": "!phy_ass_ph()",
+      "synchronisation": "phy_contract_violation_ph!"
+    },
+    {
+      "id": "phy_Template_A_PH:edge:70",
+      "kind": "edge",
+      "template": "phy_Template_A_PH",
+      "source": "PHYFailure",
+      "target": "ContractViolation_PH",
+      "guard": "!phy_ass_ph()",
+      "synchronisation": "phy_contract_violation_ph!"
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:location:Idle",
+      "kind": "location",
+      "template": "phy_Template_ObsSenseReport",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:location:Wait",
+      "kind": "location",
+      "template": "phy_Template_ObsSenseReport",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:location:Violation",
+      "kind": "location",
+      "template": "phy_Template_ObsSenseReport",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:location:Observe_1",
+      "kind": "location",
+      "template": "phy_Template_ObsSenseReport",
+      "location": "Observe_1",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_ObsSenseReport",
+      "source": "Idle",
+      "target": "Wait",
+      "synchronisation": "phy_sensing_degraded?",
+      "assignment": "phy_c_obs_sense = 0"
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_ObsSenseReport",
+      "source": "Wait",
+      "target": "Observe_1",
+      "synchronisation": "phy_phy_kpi_report?"
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_ObsSenseReport",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "phy_c_obs_sense > phy_D_report"
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_ObsSenseReport",
+      "source": "Observe_1",
+      "target": "Idle",
+      "guard": "phy_c_obs_sense <= phy_D_report"
+    },
+    {
+      "id": "phy_Template_ObsSenseReport:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_ObsSenseReport",
+      "source": "Observe_1",
+      "target": "Violation",
+      "guard": "phy_c_obs_sense > phy_D_report"
+    },
+    {
+      "id": "phy_Template_ObsFreshness:location:Idle",
+      "kind": "location",
+      "template": "phy_Template_ObsFreshness",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsFreshness:location:Wait",
+      "kind": "location",
+      "template": "phy_Template_ObsFreshness",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsFreshness:location:Violation",
+      "kind": "location",
+      "template": "phy_Template_ObsFreshness",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsFreshness:location:Observe_1",
+      "kind": "location",
+      "template": "phy_Template_ObsFreshness",
+      "location": "Observe_1",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsFreshness:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_ObsFreshness",
+      "source": "Idle",
+      "target": "Wait",
+      "synchronisation": "phy_aos_ctrl_expired?",
+      "assignment": "phy_c_obs_fresh = 0"
+    },
+    {
+      "id": "phy_Template_ObsFreshness:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_ObsFreshness",
+      "source": "Wait",
+      "target": "Observe_1",
+      "guard": "phy_SensingState == phy_SENSINGSTATE_FRESHNESSLIMITED",
+      "synchronisation": "phy_sensing_report?"
+    },
+    {
+      "id": "phy_Template_ObsFreshness:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_ObsFreshness",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "phy_c_obs_fresh > phy_D_sense"
+    },
+    {
+      "id": "phy_Template_ObsFreshness:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_ObsFreshness",
+      "source": "Observe_1",
+      "target": "Idle",
+      "guard": "phy_c_obs_fresh <= phy_D_sense"
+    },
+    {
+      "id": "phy_Template_ObsFreshness:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_ObsFreshness",
+      "source": "Observe_1",
+      "target": "Violation",
+      "guard": "phy_c_obs_fresh > phy_D_sense"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:location:Idle",
+      "kind": "location",
+      "template": "phy_Template_ObsBeamRecovery",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:location:Wait",
+      "kind": "location",
+      "template": "phy_Template_ObsBeamRecovery",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:location:Violation",
+      "kind": "location",
+      "template": "phy_Template_ObsBeamRecovery",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:location:Observe_1",
+      "kind": "location",
+      "template": "phy_Template_ObsBeamRecovery",
+      "location": "Observe_1",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:location:Observe_2",
+      "kind": "location",
+      "template": "phy_Template_ObsBeamRecovery",
+      "location": "Observe_2",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:location:Observe_3",
+      "kind": "location",
+      "template": "phy_Template_ObsBeamRecovery",
+      "location": "Observe_3",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:0",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Idle",
+      "target": "Wait",
+      "synchronisation": "phy_recovery_start?",
+      "assignment": "phy_c_obs_beam = 0"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:1",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Wait",
+      "target": "Observe_1",
+      "synchronisation": "phy_beam_restored?"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:2",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Wait",
+      "target": "Observe_2",
+      "synchronisation": "phy_handover_hint?"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:3",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Wait",
+      "target": "Observe_3",
+      "synchronisation": "phy_beam_failure?"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:4",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "phy_c_obs_beam > phy_D_BM"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:5",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Observe_1",
+      "target": "Idle",
+      "guard": "phy_c_obs_beam <= phy_D_BM"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:6",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Observe_1",
+      "target": "Violation",
+      "guard": "phy_c_obs_beam > phy_D_BM"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:7",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Observe_2",
+      "target": "Idle",
+      "guard": "phy_c_obs_beam <= phy_D_BM"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:8",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Observe_2",
+      "target": "Violation",
+      "guard": "phy_c_obs_beam > phy_D_BM"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:9",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Observe_3",
+      "target": "Idle",
+      "guard": "phy_c_obs_beam <= phy_D_BM"
+    },
+    {
+      "id": "phy_Template_ObsBeamRecovery:edge:10",
+      "kind": "edge",
+      "template": "phy_Template_ObsBeamRecovery",
+      "source": "Observe_3",
+      "target": "Violation",
+      "guard": "phy_c_obs_beam > phy_D_BM"
+    }
+  ]
+}

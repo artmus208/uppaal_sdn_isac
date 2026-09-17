@@ -1,0 +1,335 @@
+{
+  "input_model_sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446",
+  "records": [
+    {
+      "id": "function:phy_highest_priority_CH",
+      "kind": "function",
+      "text": "int phy_highest_priority_CH() {\n  if (phy_SINRClass == phy_SINRCLASS_OUTAGE) return phy_CHANNELCLASS_OUTAGE;\n  if (phy_PowerClass == phy_POWERCLASS_LOW || phy_PowerClass == phy_POWERCLASS_ABSENT) return phy_CHANNELCLASS_BLOCKAGE;\n  if (phy_IClass == phy_ICLASS_HIGH || phy_IClass == phy_ICLASS_CRITICAL) return phy_CHANNELCLASS_INTERFERENCE_LIMITED;\n  if (phy_DopplerClass == phy_DOPPLERCLASS_HIGH) return phy_CHANNELCLASS_MOBILITY_LIMITED;\n  if (phy_DelaySpreadClass == phy_DELAYSPREADCLASS_HIGH) return phy_CHANNELCLASS_MULTIPATH_LIMITED;\n  return phy_CHANNELCLASS_NOMINAL;\n}"
+    },
+    {
+      "id": "function:phy_highest_priority_SQ",
+      "kind": "function",
+      "text": "int phy_highest_priority_SQ() {\n  if (phy_ChannelClass == phy_CHANNELCLASS_OUTAGE || phy_SignalClass == phy_SIGNALCLASS_LIMITED || phy_BeamClass == phy_BEAMCLASS_FAILED || phy_PdClass == phy_PDCLASS_FAILED || phy_RfaClass == phy_RFACLASS_CRITICAL || phy_AccClass == phy_ACCCLASS_FAILED || phy_CRBClass == phy_CRBCLASS_UNUSABLE || phy_AoSClass == phy_AOSCLASS_EXPIRED || phy_CapClass == phy_CAPCLASS_FAILED || phy_CoverageClass == phy_COVERAGECLASS_FAILED) return phy_SENSINGSTATE_SENSINGFAILURE;\n  if (phy_ChannelClass == phy_CHANNELCLASS_BLOCKAGE || phy_SignalClass == phy_SIGNALCLASS_RECONFIGURING || phy_BeamClass == phy_BEAMCLASS_MISALIGNED) return phy_SENSINGSTATE_FRESHNESSLIMITED;\n  if (phy_AoSClass == phy_AOSCLASS_STALE) return phy_SENSINGSTATE_FRESHNESSLIMITED;\n  if (phy_AccClass == phy_ACCCLASS_LIMITED || phy_CRBClass == phy_CRBCLASS_LOOSE) return phy_SENSINGSTATE_ACCURACYLIMITED;\n  if (phy_PdClass == phy_PDCLASS_LOW) return phy_SENSINGSTATE_PROBABILITYLIMITED;\n  if (phy_RfaClass == phy_RFACLASS_HIGH) return phy_SENSINGSTATE_FALSEALARMLIMITED;\n  if (phy_CapClass == phy_CAPCLASS_LIMITED) return phy_SENSINGSTATE_CAPACITYLIMITED;\n  if (phy_CoverageClass == phy_COVERAGECLASS_LIMITED) return phy_SENSINGSTATE_COVERAGELIMITED;\n  return phy_SENSINGSTATE_SENSINGQOSOK;\n}"
+    },
+    {
+      "id": "function:phy_ass_ch",
+      "kind": "function",
+      "text": "bool phy_ass_ch() { return phy_TimingOk && phy_classes_in_range_ch; }"
+    },
+    {
+      "id": "function:phy_gar_ch",
+      "kind": "function",
+      "text": "bool phy_gar_ch() { return phy_classes_in_range_ch; }"
+    },
+    {
+      "id": "function:phy_ass_sig",
+      "kind": "function",
+      "text": "bool phy_ass_sig() { return phy_ConfigAdmissible && phy_classes_in_range_sig; }"
+    },
+    {
+      "id": "function:phy_gar_sig",
+      "kind": "function",
+      "text": "bool phy_gar_sig() { return phy_classes_in_range_sig; }"
+    },
+    {
+      "id": "function:phy_ass_bm",
+      "kind": "function",
+      "text": "bool phy_ass_bm() { return phy_BeamCmdAdmissible && phy_classes_in_range_bm; }"
+    },
+    {
+      "id": "function:phy_gar_bm",
+      "kind": "function",
+      "text": "bool phy_gar_bm() { return phy_classes_in_range_bm; }"
+    },
+    {
+      "id": "function:phy_ass_sq",
+      "kind": "function",
+      "text": "bool phy_ass_sq() { return phy_fresh_child_reports && phy_gar_ch() && phy_gar_sig() && phy_gar_bm(); }"
+    },
+    {
+      "id": "function:phy_gar_sq",
+      "kind": "function",
+      "text": "bool phy_gar_sq() { return true; }"
+    },
+    {
+      "id": "function:phy_ass_ph",
+      "kind": "function",
+      "text": "bool phy_ass_ph() { return phy_gar_ch() && phy_gar_sig() && phy_gar_bm() && phy_gar_sq(); }"
+    },
+    {
+      "id": "function:phy_gar_ph",
+      "kind": "function",
+      "text": "bool phy_gar_ph() { return true; }"
+    },
+    {
+      "id": "function:phy_ass_env",
+      "kind": "function",
+      "text": "bool phy_ass_env() { return phy_TimingOk && phy_ConfigAdmissible && phy_BeamCmdAdmissible && phy_NetDeliveryOk; }"
+    },
+    {
+      "id": "function:mac_gP0",
+      "kind": "function",
+      "text": "bool mac_gP0() { return mac_resourceClass == mac_RES_EXHAUSTED || mac_mappedResourceClass == mac_RES_EXHAUSTED; }"
+    },
+    {
+      "id": "function:mac_gP1",
+      "kind": "function",
+      "text": "bool mac_gP1() { return mac_bufferClass == mac_B_OVERFLOW || mac_delayClass == mac_D_VIOLATED; }"
+    },
+    {
+      "id": "function:mac_gP2",
+      "kind": "function",
+      "text": "bool mac_gP2() { return mac_queueClass == mac_Q_CRIT && mac_commDemand == mac_COMM_CRITICAL; }"
+    },
+    {
+      "id": "function:mac_gP3",
+      "kind": "function",
+      "text": "bool mac_gP3() { return mac_sensingDemand == mac_SENS_CRITICAL && mac_sdn_sensing_priority_allowed; }"
+    },
+    {
+      "id": "function:mac_gP4",
+      "kind": "function",
+      "text": "bool mac_gP4() { return mac_resourceClass == mac_RES_TIGHT && mac_sensingDemand != mac_SENS_NOMINAL && mac_commDemand != mac_COMM_NOMINAL; }"
+    },
+    {
+      "id": "function:mac_gP5",
+      "kind": "function",
+      "text": "bool mac_gP5() { return mac_kpiFreshnessClass == mac_KPI_STALE || mac_kpiFreshnessClass == mac_KPI_MISSING; }"
+    },
+    {
+      "id": "function:mac_gP6",
+      "kind": "function",
+      "text": "bool mac_gP6() { return mac_resourceClass == mac_RES_FREE || mac_resourceClass == mac_RES_BALANCED; }"
+    },
+    {
+      "id": "function:mac_gP7",
+      "kind": "function",
+      "text": "bool mac_gP7() { return true; }"
+    },
+    {
+      "id": "function:mac_update_policy_counter",
+      "kind": "function",
+      "text": "void mac_update_policy_counter() { mac_policy_enabled_count = 0; if (mac_gP0()) mac_policy_enabled_count++; if (mac_gP1()) mac_policy_enabled_count++; if (mac_gP2()) mac_policy_enabled_count++; if (mac_gP3()) mac_policy_enabled_count++; if (mac_gP4()) mac_policy_enabled_count++; if (mac_gP5()) mac_policy_enabled_count++; if (mac_gP6()) mac_policy_enabled_count++; if (mac_gP7()) mac_policy_enabled_count++; }"
+    },
+    {
+      "id": "function:mac_select_mac_policy",
+      "kind": "function",
+      "text": "void mac_select_mac_policy() { mac_update_policy_counter(); mac_silent_accept = false; if (mac_gP0()) { mac_scheduleMode = mac_SCH_CONSTRAINED; mac_macReason = mac_REASON_RESOURCE_EXHAUSTED; mac_mac_report_pending = true; } else if (mac_gP1()) { mac_scheduleMode = mac_SCH_COMM; } else if (mac_gP2()) { mac_scheduleMode = mac_SCH_COMM; } else if (mac_gP3()) { mac_scheduleMode = mac_SCH_SENS; } else if (mac_gP4()) { mac_scheduleMode = mac_SCH_JOINT; mac_macReason = mac_REASON_SENS_COMM_CONFLICT; } else if (mac_gP5()) { mac_scheduleMode = mac_SCH_CONSTRAINED; mac_macReason = mac_REASON_STALE_PHY_KPI; } else if (mac_gP6()) { mac_scheduleMode = mac_SCH_JOINT; } else { mac_scheduleMode = mac_SCH_CONSTRAINED; } }"
+    },
+    {
+      "id": "function:sdn_telemetry_bad",
+      "kind": "function",
+      "text": "bool sdn_telemetry_bad() { return sdn_telemetryClass == sdn_TEL_STALE || sdn_telemetryClass == sdn_TEL_MISSING; }"
+    },
+    {
+      "id": "function:sdn_gPolReject",
+      "kind": "function",
+      "text": "bool sdn_gPolReject() { return sdn_riskClass == sdn_RISK_CRIT || sdn_sliceClass == sdn_SLICE_VIOLATED || sdn_recoveryClass == sdn_REC_FAILED; }"
+    },
+    {
+      "id": "function:sdn_gPolConstrained",
+      "kind": "function",
+      "text": "bool sdn_gPolConstrained() { return sdn_telemetry_bad() || sdn_riskClass == sdn_RISK_HIGH || sdn_sliceClass == sdn_SLICE_WARN; }"
+    },
+    {
+      "id": "function:sdn_gPolReroute",
+      "kind": "function",
+      "text": "bool sdn_gPolReroute() { return (sdn_ruleClass == sdn_RULE_MISS || sdn_link_failure_pending || sdn_node_failure_pending) && (sdn_standby_available || sdn_alternative_config_exists) && !sdn_telemetry_bad(); }"
+    },
+    {
+      "id": "function:sdn_gPolSensingBoost",
+      "kind": "function",
+      "text": "bool sdn_gPolSensingBoost() { return sdn_sensing_degradation_pending && !sdn_telemetry_bad() && sdn_riskClass != sdn_RISK_CRIT; }"
+    },
+    {
+      "id": "function:sdn_gPolCommPrio",
+      "kind": "function",
+      "text": "bool sdn_gPolCommPrio() { return sdn_service_request_pending && sdn_sliceClass != sdn_SLICE_VIOLATED && !sdn_telemetry_bad(); }"
+    },
+    {
+      "id": "function:sdn_reconfig_allowed",
+      "kind": "function",
+      "text": "bool sdn_reconfig_allowed() { return sdn_telemetryClass == sdn_TEL_FRESH && sdn_policyClass != sdn_POL_CONSTRAINED && sdn_policyClass != sdn_POL_REJECT; }"
+    },
+    {
+      "id": "function:sdn_update_policy_counter",
+      "kind": "function",
+      "text": "void sdn_update_policy_counter() { sdn_policy_enabled_count = (sdn_gPolReject()?1:0) + (sdn_gPolConstrained()?1:0) + (sdn_gPolReroute()?1:0) + (sdn_gPolSensingBoost()?1:0) + (sdn_gPolCommPrio()?1:0) + 1; }"
+    },
+    {
+      "id": "function:sdn_classify_risk",
+      "kind": "function",
+      "text": "void sdn_classify_risk() { if (sdn_recoveryClass == sdn_REC_FAILED || sdn_sliceClass == sdn_SLICE_VIOLATED || sdn_telemetryClass == sdn_TEL_MISSING) sdn_riskClass = sdn_RISK_CRIT; else if (sdn_ruleClass == sdn_RULE_TIMEOUT || sdn_sensing_degradation_pending) sdn_riskClass = sdn_RISK_HIGH; else if (sdn_telemetryClass == sdn_TEL_STALE || sdn_sliceClass == sdn_SLICE_WARN) sdn_riskClass = sdn_RISK_MED; else sdn_riskClass = sdn_RISK_LOW; }"
+    },
+    {
+      "id": "function:sdn_select_sdn_policy",
+      "kind": "function",
+      "text": "void sdn_select_sdn_policy() { sdn_update_policy_counter(); sdn_optimistic_reconfig = false; if (sdn_gPolReject()) { sdn_policyClass = sdn_POL_REJECT; sdn_serviceImpact = sdn_IMPACT_REJECTED; sdn_sdnReason = sdn_SDN_POLICY_REJECT; } else if (sdn_telemetry_bad()) { sdn_policyClass = sdn_POL_CONSTRAINED; sdn_serviceImpact = sdn_IMPACT_DEGRADED; sdn_sdnReason = sdn_SDN_STALE_TELEMETRY; } else if (sdn_gPolReroute()) { sdn_policyClass = sdn_POL_REROUTE; sdn_serviceImpact = sdn_IMPACT_NONE; sdn_sdnReason = sdn_SDN_NONE; } else if (sdn_gPolSensingBoost()) { sdn_policyClass = sdn_POL_SENS_BOOST; sdn_serviceImpact = sdn_IMPACT_DEGRADED; sdn_sdnReason = sdn_SDN_SENSING_FAILURE; } else if (sdn_gPolCommPrio()) { sdn_policyClass = sdn_POL_COMM_PRIO; sdn_serviceImpact = sdn_IMPACT_NONE; sdn_sdnReason = sdn_SDN_NONE; } else { sdn_policyClass = sdn_POL_NORMAL; sdn_serviceImpact = sdn_IMPACT_NONE; sdn_sdnReason = sdn_SDN_NONE; } }"
+    },
+    {
+      "id": "function:raise_app_service_request_seq",
+      "kind": "function",
+      "text": "void raise_app_service_request_seq() { if (!app_service_request_seq) { app_service_request_seq = true; app_service_request_seq_age = 0; } }"
+    },
+    {
+      "id": "function:raise_app_sla_warn_seq",
+      "kind": "function",
+      "text": "void raise_app_sla_warn_seq() { if (!app_sla_warn_seq) { app_sla_warn_seq = true; app_sla_warn_seq_age = 0; } }"
+    },
+    {
+      "id": "function:raise_app_sla_violation_seq",
+      "kind": "function",
+      "text": "void raise_app_sla_violation_seq() { if (!app_sla_violation_seq) { app_sla_violation_seq = true; app_sla_violation_seq_age = 0; } }"
+    },
+    {
+      "id": "function:raise_app_freshness_expired_seq",
+      "kind": "function",
+      "text": "void raise_app_freshness_expired_seq() { if (!app_freshness_expired_seq) { app_freshness_expired_seq = true; app_freshness_expired_seq_age = 0; } }"
+    },
+    {
+      "id": "function:raise_app_update_violation_seq",
+      "kind": "function",
+      "text": "void raise_app_update_violation_seq() { if (!app_update_violation_seq) { app_update_violation_seq = true; app_update_violation_seq_age = 0; } }"
+    },
+    {
+      "id": "function:raise_app_fa_critical_seq",
+      "kind": "function",
+      "text": "void raise_app_fa_critical_seq() { if (!app_fa_critical_seq) { app_fa_critical_seq = true; app_fa_critical_seq_age = 0; } }"
+    },
+    {
+      "id": "function:raise_app_miss_critical_seq",
+      "kind": "function",
+      "text": "void raise_app_miss_critical_seq() { if (!app_miss_critical_seq) { app_miss_critical_seq = true; app_miss_critical_seq_age = 0; } }"
+    },
+    {
+      "id": "function:raise_app_safety_violation_seq",
+      "kind": "function",
+      "text": "void raise_app_safety_violation_seq() { if (!app_safety_violation_seq) { app_safety_violation_seq = true; app_safety_violation_seq_age = 0; } }"
+    },
+    {
+      "id": "function:app_svc_risk",
+      "kind": "function",
+      "text": "int app_svc_risk() {\n  return 3*app_missedDetectionClass + 2*app_falseAlarmClass\n       + 2*app_detectionFreshnessClass + app_updatePeriodClass\n       + app_accuracyClass + app_coverageClass + app_criticalityClass;\n}"
+    },
+    {
+      "id": "function:app_detection_kpi_consistent",
+      "kind": "function",
+      "text": "bool app_detection_kpi_consistent() {\n  return !(app_pdClass == app_PD_OK\n           && app_missedDetectionClass == app_MISS_CRITICAL)\n      && !(app_pdClass == app_PD_FAILED\n           && app_missedDetectionClass == app_MISS_OK);\n}"
+    },
+    {
+      "id": "function:app_pd_req_satisfied",
+      "kind": "function",
+      "text": "bool app_pd_req_satisfied() {\n  return (app_pdMinClass == app_REQ_STRICT && app_pdClass == app_PD_OK)\n      || (app_pdMinClass == app_REQ_NORMAL && app_pdClass != app_PD_FAILED)\n      || (app_pdMinClass == app_REQ_RELAXED);\n}"
+    },
+    {
+      "id": "function:app_pfa_req_satisfied",
+      "kind": "function",
+      "text": "bool app_pfa_req_satisfied() {\n  return (app_pfaMaxClass == app_REQ_STRICT && app_falseAlarmClass == app_FA_OK)\n      || (app_pfaMaxClass == app_REQ_NORMAL && app_falseAlarmClass != app_FA_CRITICAL)\n      || (app_pfaMaxClass == app_REQ_RELAXED);\n}"
+    },
+    {
+      "id": "function:app_pmiss_req_satisfied",
+      "kind": "function",
+      "text": "bool app_pmiss_req_satisfied() {\n  return (app_pmissMaxClass == app_REQ_STRICT && app_missedDetectionClass == app_MISS_OK)\n      || (app_pmissMaxClass == app_REQ_NORMAL && app_missedDetectionClass != app_MISS_CRITICAL)\n      || (app_pmissMaxClass == app_REQ_RELAXED);\n}"
+    },
+    {
+      "id": "function:app_freshness_req_satisfied",
+      "kind": "function",
+      "text": "bool app_freshness_req_satisfied() {\n  return (app_sensingFreshnessBoundClass == app_REQ_STRICT\n          && app_detectionFreshnessClass == app_DET_FRESH)\n      || (app_sensingFreshnessBoundClass == app_REQ_NORMAL\n          && app_detectionFreshnessClass != app_DET_EXPIRED)\n      || (app_sensingFreshnessBoundClass == app_REQ_RELAXED);\n}"
+    },
+    {
+      "id": "function:app_update_req_satisfied",
+      "kind": "function",
+      "text": "bool app_update_req_satisfied() {\n  return (app_sensingUpdateBoundClass == app_REQ_STRICT\n          && app_updatePeriodClass == app_UPD_OK)\n      || (app_sensingUpdateBoundClass == app_REQ_NORMAL\n          && app_updatePeriodClass != app_UPD_VIOLATED)\n      || (app_sensingUpdateBoundClass == app_REQ_RELAXED);\n}"
+    },
+    {
+      "id": "function:app_quality_req_satisfied",
+      "kind": "function",
+      "text": "bool app_quality_req_satisfied(app_RequirementClass_t app_req, app_QualityClass_t app_value) {\n  return (app_req == app_REQ_STRICT && app_value == app_OK)\n      || (app_req == app_REQ_NORMAL && app_value != app_FAILED)\n      || (app_req == app_REQ_RELAXED);\n}"
+    },
+    {
+      "id": "function:app_sensing_req_satisfied",
+      "kind": "function",
+      "text": "bool app_sensing_req_satisfied() {\n  return app_freshness_req_satisfied()\n      && app_update_req_satisfied()\n      && app_pd_req_satisfied()\n      && app_pfa_req_satisfied()\n      && app_pmiss_req_satisfied()\n      && app_quality_req_satisfied(app_accuracyBoundClass, app_accuracyClass)\n      && app_quality_req_satisfied(app_coverageBoundClass, app_coverageClass);\n}"
+    },
+    {
+      "id": "function:app_sla_sens_violated",
+      "kind": "function",
+      "text": "bool app_sla_sens_violated() {\n  return !app_detection_kpi_consistent()\n      || app_detectionFreshnessClass == app_DET_EXPIRED\n      || app_updatePeriodClass == app_UPD_VIOLATED\n      || app_falseAlarmClass == app_FA_CRITICAL\n      || app_missedDetectionClass == app_MISS_CRITICAL\n      || app_pdClass == app_PD_FAILED\n      || app_accuracyClass == app_FAILED\n      || app_coverageClass == app_FAILED;\n}"
+    },
+    {
+      "id": "function:app_sla_sens_warn",
+      "kind": "function",
+      "text": "bool app_sla_sens_warn() {\n  return app_detection_kpi_consistent()\n      && !app_sla_sens_violated()\n      && !app_sensing_req_satisfied();\n}"
+    },
+    {
+      "id": "function:app_sla_sens_ok",
+      "kind": "function",
+      "text": "bool app_sla_sens_ok() {\n  return app_detection_kpi_consistent()\n      && app_sensing_req_satisfied()\n      && !app_sla_sens_violated();\n}"
+    },
+    {
+      "id": "function:app_gAdmissionRequest",
+      "kind": "function",
+      "text": "bool app_gAdmissionRequest() {\n  return app_serviceClass == app_SVC_UAV\n      || app_serviceClass == app_SVC_ISAC_SENSING\n      || app_demandClass == app_DEMAND_JOINT\n      || app_demandClass == app_DEMAND_SENS;\n}"
+    },
+    {
+      "id": "function:app_gSafetyAllowsDegraded",
+      "kind": "function",
+      "text": "bool app_gSafetyAllowsDegraded() {\n  return app_criticalityClass != app_CRIT_SAFETY\n      || (app_sla_sens_ok()\n          && app_degradedReason == app_DEG_COMM_LIMITED);\n}"
+    },
+    {
+      "id": "function:app_gAcceptDegraded",
+      "kind": "function",
+      "text": "bool app_gAcceptDegraded() {\n  return app_admissionClass == app_ADM_DEGRADED\n      && app_degraded_allowed\n      && app_degradedReason != app_DEG_NONE\n      && app_gSafetyAllowsDegraded();\n}"
+    },
+    {
+      "id": "function:app_gRejectDegraded",
+      "kind": "function",
+      "text": "bool app_gRejectDegraded() {\n  return app_admissionClass == app_ADM_DEGRADED && !app_gAcceptDegraded();\n}"
+    },
+    {
+      "id": "function:app_gSlaWarning",
+      "kind": "function",
+      "text": "bool app_gSlaWarning() {\n  return app_slaClass == app_SLA_WARN || app_sla_sens_warn();\n}"
+    },
+    {
+      "id": "function:app_gSlaViolation",
+      "kind": "function",
+      "text": "bool app_gSlaViolation() {\n  return app_slaClass == app_SLA_VIOLATED || app_sla_sens_violated();\n}"
+    },
+    {
+      "id": "function:app_gSafetyCriticalViolation",
+      "kind": "function",
+      "text": "bool app_gSafetyCriticalViolation() {\n  return app_criticalityClass == app_CRIT_SAFETY && app_gSlaViolation();\n}"
+    },
+    {
+      "id": "function:app_build_uav_service_request",
+      "kind": "function",
+      "text": "void app_build_uav_service_request() {\n  app_serviceClass = app_SVC_UAV;\n  app_criticalityClass = app_CRIT_SAFETY;\n  app_slaClass = app_SLA_OK;\n  app_admissionClass = app_ADM_PENDING;\n  app_demandClass = app_DEMAND_SENS;\n  app_latencyBoundClass = app_REQ_STRICT;\n  app_reliabilityClass = app_REQ_STRICT;\n  app_sensingUpdateBoundClass = app_REQ_STRICT;\n  app_sensingFreshnessBoundClass = app_REQ_STRICT;\n  app_pdMinClass = app_REQ_STRICT;\n  app_pfaMaxClass = app_REQ_STRICT;\n  app_pmissMaxClass = app_REQ_STRICT;\n  app_accuracyBoundClass = app_REQ_STRICT;\n  app_coverageBoundClass = app_REQ_STRICT;\n}"
+    },
+    {
+      "id": "function:app_note_kpi_update_event",
+      "kind": "function",
+      "text": "void app_note_kpi_update_event() {\n  if (app_detectionFreshnessClass == app_DET_EXPIRED)\n    raise_app_freshness_expired_seq();\n  if (app_updatePeriodClass == app_UPD_VIOLATED)\n    raise_app_update_violation_seq();\n  if (app_falseAlarmClass == app_FA_CRITICAL)\n    raise_app_fa_critical_seq();\n  if (app_missedDetectionClass == app_MISS_CRITICAL)\n    raise_app_miss_critical_seq();\n  if (app_gSlaWarning())\n    raise_app_sla_warn_seq();\n  if (app_gSlaViolation()) {\n    raise_app_sla_violation_seq();\n    if (app_criticalityClass == app_CRIT_SAFETY)\n      raise_app_safety_violation_seq();\n  }\n}"
+    },
+    {
+      "id": "function:app_note_sla_warning_event",
+      "kind": "function",
+      "text": "void app_note_sla_warning_event() {\n  raise_app_sla_warn_seq();\n}"
+    },
+    {
+      "id": "function:app_note_sla_violation_event",
+      "kind": "function",
+      "text": "void app_note_sla_violation_event() {\n  raise_app_sla_violation_seq();\n  if (app_criticalityClass == app_CRIT_SAFETY)\n    raise_app_safety_violation_seq();\n}"
+    },
+    {
+      "id": "global:other",
+      "kind": "declaration",
+      "text": "\n// Candidate abstract units, not physical calibration.\n\n\nclock bus_time, bus_phy_age, bus_mac_age;\nbool bus_phy_valid=false, bus_mac_valid=false;\nbool bus_phy_delivery_valid=false, bus_mac_delivery_valid=false;\nbool bus_phy_pending=false, bus_mac_pending=false;\nbool bus_phy_overwrite=false, bus_mac_overwrite=false;\nbool bus_phy_loss=false, bus_mac_loss=false;\nbool bus_input_missed=false, bus_tick_missed=false;\nbool bus_demand_delivered=false, bus_complete_delivered=false;\nbool bus_demand_dropped=false, bus_complete_dropped=false;\nbool bus_fault_delivered=false, bus_fault_dropped=false;\nbool bus_schedule_loss=false, bus_policy_loss=false, bus_dataplane_loss=false;\nbool bus_admission_timeout=false, bus_admission_loss=false;\nbool bus_unsolicited_outcome=false, bus_outcome_for_request=false;\nbool bus_mac_report_consumed=false, bus_sdn_report_consumed=false;\nbool bus_allow_comm=false, bus_allow_sensing=false;\nbool bus_warning_recorded=false, bus_violation_recorded=false;\nbool bus_reconfigure_recorded=false, bus_terminate_recorded=false, bus_degraded_recorded=false;\nbool bus_termination_pending=false;\nbool bus_protocol_error=false;\nbool bus_schedule_open=false, bus_ctrl_open=false, bus_rec_policy_open=false;\nbool bus_rule_drop_recorded=false, bus_failure_recorded=false, bus_timeout_recorded=false;\nbool bus_resource_reject_recorded=false, bus_forward_recorded=false, bus_rollback_recorded=false;\nint[0,2] bus_missed_detection=0;\nint[0,2] bus_pd=0, bus_fa=0, bus_acc=0, bus_coverage=0, bus_miss=0, bus_share=0;\nint[0,3] bus_queue=0, bus_resource=0;\nbool bus_sensing_bad=false;\nint[0,5] bus_policy_value=0;\nint[0,6] bus_reason=0;\nint[0,5] bus_request_service=0;\nint[0,3] bus_request_criticality=0;\nint[0,2] bus_request_demand=0;\nint[0,2] bus_request_latency=0, bus_request_reliability=0;\nint[0,2] bus_request_update=0, bus_request_freshness=0;\nint[0,2] bus_request_pd=0, bus_request_fa=0, bus_request_miss=0;\nint[0,2] bus_request_accuracy=0, bus_request_coverage=0;\nchan bus_policy, bus_ctrl_request, bus_ctrl_ack;\nchan bus_rec_policy_request, bus_rec_policy_ack;\nchan bus_rec_flow_request, bus_rec_flow_ack, bus_rollback_request, bus_rec_rollback_ack;\nchan bus_rule_ack, bus_admit_request;\nbroadcast chan bus_new_sample, bus_new_mac_sample;\n\n\n// Generated from PHY contract IR. Continuous PHY metrics stay outside timed automata.\n// Generation mode: with_observers.\n// Layout mode: readable.\n// Negative scenarios disabled for this generated model.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nint[0,3] phy_env_scenario = phy_SCENARIO_NORMAL;\n\nclock phy_c_meas, phy_c_sig, phy_c_sense, phy_c_report, phy_c_rec, phy_c_ssb;\nclock phy_aos_bs, phy_aos_ctrl, phy_c_env, phy_c_net;\nclock phy_c_obs_sense, phy_c_obs_fresh, phy_c_obs_beam;\nclock phy_c_obs_channel, phy_c_obs_signal, phy_c_obs_sensing, phy_c_obs_phy;\n\ntypedef int[0,4] phy_WaveformT;\n\n\n\n\n\nphy_WaveformT phy_W = phy_W_OFDM;\n\nchan phy_beam_cmd, phy_controller_report_delivered, phy_extra_ssb_cmd, phy_handover_assist_cmd, phy_mac_report_delivered, phy_measure_tick, phy_new_beam_confirmed, phy_payload_sensing_config, phy_pilot_config, phy_power_cmd, phy_prs_config, phy_recovery_cmd, phy_sensing_mode_cmd, phy_ssb_burst_config, phy_waveform_config;\nbroadcast chan phy_aos_ctrl_expired, phy_beam_failure, phy_beam_locked, phy_beam_misaligned, phy_beam_report, phy_beam_restored, phy_blockage_detected, phy_channel_degraded, phy_channel_report, phy_contract_violation_bm, phy_contract_violation_ch, phy_contract_violation_ph, phy_contract_violation_sig, phy_contract_violation_sq, phy_degradation_event, phy_handover_hint, phy_mobility_alert, phy_multipath_alert, phy_phy_failure, phy_phy_kpi_report, phy_phy_outage, phy_recovery_event, phy_recovery_start, phy_sensing_degraded, phy_sensing_failure, phy_sensing_report, phy_sensing_success, phy_signal_degraded, phy_signal_report, phy_target_detected;\n\n// === A_CH: Channel classifier ===\n// === A_SIG: Signal classifier ===\n// === A_BM: Beam management ===\n// === A_SQ: Sensing QoS classifier ===\n// === A_PH: Aggregate PHY state ===\n// === ENV_*: Closed-system environment stimulus loops ===\n// === Obs*: Bounded response observers ===\n\ntypedef int[0,3] phy_SINRClassT;\n\n\n\n\nphy_SINRClassT phy_SINRClass = phy_SINRCLASS_OK;\n\ntypedef int[0,2] phy_BLERClassT;\n\n\n\nphy_BLERClassT phy_BLERClass = phy_BLERCLASS_OK;\n\ntypedef int[0,2] phy_CQIClassT;\n\n\n\nphy_CQIClassT phy_CQIClass = phy_CQICLASS_GOOD;\n\ntypedef int[0,2] phy_IClassT;\n\n\n\nphy_IClassT phy_IClass = phy_ICLASS_OK;\n\ntypedef int[0,1] phy_DopplerClassT;\n\n\nphy_DopplerClassT phy_DopplerClass = phy_DOPPLERCLASS_OK;\n\ntypedef int[0,1] phy_DelaySpreadClassT;\n\n\nphy_DelaySpreadClassT phy_DelaySpreadClass = phy_DELAYSPREADCLASS_OK;\n\ntypedef int[0,2] phy_PowerClassT;\n\n\n\nphy_PowerClassT phy_PowerClass = phy_POWERCLASS_OK;\n\ntypedef int[0,1] phy_DRTClassT;\n\n\nphy_DRTClassT phy_DRTClass = phy_DRTCLASS_OK;\n\ntypedef int[0,2] phy_PilotDensityClassT;\n\n\n\nphy_PilotDensityClassT phy_PilotDensityClass = phy_PILOTDENSITYCLASS_OK;\n\ntypedef int[0,2] phy_PayloadSenseClassT;\n\n\n\nphy_PayloadSenseClassT phy_PayloadSenseClass = phy_PAYLOADSENSECLASS_OK;\n\ntypedef int[0,2] phy_PRSClassT;\n\n\n\nphy_PRSClassT phy_PRSClass = phy_PRSCLASS_OK;\n\ntypedef int[0,2] phy_BeamErrorClassT;\n\n\n\nphy_BeamErrorClassT phy_BeamErrorClass = phy_BEAMERRORCLASS_LOCKABLE;\n\ntypedef int[0,2] phy_BlockageClassT;\n\n\n\nphy_BlockageClassT phy_BlockageClass = phy_BLOCKAGECLASS_NONE;\n\ntypedef int[0,2] phy_PdClassT;\n\n\n\nphy_PdClassT phy_PdClass = phy_PDCLASS_OK;\n\ntypedef int[0,2] phy_RfaClassT;\n\n\n\nphy_RfaClassT phy_RfaClass = phy_RFACLASS_OK;\n\ntypedef int[0,2] phy_AccClassT;\n\n\n\nphy_AccClassT phy_AccClass = phy_ACCCLASS_OK;\n\ntypedef int[0,2] phy_CRBClassT;\n\n\n\nphy_CRBClassT phy_CRBClass = phy_CRBCLASS_OK;\n\ntypedef int[0,2] phy_AoSClassT;\n\n\n\nphy_AoSClassT phy_AoSClass = phy_AOSCLASS_FRESH;\n\ntypedef int[0,2] phy_CapClassT;\n\n\n\nphy_CapClassT phy_CapClass = phy_CAPCLASS_OK;\n\ntypedef int[0,2] phy_CoverageClassT;\n\n\n\nphy_CoverageClassT phy_CoverageClass = phy_COVERAGECLASS_OK;\n\ntypedef int[0,2] phy_ResourceShareClassT;\n\n\n\nphy_ResourceShareClassT phy_ResourceShareClass = phy_RESOURCESHARECLASS_OK;\n\ntypedef int[0,2] phy_MisClassT;\n\n\n\nphy_MisClassT phy_MisClass = phy_MISCLASS_OK;\n\ntypedef int[0,2] phy_BMOverheadClassT;\n\n\n\nphy_BMOverheadClassT phy_BMOverheadClass = phy_BMOVERHEADCLASS_OK;\n\ntypedef int[0,5] phy_ChannelClassT;\n\n\n\n\n\n\nphy_ChannelClassT phy_ChannelClass = phy_CHANNELCLASS_NOMINAL;\n\ntypedef int[0,4] phy_SignalClassT;\n\n\n\n\n\nphy_SignalClassT phy_SignalClass = phy_SIGNALCLASS_NOMINAL;\n\ntypedef int[0,7] phy_BeamClassT;\n\n\n\n\n\n\n\n\nphy_BeamClassT phy_BeamClass = phy_BEAMCLASS_SEARCH;\n\ntypedef int[0,7] phy_SensingStateT;\n\n\n\n\n\n\n\n\nphy_SensingStateT phy_SensingState = phy_SENSINGSTATE_SENSINGQOSOK;\n\ntypedef int[0,5] phy_PHYStateT;\n\n\n\n\n\n\nphy_PHYStateT phy_PHYState = phy_PHYSTATE_PHYNORMAL;\n\n\n\n\n\nbool phy_channel_degraded_flag = false;\nbool phy_signal_degraded_flag = false;\nbool phy_beam_degraded_flag = false;\nbool phy_sensing_degraded_flag = false;\nbool phy_sensing_failure_flag = false;\nbool phy_degradation_flag = false;\nbool phy_child_update = false;\nbool phy_input_changed = false;\nbool phy_target_seen = false;\nbool phy_channel_report_pending = false;\nbool phy_signal_report_pending = false;\nbool phy_sensing_report_pending = false;\nbool phy_phy_kpi_report_pending = false;\nbool phy_comm_ok = true;\nbool phy_sensing_qos_ok = true;\nbool phy_TimingOk = true;\nbool phy_ConfigAdmissible = true;\nbool phy_BeamCmdAdmissible = true;\nbool phy_NetDeliveryOk = true;\nbool phy_classes_in_range_ch = true;\nbool phy_classes_in_range_sig = true;\nbool phy_classes_in_range_bm = true;\nbool phy_fresh_child_reports = true;\nint[0,1] phy_ch_enabled_count = 1;\nint[0,1] phy_sq_enabled_count = 1;\n\n\n\n\n\n\n\n\n\n\n\n\n\n// Generated from MAC contract IR. Raw queue/delay/loss/utilization samples stay outside timed automata.\n// Generation mode: with_observers.\n// Layout mode: readable.\n// Negative scenarios disabled for this generated model.\n\n\n\n\n\n\n\n\nclock mac_c_sched, mac_c_phy_ack, mac_c_queue, mac_c_buf, mac_c_report;\nclock mac_c_obs_ack, mac_c_obs_queue, mac_c_obs_sensing, mac_c_obs_buf, mac_c_obs_report;\n\nbroadcast chan mac_phy_kpi_report, mac_mac_report;\nchan mac_mac_tick, mac_sdn_policy_cmd, mac_service_priority, mac_phy_ack;\nchan mac_mac_schedule_cmd, mac_beam_update_cmd, mac_sensing_boost_cmd, mac_constrained_mode_cmd, mac_resource_reject;\n\ntypedef int[0,4] mac_QueueClass_t;\nconst mac_QueueClass_t mac_Q_EMPTY=0, mac_Q_LOW=1, mac_Q_MED=2, mac_Q_HIGH=3, mac_Q_CRIT=4;\ntypedef int[0,2] mac_BufferClass_t;\nconst mac_BufferClass_t mac_B_SAFE=0, mac_B_WARN=1, mac_B_OVERFLOW=2;\ntypedef int[0,3] mac_DelayClass_t;\nconst mac_DelayClass_t mac_D_OK=0, mac_D_WARN=1, mac_D_DEADLINE_RISK=2, mac_D_VIOLATED=3;\ntypedef int[0,2] mac_DropClass_t;\nconst mac_DropClass_t mac_DROP_NONE=0, mac_DROP_LOW=1, mac_DROP_HIGH=2;\ntypedef int[0,3] mac_ResourceClass_t;\nconst mac_ResourceClass_t mac_RES_FREE=0, mac_RES_BALANCED=1, mac_RES_TIGHT=2, mac_RES_EXHAUSTED=3;\ntypedef int[0,2] mac_SensingDemand_t;\nconst mac_SensingDemand_t mac_SENS_NOMINAL=0, mac_SENS_BOOST_REQ=1, mac_SENS_CRITICAL=2;\ntypedef int[0,2] mac_CommDemand_t;\nconst mac_CommDemand_t mac_COMM_NOMINAL=0, mac_COMM_HIGH=1, mac_COMM_CRITICAL=2;\ntypedef int[0,2] mac_KPIFreshnessClass_t;\nconst mac_KPIFreshnessClass_t mac_KPI_FRESH=0, mac_KPI_STALE=1, mac_KPI_MISSING=2;\ntypedef int[0,4] mac_ScheduleMode_t;\nconst mac_ScheduleMode_t mac_SCH_IDLE=0, mac_SCH_COMM=1, mac_SCH_SENS=2, mac_SCH_JOINT=3, mac_SCH_CONSTRAINED=4;\ntypedef int[0,6] mac_MacReason_t;\nconst mac_MacReason_t mac_REASON_NONE=0, mac_REASON_RESOURCE_EXHAUSTED=1, mac_REASON_PHY_ACK_TIMEOUT=2, mac_REASON_QUEUE_CRITICAL=3, mac_REASON_SENS_COMM_CONFLICT=4, mac_REASON_STALE_PHY_KPI=5, mac_REASON_BUFFER_OVERFLOW=6;\n\nmac_QueueClass_t mac_queueClass = mac_Q_EMPTY;\nmac_BufferClass_t mac_bufferClass = mac_B_SAFE;\nmac_DelayClass_t mac_delayClass = mac_D_OK;\nmac_DropClass_t mac_dropClass = mac_DROP_NONE;\nmac_ResourceClass_t mac_resourceClass = mac_RES_FREE;\nmac_ResourceClass_t mac_mappedResourceClass = mac_RES_FREE;\nmac_SensingDemand_t mac_sensingDemand = mac_SENS_NOMINAL;\nmac_CommDemand_t mac_commDemand = mac_COMM_NOMINAL;\nmac_KPIFreshnessClass_t mac_kpiFreshnessClass = mac_KPI_MISSING;\nmac_ScheduleMode_t mac_scheduleMode = mac_SCH_IDLE;\nmac_MacReason_t mac_macReason = mac_REASON_NONE;\nbool mac_mac_report_pending = false;\nbool mac_mac_report_sent = false;\nbool mac_silent_accept = false;\nbool mac_phy_ack_timeout = false;\nbool mac_phy_command_pending = false;\nbool mac_sdn_sensing_priority_allowed = false;\nbool mac_sdn_comm_priority_allowed = false;\nint[0,8] mac_policy_enabled_count = 1;\n\n\n\n\n\n\n\n\n\n\n\n// Passive ACK instrumentation, written only by the scheduler.\nbool mac_obs_ack_active = false;\nbool mac_obs_ack_late = false;\n\n\n// Generated from SDN/RIC contract IR. Raw metrics, probabilities and optimization scores stay outside timed automata.\n// Generation mode: with_observers.\n// Layout mode: readable.\n// Negative scenarios disabled for this generated model.\n\n\n\n\n\n\n\n\n\n\nclock sdn_c_mon, sdn_c_dec, sdn_c_rule, sdn_c_ctrl_ack, sdn_c_rec, sdn_c_rollback, sdn_c_admission, sdn_c_sec_ack;\nclock sdn_c_obs_rule, sdn_c_obs_rec, sdn_c_obs_admission, sdn_c_obs_cmd, sdn_c_obs_sensing;\n\nbroadcast chan sdn_mac_report, sdn_phy_kpi_report, sdn_service_request;\nbroadcast chan sdn_service_accept, sdn_service_degraded, sdn_service_reject;\nchan sdn_rule_miss, sdn_link_failure, sdn_node_failure, sdn_ack;\nchan sdn_sdn_policy_cmd, sdn_flow_mod, sdn_forward_cmd, sdn_drop_report;\nchan sdn_failure_report, sdn_timeout_report, sdn_rollback_cmd;\n\ntypedef int[0,2] sdn_TelemetryClass_t;\nconst sdn_TelemetryClass_t sdn_TEL_FRESH=0, sdn_TEL_STALE=1, sdn_TEL_MISSING=2;\ntypedef int[0,3] sdn_RiskClass_t;\nconst sdn_RiskClass_t sdn_RISK_LOW=0, sdn_RISK_MED=1, sdn_RISK_HIGH=2, sdn_RISK_CRIT=3;\ntypedef int[0,5] sdn_PolicyClass_t;\nconst sdn_PolicyClass_t sdn_POL_NORMAL=0, sdn_POL_SENS_BOOST=1, sdn_POL_COMM_PRIO=2, sdn_POL_CONSTRAINED=3, sdn_POL_REROUTE=4, sdn_POL_REJECT=5;\ntypedef int[0,5] sdn_RuleClass_t;\nconst sdn_RuleClass_t sdn_RULE_OK=0, sdn_RULE_MISS=1, sdn_RULE_PENDING=2, sdn_RULE_ACKED=3, sdn_RULE_TIMEOUT=4, sdn_RULE_DROP=5;\ntypedef int[0,4] sdn_RecoveryClass_t;\nconst sdn_RecoveryClass_t sdn_REC_STABLE=0, sdn_REC_STANDBY=1, sdn_REC_REEMBED=2, sdn_REC_ROLLBACK=3, sdn_REC_FAILED=4;\ntypedef int[0,2] sdn_SliceClass_t;\nconst sdn_SliceClass_t sdn_SLICE_OK=0, sdn_SLICE_WARN=1, sdn_SLICE_VIOLATED=2;\ntypedef int[0,3] sdn_ServiceImpact_t;\nconst sdn_ServiceImpact_t sdn_IMPACT_NONE=0, sdn_IMPACT_DEGRADED=1, sdn_IMPACT_REJECTED=2, sdn_IMPACT_FAILED=3;\ntypedef int[0,6] sdn_SdnReason_t;\nconst sdn_SdnReason_t sdn_SDN_NONE=0, sdn_SDN_STALE_TELEMETRY=1, sdn_SDN_RULE_TIMEOUT=2, sdn_SDN_RECOVERY_FAILED=3, sdn_SDN_RESOURCE_LIMITED=4, sdn_SDN_SENSING_FAILURE=5, sdn_SDN_POLICY_REJECT=6;\n\nsdn_TelemetryClass_t sdn_telemetryClass = sdn_TEL_MISSING;\nsdn_RiskClass_t sdn_riskClass = sdn_RISK_LOW;\nsdn_PolicyClass_t sdn_policyClass = sdn_POL_NORMAL;\nsdn_RuleClass_t sdn_ruleClass = sdn_RULE_OK;\nsdn_RecoveryClass_t sdn_recoveryClass = sdn_REC_STABLE;\nsdn_SliceClass_t sdn_sliceClass = sdn_SLICE_OK;\nsdn_ServiceImpact_t sdn_serviceImpact = sdn_IMPACT_NONE;\nsdn_SdnReason_t sdn_sdnReason = sdn_SDN_NONE;\nbool sdn_rule_miss_pending = false;\nbool sdn_link_failure_pending = false;\nbool sdn_node_failure_pending = false;\nbool sdn_sensing_degradation_pending = false;\nbool sdn_service_request_pending = false;\nbool sdn_command_pending = false;\nbool sdn_optimistic_reconfig = false;\nbool sdn_standby_available = false;\nbool sdn_alternative_config_exists = false;\nbool sdn_lower_ack_received = false;\nbool sdn_failure_report_sent = false;\nint[0,6] sdn_policy_enabled_count = 1;\n\n\n\n\n\n\n\n\n\n\n\n\n// Generated from Application_service_layer_formalization.tex\n// Application / Service Layer UPPAAL baseline project\n\n// ----- Service constants -----\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n// ----- Clocks -----\nclock app_c_req, app_c_admission, app_c_sla_warn, app_c_sla_violation;\nclock app_c_session, app_age_sensing, app_c_detect;\n\n// ----- Channels -----\nchan app_service_request, app_service_accept, app_service_degraded, app_service_reject;\nchan app_sla_warning_report, app_sla_violation_report;\nchan app_service_reconfigure, app_degraded_accept_report, app_service_terminate;\nbroadcast chan app_new_demand, app_service_kpi_update, app_degraded_notice;\nbroadcast chan app_freshness_expired, app_sla_warn, app_sla_violation, app_service_complete;\n\n// ----- Service classes -----\ntypedef int[0,5] app_ServiceClass_t;\nconst app_ServiceClass_t app_SVC_URLLC=0, app_SVC_EMBB=1, app_SVC_MMTC=2;\nconst app_ServiceClass_t app_SVC_ISAC_SENSING=3, app_SVC_UAV=4, app_SVC_INDUSTRIAL=5;\n\ntypedef int[0,3] app_CriticalityClass_t;\nconst app_CriticalityClass_t app_CRIT_LOW=0, app_CRIT_MED=1, app_CRIT_HIGH=2, app_CRIT_SAFETY=3;\n\ntypedef int[0,2] app_SLAClass_t;\nconst app_SLAClass_t app_SLA_OK=0, app_SLA_WARN=1, app_SLA_VIOLATED=2;\n\ntypedef int[0,3] app_AdmissionClass_t;\nconst app_AdmissionClass_t app_ADM_PENDING=0, app_ADM_ACCEPTED=1;\nconst app_AdmissionClass_t app_ADM_REJECTED=2, app_ADM_DEGRADED=3;\n\ntypedef int[0,2] app_DemandClass_t;\nconst app_DemandClass_t app_DEMAND_COMM=0, app_DEMAND_SENS=1, app_DEMAND_JOINT=2;\n\ntypedef int[0,2] app_DetectionFreshnessClass_t;\nconst app_DetectionFreshnessClass_t app_DET_FRESH=0, app_DET_STALE=1, app_DET_EXPIRED=2;\n\ntypedef int[0,2] app_UpdatePeriodClass_t;\nconst app_UpdatePeriodClass_t app_UPD_OK=0, app_UPD_SLOW=1, app_UPD_VIOLATED=2;\n\ntypedef int[0,2] app_FalseAlarmClass_t;\nconst app_FalseAlarmClass_t app_FA_OK=0, app_FA_HIGH=1, app_FA_CRITICAL=2;\n\ntypedef int[0,2] app_MissedDetectionClass_t;\nconst app_MissedDetectionClass_t app_MISS_OK=0, app_MISS_HIGH=1, app_MISS_CRITICAL=2;\n\ntypedef int[0,2] app_PdClass_t;\nconst app_PdClass_t app_PD_OK=0, app_PD_LOW=1, app_PD_FAILED=2;\n\ntypedef int[0,2] app_QualityClass_t;\nconst app_QualityClass_t app_OK=0, app_LIMITED=1, app_FAILED=2;\n\ntypedef int[0,2] app_RequirementClass_t;\nconst app_RequirementClass_t app_REQ_RELAXED=0, app_REQ_NORMAL=1, app_REQ_STRICT=2;\n\ntypedef int[0,6] app_DegradedReason_t;\nconst app_DegradedReason_t app_DEG_NONE=0, app_DEG_STALE=1, app_DEG_LOW_PD=2;\nconst app_DegradedReason_t app_DEG_HIGH_PFA=3, app_DEG_UPDATE_SLOW=4;\nconst app_DegradedReason_t app_DEG_RESOURCE_LIMITED=5;\nconst app_DegradedReason_t app_DEG_COMM_LIMITED=6;\n\n// ----- Shared variables: payload replacement -----\napp_ServiceClass_t app_serviceClass;\napp_CriticalityClass_t app_criticalityClass;\napp_SLAClass_t app_slaClass;\napp_AdmissionClass_t app_admissionClass;\napp_DemandClass_t app_demandClass;\napp_RequirementClass_t app_latencyBoundClass;\napp_RequirementClass_t app_reliabilityClass;\napp_RequirementClass_t app_sensingUpdateBoundClass;\napp_RequirementClass_t app_sensingFreshnessBoundClass;\napp_RequirementClass_t app_pdMinClass;\napp_RequirementClass_t app_pfaMaxClass;\napp_RequirementClass_t app_pmissMaxClass;\napp_RequirementClass_t app_accuracyBoundClass;\napp_RequirementClass_t app_coverageBoundClass;\napp_DetectionFreshnessClass_t app_detectionFreshnessClass = app_DET_EXPIRED;\napp_UpdatePeriodClass_t app_updatePeriodClass = app_UPD_VIOLATED;\napp_FalseAlarmClass_t app_falseAlarmClass;\napp_MissedDetectionClass_t app_missedDetectionClass;\napp_PdClass_t app_pdClass;\napp_QualityClass_t app_accuracyClass;\napp_QualityClass_t app_coverageClass;\napp_DegradedReason_t app_degradedReason;\n\nbool app_service_request_pending = false;\nbool app_sla_warning_report_sent = false;\nbool app_sla_violation_report_sent = false;\nbool app_degraded_allowed = false;\nbool app_degraded_accept_pending = false;\nbool app_violation_report_sent = false;\nbool app_service_reconfigure_sent = false;\nbool app_service_terminate_sent = false;\n\nbool app_service_request_seq = false;\nclock app_service_request_seq_age;\n\nbool app_sla_warn_seq = false;\nclock app_sla_warn_seq_age;\n\nbool app_sla_violation_seq = false;\nclock app_sla_violation_seq_age;\n\nbool app_freshness_expired_seq = false;\nclock app_freshness_expired_seq_age;\n\nbool app_update_violation_seq = false;\nclock app_update_violation_seq_age;\n\nbool app_fa_critical_seq = false;\nclock app_fa_critical_seq_age;\n\nbool app_miss_critical_seq = false;\nclock app_miss_critical_seq_age;\n\nbool app_safety_violation_seq = false;\nclock app_safety_violation_seq_age;\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    },
+    {
+      "id": "queries",
+      "kind": "query",
+      "text": "// phy-01 -- candidate, no verdict\nA[] not deadlock\n// phy-02 -- candidate, no verdict\nE<> phy_A_PH_0.PHYNormal\n// phy-03 -- candidate, no verdict\nE<> phy_A_PH_0.PHYSensingDegraded\n// phy-04 -- candidate, no verdict\nE<> phy_A_PH_0.PHYCommunicationDegraded\n// phy-05 -- candidate, no verdict\nE<> phy_A_PH_0.PHYJointDegraded\n// phy-06 -- candidate, no verdict\nA[] (phy_A_PH_0.PHYNormal imply (phy_comm_ok && phy_sensing_qos_ok))\n// phy-07 -- candidate, no verdict\nA[] (phy_ch_enabled_count <= 1)\n// phy-08 -- candidate, no verdict\nA[] (phy_sq_enabled_count <= 1)\n// phy-09 -- candidate, no verdict\nA[] (phy_A_BM_0.BeamRecover imply phy_c_rec <= phy_D_BM)\n// phy-10 -- candidate, no verdict\nA[] not obs_phy_ObsSenseReport_0.Violation\n// phy-11 -- candidate, no verdict\nA[] not obs_phy_ObsFreshness_0.Violation\n// phy-12 -- candidate, no verdict\nA[] not obs_phy_ObsBeamRecovery_0.Violation\n// phy-13 -- candidate, no verdict\nA[] (phy_ass_ch() imply not phy_A_CH_0.ContractViolation_CH)\n// phy-14 -- candidate, no verdict\nA[] (phy_ass_sig() imply not phy_A_SIG_0.ContractViolation_SIG)\n// phy-15 -- candidate, no verdict\nA[] (phy_ass_bm() imply not phy_A_BM_0.ContractViolation_BM)\n// phy-16 -- candidate, no verdict\nA[] (phy_ass_sq() imply not phy_A_SQ_0.ContractViolation_SQ)\n// phy-17 -- candidate, no verdict\nA[] (phy_ass_ph() imply not phy_A_PH_0.ContractViolation_PH)\n// mac-01 -- candidate, no verdict\nA[] not deadlock\n// mac-02 -- candidate, no verdict\nA[] (mac_resourceClass == mac_RES_EXHAUSTED imply !mac_silent_accept)\n// mac-03 -- candidate, no verdict\nA[] (mac_A_SCH_0.WaitPHYAck imply mac_c_phy_ack <= mac_D_phy_ack)\n// mac-04 -- candidate, no verdict\nA[] not obs_mac_ObsPhyAck_0.Violation\n// mac-05 -- candidate, no verdict\nA[] not obs_mac_ObsQueueCritical_0.Violation\n// mac-06 -- candidate, no verdict\nA[] not obs_mac_ObsSensingCritical_0.Violation\n// mac-07 -- candidate, no verdict\nE<> mac_A_SCH_0.SelectMode\n// mac-08 -- candidate, no verdict\nE<> mac_A_MAC_AGG_0.ReportSent\n// mac-09 -- candidate, no verdict\nA[] mac_policy_enabled_count >= 1\n// sdn-01 -- candidate, no verdict\nA[] not deadlock\n// sdn-02 -- candidate, no verdict\nA[] (sdn_A_RULE_0.RuleInstallPending imply sdn_c_rule <= sdn_D_rule_install)\n// sdn-03 -- candidate, no verdict\nA[] (sdn_telemetryClass == sdn_TEL_STALE imply !sdn_optimistic_reconfig)\n// sdn-04 -- candidate, no verdict\nA[] (sdn_telemetryClass == sdn_TEL_MISSING imply !sdn_optimistic_reconfig)\n// sdn-05 -- candidate, no verdict\nA[] (sdn_recoveryClass == sdn_REC_FAILED imply sdn_failure_report_sent)\n// sdn-06 -- candidate, no verdict\nA[] not obs_sdn_ObsRuleMiss_0.Violation\n// sdn-07 -- candidate, no verdict\nA[] not obs_sdn_ObsRecovery_0.Violation\n// sdn-08 -- candidate, no verdict\nA[] not obs_sdn_ObsAdmission_0.Violation\n// sdn-09 -- candidate, no verdict\nA[] not obs_sdn_ObsStaleTelemetry_0.Violation\n// sdn-10 -- candidate, no verdict\nE<> sdn_A_POLICY_0.Evaluate\n// sdn-11 -- candidate, no verdict\nE<> sdn_A_RULE_0.RuleTimeout\n// sdn-12 -- candidate, no verdict\nE<> sdn_A_REC_0.RecoveryFailed\n// sdn-13 -- candidate, no verdict\nA[] sdn_policy_enabled_count >= 1\n// app-01 -- candidate, no verdict\nA[] not deadlock\n// app-02 -- candidate, no verdict\nA[] not obs_app_ObsAdmission_0.Violation\n// app-03 -- candidate, no verdict\nA[] not obs_app_ObsWarn_0.Violation\n// app-04 -- candidate, no verdict\nA[] not obs_app_ObsViolation_0.Violation\n// app-05 -- candidate, no verdict\nA[] not obs_app_ObsFresh_0.Violation\n// app-06 -- candidate, no verdict\nA[] not obs_app_ObsUpdate_0.Violation\n// app-07 -- candidate, no verdict\nA[] not obs_app_ObsFa_0.Violation\n// app-08 -- candidate, no verdict\nA[] not obs_app_ObsMiss_0.Violation\n// app-09 -- candidate, no verdict\nA[] not obs_app_ObsSafety_0.Violation\n// app-10 -- candidate, no verdict\nA[] app_detection_kpi_consistent()\n// app-11 -- candidate, no verdict\nA[] not (app_criticalityClass == app_CRIT_SAFETY && app_admissionClass == app_ADM_DEGRADED && !app_gSafetyAllowsDegraded())\n// app-12 -- candidate, no verdict\nE<> app_Req_0.Accepted\n// app-13 -- candidate, no verdict\nE<> app_Req_0.AcceptedDegraded\n// app-14 -- candidate, no verdict\nE<> app_Req_0.Rejected\n// reach-obs_phy_ObsSenseReport_0 -- candidate, no verdict\nE<> obs_phy_ObsSenseReport_0.Violation\n// reach-obs_phy_ObsFreshness_0 -- candidate, no verdict\nE<> obs_phy_ObsFreshness_0.Violation\n// reach-obs_phy_ObsBeamRecovery_0 -- candidate, no verdict\nE<> obs_phy_ObsBeamRecovery_0.Violation\n// reach-obs_mac_ObsPhyAck_0 -- candidate, no verdict\nE<> obs_mac_ObsPhyAck_0.Violation\n// reach-obs_mac_ObsQueueCritical_0 -- candidate, no verdict\nE<> obs_mac_ObsQueueCritical_0.Violation\n// reach-obs_mac_ObsSensingCritical_0 -- candidate, no verdict\nE<> obs_mac_ObsSensingCritical_0.Violation\n// reach-obs_mac_ObsBufferOverflow_0 -- candidate, no verdict\nE<> obs_mac_ObsBufferOverflow_0.Violation\n// reach-obs_mac_ObsMacReportFreshness_0 -- candidate, no verdict\nE<> obs_mac_ObsMacReportFreshness_0.Violation\n// reach-obs_sdn_ObsRuleMiss_0 -- candidate, no verdict\nE<> obs_sdn_ObsRuleMiss_0.Violation\n// reach-obs_sdn_ObsRecovery_0 -- candidate, no verdict\nE<> obs_sdn_ObsRecovery_0.Violation\n// reach-obs_sdn_ObsAdmission_0 -- candidate, no verdict\nE<> obs_sdn_ObsAdmission_0.Violation\n// reach-obs_sdn_ObsStaleTelemetry_0 -- candidate, no verdict\nE<> obs_sdn_ObsStaleTelemetry_0.Violation\n// reach-obs_sdn_ObsCommandAck_0 -- candidate, no verdict\nE<> obs_sdn_ObsCommandAck_0.Violation\n// reach-obs_sdn_ObsSensingDecision_0 -- candidate, no verdict\nE<> obs_sdn_ObsSensingDecision_0.Violation\n// reach-obs_app_ObsAdmission_0 -- candidate, no verdict\nE<> obs_app_ObsAdmission_0.Violation\n// reach-obs_app_ObsWarn_0 -- candidate, no verdict\nE<> obs_app_ObsWarn_0.Violation\n// reach-obs_app_ObsViolation_0 -- candidate, no verdict\nE<> obs_app_ObsViolation_0.Violation\n// reach-obs_app_ObsFresh_0 -- candidate, no verdict\nE<> obs_app_ObsFresh_0.Violation\n// reach-obs_app_ObsUpdate_0 -- candidate, no verdict\nE<> obs_app_ObsUpdate_0.Violation\n// reach-obs_app_ObsFa_0 -- candidate, no verdict\nE<> obs_app_ObsFa_0.Violation\n// reach-obs_app_ObsMiss_0 -- candidate, no verdict\nE<> obs_app_ObsMiss_0.Violation\n// reach-obs_app_ObsSafety_0 -- candidate, no verdict\nE<> obs_app_ObsSafety_0.Violation\n// integrated-01 -- candidate, no verdict\nA[] not bus_protocol_error\n// integrated-02 -- candidate, no verdict\nE<> app_Req_0.Accepted\n// integrated-03 -- candidate, no verdict\nE<> bus_admission_timeout\n// integrated-04 -- candidate, no verdict\nE<> bus_schedule_loss\n// integrated-05 -- candidate, no verdict\nE<> bus_fault_delivered\n// integrated-06 -- candidate, no verdict\nA[] not deadlock\n"
+    }
+  ]
+}

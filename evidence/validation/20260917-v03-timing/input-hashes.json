@@ -1,0 +1,34 @@
+{
+  "model": {
+    "path": "evidence/instantiation/20260916-ack-observer/runs/ack-review-003-20260917/integrated-model.xml",
+    "sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446"
+  },
+  "queries": {
+    "path": "evidence/instantiation/20260916-ack-observer/runs/ack-review-003-20260917/integrated-queries.q",
+    "sha256": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9"
+  },
+  "candidate": {
+    "path": "evidence/governance/20260910-p1-p2-review/candidate-inputs.json",
+    "sha256": "bd712ebb280253827093433d67951a2d9927e1cf52bed5cc9b1c2266980d2968"
+  },
+  "adaptation": {
+    "path": "src/uppaal_mcp/integrated/adapt.py",
+    "sha256": "ad2884ff0b37338b8ea1aaacbd1a7b3c0248d924b798bb21a5116eda9b5d346b"
+  },
+  "boundary": {
+    "path": "src/uppaal_mcp/integrated/boundary.py",
+    "sha256": "02c8a1686957f59ab6253a6b6b0fbe134948f53c6daf1e4925034fab65930b9f"
+  },
+  "manifest": {
+    "path": "manifests/v1.md",
+    "sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075"
+  },
+  "collaboration": {
+    "path": "manifests/collaboration-v1.yaml",
+    "sha256": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0"
+  },
+  "baseline": {
+    "path": "manifests/baselines/reviewer-r1.yaml",
+    "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a"
+  }
+}

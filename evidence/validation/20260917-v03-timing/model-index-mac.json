@@ -1,0 +1,808 @@
+{
+  "input_model_sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446",
+  "records": [
+    {
+      "id": "mac_Template_A_SCH:location:Idle",
+      "kind": "location",
+      "template": "mac_Template_A_SCH",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_SCH:location:CollectKPI",
+      "kind": "location",
+      "template": "mac_Template_A_SCH",
+      "location": "CollectKPI",
+      "invariant": "mac_c_sched <= mac_D_collect",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_SCH:location:SelectMode",
+      "kind": "location",
+      "template": "mac_Template_A_SCH",
+      "location": "SelectMode",
+      "invariant": "mac_c_sched <= mac_D_sched",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_SCH:location:ApplySchedule",
+      "kind": "location",
+      "template": "mac_Template_A_SCH",
+      "location": "ApplySchedule",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_SCH:location:WaitPHYAck",
+      "kind": "location",
+      "template": "mac_Template_A_SCH",
+      "location": "WaitPHYAck",
+      "invariant": "mac_c_phy_ack <= mac_D_phy_ack",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_SCH:location:ScheduleFailure",
+      "kind": "location",
+      "template": "mac_Template_A_SCH",
+      "location": "ScheduleFailure",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "Idle",
+      "target": "CollectKPI",
+      "synchronisation": "mac_mac_tick?",
+      "assignment": "mac_c_sched = 0, mac_mac_report_sent = false"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "CollectKPI",
+      "target": "SelectMode",
+      "synchronisation": "mac_phy_kpi_report?",
+      "assignment": "mac_c_sched = 0, bus_mac_report_consumed = true"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "CollectKPI",
+      "target": "ApplySchedule",
+      "guard": "mac_kpiFreshnessClass != mac_KPI_FRESH || mac_c_sched == mac_D_collect",
+      "assignment": "mac_scheduleMode = mac_SCH_CONSTRAINED, mac_macReason = mac_REASON_STALE_PHY_KPI, mac_c_phy_ack = 0"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:3",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "SelectMode",
+      "target": "ScheduleFailure",
+      "guard": "mac_gP0()",
+      "assignment": "mac_scheduleMode = mac_SCH_CONSTRAINED, mac_macReason = mac_REASON_RESOURCE_EXHAUSTED,\nmac_mac_report_pending = true, mac_silent_accept = false"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:4",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "SelectMode",
+      "target": "ApplySchedule",
+      "guard": "!mac_gP0()",
+      "assignment": "mac_select_mac_policy(), mac_c_phy_ack = 0, mac_phy_command_pending = true"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:5",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "ApplySchedule",
+      "target": "WaitPHYAck",
+      "synchronisation": "mac_mac_schedule_cmd!",
+      "assignment": "mac_phy_command_pending = true, mac_c_phy_ack = 0, bus_schedule_open = true, mac_c_obs_ack = 0, mac_obs_ack_active = true"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:6",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "WaitPHYAck",
+      "target": "Idle",
+      "guard": "(mac_c_phy_ack <= mac_D_phy_ack) && mac_c_obs_ack <= mac_D_phy_ack",
+      "synchronisation": "mac_phy_ack?",
+      "assignment": "mac_phy_command_pending = false, mac_phy_ack_timeout = false, bus_schedule_open = false, mac_obs_ack_active = false"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:7",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "WaitPHYAck",
+      "target": "ScheduleFailure",
+      "guard": "(mac_c_phy_ack == mac_D_phy_ack) && mac_c_obs_ack <= mac_D_phy_ack",
+      "assignment": "mac_phy_ack_timeout = true, mac_macReason = mac_REASON_PHY_ACK_TIMEOUT,\nmac_mac_report_pending = true, mac_phy_command_pending = false, bus_schedule_open = false, mac_obs_ack_active = false"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:8",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "ScheduleFailure",
+      "target": "Idle",
+      "synchronisation": "mac_mac_report!",
+      "assignment": "mac_mac_report_sent = true, mac_mac_report_pending = false, mac_silent_accept = false"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:9",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "WaitPHYAck",
+      "target": "Idle",
+      "guard": "(mac_c_phy_ack <= mac_D_phy_ack) && mac_c_obs_ack > mac_D_phy_ack",
+      "synchronisation": "mac_phy_ack?",
+      "assignment": "mac_phy_command_pending = false, mac_phy_ack_timeout = false, bus_schedule_open = false, mac_obs_ack_active = false, mac_obs_ack_late = true"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:10",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "WaitPHYAck",
+      "target": "ScheduleFailure",
+      "guard": "(mac_c_phy_ack == mac_D_phy_ack) && mac_c_obs_ack > mac_D_phy_ack",
+      "assignment": "mac_phy_ack_timeout = true, mac_macReason = mac_REASON_PHY_ACK_TIMEOUT,\nmac_mac_report_pending = true, mac_phy_command_pending = false, bus_schedule_open = false, mac_obs_ack_active = false, mac_obs_ack_late = true"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:11",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "Idle",
+      "target": "Idle",
+      "synchronisation": "bus_policy?",
+      "assignment": "mac_sdn_comm_priority_allowed = bus_allow_comm, mac_sdn_sensing_priority_allowed = bus_allow_sensing"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:12",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "CollectKPI",
+      "target": "CollectKPI",
+      "synchronisation": "bus_policy?",
+      "assignment": "mac_sdn_comm_priority_allowed = bus_allow_comm, mac_sdn_sensing_priority_allowed = bus_allow_sensing"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:13",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "SelectMode",
+      "target": "SelectMode",
+      "synchronisation": "bus_policy?",
+      "assignment": "mac_sdn_comm_priority_allowed = bus_allow_comm, mac_sdn_sensing_priority_allowed = bus_allow_sensing"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:14",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "ApplySchedule",
+      "target": "ApplySchedule",
+      "synchronisation": "bus_policy?",
+      "assignment": "mac_sdn_comm_priority_allowed = bus_allow_comm, mac_sdn_sensing_priority_allowed = bus_allow_sensing"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:15",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "WaitPHYAck",
+      "target": "WaitPHYAck",
+      "synchronisation": "bus_policy?",
+      "assignment": "mac_sdn_comm_priority_allowed = bus_allow_comm, mac_sdn_sensing_priority_allowed = bus_allow_sensing"
+    },
+    {
+      "id": "mac_Template_A_SCH:edge:16",
+      "kind": "edge",
+      "template": "mac_Template_A_SCH",
+      "source": "ScheduleFailure",
+      "target": "ScheduleFailure",
+      "synchronisation": "bus_policy?",
+      "assignment": "mac_sdn_comm_priority_allowed = bus_allow_comm, mac_sdn_sensing_priority_allowed = bus_allow_sensing"
+    },
+    {
+      "id": "mac_Template_A_Q:location:QueueNormal",
+      "kind": "location",
+      "template": "mac_Template_A_Q",
+      "location": "QueueNormal",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_Q:location:QueueWarning",
+      "kind": "location",
+      "template": "mac_Template_A_Q",
+      "location": "QueueWarning",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_Q:location:QueueCritical",
+      "kind": "location",
+      "template": "mac_Template_A_Q",
+      "location": "QueueCritical",
+      "invariant": "mac_c_queue <= mac_D_queue_crit",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_Q:location:QueueDraining",
+      "kind": "location",
+      "template": "mac_Template_A_Q",
+      "location": "QueueDraining",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_Q:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_A_Q",
+      "source": "QueueNormal",
+      "target": "QueueWarning",
+      "guard": "mac_queueClass == mac_Q_HIGH"
+    },
+    {
+      "id": "mac_Template_A_Q:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_A_Q",
+      "source": "QueueNormal",
+      "target": "QueueCritical",
+      "guard": "mac_queueClass == mac_Q_CRIT",
+      "assignment": "mac_c_queue = 0, mac_mac_report_pending = true, mac_macReason = mac_REASON_QUEUE_CRITICAL"
+    },
+    {
+      "id": "mac_Template_A_Q:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_A_Q",
+      "source": "QueueWarning",
+      "target": "QueueCritical",
+      "guard": "mac_queueClass == mac_Q_CRIT",
+      "assignment": "mac_c_queue = 0, mac_mac_report_pending = true, mac_macReason = mac_REASON_QUEUE_CRITICAL"
+    },
+    {
+      "id": "mac_Template_A_Q:edge:3",
+      "kind": "edge",
+      "template": "mac_Template_A_Q",
+      "source": "QueueCritical",
+      "target": "QueueDraining",
+      "guard": "mac_c_queue <= mac_D_queue_crit && (mac_scheduleMode == mac_SCH_COMM||\nmac_scheduleMode == mac_SCH_CONSTRAINED|| mac_mac_report_sent)"
+    },
+    {
+      "id": "mac_Template_A_Q:edge:4",
+      "kind": "edge",
+      "template": "mac_Template_A_Q",
+      "source": "QueueCritical",
+      "target": "QueueDraining",
+      "guard": "mac_c_queue == mac_D_queue_crit",
+      "synchronisation": "mac_resource_reject!",
+      "assignment": "mac_mac_report_pending = true, mac_macReason = mac_REASON_QUEUE_CRITICAL"
+    },
+    {
+      "id": "mac_Template_A_Q:edge:5",
+      "kind": "edge",
+      "template": "mac_Template_A_Q",
+      "source": "QueueDraining",
+      "target": "QueueNormal",
+      "guard": "mac_queueClass != mac_Q_CRIT"
+    },
+    {
+      "id": "mac_Template_A_Q:edge:6",
+      "kind": "edge",
+      "template": "mac_Template_A_Q",
+      "source": "QueueWarning",
+      "target": "QueueNormal",
+      "guard": "mac_queueClass < mac_Q_HIGH"
+    },
+    {
+      "id": "mac_Template_A_BUF:location:BufferSafe",
+      "kind": "location",
+      "template": "mac_Template_A_BUF",
+      "location": "BufferSafe",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_BUF:location:BufferWarning",
+      "kind": "location",
+      "template": "mac_Template_A_BUF",
+      "location": "BufferWarning",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_BUF:location:BufferOverflow",
+      "kind": "location",
+      "template": "mac_Template_A_BUF",
+      "location": "BufferOverflow",
+      "invariant": "mac_c_buf <= mac_D_buf_report",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_BUF:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_A_BUF",
+      "source": "BufferSafe",
+      "target": "BufferWarning",
+      "guard": "mac_bufferClass == mac_B_WARN"
+    },
+    {
+      "id": "mac_Template_A_BUF:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_A_BUF",
+      "source": "BufferSafe",
+      "target": "BufferOverflow",
+      "guard": "mac_bufferClass == mac_B_OVERFLOW",
+      "assignment": "mac_c_buf = 0, mac_mac_report_pending = true, mac_macReason = mac_REASON_BUFFER_OVERFLOW"
+    },
+    {
+      "id": "mac_Template_A_BUF:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_A_BUF",
+      "source": "BufferWarning",
+      "target": "BufferOverflow",
+      "guard": "mac_bufferClass == mac_B_OVERFLOW",
+      "assignment": "mac_c_buf = 0, mac_mac_report_pending = true, mac_macReason = mac_REASON_BUFFER_OVERFLOW"
+    },
+    {
+      "id": "mac_Template_A_BUF:edge:3",
+      "kind": "edge",
+      "template": "mac_Template_A_BUF",
+      "source": "BufferOverflow",
+      "target": "BufferSafe",
+      "guard": "mac_bufferClass != mac_B_OVERFLOW"
+    },
+    {
+      "id": "mac_Template_A_BUF:edge:4",
+      "kind": "edge",
+      "template": "mac_Template_A_BUF",
+      "source": "BufferOverflow",
+      "target": "BufferSafe",
+      "guard": "mac_c_buf == mac_D_buf_report",
+      "synchronisation": "mac_mac_report!",
+      "assignment": "mac_mac_report_sent = true, mac_mac_report_pending = false"
+    },
+    {
+      "id": "mac_Template_A_BUF:edge:5",
+      "kind": "edge",
+      "template": "mac_Template_A_BUF",
+      "source": "BufferWarning",
+      "target": "BufferSafe",
+      "guard": "mac_bufferClass == mac_B_SAFE"
+    },
+    {
+      "id": "mac_Template_A_RSRC:location:ResourceAvailable",
+      "kind": "location",
+      "template": "mac_Template_A_RSRC",
+      "location": "ResourceAvailable",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_RSRC:location:ResourceTight",
+      "kind": "location",
+      "template": "mac_Template_A_RSRC",
+      "location": "ResourceTight",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_RSRC:location:ResourceConflict",
+      "kind": "location",
+      "template": "mac_Template_A_RSRC",
+      "location": "ResourceConflict",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_RSRC:location:ResourceExhausted",
+      "kind": "location",
+      "template": "mac_Template_A_RSRC",
+      "location": "ResourceExhausted",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_RSRC:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_A_RSRC",
+      "source": "ResourceAvailable",
+      "target": "ResourceTight",
+      "guard": "mac_resourceClass == mac_RES_TIGHT"
+    },
+    {
+      "id": "mac_Template_A_RSRC:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_A_RSRC",
+      "source": "ResourceAvailable",
+      "target": "ResourceExhausted",
+      "guard": "mac_resourceClass == mac_RES_EXHAUSTED || mac_mappedResourceClass == mac_RES_EXHAUSTED",
+      "assignment": "mac_silent_accept = false, mac_mac_report_pending = true,\nmac_macReason = mac_REASON_RESOURCE_EXHAUSTED"
+    },
+    {
+      "id": "mac_Template_A_RSRC:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_A_RSRC",
+      "source": "ResourceTight",
+      "target": "ResourceConflict",
+      "guard": "mac_sensingDemand != mac_SENS_NOMINAL && mac_commDemand != mac_COMM_NOMINAL",
+      "assignment": "mac_macReason = mac_REASON_SENS_COMM_CONFLICT"
+    },
+    {
+      "id": "mac_Template_A_RSRC:edge:3",
+      "kind": "edge",
+      "template": "mac_Template_A_RSRC",
+      "source": "ResourceConflict",
+      "target": "ResourceExhausted",
+      "guard": "mac_resourceClass == mac_RES_EXHAUSTED",
+      "assignment": "mac_silent_accept = false, mac_mac_report_pending = true"
+    },
+    {
+      "id": "mac_Template_A_RSRC:edge:4",
+      "kind": "edge",
+      "template": "mac_Template_A_RSRC",
+      "source": "ResourceExhausted",
+      "target": "ResourceAvailable",
+      "synchronisation": "mac_resource_reject!",
+      "assignment": "mac_silent_accept = false, mac_mac_report_pending = true"
+    },
+    {
+      "id": "mac_Template_A_RSRC:edge:5",
+      "kind": "edge",
+      "template": "mac_Template_A_RSRC",
+      "source": "ResourceTight",
+      "target": "ResourceAvailable",
+      "guard": "mac_resourceClass == mac_RES_FREE || mac_resourceClass == mac_RES_BALANCED"
+    },
+    {
+      "id": "mac_Template_A_RSRC:edge:6",
+      "kind": "edge",
+      "template": "mac_Template_A_RSRC",
+      "source": "ResourceConflict",
+      "target": "ResourceAvailable",
+      "guard": "mac_resourceClass == mac_RES_FREE || mac_resourceClass == mac_RES_BALANCED"
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:location:ReportIdle",
+      "kind": "location",
+      "template": "mac_Template_A_MAC_AGG",
+      "location": "ReportIdle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:location:ReportBuild",
+      "kind": "location",
+      "template": "mac_Template_A_MAC_AGG",
+      "location": "ReportBuild",
+      "invariant": "mac_c_report <= mac_D_mac_report",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:location:ReportSent",
+      "kind": "location",
+      "template": "mac_Template_A_MAC_AGG",
+      "location": "ReportSent",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:location:ReportStale",
+      "kind": "location",
+      "template": "mac_Template_A_MAC_AGG",
+      "location": "ReportStale",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_A_MAC_AGG",
+      "source": "ReportIdle",
+      "target": "ReportBuild",
+      "guard": "mac_mac_report_pending",
+      "assignment": "mac_c_report = 0"
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_A_MAC_AGG",
+      "source": "ReportBuild",
+      "target": "ReportSent",
+      "guard": "mac_c_report <= mac_D_mac_report",
+      "synchronisation": "mac_mac_report!",
+      "assignment": "mac_mac_report_sent = true, mac_mac_report_pending = false"
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_A_MAC_AGG",
+      "source": "ReportBuild",
+      "target": "ReportStale",
+      "guard": "mac_c_report == mac_D_mac_report",
+      "assignment": "mac_macReason = mac_REASON_STALE_PHY_KPI"
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:edge:3",
+      "kind": "edge",
+      "template": "mac_Template_A_MAC_AGG",
+      "source": "ReportStale",
+      "target": "ReportSent",
+      "synchronisation": "mac_mac_report!",
+      "assignment": "mac_mac_report_sent = true, mac_mac_report_pending = false"
+    },
+    {
+      "id": "mac_Template_A_MAC_AGG:edge:4",
+      "kind": "edge",
+      "template": "mac_Template_A_MAC_AGG",
+      "source": "ReportSent",
+      "target": "ReportIdle",
+      "assignment": "mac_mac_report_sent = false"
+    },
+    {
+      "id": "mac_Template_ObsPhyAck:location:Idle",
+      "kind": "location",
+      "template": "mac_Template_ObsPhyAck",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsPhyAck:location:Violation",
+      "kind": "location",
+      "template": "mac_Template_ObsPhyAck",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsPhyAck:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_ObsPhyAck",
+      "source": "Idle",
+      "target": "Violation",
+      "guard": "mac_obs_ack_late"
+    },
+    {
+      "id": "mac_Template_ObsPhyAck:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_ObsPhyAck",
+      "source": "Idle",
+      "target": "Violation",
+      "guard": "mac_obs_ack_active && mac_c_obs_ack > mac_D_phy_ack"
+    },
+    {
+      "id": "mac_Template_ObsQueueCritical:location:Idle",
+      "kind": "location",
+      "template": "mac_Template_ObsQueueCritical",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsQueueCritical:location:Wait",
+      "kind": "location",
+      "template": "mac_Template_ObsQueueCritical",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsQueueCritical:location:Violation",
+      "kind": "location",
+      "template": "mac_Template_ObsQueueCritical",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsQueueCritical:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_ObsQueueCritical",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "mac_queueClass == mac_Q_CRIT",
+      "assignment": "mac_c_obs_queue = 0"
+    },
+    {
+      "id": "mac_Template_ObsQueueCritical:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_ObsQueueCritical",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "(mac_queueClass != mac_Q_CRIT|| mac_mac_report_sent|| mac_scheduleMode == mac_SCH_COMM||\nmac_scheduleMode == mac_SCH_CONSTRAINED) && mac_c_obs_queue <= mac_D_queue_crit"
+    },
+    {
+      "id": "mac_Template_ObsQueueCritical:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_ObsQueueCritical",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "mac_c_obs_queue > mac_D_queue_crit"
+    },
+    {
+      "id": "mac_Template_ObsSensingCritical:location:Idle",
+      "kind": "location",
+      "template": "mac_Template_ObsSensingCritical",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsSensingCritical:location:Wait",
+      "kind": "location",
+      "template": "mac_Template_ObsSensingCritical",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsSensingCritical:location:Violation",
+      "kind": "location",
+      "template": "mac_Template_ObsSensingCritical",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsSensingCritical:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_ObsSensingCritical",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "mac_sensingDemand == mac_SENS_CRITICAL",
+      "assignment": "mac_c_obs_sensing = 0"
+    },
+    {
+      "id": "mac_Template_ObsSensingCritical:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_ObsSensingCritical",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "(mac_scheduleMode == mac_SCH_SENS|| mac_scheduleMode == mac_SCH_JOINT||\nmac_scheduleMode == mac_SCH_CONSTRAINED|| mac_mac_report_sent) && mac_c_obs_sensing <= mac_D_sched"
+    },
+    {
+      "id": "mac_Template_ObsSensingCritical:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_ObsSensingCritical",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "mac_c_obs_sensing > mac_D_sched"
+    },
+    {
+      "id": "mac_Template_ObsBufferOverflow:location:Idle",
+      "kind": "location",
+      "template": "mac_Template_ObsBufferOverflow",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsBufferOverflow:location:Wait",
+      "kind": "location",
+      "template": "mac_Template_ObsBufferOverflow",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsBufferOverflow:location:Violation",
+      "kind": "location",
+      "template": "mac_Template_ObsBufferOverflow",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsBufferOverflow:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_ObsBufferOverflow",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "mac_bufferClass == mac_B_OVERFLOW",
+      "assignment": "mac_c_obs_buf = 0"
+    },
+    {
+      "id": "mac_Template_ObsBufferOverflow:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_ObsBufferOverflow",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "(mac_mac_report_sent || mac_bufferClass != mac_B_OVERFLOW) && mac_c_obs_buf <= mac_D_buf_report"
+    },
+    {
+      "id": "mac_Template_ObsBufferOverflow:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_ObsBufferOverflow",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "mac_c_obs_buf > mac_D_buf_report"
+    },
+    {
+      "id": "mac_Template_ObsMacReportFreshness:location:Idle",
+      "kind": "location",
+      "template": "mac_Template_ObsMacReportFreshness",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsMacReportFreshness:location:Wait",
+      "kind": "location",
+      "template": "mac_Template_ObsMacReportFreshness",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsMacReportFreshness:location:Violation",
+      "kind": "location",
+      "template": "mac_Template_ObsMacReportFreshness",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "mac_Template_ObsMacReportFreshness:edge:0",
+      "kind": "edge",
+      "template": "mac_Template_ObsMacReportFreshness",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "mac_mac_report_pending",
+      "assignment": "mac_c_obs_report = 0"
+    },
+    {
+      "id": "mac_Template_ObsMacReportFreshness:edge:1",
+      "kind": "edge",
+      "template": "mac_Template_ObsMacReportFreshness",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "(mac_mac_report_sent || !mac_mac_report_pending) && mac_c_obs_report <= mac_D_mac_report"
+    },
+    {
+      "id": "mac_Template_ObsMacReportFreshness:edge:2",
+      "kind": "edge",
+      "template": "mac_Template_ObsMacReportFreshness",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "mac_c_obs_report > mac_D_mac_report"
+    }
+  ]
+}

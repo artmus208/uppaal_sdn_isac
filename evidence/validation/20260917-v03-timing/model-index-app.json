@@ -1,0 +1,789 @@
+{
+  "input_model_sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446",
+  "records": [
+    {
+      "id": "app_A_REQ:location:ServiceIdle",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "ServiceIdle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:location:RequestBuild",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "RequestBuild",
+      "invariant": "app_c_req <= app_D_req",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:location:RequestReady",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "RequestReady",
+      "invariant": "",
+      "committed": true,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:location:RequestPending",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "RequestPending",
+      "invariant": "app_c_admission <= app_D_admission",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:location:Accepted",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "Accepted",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:location:AcceptedDegraded",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "AcceptedDegraded",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:location:Rejected",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "Rejected",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:location:Completed",
+      "kind": "location",
+      "template": "app_A_REQ",
+      "location": "Completed",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_REQ:edge:0",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "ServiceIdle",
+      "target": "RequestBuild",
+      "synchronisation": "app_new_demand?",
+      "assignment": "app_c_req = 0, app_build_uav_service_request(), app_service_request_pending = false, app_sla_warning_report_sent = false, app_sla_violation_report_sent = false, app_violation_report_sent = false, app_service_reconfigure_sent = false, app_service_terminate_sent = false, bus_demand_delivered = true"
+    },
+    {
+      "id": "app_A_REQ:edge:1",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "RequestBuild",
+      "target": "RequestReady",
+      "guard": "app_gAdmissionRequest()",
+      "assignment": "app_admissionClass = app_ADM_PENDING, app_c_req = 0"
+    },
+    {
+      "id": "app_A_REQ:edge:2",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "RequestReady",
+      "target": "RequestPending",
+      "synchronisation": "app_service_request!",
+      "assignment": "app_service_request_pending = true, raise_app_service_request_seq(), app_c_admission = 0"
+    },
+    {
+      "id": "app_A_REQ:edge:3",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "RequestPending",
+      "target": "Accepted",
+      "guard": "app_admissionClass == app_ADM_ACCEPTED",
+      "synchronisation": "app_service_accept?",
+      "assignment": "app_service_request_pending = false"
+    },
+    {
+      "id": "app_A_REQ:edge:4",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "RequestPending",
+      "target": "AcceptedDegraded",
+      "guard": "app_gAcceptDegraded()",
+      "synchronisation": "app_service_degraded?",
+      "assignment": "app_service_request_pending = false, app_degraded_accept_pending = true"
+    },
+    {
+      "id": "app_A_REQ:edge:5",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "RequestPending",
+      "target": "Rejected",
+      "guard": "app_admissionClass == app_ADM_REJECTED || app_gRejectDegraded()",
+      "synchronisation": "app_service_reject?",
+      "assignment": "app_service_request_pending = false"
+    },
+    {
+      "id": "app_A_REQ:edge:6",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "Accepted",
+      "target": "Accepted",
+      "synchronisation": "app_service_kpi_update?",
+      "assignment": "app_note_kpi_update_event()"
+    },
+    {
+      "id": "app_A_REQ:edge:7",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "AcceptedDegraded",
+      "target": "AcceptedDegraded",
+      "synchronisation": "app_service_kpi_update?",
+      "assignment": "app_note_kpi_update_event()"
+    },
+    {
+      "id": "app_A_REQ:edge:8",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "Accepted",
+      "target": "AcceptedDegraded",
+      "guard": "app_degraded_allowed && app_degradedReason != app_DEG_NONE && app_gSafetyAllowsDegraded()",
+      "synchronisation": "app_degraded_notice?",
+      "assignment": "app_degraded_accept_pending = true"
+    },
+    {
+      "id": "app_A_REQ:edge:9",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "AcceptedDegraded",
+      "target": "Accepted",
+      "guard": "app_sla_sens_ok()",
+      "synchronisation": "app_service_kpi_update?",
+      "assignment": "app_note_kpi_update_event()"
+    },
+    {
+      "id": "app_A_REQ:edge:10",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "AcceptedDegraded",
+      "target": "AcceptedDegraded",
+      "guard": "app_degraded_accept_pending",
+      "synchronisation": "app_degraded_accept_report!",
+      "assignment": "app_degraded_accept_pending = false, app_violation_report_sent = false"
+    },
+    {
+      "id": "app_A_REQ:edge:11",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "Accepted",
+      "target": "Completed",
+      "synchronisation": "app_service_complete?",
+      "assignment": "bus_complete_delivered = true"
+    },
+    {
+      "id": "app_A_REQ:edge:12",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "AcceptedDegraded",
+      "target": "Completed",
+      "synchronisation": "app_service_complete?",
+      "assignment": "bus_complete_delivered = true"
+    },
+    {
+      "id": "app_A_REQ:edge:13",
+      "kind": "edge",
+      "template": "app_A_REQ",
+      "source": "RequestPending",
+      "target": "Rejected",
+      "guard": "app_c_admission == app_D_admission",
+      "assignment": "app_admissionClass = app_ADM_REJECTED, app_service_request_pending = false, bus_admission_timeout = true"
+    },
+    {
+      "id": "app_A_SLA:location:SLAOk",
+      "kind": "location",
+      "template": "app_A_SLA",
+      "location": "SLAOk",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_SLA:location:SLAWarning",
+      "kind": "location",
+      "template": "app_A_SLA",
+      "location": "SLAWarning",
+      "invariant": "app_c_sla_warn <= app_D_sla_warn",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_SLA:location:SLAViolated",
+      "kind": "location",
+      "template": "app_A_SLA",
+      "location": "SLAViolated",
+      "invariant": "app_c_sla_violation <= app_D_sla_violation",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_SLA:location:SLAReported",
+      "kind": "location",
+      "template": "app_A_SLA",
+      "location": "SLAReported",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_SLA:edge:0",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAOk",
+      "target": "SLAWarning",
+      "guard": "app_gSlaWarning()",
+      "synchronisation": "app_sla_warn?",
+      "assignment": "app_c_sla_warn = 0, app_note_sla_warning_event(), app_sla_warning_report_sent = false"
+    },
+    {
+      "id": "app_A_SLA:edge:1",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAOk",
+      "target": "SLAViolated",
+      "guard": "app_gSlaViolation()",
+      "synchronisation": "app_sla_violation?",
+      "assignment": "app_c_sla_violation = 0, app_note_sla_violation_event(), app_sla_violation_report_sent = false, app_violation_report_sent = false, app_service_reconfigure_sent = false, app_service_terminate_sent = false"
+    },
+    {
+      "id": "app_A_SLA:edge:2",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAWarning",
+      "target": "SLAReported",
+      "guard": "app_gSlaWarning() && !app_gSlaViolation()",
+      "synchronisation": "app_sla_warning_report!",
+      "assignment": "app_sla_warning_report_sent = true, app_c_sla_warn = 0"
+    },
+    {
+      "id": "app_A_SLA:edge:3",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAWarning",
+      "target": "SLAOk",
+      "guard": "!app_gSlaWarning() && !app_gSlaViolation()",
+      "synchronisation": "app_service_kpi_update?",
+      "assignment": "app_c_sla_warn = 0"
+    },
+    {
+      "id": "app_A_SLA:edge:4",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAWarning",
+      "target": "SLAViolated",
+      "guard": "app_gSlaViolation()",
+      "synchronisation": "app_sla_violation?",
+      "assignment": "app_c_sla_violation = 0, app_note_sla_violation_event(), app_sla_violation_report_sent = false, app_violation_report_sent = false, app_service_reconfigure_sent = false, app_service_terminate_sent = false"
+    },
+    {
+      "id": "app_A_SLA:edge:5",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAReported",
+      "target": "SLAOk",
+      "guard": "!app_gSlaWarning() && !app_gSlaViolation()",
+      "synchronisation": "app_service_kpi_update?",
+      "assignment": "app_sla_warning_report_sent = false, app_sla_violation_report_sent = false, app_violation_report_sent = false, app_service_reconfigure_sent = false, app_service_terminate_sent = false"
+    },
+    {
+      "id": "app_A_SLA:edge:6",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAViolated",
+      "target": "SLAReported",
+      "guard": "app_gSlaViolation()",
+      "synchronisation": "app_sla_violation_report!",
+      "assignment": "app_sla_violation_report_sent = true, app_violation_report_sent = true, app_c_sla_violation = 0"
+    },
+    {
+      "id": "app_A_SLA:edge:7",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAViolated",
+      "target": "SLAReported",
+      "guard": "app_gSafetyCriticalViolation()",
+      "synchronisation": "app_service_reconfigure!",
+      "assignment": "app_service_reconfigure_sent = true, app_violation_report_sent = true"
+    },
+    {
+      "id": "app_A_SLA:edge:8",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAViolated",
+      "target": "SLAReported",
+      "guard": "app_gSafetyCriticalViolation()",
+      "synchronisation": "app_service_terminate!",
+      "assignment": "app_service_terminate_sent = true, app_violation_report_sent = true"
+    },
+    {
+      "id": "app_A_SLA:edge:9",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAReported",
+      "target": "SLAViolated",
+      "guard": "app_gSlaViolation()",
+      "synchronisation": "app_sla_violation?",
+      "assignment": "app_c_sla_violation = 0, app_note_sla_violation_event(), app_sla_violation_report_sent = false, app_violation_report_sent = false"
+    },
+    {
+      "id": "app_A_SLA:edge:10",
+      "kind": "edge",
+      "template": "app_A_SLA",
+      "source": "SLAReported",
+      "target": "SLAWarning",
+      "guard": "app_gSlaWarning()",
+      "synchronisation": "app_sla_warn?",
+      "assignment": "app_c_sla_warn = 0, app_note_sla_warning_event(), app_sla_warning_report_sent = false"
+    },
+    {
+      "id": "app_A_CRIT:location:Idle",
+      "kind": "location",
+      "template": "app_A_CRIT",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_A_SVC_AGG:location:DemandStored",
+      "kind": "location",
+      "template": "app_A_SVC_AGG",
+      "location": "DemandStored",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsServiceAdmission:location:Idle",
+      "kind": "location",
+      "template": "app_ObsServiceAdmission",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsServiceAdmission:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsServiceAdmission",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsServiceAdmission:location:Violation",
+      "kind": "location",
+      "template": "app_ObsServiceAdmission",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsServiceAdmission:edge:0",
+      "kind": "edge",
+      "template": "app_ObsServiceAdmission",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_service_request_seq"
+    },
+    {
+      "id": "app_ObsServiceAdmission:edge:1",
+      "kind": "edge",
+      "template": "app_ObsServiceAdmission",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "!app_service_request_pending && (app_admissionClass == app_ADM_ACCEPTED || app_admissionClass == app_ADM_DEGRADED || app_admissionClass == app_ADM_REJECTED)",
+      "assignment": "app_service_request_seq = false"
+    },
+    {
+      "id": "app_ObsServiceAdmission:edge:2",
+      "kind": "edge",
+      "template": "app_ObsServiceAdmission",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_service_request_seq_age > app_D_admission"
+    },
+    {
+      "id": "app_ObsSlaWarningDeadline:location:Idle",
+      "kind": "location",
+      "template": "app_ObsSlaWarningDeadline",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSlaWarningDeadline:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsSlaWarningDeadline",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSlaWarningDeadline:location:Violation",
+      "kind": "location",
+      "template": "app_ObsSlaWarningDeadline",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSlaWarningDeadline:edge:0",
+      "kind": "edge",
+      "template": "app_ObsSlaWarningDeadline",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_sla_warn_seq"
+    },
+    {
+      "id": "app_ObsSlaWarningDeadline:edge:1",
+      "kind": "edge",
+      "template": "app_ObsSlaWarningDeadline",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "app_sla_warning_report_sent || app_gSlaViolation()",
+      "assignment": "app_sla_warn_seq = false"
+    },
+    {
+      "id": "app_ObsSlaWarningDeadline:edge:2",
+      "kind": "edge",
+      "template": "app_ObsSlaWarningDeadline",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_sla_warn_seq_age > app_D_sla_warn"
+    },
+    {
+      "id": "app_ObsSlaViolationDeadline:location:Idle",
+      "kind": "location",
+      "template": "app_ObsSlaViolationDeadline",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSlaViolationDeadline:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsSlaViolationDeadline",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSlaViolationDeadline:location:Violation",
+      "kind": "location",
+      "template": "app_ObsSlaViolationDeadline",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSlaViolationDeadline:edge:0",
+      "kind": "edge",
+      "template": "app_ObsSlaViolationDeadline",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_sla_violation_seq"
+    },
+    {
+      "id": "app_ObsSlaViolationDeadline:edge:1",
+      "kind": "edge",
+      "template": "app_ObsSlaViolationDeadline",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "app_sla_violation_report_sent || app_violation_report_sent || app_service_reconfigure_sent || app_service_terminate_sent",
+      "assignment": "app_sla_violation_seq = false"
+    },
+    {
+      "id": "app_ObsSlaViolationDeadline:edge:2",
+      "kind": "edge",
+      "template": "app_ObsSlaViolationDeadline",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_sla_violation_seq_age > app_D_sla_violation"
+    },
+    {
+      "id": "app_ObsDetectionFreshness:location:Idle",
+      "kind": "location",
+      "template": "app_ObsDetectionFreshness",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsDetectionFreshness:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsDetectionFreshness",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsDetectionFreshness:location:Violation",
+      "kind": "location",
+      "template": "app_ObsDetectionFreshness",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsDetectionFreshness:edge:0",
+      "kind": "edge",
+      "template": "app_ObsDetectionFreshness",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_freshness_expired_seq"
+    },
+    {
+      "id": "app_ObsDetectionFreshness:edge:1",
+      "kind": "edge",
+      "template": "app_ObsDetectionFreshness",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "app_sla_violation_report_sent || app_violation_report_sent || app_service_reconfigure_sent || app_service_terminate_sent",
+      "assignment": "app_freshness_expired_seq = false"
+    },
+    {
+      "id": "app_ObsDetectionFreshness:edge:2",
+      "kind": "edge",
+      "template": "app_ObsDetectionFreshness",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_freshness_expired_seq_age > app_D_fresh_report"
+    },
+    {
+      "id": "app_ObsUpdatePeriodViolation:location:Idle",
+      "kind": "location",
+      "template": "app_ObsUpdatePeriodViolation",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsUpdatePeriodViolation:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsUpdatePeriodViolation",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsUpdatePeriodViolation:location:Violation",
+      "kind": "location",
+      "template": "app_ObsUpdatePeriodViolation",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsUpdatePeriodViolation:edge:0",
+      "kind": "edge",
+      "template": "app_ObsUpdatePeriodViolation",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_update_violation_seq"
+    },
+    {
+      "id": "app_ObsUpdatePeriodViolation:edge:1",
+      "kind": "edge",
+      "template": "app_ObsUpdatePeriodViolation",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "app_sla_violation_report_sent || app_violation_report_sent || app_service_reconfigure_sent || app_service_terminate_sent",
+      "assignment": "app_update_violation_seq = false"
+    },
+    {
+      "id": "app_ObsUpdatePeriodViolation:edge:2",
+      "kind": "edge",
+      "template": "app_ObsUpdatePeriodViolation",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_update_violation_seq_age > app_D_update_report"
+    },
+    {
+      "id": "app_ObsFalseAlarmCritical:location:Idle",
+      "kind": "location",
+      "template": "app_ObsFalseAlarmCritical",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsFalseAlarmCritical:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsFalseAlarmCritical",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsFalseAlarmCritical:location:Violation",
+      "kind": "location",
+      "template": "app_ObsFalseAlarmCritical",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsFalseAlarmCritical:edge:0",
+      "kind": "edge",
+      "template": "app_ObsFalseAlarmCritical",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_fa_critical_seq"
+    },
+    {
+      "id": "app_ObsFalseAlarmCritical:edge:1",
+      "kind": "edge",
+      "template": "app_ObsFalseAlarmCritical",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "app_sla_violation_report_sent || app_violation_report_sent || app_service_reconfigure_sent || app_service_terminate_sent",
+      "assignment": "app_fa_critical_seq = false"
+    },
+    {
+      "id": "app_ObsFalseAlarmCritical:edge:2",
+      "kind": "edge",
+      "template": "app_ObsFalseAlarmCritical",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_fa_critical_seq_age > app_D_fa_report"
+    },
+    {
+      "id": "app_ObsMissedDetectionCritical:location:Idle",
+      "kind": "location",
+      "template": "app_ObsMissedDetectionCritical",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsMissedDetectionCritical:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsMissedDetectionCritical",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsMissedDetectionCritical:location:Violation",
+      "kind": "location",
+      "template": "app_ObsMissedDetectionCritical",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsMissedDetectionCritical:edge:0",
+      "kind": "edge",
+      "template": "app_ObsMissedDetectionCritical",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_miss_critical_seq"
+    },
+    {
+      "id": "app_ObsMissedDetectionCritical:edge:1",
+      "kind": "edge",
+      "template": "app_ObsMissedDetectionCritical",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "app_sla_violation_report_sent || app_violation_report_sent || app_service_reconfigure_sent || app_service_terminate_sent",
+      "assignment": "app_miss_critical_seq = false"
+    },
+    {
+      "id": "app_ObsMissedDetectionCritical:edge:2",
+      "kind": "edge",
+      "template": "app_ObsMissedDetectionCritical",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_miss_critical_seq_age > app_D_miss_report"
+    },
+    {
+      "id": "app_ObsSafetyCriticalViolation:location:Idle",
+      "kind": "location",
+      "template": "app_ObsSafetyCriticalViolation",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSafetyCriticalViolation:location:Waiting",
+      "kind": "location",
+      "template": "app_ObsSafetyCriticalViolation",
+      "location": "Waiting",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSafetyCriticalViolation:location:Violation",
+      "kind": "location",
+      "template": "app_ObsSafetyCriticalViolation",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "app_ObsSafetyCriticalViolation:edge:0",
+      "kind": "edge",
+      "template": "app_ObsSafetyCriticalViolation",
+      "source": "Idle",
+      "target": "Waiting",
+      "guard": "app_safety_violation_seq"
+    },
+    {
+      "id": "app_ObsSafetyCriticalViolation:edge:1",
+      "kind": "edge",
+      "template": "app_ObsSafetyCriticalViolation",
+      "source": "Waiting",
+      "target": "Idle",
+      "guard": "app_sla_violation_report_sent || app_violation_report_sent || app_service_reconfigure_sent || app_service_terminate_sent || app_admissionClass == app_ADM_REJECTED",
+      "assignment": "app_safety_violation_seq = false"
+    },
+    {
+      "id": "app_ObsSafetyCriticalViolation:edge:2",
+      "kind": "edge",
+      "template": "app_ObsSafetyCriticalViolation",
+      "source": "Waiting",
+      "target": "Violation",
+      "guard": "app_safety_violation_seq_age > app_D_safety"
+    }
+  ]
+}

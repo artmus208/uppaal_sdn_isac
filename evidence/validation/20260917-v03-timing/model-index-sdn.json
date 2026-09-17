@@ -1,0 +1,1167 @@
+{
+  "input_model_sha256": "f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446",
+  "records": [
+    {
+      "id": "sdn_Template_A_MON:location:MonitorIdle",
+      "kind": "location",
+      "template": "sdn_Template_A_MON",
+      "location": "MonitorIdle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_MON:location:CollectReports",
+      "kind": "location",
+      "template": "sdn_Template_A_MON",
+      "location": "CollectReports",
+      "invariant": "sdn_c_mon <= sdn_D_mon",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_MON:location:TelemetryFresh",
+      "kind": "location",
+      "template": "sdn_Template_A_MON",
+      "location": "TelemetryFresh",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_MON:location:TelemetryStale",
+      "kind": "location",
+      "template": "sdn_Template_A_MON",
+      "location": "TelemetryStale",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_MON:location:TelemetryMissing",
+      "kind": "location",
+      "template": "sdn_Template_A_MON",
+      "location": "TelemetryMissing",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "MonitorIdle",
+      "target": "CollectReports",
+      "synchronisation": "sdn_mac_report?",
+      "assignment": "sdn_c_mon = 0, bus_sdn_report_consumed = true"
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "MonitorIdle",
+      "target": "CollectReports",
+      "synchronisation": "sdn_phy_kpi_report?",
+      "assignment": "sdn_c_mon = 0, bus_sdn_report_consumed = true"
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "CollectReports",
+      "target": "TelemetryFresh",
+      "guard": "sdn_c_mon <= sdn_D_mon && sdn_telemetryClass == sdn_TEL_FRESH"
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:3",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "CollectReports",
+      "target": "TelemetryStale",
+      "guard": "sdn_telemetryClass == sdn_TEL_STALE || sdn_c_mon == sdn_D_mon",
+      "assignment": "sdn_telemetryClass = sdn_TEL_STALE, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:4",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "CollectReports",
+      "target": "TelemetryMissing",
+      "guard": "sdn_telemetryClass == sdn_TEL_MISSING",
+      "assignment": "sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:5",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "TelemetryFresh",
+      "target": "MonitorIdle"
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:6",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "TelemetryStale",
+      "target": "MonitorIdle"
+    },
+    {
+      "id": "sdn_Template_A_MON:edge:7",
+      "kind": "edge",
+      "template": "sdn_Template_A_MON",
+      "source": "TelemetryMissing",
+      "target": "MonitorIdle"
+    },
+    {
+      "id": "sdn_Template_A_RISK:location:RiskLow",
+      "kind": "location",
+      "template": "sdn_Template_A_RISK",
+      "location": "RiskLow",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RISK:location:RiskMedium",
+      "kind": "location",
+      "template": "sdn_Template_A_RISK",
+      "location": "RiskMedium",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RISK:location:RiskHigh",
+      "kind": "location",
+      "template": "sdn_Template_A_RISK",
+      "location": "RiskHigh",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RISK:location:RiskCritical",
+      "kind": "location",
+      "template": "sdn_Template_A_RISK",
+      "location": "RiskCritical",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskLow",
+      "target": "RiskCritical",
+      "guard": "sdn_recoveryClass == sdn_REC_FAILED|| sdn_sliceClass == sdn_SLICE_VIOLATED||\nsdn_telemetryClass == sdn_TEL_MISSING",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskLow",
+      "target": "RiskHigh",
+      "guard": "sdn_ruleClass == sdn_RULE_TIMEOUT || sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskLow",
+      "target": "RiskMedium",
+      "guard": "sdn_telemetryClass == sdn_TEL_STALE || sdn_sliceClass == sdn_SLICE_WARN",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:3",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskLow",
+      "target": "RiskLow",
+      "guard": "sdn_telemetryClass == sdn_TEL_FRESH&& sdn_sliceClass == sdn_SLICE_OK&& sdn_recoveryClass != sdn_REC_FAILED&&\nsdn_ruleClass != sdn_RULE_TIMEOUT&& !sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:4",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskMedium",
+      "target": "RiskCritical",
+      "guard": "sdn_recoveryClass == sdn_REC_FAILED|| sdn_sliceClass == sdn_SLICE_VIOLATED||\nsdn_telemetryClass == sdn_TEL_MISSING",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:5",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskMedium",
+      "target": "RiskHigh",
+      "guard": "sdn_ruleClass == sdn_RULE_TIMEOUT || sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:6",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskMedium",
+      "target": "RiskMedium",
+      "guard": "sdn_telemetryClass == sdn_TEL_STALE || sdn_sliceClass == sdn_SLICE_WARN",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:7",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskMedium",
+      "target": "RiskLow",
+      "guard": "sdn_telemetryClass == sdn_TEL_FRESH&& sdn_sliceClass == sdn_SLICE_OK&& sdn_recoveryClass != sdn_REC_FAILED&&\nsdn_ruleClass != sdn_RULE_TIMEOUT&& !sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:8",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskHigh",
+      "target": "RiskCritical",
+      "guard": "sdn_recoveryClass == sdn_REC_FAILED|| sdn_sliceClass == sdn_SLICE_VIOLATED||\nsdn_telemetryClass == sdn_TEL_MISSING",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:9",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskHigh",
+      "target": "RiskHigh",
+      "guard": "sdn_ruleClass == sdn_RULE_TIMEOUT || sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:10",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskHigh",
+      "target": "RiskMedium",
+      "guard": "sdn_telemetryClass == sdn_TEL_STALE || sdn_sliceClass == sdn_SLICE_WARN",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:11",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskHigh",
+      "target": "RiskLow",
+      "guard": "sdn_telemetryClass == sdn_TEL_FRESH&& sdn_sliceClass == sdn_SLICE_OK&& sdn_recoveryClass != sdn_REC_FAILED&&\nsdn_ruleClass != sdn_RULE_TIMEOUT&& !sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:12",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskCritical",
+      "target": "RiskCritical",
+      "guard": "sdn_recoveryClass == sdn_REC_FAILED|| sdn_sliceClass == sdn_SLICE_VIOLATED||\nsdn_telemetryClass == sdn_TEL_MISSING",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:13",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskCritical",
+      "target": "RiskHigh",
+      "guard": "sdn_ruleClass == sdn_RULE_TIMEOUT || sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:14",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskCritical",
+      "target": "RiskMedium",
+      "guard": "sdn_telemetryClass == sdn_TEL_STALE || sdn_sliceClass == sdn_SLICE_WARN",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_RISK:edge:15",
+      "kind": "edge",
+      "template": "sdn_Template_A_RISK",
+      "source": "RiskCritical",
+      "target": "RiskLow",
+      "guard": "sdn_telemetryClass == sdn_TEL_FRESH&& sdn_sliceClass == sdn_SLICE_OK&& sdn_recoveryClass != sdn_REC_FAILED&&\nsdn_ruleClass != sdn_RULE_TIMEOUT&& !sdn_sensing_degradation_pending",
+      "assignment": "sdn_classify_risk()"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:location:PolicyIdle",
+      "kind": "location",
+      "template": "sdn_Template_A_POLICY",
+      "location": "PolicyIdle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_POLICY:location:Evaluate",
+      "kind": "location",
+      "template": "sdn_Template_A_POLICY",
+      "location": "Evaluate",
+      "invariant": "sdn_c_dec <= sdn_D_decision",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_POLICY:location:NormalMode",
+      "kind": "location",
+      "template": "sdn_Template_A_POLICY",
+      "location": "NormalMode",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_POLICY:location:SensingBoostMode",
+      "kind": "location",
+      "template": "sdn_Template_A_POLICY",
+      "location": "SensingBoostMode",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_POLICY:location:CommPriorityMode",
+      "kind": "location",
+      "template": "sdn_Template_A_POLICY",
+      "location": "CommPriorityMode",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_POLICY:location:ConstrainedMode",
+      "kind": "location",
+      "template": "sdn_Template_A_POLICY",
+      "location": "ConstrainedMode",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_POLICY:location:RejectByPolicy",
+      "kind": "location",
+      "template": "sdn_Template_A_POLICY",
+      "location": "RejectByPolicy",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "PolicyIdle",
+      "target": "Evaluate",
+      "synchronisation": "bus_admit_request?",
+      "assignment": "sdn_service_request_pending = true, sdn_c_admission = 0, sdn_c_dec = 0"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "PolicyIdle",
+      "target": "Evaluate",
+      "synchronisation": "sdn_mac_report?",
+      "assignment": "sdn_c_dec = 0"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "PolicyIdle",
+      "target": "Evaluate",
+      "synchronisation": "sdn_phy_kpi_report?",
+      "assignment": "sdn_c_dec = 0"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:3",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "Evaluate",
+      "target": "RejectByPolicy",
+      "guard": "sdn_gPolReject()",
+      "synchronisation": "sdn_service_reject!",
+      "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:4",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "Evaluate",
+      "target": "ConstrainedMode",
+      "guard": "!sdn_gPolReject() && sdn_gPolConstrained()",
+      "synchronisation": "sdn_service_degraded!",
+      "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:5",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "Evaluate",
+      "target": "SensingBoostMode",
+      "guard": "!sdn_gPolReject() && !sdn_gPolConstrained() && sdn_gPolSensingBoost()",
+      "synchronisation": "sdn_service_degraded!",
+      "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_command_pending = true, sdn_service_request_pending = false"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:6",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "Evaluate",
+      "target": "CommPriorityMode",
+      "guard": "!sdn_gPolReject() && !sdn_gPolConstrained() && !sdn_gPolSensingBoost() && sdn_gPolCommPrio()",
+      "synchronisation": "sdn_service_accept!",
+      "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false, sdn_command_pending = true"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:7",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "Evaluate",
+      "target": "NormalMode",
+      "guard": "!sdn_gPolReject() && !sdn_gPolConstrained() && !sdn_gPolSensingBoost() && !sdn_gPolCommPrio()",
+      "synchronisation": "sdn_service_accept!",
+      "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:8",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "NormalMode",
+      "target": "PolicyIdle"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:9",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "SensingBoostMode",
+      "target": "PolicyIdle"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:10",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "CommPriorityMode",
+      "target": "PolicyIdle"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:11",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "ConstrainedMode",
+      "target": "PolicyIdle"
+    },
+    {
+      "id": "sdn_Template_A_POLICY:edge:12",
+      "kind": "edge",
+      "template": "sdn_Template_A_POLICY",
+      "source": "RejectByPolicy",
+      "target": "PolicyIdle"
+    },
+    {
+      "id": "sdn_Template_A_RULE:location:RuleStable",
+      "kind": "location",
+      "template": "sdn_Template_A_RULE",
+      "location": "RuleStable",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RULE:location:RuleMiss",
+      "kind": "location",
+      "template": "sdn_Template_A_RULE",
+      "location": "RuleMiss",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RULE:location:RuleInstallPending",
+      "kind": "location",
+      "template": "sdn_Template_A_RULE",
+      "location": "RuleInstallPending",
+      "invariant": "sdn_c_rule <= sdn_D_rule_install",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RULE:location:RuleInstalled",
+      "kind": "location",
+      "template": "sdn_Template_A_RULE",
+      "location": "RuleInstalled",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RULE:location:RuleAcked",
+      "kind": "location",
+      "template": "sdn_Template_A_RULE",
+      "location": "RuleAcked",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RULE:location:RuleTimeout",
+      "kind": "location",
+      "template": "sdn_Template_A_RULE",
+      "location": "RuleTimeout",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RULE:location:RuleDropReason",
+      "kind": "location",
+      "template": "sdn_Template_A_RULE",
+      "location": "RuleDropReason",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleStable",
+      "target": "RuleMiss",
+      "synchronisation": "sdn_rule_miss?",
+      "assignment": "sdn_ruleClass = sdn_RULE_MISS, sdn_rule_miss_pending = true, sdn_c_rule = 0"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleMiss",
+      "target": "RuleInstallPending",
+      "guard": "sdn_gPolReroute()",
+      "synchronisation": "sdn_flow_mod!",
+      "assignment": "sdn_ruleClass = sdn_RULE_PENDING, sdn_optimistic_reconfig = true"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleMiss",
+      "target": "RuleDropReason",
+      "guard": "sdn_gPolReject() || !sdn_reconfig_allowed()",
+      "synchronisation": "sdn_drop_report!",
+      "assignment": "sdn_ruleClass = sdn_RULE_DROP, sdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:3",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleInstallPending",
+      "target": "RuleInstalled",
+      "guard": "sdn_c_rule <= sdn_D_rule_install",
+      "synchronisation": "sdn_forward_cmd!"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:4",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleInstalled",
+      "target": "RuleAcked",
+      "guard": "sdn_c_rule <= sdn_D_rule_ack",
+      "synchronisation": "bus_rule_ack?",
+      "assignment": "sdn_ruleClass = sdn_RULE_ACKED, sdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:5",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleInstallPending",
+      "target": "RuleTimeout",
+      "guard": "sdn_c_rule == sdn_D_rule_install",
+      "synchronisation": "sdn_timeout_report!",
+      "assignment": "sdn_ruleClass = sdn_RULE_TIMEOUT, sdn_sdnReason = sdn_SDN_RULE_TIMEOUT, sdn_serviceImpact = sdn_IMPACT_DEGRADED,\nsdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:6",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleInstalled",
+      "target": "RuleTimeout",
+      "guard": "sdn_c_rule == sdn_D_rule_install",
+      "synchronisation": "sdn_timeout_report!",
+      "assignment": "sdn_ruleClass = sdn_RULE_TIMEOUT, sdn_sdnReason = sdn_SDN_RULE_TIMEOUT, sdn_serviceImpact = sdn_IMPACT_DEGRADED,\nsdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:7",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleAcked",
+      "target": "RuleStable",
+      "guard": "sdn_ruleClass == sdn_RULE_ACKED"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:8",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleTimeout",
+      "target": "RuleStable"
+    },
+    {
+      "id": "sdn_Template_A_RULE:edge:9",
+      "kind": "edge",
+      "template": "sdn_Template_A_RULE",
+      "source": "RuleDropReason",
+      "target": "RuleStable"
+    },
+    {
+      "id": "sdn_Template_A_REC:location:StableConfig",
+      "kind": "location",
+      "template": "sdn_Template_A_REC",
+      "location": "StableConfig",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_REC:location:FailureDetected",
+      "kind": "location",
+      "template": "sdn_Template_A_REC",
+      "location": "FailureDetected",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_REC:location:StandbySwitch",
+      "kind": "location",
+      "template": "sdn_Template_A_REC",
+      "location": "StandbySwitch",
+      "invariant": "sdn_c_rec <= sdn_D_recovery",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_REC:location:ReactiveReembedding",
+      "kind": "location",
+      "template": "sdn_Template_A_REC",
+      "location": "ReactiveReembedding",
+      "invariant": "sdn_c_rec <= sdn_D_recovery",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_REC:location:Rollback",
+      "kind": "location",
+      "template": "sdn_Template_A_REC",
+      "location": "Rollback",
+      "invariant": "sdn_c_rollback <= sdn_D_rollback",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_REC:location:RecoveryFailed",
+      "kind": "location",
+      "template": "sdn_Template_A_REC",
+      "location": "RecoveryFailed",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "StableConfig",
+      "target": "FailureDetected",
+      "synchronisation": "sdn_link_failure?",
+      "assignment": "sdn_link_failure_pending = true, sdn_recoveryClass = sdn_REC_STANDBY, sdn_c_rec = 0"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "StableConfig",
+      "target": "FailureDetected",
+      "synchronisation": "sdn_node_failure?",
+      "assignment": "sdn_node_failure_pending = true, sdn_recoveryClass = sdn_REC_REEMBED, sdn_c_rec = 0"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "FailureDetected",
+      "target": "StandbySwitch",
+      "guard": "sdn_standby_available && sdn_reconfig_allowed()",
+      "synchronisation": "bus_rec_policy_request!",
+      "assignment": "sdn_optimistic_reconfig = true, bus_rec_policy_open = true"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:3",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "FailureDetected",
+      "target": "ReactiveReembedding",
+      "guard": "sdn_alternative_config_exists && sdn_reconfig_allowed()",
+      "synchronisation": "bus_rec_flow_request!",
+      "assignment": "sdn_optimistic_reconfig = true"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:4",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "FailureDetected",
+      "target": "Rollback",
+      "guard": "!sdn_standby_available && !sdn_alternative_config_exists || !sdn_reconfig_allowed()",
+      "synchronisation": "bus_rollback_request!",
+      "assignment": "sdn_recoveryClass = sdn_REC_ROLLBACK, sdn_c_rollback = 0, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:5",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "StandbySwitch",
+      "target": "StableConfig",
+      "guard": "sdn_c_rec <= sdn_D_recovery",
+      "synchronisation": "bus_rec_policy_ack?",
+      "assignment": "sdn_recoveryClass = sdn_REC_STABLE, sdn_link_failure_pending = false, sdn_node_failure_pending = false, sdn_optimistic_reconfig = false, bus_rec_policy_open = false"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:6",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "ReactiveReembedding",
+      "target": "StableConfig",
+      "guard": "sdn_c_rec <= sdn_D_recovery",
+      "synchronisation": "bus_rec_flow_ack?",
+      "assignment": "sdn_recoveryClass = sdn_REC_STABLE, sdn_link_failure_pending = false, sdn_node_failure_pending = false, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:7",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "StandbySwitch",
+      "target": "Rollback",
+      "guard": "sdn_c_rec == sdn_D_recovery",
+      "synchronisation": "bus_rollback_request!",
+      "assignment": "sdn_recoveryClass = sdn_REC_ROLLBACK, sdn_c_rollback = 0, sdn_optimistic_reconfig = false, bus_rec_policy_open = false"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:8",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "ReactiveReembedding",
+      "target": "Rollback",
+      "guard": "sdn_c_rec == sdn_D_recovery",
+      "synchronisation": "bus_rollback_request!",
+      "assignment": "sdn_recoveryClass = sdn_REC_ROLLBACK, sdn_c_rollback = 0, sdn_optimistic_reconfig = false"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:9",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "Rollback",
+      "target": "StableConfig",
+      "guard": "sdn_c_rollback <= sdn_D_rollback",
+      "synchronisation": "bus_rec_rollback_ack?",
+      "assignment": "sdn_recoveryClass = sdn_REC_STABLE, sdn_link_failure_pending = false, sdn_node_failure_pending = false"
+    },
+    {
+      "id": "sdn_Template_A_REC:edge:10",
+      "kind": "edge",
+      "template": "sdn_Template_A_REC",
+      "source": "Rollback",
+      "target": "RecoveryFailed",
+      "guard": "sdn_c_rollback == sdn_D_rollback",
+      "synchronisation": "sdn_failure_report!",
+      "assignment": "sdn_recoveryClass = sdn_REC_FAILED, sdn_sdnReason = sdn_SDN_RECOVERY_FAILED, sdn_serviceImpact = sdn_IMPACT_FAILED, sdn_failure_report_sent = true, sdn_link_failure_pending = false, sdn_node_failure_pending = false"
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:location:CommandBuild",
+      "kind": "location",
+      "template": "sdn_Template_A_SDN_AGG",
+      "location": "CommandBuild",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:location:CommandSent",
+      "kind": "location",
+      "template": "sdn_Template_A_SDN_AGG",
+      "location": "CommandSent",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:location:AwaitAck",
+      "kind": "location",
+      "template": "sdn_Template_A_SDN_AGG",
+      "location": "AwaitAck",
+      "invariant": "sdn_c_ctrl_ack <= sdn_D_ctrl_ack",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:location:Acked",
+      "kind": "location",
+      "template": "sdn_Template_A_SDN_AGG",
+      "location": "Acked",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:location:CommandTimeout",
+      "kind": "location",
+      "template": "sdn_Template_A_SDN_AGG",
+      "location": "CommandTimeout",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_A_SDN_AGG",
+      "source": "CommandBuild",
+      "target": "CommandSent",
+      "guard": "sdn_command_pending",
+      "synchronisation": "bus_ctrl_request!",
+      "assignment": "sdn_c_ctrl_ack = 0, bus_ctrl_open = true"
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_A_SDN_AGG",
+      "source": "CommandSent",
+      "target": "AwaitAck"
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_A_SDN_AGG",
+      "source": "AwaitAck",
+      "target": "Acked",
+      "guard": "sdn_c_ctrl_ack <= sdn_D_ctrl_ack",
+      "synchronisation": "bus_ctrl_ack?",
+      "assignment": "sdn_command_pending = false, sdn_lower_ack_received = true, bus_ctrl_open = false"
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:edge:3",
+      "kind": "edge",
+      "template": "sdn_Template_A_SDN_AGG",
+      "source": "AwaitAck",
+      "target": "CommandTimeout",
+      "guard": "sdn_c_ctrl_ack == sdn_D_ctrl_ack",
+      "synchronisation": "sdn_timeout_report!",
+      "assignment": "sdn_command_pending = false, sdn_lower_ack_received = false, sdn_sdnReason = sdn_SDN_RULE_TIMEOUT, bus_ctrl_open = false"
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:edge:4",
+      "kind": "edge",
+      "template": "sdn_Template_A_SDN_AGG",
+      "source": "Acked",
+      "target": "CommandBuild"
+    },
+    {
+      "id": "sdn_Template_A_SDN_AGG:edge:5",
+      "kind": "edge",
+      "template": "sdn_Template_A_SDN_AGG",
+      "source": "CommandTimeout",
+      "target": "CommandBuild"
+    },
+    {
+      "id": "sdn_Template_ObsRuleMiss:location:Idle",
+      "kind": "location",
+      "template": "sdn_Template_ObsRuleMiss",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsRuleMiss:location:Wait",
+      "kind": "location",
+      "template": "sdn_Template_ObsRuleMiss",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsRuleMiss:location:Violation",
+      "kind": "location",
+      "template": "sdn_Template_ObsRuleMiss",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsRuleMiss:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_ObsRuleMiss",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "sdn_rule_miss_pending",
+      "assignment": "sdn_c_obs_rule = 0"
+    },
+    {
+      "id": "sdn_Template_ObsRuleMiss:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_ObsRuleMiss",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "sdn_ruleClass == sdn_RULE_ACKED || sdn_ruleClass == sdn_RULE_DROP || sdn_ruleClass == sdn_RULE_TIMEOUT"
+    },
+    {
+      "id": "sdn_Template_ObsRuleMiss:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_ObsRuleMiss",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "sdn_c_obs_rule > sdn_D_rule_install"
+    },
+    {
+      "id": "sdn_Template_ObsRecovery:location:Idle",
+      "kind": "location",
+      "template": "sdn_Template_ObsRecovery",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsRecovery:location:Wait",
+      "kind": "location",
+      "template": "sdn_Template_ObsRecovery",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsRecovery:location:Violation",
+      "kind": "location",
+      "template": "sdn_Template_ObsRecovery",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsRecovery:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_ObsRecovery",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "sdn_link_failure_pending || sdn_node_failure_pending",
+      "assignment": "sdn_c_obs_rec = 0"
+    },
+    {
+      "id": "sdn_Template_ObsRecovery:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_ObsRecovery",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "sdn_recoveryClass == sdn_REC_STABLE || sdn_recoveryClass == sdn_REC_FAILED"
+    },
+    {
+      "id": "sdn_Template_ObsRecovery:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_ObsRecovery",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "sdn_c_obs_rec > sdn_D_recovery + sdn_D_rollback"
+    },
+    {
+      "id": "sdn_Template_ObsAdmission:location:Idle",
+      "kind": "location",
+      "template": "sdn_Template_ObsAdmission",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsAdmission:location:Wait",
+      "kind": "location",
+      "template": "sdn_Template_ObsAdmission",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsAdmission:location:Violation",
+      "kind": "location",
+      "template": "sdn_Template_ObsAdmission",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsAdmission:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_ObsAdmission",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "sdn_service_request_pending",
+      "assignment": "sdn_c_obs_admission = 0"
+    },
+    {
+      "id": "sdn_Template_ObsAdmission:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_ObsAdmission",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "sdn_serviceImpact == sdn_IMPACT_NONE|| sdn_serviceImpact == sdn_IMPACT_DEGRADED||\nsdn_serviceImpact == sdn_IMPACT_REJECTED"
+    },
+    {
+      "id": "sdn_Template_ObsAdmission:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_ObsAdmission",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "sdn_c_obs_admission > sdn_D_admission"
+    },
+    {
+      "id": "sdn_Template_ObsStaleTelemetry:location:Safe",
+      "kind": "location",
+      "template": "sdn_Template_ObsStaleTelemetry",
+      "location": "Safe",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsStaleTelemetry:location:Violation",
+      "kind": "location",
+      "template": "sdn_Template_ObsStaleTelemetry",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsStaleTelemetry:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_ObsStaleTelemetry",
+      "source": "Safe",
+      "target": "Violation",
+      "guard": "(sdn_telemetryClass == sdn_TEL_STALE || sdn_telemetryClass == sdn_TEL_MISSING) && sdn_optimistic_reconfig"
+    },
+    {
+      "id": "sdn_Template_ObsCommandAck:location:Idle",
+      "kind": "location",
+      "template": "sdn_Template_ObsCommandAck",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsCommandAck:location:Wait",
+      "kind": "location",
+      "template": "sdn_Template_ObsCommandAck",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsCommandAck:location:Violation",
+      "kind": "location",
+      "template": "sdn_Template_ObsCommandAck",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsCommandAck:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_ObsCommandAck",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "sdn_command_pending",
+      "assignment": "sdn_c_obs_cmd = 0"
+    },
+    {
+      "id": "sdn_Template_ObsCommandAck:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_ObsCommandAck",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "!sdn_command_pending"
+    },
+    {
+      "id": "sdn_Template_ObsCommandAck:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_ObsCommandAck",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "sdn_c_obs_cmd > sdn_D_ctrl_ack"
+    },
+    {
+      "id": "sdn_Template_ObsSensingDecision:location:Idle",
+      "kind": "location",
+      "template": "sdn_Template_ObsSensingDecision",
+      "location": "Idle",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsSensingDecision:location:Wait",
+      "kind": "location",
+      "template": "sdn_Template_ObsSensingDecision",
+      "location": "Wait",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsSensingDecision:location:Violation",
+      "kind": "location",
+      "template": "sdn_Template_ObsSensingDecision",
+      "location": "Violation",
+      "invariant": "",
+      "committed": false,
+      "urgent": false
+    },
+    {
+      "id": "sdn_Template_ObsSensingDecision:edge:0",
+      "kind": "edge",
+      "template": "sdn_Template_ObsSensingDecision",
+      "source": "Idle",
+      "target": "Wait",
+      "guard": "sdn_sensing_degradation_pending",
+      "assignment": "sdn_c_obs_sensing = 0"
+    },
+    {
+      "id": "sdn_Template_ObsSensingDecision:edge:1",
+      "kind": "edge",
+      "template": "sdn_Template_ObsSensingDecision",
+      "source": "Wait",
+      "target": "Idle",
+      "guard": "sdn_policyClass == sdn_POL_SENS_BOOST|| sdn_policyClass == sdn_POL_CONSTRAINED||\nsdn_policyClass == sdn_POL_REJECT"
+    },
+    {
+      "id": "sdn_Template_ObsSensingDecision:edge:2",
+      "kind": "edge",
+      "template": "sdn_Template_ObsSensingDecision",
+      "source": "Wait",
+      "target": "Violation",
+      "guard": "sdn_c_obs_sensing > sdn_D_decision"
+    }
+  ]
+}
