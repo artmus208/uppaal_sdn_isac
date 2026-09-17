@@ -1,0 +1,506 @@
+[
+  {
+    "name": "version",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "--version"
+    ],
+    "started_at_utc": "2026-09-17T08:49:56.992615+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.07458598597440869,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "version.stdout.txt",
+    "stderr": "version.stderr.txt"
+  },
+  {
+    "name": "integrated-parser",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\integrated-model.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\parse-only.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:57.070762+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 1.5334283910051454,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied"
+    ],
+    "stdout": "integrated-parser.stdout.txt",
+    "stderr": "integrated-parser.stderr.txt",
+    "matches_expectation": true
+  },
+  {
+    "name": "old",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\old-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\old.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\old.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:58.623153+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.20474011401529424,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "old.stdout.txt",
+    "stderr": "old.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "512652234b3c61fe41928d93d79d992afc8d83edde61a823b13dbc6c6f14667d",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "requirements": [
+      "Воспроизведение дефекта / отсутствие ложного нарушения / отрицательный контроль",
+      "Достижимость последовательных завершений",
+      "Достижимость подтверждения",
+      "Достижимость тайм-аута"
+    ],
+    "run_id": "ack-runner-timeout-004-20260917-old",
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "fixed",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\fixed-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\fixed.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\fixed.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:58.841793+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.17405529401730746,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed.stdout.txt",
+    "stderr": "fixed.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "ba6a93052c23eaf6ed5eb56cf6d7090d84feff30ed1b867820d9d6635875c378",
+    "query_hash": "22efa12aefd515dc8d25f9a14d5c3375fdba4559e51d51afcdcd89cb9b1e22bd",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout"
+    ],
+    "requirements": [
+      "Воспроизведение дефекта / отсутствие ложного нарушения / отрицательный контроль",
+      "Достижимость последовательных завершений",
+      "Достижимость подтверждения",
+      "Достижимость тайм-аута"
+    ],
+    "run_id": "ack-runner-timeout-004-20260917-fixed",
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "late_timeout",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_timeout-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_timeout.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_timeout.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:59.033288+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.23220895198755898,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_timeout.stdout.txt",
+    "stderr": "late_timeout.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "4162dccb3ad97d388d97777e7dccfb5119aac6e22796b28e89fe47ef386e00f4",
+    "query_hash": "ca969848586317513488bc28f99937f1e2a06ec77adad740834a391cf25bd122",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0"
+    ],
+    "requirements": [
+      "Воспроизведение дефекта / отсутствие ложного нарушения / отрицательный контроль",
+      "Достижимость последовательных завершений",
+      "Достижимость подтверждения",
+      "Достижимость тайм-аута",
+      "Сохранение просрочки при следующей команде"
+    ],
+    "run_id": "ack-runner-timeout-004-20260917-late_timeout",
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "late_ack",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_ack-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_ack.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_ack.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:59.282404+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.23906307999277487,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_ack.stdout.txt",
+    "stderr": "late_ack.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "f6839315a5d5247b6860d05541cc5b76b2cf87b45e3eea104c8531392a646bf5",
+    "query_hash": "5e823c3d978537088d98a700aca715db6594027b82c25cbcc4a8f9d8fdd532de",
+    "queries": [
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_completed == 2",
+      "E<> mac_A_SCH_0.Idle && fixture_completed > 0 && !mac_phy_ack_timeout",
+      "E<> mac_A_SCH_0.ScheduleFailure && mac_phy_ack_timeout",
+      "E<> fixture_completed == 2 && mac_obs_ack_late && mac_obs_ack_active && mac_c_obs_ack == 0",
+      "E<> mac_A_SCH_0.Idle && mac_obs_ack_late && !mac_phy_ack_timeout"
+    ],
+    "requirements": [
+      "Воспроизведение дефекта / отсутствие ложного нарушения / отрицательный контроль",
+      "Достижимость последовательных завершений",
+      "Достижимость подтверждения",
+      "Достижимость тайм-аута",
+      "Сохранение просрочки при следующей команде",
+      "Достижимость позднего подтверждения"
+    ],
+    "run_id": "ack-runner-timeout-004-20260917-late_ack",
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "no_completion",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\no_completion-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\no_completion.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\no_completion.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:59.535663+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.15824454900575802,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "stdout": "no_completion.stdout.txt",
+    "stderr": "no_completion.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "1b4aea2141a997deb03a0c821ebfc7ce7a3f32ef700e1f5792e839441b1134ad",
+    "query_hash": "2afd0e8f7e9fe5229b98be3678a7666bb34fdc9f679857d4e3217fa4b1f261fe",
+    "queries": [
+      "E<> fixture_sent == 1 && mac_obs_ack_active",
+      "E<> obs_mac_ObsPhyAck_0.Violation && fixture_sent == 1 && fixture_completed == 0 && mac_A_SCH_0.WaitPHYAck && mac_obs_ack_active && mac_c_obs_ack > 3",
+      "A[] fixture_completed == 0",
+      "A[] not obs_mac_ObsPhyAck_0.Violation"
+    ],
+    "requirements": [
+      "Отправка первой команды достижима",
+      "Нарушение без любого завершения",
+      "Завершение исключено в отрицательном сценарии",
+      "Отрицательный контроль без завершения"
+    ],
+    "run_id": "ack-runner-timeout-004-20260917-no_completion",
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "zero_time",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\zero_time-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\zero_time.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\zero_time.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:59.708111+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.19237688899738714,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "zero_time.stdout.txt",
+    "stderr": "zero_time.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "05d3fcc818c604fecba4fa450ebfaadb94d94b23b4f537095b4956cbd8bdf744",
+    "query_hash": "9bfc3544c0bc5f59f7f4711e732a86f36620a047969d313a939e9192ff24c498",
+    "queries": [
+      "E<> fixture_sent == 1 && mac_obs_ack_active && fixture_from_first_send == 0",
+      "E<> fixture_sent == 1 && fixture_completed == 1 && !mac_obs_ack_active && !mac_phy_ack_timeout && fixture_from_first_send == 0",
+      "E<> fixture_sent == 2 && fixture_completed == 1 && mac_obs_ack_active && fixture_from_completion == 0",
+      "E<> fixture_sent == 2 && fixture_completed == 2 && fixture_from_first_send == 0",
+      "A[] not obs_mac_ObsPhyAck_0.Violation"
+    ],
+    "requirements": [
+      "Отправка достижима",
+      "Отправка и ACK первой команды в один момент",
+      "Завершение и следующая отправка в один момент",
+      "Две отдельные команды без продвижения времени",
+      "Отсутствие ложного нарушения / отрицательный контроль"
+    ],
+    "run_id": "ack-runner-timeout-004-20260917-zero_time",
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "late_then_zero",
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_then_zero-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_then_zero.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\ack-observer-fix\\evidence\\instantiation\\20260916-ack-observer\\runs\\ack-runner-timeout-004-20260917\\late_then_zero.q"
+    ],
+    "started_at_utc": "2026-09-17T08:49:59.918321+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.22615661699092016,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "late_then_zero.stdout.txt",
+    "stderr": "late_then_zero.stderr.txt",
+    "matches_expectation": true,
+    "model_hash": "57cfeecb0cffb31e613e7a43437ae7875a88f08aee3b3c1ef5c1db8831ecbe38",
+    "query_hash": "2207d4791acb153695def59b7f3039b33e76458b8bb39cb27bbce313ae4f80cf",
+    "queries": [
+      "E<> fixture_sent == 1 && mac_obs_ack_active && fixture_from_first_send == 0",
+      "E<> fixture_sent == 1 && fixture_completed == 1 && !mac_obs_ack_active && !mac_phy_ack_timeout && fixture_from_first_send == 0",
+      "E<> fixture_sent == 2 && fixture_completed == 1 && mac_obs_ack_active && fixture_from_completion == 0",
+      "E<> fixture_sent == 2 && fixture_completed == 2 && fixture_from_first_send == 0",
+      "A[] not obs_mac_ObsPhyAck_0.Violation",
+      "E<> fixture_sent == 2 && fixture_completed == 1 && mac_obs_ack_active && mac_obs_ack_late && fixture_from_completion == 0"
+    ],
+    "requirements": [
+      "Отправка достижима",
+      "Отправка и ACK первой команды в один момент",
+      "Завершение и следующая отправка в один момент",
+      "Две отдельные команды без продвижения времени",
+      "Отсутствие ложного нарушения / отрицательный контроль",
+      "Просрочка первой команды сохранена при немедленной следующей отправке"
+    ],
+    "run_id": "ack-runner-timeout-004-20260917-late_then_zero",
+    "scope": "focused scheduler/bridge/observer with replacement test peer"
+  },
+  {
+    "name": "software",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "started_at_utc": "2026-09-17T08:50:00.148424+00:00",
+    "timeout_seconds": 0.001,
+    "runtime_seconds": 0.002035031997365877,
+    "exit_code": null,
+    "status": "timeout",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "software.stdout.txt",
+    "stderr": "software.stderr.txt"
+  },
+  {
+    "name": "mcp",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "started_at_utc": "2026-09-17T08:50:00.150936+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.7151589400018565,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "mcp.stdout.txt",
+    "stderr": "mcp.stderr.txt"
+  },
+  {
+    "name": "examples",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/uppaal-verifyta",
+      "list-examples"
+    ],
+    "started_at_utc": "2026-09-17T08:50:00.866610+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.35143979999702424,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "examples.stdout.txt",
+    "stderr": "examples.stderr.txt"
+  },
+  {
+    "name": "coordination",
+    "command": [
+      "/tmp/ack-observer-fix/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_coordination.py",
+      "-v"
+    ],
+    "started_at_utc": "2026-09-17T08:50:01.218553+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.21257873601280153,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "coordination.stdout.txt",
+    "stderr": "coordination.stderr.txt"
+  },
+  {
+    "name": "diff",
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "9f98a3138d1cc421fb2f58678cd7a6c6d94dea8d",
+      "--",
+      "src",
+      "tests"
+    ],
+    "started_at_utc": "2026-09-17T08:50:01.431701+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.004403968981932849,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "diff.stdout.txt",
+    "stderr": "diff.stderr.txt"
+  }
+]
