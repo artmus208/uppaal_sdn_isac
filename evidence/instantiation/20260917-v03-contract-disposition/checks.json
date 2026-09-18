@@ -1,0 +1,150 @@
+{
+  "evidence_class": "static/software checks; no model checking",
+  "checked_at_utc": "2026-09-17T20:00:17.690054+00:00",
+  "python": "3.12.3",
+  "operating_environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "software_source_commit": "d5ba21d9e278f777aa5cedc95a34ad7b24bf2385",
+  "records": [
+    {
+      "name": "static",
+      "command": [
+        "python3",
+        "-B",
+        "evidence/instantiation/20260917-v03-contract-disposition/check.py"
+      ],
+      "exit_code": 0,
+      "log": "logs/static.log",
+      "sha256": "ef6fa5537471a9cdce410fb2e4e38d590690022acebaec8fee4dbb22b83c955d"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "log": "logs/coordination.log",
+      "sha256": "6440da05260ff9158c1e3d74717e95a2b865ec42b5364e9d1fb82eb9cb17760a"
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "/tmp/issue33-venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "log": "logs/mcp-smoke.log",
+      "sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc"
+    },
+    {
+      "name": "examples",
+      "command": [
+        "/tmp/issue33-venv/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "log": "logs/examples.log",
+      "sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "/tmp/issue33-venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "log": "logs/pip-check.log",
+      "sha256": "8dc801055841438411d9d3915752d1427d0a6f26dc76ea479adb02fea406705b"
+    },
+    {
+      "name": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "49b33764b27b343b9354b234e4b4523430201872"
+      ],
+      "exit_code": 0,
+      "log": "logs/diff.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "full-suite-sandbox",
+      "command": [
+        "/tmp/issue33-venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 1,
+      "tests": 163,
+      "errors": 1,
+      "skips": 0,
+      "limitation": "MCP stdio initialize timeout in sandbox",
+      "source_commit": "0dc85b21e4ce8dc0651b9f0709f93c5a5ce9ac42",
+      "published_same_tree_commit": "d5ba21d9e278f777aa5cedc95a34ad7b24bf2385",
+      "log": "logs/suite-sandbox.log",
+      "sha256": "e12fd9ea1908f8d915a1091f46faa71732c0502ea67de3e4062c1e7c2658bba6"
+    },
+    {
+      "name": "full-suite-host",
+      "command": [
+        "/tmp/issue33-venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "env": {
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "exit_code": 0,
+      "tests": 163,
+      "errors": 0,
+      "skips": 0,
+      "execution": "same venv and sources, outside sandbox",
+      "source_commit": "0dc85b21e4ce8dc0651b9f0709f93c5a5ce9ac42",
+      "published_same_tree_commit": "d5ba21d9e278f777aa5cedc95a34ad7b24bf2385",
+      "log": "logs/suite-host.log",
+      "sha256": "3d756abe2567471299a4770a4bfe3a2bfa85ad0625baee410da05fdb2c099803"
+    }
+  ],
+  "input_review": {
+    "commit": "4bf759fe7b76cf6c57d0d40e89ad238c9a1141e7",
+    "commands": [
+      "python3 -B evidence/validation/20260917-v03-timing/audit.py",
+      "python3 -B evidence/validation/20260917-v03-timing/check_audit.py"
+    ],
+    "exit_codes": [
+      0,
+      0
+    ],
+    "integrity_tests": 4,
+    "raw_logs": "not captured during initial read-only prerequisite review; tool outputs observed, not verification"
+  },
+  "setup_limits": [
+    "System Python lacked mcp; isolated /tmp/issue33-venv installed editable package successfully.",
+    "HTTPS push lacked credentials; SSH host-key verification failed; GitHub connector used for publication."
+  ],
+  "verifier": "not run, specification does not require it",
+  "unit_log_note": "Intentional negative hash fixtures print mismatches; unittest reports their success separately.",
+  "checked_code_hashes": {
+    "check.py": "fa05412addc270bae0862f7f5cac67d1baf2f005231f9073c114e08d635d2277",
+    "contracts.md": "24022cb6101cbeb9006b47542bc1c43c177d80e01331216af8881472c55d0994",
+    "test-plan.md": "e8c640e66329f9c9e36507b54c7d3d867ffe9a155a7a6946e4a16696cec84a06",
+    "coverage.json": "98c69429735e059d9fb5193d3f571018f91604c88e556b539718de619890595b"
+  }
+}

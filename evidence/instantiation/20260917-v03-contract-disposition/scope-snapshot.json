@@ -1,0 +1,234 @@
+{
+  "fetched_at_utc": "2026-09-17T19:46:20.205206+00:00",
+  "time_note": "Local filesystem save timestamp for GitHub response; source updated_at values are GitHub fields.",
+  "endpoint": "https://api.github.com/repos/artmus208/uppaal_sdn_isac/issues?state=open&per_page=100",
+  "complete_single_page": true,
+  "issues": [
+    {
+      "issue": 33,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/33",
+      "updated_at": "2026-09-17T19:45:42Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "evidence/instantiation/20260917-v03-contract-disposition/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 32,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/32",
+      "updated_at": "2026-09-17T19:36:04Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "evidence/validation/20260917-v03-timing/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 30,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/30",
+      "updated_at": "2026-09-17T12:44:00Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "src/uppaal_mcp/integrated/adapt.py",
+        "tests/test_integrated_ack_observer.py",
+        "evidence/instantiation/20260916-ack-observer/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 28,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/28",
+      "updated_at": "2026-09-15T09:37:38Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "evidence/governance/20260910-p1-p2-review/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 25,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/25",
+      "updated_at": "2026-09-10T13:29:25Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "evidence/author-position/20260910-claim-scope/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 23,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/23",
+      "updated_at": "2026-09-10T08:58:55Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "src/uppaal_mcp/phy/alpha.py",
+        "src/uppaal_mcp/integrated/inputs.py",
+        "tests/test_phy_threshold_boundaries.py",
+        "tests/test_integrated_pin_revision.py",
+        "evidence/governance/20260908-gate1-readiness/decision-documents-ru/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 21,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/21",
+      "updated_at": "2026-09-10T08:48:50Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "evidence/governance/20260908-gate1-readiness/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 19,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/19",
+      "updated_at": "2026-09-16T19:54:46Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "src/uppaal_mcp/integrated/**",
+        "tests/test_sdn_layer.py",
+        "evidence/instantiation/20260908-p2-integrated/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 17,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/17",
+      "updated_at": "2026-09-10T14:42:27Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "evidence/instantiation/20260907-p2-scope/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 15,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/15",
+      "updated_at": "2026-09-17T19:36:05Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "evidence/validation/20260907-p1/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 13,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/13",
+      "updated_at": "2026-09-07T14:59:42Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [
+        "evidence/healthcheck/20260907-postmerge/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 6,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+      "updated_at": "2026-09-07T14:33:58Z",
+      "assignees": [
+        "artmus208"
+      ],
+      "scope": [],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 5,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/5",
+      "updated_at": "2026-09-07T05:44:40Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "src/uppaal_mcp/config.py",
+        "mcp_conf.conf",
+        "tests/test_config.py",
+        "evidence/healthcheck/20260906-config/**",
+        "README.md"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 4,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/4",
+      "updated_at": "2026-09-07T00:12:13Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "src/uppaal_mcp/cli.py",
+        "tests/test_cli.py",
+        "evidence/healthcheck/20260906-cli/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 3,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/3",
+      "updated_at": "2026-09-07T05:49:14Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "pyproject.toml",
+        "src/uppaal_mcp/server.py",
+        "tests/test_phy_layer.py",
+        "tests/test_mcp_startup.py",
+        "evidence/healthcheck/20260906-mcp/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 2,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/2",
+      "updated_at": "2026-09-07T00:12:10Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "src/uppaal_mcp/verifyta.py",
+        "tests/test_verifyta_parser.py",
+        "evidence/healthcheck/20260906-runner/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    },
+    {
+      "issue": 1,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/1",
+      "updated_at": "2026-09-07T05:48:23Z",
+      "assignees": [
+        "carwasher"
+      ],
+      "scope": [
+        "evidence/healthcheck/20260906-remediation/**"
+      ],
+      "scope_extraction": "literal Write scope block; full bodies manually reviewed for overlapping issues 19/23/30"
+    }
+  ],
+  "new_queued_corrections": [
+    35,
+    36
+  ]
+}

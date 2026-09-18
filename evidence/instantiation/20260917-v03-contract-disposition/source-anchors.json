@@ -1,0 +1,900 @@
+[
+  {
+    "template": "sdn_Template_A_POLICY",
+    "locations": [
+      {
+        "name": "PolicyIdle",
+        "invariant": ""
+      },
+      {
+        "name": "Evaluate",
+        "invariant": "sdn_c_dec <= sdn_D_decision"
+      },
+      {
+        "name": "NormalMode",
+        "invariant": ""
+      },
+      {
+        "name": "SensingBoostMode",
+        "invariant": ""
+      },
+      {
+        "name": "CommPriorityMode",
+        "invariant": ""
+      },
+      {
+        "name": "ConstrainedMode",
+        "invariant": ""
+      },
+      {
+        "name": "RejectByPolicy",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "sdn_Template_A_POLICY:edge:0",
+        "from": "PolicyIdle",
+        "to": "Evaluate",
+        "synchronisation": "bus_admit_request?",
+        "assignment": "sdn_service_request_pending = true, sdn_c_admission = 0, sdn_c_dec = 0",
+        "comments": "service admission"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:1",
+        "from": "PolicyIdle",
+        "to": "Evaluate",
+        "synchronisation": "sdn_mac_report?",
+        "assignment": "sdn_c_dec = 0",
+        "comments": "MAC/ISAC degradation"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:2",
+        "from": "PolicyIdle",
+        "to": "Evaluate",
+        "synchronisation": "sdn_phy_kpi_report?",
+        "assignment": "sdn_c_dec = 0",
+        "comments": "PHY KPI update"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:3",
+        "from": "Evaluate",
+        "to": "RejectByPolicy",
+        "guard": "sdn_gPolReject()",
+        "synchronisation": "sdn_service_reject!",
+        "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:4",
+        "from": "Evaluate",
+        "to": "ConstrainedMode",
+        "guard": "!sdn_gPolReject() && sdn_gPolConstrained()",
+        "synchronisation": "sdn_service_degraded!",
+        "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:5",
+        "from": "Evaluate",
+        "to": "SensingBoostMode",
+        "guard": "!sdn_gPolReject() && !sdn_gPolConstrained() && sdn_gPolSensingBoost()",
+        "synchronisation": "sdn_service_degraded!",
+        "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_command_pending = true, sdn_service_request_pending = false"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:6",
+        "from": "Evaluate",
+        "to": "CommPriorityMode",
+        "guard": "!sdn_gPolReject() && !sdn_gPolConstrained() && !sdn_gPolSensingBoost() && sdn_gPolCommPrio()",
+        "synchronisation": "sdn_service_accept!",
+        "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false, sdn_command_pending = true"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:7",
+        "from": "Evaluate",
+        "to": "NormalMode",
+        "guard": "!sdn_gPolReject() && !sdn_gPolConstrained() && !sdn_gPolSensingBoost() && !sdn_gPolCommPrio()",
+        "synchronisation": "sdn_service_accept!",
+        "assignment": "bus_outcome_for_request = sdn_service_request_pending, sdn_select_sdn_policy(), sdn_service_request_pending = false"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:8",
+        "from": "NormalMode",
+        "to": "PolicyIdle"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:9",
+        "from": "SensingBoostMode",
+        "to": "PolicyIdle"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:10",
+        "from": "CommPriorityMode",
+        "to": "PolicyIdle"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:11",
+        "from": "ConstrainedMode",
+        "to": "PolicyIdle"
+      },
+      {
+        "id": "sdn_Template_A_POLICY:edge:12",
+        "from": "RejectByPolicy",
+        "to": "PolicyIdle"
+      }
+    ]
+  },
+  {
+    "template": "sdn_Template_A_RULE",
+    "locations": [
+      {
+        "name": "RuleStable",
+        "invariant": ""
+      },
+      {
+        "name": "RuleMiss",
+        "invariant": ""
+      },
+      {
+        "name": "RuleInstallPending",
+        "invariant": "sdn_c_rule <= sdn_D_rule_install"
+      },
+      {
+        "name": "RuleInstalled",
+        "invariant": ""
+      },
+      {
+        "name": "RuleAcked",
+        "invariant": ""
+      },
+      {
+        "name": "RuleTimeout",
+        "invariant": ""
+      },
+      {
+        "name": "RuleDropReason",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "sdn_Template_A_RULE:edge:0",
+        "from": "RuleStable",
+        "to": "RuleMiss",
+        "synchronisation": "sdn_rule_miss?",
+        "assignment": "sdn_ruleClass = sdn_RULE_MISS, sdn_rule_miss_pending = true, sdn_c_rule = 0"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:1",
+        "from": "RuleMiss",
+        "to": "RuleInstallPending",
+        "guard": "sdn_gPolReroute()",
+        "synchronisation": "sdn_flow_mod!",
+        "assignment": "sdn_ruleClass = sdn_RULE_PENDING, sdn_optimistic_reconfig = true"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:2",
+        "from": "RuleMiss",
+        "to": "RuleDropReason",
+        "guard": "sdn_gPolReject() || !sdn_reconfig_allowed()",
+        "synchronisation": "sdn_drop_report!",
+        "assignment": "sdn_ruleClass = sdn_RULE_DROP, sdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:3",
+        "from": "RuleInstallPending",
+        "to": "RuleInstalled",
+        "guard": "sdn_c_rule <= sdn_D_rule_install",
+        "synchronisation": "sdn_forward_cmd!"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:4",
+        "from": "RuleInstalled",
+        "to": "RuleAcked",
+        "guard": "sdn_c_rule <= sdn_D_rule_ack",
+        "synchronisation": "bus_rule_ack?",
+        "assignment": "sdn_ruleClass = sdn_RULE_ACKED, sdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:5",
+        "from": "RuleInstallPending",
+        "to": "RuleTimeout",
+        "guard": "sdn_c_rule == sdn_D_rule_install",
+        "synchronisation": "sdn_timeout_report!",
+        "assignment": "sdn_ruleClass = sdn_RULE_TIMEOUT, sdn_sdnReason = sdn_SDN_RULE_TIMEOUT, sdn_serviceImpact = sdn_IMPACT_DEGRADED,\nsdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:6",
+        "from": "RuleInstalled",
+        "to": "RuleTimeout",
+        "guard": "sdn_c_rule == sdn_D_rule_install",
+        "synchronisation": "sdn_timeout_report!",
+        "assignment": "sdn_ruleClass = sdn_RULE_TIMEOUT, sdn_sdnReason = sdn_SDN_RULE_TIMEOUT, sdn_serviceImpact = sdn_IMPACT_DEGRADED,\nsdn_rule_miss_pending = false, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:7",
+        "from": "RuleAcked",
+        "to": "RuleStable",
+        "guard": "sdn_ruleClass == sdn_RULE_ACKED"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:8",
+        "from": "RuleTimeout",
+        "to": "RuleStable"
+      },
+      {
+        "id": "sdn_Template_A_RULE:edge:9",
+        "from": "RuleDropReason",
+        "to": "RuleStable"
+      }
+    ]
+  },
+  {
+    "template": "sdn_Template_A_REC",
+    "locations": [
+      {
+        "name": "StableConfig",
+        "invariant": ""
+      },
+      {
+        "name": "FailureDetected",
+        "invariant": ""
+      },
+      {
+        "name": "StandbySwitch",
+        "invariant": "sdn_c_rec <= sdn_D_recovery"
+      },
+      {
+        "name": "ReactiveReembedding",
+        "invariant": "sdn_c_rec <= sdn_D_recovery"
+      },
+      {
+        "name": "Rollback",
+        "invariant": "sdn_c_rollback <= sdn_D_rollback"
+      },
+      {
+        "name": "RecoveryFailed",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "sdn_Template_A_REC:edge:0",
+        "from": "StableConfig",
+        "to": "FailureDetected",
+        "synchronisation": "sdn_link_failure?",
+        "assignment": "sdn_link_failure_pending = true, sdn_recoveryClass = sdn_REC_STANDBY, sdn_c_rec = 0"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:1",
+        "from": "StableConfig",
+        "to": "FailureDetected",
+        "synchronisation": "sdn_node_failure?",
+        "assignment": "sdn_node_failure_pending = true, sdn_recoveryClass = sdn_REC_REEMBED, sdn_c_rec = 0"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:2",
+        "from": "FailureDetected",
+        "to": "StandbySwitch",
+        "guard": "sdn_standby_available && sdn_reconfig_allowed()",
+        "synchronisation": "bus_rec_policy_request!",
+        "assignment": "sdn_optimistic_reconfig = true, bus_rec_policy_open = true"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:3",
+        "from": "FailureDetected",
+        "to": "ReactiveReembedding",
+        "guard": "sdn_alternative_config_exists && sdn_reconfig_allowed()",
+        "synchronisation": "bus_rec_flow_request!",
+        "assignment": "sdn_optimistic_reconfig = true"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:4",
+        "from": "FailureDetected",
+        "to": "Rollback",
+        "guard": "!sdn_standby_available && !sdn_alternative_config_exists || !sdn_reconfig_allowed()",
+        "synchronisation": "bus_rollback_request!",
+        "assignment": "sdn_recoveryClass = sdn_REC_ROLLBACK, sdn_c_rollback = 0, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:5",
+        "from": "StandbySwitch",
+        "to": "StableConfig",
+        "guard": "sdn_c_rec <= sdn_D_recovery",
+        "synchronisation": "bus_rec_policy_ack?",
+        "assignment": "sdn_recoveryClass = sdn_REC_STABLE, sdn_link_failure_pending = false, sdn_node_failure_pending = false, sdn_optimistic_reconfig = false, bus_rec_policy_open = false"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:6",
+        "from": "ReactiveReembedding",
+        "to": "StableConfig",
+        "guard": "sdn_c_rec <= sdn_D_recovery",
+        "synchronisation": "bus_rec_flow_ack?",
+        "assignment": "sdn_recoveryClass = sdn_REC_STABLE, sdn_link_failure_pending = false, sdn_node_failure_pending = false, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:7",
+        "from": "StandbySwitch",
+        "to": "Rollback",
+        "guard": "sdn_c_rec == sdn_D_recovery",
+        "synchronisation": "bus_rollback_request!",
+        "assignment": "sdn_recoveryClass = sdn_REC_ROLLBACK, sdn_c_rollback = 0, sdn_optimistic_reconfig = false, bus_rec_policy_open = false"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:8",
+        "from": "ReactiveReembedding",
+        "to": "Rollback",
+        "guard": "sdn_c_rec == sdn_D_recovery",
+        "synchronisation": "bus_rollback_request!",
+        "assignment": "sdn_recoveryClass = sdn_REC_ROLLBACK, sdn_c_rollback = 0, sdn_optimistic_reconfig = false"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:9",
+        "from": "Rollback",
+        "to": "StableConfig",
+        "guard": "sdn_c_rollback <= sdn_D_rollback",
+        "synchronisation": "bus_rec_rollback_ack?",
+        "assignment": "sdn_recoveryClass = sdn_REC_STABLE, sdn_link_failure_pending = false, sdn_node_failure_pending = false"
+      },
+      {
+        "id": "sdn_Template_A_REC:edge:10",
+        "from": "Rollback",
+        "to": "RecoveryFailed",
+        "guard": "sdn_c_rollback == sdn_D_rollback",
+        "synchronisation": "sdn_failure_report!",
+        "assignment": "sdn_recoveryClass = sdn_REC_FAILED, sdn_sdnReason = sdn_SDN_RECOVERY_FAILED, sdn_serviceImpact = sdn_IMPACT_FAILED, sdn_failure_report_sent = true, sdn_link_failure_pending = false, sdn_node_failure_pending = false"
+      }
+    ]
+  },
+  {
+    "template": "sdn_Template_A_SDN_AGG",
+    "locations": [
+      {
+        "name": "CommandBuild",
+        "invariant": ""
+      },
+      {
+        "name": "CommandSent",
+        "invariant": ""
+      },
+      {
+        "name": "AwaitAck",
+        "invariant": "sdn_c_ctrl_ack <= sdn_D_ctrl_ack"
+      },
+      {
+        "name": "Acked",
+        "invariant": ""
+      },
+      {
+        "name": "CommandTimeout",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "sdn_Template_A_SDN_AGG:edge:0",
+        "from": "CommandBuild",
+        "to": "CommandSent",
+        "guard": "sdn_command_pending",
+        "synchronisation": "bus_ctrl_request!",
+        "assignment": "sdn_c_ctrl_ack = 0, bus_ctrl_open = true"
+      },
+      {
+        "id": "sdn_Template_A_SDN_AGG:edge:1",
+        "from": "CommandSent",
+        "to": "AwaitAck"
+      },
+      {
+        "id": "sdn_Template_A_SDN_AGG:edge:2",
+        "from": "AwaitAck",
+        "to": "Acked",
+        "guard": "sdn_c_ctrl_ack <= sdn_D_ctrl_ack",
+        "synchronisation": "bus_ctrl_ack?",
+        "assignment": "sdn_command_pending = false, sdn_lower_ack_received = true, bus_ctrl_open = false"
+      },
+      {
+        "id": "sdn_Template_A_SDN_AGG:edge:3",
+        "from": "AwaitAck",
+        "to": "CommandTimeout",
+        "guard": "sdn_c_ctrl_ack == sdn_D_ctrl_ack",
+        "synchronisation": "sdn_timeout_report!",
+        "assignment": "sdn_command_pending = false, sdn_lower_ack_received = false, sdn_sdnReason = sdn_SDN_RULE_TIMEOUT, bus_ctrl_open = false"
+      },
+      {
+        "id": "sdn_Template_A_SDN_AGG:edge:4",
+        "from": "Acked",
+        "to": "CommandBuild"
+      },
+      {
+        "id": "sdn_Template_A_SDN_AGG:edge:5",
+        "from": "CommandTimeout",
+        "to": "CommandBuild"
+      }
+    ]
+  },
+  {
+    "template": "app_A_REQ",
+    "locations": [
+      {
+        "name": "ServiceIdle",
+        "invariant": ""
+      },
+      {
+        "name": "RequestBuild",
+        "invariant": "app_c_req <= app_D_req"
+      },
+      {
+        "name": "RequestReady",
+        "invariant": ""
+      },
+      {
+        "name": "RequestPending",
+        "invariant": "app_c_admission <= app_D_admission"
+      },
+      {
+        "name": "Accepted",
+        "invariant": ""
+      },
+      {
+        "name": "AcceptedDegraded",
+        "invariant": ""
+      },
+      {
+        "name": "Rejected",
+        "invariant": ""
+      },
+      {
+        "name": "Completed",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "app_A_REQ:edge:0",
+        "from": "ServiceIdle",
+        "to": "RequestBuild",
+        "synchronisation": "app_new_demand?",
+        "assignment": "app_c_req = 0, app_build_uav_service_request(), app_service_request_pending = false, app_sla_warning_report_sent = false, app_sla_violation_report_sent = false, app_violation_report_sent = false, app_service_reconfigure_sent = false, app_service_terminate_sent = false, bus_demand_delivered = true"
+      },
+      {
+        "id": "app_A_REQ:edge:1",
+        "from": "RequestBuild",
+        "to": "RequestReady",
+        "guard": "app_gAdmissionRequest()",
+        "assignment": "app_admissionClass = app_ADM_PENDING, app_c_req = 0"
+      },
+      {
+        "id": "app_A_REQ:edge:2",
+        "from": "RequestReady",
+        "to": "RequestPending",
+        "synchronisation": "app_service_request!",
+        "assignment": "app_service_request_pending = true, raise_app_service_request_seq(), app_c_admission = 0"
+      },
+      {
+        "id": "app_A_REQ:edge:3",
+        "from": "RequestPending",
+        "to": "Accepted",
+        "guard": "app_admissionClass == app_ADM_ACCEPTED",
+        "synchronisation": "app_service_accept?",
+        "assignment": "app_service_request_pending = false"
+      },
+      {
+        "id": "app_A_REQ:edge:4",
+        "from": "RequestPending",
+        "to": "AcceptedDegraded",
+        "guard": "app_gAcceptDegraded()",
+        "synchronisation": "app_service_degraded?",
+        "assignment": "app_service_request_pending = false, app_degraded_accept_pending = true"
+      },
+      {
+        "id": "app_A_REQ:edge:5",
+        "from": "RequestPending",
+        "to": "Rejected",
+        "guard": "app_admissionClass == app_ADM_REJECTED || app_gRejectDegraded()",
+        "synchronisation": "app_service_reject?",
+        "assignment": "app_service_request_pending = false"
+      },
+      {
+        "id": "app_A_REQ:edge:6",
+        "from": "Accepted",
+        "to": "Accepted",
+        "synchronisation": "app_service_kpi_update?",
+        "assignment": "app_note_kpi_update_event()"
+      },
+      {
+        "id": "app_A_REQ:edge:7",
+        "from": "AcceptedDegraded",
+        "to": "AcceptedDegraded",
+        "synchronisation": "app_service_kpi_update?",
+        "assignment": "app_note_kpi_update_event()"
+      },
+      {
+        "id": "app_A_REQ:edge:8",
+        "from": "Accepted",
+        "to": "AcceptedDegraded",
+        "guard": "app_degraded_allowed && app_degradedReason != app_DEG_NONE && app_gSafetyAllowsDegraded()",
+        "synchronisation": "app_degraded_notice?",
+        "assignment": "app_degraded_accept_pending = true"
+      },
+      {
+        "id": "app_A_REQ:edge:9",
+        "from": "AcceptedDegraded",
+        "to": "Accepted",
+        "guard": "app_sla_sens_ok()",
+        "synchronisation": "app_service_kpi_update?",
+        "assignment": "app_note_kpi_update_event()"
+      },
+      {
+        "id": "app_A_REQ:edge:10",
+        "from": "AcceptedDegraded",
+        "to": "AcceptedDegraded",
+        "guard": "app_degraded_accept_pending",
+        "synchronisation": "app_degraded_accept_report!",
+        "assignment": "app_degraded_accept_pending = false, app_violation_report_sent = false"
+      },
+      {
+        "id": "app_A_REQ:edge:11",
+        "from": "Accepted",
+        "to": "Completed",
+        "synchronisation": "app_service_complete?",
+        "assignment": "bus_complete_delivered = true"
+      },
+      {
+        "id": "app_A_REQ:edge:12",
+        "from": "AcceptedDegraded",
+        "to": "Completed",
+        "synchronisation": "app_service_complete?",
+        "assignment": "bus_complete_delivered = true"
+      },
+      {
+        "id": "app_A_REQ:edge:13",
+        "from": "RequestPending",
+        "to": "Rejected",
+        "guard": "app_c_admission == app_D_admission",
+        "assignment": "app_admissionClass = app_ADM_REJECTED, app_service_request_pending = false, bus_admission_timeout = true"
+      }
+    ]
+  },
+  {
+    "template": "Boundary_B_ADMISSION",
+    "locations": [
+      {
+        "name": "Idle",
+        "invariant": ""
+      },
+      {
+        "name": "StageRequest",
+        "invariant": ""
+      },
+      {
+        "name": "OfferRequest",
+        "invariant": "x <= bus_D_bus"
+      },
+      {
+        "name": "AwaitOutcome",
+        "invariant": "total <= app_D_admission"
+      },
+      {
+        "name": "StageOutcome",
+        "invariant": ""
+      },
+      {
+        "name": "Safety",
+        "invariant": ""
+      },
+      {
+        "name": "OfferOutcome",
+        "invariant": "x <= bus_D_bus"
+      },
+      {
+        "name": "Done",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "Boundary_B_ADMISSION:edge:0",
+        "from": "Idle",
+        "to": "StageRequest",
+        "synchronisation": "app_service_request?",
+        "assignment": "bus_request_service=app_serviceClass, bus_request_criticality=app_criticalityClass, bus_request_demand=app_demandClass, bus_request_latency=app_latencyBoundClass, bus_request_reliability=app_reliabilityClass, bus_request_update=app_sensingUpdateBoundClass, bus_request_freshness=app_sensingFreshnessBoundClass, bus_request_pd=app_pdMinClass, bus_request_fa=app_pfaMaxClass, bus_request_miss=app_pmissMaxClass, bus_request_accuracy=app_accuracyBoundClass, bus_request_coverage=app_coverageBoundClass, x=0, total=0"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:1",
+        "from": "StageRequest",
+        "to": "OfferRequest"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:2",
+        "from": "OfferRequest",
+        "to": "AwaitOutcome",
+        "synchronisation": "bus_admit_request!"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:3",
+        "from": "OfferRequest",
+        "to": "Done",
+        "guard": "x == bus_D_bus",
+        "assignment": "bus_admission_loss=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:4",
+        "from": "AwaitOutcome",
+        "to": "StageOutcome",
+        "guard": "sdn_service_request_pending",
+        "synchronisation": "sdn_service_accept?",
+        "assignment": "outcome=1, bus_reason=sdn_sdnReason, x=0"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:5",
+        "from": "Idle",
+        "to": "Idle",
+        "synchronisation": "sdn_service_accept?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:6",
+        "from": "OfferRequest",
+        "to": "OfferRequest",
+        "synchronisation": "sdn_service_accept?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:7",
+        "from": "Done",
+        "to": "Done",
+        "synchronisation": "sdn_service_accept?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:8",
+        "from": "AwaitOutcome",
+        "to": "AwaitOutcome",
+        "guard": "!sdn_service_request_pending",
+        "synchronisation": "sdn_service_accept?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:9",
+        "from": "AwaitOutcome",
+        "to": "StageOutcome",
+        "guard": "sdn_service_request_pending",
+        "synchronisation": "sdn_service_reject?",
+        "assignment": "outcome=2, bus_reason=sdn_sdnReason, x=0"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:10",
+        "from": "Idle",
+        "to": "Idle",
+        "synchronisation": "sdn_service_reject?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:11",
+        "from": "OfferRequest",
+        "to": "OfferRequest",
+        "synchronisation": "sdn_service_reject?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:12",
+        "from": "Done",
+        "to": "Done",
+        "synchronisation": "sdn_service_reject?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:13",
+        "from": "AwaitOutcome",
+        "to": "AwaitOutcome",
+        "guard": "!sdn_service_request_pending",
+        "synchronisation": "sdn_service_reject?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:14",
+        "from": "AwaitOutcome",
+        "to": "StageOutcome",
+        "guard": "sdn_service_request_pending",
+        "synchronisation": "sdn_service_degraded?",
+        "assignment": "outcome=3, bus_reason=sdn_sdnReason, x=0"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:15",
+        "from": "Idle",
+        "to": "Idle",
+        "synchronisation": "sdn_service_degraded?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:16",
+        "from": "OfferRequest",
+        "to": "OfferRequest",
+        "synchronisation": "sdn_service_degraded?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:17",
+        "from": "Done",
+        "to": "Done",
+        "synchronisation": "sdn_service_degraded?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:18",
+        "from": "AwaitOutcome",
+        "to": "AwaitOutcome",
+        "guard": "!sdn_service_request_pending",
+        "synchronisation": "sdn_service_degraded?",
+        "assignment": "bus_unsolicited_outcome=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:19",
+        "from": "AwaitOutcome",
+        "to": "Done",
+        "guard": "total == app_D_admission",
+        "assignment": "bus_admission_timeout=true"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:20",
+        "from": "StageOutcome",
+        "to": "Safety",
+        "assignment": "app_admissionClass=outcome, app_degraded_allowed=(outcome == app_ADM_DEGRADED), app_degradedReason=(bus_reason == sdn_SDN_STALE_TELEMETRY ? app_DEG_STALE : (bus_reason == sdn_SDN_RESOURCE_LIMITED ? app_DEG_RESOURCE_LIMITED : app_DEG_COMM_LIMITED))"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:21",
+        "from": "Safety",
+        "to": "OfferOutcome",
+        "guard": "outcome != app_ADM_DEGRADED || app_gSafetyAllowsDegraded()"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:22",
+        "from": "Safety",
+        "to": "OfferOutcome",
+        "guard": "outcome == app_ADM_DEGRADED && !app_gSafetyAllowsDegraded()",
+        "assignment": "outcome=app_ADM_REJECTED, app_admissionClass=app_ADM_REJECTED, app_degraded_allowed=false"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:23",
+        "from": "OfferOutcome",
+        "to": "Done",
+        "guard": "outcome == 1 && app_service_request_pending",
+        "synchronisation": "app_service_accept!"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:24",
+        "from": "OfferOutcome",
+        "to": "Done",
+        "guard": "outcome == 2 && app_service_request_pending",
+        "synchronisation": "app_service_reject!"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:25",
+        "from": "OfferOutcome",
+        "to": "Done",
+        "guard": "outcome == 3 && app_service_request_pending",
+        "synchronisation": "app_service_degraded!"
+      },
+      {
+        "id": "Boundary_B_ADMISSION:edge:26",
+        "from": "OfferOutcome",
+        "to": "Done",
+        "guard": "x == bus_D_bus",
+        "assignment": "bus_admission_loss=true"
+      }
+    ]
+  },
+  {
+    "template": "sdn_Template_ObsRecovery",
+    "locations": [
+      {
+        "name": "Idle",
+        "invariant": ""
+      },
+      {
+        "name": "Wait",
+        "invariant": ""
+      },
+      {
+        "name": "Violation",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "sdn_Template_ObsRecovery:edge:0",
+        "from": "Idle",
+        "to": "Wait",
+        "guard": "sdn_link_failure_pending || sdn_node_failure_pending",
+        "assignment": "sdn_c_obs_rec = 0"
+      },
+      {
+        "id": "sdn_Template_ObsRecovery:edge:1",
+        "from": "Wait",
+        "to": "Idle",
+        "guard": "sdn_recoveryClass == sdn_REC_STABLE || sdn_recoveryClass == sdn_REC_FAILED"
+      },
+      {
+        "id": "sdn_Template_ObsRecovery:edge:2",
+        "from": "Wait",
+        "to": "Violation",
+        "guard": "sdn_c_obs_rec > sdn_D_recovery + sdn_D_rollback"
+      }
+    ]
+  },
+  {
+    "template": "sdn_Template_ObsAdmission",
+    "locations": [
+      {
+        "name": "Idle",
+        "invariant": ""
+      },
+      {
+        "name": "Wait",
+        "invariant": ""
+      },
+      {
+        "name": "Violation",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "sdn_Template_ObsAdmission:edge:0",
+        "from": "Idle",
+        "to": "Wait",
+        "guard": "sdn_service_request_pending",
+        "assignment": "sdn_c_obs_admission = 0"
+      },
+      {
+        "id": "sdn_Template_ObsAdmission:edge:1",
+        "from": "Wait",
+        "to": "Idle",
+        "guard": "sdn_serviceImpact == sdn_IMPACT_NONE|| sdn_serviceImpact == sdn_IMPACT_DEGRADED||\nsdn_serviceImpact == sdn_IMPACT_REJECTED"
+      },
+      {
+        "id": "sdn_Template_ObsAdmission:edge:2",
+        "from": "Wait",
+        "to": "Violation",
+        "guard": "sdn_c_obs_admission > sdn_D_admission"
+      }
+    ]
+  },
+  {
+    "template": "app_ObsServiceAdmission",
+    "locations": [
+      {
+        "name": "Idle",
+        "invariant": ""
+      },
+      {
+        "name": "Waiting",
+        "invariant": ""
+      },
+      {
+        "name": "Violation",
+        "invariant": ""
+      }
+    ],
+    "edges": [
+      {
+        "id": "app_ObsServiceAdmission:edge:0",
+        "from": "Idle",
+        "to": "Waiting",
+        "guard": "app_service_request_seq"
+      },
+      {
+        "id": "app_ObsServiceAdmission:edge:1",
+        "from": "Waiting",
+        "to": "Idle",
+        "guard": "!app_service_request_pending && (app_admissionClass == app_ADM_ACCEPTED || app_admissionClass == app_ADM_DEGRADED || app_admissionClass == app_ADM_REJECTED)",
+        "assignment": "app_service_request_seq = false"
+      },
+      {
+        "id": "app_ObsServiceAdmission:edge:2",
+        "from": "Waiting",
+        "to": "Violation",
+        "guard": "app_service_request_seq_age > app_D_admission"
+      }
+    ]
+  }
+]
