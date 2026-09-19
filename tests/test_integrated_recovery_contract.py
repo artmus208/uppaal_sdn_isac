@@ -1,5 +1,6 @@
 """Structural noninterference/provenance checks; machine diagnostics live in #35 evidence."""
 from copy import deepcopy
+import hashlib
 import importlib.util
 from pathlib import Path
 import unittest
@@ -20,7 +21,12 @@ spec.loader.exec_module(diag)
 class RecoveryContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.old = ET.fromstring(diag.original_xml())
+        # GitHub Actions uses a shallow checkout. The immutable historical XML
+        # is already tracked; pin its bytes without requiring an ancestor object.
+        original = (ROOT / diag.BASE_MODEL).read_bytes()
+        if hashlib.sha256(original).hexdigest() != 'f4c439704d9c5a358b06744dfb25728564c8c26c72923fd6f3307860aedfb446':
+            raise ValueError('Historical recovery input hash mismatch')
+        cls.old = ET.fromstring(original)
         cls.new = ET.fromstring(generate(ROOT).model_xml)
 
     def core(self, root):
