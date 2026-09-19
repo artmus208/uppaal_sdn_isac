@@ -1,0 +1,18 @@
+[
+  {
+    "run_id": "recovery-35-20260919-001",
+    "archive": "recovery-35-20260919-001.tar.xz",
+    "sha256": "6ac35a09918351415f6beb0ae2a774f997a71669c9611565859142c7ea097dd0",
+    "source_commit": "f81975583f91c3643310c1491bddc7b5b5f01689",
+    "runner_exit_code": 1,
+    "storage": "XML/traces expanded before tar compression; gzip.compress(bytes,mtime=0) restores original compressed entries byte-for-byte."
+  },
+  {
+    "run_id": "recovery-35-20260919-002",
+    "archive": "recovery-35-20260919-002.tar.xz",
+    "sha256": "491c802712b5dc5b96ba1e704db400f6e3bcd40485b1c868878f71f1d1d66731",
+    "source_commit": "d2cd073f49ccf8d10c65823135053cb358d14d40",
+    "runner_exit_code": 1,
+    "storage": "XML/traces expanded before tar compression; gzip.compress(bytes,mtime=0) restores original compressed entries byte-for-byte."
+  }
+]

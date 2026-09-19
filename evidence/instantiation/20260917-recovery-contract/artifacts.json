@@ -1,0 +1,6 @@
+{
+  "latest_archive": "runs/recovery-35-20260919-003.tar.xz",
+  "sha256": "944c51f02215442c42a321f1ca2dc6c92345584450fd6c6669446fb27f520e7d",
+  "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+  "restoration": "restore-run.py recreates original stored bytes; unpack.py restores verifier XML/log/trace paths; every hash checked."
+}

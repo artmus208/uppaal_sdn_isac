@@ -12,6 +12,84 @@ def remove_assignment(tr, expression):
     set_label(tr, 'assignment', ', '.join(p for p in parts if p != expression))
 
 
+RECOVERY_RECORDING = '''
+// Passive episode recording: only A_REC writes these variables.
+bool sdn_obs_rec_active = false, sdn_obs_rec_late = false;
+bool sdn_obs_rec_protocol_error = false;
+void sdn_obs_rec_start() {
+    if (sdn_obs_rec_active) sdn_obs_rec_protocol_error = true;
+    else { sdn_obs_rec_active = true; sdn_c_obs_rec = 0; }
+}
+void sdn_obs_rec_finish() {
+    if (!sdn_obs_rec_active) sdn_obs_rec_protocol_error = true;
+    sdn_obs_rec_active = false;
+}
+'''
+
+RECOVERY_OUTCOME = '''
+// Local failure is distinct from later report delivery.
+// 0: no failure, 1: dispatch/recovery-stage timeout, 2: rollback timeout.
+int[0,2] sdn_recovery_failure_kind = 0;
+bool sdn_recovery_report_pending = false;
+'''
+
+
+def record_recovery(t):
+    """Record actual events after typed-channel and optional policy adaptation.
+
+    End edges are binary receives or local edges, never broadcast receives.
+    The exhaustive guard partition preserves functional choices and updates.
+    """
+    for tr in list(t.findall('transition')):
+        if label(tr, 'synchronisation') in ('sdn_link_failure?', 'sdn_node_failure?'):
+            append_update(tr, 'sdn_obs_rec_start()')
+        target = tr.find('target').get('ref')
+        if source_name(t, tr) not in ('StableConfig', 'RecoveryFailed') and target in (
+                loc_id(t, 'StableConfig'), loc_id(t, 'RecoveryFailed')):
+            guard = label(tr, 'guard') or 'true'
+            append_update(tr, 'sdn_obs_rec_finish()')
+            late = deepcopy(tr)
+            deadline = '(sdn_D_recovery + sdn_D_rollback)'
+            set_label(tr, 'guard', f'({guard}) && sdn_c_obs_rec <= {deadline}')
+            set_label(late, 'guard', f'({guard}) && sdn_c_obs_rec > {deadline}')
+            append_update(late, 'sdn_obs_rec_late = true')
+            t.append(late)
+
+
+def recovery_policy(t):
+    """Apply the accepted functional 20/10 policy independently of recording."""
+    detected = next(l for l in t.findall('location') if l.findtext('name') == 'FailureDetected')
+    ET.SubElement(detected, 'label', kind='invariant').text = 'sdn_c_rec <= sdn_D_recovery'
+    failed = ('sdn_recoveryClass = sdn_REC_FAILED, sdn_sdnReason = sdn_SDN_RECOVERY_FAILED, '
+              'sdn_serviceImpact = sdn_IMPACT_FAILED, sdn_link_failure_pending = false, '
+              'sdn_node_failure_pending = false, sdn_optimistic_reconfig = false, '
+              'bus_rec_policy_open = false, sdn_failure_report_sent = false, '
+              'sdn_recovery_report_pending = true')
+    for tr in t.findall('transition'):
+        if label(tr, 'synchronisation') in ('sdn_link_failure?', 'sdn_node_failure?'):
+            append_update(tr, 'sdn_recovery_failure_kind = 0')
+        if tr.find('target').get('ref') == loc_id(t, 'RecoveryFailed'):
+            # Record the local outcome even when the binary report receiver is absent.
+            set_label(tr, 'synchronisation', '')
+            set_label(tr, 'assignment', failed + ', sdn_recovery_failure_kind = 2')
+    for phase in ('FailureDetected', 'StandbySwitch', 'ReactiveReembedding'):
+        edge(t, phase, 'RecoveryFailed', guard='sdn_c_rec == sdn_D_recovery',
+             update=failed + ', sdn_recovery_failure_kind = 1')
+    edge(t, 'RecoveryFailed', 'RecoveryFailed', guard='sdn_recovery_report_pending',
+         sync='sdn_failure_report!',
+         update='sdn_recovery_report_pending = false, sdn_failure_report_sent = true')
+
+
+def recovery_observer(t):
+    """Read-only witness; the direct bad predicate does not need an observer step."""
+    for node in list(t):
+        if node.tag == 'transition' or (node.tag == 'location' and node.findtext('name') == 'Wait'):
+            t.remove(node)
+    edge(t, 'Idle', 'Violation', guard='sdn_obs_rec_late || sdn_obs_rec_protocol_error')
+    edge(t, 'Idle', 'Violation',
+         guard='sdn_obs_rec_active && sdn_c_obs_rec > sdn_D_recovery + sdn_D_rollback')
+
+
 def adapt_layer(layer, declaration, templates):
     if layer == 'mac':
         declaration = declaration.replace('mac_kpiFreshnessClass = mac_KPI_FRESH', 'mac_kpiFreshnessClass = mac_KPI_MISSING')
@@ -20,6 +98,7 @@ def adapt_layer(layer, declaration, templates):
                         'bool mac_obs_ack_late = false;\n')
     if layer == 'sdn':
         declaration = declaration.replace('sdn_telemetryClass = sdn_TEL_FRESH', 'sdn_telemetryClass = sdn_TEL_MISSING')
+        declaration += RECOVERY_RECORDING + RECOVERY_OUTCOME
     if layer == 'app':
         # Producer-owned monitoring latches preserve the oldest outstanding event.
         # Observers clear only these monitoring variables on an observed response.
@@ -44,6 +123,8 @@ def adapt_layer(layer, declaration, templates):
     for process, t in templates.items():
         prefix = f'obs_{layer}_' if process.startswith(f'obs_{layer}_') else f'{layer}_'
         original = process.removeprefix(prefix).removesuffix('_0')
+        if layer == 'sdn' and original == 'ObsRecovery':
+            recovery_observer(t)
         if layer == 'mac' and original == 'ObsPhyAck':
             # No polling/reset/clear transition: a completed late transaction
             # stays recorded even if the observer runs after the next command.
@@ -133,6 +214,9 @@ def adapt_layer(layer, declaration, templates):
                     # cannot legally contain a clock guard in UPPAAL.
                     set_label(tr, 'guard', '')
                     append_update(tr, 'bus_mac_report_consumed = true')
+        if layer == 'sdn' and original == 'A_REC':
+            recovery_policy(t)
+            record_recovery(t)
         if layer == 'mac' and original == 'A_SCH':
             for loc in t.findall('location'):
                 name = loc.findtext('name')
