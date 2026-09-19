@@ -1,0 +1,255 @@
+{
+  "run_id": "recovery-35-20260919-003",
+  "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+  "base_commit": "44ff0e336c7bfc88e3ebe3da3d05699c2acef62f",
+  "source_tree_clean_at_start": true,
+  "produced_by_github_handle": "vadimnbkg",
+  "reviewed_by_github_handle": null,
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "operating_environment": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "hardware": {
+    "cpu_model": "AMD Ryzen 5 1400 Quad-Core Processor",
+    "logical_cpu_count": 8,
+    "ram_bytes": 8290152448,
+    "scope": "WSL host; Windows verifyta via WSL interop"
+  },
+  "resource_limit": {
+    "per_command_seconds": 60,
+    "software_seconds": 300,
+    "memory": "no explicit cap"
+  },
+  "parameter_set": {
+    "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+    "D_cmd": 1,
+    "D_bus": 1,
+    "T_input": 5,
+    "T_mac_tick": 5,
+    "T_demand": 1,
+    "T_complete": 40,
+    "fault_window": [
+      12,
+      13
+    ],
+    "max_fault_events": 1,
+    "max_requests_per_service": 1,
+    "max_outstanding_per_command_kind": 1,
+    "freshness_warn_age": 5,
+    "freshness_expire_age": 10,
+    "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+  },
+  "instance_vector": {
+    "schema_version": 1,
+    "configuration_id": "p2-single-uav-abstract-v1-proposal",
+    "source_commit": "7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb",
+    "status": "proposed_not_implemented_not_accepted",
+    "baseline_id": "reviewer-r1-candidate",
+    "physical_time_scale_seconds": null,
+    "time_unit": "abstract_model_unit",
+    "entities": {
+      "base_stations": 1,
+      "devices_total": 1,
+      "uav_devices_subset": 1,
+      "radio_links": 1,
+      "sensing_targets": 1,
+      "sdn_ric_controllers": 1,
+      "service_sessions": 1,
+      "aggregate_queue_classes": 1,
+      "explicit_packet_queues": 0,
+      "explicit_handover_destination_cells": 0
+    },
+    "bindings": {
+      "device_0": {
+        "kind": "UAV",
+        "serving_bs": 0,
+        "link": 0,
+        "service": 0
+      },
+      "link_0": {
+        "bs": 0,
+        "device": 0,
+        "target": 0
+      },
+      "service_0": {
+        "controller": 0,
+        "device": 0,
+        "class": "SVC_UAV"
+      }
+    },
+    "groups_in_system_order": [
+      {
+        "group": "phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "A_CH",
+          "A_SIG",
+          "A_BM",
+          "A_SQ",
+          "A_PH"
+        ]
+      },
+      {
+        "group": "mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "A_SCH",
+          "A_Q",
+          "A_BUF",
+          "A_RSRC",
+          "A_MAC_AGG"
+        ]
+      },
+      {
+        "group": "sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "A_MON",
+          "A_RISK",
+          "A_POLICY",
+          "A_RULE",
+          "A_REC",
+          "A_SDN_AGG"
+        ]
+      },
+      {
+        "group": "app",
+        "source": "stored:app",
+        "retain": [
+          "Req",
+          "Sla",
+          "Crit",
+          "Agg"
+        ]
+      },
+      {
+        "group": "boundary",
+        "source": "new_templates_required",
+        "retain": [
+          "E_PHY_INPUT",
+          "E_MAC_LOAD",
+          "E_FAULT",
+          "E_SERVICE",
+          "B_PHY_MAC",
+          "B_POLICY",
+          "B_ADMISSION",
+          "B_KPI"
+        ]
+      },
+      {
+        "group": "obs_phy",
+        "source": "generated:phy:with_observers",
+        "retain": [
+          "ObsSenseReport",
+          "ObsFreshness",
+          "ObsBeamRecovery"
+        ]
+      },
+      {
+        "group": "obs_mac",
+        "source": "generated:mac:with_observers",
+        "retain": [
+          "ObsPhyAck",
+          "ObsQueueCritical",
+          "ObsSensingCritical",
+          "ObsBufferOverflow",
+          "ObsMacReportFreshness"
+        ]
+      },
+      {
+        "group": "obs_sdn",
+        "source": "generated:sdn:with_observers",
+        "retain": [
+          "ObsRuleMiss",
+          "ObsRecovery",
+          "ObsAdmission",
+          "ObsStaleTelemetry",
+          "ObsCommandAck",
+          "ObsSensingDecision"
+        ]
+      },
+      {
+        "group": "obs_app",
+        "source": "stored:app",
+        "retain": [
+          "ObsAdmission",
+          "ObsWarn",
+          "ObsViolation",
+          "ObsFresh",
+          "ObsUpdate",
+          "ObsFa",
+          "ObsMiss",
+          "ObsSafety"
+        ]
+      }
+    ],
+    "remove": {
+      "generated:phy:with_observers": [
+        "ENV_CH",
+        "ENV_TARGET",
+        "ENV_MAC",
+        "ENV_NET"
+      ],
+      "generated:mac:with_observers": [
+        "A_ENV_MAC"
+      ],
+      "generated:sdn:with_observers": [
+        "A_ENV_SDN"
+      ],
+      "stored:app": [
+        "Sdn",
+        "Env",
+        "Kpi",
+        "Sink"
+      ]
+    },
+    "new_template_contracts": "interface-contract.md#boundary-processes",
+    "application_placeholders_retained_without_behavior": [
+      "app_Crit_0",
+      "app_Agg_0"
+    ],
+    "optional_security_instances": 0,
+    "extended_phy_observers": 0,
+    "count_per_retained_process": 1,
+    "qualified_process_name": "<group>_<original_process>_0",
+    "expected_process_counts": {
+      "core": 20,
+      "boundary": 8,
+      "observers": 22,
+      "total": 50
+    },
+    "parameter_policy": {
+      "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+      "D_cmd": 1,
+      "D_bus": 1,
+      "T_input": 5,
+      "T_mac_tick": 5,
+      "T_demand": 1,
+      "T_complete": 40,
+      "fault_window": [
+        12,
+        13
+      ],
+      "max_fault_events": 1,
+      "max_requests_per_service": 1,
+      "max_outstanding_per_command_kind": 1,
+      "freshness_warn_age": 5,
+      "freshness_expire_age": 10,
+      "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules."
+    },
+    "implementation_preconditions": [
+      "replace standalone environments with specified boundary processes",
+      "namespace declarations and localize component clocks",
+      "resolve service channel kinds and pre-synchronization payload staging",
+      "separate rule and controller acknowledgements",
+      "add missing lower-layer policy/command and KPI mappings",
+      "retain failure and timeout behavior including absent receivers",
+      "review APP placeholder scope and lack of complete service lifecycle",
+      "obtain independent parameter/interface decision before Gate 1"
+    ]
+  },
+  "generator_hash": "d8b0b3178b886ad9ccac94de92848787ca09d30955961f01b43627fde234b692",
+  "model_hash": "6932cc7ed619eaac098f5b89ea5bf5966835b7ccce421ef5220029c9015ac888",
+  "query_hash": "af9bbd8e73b1bc73eb7e957a89b826d24e04f1c2f1eed2f1b1e5bb4a55cd25b9",
+  "runner_exit_code": 0,
+  "claim_limits": "Targeted diagnostic peers/mutants only; no full-model recovery/ACK proof, inevitable zero-time completion, physical calibration, P1/P2/Gate acceptance."
+}

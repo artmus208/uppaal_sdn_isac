@@ -1,0 +1,1799 @@
+[
+  {
+    "name": "integrated-parser",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\integrated-parser-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\integrated-parser.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\integrated-parser.q"
+    ],
+    "started_at_utc": "2026-09-19T08:37:56.310671+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 2.110937825000292,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied"
+    ],
+    "stdout": "integrated-parser.stdout.txt",
+    "stderr": "integrated-parser.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-integrated-parser",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "6932cc7ed619eaac098f5b89ea5bf5966835b7ccce421ef5220029c9015ac888",
+    "query_hash": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "integrated-parser.xml",
+    "query_path": "integrated-parser.q",
+    "scope": "Full integrated model engine load; no recovery/ACK property of full model checked.",
+    "per_query": [
+      {
+        "requirement": "engine load only",
+        "query": "E<> true",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "original-timely",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\original-timely-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\original-timely.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\original-timely.q"
+    ],
+    "started_at_utc": "2026-09-19T08:37:58.433305+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.24455665499999668,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "original-timely.stdout.txt",
+    "stderr": "original-timely.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-original-timely",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "a1f60df8b0986557dcb5e28049c2800576f3d1b2c13af32bd67f27b4a59423ff",
+    "query_hash": "8ee26b61dbab80482d126c9e05bd49c4c356a30bcb17448869c0918b7ae614f8",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "original-timely.xml",
+    "query_path": "original-timely.q",
+    "scope": "Original core/observer; replacement peer accepts standby, ACK at age20.",
+    "per_query": [
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "timely success",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "old delayed polling can falsely report violation",
+        "query": "E<> obs.Violation && fx_done == 1 && !fx_failed",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "recorder-timely",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\recorder-timely-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\recorder-timely.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\recorder-timely.q"
+    ],
+    "started_at_utc": "2026-09-19T08:37:58.690024+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2268589680002151,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "recorder-timely.stdout.txt",
+    "stderr": "recorder-timely.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-recorder-timely",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "ee0f19b861d8b4b11fa06d8cbe1406fd43f548b69d15a347e43e301596cb1f5a",
+    "query_hash": "e0b89d414966bbf4bbc4789996e1f176b5440b84654e44854ce07a0e8f33df5c",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "recorder-timely.xml",
+    "query_path": "recorder-timely.q",
+    "scope": "Original functional core plus recorder; same peer; delayed observer is unrestricted.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "timely success",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-standby-0",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-0-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-0.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-0.q"
+    ],
+    "started_at_utc": "2026-09-19T08:37:58.928628+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2928012209999906,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-standby-0.stdout.txt",
+    "stderr": "fixed-standby-0.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-standby-0",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "fc939ccda79749920496a24175f9b968b3678f2bea1e3abaafe822f0f93f110c",
+    "query_hash": "86cd9a6617177f9f02c8cef0c5e6f7c0478b5773501f808adaec89b347d6febe",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-standby-0.xml",
+    "query_path": "fixed-standby-0.q",
+    "scope": "Actual fixed core; one accepted link/node failure; replacement transport/typed ACK peer, no report receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "ACK at exact stage deadline",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback outcome at total30",
+        "query": "E<> fx_done == 1 && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local failure independent of report",
+        "query": "E<> rec.RecoveryFailed && sdn_recovery_report_pending && !sdn_failure_report_sent",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-standby-19",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-19-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-19.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-19.q"
+    ],
+    "started_at_utc": "2026-09-19T08:37:59.232863+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2982794549998289,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-standby-19.stdout.txt",
+    "stderr": "fixed-standby-19.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-standby-19",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "a49e86dd4b61558f0fed52d5ff5129e8d830fa8878df101f5456d8421adda586",
+    "query_hash": "86cd9a6617177f9f02c8cef0c5e6f7c0478b5773501f808adaec89b347d6febe",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-standby-19.xml",
+    "query_path": "fixed-standby-19.q",
+    "scope": "Actual fixed core; one accepted link/node failure; replacement transport/typed ACK peer, no report receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "ACK at exact stage deadline",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback outcome at total30",
+        "query": "E<> fx_done == 1 && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local failure independent of report",
+        "query": "E<> rec.RecoveryFailed && sdn_recovery_report_pending && !sdn_failure_report_sent",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-standby-20",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-20-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-20.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-standby-20.q"
+    ],
+    "started_at_utc": "2026-09-19T08:37:59.543587+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2988356779997048,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-standby-20.stdout.txt",
+    "stderr": "fixed-standby-20.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-standby-20",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "930990209ecf45655a4b68ccc7742c607528ae0997acc2b156e1c73b6b28e4bf",
+    "query_hash": "86cd9a6617177f9f02c8cef0c5e6f7c0478b5773501f808adaec89b347d6febe",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-standby-20.xml",
+    "query_path": "fixed-standby-20.q",
+    "scope": "Actual fixed core; one accepted link/node failure; replacement transport/typed ACK peer, no report receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "ACK at exact stage deadline",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback outcome at total30",
+        "query": "E<> fx_done == 1 && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local failure independent of report",
+        "query": "E<> rec.RecoveryFailed && sdn_recovery_report_pending && !sdn_failure_report_sent",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-reembed-0",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-0-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-0.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-0.q"
+    ],
+    "started_at_utc": "2026-09-19T08:37:59.852851+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.3028332369999589,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-reembed-0.stdout.txt",
+    "stderr": "fixed-reembed-0.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-reembed-0",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "d486a5341b66f4206b3aeb8ccf712fe3724a2fcb56bb833ea7f3aa8f9acea91d",
+    "query_hash": "86cd9a6617177f9f02c8cef0c5e6f7c0478b5773501f808adaec89b347d6febe",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-reembed-0.xml",
+    "query_path": "fixed-reembed-0.q",
+    "scope": "Actual fixed core; one accepted link/node failure; replacement transport/typed ACK peer, no report receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "ACK at exact stage deadline",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback outcome at total30",
+        "query": "E<> fx_done == 1 && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local failure independent of report",
+        "query": "E<> rec.RecoveryFailed && sdn_recovery_report_pending && !sdn_failure_report_sent",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-reembed-19",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-19-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-19.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-19.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:00.166839+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2947929890001433,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-reembed-19.stdout.txt",
+    "stderr": "fixed-reembed-19.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-reembed-19",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "1bc287c1d6a168637ad0e087b99488b113aa3b9e459adf0661269ae001a5ab54",
+    "query_hash": "86cd9a6617177f9f02c8cef0c5e6f7c0478b5773501f808adaec89b347d6febe",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-reembed-19.xml",
+    "query_path": "fixed-reembed-19.q",
+    "scope": "Actual fixed core; one accepted link/node failure; replacement transport/typed ACK peer, no report receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "ACK at exact stage deadline",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback outcome at total30",
+        "query": "E<> fx_done == 1 && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local failure independent of report",
+        "query": "E<> rec.RecoveryFailed && sdn_recovery_report_pending && !sdn_failure_report_sent",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-reembed-20",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-20-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-20.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-reembed-20.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:00.472731+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2987171559998387,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-reembed-20.stdout.txt",
+    "stderr": "fixed-reembed-20.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-reembed-20",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "52fe657be4584aca92be7a67a3b7acdd7bf8eb00578440d19f821b082c469017",
+    "query_hash": "86cd9a6617177f9f02c8cef0c5e6f7c0478b5773501f808adaec89b347d6febe",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-reembed-20.xml",
+    "query_path": "fixed-reembed-20.q",
+    "scope": "Actual fixed core; one accepted link/node failure; replacement transport/typed ACK peer, no report receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "ACK at exact stage deadline",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback outcome at total30",
+        "query": "E<> fx_done == 1 && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local failure independent of report",
+        "query": "E<> rec.RecoveryFailed && sdn_recovery_report_pending && !sdn_failure_report_sent",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-direct-0",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-0-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-0.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-0.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:00.783052+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2958601360001012,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-direct-0.stdout.txt",
+    "stderr": "fixed-direct-0.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-direct-0",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "2859f25c125831787acbc3736c15e19204308796bbfba5123fcff7c2122980ca",
+    "query_hash": "e37069c9ccb7215727cff3e8efe06b2fcf1fe921537ab767788f7cffc681d323",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-direct-0.xml",
+    "query_path": "fixed-direct-0.q",
+    "scope": "Direct rollback with controlled dispatch and ACK at local age10; timeout equally permitted.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback dispatch age",
+        "query": "E<> rec.Rollback && fx_age == 0",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback ACK at b10",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 10",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback timeout at b10",
+        "query": "E<> sdn_recovery_failure_kind == 2 && fx_age == 10",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-direct-5",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-5-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-5.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-5.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:01.090416+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2916018599999006,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-direct-5.stdout.txt",
+    "stderr": "fixed-direct-5.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-direct-5",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "aea59b1e3a2d5c70dc2905895e47d80d63d2ed2916c490665b8853b0ccedd8e2",
+    "query_hash": "1d05d7357ab973733c5c75474b4922dcc46fa68022710194f1016941a8f23d98",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-direct-5.xml",
+    "query_path": "fixed-direct-5.q",
+    "scope": "Direct rollback with controlled dispatch and ACK at local age10; timeout equally permitted.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback dispatch age",
+        "query": "E<> rec.Rollback && fx_age == 5",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback ACK at b10",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback timeout at b10",
+        "query": "E<> sdn_recovery_failure_kind == 2 && fx_age == 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-direct-19",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-19-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-19.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-19.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:01.394233+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2942031990000942,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-direct-19.stdout.txt",
+    "stderr": "fixed-direct-19.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-direct-19",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "7a3fa9afd0fb2cf1cd50557a9cbb2a6fd7b94172016ad0855903aa0810476d38",
+    "query_hash": "edfadcb6bc45daf1a742e551ffcee633c903eb573584620deb64ab7ef3d72d38",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-direct-19.xml",
+    "query_path": "fixed-direct-19.q",
+    "scope": "Direct rollback with controlled dispatch and ACK at local age10; timeout equally permitted.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback dispatch age",
+        "query": "E<> rec.Rollback && fx_age == 19",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback ACK at b10",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 29",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback timeout at b10",
+        "query": "E<> sdn_recovery_failure_kind == 2 && fx_age == 29",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-direct-20",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-20-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-20.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-direct-20.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:01.701757+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2916681619999508,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-direct-20.stdout.txt",
+    "stderr": "fixed-direct-20.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-direct-20",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "3a7aadff4a5a2732a64453febd2c9db18e97874f66cf4ef8d0ee2a4afff1c864",
+    "query_hash": "fc56c9d2b25e96ee222fcf9541f407e03798bd1b288cd2fd040294e3b39a9c33",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-direct-20.xml",
+    "query_path": "fixed-direct-20.q",
+    "scope": "Direct rollback with controlled dispatch and ACK at local age10; timeout equally permitted.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback dispatch age",
+        "query": "E<> rec.Rollback && fx_age == 20",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "direct rollback ACK at b10",
+        "query": "E<> fx_done == 1 && !fx_failed && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "rollback timeout at b10",
+        "query": "E<> sdn_recovery_failure_kind == 2 && fx_age == 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-unavailable",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-unavailable-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-unavailable.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-unavailable.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:02.005406+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.23321333200010486,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-unavailable.stdout.txt",
+    "stderr": "fixed-unavailable.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-unavailable",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "4a5d63cb8db99a6e699c00527600a7b300c0f54c22bfcc0702a594a5a620abb2",
+    "query_hash": "fadc3e91350dad79a103ac05d77ffffdb33abd2f9ee33ed3dbcb049ddc409020",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-unavailable.xml",
+    "query_path": "fixed-unavailable.q",
+    "scope": "Peer refuses all dispatch until99 and never receives failure_report; local outcome must remain possible at20.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local dispatch failure at20",
+        "query": "E<> rec.RecoveryFailed && fx_age == 20 && sdn_recovery_failure_kind == 1",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "failure no later than20",
+        "query": "A[] (fx_started == 1 && fx_age > 20) imply fx_done == 1",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-blocked-rollback-standby",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-blocked-rollback-standby-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-blocked-rollback-standby.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-blocked-rollback-standby.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:02.252060+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2437406210001427,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-blocked-rollback-standby.stdout.txt",
+    "stderr": "fixed-blocked-rollback-standby.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-blocked-rollback-standby",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "f2c96bbdcb8b86ebff4ea3f3ec78978a6a22a78d7c49b7afedfcae4d0214dc0c",
+    "query_hash": "5a67bce29995ba6841ead4b2649a7fb8700fa873b6569a3a2f26324e88679a9b",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-blocked-rollback-standby.xml",
+    "query_path": "fixed-blocked-rollback-standby.q",
+    "scope": "Initial command delivered; no matching ACK, rollback receiver or report receiver. Wrong typed ACK offered, without receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "blocked rollback dispatch ends locally at20",
+        "query": "E<> rec.RecoveryFailed && fx_age == 20 && sdn_recovery_failure_kind == 1",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "wrong typed ACK cannot close the episode",
+        "query": "A[] fx_done > 0 imply fx_failed",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-blocked-rollback-reembed",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-blocked-rollback-reembed-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-blocked-rollback-reembed.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-blocked-rollback-reembed.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:02.510378+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.23551228599990282,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-blocked-rollback-reembed.stdout.txt",
+    "stderr": "fixed-blocked-rollback-reembed.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-blocked-rollback-reembed",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "f51b517e277b209d56450a410ed42104deda7fdc1816cfac752160a1a46dab8c",
+    "query_hash": "5a67bce29995ba6841ead4b2649a7fb8700fa873b6569a3a2f26324e88679a9b",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-blocked-rollback-reembed.xml",
+    "query_path": "fixed-blocked-rollback-reembed.q",
+    "scope": "Initial command delivered; no matching ACK, rollback receiver or report receiver. Wrong typed ACK offered, without receiver.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "blocked rollback dispatch ends locally at20",
+        "query": "E<> rec.RecoveryFailed && fx_age == 20 && sdn_recovery_failure_kind == 1",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "wrong typed ACK cannot close the episode",
+        "query": "A[] fx_done > 0 imply fx_failed",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-report",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-report-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-report.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-report.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:02.760989+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.230619862000367,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-report.stdout.txt",
+    "stderr": "fixed-report.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-report",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "9bec07b1fba4067b52b2d2a65defc0dd63c6ea5a33435d39a6fabbce75f0c108",
+    "query_hash": "a364532e085e5df664411b7744c66ddb370e9bdcc1316be2809aff1ff29adae5",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-report.xml",
+    "query_path": "fixed-report.q",
+    "scope": "Rollback timeout and optional report receiver; distinct local outcome and report transitions.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "local failure before report",
+        "query": "E<> rec.RecoveryFailed && !sdn_failure_report_sent",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "separate report delivery",
+        "query": "E<> rec.RecoveryFailed && sdn_failure_report_sent && !sdn_recovery_report_pending",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "original-late-dispatch",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\original-late-dispatch-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\original-late-dispatch.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\original-late-dispatch.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:03.004454+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.23027064600000813,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "original-late-dispatch.stdout.txt",
+    "stderr": "original-late-dispatch.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-original-late-dispatch",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "1349e5bb4bc3b002f3be73c7caaea83ccef6fcfa1d72221c8fd6c4082130f5ff",
+    "query_hash": "035c54c8faa6934e88f25daeb6751748f538f945c4e472da8ace3278f14ac867",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "original-late-dispatch.xml",
+    "query_path": "original-late-dispatch.q",
+    "scope": "Original actual core; synthetic transport delays direct rollback beyond20; not a full-model counterexample.",
+    "per_query": [
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "original permits unbounded wait",
+        "query": "E<> rec.FailureDetected && fx_age == 31",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "original late success",
+        "query": "E<> fx_done == 1 && fx_age == 31",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "recorder-late-repeat",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\recorder-late-repeat-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\recorder-late-repeat.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\recorder-late-repeat.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:03.247328+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.27592523100020117,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "stdout": "recorder-late-repeat.stdout.txt",
+    "stderr": "recorder-late-repeat.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-recorder-late-repeat",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "b79e5d23deb89d9695825f6dfcc59623479a765658d9db1b2b640f9364130994",
+    "query_hash": "558c4ebc340eaaafde7c090f15da7c35b2880fa1af7aa1aae3c4812b4f0047c8",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "recorder-late-repeat.xml",
+    "query_path": "recorder-late-repeat.q",
+    "scope": "Original unbounded dispatch plus recorder, two synthetic consecutive episodes (production allows one).",
+    "per_query": [
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "late completion retained",
+        "query": "E<> fx_done == 1 && sdn_obs_rec_late && !sdn_obs_rec_active",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "late retained across next start with no observer step",
+        "query": "E<> fx_started == 2 && fx_done == 1 && sdn_obs_rec_late && sdn_obs_rec_active && fx_since_end == 0 && obs.Idle",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "negative elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      }
+    ]
+  },
+  {
+    "name": "fixed-rapid",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-rapid-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-rapid.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\fixed-rapid.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:03.538509+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.2500330870002472,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fixed-rapid.stdout.txt",
+    "stderr": "fixed-rapid.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-fixed-rapid",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "69bd78cb9ff4f8e1a8e39ef0d5bc9dfec5a13cb34744184020b19f71fa36fd53",
+    "query_hash": "91c960f87765b05cc393e659654d3c0d141e4a18b45930494040ac1733acf549",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fixed-rapid.xml",
+    "query_path": "fixed-rapid.q",
+    "scope": "Synthetic sequential two-episode extension; actual recorder/core unchanged.",
+    "per_query": [
+      {
+        "requirement": "elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "protocol",
+        "query": "A[] !sdn_obs_rec_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no deadlock in this harness",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "two distinct zero-time completions",
+        "query": "E<> fx_started == 2 && fx_done == 2 && fx_first == 0 && obs.Idle",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "completion then immediate next start",
+        "query": "E<> fx_started == 2 && fx_done == 1 && fx_since_end == 0",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "no-completion",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\no-completion-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\no-completion.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\no-completion.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:03.806553+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.24191232599969226,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "stdout": "no-completion.stdout.txt",
+    "stderr": "no-completion.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-no-completion",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "17d4c6f75bf0950a4cc4428180c20773d93a627b8e46cc292329fd1961d062b9",
+    "query_hash": "14ffa540dcc1bfa45804607e91f2d54de845108321fcb5537901ee87a0f031af",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "no-completion.xml",
+    "query_path": "no-completion.q",
+    "scope": "Negative mutant removes all core exits after failure and all core invariants; never production input.",
+    "per_query": [
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "missing completion exceeds30",
+        "query": "E<> fx_done == 0 && sdn_obs_rec_active && sdn_c_obs_rec > 30",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "negative elapsed safety",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      }
+    ]
+  },
+  {
+    "name": "time-stopped",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\time-stopped-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\time-stopped.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\time-stopped.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:04.065881+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.21848943100030738,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "time-stopped.stdout.txt",
+    "stderr": "time-stopped.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-time-stopped",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "ca555b8d84e04ca2d750c61d8f791946e1e46d3c731f9d4706bfa3fe280082b9",
+    "query_hash": "212f57a196850158dfd91f95b2c8e86ea62cf29dab7d60d2a7e3da96ccc8830a",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "time-stopped.xml",
+    "query_path": "time-stopped.q",
+    "scope": "Synthetic peer Live invariant fx_age<=0 and local self-loop: a time-stopped execution, not a completion proof.",
+    "per_query": [
+      {
+        "requirement": "accepted failure reachable",
+        "query": "E<> fx_started == 1 && rec.FailureDetected",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "elapsed remains zero",
+        "query": "A[] fx_age == 0",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "no completion",
+        "query": "A[] fx_done == 0",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "elapsed safety is insufficient",
+        "query": "A[] !(sdn_obs_rec_late || (sdn_obs_rec_active && sdn_c_obs_rec > 30))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "enabled zero-time loop is not deadlock",
+        "query": "A[] not deadlock",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  },
+  {
+    "name": "duplicate-start",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\duplicate-start-trace",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\duplicate-start.xml",
+      "\\\\wsl.localhost\\Ubuntu\\home\\pew\\uppaal-issue35-20260919\\evidence\\instantiation\\20260917-recovery-contract\\runs\\recovery-35-20260919-003\\duplicate-start.q"
+    ],
+    "started_at_utc": "2026-09-19T08:38:04.301273+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.20533353100017848,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "duplicate-start.stdout.txt",
+    "stderr": "duplicate-start.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-35-20260919-003-duplicate-start",
+    "source_commit": "eed0b91c7eb56c4416e742d6d01c92cc492bc7ef",
+    "model_hash": "96ca0eb4ddfe3c8c850c7f6feeef205acaffae113a9086eeed2707691027ed97",
+    "query_hash": "218fab61fc0bf29a1bd0bf816abb480c28f7dd88ea17ccdcd4bc6b6c48e3b8da",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "duplicate-start.xml",
+    "query_path": "duplicate-start.q",
+    "scope": "Synthetic misuse invokes recorder start while active at5; not an extra production failure transition.",
+    "per_query": [
+      {
+        "requirement": "duplicate records error without resetting oldest age",
+        "query": "E<> sdn_obs_rec_protocol_error && sdn_c_obs_rec == 5",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "requirement": "oldest age still counts",
+        "query": "A[] fx_started == 1 imply sdn_c_obs_rec == fx_age",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ]
+  }
+]
