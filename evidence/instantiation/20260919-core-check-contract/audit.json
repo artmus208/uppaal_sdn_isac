@@ -1,0 +1,16 @@
+{
+  "status": "static_source_audit_only",
+  "base": "aeeb62d4893db7f4bfd7d4243932860c50132f66",
+  "verification": "not_run",
+  "sha256": {
+    "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+    "manifests/collaboration-v1.yaml": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+    "levels_tex/MAC_resource_scheduling_formalization.tex": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+    "src/uppaal_mcp/mac/alpha.py": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7",
+    "src/uppaal_mcp/mac/generator.py": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+    "src/uppaal_mcp/integrated/adapt.py": "37d1c7e09fb0d98e0afc8a115b452801c0d82f2bd7f7d9a4f091363fc150fce9",
+    "src/uppaal_mcp/integrated/boundary.py": "02c8a1686957f59ab6253a6b6b0fbe134948f53c6daf1e4925034fab65930b9f",
+    "src/uppaal_mcp/integrated/generator.py": "b3466175848d20b5bb0c38f1956d4614b08efa31f7a38bf5380edffb0f1a99b5",
+    "src/uppaal_mcp/sdn/generator.py": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272"
+  }
+}
