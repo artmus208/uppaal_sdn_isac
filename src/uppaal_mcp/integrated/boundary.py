@@ -5,6 +5,9 @@ and precede handshakes, so receiver guards never depend on sender-side updates.
 """
 from .xmlutil import edge, template, location
 
+# #43: accepted abstract work-unit tuple, not a calibrated network capacity.
+QUEUE_PARAMETERS = {'K': 4, 'L': 1, 'M': 2, 'H': 4}
+
 DECLARATIONS = '''
 // Candidate abstract units, not physical calibration.
 const int bus_D_cmd=1, bus_D_bus=1, bus_T_input=5, bus_T_mac_tick=5;
@@ -50,6 +53,13 @@ chan bus_rec_flow_request, bus_rec_flow_ack, bus_rollback_request, bus_rec_rollb
 chan bus_rule_ack, bus_admit_request;
 broadcast chan bus_new_sample, bus_new_mac_sample;
 '''
+DECLARATIONS += '\n' + '\n'.join(
+    f'const int mac_queue_{name}={value};' for name, value in QUEUE_PARAMETERS.items()
+) + '''
+// K+1 is an absorbing overflow witness, not a clipped physical queue length.
+int[0,mac_queue_K+1] mac_queue_q=0;
+bool mac_queue_overflow_seen=false;
+'''
 
 
 def environments():
@@ -83,10 +93,23 @@ def environments():
     result['E_PHY_INPUT'] = phy
 
     mac = template('Boundary_E_MAC_LOAD', [('Wait','tick <= bus_T_mac_tick'),('Publish','',True),('Offer','',True)], 'clock tick;')
-    fields = [('queueClass',4),('bufferClass',2),('delayClass',3),('dropClass',2),('resourceClass',3),('sensingDemand',2),('commDemand',2)]
-    edge(mac,'Wait','Publish',guard='tick == bus_T_mac_tick',
-         select=', '.join(f'm{i}:int[0,{n}]' for i,(_,n) in enumerate(fields)),
-         update=', '.join(f'mac_{s}=m{i}' for i,(s,_) in enumerate(fields)) + ', tick=0, bus_mac_age=0, bus_mac_valid=true')
+    fields = [('bufferClass',2),('delayClass',3),('dropClass',2),('resourceClass',3),('sensingDemand',2),('commDemand',2)]
+    # A completed old work unit precedes the new arrival. Service is optional
+    # even in communication modes; ACK/QueueDraining do not grant service.
+    # No capacity guard: q=K, service=0, arrival=1 must reach the witness K+1.
+    edge(mac,'Wait','Publish',
+         guard='tick == bus_T_mac_tick && service <= mac_queue_q && '
+               '(service == 0 || mac_scheduleMode == mac_SCH_COMM || mac_scheduleMode == mac_SCH_JOINT)',
+         select='arrival:int[0,1], service:int[0,1], ' +
+                ', '.join(f'm{i}:int[0,{n}]' for i,(_,n) in enumerate(fields, 1)),
+         update='mac_queue_q=(mac_queue_q > mac_queue_K ? mac_queue_q : mac_queue_q-service+arrival), '
+                'mac_queue_overflow_seen=(mac_queue_overflow_seen || mac_queue_q > mac_queue_K), '
+                'mac_queueClass=(mac_queue_q == 0 ? mac_Q_EMPTY : '
+                '(mac_queue_q <= mac_queue_L ? mac_Q_LOW : '
+                '(mac_queue_q <= mac_queue_M ? mac_Q_MED : '
+                '(mac_queue_q < mac_queue_H ? mac_Q_HIGH : mac_Q_CRIT)))), ' +
+                ', '.join(f'mac_{s}=m{i}' for i,(s,_) in enumerate(fields, 1)) +
+                ', tick=0, bus_mac_age=0, bus_mac_valid=true')
     edge(mac,'Publish','Offer',sync='bus_new_mac_sample!')
     edge(mac,'Offer','Wait',sync='mac_mac_tick!')
     edge(mac,'Offer','Wait',update='bus_tick_missed=true')

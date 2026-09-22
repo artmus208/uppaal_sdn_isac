@@ -94,6 +94,14 @@ def generate(root: Path | None = None) -> Composition:
     for n,q in enumerate(['A[] not bus_protocol_error','E<> app_Req_0.Accepted','E<> bus_admission_timeout',
                           'E<> bus_schedule_loss','E<> bus_fault_delivered','A[] not deadlock'],1):
         query_map.append({'id':f'integrated-{n:02}','candidate':q,'status':'candidate_unverified'})
+    for ident, q in [
+        ('capacity', 'A[] !mac_queue_overflow_seen'),
+        ('nonempty', 'E<> mac_queue_q > 0'),
+        ('full', 'E<> mac_queue_q == mac_queue_K && !mac_queue_overflow_seen'),
+        ('overflow', 'E<> mac_queue_overflow_seen'),
+    ]:
+        query_map.append({'id':f'queue-{ident}', 'candidate':q,
+                          'status':'candidate_unverified', 'supporting_issue':43})
     queries=''.join(f"// {q['id']} -- candidate, no verdict\n{q['candidate']}\n" for q in query_map if 'candidate' in q)
     # Empty embedded query list prevents accidental implicit model checking when
     # requesting compile-only diagnostics with this XML alone.
@@ -118,7 +126,7 @@ def generate(root: Path | None = None) -> Composition:
             record[endpoint]=sorted(set(record[endpoint]))
     implementation_sources={p.relative_to(root).as_posix():sha(p.read_bytes())
                             for p in sorted((root/'src/uppaal_mcp/integrated').glob('*.py'))}
-    metadata={'schema_version':1,'issue':19,'configuration_id':'p2-single-uav-abstract-v1-candidate',
+    metadata={'schema_version':1,'issue':19,'configuration_id':'p2-single-uav-abstract-v2-queue-candidate',
               'status':'candidate_not_scientifically_accepted','base_commit':BASE,'input_source_commit':SOURCE,
               'baseline_id':'reviewer-r1-candidate','frozen':False,'verification_status':'not_run',
               'model_hash':sha(xml.encode()),'query_hash':sha(queries.encode()),'source_hashes':provenance,
@@ -129,9 +137,18 @@ def generate(root: Path | None = None) -> Composition:
               'generator_hash_construction':'sha256 of implementation_sources sha256/path records in sorted path order',
               'instance_vector':vector,'system_order':ordered,'symbols':symbol_maps,'process_map':process_map,
               'channels':channels,'query_map':query_map,'adaptations':adaptations,
-              'parameter_set':vector['parameter_policy'],
+              'parameter_set':{**vector['parameter_policy'], 'mac_queue':dict(boundary.QUEUE_PARAMETERS)},
+              'queue_abstraction':{'issue':43, 'version':1, 'units':'abstract work units',
+                  'writer':'boundary_E_MAC_LOAD_0', 'event':'existing MAC load tick',
+                  'update_order':'service old work, then arrival',
+                  'overflow':'absorbing K+1 and sticky flag',
+                  'service_modes':['SCH_COMM','SCH_JOINT'], 'service_guaranteed':False,
+                  'drop':0, 'physical_calibration':False, 'policy_change':True},
               'source_parameters':{layer:dict(re.findall(r'const int\s+(\w+)\s*=\s*(\d+)\s*;', src.findtext('declaration') or '')) for layer,src in inputs.items()},
               'limitations':['abstract one-link one-session envelope; no physical calibration',
+                 'queue balance changes environment semantics; not a passive recorder or an equivalence claim',
+                 'queue service/arrival are abstract choices; overflow is permitted, not assumed absent',
+                 'after queue overflow only the safety witness is retained; no drain-time or throughput claim',
                  'APP Crit and Agg remain zero-transition placeholders',
                  'source policy location/selected-value disagreement and zero-time cycles retained',
                  'oldest-outstanding event latches coalesce repeated monitoring events until a response',
