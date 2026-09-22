@@ -1,0 +1,21 @@
+{
+  "issue": 41,
+  "base_ref": "read",
+  "base_commit": "4378bca18b1e7521cf3e9d8dd18c1602be28ebe5",
+  "evidence_class": "proposed_abstraction_contract",
+  "verification": "not_run",
+  "numerical_occupancy_decision": "pending_independent_acceptance",
+  "sources_sha256": {
+    "src/uppaal_mcp/mac/alpha.py": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7",
+    "src/uppaal_mcp/mac/generator.py": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+    "src/uppaal_mcp/integrated/boundary.py": "02c8a1686957f59ab6253a6b6b0fbe134948f53c6daf1e4925034fab65930b9f",
+    "src/uppaal_mcp/integrated/adapt.py": "37d1c7e09fb0d98e0afc8a115b452801c0d82f2bd7f7d9a4f091363fc150fce9"
+  },
+  "contract_sha256": "356addbdc68f92119dafd9c9b22b17a478592bae31be4cb5bd8c4a4dc9fb8eee",
+  "local_checks": {
+    "utf8": "ok",
+    "trailing_whitespace": "ok",
+    "source_symbols": "ok"
+  },
+  "repository_test_suite": "not_run_locally: full clone unavailable; GitHub CI required"
+}
