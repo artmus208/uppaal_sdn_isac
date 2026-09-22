@@ -73,7 +73,7 @@ def main():
                       per_query=[{'query':q,'expected':e,'actual':record['verdicts'][i] if i<len(record['verdicts']) else None}
                                  for i,((q,_),e) in enumerate(zip(queries,expected))],
                       peak_memory='not_available',states_explored='not_available')
-        if vr['status']!='success' or not version.strip():
+        if vr['exit_code']!=0 or vr['status'] in ('error','timeout') or not version.strip():
             record['status']='error'
         results.append(record)
         dump(out/'results-index.json',results)
