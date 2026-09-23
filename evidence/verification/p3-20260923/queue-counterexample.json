@@ -128,5 +128,11 @@
   ],
   "run_id": "p3-20260923-003-02-C01-queue",
   "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
-  "K": 4
+  "K": 4,
+  "status": "success",
+  "verdict": "violated",
+  "query_hash": "694501c262583dfe43e22a907f10080795fd63b8bc534a11cd9338c84a704051",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+  "formal_query": "A[] !mac_queue_overflow_seen"
 }

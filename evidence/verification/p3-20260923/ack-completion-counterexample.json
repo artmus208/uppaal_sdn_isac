@@ -57,5 +57,10 @@
     "<edge id=\"obs_mac_ObsBufferOverflow_0.Edge1\" from=\"obs_mac_ObsBufferOverflow_0.Idle\" to=\"obs_mac_ObsBufferOverflow_0.Wait\"><guard>mac_bufferClass == mac_B_OVERFLOW</guard><sync>tau</sync><update>mac_c_obs_buf := 0</update></edge>",
     "<edge id=\"obs_mac_ObsBufferOverflow_0.Edge2\" from=\"obs_mac_ObsBufferOverflow_0.Wait\" to=\"obs_mac_ObsBufferOverflow_0.Idle\"><guard>(mac_mac_report_sent || mac_bufferClass != mac_B_OVERFLOW) &amp;&amp; mac_c_obs_buf &lt;= mac_D_buf_report</guard><sync>tau</sync><update>1</update></edge>"
   ],
-  "interpretation": "Trace ends with ACK active and the buffer observer Wait/Idle loop enabled: buffer remains OVERFLOW and report_sent remains true; repeat both tau edges at zero delay, resetting only observer clock. This permits time-stopped/Zeno noncompletion and does not establish a deadline violation on time-divergent executions."
+  "interpretation": "Trace ends with ACK active and the buffer observer Wait/Idle loop enabled: buffer remains OVERFLOW and report_sent remains true; repeat both tau edges at zero delay, resetting only observer clock. This permits time-stopped/Zeno noncompletion and does not establish a deadline violation on time-divergent executions.",
+  "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "query_hash": "3f406107b55e4e196c2416c16e0573e3b362e2ff0396ab3ac696b183e252d249",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+  "formal_query": "mac_obs_ack_active --> !mac_obs_ack_active"
 }
