@@ -131,7 +131,12 @@ python -c "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__na
 `build.py` сравнивает входы с Git base, регенерирует metadata и сверяет
 модель/query/generator/parameters/vector с сохранённым #46 run. Проверка имён
 переменных selected queries не является UPPAAL parsing/type checking.
-Фактические результаты команд сохранены в `checks.txt`.
+Фактические результаты команд сохранены в `checks.txt`. Статическая сверка,
+оба archive audits, coordination check и FastMCP construction прошли.
+Локальный полный suite: 178 tests, один stdio startup timeout внутри sandbox.
+Повтор всего startup module вне sandbox: 6 tests OK, включая упавший тест;
+исходный failure сохранён. Это согласуется с ограничением окружения, но
+полный локальный прогон не обозначается как безошибочный.
 
 ## Следующий шаг решения
 
