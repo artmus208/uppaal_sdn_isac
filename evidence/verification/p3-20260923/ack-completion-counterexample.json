@@ -1,0 +1,61 @@
+{
+  "run_id": "p3-20260923-003-14-ack-unconditional-completion",
+  "status": "success",
+  "verdict": "violated",
+  "trace": "14-ack-unconditional-completion-trace1.xml",
+  "terminal_node": {
+    "id": "State395",
+    "location_vector": "LocVec245",
+    "dbm_instance": "DBM395 ",
+    "variable_vector": "varvec.44"
+  },
+  "terminal_values": {
+    "sys.mac_bufferClass": "2",
+    "sys.mac_mac_report_sent": "1",
+    "sys.mac_obs_ack_active": "1",
+    "sys.mac_obs_ack_late": "0"
+  },
+  "clock_bounds": [
+    {
+      "clock1": "sys.#t(0)",
+      "clock2": "sys.#time",
+      "bound": "-7",
+      "comp": "<="
+    },
+    {
+      "clock1": "sys.#t(0)",
+      "clock2": "sys.mac_c_obs_ack",
+      "bound": "0",
+      "comp": "<="
+    },
+    {
+      "clock1": "sys.#t(0)",
+      "clock2": "sys.mac_c_obs_buf",
+      "bound": "0",
+      "comp": "<="
+    },
+    {
+      "clock1": "sys.#time",
+      "clock2": "sys.#t(0)",
+      "bound": "8",
+      "comp": "<="
+    },
+    {
+      "clock1": "sys.mac_c_obs_ack",
+      "clock2": "sys.#t(0)",
+      "bound": "1",
+      "comp": "<="
+    },
+    {
+      "clock1": "sys.mac_c_obs_buf",
+      "clock2": "sys.#t(0)",
+      "bound": "1",
+      "comp": "<="
+    }
+  ],
+  "loop_edges": [
+    "<edge id=\"obs_mac_ObsBufferOverflow_0.Edge1\" from=\"obs_mac_ObsBufferOverflow_0.Idle\" to=\"obs_mac_ObsBufferOverflow_0.Wait\"><guard>mac_bufferClass == mac_B_OVERFLOW</guard><sync>tau</sync><update>mac_c_obs_buf := 0</update></edge>",
+    "<edge id=\"obs_mac_ObsBufferOverflow_0.Edge2\" from=\"obs_mac_ObsBufferOverflow_0.Wait\" to=\"obs_mac_ObsBufferOverflow_0.Idle\"><guard>(mac_mac_report_sent || mac_bufferClass != mac_B_OVERFLOW) &amp;&amp; mac_c_obs_buf &lt;= mac_D_buf_report</guard><sync>tau</sync><update>1</update></edge>"
+  ],
+  "interpretation": "Trace ends with ACK active and the buffer observer Wait/Idle loop enabled: buffer remains OVERFLOW and report_sent remains true; repeat both tau edges at zero delay, resetting only observer clock. This permits time-stopped/Zeno noncompletion and does not establish a deadline violation on time-divergent executions."
+}
