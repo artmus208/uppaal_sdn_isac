@@ -90,7 +90,9 @@ class RecoveryContractTests(unittest.TestCase):
         # Ignore pretty-print whitespace, retain every semantic attribute/label.
         def shape(x):
             return (x.tag, x.attrib, (x.text or '').strip(), [shape(c) for c in x])
-        for name in old.keys() - {diag.REC, diag.OBS}:
+        # #43 deliberately replaces the independent queue-class input. Its
+        # environment semantics have separate queue-contract regressions.
+        for name in old.keys() - {diag.REC, diag.OBS, 'Boundary_E_MAC_LOAD'}:
             self.assertEqual(shape(old[name]), shape(new[name]), name)
         obs = new[diag.OBS]
         self.assertFalse(obs.findall("location/label[@kind='invariant']"))
