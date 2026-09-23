@@ -13,7 +13,7 @@ rows=['| Запрос | BFS, shortest trace | DFS, some trace |','|---|---|---|'
 for x in a:rows.append(f"| `{x['property_id']}` | {status(x)} | {status(index.get(x['property_id']))} |")
 text='''# P3 — результаты проверки frozen baseline
 
-Issue #39, PR #49. **Evidence для review; P3 не принят и не закрыт.**
+Issue #39; PR #49 содержит промежуточный checkpoint, итоговый пакет — PR #50. **Evidence для review; P3 не принят и не закрыт.**
 Полная модель Gate 1 не изменялась. Новых задач и исправлений модели нет.
 
 ## Главный результат
