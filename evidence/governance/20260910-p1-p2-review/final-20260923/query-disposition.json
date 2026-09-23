@@ -1,0 +1,578 @@
+[
+  {
+    "id": "phy-01",
+    "query": "A[] not deadlock",
+    "selected_as": [
+      "C01-deadlock"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "phy-02",
+    "query": "E<> phy_A_PH_0.PHYNormal",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-03",
+    "query": "E<> phy_A_PH_0.PHYSensingDegraded",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-04",
+    "query": "E<> phy_A_PH_0.PHYCommunicationDegraded",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-05",
+    "query": "E<> phy_A_PH_0.PHYJointDegraded",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-06",
+    "query": "A[] (phy_A_PH_0.PHYNormal imply (phy_comm_ok && phy_sensing_qos_ok))",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-07",
+    "query": "A[] (phy_ch_enabled_count <= 1)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-08",
+    "query": "A[] (phy_sq_enabled_count <= 1)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-09",
+    "query": "A[] (phy_A_BM_0.BeamRecover imply phy_c_rec <= phy_D_BM)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-10",
+    "query": "A[] not obs_phy_ObsSenseReport_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-11",
+    "query": "A[] not obs_phy_ObsFreshness_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-12",
+    "query": "A[] not obs_phy_ObsBeamRecovery_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-13",
+    "query": "A[] (phy_ass_ch() imply not phy_A_CH_0.ContractViolation_CH)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-14",
+    "query": "A[] (phy_ass_sig() imply not phy_A_SIG_0.ContractViolation_SIG)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-15",
+    "query": "A[] (phy_ass_bm() imply not phy_A_BM_0.ContractViolation_BM)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-16",
+    "query": "A[] (phy_ass_sq() imply not phy_A_SQ_0.ContractViolation_SQ)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "phy-17",
+    "query": "A[] (phy_ass_ph() imply not phy_A_PH_0.ContractViolation_PH)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-01",
+    "query": "A[] not deadlock",
+    "selected_as": [
+      "C01-deadlock"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "mac-02",
+    "query": "A[] (mac_resourceClass == mac_RES_EXHAUSTED imply !mac_silent_accept)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-03",
+    "query": "A[] (mac_A_SCH_0.WaitPHYAck imply mac_c_phy_ack <= mac_D_phy_ack)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-04",
+    "query": "A[] not obs_mac_ObsPhyAck_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-05",
+    "query": "A[] not obs_mac_ObsQueueCritical_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-06",
+    "query": "A[] not obs_mac_ObsSensingCritical_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-07",
+    "query": "E<> mac_A_SCH_0.SelectMode",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-08",
+    "query": "E<> mac_A_MAC_AGG_0.ReportSent",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "mac-09",
+    "query": "A[] mac_policy_enabled_count >= 1",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-01",
+    "query": "A[] not deadlock",
+    "selected_as": [
+      "C01-deadlock"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "sdn-02",
+    "query": "A[] (sdn_A_RULE_0.RuleInstallPending imply sdn_c_rule <= sdn_D_rule_install)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-03",
+    "query": "A[] (sdn_telemetryClass == sdn_TEL_STALE imply !sdn_optimistic_reconfig)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-04",
+    "query": "A[] (sdn_telemetryClass == sdn_TEL_MISSING imply !sdn_optimistic_reconfig)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-05",
+    "query": "A[] (sdn_recoveryClass == sdn_REC_FAILED imply sdn_failure_report_sent)",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-06",
+    "query": "A[] not obs_sdn_ObsRuleMiss_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-07",
+    "query": "A[] not obs_sdn_ObsRecovery_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-08",
+    "query": "A[] not obs_sdn_ObsAdmission_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-09",
+    "query": "A[] not obs_sdn_ObsStaleTelemetry_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-10",
+    "query": "E<> sdn_A_POLICY_0.Evaluate",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-11",
+    "query": "E<> sdn_A_RULE_0.RuleTimeout",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-12",
+    "query": "E<> sdn_A_REC_0.RecoveryFailed",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "sdn-13",
+    "query": "A[] sdn_policy_enabled_count >= 1",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-01",
+    "query": "A[] not deadlock",
+    "selected_as": [
+      "C01-deadlock"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "app-02",
+    "query": "A[] not obs_app_ObsAdmission_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-03",
+    "query": "A[] not obs_app_ObsWarn_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-04",
+    "query": "A[] not obs_app_ObsViolation_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-05",
+    "query": "A[] not obs_app_ObsFresh_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-06",
+    "query": "A[] not obs_app_ObsUpdate_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-07",
+    "query": "A[] not obs_app_ObsFa_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-08",
+    "query": "A[] not obs_app_ObsMiss_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-09",
+    "query": "A[] not obs_app_ObsSafety_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-10",
+    "query": "A[] app_detection_kpi_consistent()",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-11",
+    "query": "A[] not (app_criticalityClass == app_CRIT_SAFETY && app_admissionClass == app_ADM_DEGRADED && !app_gSafetyAllowsDegraded())",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-12",
+    "query": "E<> app_Req_0.Accepted",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-13",
+    "query": "E<> app_Req_0.AcceptedDegraded",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "app-14",
+    "query": "E<> app_Req_0.Rejected",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_phy_ObsSenseReport_0",
+    "query": "E<> obs_phy_ObsSenseReport_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_phy_ObsFreshness_0",
+    "query": "E<> obs_phy_ObsFreshness_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_phy_ObsBeamRecovery_0",
+    "query": "E<> obs_phy_ObsBeamRecovery_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_mac_ObsPhyAck_0",
+    "query": "E<> obs_mac_ObsPhyAck_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_mac_ObsQueueCritical_0",
+    "query": "E<> obs_mac_ObsQueueCritical_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_mac_ObsSensingCritical_0",
+    "query": "E<> obs_mac_ObsSensingCritical_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_mac_ObsBufferOverflow_0",
+    "query": "E<> obs_mac_ObsBufferOverflow_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_mac_ObsMacReportFreshness_0",
+    "query": "E<> obs_mac_ObsMacReportFreshness_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_sdn_ObsRuleMiss_0",
+    "query": "E<> obs_sdn_ObsRuleMiss_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_sdn_ObsRecovery_0",
+    "query": "E<> obs_sdn_ObsRecovery_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_sdn_ObsAdmission_0",
+    "query": "E<> obs_sdn_ObsAdmission_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_sdn_ObsStaleTelemetry_0",
+    "query": "E<> obs_sdn_ObsStaleTelemetry_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_sdn_ObsCommandAck_0",
+    "query": "E<> obs_sdn_ObsCommandAck_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_sdn_ObsSensingDecision_0",
+    "query": "E<> obs_sdn_ObsSensingDecision_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsAdmission_0",
+    "query": "E<> obs_app_ObsAdmission_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsWarn_0",
+    "query": "E<> obs_app_ObsWarn_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsViolation_0",
+    "query": "E<> obs_app_ObsViolation_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsFresh_0",
+    "query": "E<> obs_app_ObsFresh_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsUpdate_0",
+    "query": "E<> obs_app_ObsUpdate_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsFa_0",
+    "query": "E<> obs_app_ObsFa_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsMiss_0",
+    "query": "E<> obs_app_ObsMiss_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "reach-obs_app_ObsSafety_0",
+    "query": "E<> obs_app_ObsSafety_0.Violation",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "integrated-01",
+    "query": "A[] not bus_protocol_error",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "integrated-02",
+    "query": "E<> app_Req_0.Accepted",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "integrated-03",
+    "query": "E<> bus_admission_timeout",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "integrated-04",
+    "query": "E<> bus_schedule_loss",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "integrated-05",
+    "query": "E<> bus_fault_delivered",
+    "selected_as": [],
+    "disposition": "diagnostic_only_no_acceptance_claim"
+  },
+  {
+    "id": "integrated-06",
+    "query": "A[] not deadlock",
+    "selected_as": [
+      "C01-deadlock"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "queue-capacity",
+    "query": "A[] !mac_queue_overflow_seen",
+    "selected_as": [
+      "C01-queue"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "queue-nonempty",
+    "query": "E<> mac_queue_q > 0",
+    "selected_as": [
+      "queue-nonempty"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "queue-full",
+    "query": "E<> mac_queue_q == mac_queue_K && !mac_queue_overflow_seen",
+    "selected_as": [
+      "queue-full"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "queue-overflow",
+    "query": "E<> mac_queue_overflow_seen",
+    "selected_as": [
+      "queue-overflow"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "recovery-attempts-bounds",
+    "query": "A[] !sdn_attempt_bad",
+    "selected_as": [
+      "C01-attempts"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "recovery-attempts-protocol",
+    "query": "A[] !sdn_attempt_protocol_error",
+    "selected_as": [
+      "attempt-protocol"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "recovery-attempts-start",
+    "query": "E<> sdn_attempt_active",
+    "selected_as": [
+      "attempt-start"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "recovery-attempts-primary",
+    "query": "E<> sdn_attempt_primary == 1",
+    "selected_as": [
+      "attempt-primary"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "recovery-attempts-rollback",
+    "query": "E<> sdn_attempt_rollback == 1",
+    "selected_as": [
+      "attempt-rollback"
+    ],
+    "disposition": "selected"
+  },
+  {
+    "id": "recovery-attempts-two",
+    "query": "E<> sdn_attempt_total == 2",
+    "selected_as": [
+      "attempt-two"
+    ],
+    "disposition": "selected"
+  }
+]
