@@ -1,0 +1,92 @@
+[
+  {
+    "id": "C01-deadlock",
+    "query": "A[] not deadlock",
+    "role": "structural",
+    "verdict": null
+  },
+  {
+    "id": "C01-queue",
+    "query": "A[] !mac_queue_overflow_seen",
+    "role": "structural",
+    "verdict": null
+  },
+  {
+    "id": "C01-attempts",
+    "query": "A[] !sdn_attempt_bad",
+    "role": "structural",
+    "verdict": null
+  },
+  {
+    "id": "attempt-protocol",
+    "query": "A[] !sdn_attempt_protocol_error",
+    "role": "recorder-validity",
+    "verdict": null
+  },
+  {
+    "id": "C02-ack-elapsed",
+    "query": "A[] (!mac_obs_ack_late && (mac_obs_ack_active imply mac_c_obs_ack <= mac_D_phy_ack))",
+    "role": "bounded-response-safety",
+    "verdict": null
+  },
+  {
+    "id": "queue-nonempty",
+    "query": "E<> mac_queue_q > 0",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "queue-full",
+    "query": "E<> mac_queue_q == mac_queue_K && !mac_queue_overflow_seen",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "queue-overflow",
+    "query": "E<> mac_queue_overflow_seen",
+    "role": "negative-result-diagnostic",
+    "verdict": null
+  },
+  {
+    "id": "attempt-start",
+    "query": "E<> sdn_attempt_active",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "attempt-primary",
+    "query": "E<> sdn_attempt_primary == 1",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "attempt-rollback",
+    "query": "E<> sdn_attempt_rollback == 1",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "attempt-two",
+    "query": "E<> sdn_attempt_total == 2",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "ack-start",
+    "query": "E<> mac_obs_ack_active",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "ack-timeout",
+    "query": "E<> mac_phy_ack_timeout",
+    "role": "nonvacuity",
+    "verdict": null
+  },
+  {
+    "id": "ack-unconditional-completion",
+    "query": "mac_obs_ack_active --> !mac_obs_ack_active",
+    "role": "completion-diagnostic-not-time-divergence-restricted",
+    "verdict": null
+  }
+]

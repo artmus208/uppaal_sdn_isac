@@ -44,6 +44,21 @@ class RunStorageTests(unittest.TestCase):
             self.assertTrue(checker.check_run_storage(text))
 
 
+class BaselineStateTests(unittest.TestCase):
+    def test_pending_candidate_and_inconsistent_freeze(self):
+        text = (ROOT / "manifests/baselines/reviewer-r1.yaml").read_text()
+        self.assertEqual(checker.check_baseline_state(text), [])
+        text = text.replace("status: frozen", "status: candidate").replace("frozen: true", "frozen: false").replace("status: accepted", "status: pending").replace("passed: true", "passed: false")
+        frozen = text.replace("status: candidate", "status: frozen").replace("frozen: false", "frozen: true").replace("status: pending", "status: accepted").replace("passed: false", "passed: true")
+        self.assertEqual(checker.check_baseline_state(frozen), [])
+        for before, after in (("frozen: false", "frozen: true"),
+                              ("passed: false", "passed: true"),
+                              ("P1_accepted: true", "P1_accepted: false"),
+                              ("worktree_dirty_at_capture: false", "worktree_dirty_at_capture: true")):
+            with self.subTest(before=before):
+                self.assertTrue(checker.check_baseline_state(text.replace(before, after)))
+
+
 class HashAuditTests(unittest.TestCase):
     def setUp(self):
         # No extra dependency is required by the ordinary project/CI suite.

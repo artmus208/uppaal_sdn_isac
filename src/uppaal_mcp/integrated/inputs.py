@@ -24,6 +24,11 @@ SOURCE_PIN_REVISIONS = {
 }
 # Explicit operational context only; scientific manifests and all model inputs
 # remain strict pins. Keep both historical and observed bytes in the evidence.
+# The old baseline is a historical generation input. A superseding Gate record
+# must not create a circular hash dependency on this generator. Audit the active
+# manifest separately; never weaken the pinned historical/scientific inputs.
+BASELINE_PATH = 'manifests/baselines/reviewer-r1.yaml'
+HISTORICAL_BASELINE = 'evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml'
 CONTEXT_DOCUMENTS = frozenset({'AGENTS.md'})
 
 
@@ -46,6 +51,16 @@ def load(root: Path):
     inventory = docs['inventory.json']
     for name, record in inventory['sources'].items():
         raw = (root / name).read_bytes()
+        if name == BASELINE_PATH:
+            historical = (root / HISTORICAL_BASELINE).read_bytes()
+            if sha(historical) != record['sha256']:
+                raise ValueError('pinned historical baseline changed')
+            provenance[HISTORICAL_BASELINE] = record['sha256']
+            context[name] = {'pinned_sha256': record['sha256'],
+                             'actual_sha256': sha(raw),
+                             'pinned_path': HISTORICAL_BASELINE,
+                             'role': 'active_governance_record_audited_separately'}
+            continue
         if name in CONTEXT_DOCUMENTS:
             context[name] = {'pinned_sha256': record['sha256'],
                              'actual_sha256': sha(raw),

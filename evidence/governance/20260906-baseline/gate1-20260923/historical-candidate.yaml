@@ -1,0 +1,241 @@
+schema_version: "1.0"
+kind: model-baseline
+
+metadata:
+  id: reviewer-r1-candidate
+  status: candidate
+  maturity: draft
+  frozen: false
+  captured_on: "2026-09-06"
+  purpose: Candidate baseline for the reviewer-response work described by manifests/v1.md.
+
+repository:
+  url: https://github.com/artmus208/uppaal_sdn_isac
+  branch: read
+  commit: c731b79ca1a8a02cc158c2bee988023d8b8f0a4f
+  remote_ref: origin/read
+  remote_head_at_capture: c731b79ca1a8a02cc158c2bee988023d8b8f0a4f
+  snapshot_basis: current_worktree
+  worktree_dirty_at_capture: true
+  commit_is_exact_snapshot: false
+  warning: The hashes below describe current file bytes, including modified and untracked files; commit c731b79 is provenance, not a frozen reproducible snapshot.
+
+hashing:
+  algorithm: sha256
+  encoding_rule: hash_exact_file_bytes
+  common_hashes:
+    source_hash:
+      value: 7ef2c09dbcb2e435696e4f67a769cbf9aff5db2e771dc3b080d6745013ec2e86
+      construction: sha256 of concatenated sha256sum records in the listed order
+      inputs:
+        - levels_tex/Application_service_layer_formalization.tex
+        - levels_tex/MAC_resource_scheduling_formalization.tex
+        - levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
+        - levels_tex/SDN_RIC_control_plane_formalization.tex
+    generator_hash:
+      value: c663808ca7258029f530befdcdf03d7f3d6bffb6916630cf21ffd31661302ac2
+      construction: sha256 of concatenated sha256sum records for the listed files in bytewise path order
+      inputs:
+        - src/uppaal_mcp/layout_core.py
+        - src/uppaal_mcp/mac/alpha.py
+        - src/uppaal_mcp/mac/defaults.py
+        - src/uppaal_mcp/mac/generator.py
+        - src/uppaal_mcp/mac/ir.py
+        - src/uppaal_mcp/mac/layout.py
+        - src/uppaal_mcp/mac/property_pack.py
+        - src/uppaal_mcp/phy/alpha.py
+        - src/uppaal_mcp/phy/defaults.py
+        - src/uppaal_mcp/phy/generator.py
+        - src/uppaal_mcp/phy/ir.py
+        - src/uppaal_mcp/phy/layout.py
+        - src/uppaal_mcp/phy/property_pack.py
+        - src/uppaal_mcp/sdn/alpha.py
+        - src/uppaal_mcp/sdn/defaults.py
+        - src/uppaal_mcp/sdn/generator.py
+        - src/uppaal_mcp/sdn/ir.py
+        - src/uppaal_mcp/sdn/layout.py
+        - src/uppaal_mcp/sdn/property_pack.py
+      coverage: candidate PHY, MAC, and SDN model/query generation; Application and integrated generators are absent
+      scope: current_worktree
+    usage_rule: P3 and P4 runs must share source_hash and generator_hash; model_hash and query_hash are recorded separately for every generated configuration.
+
+coordination_inputs:
+  scientific_plan:
+    path: manifests/v1.md
+    sha256: f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075
+    git_state: untracked
+  reviewer_comments:
+    path: rewievs/18100004273 - Comments for authors.docx
+    sha256: cc3d28d486710303d46eb81563804b381cdb26abc61b4927bf1e4d16e0da5875
+    git_state: untracked
+
+manuscript:
+  submitted_pdf:
+    path: pdfs/018100004273.pdf
+    sha256: 31ebd85a51c3ccf858b46088d3e94db11e99ac533e0e130148a0be451efae109
+    git_state: untracked
+  editable_source:
+    path: levels_tex/samplepaper.tex
+    sha256: 7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f
+    git_state: modified
+  layer_sources:
+    application:
+      path: levels_tex/Application_service_layer_formalization.tex
+      sha256: 44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807
+      git_state: clean
+    mac:
+      path: levels_tex/MAC_resource_scheduling_formalization.tex
+      sha256: 262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527
+      git_state: clean
+    phy:
+      path: levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
+      sha256: b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df
+      git_state: clean
+    sdn:
+      path: levels_tex/SDN_RIC_control_plane_formalization.tex
+      sha256: c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812
+      git_state: clean
+
+model_topology:
+  declared_article_composition: PHY || MAC || SDN || APP || ENV || OBS
+  observed_repository_state: separate_closed_layer_projections_and_application_xml
+  integrated_model:
+    present: false
+    path: null
+    sha256: null
+  interface_contract:
+    present: false
+    path: null
+    sha256: null
+  warning: The per-layer files below must not be represented as a verified integrated four-layer model.
+
+models:
+  phy:
+    status: candidate_projection
+    model:
+      path: .uppaal_mcp_workspace/phy_generated/model.xml
+      sha256: d0b5959289a77f0520006d960f59de7811e266ee6ec4273e92cf946177f4e539
+      git_state: modified
+    queries:
+      path: .uppaal_mcp_workspace/phy_generated/queries.q
+      sha256: 76973af1e87c5f0605c231ddc03d1aed5a56b582fea5b43e49b12d925388d9de
+      git_state: modified
+    generator:
+      path: src/uppaal_mcp/phy/generator.py
+      sha256: e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7
+      git_state: clean
+
+  mac:
+    status: candidate_projection
+    model:
+      path: .uppaal_mcp_workspace/mac_generated/model.xml
+      sha256: 85b73729d545750cbcfcd72ed0fc65f551f6118c9a1ec9a55f8ba24a4db96e1a
+      git_state: modified
+    queries:
+      path: .uppaal_mcp_workspace/mac_generated/queries.q
+      sha256: 1d3ba5fd72447d66ae18aefb4bceb4a620564e727da9898b2304c6e4c0f3845d
+      git_state: modified
+    generator:
+      path: src/uppaal_mcp/mac/generator.py
+      sha256: 71fbfd14a40a38a4b47f1681cc38842fb4e22748630bb6cc5c6fe4ba1471956a
+      git_state: modified
+
+  sdn:
+    status: candidate_projection
+    model:
+      path: .uppaal_mcp_workspace/sdn_generated_smoke/model.xml
+      sha256: af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de
+      git_state: clean
+    queries:
+      path: .uppaal_mcp_workspace/sdn_generated_smoke/queries.q
+      sha256: 8bff679ed75692568b79391b3ccfeceda67ae549caa0844215447813527a2f31
+      git_state: clean
+    generator:
+      path: src/uppaal_mcp/sdn/generator.py
+      sha256: bd5bd16b79cd2b4e3a46420f1b2bc57e0577b1c593c63d4fd23a0b7230085580
+      git_state: modified
+    duplicate_observation:
+      note: sdn_report_smoke currently has byte-identical model and query files.
+      model_sha256: af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de
+      queries_sha256: 8bff679ed75692568b79391b3ccfeceda67ae549caa0844215447813527a2f31
+
+  application:
+    status: standalone_candidate_without_registered_generator
+    model:
+      path: .uppaal_mcp_workspace/Application_service_layer_uppaal.xml
+      sha256: 742259bbdeec6c8938d836f901e5356424400599e79894fd1546dd9e619cc9b2
+      git_state: modified
+    queries:
+      source: embedded_in_model_xml
+      path: null
+      sha256: null
+    generator:
+      present: false
+      path: null
+      sha256: null
+
+generator_runtime:
+  verifyta_wrapper:
+    path: src/uppaal_mcp/verifyta.py
+    sha256: 4fe19b7dd68fbd10de8e8a615ef946b8d17a8ff457ffef0ad23c25b92c052f8a
+    git_state: clean
+  mcp_server:
+    path: src/uppaal_mcp/server.py
+    sha256: 7420714fa4818f0b011f5f7e70a8924a087fbbca801e342c78b67a9036a8d648
+    git_state: clean
+
+verification_configuration:
+  uppaal:
+    version: "5.0.0"
+    availability: executable_observed
+  license:
+    status: blocked
+    observation: verifyta cannot acquire or reach the license from the current WSL execution context
+  accepted_verification_runs: []
+  canonical_parameter_set: null
+  canonical_instance_vector: null
+  canonical_query_set: null
+  readiness: blocked
+  blockers:
+    - no_integrated_four_layer_model
+    - no_accepted_interface_contract
+    - no_frozen_parameter_set
+    - no_frozen_instance_vector
+    - no_frozen_query_set
+    - verifyta_license_unavailable_in_current_execution_context
+    - snapshot_contains_modified_and_untracked_inputs
+
+hardware:
+  global_description: null
+  policy: record_hardware_per_run
+  rationale: Verification and scalability measurements may run on different machines; hardware belongs to run evidence, not to the baseline.
+  required_per_run_fields:
+    - operating_system
+    - execution_environment
+    - cpu_model
+    - logical_cpu_count
+    - ram_bytes
+    - resource_limit
+
+gate_1:
+  status: pending
+  passed: false
+  required_before_freeze:
+    - commit_all_selected_inputs
+    - create_and_accept_integrated_model
+    - create_and_accept_cross_layer_interface_contract
+    - resolve_channel_kind_and_name_mismatches
+    - pin_parameter_set
+    - pin_instance_vector
+    - pin_query_set
+    - establish_working_verifyta_license_path
+    - regenerate_hashes_from_a_clean_commit
+  freeze_rule: Set metadata.frozen to true only in a reviewed commit where every required item is satisfied and all hashes match exact committed bytes.
+  transition:
+    from: candidate
+    to: frozen
+    owner_role: coordinator
+    occurs_after:
+      - P1_accepted
+      - P2_accepted
+    note: Gate 1 freezes P0; P0 frozen is not a prerequisite of Gate 1.

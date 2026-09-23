@@ -1,0 +1,38 @@
+{
+  "gate": "Gate 1 — Frozen model baseline",
+  "status": "accepted",
+  "user_statement": "принимаю гейт 1",
+  "decision_actor": "user/integrator in this session",
+  "recorded_by": "vadimnbkg",
+  "recorded_at_utc": "2026-09-23T11:08:35.638447+00:00",
+  "accepted_package_commit": "19d9132c0209fbe76c8c65b331c0d4f61eab94b6",
+  "base_commit": "a7a67f0c7ac74d6a7d4ccb2c5e9fbf12954c8150",
+  "source_commit": "a190e10df1b7ce4923f0d18c664b4eef8715eb58",
+  "baseline_id": "reviewer-r1-gate1-20260923",
+  "source_hash": "e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a",
+  "generator_hash": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
+  "model": {
+    "present": true,
+    "path": "evidence/governance/20260906-baseline/gate1-20260923/model.xml",
+    "sha256": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2"
+  },
+  "parameters": {
+    "path": "evidence/governance/20260906-baseline/gate1-20260923/parameters.json",
+    "sha256": "da4f1bd09a4f3892f87da7f4fc321515cca7a70899c03466899d13cfc497a31b"
+  },
+  "instance_vector": {
+    "path": "evidence/governance/20260906-baseline/gate1-20260923/instance-vector.json",
+    "sha256": "9b7162e15d1cf681a766cce60a9e92e2ff627b1be1085c9753828a90a18f3ca0"
+  },
+  "queries": {
+    "path": "evidence/governance/20260906-baseline/gate1-20260923/selected-queries.q",
+    "sha256": "3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18"
+  },
+  "candidate_queries": {
+    "path": "evidence/governance/20260906-baseline/gate1-20260923/candidate-queries.q",
+    "sha256": "97aff5896eba43a49c41fa45030550e42be63fb5a555803aef6d0dbbe67b1ab9"
+  },
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+  "decision_record": "https://github.com/artmus208/uppaal_sdn_isac/issues/6",
+  "limitations": "Accepted P1/P2 scope retained. No new model checking or C01/C02 claim. Agent records user decision, not self-approval."
+}

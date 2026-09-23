@@ -2,9 +2,9 @@ schema_version: '1.0'
 kind: model-baseline
 metadata:
   id: reviewer-r1-gate1-20260923
-  status: frozen
-  maturity: accepted
-  frozen: true
+  status: candidate
+  maturity: accepted_inputs_pending_gate
+  frozen: false
   captured_on: '2026-09-23'
 repository:
   url: https://github.com/artmus208/uppaal_sdn_isac
@@ -222,21 +222,18 @@ verification_configuration:
   claim_scope:
     path: evidence/governance/20260910-p1-p2-review/final-20260923/README.md
     sha256: 354a515504dabf6df2c80750e4cce4ffff49bc51def6faace127c4483d5b7631
-  readiness: gate_1_accepted
+  readiness: pending_gate_decision
   note: 15 selected obligations/diagnostics; no full C01/C02 result claimed.
 hardware:
   policy: record_hardware_per_run
 gate_1:
-  status: accepted
-  passed: true
+  status: pending
+  passed: false
   P1_accepted: true
   P2_accepted: true
   acceptance_record: https://github.com/artmus208/uppaal_sdn_isac/pull/47
   decision_record: https://github.com/artmus208/uppaal_sdn_isac/issues/6
-  remaining: []
+  remaining:
+  - explicit_integrator_gate_decision
   transition: Only after explicit decision set metadata status=frozen/frozen=true
     and gate status=accepted/passed=true; retain exact input hashes.
-  accepted_package_commit: 19d9132c0209fbe76c8c65b331c0d4f61eab94b6
-  decision_actor: user/integrator in this session
-  recorded_by: vadimnbkg
-  recorded_at_utc: '2026-09-23T11:08:35.638447+00:00'

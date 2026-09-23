@@ -160,7 +160,7 @@ class IntegratedCandidateTests(unittest.TestCase):
         from uppaal_mcp.integrated.generator import generate
         original = Path.read_bytes
         for suffix in ('phy/defaults.py', 'instance-vector.json', 'inventory.json',
-                       'Application_service_layer_uppaal.xml', 'reviewer-r1.yaml',
+                       'Application_service_layer_uppaal.xml', 'historical-candidate.yaml',
                        'collaboration-v1.yaml', 'v1.md'):
             def changed(path, suffix=suffix):
                 raw = original(path)
@@ -188,6 +188,26 @@ class IntegratedCandidateTests(unittest.TestCase):
         self.assertEqual(context['pinned_sha256'],
                          self.candidate.metadata['context_document_hashes']['AGENTS.md']['pinned_sha256'])
         self.assertNotEqual(context['actual_sha256'], context['pinned_sha256'])
+
+    def test_baseline_supersession_preserves_exact_accepted_model(self):
+        from unittest.mock import patch
+        import hashlib
+        from uppaal_mcp.integrated.generator import generate
+        from uppaal_mcp.integrated.inputs import BASELINE_PATH, HISTORICAL_BASELINE
+        original = Path.read_bytes
+        def changed(path):
+            return b'new governance decision\n' if path == ROOT / BASELINE_PATH else original(path)
+        with patch.object(Path, 'read_bytes', changed):
+            candidate = generate(ROOT)
+        archive = ROOT / 'evidence/governance/20260906-baseline/gate1-20260923'
+        self.assertEqual(candidate.model_xml.encode(), (archive / 'model.xml').read_bytes())
+        self.assertEqual(candidate.queries.encode(), (archive / 'candidate-queries.q').read_bytes())
+        self.assertNotIn(BASELINE_PATH, candidate.metadata['source_hashes'])
+        self.assertEqual(candidate.metadata['source_hashes'][HISTORICAL_BASELINE],
+                         hashlib.sha256((ROOT / HISTORICAL_BASELINE).read_bytes()).hexdigest())
+        self.assertEqual(candidate.metadata['context_document_hashes'][BASELINE_PATH]['actual_sha256'],
+                         hashlib.sha256(b'new governance decision\n').hexdigest())
+        # This permits generation, not approval/validity of the new governance record.
 
     def test_integrated_identifier_tokens_preserve_shadowing_and_members(self):
         from uppaal_mcp.integrated.xmlutil import rename
