@@ -1,0 +1,825 @@
+$ /tmp/uppaal-issue45/.venv/bin/python -B -m unittest discover -s tests -v
+test_expected_negative_static_benchmarks (test_cli.CliExitTests.test_expected_negative_static_benchmarks) ... ok
+test_failed_static_benchmark_aggregate (test_cli.CliExitTests.test_failed_static_benchmark_aggregate) ... ok
+test_layer_verification_dispatch (test_cli.CliExitTests.test_layer_verification_dispatch) ... ok
+test_list_examples_module_and_console (test_cli.CliExitTests.test_list_examples_module_and_console) ... ok
+test_missing_tool_verify (test_cli.CliExitTests.test_missing_tool_verify) ... ok
+test_missing_tool_version_module_and_console (test_cli.CliExitTests.test_missing_tool_version_module_and_console) ... ok
+test_nested_tool_failures_override_positive_summary (test_cli.CliExitTests.test_nested_tool_failures_override_positive_summary) ... ok
+test_scenario_expectations_and_aggregate_failures (test_cli.CliExitTests.test_scenario_expectations_and_aggregate_failures) ... ok
+test_static_only_property_packs (test_cli.CliExitTests.test_static_only_property_packs) ... ok
+test_static_validation_success_and_failure (test_cli.CliExitTests.test_static_validation_success_and_failure) ... ok
+test_verify_response_exit_codes (test_cli.CliExitTests.test_verify_response_exit_codes) ... ok
+test_version_response_exit_codes (test_cli.CliExitTests.test_version_response_exit_codes) ... ok
+test_explicit_path_has_precedence_over_environment_and_discovery (test_config.ConfigTests.test_explicit_path_has_precedence_over_environment_and_discovery) ... ok
+test_explicit_windows_path_normalization (test_config.ConfigTests.test_explicit_windows_path_normalization) ... ok
+test_legacy_environment_path_is_supported (test_config.ConfigTests.test_legacy_environment_path_is_supported) ... ok
+test_missing_executable_keeps_legacy_fallback_for_runner_diagnostic (test_config.ConfigTests.test_missing_executable_keeps_legacy_fallback_for_runner_diagnostic) ... ok
+test_native_windows_install_discovery (test_config.ConfigTests.test_native_windows_install_discovery) ... ok
+test_path_exe_name_is_tried_after_verifyta (test_config.ConfigTests.test_path_exe_name_is_tried_after_verifyta) ... ok
+test_path_precedes_existing_install_locations_on_both_platforms (test_config.ConfigTests.test_path_precedes_existing_install_locations_on_both_platforms) ... ok
+test_preferred_environment_path_has_precedence (test_config.ConfigTests.test_preferred_environment_path_has_precedence) ... ok
+test_windows_discovery_does_not_choose_a_wsl_location (test_config.ConfigTests.test_windows_discovery_does_not_choose_a_wsl_location) ... ok
+test_workspace_and_timeout_environment_and_explicit_overrides (test_config.ConfigTests.test_workspace_and_timeout_environment_and_explicit_overrides) ... ok
+test_wsl_legacy_install_discovery (test_config.ConfigTests.test_wsl_legacy_install_discovery) ... ok
+test_pending_candidate_and_inconsistent_freeze (test_coordination.BaselineStateTests.test_pending_candidate_and_inconsistent_freeze) ... ok
+test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... ok
+test_invalid_input_and_construction (test_coordination.HashAuditTests.test_invalid_input_and_construction) ... ok
+test_missing_input_and_immutable_output (test_coordination.HashAuditTests.test_missing_input_and_immutable_output) ... Hash audit error: [Errno 17] File exists: '/tmp/tmp9i1hhki6/result.json'
+ok
+test_canonical_storage (test_coordination.RunStorageTests.test_canonical_storage) ... ok
+test_invalid_mappings (test_coordination.RunStorageTests.test_invalid_mappings) ... ok
+test_expected_negative_control_is_success (test_integrated_ack_observer.AckEvidenceRunnerTests.test_expected_negative_control_is_success) ... ok
+test_missing_executable_is_recorded_as_error (test_integrated_ack_observer.AckEvidenceRunnerTests.test_missing_executable_is_recorded_as_error) ... ok
+test_missing_verdict_fails_runner (test_integrated_ack_observer.AckEvidenceRunnerTests.test_missing_verdict_fails_runner) ... ok
+test_nonzero_command_fails_runner (test_integrated_ack_observer.AckEvidenceRunnerTests.test_nonzero_command_fails_runner) ... ok
+test_timeout_keeps_partial_output_and_fails_runner (test_integrated_ack_observer.AckEvidenceRunnerTests.test_timeout_keeps_partial_output_and_fails_runner) ... ok
+test_unexpected_verdict_with_zero_exit_fails_runner (test_integrated_ack_observer.AckEvidenceRunnerTests.test_unexpected_verdict_with_zero_exit_fails_runner) ... ok
+test_completion_partition_preserves_functional_edges (test_integrated_ack_observer.AckObserverTests.test_completion_partition_preserves_functional_edges) ... ok
+test_late_completion_is_retained_across_next_send (test_integrated_ack_observer.AckObserverTests.test_late_completion_is_retained_across_next_send) ... ok
+test_preparation_does_not_start_observation (test_integrated_ack_observer.AckObserverTests.test_preparation_does_not_start_observation) ... ok
+test_successive_commands_reset_only_at_send (test_integrated_ack_observer.AckObserverTests.test_successive_commands_reset_only_at_send) ... ok
+test_timely_ack_and_timeout_survive_delayed_observer (test_integrated_ack_observer.AckObserverTests.test_timely_ack_and_timeout_survive_delayed_observer) ... ok
+test_corrected_source_is_recorded_in_provenance (test_integrated_pin_revision.PinRevisionTests.test_corrected_source_is_recorded_in_provenance) ... ok
+test_old_and_unreviewed_sources_are_rejected (test_integrated_pin_revision.PinRevisionTests.test_old_and_unreviewed_sources_are_rejected) ... ok
+test_every_queue_mode_arrival_service_boundary (test_integrated_queue_contract.QueueContractTests.test_every_queue_mode_arrival_service_boundary) ... ok
+test_full_queue_arrival_is_enabled_and_records_overflow (test_integrated_queue_contract.QueueContractTests.test_full_queue_arrival_is_enabled_and_records_overflow) ... ok
+test_metadata_and_candidate_properties_expose_new_semantics (test_integrated_queue_contract.QueueContractTests.test_metadata_and_candidate_properties_expose_new_semantics) ... ok
+test_nonqueue_samples_and_offer_protocol_are_preserved (test_integrated_queue_contract.QueueContractTests.test_nonqueue_samples_and_offer_protocol_are_preserved) ... ok
+test_only_load_tick_writes_queue_and_class (test_integrated_queue_contract.QueueContractTests.test_only_load_tick_writes_queue_and_class) ... ok
+test_optional_service_permits_filling_from_empty (test_integrated_queue_contract.QueueContractTests.test_optional_service_permits_filling_from_empty) ... ok
+test_service_before_arrival_at_capacity_and_empty_no_underflow (test_integrated_queue_contract.QueueContractTests.test_service_before_arrival_at_capacity_and_empty_no_underflow) ... ok
+test_candidate_queries_and_metadata_do_not_claim_verification (test_integrated_recovery_attempts.RecoveryAttemptsTests.test_candidate_queries_and_metadata_do_not_claim_verification) ... ok
+test_erasing_attempts_recovers_accepted_composition (test_integrated_recovery_attempts.RecoveryAttemptsTests.test_erasing_attempts_recovers_accepted_composition) ... ok
+test_every_actual_event_has_exactly_one_call_and_no_other_writer (test_integrated_recovery_attempts.RecoveryAttemptsTests.test_every_actual_event_has_exactly_one_call_and_no_other_writer) ... ok
+test_fallback_is_local_in_all_three_dispatch_phases (test_integrated_recovery_contract.RecoveryContractTests.test_fallback_is_local_in_all_three_dispatch_phases) ... ok
+test_only_recovery_templates_change_and_observer_is_passive (test_integrated_recovery_contract.RecoveryContractTests.test_only_recovery_templates_change_and_observer_is_passive) ... ok
+test_policy_and_recording_compose_as_separate_layers (test_integrated_recovery_contract.RecoveryContractTests.test_policy_and_recording_compose_as_separate_layers) ... ok
+test_recorder_partition_erases_to_original_functional_edges (test_integrated_recovery_contract.RecoveryContractTests.test_recorder_partition_erases_to_original_functional_edges) ... ok
+test_report_is_separate_from_local_rollback_failure (test_integrated_recovery_contract.RecoveryContractTests.test_report_is_separate_from_local_rollback_failure) ... ok
+test_alpha_profile_and_continuous_guard_rejection (test_mac_layer.MacLayerTests.test_alpha_profile_and_continuous_guard_rejection) ... ok
+test_article_golden_fixtures (test_mac_layer.MacLayerTests.test_article_golden_fixtures) ... ok
+test_benchmark_suite_positive_and_broken (test_mac_layer.MacLayerTests.test_benchmark_suite_positive_and_broken) ... ok
+test_contract_validation (test_mac_layer.MacLayerTests.test_contract_validation) ... ok
+test_extract_contract_from_article (test_mac_layer.MacLayerTests.test_extract_contract_from_article) ... ok
+test_generated_model_validates_static_and_generic (test_mac_layer.MacLayerTests.test_generated_model_validates_static_and_generic) ... ok
+test_generation_modes (test_mac_layer.MacLayerTests.test_generation_modes) ... ok
+test_property_pack_and_static_verify (test_mac_layer.MacLayerTests.test_property_pack_and_static_verify) ... ok
+test_readable_layout_has_separated_labels_and_loop_lanes (test_mac_layer.MacLayerTests.test_readable_layout_has_separated_labels_and_loop_lanes) ... ok
+test_reports_include_policy_map (test_mac_layer.MacLayerTests.test_reports_include_policy_map) ... ok
+test_import_failure_without_distribution_metadata_keeps_cause (test_mcp_startup.McpDependencyDiagnosticsTests.test_import_failure_without_distribution_metadata_keeps_cause) ... ok
+test_missing_fastmcp_api_is_reported_as_incompatible (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_fastmcp_api_is_reported_as_incompatible) ... ok
+test_missing_fastmcp_symbol_preserves_import_error (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_fastmcp_symbol_preserves_import_error) ... ok
+test_missing_sdk_is_reported_as_missing (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_sdk_is_reported_as_missing) ... ok
+test_missing_transitive_dependency_is_not_reported_as_missing_sdk (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_transitive_dependency_is_not_reported_as_missing_sdk) ... ok
+test_server_initializes_and_lists_registered_tools (test_mcp_startup.McpStdioStartupTests.test_server_initializes_and_lists_registered_tools) ... Processing request of type ListToolsRequest
+ok
+test_local_path_accepts_windows_path_under_wsl (test_paths.PathTests.test_local_path_accepts_windows_path_under_wsl) ... ok
+test_windows_path_detection (test_paths.PathTests.test_windows_path_detection) ... ok
+test_windows_to_wsl_path (test_paths.PathTests.test_windows_to_wsl_path) ... ok
+test_wsl_to_windows_path (test_paths.PathTests.test_wsl_to_windows_path) ... ok
+test_alpha_rejects_continuous_guard_tokens (test_phy_layer.PhyLayerTests.test_alpha_rejects_continuous_guard_tokens) ... ok
+test_article_contract_golden_fixture (test_phy_layer.PhyLayerTests.test_article_contract_golden_fixture) ... ok
+test_article_generated_model_and_queries_golden_fixtures (test_phy_layer.PhyLayerTests.test_article_generated_model_and_queries_golden_fixtures) ... ok
+test_article_latex_extractor_flags_missing_a_env (test_phy_layer.PhyLayerTests.test_article_latex_extractor_flags_missing_a_env) ... ok
+test_article_latex_extractor_has_complete_evidence (test_phy_layer.PhyLayerTests.test_article_latex_extractor_has_complete_evidence) ... ok
+test_benchmark_models_expose_expected_static_validation (test_phy_layer.PhyLayerTests.test_benchmark_models_expose_expected_static_validation) ... ok
+test_benchmark_suite_covers_positive_and_broken_models (test_phy_layer.PhyLayerTests.test_benchmark_suite_covers_positive_and_broken_models) ... ok
+test_channel_semantics_check_accepts_generated_model (test_phy_layer.PhyLayerTests.test_channel_semantics_check_accepts_generated_model) ... ok
+test_compact_observer_scenarios_generate_valid_models (test_phy_layer.PhyLayerTests.test_compact_observer_scenarios_generate_valid_models) ... ok
+test_default_contract_has_closed_system_components (test_phy_layer.PhyLayerTests.test_default_contract_has_closed_system_components) ... ok
+test_diagram_export_includes_dot_svg_and_maps (test_phy_layer.PhyLayerTests.test_diagram_export_includes_dot_svg_and_maps) ... ok
+test_explain_counterexample_uses_parsed_trace (test_phy_layer.PhyLayerTests.test_explain_counterexample_uses_parsed_trace) ... ok
+test_extract_contract_returns_serializable_ir (test_phy_layer.PhyLayerTests.test_extract_contract_returns_serializable_ir) ... ok
+test_generated_model_contains_required_templates_and_queries (test_phy_layer.PhyLayerTests.test_generated_model_contains_required_templates_and_queries) ... ok
+test_generated_model_validator_rejects_active_observer_sync (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_active_observer_sync) ... ok
+test_generated_model_validator_rejects_bad_beam_failure_timeout (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_bad_beam_failure_timeout) ... ok
+test_generated_model_validator_rejects_bad_class_range (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_bad_class_range) ... ok
+test_generated_model_validator_rejects_bad_contract_violation_guard (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_bad_contract_violation_guard) ... ok
+test_generated_model_validator_rejects_bad_query_references (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_bad_query_references) ... ok
+test_generated_model_validator_rejects_estimator_values_in_transition_guards (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_estimator_values_in_transition_guards) ... ok
+test_generated_model_validator_rejects_missing_priority_helper (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_missing_priority_helper) ... ok
+test_generated_model_validator_rejects_missing_report_deadline_guard (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_missing_report_deadline_guard) ... ok
+test_generated_model_validator_rejects_missing_sensing_dependencies (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_missing_sensing_dependencies) ... ok
+test_generated_model_validator_rejects_report_and_alert_on_one_transition (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_report_and_alert_on_one_transition) ... ok
+test_generated_model_validator_rejects_unbounded_leads_to_query (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_unbounded_leads_to_query) ... ok
+test_generated_model_validator_rejects_undeclared_and_dangling_channel (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_undeclared_and_dangling_channel) ... ok
+test_generated_model_validator_rejects_wrong_report_variable_writer (test_phy_layer.PhyLayerTests.test_generated_model_validator_rejects_wrong_report_variable_writer) ... ok
+test_generation_modes_minimal_and_negative_scenarios (test_phy_layer.PhyLayerTests.test_generation_modes_minimal_and_negative_scenarios) ... ok
+test_negative_waveform_location_fixture_is_rejected (test_phy_layer.PhyLayerTests.test_negative_waveform_location_fixture_is_rejected) ... ok
+test_open_system_mode_excludes_environment_and_wraps_queries (test_phy_layer.PhyLayerTests.test_open_system_mode_excludes_environment_and_wraps_queries) ... ok
+test_profile_policy (test_phy_layer.PhyLayerTests.test_profile_policy) ... ok
+test_property_pack_export_writes_queries_and_metadata (test_phy_layer.PhyLayerTests.test_property_pack_export_writes_queries_and_metadata) ... ok
+test_property_pack_includes_contract_and_observer_queries (test_phy_layer.PhyLayerTests.test_property_pack_includes_contract_and_observer_queries) ... ok
+test_readable_layout_keeps_locations_labels_and_loops_apart (test_phy_layer.PhyLayerTests.test_readable_layout_keeps_locations_labels_and_loops_apart) ... ok
+test_report_bundle_and_export_artifacts (test_phy_layer.PhyLayerTests.test_report_bundle_and_export_artifacts) ... ok
+test_run_artifact_export_writes_layout_and_uses_cache_key (test_phy_layer.PhyLayerTests.test_run_artifact_export_writes_layout_and_uses_cache_key) ... ok
+test_trace_normalizer_and_failed_query_classifier (test_phy_layer.PhyLayerTests.test_trace_normalizer_and_failed_query_classifier) ... ok
+test_trace_parser_classifies_abstraction_artifact_and_freshness (test_phy_layer.PhyLayerTests.test_trace_parser_classifies_abstraction_artifact_and_freshness) ... ok
+test_trace_parser_extracts_domain_root_cause (test_phy_layer.PhyLayerTests.test_trace_parser_extracts_domain_root_cause) ... ok
+test_trace_parser_extracts_textual_root_causes (test_phy_layer.PhyLayerTests.test_trace_parser_extracts_textual_root_causes) ... ok
+test_verify_property_pack_static_only (test_phy_layer.PhyLayerTests.test_verify_property_pack_static_only) ... ok
+test_phy_tools_are_registered (test_phy_layer.PhyMcpRegistrationTests.test_phy_tools_are_registered) ... ok
+test_all_threshold_neighbours (test_phy_threshold_boundaries.ThresholdTests.test_all_threshold_neighbours) ... ok
+test_custom_age_limit (test_phy_threshold_boundaries.ThresholdTests.test_custom_age_limit) ... ok
+test_interval_interiors (test_phy_threshold_boundaries.ThresholdTests.test_interval_interiors) ... ok
+test_baseline_supersession_preserves_exact_accepted_model (test_sdn_layer.IntegratedCandidateTests.test_baseline_supersession_preserves_exact_accepted_model) ... ok
+test_integrated_ack_endpoints_are_distinct (test_sdn_layer.IntegratedCandidateTests.test_integrated_ack_endpoints_are_distinct) ... ok
+test_integrated_admission_request_payload_is_complete (test_sdn_layer.IntegratedCandidateTests.test_integrated_admission_request_payload_is_complete) ... ok
+test_integrated_admission_stages_fields_before_receiver_guard (test_sdn_layer.IntegratedCandidateTests.test_integrated_admission_stages_fields_before_receiver_guard) ... ok
+test_integrated_determinism_and_partition (test_sdn_layer.IntegratedCandidateTests.test_integrated_determinism_and_partition) ... ok
+test_integrated_duplicate_schedule_does_not_overwrite_mailbox (test_sdn_layer.IntegratedCandidateTests.test_integrated_duplicate_schedule_does_not_overwrite_mailbox) ... ok
+test_integrated_identifier_tokens_preserve_shadowing_and_members (test_sdn_layer.IntegratedCandidateTests.test_integrated_identifier_tokens_preserve_shadowing_and_members) ... ok
+test_integrated_joint_schedule_requires_both_deliveries (test_sdn_layer.IntegratedCandidateTests.test_integrated_joint_schedule_requires_both_deliveries) ... ok
+test_integrated_kpi_age_includes_transport_delay_and_bad_quality (test_sdn_layer.IntegratedCandidateTests.test_integrated_kpi_age_includes_transport_delay_and_bad_quality) ... ok
+test_integrated_kpi_deadline_prevents_unrecorded_indefinite_wait (test_sdn_layer.IntegratedCandidateTests.test_integrated_kpi_deadline_prevents_unrecorded_indefinite_wait) ... ok
+test_integrated_missing_phy_receiver_records_loss_and_no_ack (test_sdn_layer.IntegratedCandidateTests.test_integrated_missing_phy_receiver_records_loss_and_no_ack) ... ok
+test_integrated_monitor_counters_are_finite_latches (test_sdn_layer.IntegratedCandidateTests.test_integrated_monitor_counters_are_finite_latches) ... ok
+test_integrated_no_late_ack_or_idle_schedule_success (test_sdn_layer.IntegratedCandidateTests.test_integrated_no_late_ack_or_idle_schedule_success) ... ok
+test_integrated_operational_context_drift_preserves_model_bytes (test_sdn_layer.IntegratedCandidateTests.test_integrated_operational_context_drift_preserves_model_bytes) ... ok
+test_integrated_policy_payload_precedes_mac_receiver (test_sdn_layer.IntegratedCandidateTests.test_integrated_policy_payload_precedes_mac_receiver) ... ok
+test_integrated_query_process_references_exist (test_sdn_layer.IntegratedCandidateTests.test_integrated_query_process_references_exist) ... ok
+test_integrated_rejects_changed_source_and_specification (test_sdn_layer.IntegratedCandidateTests.test_integrated_rejects_changed_source_and_specification) ... ok
+test_integrated_replay_rejects_unsupported_expressions (test_sdn_layer.IntegratedCandidateTests.test_integrated_replay_rejects_unsupported_expressions) ... ok
+test_integrated_sampling_stages_private_values_before_publication (test_sdn_layer.IntegratedCandidateTests.test_integrated_sampling_stages_private_values_before_publication) ... ok
+test_integrated_unresolved_app_admission_has_real_timeout (test_sdn_layer.IntegratedCandidateTests.test_integrated_unresolved_app_admission_has_real_timeout) ... ok
+test_symlinked_venv_preserves_interpreter_and_cli (test_sdn_layer.IntegratedRecorderTests.test_symlinked_venv_preserves_interpreter_and_cli) ... ok
+test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths) ... ok
+test_alpha_profile_and_raw_guard_rejection (test_sdn_layer.SdnLayerTests.test_alpha_profile_and_raw_guard_rejection) ... ok
+test_article_golden_fixtures (test_sdn_layer.SdnLayerTests.test_article_golden_fixtures) ... ok
+test_benchmark_suite_positive_and_broken (test_sdn_layer.SdnLayerTests.test_benchmark_suite_positive_and_broken) ... ok
+test_contract_validation (test_sdn_layer.SdnLayerTests.test_contract_validation) ... ok
+test_extract_contract_from_article (test_sdn_layer.SdnLayerTests.test_extract_contract_from_article) ... ok
+test_generated_model_validates_static_and_generic (test_sdn_layer.SdnLayerTests.test_generated_model_validates_static_and_generic) ... ok
+test_generation_modes (test_sdn_layer.SdnLayerTests.test_generation_modes) ... ok
+test_layer_adapter_registry_contains_sdn (test_sdn_layer.SdnLayerTests.test_layer_adapter_registry_contains_sdn) ... ok
+test_property_pack_and_static_verify (test_sdn_layer.SdnLayerTests.test_property_pack_and_static_verify) ... ok
+test_readable_layout_has_separated_labels_and_loop_lanes (test_sdn_layer.SdnLayerTests.test_readable_layout_has_separated_labels_and_loop_lanes) ... ok
+test_reports_include_interface_artifacts (test_sdn_layer.SdnLayerTests.test_reports_include_interface_artifacts) ... ok
+test_builtin_examples_are_statically_valid (test_validation.ValidationTests.test_builtin_examples_are_statically_valid) ... ok
+test_builtin_examples_expose_phy_category (test_validation.ValidationTests.test_builtin_examples_expose_phy_category) ... ok
+test_parse_queries_text_ignores_comments_and_blanks (test_validation.ValidationTests.test_parse_queries_text_ignores_comments_and_blanks) ... ok
+test_ansi_output_and_uncertain_verdicts (test_verifyta_parser.VerifytaParserTests.test_ansi_output_and_uncertain_verdicts) ... ok
+test_only_result_lines_are_parsed (test_verifyta_parser.VerifytaParserTests.test_only_result_lines_are_parsed) ... ok
+test_parse_satisfied_and_not_satisfied (test_verifyta_parser.VerifytaParserTests.test_parse_satisfied_and_not_satisfied) ... ok
+test_reported_indices_bind_results_to_the_correct_formula (test_verifyta_parser.VerifytaParserTests.test_reported_indices_bind_results_to_the_correct_formula) ... ok
+test_resolve_verifyta_options_presets (test_verifyta_parser.VerifytaParserTests.test_resolve_verifyta_options_presets) ... ok
+test_summarize_all_satisfied (test_verifyta_parser.VerifytaParserTests.test_summarize_all_satisfied) ... ok
+test_summarize_error_without_outcomes (test_verifyta_parser.VerifytaParserTests.test_summarize_error_without_outcomes) ... ok
+test_complete_negative_results_remain_not_satisfied (test_verifyta_parser.VerifytaRunnerTests.test_complete_negative_results_remain_not_satisfied) ... ok
+test_counts_ignore_query_comments_and_blank_lines (test_verifyta_parser.VerifytaRunnerTests.test_counts_ignore_query_comments_and_blank_lines) ... ok
+test_embedded_queries_and_query_paths_enforce_coverage (test_verifyta_parser.VerifytaRunnerTests.test_embedded_queries_and_query_paths_enforce_coverage) ... ok
+test_error_names_in_paths_traces_and_warnings_are_not_diagnostics (test_verifyta_parser.VerifytaRunnerTests.test_error_names_in_paths_traces_and_warnings_are_not_diagnostics) ... ok
+test_headerless_output_still_requires_complete_coverage (test_verifyta_parser.VerifytaRunnerTests.test_headerless_output_still_requires_complete_coverage) ... ok
+test_missing_duplicate_and_extra_results_fail_closed (test_verifyta_parser.VerifytaRunnerTests.test_missing_duplicate_and_extra_results_fail_closed) ... ok
+test_process_errors_override_complete_verdicts (test_verifyta_parser.VerifytaRunnerTests.test_process_errors_override_complete_verdicts) ... ok
+test_repeated_formula_text_is_not_deduplicated (test_verifyta_parser.VerifytaRunnerTests.test_repeated_formula_text_is_not_deduplicated) ... ok
+test_report_complete_success_control (test_verifyta_parser.VerifytaRunnerTests.test_report_complete_success_control) ... ok
+test_report_error_after_first_success (test_verifyta_parser.VerifytaRunnerTests.test_report_error_after_first_success) ... ok
+test_report_error_after_success_returncode_zero (test_verifyta_parser.VerifytaRunnerTests.test_report_error_after_success_returncode_zero) ... ok
+test_report_error_without_outcomes_control (test_verifyta_parser.VerifytaRunnerTests.test_report_error_without_outcomes_control) ... ok
+test_report_incomplete_output_returncode_zero (test_verifyta_parser.VerifytaRunnerTests.test_report_incomplete_output_returncode_zero) ... ok
+test_report_missing_tool_control (test_verifyta_parser.VerifytaRunnerTests.test_report_missing_tool_control) ... ok
+test_report_timeout_after_first_success_control (test_verifyta_parser.VerifytaRunnerTests.test_report_timeout_after_first_success_control) ... ok
+
+----------------------------------------------------------------------
+Ran 180 tests in 69.600s
+
+OK
+2 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+2 file hashes; 1 mismatches; 2 aggregate mismatches (not verification).
+
+exit_code=0
+
+$ /tmp/uppaal-issue45/.venv/bin/python -B scripts/check_coordination.py
+Coordination artifacts are structurally consistent (not a hash audit or verification).
+
+exit_code=0
+
+$ /tmp/uppaal-issue45/.venv/bin/python -B scripts/check_coordination.py --audit-hashes --commit HEAD --output evidence/governance/20260906-baseline/gate1-20260923/active-audit.json
+57 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+
+exit_code=0
+
+$ /tmp/uppaal-issue45/.venv/bin/python -B evidence/governance/20260906-baseline/gate1-20260923/check.py
+{
+  "diagnostic_class": "hash_identity_not_verification",
+  "source_root": "/tmp/uppaal-gate1-20260923",
+  "source_commit": "610481fd5c633fe6b1c430d2e11a50718b9e12e1",
+  "input_mode": "exact_checkout_bytes",
+  "observed_at_utc": "2026-09-23T11:05:16.302842+00:00",
+  "command": [
+    "/tmp/uppaal-issue45/.venv/bin/python",
+    "evidence/governance/20260906-baseline/gate1-20260923/check.py"
+  ],
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "pyyaml_version": "6.0.3",
+  "manifest_path": "evidence/governance/20260906-baseline/gate1-20260923/proposed-baseline.yaml",
+  "manifest_sha256": "e30d445acdb01e62da46a641287cd20730ad78cf96a03cac0c939acfd50458bf",
+  "baseline_id": "reviewer-r1-gate1-20260923",
+  "baseline_frozen": false,
+  "gate_1_status": "pending",
+  "file_pairs": [
+    {
+      "field": "supersedes.historical_capture",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml",
+      "expected_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "actual_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "matches": true
+    },
+    {
+      "field": "coordination_inputs.scientific_plan",
+      "path": "manifests/v1.md",
+      "expected_sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "actual_sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[0]",
+      "path": ".uppaal_mcp_workspace/Application_service_layer_uppaal.xml",
+      "expected_sha256": "fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f",
+      "actual_sha256": "fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[1]",
+      "path": ".uppaal_mcp_workspace/mac_generated/model.xml",
+      "expected_sha256": "e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7",
+      "actual_sha256": "e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[2]",
+      "path": ".uppaal_mcp_workspace/phy_generated/model.xml",
+      "expected_sha256": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd",
+      "actual_sha256": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[3]",
+      "path": ".uppaal_mcp_workspace/sdn_generated_smoke/model.xml",
+      "expected_sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de",
+      "actual_sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[4]",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml",
+      "expected_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "actual_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[5]",
+      "path": "evidence/instantiation/20260907-p2-scope/instance-vector.json",
+      "expected_sha256": "ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45",
+      "actual_sha256": "ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[6]",
+      "path": "evidence/instantiation/20260907-p2-scope/inventory.json",
+      "expected_sha256": "ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195",
+      "actual_sha256": "ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[7]",
+      "path": "evidence/validation/20260907-p1/inventory.json",
+      "expected_sha256": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4",
+      "actual_sha256": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[8]",
+      "path": "evidence/validation/20260907-p1/validation-report.md",
+      "expected_sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+      "actual_sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[9]",
+      "path": "levels_tex/Application_service_layer_formalization.tex",
+      "expected_sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807",
+      "actual_sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[10]",
+      "path": "levels_tex/MAC_resource_scheduling_formalization.tex",
+      "expected_sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+      "actual_sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[11]",
+      "path": "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "expected_sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+      "actual_sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[12]",
+      "path": "levels_tex/SDN_RIC_control_plane_formalization.tex",
+      "expected_sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
+      "actual_sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[13]",
+      "path": "src/uppaal_mcp/layers.py",
+      "expected_sha256": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec",
+      "actual_sha256": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[14]",
+      "path": "src/uppaal_mcp/layout_core.py",
+      "expected_sha256": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471",
+      "actual_sha256": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[15]",
+      "path": "src/uppaal_mcp/mac/__init__.py",
+      "expected_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "actual_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[16]",
+      "path": "src/uppaal_mcp/mac/alpha.py",
+      "expected_sha256": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7",
+      "actual_sha256": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[17]",
+      "path": "src/uppaal_mcp/mac/defaults.py",
+      "expected_sha256": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b",
+      "actual_sha256": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[18]",
+      "path": "src/uppaal_mcp/mac/generator.py",
+      "expected_sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+      "actual_sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[19]",
+      "path": "src/uppaal_mcp/mac/ir.py",
+      "expected_sha256": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49",
+      "actual_sha256": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[20]",
+      "path": "src/uppaal_mcp/mac/layout.py",
+      "expected_sha256": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244",
+      "actual_sha256": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[21]",
+      "path": "src/uppaal_mcp/mac/property_pack.py",
+      "expected_sha256": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0",
+      "actual_sha256": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[22]",
+      "path": "src/uppaal_mcp/phy/__init__.py",
+      "expected_sha256": "7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868",
+      "actual_sha256": "7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[23]",
+      "path": "src/uppaal_mcp/phy/alpha.py",
+      "expected_sha256": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e",
+      "actual_sha256": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[24]",
+      "path": "src/uppaal_mcp/phy/defaults.py",
+      "expected_sha256": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c",
+      "actual_sha256": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[25]",
+      "path": "src/uppaal_mcp/phy/generator.py",
+      "expected_sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7",
+      "actual_sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[26]",
+      "path": "src/uppaal_mcp/phy/ir.py",
+      "expected_sha256": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54",
+      "actual_sha256": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[27]",
+      "path": "src/uppaal_mcp/phy/layout.py",
+      "expected_sha256": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5",
+      "actual_sha256": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[28]",
+      "path": "src/uppaal_mcp/phy/property_pack.py",
+      "expected_sha256": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6",
+      "actual_sha256": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[29]",
+      "path": "src/uppaal_mcp/sdn/__init__.py",
+      "expected_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "actual_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[30]",
+      "path": "src/uppaal_mcp/sdn/alpha.py",
+      "expected_sha256": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f",
+      "actual_sha256": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[31]",
+      "path": "src/uppaal_mcp/sdn/defaults.py",
+      "expected_sha256": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70",
+      "actual_sha256": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[32]",
+      "path": "src/uppaal_mcp/sdn/generator.py",
+      "expected_sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272",
+      "actual_sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[33]",
+      "path": "src/uppaal_mcp/sdn/ir.py",
+      "expected_sha256": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25",
+      "actual_sha256": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[34]",
+      "path": "src/uppaal_mcp/sdn/layout.py",
+      "expected_sha256": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8",
+      "actual_sha256": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[35]",
+      "path": "src/uppaal_mcp/sdn/property_pack.py",
+      "expected_sha256": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec",
+      "actual_sha256": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[0]",
+      "path": "src/uppaal_mcp/integrated/__init__.py",
+      "expected_sha256": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7",
+      "actual_sha256": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[1]",
+      "path": "src/uppaal_mcp/integrated/adapt.py",
+      "expected_sha256": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba",
+      "actual_sha256": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[2]",
+      "path": "src/uppaal_mcp/integrated/boundary.py",
+      "expected_sha256": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804",
+      "actual_sha256": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[3]",
+      "path": "src/uppaal_mcp/integrated/generator.py",
+      "expected_sha256": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521",
+      "actual_sha256": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[4]",
+      "path": "src/uppaal_mcp/integrated/inputs.py",
+      "expected_sha256": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
+      "actual_sha256": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[5]",
+      "path": "src/uppaal_mcp/integrated/replay.py",
+      "expected_sha256": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103",
+      "actual_sha256": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[6]",
+      "path": "src/uppaal_mcp/integrated/xmlutil.py",
+      "expected_sha256": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b",
+      "actual_sha256": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b",
+      "matches": true
+    },
+    {
+      "field": "manuscript.editable_source",
+      "path": "levels_tex/samplepaper.tex",
+      "expected_sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "actual_sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "matches": true
+    },
+    {
+      "field": "model_topology.integrated_model",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/model.xml",
+      "expected_sha256": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+      "actual_sha256": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+      "matches": true
+    },
+    {
+      "field": "model_topology.interface_contract",
+      "path": "evidence/instantiation/20260907-p2-scope/interface-contract.md",
+      "expected_sha256": "9b625912c264cdaa09da73adcb322b696b1be371031da6aff01da80fc02ffe51",
+      "actual_sha256": "9b625912c264cdaa09da73adcb322b696b1be371031da6aff01da80fc02ffe51",
+      "matches": true
+    },
+    {
+      "field": "model_topology.contract_amendments",
+      "path": "evidence/instantiation/20260917-v03-contract-disposition/contracts.md",
+      "expected_sha256": "24022cb6101cbeb9006b47542bc1c43c177d80e01331216af8881472c55d0994",
+      "actual_sha256": "24022cb6101cbeb9006b47542bc1c43c177d80e01331216af8881472c55d0994",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.uppaal.version_output",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/verifyta-version.txt",
+      "expected_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+      "actual_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.license.evidence",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/tool-evidence.json",
+      "expected_sha256": "283201158075a8af73d058acf85a83a94933f30a3dab5b1b8eaccf8dea98adbe",
+      "actual_sha256": "283201158075a8af73d058acf85a83a94933f30a3dab5b1b8eaccf8dea98adbe",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.canonical_parameter_set",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/parameters.json",
+      "expected_sha256": "da4f1bd09a4f3892f87da7f4fc321515cca7a70899c03466899d13cfc497a31b",
+      "actual_sha256": "da4f1bd09a4f3892f87da7f4fc321515cca7a70899c03466899d13cfc497a31b",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.canonical_instance_vector",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/instance-vector.json",
+      "expected_sha256": "9b7162e15d1cf681a766cce60a9e92e2ff627b1be1085c9753828a90a18f3ca0",
+      "actual_sha256": "9b7162e15d1cf681a766cce60a9e92e2ff627b1be1085c9753828a90a18f3ca0",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.canonical_query_set",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/selected-queries.q",
+      "expected_sha256": "3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18",
+      "actual_sha256": "3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.candidate_query_set",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/candidate-queries.q",
+      "expected_sha256": "97aff5896eba43a49c41fa45030550e42be63fb5a555803aef6d0dbbe67b1ab9",
+      "actual_sha256": "97aff5896eba43a49c41fa45030550e42be63fb5a555803aef6d0dbbe67b1ab9",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.query_disposition",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/query-disposition.json",
+      "expected_sha256": "ac6c5bfe0c7d9e3370bb590228079ae8665e1f3c03664c914534833ef466f58d",
+      "actual_sha256": "ac6c5bfe0c7d9e3370bb590228079ae8665e1f3c03664c914534833ef466f58d",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.claim_scope",
+      "path": "evidence/governance/20260910-p1-p2-review/final-20260923/README.md",
+      "expected_sha256": "354a515504dabf6df2c80750e4cce4ffff49bc51def6faace127c4483d5b7631",
+      "actual_sha256": "354a515504dabf6df2c80750e4cce4ffff49bc51def6faace127c4483d5b7631",
+      "matches": true
+    }
+  ],
+  "common_hashes": [
+    {
+      "name": "source_hash",
+      "expected_sha256": "e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a",
+      "actual_sha256": "e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a",
+      "matches": true,
+      "inputs": [
+        {
+          "path": ".uppaal_mcp_workspace/Application_service_layer_uppaal.xml",
+          "sha256": "fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f"
+        },
+        {
+          "path": ".uppaal_mcp_workspace/mac_generated/model.xml",
+          "sha256": "e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7"
+        },
+        {
+          "path": ".uppaal_mcp_workspace/phy_generated/model.xml",
+          "sha256": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd"
+        },
+        {
+          "path": ".uppaal_mcp_workspace/sdn_generated_smoke/model.xml",
+          "sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de"
+        },
+        {
+          "path": "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml",
+          "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a"
+        },
+        {
+          "path": "evidence/instantiation/20260907-p2-scope/instance-vector.json",
+          "sha256": "ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45"
+        },
+        {
+          "path": "evidence/instantiation/20260907-p2-scope/inventory.json",
+          "sha256": "ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195"
+        },
+        {
+          "path": "evidence/validation/20260907-p1/inventory.json",
+          "sha256": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4"
+        },
+        {
+          "path": "evidence/validation/20260907-p1/validation-report.md",
+          "sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c"
+        },
+        {
+          "path": "levels_tex/Application_service_layer_formalization.tex",
+          "sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807"
+        },
+        {
+          "path": "levels_tex/MAC_resource_scheduling_formalization.tex",
+          "sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527"
+        },
+        {
+          "path": "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+          "sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df"
+        },
+        {
+          "path": "levels_tex/SDN_RIC_control_plane_formalization.tex",
+          "sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812"
+        },
+        {
+          "path": "src/uppaal_mcp/layers.py",
+          "sha256": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec"
+        },
+        {
+          "path": "src/uppaal_mcp/layout_core.py",
+          "sha256": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/__init__.py",
+          "sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/alpha.py",
+          "sha256": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/defaults.py",
+          "sha256": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/generator.py",
+          "sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/ir.py",
+          "sha256": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/layout.py",
+          "sha256": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/property_pack.py",
+          "sha256": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/__init__.py",
+          "sha256": "7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/alpha.py",
+          "sha256": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/defaults.py",
+          "sha256": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/generator.py",
+          "sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/ir.py",
+          "sha256": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/layout.py",
+          "sha256": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/property_pack.py",
+          "sha256": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/__init__.py",
+          "sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/alpha.py",
+          "sha256": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/defaults.py",
+          "sha256": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/generator.py",
+          "sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/ir.py",
+          "sha256": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/layout.py",
+          "sha256": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/property_pack.py",
+          "sha256": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec"
+        }
+      ]
+    },
+    {
+      "name": "generator_hash",
+      "expected_sha256": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
+      "actual_sha256": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
+      "matches": true,
+      "inputs": [
+        {
+          "path": "src/uppaal_mcp/integrated/__init__.py",
+          "sha256": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/adapt.py",
+          "sha256": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/boundary.py",
+          "sha256": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/generator.py",
+          "sha256": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/inputs.py",
+          "sha256": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/replay.py",
+          "sha256": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/xmlutil.py",
+          "sha256": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b"
+        }
+      ]
+    }
+  ],
+  "recorded_file_count": 57,
+  "mismatch_count": 0,
+  "common_hash_mismatch_count": 0,
+  "hash_status": "match"
+}
+
+exit_code=0
+
+$ /tmp/uppaal-issue45/.venv/bin/python -B -c from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)
+FastMCP
+
+exit_code=0

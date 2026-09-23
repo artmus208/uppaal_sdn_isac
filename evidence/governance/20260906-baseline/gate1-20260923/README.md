@@ -84,7 +84,8 @@ vector status сохраняются как provenance, не как текуще
 
 Проверки: профильные регрессии сохранения XML/query и отказа при повреждении
 historical/scientific inputs; согласованность candidate/frozen flags; полный
-software suite; аудит активного manifest и исходных Git pins. Результаты команд
+software suite: 180 tests OK; аудит активного manifest: 57 файловых hashes и
+2 aggregates, 0 несовпадений; исходные Git pins проверены. Результаты команд
 и ограничения публикуются в checks.txt и active-audit.json.
 
 Осталось только отдельное решение integrator по этому пакету Gate 1 и merge.
