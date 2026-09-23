@@ -1,0 +1,974 @@
+[
+  {
+    "name": "integrated-parser",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\integrated-parser-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\integrated-parser.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\integrated-parser.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:09.500744+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.2999086880004143,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied"
+    ],
+    "stdout": "integrated-parser.stdout.txt",
+    "stderr": "integrated-parser.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-integrated-parser",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+    "query_hash": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "integrated-parser.xml",
+    "query_path": "integrated-parser.q",
+    "scope": "Full model engine load only; no full-model recovery-attempt result",
+    "per_query": [
+      {
+        "query": "E<> true",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "standby",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\standby-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\standby.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\standby.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:12.811051+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.21860576200015203,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "standby.stdout.txt",
+    "stderr": "standby.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-standby",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "27f2741934836150a4e16c419245b24812adcbf41a77c72cc01165b4b93ed0a5",
+    "query_hash": "7929be47ef588b08c0e53937a693c243d76e536a7bcb91cf82cfbfc6fae387a0",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "standby.xml",
+    "query_path": "standby.q",
+    "scope": "Actual recovery core with controlled peer; stale/wrong typed ACK offers retained.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> fx_done == 1 && !fx_failed && sdn_attempt_primary == 1 && sdn_attempt_rollback == 0 && sdn_attempt_total == 1 && !sdn_attempt_active",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "reembed",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\reembed-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\reembed.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\reembed.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:13.040756+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.20876710199991066,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "reembed.stdout.txt",
+    "stderr": "reembed.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-reembed",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "463c9883d20c17cb863108e06706b809e721d6fd823d4c11da6ef67c35ddaafe",
+    "query_hash": "7929be47ef588b08c0e53937a693c243d76e536a7bcb91cf82cfbfc6fae387a0",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "reembed.xml",
+    "query_path": "reembed.q",
+    "scope": "Actual recovery core with controlled peer; stale/wrong typed ACK offers retained.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> fx_done == 1 && !fx_failed && sdn_attempt_primary == 1 && sdn_attempt_rollback == 0 && sdn_attempt_total == 1 && !sdn_attempt_active",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "direct",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\direct-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\direct.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\direct.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:13.259238+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.20615569500023412,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "direct.stdout.txt",
+    "stderr": "direct.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-direct",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "fa93fe1ef4463b04e3c58dd8425720d9cc3e7d3af3ad121ff4d239e5f23f5899",
+    "query_hash": "0bae57e90591daedff22cbaba156ccedbd1e5a59c952db29efb0129f8f092225",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "direct.xml",
+    "query_path": "direct.q",
+    "scope": "Actual recovery core with controlled peer; stale/wrong typed ACK offers retained.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> fx_done == 1 && !fx_failed && sdn_attempt_primary == 0 && sdn_attempt_rollback == 1 && sdn_attempt_total == 1 && !sdn_attempt_active",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "before-dispatch-failure",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\before-dispatch-failure-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\before-dispatch-failure.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\before-dispatch-failure.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:13.475124+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.20976753500008272,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "before-dispatch-failure.stdout.txt",
+    "stderr": "before-dispatch-failure.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-before-dispatch-failure",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "50e33504f63755fbca5feebefa9a9588d6f5fc5d6200b30d0fac60d36b99ffc8",
+    "query_hash": "6cec5704d956ea7321c753121b4e309cd0c54a4b28265189f1870a9cf526a249",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "before-dispatch-failure.xml",
+    "query_path": "before-dispatch-failure.q",
+    "scope": "No transport dispatch before local failure.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> fx_done == 1 && fx_failed && sdn_attempt_total == 0 && !sdn_attempt_active",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "primary-rollback",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\primary-rollback-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\primary-rollback.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\primary-rollback.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:13.695550+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.21272244300007515,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "primary-rollback.stdout.txt",
+    "stderr": "primary-rollback.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-primary-rollback",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "d3ed16cec7f0ec1ece73b7e91c7d0280a9d6eb56fd794b8e630692138c5ff240",
+    "query_hash": "bdb7a8b0938b4671443317e88d66483215ae209693926b07bc039c765f4997b1",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "primary-rollback.xml",
+    "query_path": "primary-rollback.q",
+    "scope": "Primary then rollback dispatch, no ACK.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> sdn_attempt_primary == 1 && sdn_attempt_rollback == 1 && sdn_attempt_total == 2",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "repeated-0",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\repeated-0-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\repeated-0.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\repeated-0.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:13.919899+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.23228278600026897,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "repeated-0.stdout.txt",
+    "stderr": "repeated-0.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-repeated-0",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "6ec8c51aaf5b9d4e7718aa9692e7b785aeb5488c9fc918b15130d85ec2dec1a5",
+    "query_hash": "4c91d70bfa617b86faf72468bd58ad10acad7525c14501a263339ee2aa6b9d5d",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "repeated-0.xml",
+    "query_path": "repeated-0.q",
+    "scope": "Two real episodes; reset on accepted new failure, includes zero-time completion.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> fx_done == 2 && sdn_attempt_primary == 1 && sdn_attempt_total == 1 && !sdn_attempt_active",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "repeated-1",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\repeated-1-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\repeated-1.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\repeated-1.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:14.162817+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.23808671899996625,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "repeated-1.stdout.txt",
+    "stderr": "repeated-1.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-repeated-1",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "0b65f91854d980f8317bdb6dbc84702cf789dfe5dc19493bac36209ce8d79913",
+    "query_hash": "4c91d70bfa617b86faf72468bd58ad10acad7525c14501a263339ee2aa6b9d5d",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "repeated-1.xml",
+    "query_path": "repeated-1.q",
+    "scope": "Two real episodes; reset on accepted new failure, includes zero-time completion.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> fx_done == 2 && sdn_attempt_primary == 1 && sdn_attempt_total == 1 && !sdn_attempt_active",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "duplicate-primary",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-primary-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-primary.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-primary.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:14.450094+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.20644736899976124,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "duplicate-primary.stdout.txt",
+    "stderr": "duplicate-primary.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-duplicate-primary",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "8d429113b826f61345abc58457df39d36591d9acb0ae5e78f2cc866ba296fe12",
+    "query_hash": "c1d9f5a7142d42249c9f83b3391d11c10301f02d40e3e9f78b735accc74fb7cd",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "duplicate-primary.xml",
+    "query_path": "duplicate-primary.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> driver.S3 && (sdn_attempt_primary == 2 && sdn_attempt_total == 2)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "duplicate-rollback",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-rollback-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-rollback.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-rollback.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:14.667361+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.16603500000019267,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "duplicate-rollback.stdout.txt",
+    "stderr": "duplicate-rollback.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-duplicate-rollback",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "5f89507132403f67fca6714da18cdcf881c77867b8fa47299bce6b3a12271485",
+    "query_hash": "abd17a59c4ad6e55359160226509a5cb6cc178c7ad19a24c2f6c96fbb9f21ac3",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "duplicate-rollback.xml",
+    "query_path": "duplicate-rollback.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> driver.S3 && (sdn_attempt_rollback == 2)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "third-total",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\third-total-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\third-total.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\third-total.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:14.843288+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.1592378169998483,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "third-total.stdout.txt",
+    "stderr": "third-total.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-third-total",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "c4be29d3b6e1ec2d76c5007b0921182fa737569e99bd7295067f48bad2a77e7a",
+    "query_hash": "d0a602ac6d8ed5dd583e2576e144afe6fe5c72dac7bf4f8fab5fd879d46b6681",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "third-total.xml",
+    "query_path": "third-total.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> driver.S4 && (sdn_attempt_total == 3)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "outside",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\outside-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\outside.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\outside.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:15.014398+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.169681225000204,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "outside.stdout.txt",
+    "stderr": "outside.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-outside",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "2f600f8d05d31e4f279b86547eafe459eea684b5ad0184c28a19dd7e7d0a5307",
+    "query_hash": "31585f6b832d07d6896a4592f5351971c5cdb54c2de866bd866eeda4503cbb21",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "outside.xml",
+    "query_path": "outside.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> driver.S1 && (sdn_attempt_total == 1)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "duplicate-start",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-start-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-start.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\duplicate-start.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:15.195392+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.16483379900000728,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "duplicate-start.stdout.txt",
+    "stderr": "duplicate-start.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-duplicate-start",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "8077a95a3c3adac94a4706e4310bbc51d137ded84cc91568866f6879d61bdfe0",
+    "query_hash": "9939c8d2ae7cf55703e14d68c8a7c66ca2d940321da81431671a67545c85fa95",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "duplicate-start.xml",
+    "query_path": "duplicate-start.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> driver.S3 && (sdn_attempt_total == 1)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "stale-finish",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\stale-finish-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\stale-finish.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\stale-finish.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:15.371993+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.16557139800033838,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "stale-finish.stdout.txt",
+    "stderr": "stale-finish.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-stale-finish",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "38e3d1b3dfa8ead589ee0bfd1e0fd7f3653f57b22fc6a6a1783c60e0f0e21fa3",
+    "query_hash": "e70d6fdacac885fc2708ae31c931298fa056bbc72591d8ca07dec4b3a68501a3",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "stale-finish.xml",
+    "query_path": "stale-finish.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> driver.S3 && (!sdn_attempt_active)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "sticky-reset",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\sticky-reset-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\sticky-reset.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\sticky-reset.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:15.549584+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.16681162200029576,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "sticky-reset.stdout.txt",
+    "stderr": "sticky-reset.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-sticky-reset",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "ca9a256dd847b1e6066afb4b30d6269ba454f85b5ba003a361f31124268c8377",
+    "query_hash": "f504dbd848ed10b9f8c4352c9a9441c07952119a9da2e4d74c38623dc0b5af06",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "sticky-reset.xml",
+    "query_path": "sticky-reset.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> driver.S5 && (sdn_attempt_total == 0 && sdn_attempt_active)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "saturating",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\saturating-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\saturating.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\saturating.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:15.727443+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.16833270200004335,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "saturating.stdout.txt",
+    "stderr": "saturating.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-saturating",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "adf589584126cc06a0b790af08219cb6da0b3422c0a4e88810180390a36c478c",
+    "query_hash": "af85cd3e07716fa67d1ee47cbae40d60a3b02fe064a54da503362cd04ab85f6d",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "saturating.xml",
+    "query_path": "saturating.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> driver.S11 && (sdn_attempt_primary == 2 && sdn_attempt_rollback == 2 && sdn_attempt_total == 3)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "protocol-sticky",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\protocol-sticky-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\protocol-sticky.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\protocol-sticky.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:15.908086+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.1629961160001585,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "protocol-sticky.stdout.txt",
+    "stderr": "protocol-sticky.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-protocol-sticky",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "9bce9e8e88b9bc2a65cc7e5ef53fcf6642c6e708fc0c542318533b9832aa5c0d",
+    "query_hash": "0ce5438ac02811e16a58f0a34647136a95d6b682d0a21785cf0b05ecccb80f3b",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "protocol-sticky.xml",
+    "query_path": "protocol-sticky.q",
+    "scope": "Synthetic recorder-event sequence, not production reachability; negative controls exercise actual monitor functions.",
+    "per_query": [
+      {
+        "query": "A[] !sdn_attempt_bad",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] !sdn_attempt_protocol_error",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> driver.S2 && (sdn_attempt_total == 0 && sdn_attempt_active)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  }
+]
