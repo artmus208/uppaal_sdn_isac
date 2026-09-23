@@ -1,0 +1,9 @@
+{
+  "run_id": "recovery-attempts-20260923-001",
+  "archive": "runs/recovery-attempts-20260923-001.tar.xz",
+  "archive_sha256": "a4f4d0758da186d3590ac7d2a88404eb67cb621a5b11360695ff202e57cd29e6",
+  "archive_file_count": 113,
+  "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+  "query_results": 49,
+  "restoration_check": "all archived bytes equal original raw files"
+}

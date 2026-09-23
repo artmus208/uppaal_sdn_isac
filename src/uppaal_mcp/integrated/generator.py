@@ -102,6 +102,16 @@ def generate(root: Path | None = None) -> Composition:
     ]:
         query_map.append({'id':f'queue-{ident}', 'candidate':q,
                           'status':'candidate_unverified', 'supporting_issue':43})
+    for ident, q in [
+        ('bounds', 'A[] !sdn_attempt_bad'),
+        ('protocol', 'A[] !sdn_attempt_protocol_error'),
+        ('start', 'E<> sdn_attempt_active'),
+        ('primary', 'E<> sdn_attempt_primary == 1'),
+        ('rollback', 'E<> sdn_attempt_rollback == 1'),
+        ('two', 'E<> sdn_attempt_total == 2'),
+    ]:
+        query_map.append({'id':f'recovery-attempts-{ident}', 'candidate':q,
+                          'status':'candidate_unverified', 'supporting_issue':45})
     queries=''.join(f"// {q['id']} -- candidate, no verdict\n{q['candidate']}\n" for q in query_map if 'candidate' in q)
     # Empty embedded query list prevents accidental implicit model checking when
     # requesting compile-only diagnostics with this XML alone.
@@ -138,6 +148,10 @@ def generate(root: Path | None = None) -> Composition:
               'instance_vector':vector,'system_order':ordered,'symbols':symbol_maps,'process_map':process_map,
               'channels':channels,'query_map':query_map,'adaptations':adaptations,
               'parameter_set':{**vector['parameter_policy'], 'mac_queue':dict(boundary.QUEUE_PARAMETERS)},
+              'recovery_attempt_recording':{'issue':45, 'version':1, 'passive':True,
+                  'limits':{'primary':1, 'rollback':1, 'total':2},
+                  'overflow_domains':{'primary':2, 'rollback':2, 'total':3},
+                  'episode':'accepted failure to local outcome', 'sticky_across_episodes':True},
               'queue_abstraction':{'issue':43, 'version':1, 'units':'abstract work units',
                   'writer':'boundary_E_MAC_LOAD_0', 'event':'existing MAC load tick',
                   'update_order':'service old work, then arrival',

@@ -110,6 +110,11 @@ class RecoveryContractTests(unittest.TestCase):
         recovery_policy(t)
         record_recovery(t)
         actual = self.core(self.new)
+        # #45 adds only passive dispatch-count updates; compare functional edges.
+        from uppaal_mcp.integrated.xmlutil import set_label
+        import re
+        for tr in actual.findall('transition'):
+            set_label(tr, 'assignment', re.sub(r', sdn_attempt_(?:start|finish|dispatch)\([^)]*\)', '', label(tr, 'assignment')))
         def transitions(x):
             return sorted((source_name(x, tr), tr.find('target').get('ref'), label(tr, 'guard'), label(tr, 'synchronisation'), label(tr, 'assignment')) for tr in x.findall('transition'))
         self.assertEqual(transitions(t), transitions(actual))

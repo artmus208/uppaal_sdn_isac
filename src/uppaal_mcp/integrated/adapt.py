@@ -26,6 +26,47 @@ void sdn_obs_rec_finish() {
 }
 '''
 
+RECOVERY_ATTEMPTS = '''
+// Passive #45 dispatch counters; saturating violation witnesses never gate edges.
+bool sdn_attempt_active=false, sdn_attempt_bad=false, sdn_attempt_protocol_error=false;
+int[0,2] sdn_attempt_primary=0, sdn_attempt_rollback=0;
+int[0,3] sdn_attempt_total=0;
+void sdn_attempt_start() {
+    if (sdn_attempt_active) sdn_attempt_protocol_error=true;
+    else {
+        sdn_attempt_active=true;
+        sdn_attempt_primary=0; sdn_attempt_rollback=0; sdn_attempt_total=0;
+    }
+}
+void sdn_attempt_dispatch(bool rollback) {
+    if (!sdn_attempt_active) sdn_attempt_protocol_error=true;
+    if (rollback) sdn_attempt_rollback=sdn_attempt_rollback<2 ? sdn_attempt_rollback+1 : 2;
+    else sdn_attempt_primary=sdn_attempt_primary<2 ? sdn_attempt_primary+1 : 2;
+    sdn_attempt_total=sdn_attempt_total<3 ? sdn_attempt_total+1 : 3;
+    sdn_attempt_bad=sdn_attempt_bad || sdn_attempt_primary>1 || sdn_attempt_rollback>1 || sdn_attempt_total>2;
+}
+void sdn_attempt_finish() {
+    if (!sdn_attempt_active) sdn_attempt_protocol_error=true;
+    sdn_attempt_active=false;
+}
+'''
+
+
+def record_attempts(t):
+    """Append total, nonblocking updates after the accepted recovery recorder."""
+    for tr in t.findall('transition'):
+        update = label(tr, 'assignment')
+        if 'sdn_obs_rec_start()' in update:
+            append_update(tr, 'sdn_attempt_start()')
+        sync = label(tr, 'synchronisation')
+        if sync in ('bus_rec_policy_request!', 'bus_rec_flow_request!'):
+            append_update(tr, 'sdn_attempt_dispatch(false)')
+        elif sync == 'bus_rollback_request!':
+            append_update(tr, 'sdn_attempt_dispatch(true)')
+        if 'sdn_obs_rec_finish()' in update:
+            append_update(tr, 'sdn_attempt_finish()')
+
+
 RECOVERY_OUTCOME = '''
 // Local failure is distinct from later report delivery.
 // 0: no failure, 1: dispatch/recovery-stage timeout, 2: rollback timeout.
@@ -98,7 +139,7 @@ def adapt_layer(layer, declaration, templates):
                         'bool mac_obs_ack_late = false;\n')
     if layer == 'sdn':
         declaration = declaration.replace('sdn_telemetryClass = sdn_TEL_FRESH', 'sdn_telemetryClass = sdn_TEL_MISSING')
-        declaration += RECOVERY_RECORDING + RECOVERY_OUTCOME
+        declaration += RECOVERY_RECORDING + RECOVERY_OUTCOME + RECOVERY_ATTEMPTS
     if layer == 'app':
         # Producer-owned monitoring latches preserve the oldest outstanding event.
         # Observers clear only these monitoring variables on an observed response.
@@ -217,6 +258,7 @@ def adapt_layer(layer, declaration, templates):
         if layer == 'sdn' and original == 'A_REC':
             recovery_policy(t)
             record_recovery(t)
+            record_attempts(t)
         if layer == 'mac' and original == 'A_SCH':
             for loc in t.findall('location'):
                 name = loc.findtext('name')
