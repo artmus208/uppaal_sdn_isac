@@ -1,3 +1,15 @@
+# Gate 1 принят — 2026-09-23
+
+Пользователь явно принял Gate 1 по пакету `19d9132c0209fbe76c8c65b331c0d4f61eab94b6`.
+Решение и точные входы: `gate-decision.json`, GitHub #6. Активный manifest
+имеет frozen=true и passed=true. Модель, queries, параметры и source/generator
+hashes не изменены. Ниже сохранено описание предложения до приёмки; его
+pending-формулировки заменены этим решением. `proposed-baseline.yaml`,
+`prepare.py` и `check.py` воспроизводят историческое предложение, а активный
+manifest проверяется `scripts/check_coordination.py --audit-hashes`.
+
+---
+
 # Gate 1 — пакет замены baseline, Issue #6
 
 Статус: **подготовлен к рассмотрению; Gate 1 не принят**. P1/P2 приняты
