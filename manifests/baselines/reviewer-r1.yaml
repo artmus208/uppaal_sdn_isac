@@ -1,241 +1,239 @@
-schema_version: "1.0"
+schema_version: '1.0'
 kind: model-baseline
-
 metadata:
-  id: reviewer-r1-candidate
+  id: reviewer-r1-gate1-20260923
   status: candidate
-  maturity: draft
+  maturity: accepted_inputs_pending_gate
   frozen: false
-  captured_on: "2026-09-06"
-  purpose: Candidate baseline for the reviewer-response work described by manifests/v1.md.
-
+  captured_on: '2026-09-23'
 repository:
   url: https://github.com/artmus208/uppaal_sdn_isac
   branch: read
-  commit: c731b79ca1a8a02cc158c2bee988023d8b8f0a4f
-  remote_ref: origin/read
-  remote_head_at_capture: c731b79ca1a8a02cc158c2bee988023d8b8f0a4f
-  snapshot_basis: current_worktree
-  worktree_dirty_at_capture: true
-  commit_is_exact_snapshot: false
-  warning: The hashes below describe current file bytes, including modified and untracked files; commit c731b79 is provenance, not a frozen reproducible snapshot.
-
+  commit: a190e10df1b7ce4923f0d18c664b4eef8715eb58
+  snapshot_basis: exact_git_blobs
+  worktree_dirty_at_capture: false
+  commit_is_exact_snapshot: true
+  note: Source commit pins generation inputs. Generated artifacts are committed separately
+    in the governance PR.
+supersedes:
+  baseline_id: reviewer-r1-candidate
+  historical_capture:
+    path: evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml
+    sha256: 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a
+  historical_source_commit: c731b79ca1a8a02cc158c2bee988023d8b8f0a4f
 hashing:
   algorithm: sha256
   encoding_rule: hash_exact_file_bytes
   common_hashes:
     source_hash:
-      value: 7ef2c09dbcb2e435696e4f67a769cbf9aff5db2e771dc3b080d6745013ec2e86
-      construction: sha256 of concatenated sha256sum records in the listed order
+      value: e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a
+      construction: sha256 of concatenated sha256sum records for the listed files
+        in bytewise path order
       inputs:
-        - levels_tex/Application_service_layer_formalization.tex
-        - levels_tex/MAC_resource_scheduling_formalization.tex
-        - levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
-        - levels_tex/SDN_RIC_control_plane_formalization.tex
+      - .uppaal_mcp_workspace/Application_service_layer_uppaal.xml
+      - .uppaal_mcp_workspace/mac_generated/model.xml
+      - .uppaal_mcp_workspace/phy_generated/model.xml
+      - .uppaal_mcp_workspace/sdn_generated_smoke/model.xml
+      - evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml
+      - evidence/instantiation/20260907-p2-scope/instance-vector.json
+      - evidence/instantiation/20260907-p2-scope/inventory.json
+      - evidence/validation/20260907-p1/inventory.json
+      - evidence/validation/20260907-p1/validation-report.md
+      - levels_tex/Application_service_layer_formalization.tex
+      - levels_tex/MAC_resource_scheduling_formalization.tex
+      - levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
+      - levels_tex/SDN_RIC_control_plane_formalization.tex
+      - src/uppaal_mcp/layers.py
+      - src/uppaal_mcp/layout_core.py
+      - src/uppaal_mcp/mac/__init__.py
+      - src/uppaal_mcp/mac/alpha.py
+      - src/uppaal_mcp/mac/defaults.py
+      - src/uppaal_mcp/mac/generator.py
+      - src/uppaal_mcp/mac/ir.py
+      - src/uppaal_mcp/mac/layout.py
+      - src/uppaal_mcp/mac/property_pack.py
+      - src/uppaal_mcp/phy/__init__.py
+      - src/uppaal_mcp/phy/alpha.py
+      - src/uppaal_mcp/phy/defaults.py
+      - src/uppaal_mcp/phy/generator.py
+      - src/uppaal_mcp/phy/ir.py
+      - src/uppaal_mcp/phy/layout.py
+      - src/uppaal_mcp/phy/property_pack.py
+      - src/uppaal_mcp/sdn/__init__.py
+      - src/uppaal_mcp/sdn/alpha.py
+      - src/uppaal_mcp/sdn/defaults.py
+      - src/uppaal_mcp/sdn/generator.py
+      - src/uppaal_mcp/sdn/ir.py
+      - src/uppaal_mcp/sdn/layout.py
+      - src/uppaal_mcp/sdn/property_pack.py
     generator_hash:
-      value: c663808ca7258029f530befdcdf03d7f3d6bffb6916630cf21ffd31661302ac2
-      construction: sha256 of concatenated sha256sum records for the listed files in bytewise path order
+      value: 8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60
+      construction: sha256 of concatenated sha256sum records for the listed files
+        in bytewise path order
       inputs:
-        - src/uppaal_mcp/layout_core.py
-        - src/uppaal_mcp/mac/alpha.py
-        - src/uppaal_mcp/mac/defaults.py
-        - src/uppaal_mcp/mac/generator.py
-        - src/uppaal_mcp/mac/ir.py
-        - src/uppaal_mcp/mac/layout.py
-        - src/uppaal_mcp/mac/property_pack.py
-        - src/uppaal_mcp/phy/alpha.py
-        - src/uppaal_mcp/phy/defaults.py
-        - src/uppaal_mcp/phy/generator.py
-        - src/uppaal_mcp/phy/ir.py
-        - src/uppaal_mcp/phy/layout.py
-        - src/uppaal_mcp/phy/property_pack.py
-        - src/uppaal_mcp/sdn/alpha.py
-        - src/uppaal_mcp/sdn/defaults.py
-        - src/uppaal_mcp/sdn/generator.py
-        - src/uppaal_mcp/sdn/ir.py
-        - src/uppaal_mcp/sdn/layout.py
-        - src/uppaal_mcp/sdn/property_pack.py
-      coverage: candidate PHY, MAC, and SDN model/query generation; Application and integrated generators are absent
-      scope: current_worktree
-    usage_rule: P3 and P4 runs must share source_hash and generator_hash; model_hash and query_hash are recorded separately for every generated configuration.
-
+      - src/uppaal_mcp/integrated/__init__.py
+      - src/uppaal_mcp/integrated/adapt.py
+      - src/uppaal_mcp/integrated/boundary.py
+      - src/uppaal_mcp/integrated/generator.py
+      - src/uppaal_mcp/integrated/inputs.py
+      - src/uppaal_mcp/integrated/replay.py
+      - src/uppaal_mcp/integrated/xmlutil.py
+  note: Source aggregate covers pinned source inputs excluding governance documents.
+    Generator aggregate is exactly the integrated metadata definition. Every imported
+    layer source is included in source inputs.
 coordination_inputs:
   scientific_plan:
     path: manifests/v1.md
     sha256: f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075
-    git_state: untracked
-  reviewer_comments:
-    path: rewievs/18100004273 - Comments for authors.docx
-    sha256: cc3d28d486710303d46eb81563804b381cdb26abc61b4927bf1e4d16e0da5875
-    git_state: untracked
-
+source_inputs:
+- path: .uppaal_mcp_workspace/Application_service_layer_uppaal.xml
+  sha256: fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f
+- path: .uppaal_mcp_workspace/mac_generated/model.xml
+  sha256: e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7
+- path: .uppaal_mcp_workspace/phy_generated/model.xml
+  sha256: e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd
+- path: .uppaal_mcp_workspace/sdn_generated_smoke/model.xml
+  sha256: af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de
+- path: evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml
+  sha256: 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a
+- path: evidence/instantiation/20260907-p2-scope/instance-vector.json
+  sha256: ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45
+- path: evidence/instantiation/20260907-p2-scope/inventory.json
+  sha256: ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195
+- path: evidence/validation/20260907-p1/inventory.json
+  sha256: b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4
+- path: evidence/validation/20260907-p1/validation-report.md
+  sha256: 23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c
+- path: levels_tex/Application_service_layer_formalization.tex
+  sha256: 44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807
+- path: levels_tex/MAC_resource_scheduling_formalization.tex
+  sha256: 262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527
+- path: levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
+  sha256: b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df
+- path: levels_tex/SDN_RIC_control_plane_formalization.tex
+  sha256: c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812
+- path: src/uppaal_mcp/layers.py
+  sha256: d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec
+- path: src/uppaal_mcp/layout_core.py
+  sha256: a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471
+- path: src/uppaal_mcp/mac/__init__.py
+  sha256: 4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463
+- path: src/uppaal_mcp/mac/alpha.py
+  sha256: d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7
+- path: src/uppaal_mcp/mac/defaults.py
+  sha256: 78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b
+- path: src/uppaal_mcp/mac/generator.py
+  sha256: e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58
+- path: src/uppaal_mcp/mac/ir.py
+  sha256: b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49
+- path: src/uppaal_mcp/mac/layout.py
+  sha256: 466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244
+- path: src/uppaal_mcp/mac/property_pack.py
+  sha256: 4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0
+- path: src/uppaal_mcp/phy/__init__.py
+  sha256: 7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868
+- path: src/uppaal_mcp/phy/alpha.py
+  sha256: cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e
+- path: src/uppaal_mcp/phy/defaults.py
+  sha256: 3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c
+- path: src/uppaal_mcp/phy/generator.py
+  sha256: e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7
+- path: src/uppaal_mcp/phy/ir.py
+  sha256: 47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54
+- path: src/uppaal_mcp/phy/layout.py
+  sha256: c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5
+- path: src/uppaal_mcp/phy/property_pack.py
+  sha256: b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6
+- path: src/uppaal_mcp/sdn/__init__.py
+  sha256: 4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463
+- path: src/uppaal_mcp/sdn/alpha.py
+  sha256: 5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f
+- path: src/uppaal_mcp/sdn/defaults.py
+  sha256: ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70
+- path: src/uppaal_mcp/sdn/generator.py
+  sha256: b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272
+- path: src/uppaal_mcp/sdn/ir.py
+  sha256: 4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25
+- path: src/uppaal_mcp/sdn/layout.py
+  sha256: 422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8
+- path: src/uppaal_mcp/sdn/property_pack.py
+  sha256: 05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec
+implementation_sources:
+- path: src/uppaal_mcp/integrated/__init__.py
+  sha256: 7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7
+- path: src/uppaal_mcp/integrated/adapt.py
+  sha256: 66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba
+- path: src/uppaal_mcp/integrated/boundary.py
+  sha256: 4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804
+- path: src/uppaal_mcp/integrated/generator.py
+  sha256: 63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521
+- path: src/uppaal_mcp/integrated/inputs.py
+  sha256: 7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52
+- path: src/uppaal_mcp/integrated/replay.py
+  sha256: 0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103
+- path: src/uppaal_mcp/integrated/xmlutil.py
+  sha256: e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b
 manuscript:
-  submitted_pdf:
-    path: pdfs/018100004273.pdf
-    sha256: 31ebd85a51c3ccf858b46088d3e94db11e99ac533e0e130148a0be451efae109
-    git_state: untracked
   editable_source:
     path: levels_tex/samplepaper.tex
     sha256: 7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f
-    git_state: modified
-  layer_sources:
-    application:
-      path: levels_tex/Application_service_layer_formalization.tex
-      sha256: 44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807
-      git_state: clean
-    mac:
-      path: levels_tex/MAC_resource_scheduling_formalization.tex
-      sha256: 262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527
-      git_state: clean
-    phy:
-      path: levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex
-      sha256: b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df
-      git_state: clean
-    sdn:
-      path: levels_tex/SDN_RIC_control_plane_formalization.tex
-      sha256: c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812
-      git_state: clean
-
+  role: Pinned revision context only; no manuscript build or final editorial acceptance
+    claimed.
 model_topology:
   declared_article_composition: PHY || MAC || SDN || APP || ENV || OBS
-  observed_repository_state: separate_closed_layer_projections_and_application_xml
   integrated_model:
-    present: false
-    path: null
-    sha256: null
+    present: true
+    path: evidence/governance/20260906-baseline/gate1-20260923/model.xml
+    sha256: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
   interface_contract:
-    present: false
-    path: null
-    sha256: null
-  warning: The per-layer files below must not be represented as a verified integrated four-layer model.
-
-models:
-  phy:
-    status: candidate_projection
-    model:
-      path: .uppaal_mcp_workspace/phy_generated/model.xml
-      sha256: d0b5959289a77f0520006d960f59de7811e266ee6ec4273e92cf946177f4e539
-      git_state: modified
-    queries:
-      path: .uppaal_mcp_workspace/phy_generated/queries.q
-      sha256: 76973af1e87c5f0605c231ddc03d1aed5a56b582fea5b43e49b12d925388d9de
-      git_state: modified
-    generator:
-      path: src/uppaal_mcp/phy/generator.py
-      sha256: e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7
-      git_state: clean
-
-  mac:
-    status: candidate_projection
-    model:
-      path: .uppaal_mcp_workspace/mac_generated/model.xml
-      sha256: 85b73729d545750cbcfcd72ed0fc65f551f6118c9a1ec9a55f8ba24a4db96e1a
-      git_state: modified
-    queries:
-      path: .uppaal_mcp_workspace/mac_generated/queries.q
-      sha256: 1d3ba5fd72447d66ae18aefb4bceb4a620564e727da9898b2304c6e4c0f3845d
-      git_state: modified
-    generator:
-      path: src/uppaal_mcp/mac/generator.py
-      sha256: 71fbfd14a40a38a4b47f1681cc38842fb4e22748630bb6cc5c6fe4ba1471956a
-      git_state: modified
-
-  sdn:
-    status: candidate_projection
-    model:
-      path: .uppaal_mcp_workspace/sdn_generated_smoke/model.xml
-      sha256: af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de
-      git_state: clean
-    queries:
-      path: .uppaal_mcp_workspace/sdn_generated_smoke/queries.q
-      sha256: 8bff679ed75692568b79391b3ccfeceda67ae549caa0844215447813527a2f31
-      git_state: clean
-    generator:
-      path: src/uppaal_mcp/sdn/generator.py
-      sha256: bd5bd16b79cd2b4e3a46420f1b2bc57e0577b1c593c63d4fd23a0b7230085580
-      git_state: modified
-    duplicate_observation:
-      note: sdn_report_smoke currently has byte-identical model and query files.
-      model_sha256: af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de
-      queries_sha256: 8bff679ed75692568b79391b3ccfeceda67ae549caa0844215447813527a2f31
-
-  application:
-    status: standalone_candidate_without_registered_generator
-    model:
-      path: .uppaal_mcp_workspace/Application_service_layer_uppaal.xml
-      sha256: 742259bbdeec6c8938d836f901e5356424400599e79894fd1546dd9e619cc9b2
-      git_state: modified
-    queries:
-      source: embedded_in_model_xml
-      path: null
-      sha256: null
-    generator:
-      present: false
-      path: null
-      sha256: null
-
-generator_runtime:
-  verifyta_wrapper:
-    path: src/uppaal_mcp/verifyta.py
-    sha256: 4fe19b7dd68fbd10de8e8a615ef946b8d17a8ff457ffef0ad23c25b92c052f8a
-    git_state: clean
-  mcp_server:
-    path: src/uppaal_mcp/server.py
-    sha256: 7420714fa4818f0b011f5f7e70a8924a087fbbca801e342c78b67a9036a8d648
-    git_state: clean
-
+    present: true
+    path: evidence/instantiation/20260907-p2-scope/interface-contract.md
+    sha256: 9b625912c264cdaa09da73adcb322b696b1be371031da6aff01da80fc02ffe51
+  contract_amendments:
+    path: evidence/instantiation/20260917-v03-contract-disposition/contracts.md
+    sha256: 24022cb6101cbeb9006b47542bc1c43c177d80e01331216af8881472c55d0994
 verification_configuration:
   uppaal:
-    version: "5.0.0"
-    availability: executable_observed
+    version: UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023
+    version_output:
+      path: evidence/governance/20260906-baseline/gate1-20260923/verifyta-version.txt
+      sha256: 1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47
   license:
-    status: blocked
-    observation: verifyta cannot acquire or reach the license from the current WSL execution context
+    status: observed_working_in_prior_run
+    evidence:
+      path: evidence/governance/20260906-baseline/gate1-20260923/tool-evidence.json
+      sha256: 283201158075a8af73d058acf85a83a94933f30a3dab5b1b8eaccf8dea98adbe
   accepted_verification_runs: []
-  canonical_parameter_set: null
-  canonical_instance_vector: null
-  canonical_query_set: null
-  readiness: blocked
-  blockers:
-    - no_integrated_four_layer_model
-    - no_accepted_interface_contract
-    - no_frozen_parameter_set
-    - no_frozen_instance_vector
-    - no_frozen_query_set
-    - verifyta_license_unavailable_in_current_execution_context
-    - snapshot_contains_modified_and_untracked_inputs
-
+  canonical_parameter_set:
+    path: evidence/governance/20260906-baseline/gate1-20260923/parameters.json
+    sha256: da4f1bd09a4f3892f87da7f4fc321515cca7a70899c03466899d13cfc497a31b
+  canonical_instance_vector:
+    path: evidence/governance/20260906-baseline/gate1-20260923/instance-vector.json
+    sha256: 9b7162e15d1cf681a766cce60a9e92e2ff627b1be1085c9753828a90a18f3ca0
+  canonical_query_set:
+    path: evidence/governance/20260906-baseline/gate1-20260923/selected-queries.q
+    sha256: 3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18
+  candidate_query_set:
+    path: evidence/governance/20260906-baseline/gate1-20260923/candidate-queries.q
+    sha256: 97aff5896eba43a49c41fa45030550e42be63fb5a555803aef6d0dbbe67b1ab9
+  query_disposition:
+    path: evidence/governance/20260906-baseline/gate1-20260923/query-disposition.json
+    sha256: ac6c5bfe0c7d9e3370bb590228079ae8665e1f3c03664c914534833ef466f58d
+  claim_scope:
+    path: evidence/governance/20260910-p1-p2-review/final-20260923/README.md
+    sha256: 354a515504dabf6df2c80750e4cce4ffff49bc51def6faace127c4483d5b7631
+  readiness: pending_gate_decision
+  note: 15 selected obligations/diagnostics; no full C01/C02 result claimed.
 hardware:
-  global_description: null
   policy: record_hardware_per_run
-  rationale: Verification and scalability measurements may run on different machines; hardware belongs to run evidence, not to the baseline.
-  required_per_run_fields:
-    - operating_system
-    - execution_environment
-    - cpu_model
-    - logical_cpu_count
-    - ram_bytes
-    - resource_limit
-
 gate_1:
   status: pending
   passed: false
-  required_before_freeze:
-    - commit_all_selected_inputs
-    - create_and_accept_integrated_model
-    - create_and_accept_cross_layer_interface_contract
-    - resolve_channel_kind_and_name_mismatches
-    - pin_parameter_set
-    - pin_instance_vector
-    - pin_query_set
-    - establish_working_verifyta_license_path
-    - regenerate_hashes_from_a_clean_commit
-  freeze_rule: Set metadata.frozen to true only in a reviewed commit where every required item is satisfied and all hashes match exact committed bytes.
-  transition:
-    from: candidate
-    to: frozen
-    owner_role: coordinator
-    occurs_after:
-      - P1_accepted
-      - P2_accepted
-    note: Gate 1 freezes P0; P0 frozen is not a prerequisite of Gate 1.
+  P1_accepted: true
+  P2_accepted: true
+  acceptance_record: https://github.com/artmus208/uppaal_sdn_isac/pull/47
+  decision_record: https://github.com/artmus208/uppaal_sdn_isac/issues/6
+  remaining:
+  - explicit_integrator_gate_decision
+  transition: Only after explicit decision set metadata status=frozen/frozen=true
+    and gate status=accepted/passed=true; retain exact input hashes.

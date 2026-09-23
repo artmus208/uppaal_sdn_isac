@@ -65,6 +65,29 @@ def check_run_storage(text: str) -> list[str]:
     return errors
 
 
+def check_baseline_state(text: str) -> list[str]:
+    """Reject inconsistent freeze flags without claiming a hash audit."""
+    def section(name):
+        match = re.search(rf"(?ms)^{name}:\n(.*?)(?=^\S|\Z)", text)
+        return match.group(1) if match else ""
+    def field(block, name):
+        match = re.search(rf"(?m)^  {name}: ([^\n]+)$", block)
+        return match.group(1) if match else None
+    meta, gate = section("metadata"), section("gate_1")
+    state = (field(meta, "status"), field(meta, "frozen"),
+             field(gate, "status"), field(gate, "passed"))
+    if state not in (("candidate", "false", "pending", "false"),
+                     ("frozen", "true", "accepted", "true")):
+        return ["baseline: inconsistent candidate/frozen and Gate 1 flags"]
+    if field(meta, "id") != "reviewer-r1-candidate":
+        repo = section("repository")
+        if field(repo, "worktree_dirty_at_capture") != "false" or field(repo, "commit_is_exact_snapshot") != "true":
+            return ["baseline: supersession requires exact clean committed inputs"]
+        if field(gate, "P1_accepted") != "true" or field(gate, "P2_accepted") != "true":
+            return ["baseline: supersession requires accepted P1/P2"]
+    return []
+
+
 def structural_checks() -> int:
     ERRORS.clear()
     issue = read_required(ISSUE_FORM)
@@ -233,19 +256,9 @@ def structural_checks() -> int:
             "status/accepted",
         ],
     )
-    require_tokens(
-        "baseline manifest",
-        baseline,
-        [
-            "status: candidate",
-            "frozen: false",
-            "worktree_dirty_at_capture: true",
-            "integrated_model:",
-            "status: blocked",
-            "policy: record_hardware_per_run",
-            "status: pending",
-        ],
-    )
+    require_tokens("baseline manifest", baseline,
+                   ["integrated_model:", "policy: record_hardware_per_run"])
+    ERRORS.extend(check_baseline_state(baseline))
 
     plan_hash_match = re.search(
         r"(?m)^  scientific_plan:\n    path: manifests/v1\.md\n    sha256: ([0-9a-f]{64})$",

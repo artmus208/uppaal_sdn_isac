@@ -24,7 +24,7 @@
     "levels_tex/MAC_resource_scheduling_formalization.tex": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
     "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
     "levels_tex/SDN_RIC_control_plane_formalization.tex": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
-    "manifests/baselines/reviewer-r1.yaml": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+    "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
     "manifests/collaboration-v1.yaml": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
     "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
     "src/uppaal_mcp/layers.py": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec",
@@ -56,19 +56,25 @@
       "pinned_sha256": "cb2ed0d4b60678bfe9e8153c626dce28d1cd17d201154eac954c729047845c78",
       "actual_sha256": "e4fde1df5f51a582d2b0f06daef9a2a98d3a96195c3201584d7d5e801d038b28",
       "role": "operational_context_not_model_input"
+    },
+    "manifests/baselines/reviewer-r1.yaml": {
+      "pinned_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "actual_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "pinned_path": "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml",
+      "role": "active_governance_record_audited_separately"
     }
   },
-  "source_commit": "a7a67f0c7ac74d6a7d4ccb2c5e9fbf12954c8150",
+  "source_commit": "a190e10df1b7ce4923f0d18c664b4eef8715eb58",
   "implementation_sources": {
     "src/uppaal_mcp/integrated/__init__.py": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7",
     "src/uppaal_mcp/integrated/adapt.py": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba",
     "src/uppaal_mcp/integrated/boundary.py": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804",
     "src/uppaal_mcp/integrated/generator.py": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521",
-    "src/uppaal_mcp/integrated/inputs.py": "cd863ed8e26e0bc535142100d9ccc2a6d2c56f144682e38bc0ee2cebc909c23b",
+    "src/uppaal_mcp/integrated/inputs.py": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
     "src/uppaal_mcp/integrated/replay.py": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103",
     "src/uppaal_mcp/integrated/xmlutil.py": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b"
   },
-  "generator_hash": "719b1183557441a9d5b1dd7de99092ea70280d4d8d4f654a71bad2420fff221e",
+  "generator_hash": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
   "generator_hash_construction": "sha256 of implementation_sources sha256/path records in sorted path order",
   "instance_vector": {
     "schema_version": 1,

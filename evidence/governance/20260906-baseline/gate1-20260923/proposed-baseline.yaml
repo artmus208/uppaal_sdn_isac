@@ -9,7 +9,7 @@ metadata:
 repository:
   url: https://github.com/artmus208/uppaal_sdn_isac
   branch: read
-  commit: a7a67f0c7ac74d6a7d4ccb2c5e9fbf12954c8150
+  commit: a190e10df1b7ce4923f0d18c664b4eef8715eb58
   snapshot_basis: exact_git_blobs
   worktree_dirty_at_capture: false
   commit_is_exact_snapshot: true
@@ -26,7 +26,7 @@ hashing:
   encoding_rule: hash_exact_file_bytes
   common_hashes:
     source_hash:
-      value: d89cf7c26fc613e0f4369cf490303bdad4b234889020c3c7e08253f5e8730e61
+      value: e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a
       construction: sha256 of concatenated sha256sum records for the listed files
         in bytewise path order
       inputs:
@@ -34,6 +34,7 @@ hashing:
       - .uppaal_mcp_workspace/mac_generated/model.xml
       - .uppaal_mcp_workspace/phy_generated/model.xml
       - .uppaal_mcp_workspace/sdn_generated_smoke/model.xml
+      - evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml
       - evidence/instantiation/20260907-p2-scope/instance-vector.json
       - evidence/instantiation/20260907-p2-scope/inventory.json
       - evidence/validation/20260907-p1/inventory.json
@@ -66,7 +67,7 @@ hashing:
       - src/uppaal_mcp/sdn/layout.py
       - src/uppaal_mcp/sdn/property_pack.py
     generator_hash:
-      value: 719b1183557441a9d5b1dd7de99092ea70280d4d8d4f654a71bad2420fff221e
+      value: 8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60
       construction: sha256 of concatenated sha256sum records for the listed files
         in bytewise path order
       inputs:
@@ -93,6 +94,8 @@ source_inputs:
   sha256: e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd
 - path: .uppaal_mcp_workspace/sdn_generated_smoke/model.xml
   sha256: af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de
+- path: evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml
+  sha256: 89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a
 - path: evidence/instantiation/20260907-p2-scope/instance-vector.json
   sha256: ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45
 - path: evidence/instantiation/20260907-p2-scope/inventory.json
@@ -165,7 +168,7 @@ implementation_sources:
 - path: src/uppaal_mcp/integrated/generator.py
   sha256: 63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521
 - path: src/uppaal_mcp/integrated/inputs.py
-  sha256: cd863ed8e26e0bc535142100d9ccc2a6d2c56f144682e38bc0ee2cebc909c23b
+  sha256: 7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52
 - path: src/uppaal_mcp/integrated/replay.py
   sha256: 0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103
 - path: src/uppaal_mcp/integrated/xmlutil.py
@@ -231,7 +234,6 @@ gate_1:
   acceptance_record: https://github.com/artmus208/uppaal_sdn_isac/pull/47
   decision_record: https://github.com/artmus208/uppaal_sdn_isac/issues/6
   remaining:
-  - authorize_and_test_manifest_provenance_compatibility
   - explicit_integrator_gate_decision
   transition: Only after explicit decision set metadata status=frozen/frozen=true
     and gate status=accepted/passed=true; retain exact input hashes.

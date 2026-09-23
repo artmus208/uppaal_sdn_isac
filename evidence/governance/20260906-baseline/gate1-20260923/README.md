@@ -3,7 +3,9 @@
 Статус: **подготовлен к рассмотрению; Gate 1 не принят**. P1/P2 приняты
 пользователем и записаны в #15/#17/#19 и PR #47. Новых задач не создано.
 
-Base/source commit: `a7a67f0c7ac74d6a7d4ccb2c5e9fbf12954c8150` (`read`).
+Base: `a7a67f0c7ac74d6a7d4ccb2c5e9fbf12954c8150` (`read`).
+Точный source commit с provenance compatibility: `a190e10df1b7ce4923f0d18c664b4eef8715eb58`
+(опубликованная ветка этого PR).
 Branch: `codex/vadimnbkg/6-gate1-baseline`; owner: vadimnbkg.
 
 ## Что предлагается зафиксировать
@@ -24,6 +26,8 @@ Branch: `codex/vadimnbkg/6-gate1-baseline`; owner: vadimnbkg.
 
 Модель и полный candidate query set побайтово совпадают с принятой P1/P2
 конфигурацией. Selected queries — точная копия принятого #47 набора.
+После разрешённого обновления provenance XML и queries остаются прежними,
+но generator_hash и source_hash изменились и пересчитаны явно.
 Исходный commit генерации и commit публикации generated artifacts различны:
 первый указан выше, второй определяется HEAD этого PR. Это не dirty snapshot.
 
@@ -60,22 +64,31 @@ python scripts/check_coordination.py
 оба aggregate с точными checkout bytes через существующий auditor #6.
 Это static/hash audit, не model checking. Сохранённый результат — `audit.json`.
 
-## Порядок активации и оставшаяся граница scope
+## Совместимость и окончательное решение
 
-Генератор строго pin-ит старый `manifests/baselines/reviewer-r1.yaml`.
-Простая замена активного manifest нарушит его проверку входов. Поэтому активный
-manifest пока не заменён, и старые historical artifacts не переписаны.
-Запрошено разрешение расширить существующий #6 только на provenance loader
-`src/uppaal_mcp/integrated/inputs.py` и связанный regression test. По действующему
-#6 генератор read-only; без ответа этот код не меняется.
+Пользователь разрешил минимальное изменение loader и regression test в #6.
+Loader строго проверяет сохранённый historical-candidate.yaml по прежнему
+SHA-256. Текущий baseline manifest записывается в context_document_hashes с
+фактическим SHA-256 и ролью active_governance_record_audited_separately.
+Модель не читает значения из этого governance record: его содержимое проверяет
+отдельный hash audit. Генерация сама по себе **не подтверждает** валидность
+или принятие активного manifest. Все остальные научные source pins сохраняются.
+Так устранена циклическая зависимость manifest hash -> generator -> manifest.
 
-После разрешения совместимость должна сохранять строгую проверку научных
-входов, различать исторический pinned input и текущую запись baseline и
-демонстрировать побайтовое равенство XML/queries. Изменённый generator_hash
-необходимо явно записать; нельзя представить его неизменным при изменении кода.
+Новый manifest установлен по штатному пути manifests/baselines/reviewer-r1.yaml
+в этой PR-ветке как candidate/frozen=false. Его байты равны proposed-baseline.yaml.
+Source commit закрепляет исходники генерации, включая историческую копию;
+его active manifest ещё старый. Это намеренное разделение input snapshot и
+последующей записи о нём. Старые generator metadata labels candidate и исходный
+vector status сохраняются как provenance, не как текущее решение gate.
 
-После подготовки и проверки совместимости integrator принимает конкретный
-Gate 1 пакет. В существующем #6 записываются commit, model/generator/query
-hashes, parameters, vector, tool version, время и субъект решения. Только
-тогда активный manifest получает frozen=true и gate passed=true. Принятие
-P1/P2 само по себе эту отдельную запись не заменяет.
+Проверки: профильные регрессии сохранения XML/query и отказа при повреждении
+historical/scientific inputs; согласованность candidate/frozen flags; полный
+software suite; аудит активного manifest и исходных Git pins. Результаты команд
+и ограничения публикуются в checks.txt и active-audit.json.
+
+Осталось только отдельное решение integrator по этому пакету Gate 1 и merge.
+В существующем #6 записываются commit, model/generator/query hashes, parameters,
+vector, tool version, время и субъект решения. Только после этого manifest
+получает frozen=true и gate passed=true. Подтверждение изменения provenance
+не трактуется как автоматическое принятие Gate 1. P3/P4 пока не разблокированы.

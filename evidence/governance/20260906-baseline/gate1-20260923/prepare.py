@@ -4,7 +4,7 @@ from pathlib import Path
 import yaml
 ROOT=Path(__file__).resolve().parents[4]
 HERE=Path(__file__).resolve().parent
-BASE='a7a67f0c7ac74d6a7d4ccb2c5e9fbf12954c8150'
+BASE='a190e10df1b7ce4923f0d18c664b4eef8715eb58'
 sys.path.insert(0,str(ROOT/'src'))
 from uppaal_mcp.integrated.generator import generate
 sha=lambda b:hashlib.sha256(b).hexdigest()
@@ -13,13 +13,18 @@ def item(p):
 def dump(p,value):p.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
 def main():
     c=generate(ROOT)
+    reviewed=ROOT/"evidence/governance/20260910-p1-p2-review/final-20260923"
+    for name in ["selected-queries.q","selected-queries.json","parameters.json","query-disposition.json"]:
+        assert (HERE/name).read_bytes()==(reviewed/name).read_bytes(),name
     accepted=json.loads((ROOT/'evidence/governance/20260910-p1-p2-review/final-20260923/inputs.json').read_text())
-    for k in ['model_hash','query_hash','generator_hash','instance_vector']:
+    for k in ['model_hash','query_hash','instance_vector']:
         assert c.metadata[k]==accepted[k],k
     assert (HERE/'model.xml').read_bytes()==c.model_xml.encode()
     assert (HERE/'candidate-queries.q').read_bytes()==c.queries.encode()
     source=json.loads((HERE/'generation.json').read_text())
     assert source['source_commit']==BASE
+    for k in ['source_hashes','implementation_sources','generator_hash','parameter_set']:
+        assert c.metadata[k]==source[k],k
     for p,h in {**source['source_hashes'],**source['implementation_sources']}.items():
         assert sha(subprocess.check_output(['git','show',BASE+':'+p],cwd=ROOT))==h,p
         assert sha((ROOT/p).read_bytes())==h,p
@@ -84,7 +89,7 @@ def main():
       'gate_1':{'status':'pending','passed':False,'P1_accepted':True,'P2_accepted':True,
         'acceptance_record':'https://github.com/artmus208/uppaal_sdn_isac/pull/47',
         'decision_record':'https://github.com/artmus208/uppaal_sdn_isac/issues/6',
-        'remaining':['authorize_and_test_manifest_provenance_compatibility','explicit_integrator_gate_decision'],
+        'remaining':['explicit_integrator_gate_decision'],
         'transition':'Only after explicit decision set metadata status=frozen/frozen=true and gate status=accepted/passed=true; retain exact input hashes.'}}
     assert manifest['hashing']['common_hashes']['generator_hash']['value']==source['generator_hash']
     (HERE/'proposed-baseline.yaml').write_text(yaml.safe_dump(manifest,allow_unicode=True,sort_keys=False))
