@@ -10,7 +10,7 @@ sha=lambda b:hashlib.sha256(b).hexdigest()
 def dump(p,v):p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
 def win(p):return subprocess.check_output(['wslpath','-w',str(p)],text=True).strip()
 def main():
- ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);args=ap.parse_args()
+ ap=argparse.ArgumentParser();ap.add_argument('--run-id',required=True);ap.add_argument('--search-order',type=int,choices=[0,1],default=0);ap.add_argument('--trace-kind',type=int,choices=[0,1],default=1);ap.add_argument('--ids',default='');args=ap.parse_args()
  if not re.fullmatch(r'[A-Za-z0-9_-]+',args.run_id):raise ValueError('invalid run id')
  if subprocess.check_output(['git','status','--porcelain'],cwd=ROOT):raise ValueError('clean source tree required')
  commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
@@ -20,6 +20,8 @@ def main():
  subprocess.run([sys.executable,'-B','scripts/check_coordination.py','--audit-hashes','--commit',commit,'--output',str(out/'baseline-audit.json')],cwd=ROOT,check=True)
  cfg=m['verification_configuration'];model=ROOT/m['model_topology']['integrated_model']['path']
  queries=ROOT/cfg['canonical_query_set']['path'];specs=json.loads((queries.parent/'selected-queries.json').read_text())
+ if args.ids:
+  wanted=set(args.ids.split(','));assert wanted <= {s['id'] for s in specs};specs=[s for s in specs if s['id'] in wanted]
  assert sha(model.read_bytes())==m['model_topology']['integrated_model']['sha256']
  assert sha(queries.read_bytes())==cfg['canonical_query_set']['sha256']
  version=subprocess.run([VERIFY,'--version'],capture_output=True,timeout=20)
@@ -28,11 +30,11 @@ def main():
  hardware=subprocess.run([PS,'-NoProfile','-Command',"[Console]::OutputEncoding=New-Object System.Text.UTF8Encoding($false); $os=Get-CimInstance Win32_OperatingSystem; $cpu=Get-CimInstance Win32_Processor; @{os=$os.Caption;version=$os.Version;ram_bytes=([long]$os.TotalVisibleMemorySize*1024);cpu=@($cpu|Select-Object Name,NumberOfCores,NumberOfLogicalProcessors)}|ConvertTo-Json -Depth 4"],capture_output=True,timeout=30)
  (out/'hardware.stdout.json').write_bytes(hardware.stdout);(out/'hardware.stderr.txt').write_bytes(hardware.stderr)
  assert hardware.returncode==0
- identity={'run_id':args.run_id,'workstream_id':'P3','issue':39,'produced_by_github_handle':'vadimnbkg','reviewed_by_github_handle':None,'source_commit':commit,'base_commit':'adea99b05195191eec115621613d4190eba06bf0','source_tree_clean_at_start':True,'baseline_id':m['metadata']['id'],'baseline_manifest_sha256':sha(baseline.read_bytes()),'source_hash':m['hashing']['common_hashes']['source_hash']['value'],'generator_hash':m['hashing']['common_hashes']['generator_hash']['value'],'model_path':model.relative_to(ROOT).as_posix(),'model_hash':sha(model.read_bytes()),'frozen_query_set_hash':sha(queries.read_bytes()),'parameter_set':json.loads((ROOT/cfg['canonical_parameter_set']['path']).read_text()),'instance_vector':json.loads((ROOT/cfg['canonical_instance_vector']['path']).read_text()),'tool_version':version.stdout.decode(),'operating_environment':platform.platform(),'native_hardware':json.loads(hardware.stdout.decode('utf-8-sig')),'limits':{'per_query_seconds':60,'memory_stop_bytes':2147483648,'parallelism':1},'status':'running'}
+ identity={'run_id':args.run_id,'workstream_id':'P3','issue':39,'produced_by_github_handle':'vadimnbkg','reviewed_by_github_handle':None,'source_commit':commit,'base_commit':'adea99b05195191eec115621613d4190eba06bf0','source_tree_clean_at_start':True,'baseline_id':m['metadata']['id'],'baseline_manifest_sha256':sha(baseline.read_bytes()),'source_hash':m['hashing']['common_hashes']['source_hash']['value'],'generator_hash':m['hashing']['common_hashes']['generator_hash']['value'],'model_path':model.relative_to(ROOT).as_posix(),'model_hash':sha(model.read_bytes()),'frozen_query_set_hash':sha(queries.read_bytes()),'parameter_set':json.loads((ROOT/cfg['canonical_parameter_set']['path']).read_text()),'instance_vector':json.loads((ROOT/cfg['canonical_instance_vector']['path']).read_text()),'tool_version':version.stdout.decode(),'operating_environment':platform.platform(),'native_hardware':json.loads(hardware.stdout.decode('utf-8-sig')),'limits':{'per_query_seconds':60,'memory_stop_bytes':2147483648,'parallelism':1},'status':'running','selected_property_ids':[s['id'] for s in specs],'search_order':args.search_order,'trace_kind':args.trace_kind}
  dump(out/'run.json',identity);results=[]
  for index,s in enumerate(specs,1):
   name=f'{index:02d}-{s["id"]}';q=out/(name+'.q');q.write_text(s['query']+'\n')
-  command=['-t','1','-X',win(out/(name+'-trace')),win(model),win(q)]
+  command=['-o',str(args.search_order),'-t',str(args.trace_kind),'-X',win(out/(name+'-trace')),win(model),win(q)]
   config={'executable':win(Path(VERIFY)),'arguments':command,'stdout':win(out/(name+'.stdout.txt')),'stderr':win(out/(name+'.stderr.txt')),'result':win(out/(name+'.native.json')),'timeout_seconds':60,'memory_stop_bytes':2147483648}
   cp=out/(name+'.config.json');dump(cp,config)
   wrapper=subprocess.run([PS,'-NoProfile','-ExecutionPolicy','Bypass','-File',win(HERE/'native-run.ps1'),'-Config',win(cp)],capture_output=True,timeout=90)
