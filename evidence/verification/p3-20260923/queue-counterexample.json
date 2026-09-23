@@ -1,0 +1,132 @@
+{
+  "trace": "02-C01-queue-trace1.xml",
+  "initial_node": "State1",
+  "terminal_node": "State812",
+  "transition_count": 811,
+  "terminal_monitor_values": {
+    "sys.mac_queue_q": "5",
+    "sys.mac_queue_overflow_seen": "1",
+    "sys.mac_phy_ack_timeout": "0",
+    "sys.mac_obs_ack_active": "0",
+    "sys.mac_obs_ack_late": "0",
+    "sys.sdn_attempt_active": "0",
+    "sys.sdn_attempt_bad": "0",
+    "sys.sdn_attempt_protocol_error": "0",
+    "sys.sdn_attempt_primary": "0",
+    "sys.sdn_attempt_rollback": "0",
+    "sys.sdn_attempt_total": "0"
+  },
+  "matching_ack_edges": [
+    {
+      "edge": "mac_A_SCH_0.Edge4",
+      "from": "mac_A_SCH_0.WaitPHYAck",
+      "to": "mac_A_SCH_0.Idle",
+      "sync": "mac_phy_ack?",
+      "update": "mac_phy_command_pending := false, mac_phy_ack_timeout := false, bus_schedule_open := false, mac_obs_ack_active := false"
+    },
+    {
+      "edge": "mac_A_SCH_0.Edge4",
+      "from": "mac_A_SCH_0.WaitPHYAck",
+      "to": "mac_A_SCH_0.Idle",
+      "sync": "mac_phy_ack?",
+      "update": "mac_phy_command_pending := false, mac_phy_ack_timeout := false, bus_schedule_open := false, mac_obs_ack_active := false"
+    },
+    {
+      "edge": "mac_A_SCH_0.Edge4",
+      "from": "mac_A_SCH_0.WaitPHYAck",
+      "to": "mac_A_SCH_0.Idle",
+      "sync": "mac_phy_ack?",
+      "update": "mac_phy_command_pending := false, mac_phy_ack_timeout := false, bus_schedule_open := false, mac_obs_ack_active := false"
+    },
+    {
+      "edge": "mac_A_SCH_0.Edge4",
+      "from": "mac_A_SCH_0.WaitPHYAck",
+      "to": "mac_A_SCH_0.Idle",
+      "sync": "mac_phy_ack?",
+      "update": "mac_phy_command_pending := false, mac_phy_ack_timeout := false, bus_schedule_open := false, mac_obs_ack_active := false"
+    }
+  ],
+  "scope": "This single symbolic trace only; no concrete timestamp or universal claim inferred.",
+  "queue_update_edges": [
+    {
+      "edge": "boundary_E_MAC_LOAD_0.Edge1",
+      "from": "boundary_E_MAC_LOAD_0.Wait",
+      "to": "boundary_E_MAC_LOAD_0.Publish",
+      "sync": "tau",
+      "update": "mac_queue_q := mac_queue_q > mac_queue_K ? mac_queue_q : mac_queue_q - 0 + 1, mac_queue_overflow_seen := mac_queue_overflow_seen || mac_queue_q > mac_queue_K, mac_queueClass := mac_queue_q == 0 ? mac_Q_EMPTY : (mac_queue_q <= mac_queue_L ? mac_Q_LOW : (mac_queue_q <= mac_queue_M ? mac_Q_MED : (mac_queue_q < mac_queue_H ? mac_Q_HIGH : mac_Q_CRIT))), mac_bufferClass := 2, mac_delayClass := 3, mac_dropClass := 2, mac_resourceClass := 3, mac_sensingDemand := 2, mac_commDemand := 2, tick := 0, bus_mac_age := 0, bus_mac_valid := true"
+    },
+    {
+      "edge": "boundary_E_MAC_LOAD_0.Edge1",
+      "from": "boundary_E_MAC_LOAD_0.Wait",
+      "to": "boundary_E_MAC_LOAD_0.Publish",
+      "sync": "tau",
+      "update": "mac_queue_q := mac_queue_q > mac_queue_K ? mac_queue_q : mac_queue_q - 0 + 1, mac_queue_overflow_seen := mac_queue_overflow_seen || mac_queue_q > mac_queue_K, mac_queueClass := mac_queue_q == 0 ? mac_Q_EMPTY : (mac_queue_q <= mac_queue_L ? mac_Q_LOW : (mac_queue_q <= mac_queue_M ? mac_Q_MED : (mac_queue_q < mac_queue_H ? mac_Q_HIGH : mac_Q_CRIT))), mac_bufferClass := 2, mac_delayClass := 3, mac_dropClass := 2, mac_resourceClass := 3, mac_sensingDemand := 2, mac_commDemand := 2, tick := 0, bus_mac_age := 0, bus_mac_valid := true"
+    },
+    {
+      "edge": "boundary_E_MAC_LOAD_0.Edge1",
+      "from": "boundary_E_MAC_LOAD_0.Wait",
+      "to": "boundary_E_MAC_LOAD_0.Publish",
+      "sync": "tau",
+      "update": "mac_queue_q := mac_queue_q > mac_queue_K ? mac_queue_q : mac_queue_q - 0 + 1, mac_queue_overflow_seen := mac_queue_overflow_seen || mac_queue_q > mac_queue_K, mac_queueClass := mac_queue_q == 0 ? mac_Q_EMPTY : (mac_queue_q <= mac_queue_L ? mac_Q_LOW : (mac_queue_q <= mac_queue_M ? mac_Q_MED : (mac_queue_q < mac_queue_H ? mac_Q_HIGH : mac_Q_CRIT))), mac_bufferClass := 2, mac_delayClass := 3, mac_dropClass := 2, mac_resourceClass := 3, mac_sensingDemand := 2, mac_commDemand := 2, tick := 0, bus_mac_age := 0, bus_mac_valid := true"
+    },
+    {
+      "edge": "boundary_E_MAC_LOAD_0.Edge1",
+      "from": "boundary_E_MAC_LOAD_0.Wait",
+      "to": "boundary_E_MAC_LOAD_0.Publish",
+      "sync": "tau",
+      "update": "mac_queue_q := mac_queue_q > mac_queue_K ? mac_queue_q : mac_queue_q - 0 + 1, mac_queue_overflow_seen := mac_queue_overflow_seen || mac_queue_q > mac_queue_K, mac_queueClass := mac_queue_q == 0 ? mac_Q_EMPTY : (mac_queue_q <= mac_queue_L ? mac_Q_LOW : (mac_queue_q <= mac_queue_M ? mac_Q_MED : (mac_queue_q < mac_queue_H ? mac_Q_HIGH : mac_Q_CRIT))), mac_bufferClass := 2, mac_delayClass := 3, mac_dropClass := 2, mac_resourceClass := 3, mac_sensingDemand := 2, mac_commDemand := 2, tick := 0, bus_mac_age := 0, bus_mac_valid := true"
+    },
+    {
+      "edge": "boundary_E_MAC_LOAD_0.Edge1",
+      "from": "boundary_E_MAC_LOAD_0.Wait",
+      "to": "boundary_E_MAC_LOAD_0.Publish",
+      "sync": "tau",
+      "update": "mac_queue_q := mac_queue_q > mac_queue_K ? mac_queue_q : mac_queue_q - 0 + 1, mac_queue_overflow_seen := mac_queue_overflow_seen || mac_queue_q > mac_queue_K, mac_queueClass := mac_queue_q == 0 ? mac_Q_EMPTY : (mac_queue_q <= mac_queue_L ? mac_Q_LOW : (mac_queue_q <= mac_queue_M ? mac_Q_MED : (mac_queue_q < mac_queue_H ? mac_Q_HIGH : mac_Q_CRIT))), mac_bufferClass := 2, mac_delayClass := 3, mac_dropClass := 2, mac_resourceClass := 3, mac_sensingDemand := 2, mac_commDemand := 2, tick := 0, bus_mac_age := 0, bus_mac_valid := true"
+    }
+  ],
+  "queue_changes": [
+    {
+      "from": "State25",
+      "to": "State26",
+      "q_before": "0",
+      "q_after": "1",
+      "overflow_after": "0",
+      "edges": "boundary_E_MAC_LOAD_0.Edge1 "
+    },
+    {
+      "from": "State421",
+      "to": "State422",
+      "q_before": "1",
+      "q_after": "2",
+      "overflow_after": "0",
+      "edges": "boundary_E_MAC_LOAD_0.Edge1 "
+    },
+    {
+      "from": "State523",
+      "to": "State524",
+      "q_before": "2",
+      "q_after": "3",
+      "overflow_after": "0",
+      "edges": "boundary_E_MAC_LOAD_0.Edge1 "
+    },
+    {
+      "from": "State706",
+      "to": "State707",
+      "q_before": "3",
+      "q_after": "4",
+      "overflow_after": "0",
+      "edges": "boundary_E_MAC_LOAD_0.Edge1 "
+    },
+    {
+      "from": "State811",
+      "to": "State812",
+      "q_before": "4",
+      "q_after": "5",
+      "overflow_after": "1",
+      "edges": "boundary_E_MAC_LOAD_0.Edge1 "
+    }
+  ],
+  "run_id": "p3-20260923-003-02-C01-queue",
+  "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "K": 4
+}

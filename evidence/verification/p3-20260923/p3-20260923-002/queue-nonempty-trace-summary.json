@@ -1,0 +1,135 @@
+{
+  "trace": "06-queue-nonempty-trace1.xml",
+  "initial_node": "State1",
+  "terminal_node": "State15",
+  "transition_count": 14,
+  "terminal_monitor_values": {
+    "sys.mac_queue_q": "1",
+    "sys.mac_queue_overflow_seen": "0",
+    "sys.mac_phy_ack_timeout": "0",
+    "sys.mac_obs_ack_active": "0",
+    "sys.mac_obs_ack_late": "0",
+    "sys.sdn_attempt_active": "0",
+    "sys.sdn_attempt_bad": "0",
+    "sys.sdn_attempt_protocol_error": "0",
+    "sys.sdn_attempt_primary": "0",
+    "sys.sdn_attempt_rollback": "0",
+    "sys.sdn_attempt_total": "0"
+  },
+  "matching_ack_edges": [],
+  "edges": [
+    {
+      "edge": "boundary_B_KPI_0.Edge1",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "p := 0"
+    },
+    {
+      "edge": "boundary_B_KPI_0.Edge2",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "m := 0"
+    },
+    {
+      "edge": "boundary_E_SERVICE_0.Edge1",
+      "from": "boundary_E_SERVICE_0.Demand",
+      "to": "boundary_E_SERVICE_0.DemandCheck",
+      "sync": "app_new_demand!",
+      "update": "1"
+    },
+    {
+      "edge": "app_Req_0.Edge1",
+      "from": "app_Req_0.ServiceIdle",
+      "to": "app_Req_0.RequestBuild",
+      "sync": "app_new_demand?",
+      "update": "app_c_req := 0, app_build_uav_service_request(), app_service_request_pending := false, app_sla_warning_report_sent := false, app_sla_violation_report_sent := false, app_violation_report_sent := false, app_service_reconfigure_sent := false, app_service_terminate_sent := false, bus_demand_delivered := true"
+    },
+    {
+      "edge": "boundary_E_SERVICE_0.Edge2",
+      "from": "boundary_E_SERVICE_0.DemandCheck",
+      "to": "boundary_E_SERVICE_0.Run",
+      "sync": "tau",
+      "update": "bus_demand_dropped := !bus_demand_delivered"
+    },
+    {
+      "edge": "boundary_B_KPI_0.Edge1",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "p := 0"
+    },
+    {
+      "edge": "boundary_B_KPI_0.Edge2",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "m := 0"
+    },
+    {
+      "edge": "boundary_B_KPI_0.Edge1",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "p := 0"
+    },
+    {
+      "edge": "boundary_B_KPI_0.Edge2",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "m := 0"
+    },
+    {
+      "edge": "app_Req_0.Edge2",
+      "from": "app_Req_0.RequestBuild",
+      "to": "app_Req_0.RequestReady",
+      "sync": "tau",
+      "update": "app_admissionClass := app_ADM_PENDING, app_c_req := 0"
+    },
+    {
+      "edge": "app_Req_0.Edge3",
+      "from": "app_Req_0.RequestReady",
+      "to": "app_Req_0.RequestPending",
+      "sync": "app_service_request!",
+      "update": "app_service_request_pending := true, raise_app_service_request_seq(), app_c_admission := 0"
+    },
+    {
+      "edge": "boundary_B_ADMISSION_0.Edge1",
+      "from": "boundary_B_ADMISSION_0.Idle",
+      "to": "boundary_B_ADMISSION_0.StageRequest",
+      "sync": "app_service_request?",
+      "update": "bus_request_service := app_serviceClass, bus_request_criticality := app_criticalityClass, bus_request_demand := app_demandClass, bus_request_latency := app_latencyBoundClass, bus_request_reliability := app_reliabilityClass, bus_request_update := app_sensingUpdateBoundClass, bus_request_freshness := app_sensingFreshnessBoundClass, bus_request_pd := app_pdMinClass, bus_request_fa := app_pfaMaxClass, bus_request_miss := app_pmissMaxClass, bus_request_accuracy := app_accuracyBoundClass, bus_request_coverage := app_coverageBoundClass, x := 0, total := 0"
+    },
+    {
+      "edge": "boundary_B_ADMISSION_0.Edge2",
+      "from": "boundary_B_ADMISSION_0.StageRequest",
+      "to": "boundary_B_ADMISSION_0.OfferRequest",
+      "sync": "tau",
+      "update": "1"
+    },
+    {
+      "edge": "boundary_B_KPI_0.Edge1",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "p := 0"
+    },
+    {
+      "edge": "boundary_B_KPI_0.Edge2",
+      "from": "boundary_B_KPI_0.Expired",
+      "to": "boundary_B_KPI_0.Expired",
+      "sync": "tau",
+      "update": "m := 0"
+    },
+    {
+      "edge": "boundary_E_MAC_LOAD_0.Edge1",
+      "from": "boundary_E_MAC_LOAD_0.Wait",
+      "to": "boundary_E_MAC_LOAD_0.Publish",
+      "sync": "tau",
+      "update": "mac_queue_q := mac_queue_q > mac_queue_K ? mac_queue_q : mac_queue_q - 0 + 1, mac_queue_overflow_seen := mac_queue_overflow_seen || mac_queue_q > mac_queue_K, mac_queueClass := mac_queue_q == 0 ? mac_Q_EMPTY : (mac_queue_q <= mac_queue_L ? mac_Q_LOW : (mac_queue_q <= mac_queue_M ? mac_Q_MED : (mac_queue_q < mac_queue_H ? mac_Q_HIGH : mac_Q_CRIT))), mac_bufferClass := 0, mac_delayClass := 0, mac_dropClass := 0, mac_resourceClass := 0, mac_sensingDemand := 0, mac_commDemand := 0, tick := 0, bus_mac_age := 0, bus_mac_valid := true"
+    }
+  ],
+  "scope": "This single symbolic trace only; no concrete timestamp or universal claim inferred."
+}
