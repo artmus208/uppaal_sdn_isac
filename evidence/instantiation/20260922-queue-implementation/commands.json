@@ -1,0 +1,807 @@
+[
+  {
+    "name": "version",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "--version"
+    ],
+    "started_at_utc": "2026-09-23T09:47:56.162580+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 2.4026193249999324,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "version.stdout.txt",
+    "stderr": "version.stderr.txt"
+  },
+  {
+    "name": "integrated-parser",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\integrated-parser-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\integrated-parser.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\integrated-parser.q"
+    ],
+    "started_at_utc": "2026-09-23T09:47:59.186218+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.4482826409999916,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied"
+    ],
+    "stdout": "integrated-parser.stdout.txt",
+    "stderr": "integrated-parser.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-integrated-parser",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "2c5abe7c740aee9c2fb5c893ad07a3a35238e6e2132fae67bf0ab09269071b71",
+    "query_hash": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "integrated-parser.xml",
+    "query_path": "integrated-parser.q",
+    "scope": "Full model engine load only; no full-model capacity result",
+    "per_query": [
+      {
+        "query": "E<> true",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "empty",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\empty-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\empty.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\empty.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:02.645589+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.5704497890000084,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "empty.stdout.txt",
+    "stderr": "empty.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-empty",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "1aeb8c29da4ceb758a508f6169b7a29e123ddc6456ad34e82fa6e3d6a3734aca",
+    "query_hash": "0e1f0ca7036bfb6df7e54c9ac48f4ee553a9cfe1ce7a9ec923f0197d6fc4ab35",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "empty.xml",
+    "query_path": "empty.q",
+    "scope": "empty queue, no arrivals",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] mac_queue_q == 0",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "fill",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\fill-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\fill.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\fill.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:06.225272+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 4.082337353999947,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "fill.stdout.txt",
+    "stderr": "fill.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-fill",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "7304fb4367c905628a09efe5a0ad0c26fb9e56312230873eedcf3df4571b6aca",
+    "query_hash": "b8b4bc6997efa3e1b0af25f532f780fbdd0d029d880b7fd5e841724e00a52cf8",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "fill.xml",
+    "query_path": "fill.q",
+    "scope": "five admitted work units with no service, expected violation",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 4 && !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_overflow_seen && bus_time == 25",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] (bus_time < 25 imply !mac_queue_overflow_seen)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] (mac_queue_overflow_seen imply mac_queue_q == 5)",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] ((mac_queue_q == 0 imply mac_queueClass == mac_Q_EMPTY) && (mac_queue_q == 1 imply mac_queueClass == mac_Q_LOW) && (mac_queue_q == 2 imply mac_queueClass == mac_Q_MED) && (mac_queue_q == 3 imply mac_queueClass == mac_Q_HIGH) && (mac_queue_q >= 4 imply mac_queueClass == mac_Q_CRIT))",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "full-arrival",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\full-arrival-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\full-arrival.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\full-arrival.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:10.317173+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.6310130919999892,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "full-arrival.stdout.txt",
+    "stderr": "full-arrival.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-full-arrival",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "16bd394b6e3b497968a665a8c803eff91899c3808c3abe3c0d4631c0478b3e5e",
+    "query_hash": "04bc230a2bb12c457bcf4c213cf63ff3e6aeb77a0e1b1b13a822608833015c17",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "full-arrival.xml",
+    "query_path": "full-arrival.q",
+    "scope": "arrival at capacity remains enabled",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "simultaneous",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\simultaneous-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\simultaneous.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\simultaneous.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:13.959135+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 4.931197463999979,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "simultaneous.stdout.txt",
+    "stderr": "simultaneous.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-simultaneous",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "04508dcbf990203ab03c39c916115ed53745e557bf41c21fc45de7feb11b9c37",
+    "query_hash": "78e1041f63cb670d381f1e22085d0026826fbfa68596a2505d9cb9bff3e28843",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "simultaneous.xml",
+    "query_path": "simultaneous.q",
+    "scope": "old service before arrival at capacity",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "A[] mac_queue_q == 4",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> bus_time >= 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "overflow-retained",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\overflow-retained-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\overflow-retained.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\overflow-retained.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:18.902171+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 4.4653644890000805,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "overflow-retained.stdout.txt",
+    "stderr": "overflow-retained.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-overflow-retained",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "c02f317492cf30c60faa43378b2bd4168b3f7c3c4a91dd62ee5233116dce9959",
+    "query_hash": "d8d4361a07955a4f96f7381316215ad4abdcca882cb1b550b04c1679fb79087c",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "overflow-retained.xml",
+    "query_path": "overflow-retained.q",
+    "scope": "post-overflow service cannot erase witness",
+    "per_query": [
+      {
+        "query": "A[] mac_queue_overflow_seen && mac_queue_q == 5",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> bus_time >= 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "service-mode-0",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-0-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-0.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-0.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:23.378097+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.9100179009999465,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "service-mode-0.stdout.txt",
+    "stderr": "service-mode-0.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-service-mode-0",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "15912a236652d544e1e166842f97b8a0e0aade842a07322507c38aec38a3dd10",
+    "query_hash": "73a45f934ea7d080b88922f90c11c14b67502188e4ba12e3b19051166d914f85",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "service-mode-0.xml",
+    "query_path": "service-mode-0.q",
+    "scope": "optional service; only COMM and JOINT eligible",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 0",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 4 && bus_time >= 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "service-mode-1",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-1-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-1.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-1.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:27.299989+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.7030124240000077,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "service-mode-1.stdout.txt",
+    "stderr": "service-mode-1.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-service-mode-1",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "4f06254e4445eca7e69fe14662c79a202e131368475d341c1fd91924835500c8",
+    "query_hash": "73a45f934ea7d080b88922f90c11c14b67502188e4ba12e3b19051166d914f85",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "service-mode-1.xml",
+    "query_path": "service-mode-1.q",
+    "scope": "optional service; only COMM and JOINT eligible",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 0",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 4 && bus_time >= 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "service-mode-2",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-2-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-2.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-2.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:31.015516+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 4.195238071999938,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "service-mode-2.stdout.txt",
+    "stderr": "service-mode-2.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-service-mode-2",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "1dc39167767b83acff8e39f1ad8e9326fd7c693e830b5fe126f20669023758c4",
+    "query_hash": "73a45f934ea7d080b88922f90c11c14b67502188e4ba12e3b19051166d914f85",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "service-mode-2.xml",
+    "query_path": "service-mode-2.q",
+    "scope": "optional service; only COMM and JOINT eligible",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 0",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 4 && bus_time >= 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "service-mode-3",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-3-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-3.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-3.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:35.224260+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.8705308550000836,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "satisfied",
+      "satisfied"
+    ],
+    "stdout": "service-mode-3.stdout.txt",
+    "stderr": "service-mode-3.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-service-mode-3",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "a85eed5aca364865f5d68ecaefb785ff8407671afd7719bfd1525570535a62a7",
+    "query_hash": "73a45f934ea7d080b88922f90c11c14b67502188e4ba12e3b19051166d914f85",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "service-mode-3.xml",
+    "query_path": "service-mode-3.q",
+    "scope": "optional service; only COMM and JOINT eligible",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 0",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 4 && bus_time >= 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "service-mode-4",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-4-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-4.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\service-mode-4.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:39.107023+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 4.3742455079999445,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied",
+      "satisfied"
+    ],
+    "stdout": "service-mode-4.stdout.txt",
+    "stderr": "service-mode-4.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-service-mode-4",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "ffed381a3691c231eb43f6eff0f619a69d074ed6274c155f5ea25ea35eb25118",
+    "query_hash": "73a45f934ea7d080b88922f90c11c14b67502188e4ba12e3b19051166d914f85",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "service-mode-4.xml",
+    "query_path": "service-mode-4.q",
+    "scope": "optional service; only COMM and JOINT eligible",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 0",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      },
+      {
+        "query": "E<> mac_queue_q == 4 && bus_time >= 15",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "clipped-mutant",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\clipped-mutant-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\clipped-mutant.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue43-resume-20260923\\evidence\\instantiation\\20260922-queue-implementation\\runs\\queue-20260922-resume-20260923-001\\clipped-mutant.q"
+    ],
+    "started_at_utc": "2026-09-23T09:48:43.492620+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.798610549999921,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "expected": [
+      "satisfied",
+      "NOT satisfied"
+    ],
+    "stdout": "clipped-mutant.stdout.txt",
+    "stderr": "clipped-mutant.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "queue-20260922-resume-20260923-001-clipped-mutant",
+    "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+    "model_hash": "1d71d749632a9c728a7cc300a09e970e304c7fd90a7235abfb3ece22b4e6979d",
+    "query_hash": "04bc230a2bb12c457bcf4c213cf63ff3e6aeb77a0e1b1b13a822608833015c17",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "clipped-mutant.xml",
+    "query_path": "clipped-mutant.q",
+    "scope": "deliberate broken saturation at K; reachability detects false safety",
+    "per_query": [
+      {
+        "query": "A[] !mac_queue_overflow_seen",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      },
+      {
+        "query": "E<> mac_queue_overflow_seen",
+        "expected": "NOT satisfied",
+        "actual": "NOT satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  {
+    "name": "software",
+    "command": [
+      "/tmp/uppaal-issue43-resume-20260923/.venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "started_at_utc": "2026-09-23T09:48:47.293972+00:00",
+    "timeout_seconds": 150,
+    "runtime_seconds": 58.09014249099994,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "software.stdout.txt",
+    "stderr": "software.stderr.txt"
+  },
+  {
+    "name": "coordination",
+    "command": [
+      "/tmp/uppaal-issue43-resume-20260923/.venv/bin/python",
+      "scripts/check_coordination.py"
+    ],
+    "started_at_utc": "2026-09-23T09:49:45.384910+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.13300219999996443,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "coordination.stdout.txt",
+    "stderr": "coordination.stderr.txt"
+  },
+  {
+    "name": "mcp",
+    "command": [
+      "/tmp/uppaal-issue43-resume-20260923/.venv/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "started_at_utc": "2026-09-23T09:49:45.518498+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 1.3875958010000886,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "mcp.stdout.txt",
+    "stderr": "mcp.stderr.txt"
+  },
+  {
+    "name": "examples",
+    "command": [
+      "/tmp/uppaal-issue43-resume-20260923/.venv/bin/uppaal-verifyta",
+      "list-examples"
+    ],
+    "started_at_utc": "2026-09-23T09:49:46.906681+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.31545359999995526,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "examples.stdout.txt",
+    "stderr": "examples.stderr.txt"
+  },
+  {
+    "name": "pip",
+    "command": [
+      "/tmp/uppaal-issue43-resume-20260923/.venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "started_at_utc": "2026-09-23T09:49:47.222785+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.464515160000019,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "pip.stdout.txt",
+    "stderr": "pip.stderr.txt"
+  },
+  {
+    "name": "diff",
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "79f59d8b9d59375371bae6f5521e7d2619fcb2a0",
+      "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7"
+    ],
+    "started_at_utc": "2026-09-23T09:49:47.687896+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 0.007501478999984101,
+    "exit_code": 0,
+    "status": "completed",
+    "verdicts": [],
+    "expected": null,
+    "stdout": "diff.stdout.txt",
+    "stderr": "diff.stderr.txt"
+  }
+]

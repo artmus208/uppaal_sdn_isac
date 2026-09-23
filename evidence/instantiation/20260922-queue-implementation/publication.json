@@ -1,0 +1,10 @@
+{
+  "run_id": "queue-20260922-resume-20260923-001",
+  "archive": "runs/queue-20260922-resume-20260923-001.tar.xz",
+  "archive_sha256": "cb74bf55bff572ed53b4205b039d514d75a1e6d2fecdd540e0a9274dcdff996c",
+  "archive_file_count": 83,
+  "source_commit": "a7f7fd0cf3fc8ddb365fa2e16f998a43543b68d7",
+  "query_results": 34,
+  "restoration_check": "all archived bytes compared with raw files",
+  "historical_run": "queue-20260922-001 unavailable on this machine; not substituted or claimed restored"
+}
