@@ -1,0 +1,8 @@
+{
+  "run_id": "p3-20260923-001",
+  "status": "error",
+  "source_commit": "dfed4bcffabe23f61908789df3a292326278ad27",
+  "stage": "hardware capture before model checking",
+  "error": "Windows PowerShell emitted localized OEM text; UTF-8 decode failed. Raw stdout preserved; zero queries executed.",
+  "next_run": "p3-20260923-002"
+}
