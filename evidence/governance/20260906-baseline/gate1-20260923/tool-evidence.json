@@ -1,0 +1,59 @@
+{
+  "evidence_class": "prior_engine_availability_not_C01_C02",
+  "archive": {
+    "path": "evidence/instantiation/20260923-recovery-attempts/runs/recovery-attempts-20260923-001.tar.xz",
+    "sha256": "a4f4d0758da186d3590ac7d2a88404eb67cb621a5b11360695ff202e57cd29e6"
+  },
+  "results_index": {
+    "path": "evidence/instantiation/20260923-recovery-attempts/results-index.json",
+    "sha256": "cecae43d8a15ba8f696b4061b3ac5adf5cb3abfdb029fc7e9b7adba202cbc05e"
+  },
+  "record": {
+    "name": "integrated-parser",
+    "command": [
+      "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+      "-q",
+      "-t",
+      "1",
+      "-f",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\integrated-parser-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\integrated-parser.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-issue45\\evidence\\instantiation\\20260923-recovery-attempts\\runs\\recovery-attempts-20260923-001\\integrated-parser.q"
+    ],
+    "started_at_utc": "2026-09-23T10:22:09.500744+00:00",
+    "timeout_seconds": 60,
+    "runtime_seconds": 3.2999086880004143,
+    "exit_code": 0,
+    "status": "success",
+    "verdicts": [
+      "satisfied"
+    ],
+    "expected": [
+      "satisfied"
+    ],
+    "stdout": "integrated-parser.stdout.txt",
+    "stderr": "integrated-parser.stderr.txt",
+    "matches_expectation": true,
+    "run_id": "recovery-attempts-20260923-001-integrated-parser",
+    "source_commit": "43306bd189ba6cf4464888d8d5867e80f8a2f224",
+    "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+    "query_hash": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "model_path": "integrated-parser.xml",
+    "query_path": "integrated-parser.q",
+    "scope": "Full model engine load only; no full-model recovery-attempt result",
+    "per_query": [
+      {
+        "query": "E<> true",
+        "expected": "satisfied",
+        "actual": "satisfied"
+      }
+    ],
+    "peak_memory": "not_available",
+    "states_explored": "not_available"
+  },
+  "version_stdout": {
+    "path": "evidence/governance/20260906-baseline/gate1-20260923/verifyta-version.txt",
+    "sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47"
+  }
+}
