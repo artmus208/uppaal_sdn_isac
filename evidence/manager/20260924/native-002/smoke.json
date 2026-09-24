@@ -1,0 +1,30 @@
+{
+  "kind": "software integration smoke, not frozen-baseline evidence",
+  "manager_source_commit": "bdcab48a149c4e13c8e7f748bf57877cb53deac9",
+  "manager_hash": "de41fd2ebfde7675fa618f92f7c9c5f28515236897a0e76ce6797b39e64058fd",
+  "smoke_script_hash": "23252b7e7c92c3089eec71d1c8b9fd1dd9e56c9cd26d7d1e9b29201caf3d2593",
+  "exit_code": 0,
+  "continuation_skipped_completed": true,
+  "results": [
+    {
+      "run_id": "001-0d8d617de739474b8b24991b60a317b2",
+      "status": "success",
+      "verdict": "satisfied",
+      "model_hash": "dc99b78db1382d84fd5758d06ee04fff15cd7778c6cbf3c57ac013dce6e4f40d",
+      "query_hash": "13303dfe93bfb5d5b9c8d4601f17e6a47a53f8b7b58255540a1c87a66013cc45",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+      "elapsed_seconds": 0.07546050000019022,
+      "peak_rss_bytes": 17043456
+    },
+    {
+      "run_id": "002-966e7b270e2c40fa8e9bcc8379b428d6",
+      "status": "success",
+      "verdict": "violated",
+      "model_hash": "dc99b78db1382d84fd5758d06ee04fff15cd7778c6cbf3c57ac013dce6e4f40d",
+      "query_hash": "614176ef562244b7750e39297fca4400830f036f2a2d8f14fd5db95eff49c300",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+      "elapsed_seconds": 0.07248650000110501,
+      "peak_rss_bytes": 17170432
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{"phase": "running", "updated_at": "2026-09-24T12:55:10.425868+00:00", "task": "001", "attempt": "001-0d8d617de739474b8b24991b60a317b2", "elapsed_seconds": 0.00898339999912423, "rss_bytes": 4984832, "peak_rss_bytes": 4988928, "cpu_seconds": 0.0, "throughput": null, "load": null}
+{"phase": "running", "updated_at": "2026-09-24T12:55:10.487746+00:00", "task": "001", "attempt": "001-0d8d617de739474b8b24991b60a317b2", "elapsed_seconds": 0.06450300000142306, "rss_bytes": 32768, "peak_rss_bytes": 17043456, "cpu_seconds": 0.03125, "throughput": null, "load": null}
+{"phase": "running", "updated_at": "2026-09-24T12:55:10.536026+00:00", "task": "002", "attempt": "002-966e7b270e2c40fa8e9bcc8379b428d6", "elapsed_seconds": 0.007452300000295509, "rss_bytes": 3141632, "peak_rss_bytes": 3145728, "cpu_seconds": 0.0, "throughput": null, "load": null}
+{"phase": "running", "updated_at": "2026-09-24T12:55:10.596618+00:00", "task": "002", "attempt": "002-966e7b270e2c40fa8e9bcc8379b428d6", "elapsed_seconds": 0.0623957000025257, "rss_bytes": 32768, "peak_rss_bytes": 17170432, "cpu_seconds": 0.078125, "throughput": null, "load": null}
+{"phase": "completed", "updated_at": "2026-09-24T12:55:10.626733+00:00", "completed": 2, "total": 2}
+{"phase": "completed", "updated_at": "2026-09-24T12:55:10.662128+00:00", "completed": 2, "total": 2}
+Native UPPAAL smoke and continuation checks OK
