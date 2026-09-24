@@ -1,0 +1,143 @@
+{
+  "kind": "static source audit, not model checking",
+  "source_path": "evidence/governance/20260906-baseline/gate1-20260923/model.xml",
+  "source_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "retained_variables": [
+    "mac_c_obs_ack",
+    "mac_c_phy_ack",
+    "mac_obs_ack_active",
+    "mac_obs_ack_late"
+  ],
+  "reference_inventory": [
+    {
+      "line": 359,
+      "text": "clock mac_c_sched, mac_c_phy_ack, mac_c_queue, mac_c_buf, mac_c_report;"
+    },
+    {
+      "line": 360,
+      "text": "clock mac_c_obs_ack, mac_c_obs_queue, mac_c_obs_sensing, mac_c_obs_buf, mac_c_obs_report;"
+    },
+    {
+      "line": 418,
+      "text": "bool mac_obs_ack_active = false;"
+    },
+    {
+      "line": 419,
+      "text": "bool mac_obs_ack_late = false;"
+    },
+    {
+      "line": 2880,
+      "text": "<label kind=\"invariant\" x=\"1050\" y=\"35\">mac_c_phy_ack &lt;= mac_D_phy_ack</label>"
+    },
+    {
+      "line": 2904,
+      "text": "<label kind=\"assignment\" x=\"490\" y=\"28\">mac_scheduleMode = mac_SCH_CONSTRAINED, mac_macReason = mac_REASON_STALE_PHY_KPI, mac_c_phy_ack = 0</label>"
+    },
+    {
+      "line": 2921,
+      "text": "<label kind=\"assignment\" x=\"630\" y=\"28\">mac_select_mac_policy(), mac_c_phy_ack = 0, mac_phy_command_pending = true</label>"
+    },
+    {
+      "line": 2928,
+      "text": "<label kind=\"assignment\" x=\"910\" y=\"28\">mac_phy_command_pending = true, mac_c_phy_ack = 0, bus_schedule_open = true, mac_c_obs_ack = 0, mac_obs_ack_active = true</label>"
+    },
+    {
+      "line": 2934,
+      "text": "<label kind=\"guard\" x=\"490\" y=\"126\">(mac_c_phy_ack &lt;= mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &lt;= mac_D_phy_ack</label>"
+    },
+    {
+      "line": 2936,
+      "text": "<label kind=\"assignment\" x=\"490\" y=\"218\">mac_phy_command_pending = false, mac_phy_ack_timeout = false, bus_schedule_open = false, mac_obs_ack_active = false</label>"
+    },
+    {
+      "line": 2944,
+      "text": "<label kind=\"guard\" x=\"904\" y=\"-88\">(mac_c_phy_ack == mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &lt;= mac_D_phy_ack</label>"
+    },
+    {
+      "line": 2946,
+      "text": "mac_mac_report_pending = true, mac_phy_command_pending = false, bus_schedule_open = false, mac_obs_ack_active = false</label>"
+    },
+    {
+      "line": 2963,
+      "text": "<label kind=\"guard\" x=\"490\" y=\"126\">(mac_c_phy_ack &lt;= mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &gt; mac_D_phy_ack</label>"
+    },
+    {
+      "line": 2965,
+      "text": "<label kind=\"assignment\" x=\"490\" y=\"218\">mac_phy_command_pending = false, mac_phy_ack_timeout = false, bus_schedule_open = false, mac_obs_ack_active = false, mac_obs_ack_late = true</label>"
+    },
+    {
+      "line": 2973,
+      "text": "<label kind=\"guard\" x=\"904\" y=\"-88\">(mac_c_phy_ack == mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &gt; mac_D_phy_ack</label>"
+    },
+    {
+      "line": 2975,
+      "text": "mac_mac_report_pending = true, mac_phy_command_pending = false, bus_schedule_open = false, mac_obs_ack_active = false, mac_obs_ack_late = true</label>"
+    },
+    {
+      "line": 6097,
+      "text": "<label kind=\"guard\">mac_phy_command_pending &amp;&amp; mac_c_phy_ack &lt;= mac_D_phy_ack</label>"
+    },
+    {
+      "line": 7195,
+      "text": "<label kind=\"guard\">mac_obs_ack_late</label>"
+    },
+    {
+      "line": 7200,
+      "text": "<label kind=\"guard\">mac_obs_ack_active &amp;&amp; mac_c_obs_ack &gt; mac_D_phy_ack</label>"
+    }
+  ],
+  "transition_mapping": [
+    {
+      "scheduler_edge_index": 5,
+      "source": "ApplySchedule",
+      "target": "WaitPHYAck",
+      "guard": "",
+      "retained_updates": [
+        "mac_c_phy_ack = 0",
+        "mac_c_obs_ack = 0",
+        "mac_obs_ack_active = true"
+      ]
+    },
+    {
+      "scheduler_edge_index": 6,
+      "source": "WaitPHYAck",
+      "target": "Idle",
+      "guard": "(mac_c_phy_ack <= mac_D_phy_ack) && mac_c_obs_ack <= mac_D_phy_ack",
+      "retained_updates": [
+        "mac_obs_ack_active = false"
+      ]
+    },
+    {
+      "scheduler_edge_index": 7,
+      "source": "WaitPHYAck",
+      "target": "ScheduleFailure",
+      "guard": "(mac_c_phy_ack == mac_D_phy_ack) && mac_c_obs_ack <= mac_D_phy_ack",
+      "retained_updates": [
+        "mac_obs_ack_active = false"
+      ]
+    },
+    {
+      "scheduler_edge_index": 9,
+      "source": "WaitPHYAck",
+      "target": "Idle",
+      "guard": "(mac_c_phy_ack <= mac_D_phy_ack) && mac_c_obs_ack > mac_D_phy_ack",
+      "retained_updates": [
+        "mac_obs_ack_active = false",
+        "mac_obs_ack_late = true"
+      ]
+    },
+    {
+      "scheduler_edge_index": 10,
+      "source": "WaitPHYAck",
+      "target": "ScheduleFailure",
+      "guard": "(mac_c_phy_ack == mac_D_phy_ack) && mac_c_obs_ack > mac_D_phy_ack",
+      "retained_updates": [
+        "mac_obs_ack_active = false",
+        "mac_obs_ack_late = true"
+      ]
+    }
+  ],
+  "model_hash": "536233940526a1716006d6769c84c9faf6dc3d7bf0e6ffa0981aa60b56a49241",
+  "negative_control_hash": "b474572cb0ceb80d821fb08ea74954569324ddfcb8dacfdfc10a1b9eea885fd6",
+  "query_hash": "cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db"
+}

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<nta>
+  <declaration>const int mac_D_phy_ack = 3;
+clock mac_c_phy_ack, mac_c_obs_ack;
+bool mac_obs_ack_active = false, mac_obs_ack_late = false;</declaration>
+  <template>
+    <name>C02Ack</name>
+    <location id="idle" x="0" y="0">
+      <name x="0" y="-30">Inactive</name>
+    </location>
+    <location id="wait" x="400" y="0">
+      <name x="400" y="-30">WaitPHYAck</name>
+      </location>
+    <init ref="idle" />
+    <transition>
+      <source ref="idle" />
+      <target ref="wait" />
+      <label kind="assignment">mac_c_phy_ack = 0, mac_c_obs_ack = 0, mac_obs_ack_active = true</label>
+      <label kind="comments">scheduler edge 5: ApplySchedule -&gt; WaitPHYAck; synchronization hidden</label>
+    </transition>
+    <transition>
+      <source ref="wait" />
+      <target ref="idle" />
+      <label kind="guard">(mac_c_phy_ack &lt;= mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &lt;= mac_D_phy_ack</label>
+      <label kind="assignment">mac_obs_ack_active = false</label>
+      <label kind="comments">scheduler edge 6: WaitPHYAck -&gt; Idle; synchronization hidden</label>
+    </transition>
+    <transition>
+      <source ref="wait" />
+      <target ref="idle" />
+      <label kind="guard">(mac_c_phy_ack == mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &lt;= mac_D_phy_ack</label>
+      <label kind="assignment">mac_obs_ack_active = false</label>
+      <label kind="comments">scheduler edge 7: WaitPHYAck -&gt; ScheduleFailure; synchronization hidden</label>
+    </transition>
+    <transition>
+      <source ref="wait" />
+      <target ref="idle" />
+      <label kind="guard">(mac_c_phy_ack &lt;= mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &gt; mac_D_phy_ack</label>
+      <label kind="assignment">mac_obs_ack_active = false, mac_obs_ack_late = true</label>
+      <label kind="comments">scheduler edge 9: WaitPHYAck -&gt; Idle; synchronization hidden</label>
+    </transition>
+    <transition>
+      <source ref="wait" />
+      <target ref="idle" />
+      <label kind="guard">(mac_c_phy_ack == mac_D_phy_ack) &amp;&amp; mac_c_obs_ack &gt; mac_D_phy_ack</label>
+      <label kind="assignment">mac_obs_ack_active = false, mac_obs_ack_late = true</label>
+      <label kind="comments">scheduler edge 10: WaitPHYAck -&gt; ScheduleFailure; synchronization hidden</label>
+    </transition>
+    <transition>
+      <source ref="idle" />
+      <target ref="idle" />
+      <label kind="comments">Hidden concrete actions may stutter; no fairness imposed</label>
+    </transition>
+    <transition>
+      <source ref="wait" />
+      <target ref="wait" />
+      <label kind="comments">Hidden concrete actions may stutter; no fairness imposed</label>
+    </transition>
+  </template>
+  <system>Ack = C02Ack();
+system Ack;</system>
+</nta>
