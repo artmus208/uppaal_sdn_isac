@@ -1,0 +1,10 @@
+Options for the verification:
+  Generating some trace
+  Search order is breadth first
+  Using conservative space optimisation
+  Seed is 1790245128
+  State space representation uses minimal constraint systems with future testing
+  Using HashMap + Compress integers for discrete state storage
+[2K
+Verifying formula 1 at \\wsl.localhost\Ubuntu\tmp\uppaal-c02-20260924\evidence\verification\p3-20260924-c02-reduced\C02.q:1
+[2K -- Formula is satisfied.

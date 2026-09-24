@@ -31,7 +31,7 @@ def audit(out):
    assert r['verdict']=={'satisfied':'satisfied','NOT satisfied':'violated','MAYBE satisfied':'inconclusive'}[values[0]]
   else:assert r['verdict'] is None
   for trace in r['trace_paths']:assert (out/trace).is_file() and (out/trace).stat().st_size>0
-  if r['status']=='success' and ((s['query'].startswith('A[]') and r['verdict']=='violated') or (s['query'].startswith('E<>') and r['verdict']=='satisfied')):
+  if r['status']=='success' and (((s['query'].startswith('A[]') or '-->' in s['query']) and r['verdict']=='violated') or (s['query'].startswith('E<>') and r['verdict']=='satisfied')):
    assert r['trace_paths'],'missing diagnostic trace: '+s['id']
  print(f'Evidence audit OK: {len(results)} formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.')
 if __name__=='__main__':audit(Path(sys.argv[1]).resolve())

@@ -1,0 +1,13 @@
+{
+    "memory_measurement":  "Windows Process.PeakWorkingSet64, observed every 50ms; private bytes sampled. Stop threshold is not a hard allocation cap.",
+    "termination":  "completed",
+    "exit_code":  0,
+    "started_at_utc":  "2026-09-24T10:18:48.6699452Z",
+    "native_process_id":  16692,
+    "timeout_seconds":  30,
+    "peak_working_set_bytes":  0,
+    "sampled_peak_private_bytes":  0,
+    "runtime_seconds":  0.065999099999999991,
+    "finished_at_utc":  "2026-09-24T10:18:48.7718537Z",
+    "memory_stop_bytes":  2147483648
+}

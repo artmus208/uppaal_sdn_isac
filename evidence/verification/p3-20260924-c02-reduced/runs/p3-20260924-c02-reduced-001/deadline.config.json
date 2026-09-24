@@ -1,0 +1,18 @@
+{
+  "executable": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "arguments": [
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\p3-20260924-c02-reduced\\runs\\p3-20260924-c02-reduced-001\\deadline-trace",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\p3-20260924-c02-reduced\\model.xml",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\p3-20260924-c02-reduced\\deadline.q"
+  ],
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\p3-20260924-c02-reduced\\runs\\p3-20260924-c02-reduced-001\\deadline.stdout.txt",
+  "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\p3-20260924-c02-reduced\\runs\\p3-20260924-c02-reduced-001\\deadline.stderr.txt",
+  "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\p3-20260924-c02-reduced\\runs\\p3-20260924-c02-reduced-001\\deadline.native.json",
+  "timeout_seconds": 30,
+  "memory_stop_bytes": 2147483648
+}

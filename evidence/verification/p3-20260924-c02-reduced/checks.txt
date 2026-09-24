@@ -1,0 +1,19 @@
+Execution source ef32ac485dd95d7bf4514975c672ddd44d1d61e7; clean published tree.
+python3 build.py --check: exit 0; reproducible XML/query/audit bytes.
+python3 -B audit.py runs/p3-20260924-c02-reduced-001: exit 0.
+Native run: all 4 completed successfully with expected verdicts; results.json.
+check_coordination.py --audit-hashes --commit ef32ac485dd95d7bf4514975c672ddd44d1d61e7:
+  exit 0; 57 file hashes, 0 mismatches, 0 aggregate mismatches.
+PYTHONDONTWRITEBYTECODE=1 timeout --kill-after=5s 180s /tmp/uppaal-pr50-venv/bin/python -m unittest discover -s tests -v:
+  exit 0; 180 tests OK, 28.188 seconds, outside sandbox for stdio access.
+The intentional hash-mismatch fixture messages at the end of the software log
+are expected test output; the actual frozen baseline audit has zero mismatches.
+During audit development an XML byte-serialization comparison failed due to
+whitespace after removing the invariant. Canonical XML with strip_text=True
+confirms the intended single-invariant semantic difference. No model edits or
+native reruns were needed for that audit correction.
+No independent gate/C02 acceptance. Full-model C02 remains timeout.
+Default git diff --check reports CRLF in untouched raw Windows outputs;
+raw evidence is intentionally not normalized. Code/documentation-only check
+excludes runs/** and software-tests.log. Native memory counters are zero because
+no usable sample was captured; memory is not_available for these short runs.

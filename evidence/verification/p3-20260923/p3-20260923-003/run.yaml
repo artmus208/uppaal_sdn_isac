@@ -1,0 +1,1218 @@
+run_id: p3-20260923-003
+workstream_id: P3
+issue: 39
+produced_by_github_handle: vadimnbkg
+reviewed_by_github_handle: null
+source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+base_commit: adea99b05195191eec115621613d4190eba06bf0
+source_tree_clean_at_start: true
+baseline_id: reviewer-r1-gate1-20260923
+baseline_manifest_sha256: d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7
+source_hash: e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a
+generator_hash: 8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60
+model_path: evidence/governance/20260906-baseline/gate1-20260923/model.xml
+model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+frozen_query_set_hash: 3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18
+parameter_set:
+  integration:
+    layer_profiles: default profiles recorded in inventory.json; APP constants from
+      stored:app
+    D_cmd: 1
+    D_bus: 1
+    T_input: 5
+    T_mac_tick: 5
+    T_demand: 1
+    T_complete: 40
+    fault_window:
+    - 12
+    - 13
+    max_fault_events: 1
+    max_requests_per_service: 1
+    max_outstanding_per_command_kind: 1
+    freshness_warn_age: 5
+    freshness_expire_age: 10
+    justification: Explicit abstract test choices for independent review, not calibrated
+      network bounds. See interface-contract.md for ownership, loss and timeout rules.
+    mac_queue:
+      K: 4
+      L: 1
+      M: 2
+      H: 4
+  layer_source_constants:
+    phy:
+      D_meas: '5'
+      D_sig: '5'
+      D_sense: '5'
+      D_report: '5'
+      D_BM: '5'
+      D_child: '5'
+      D_net: '5'
+      T_meas: '5'
+      J_meas: '1'
+      T_report: '5'
+      J_SSB: '1'
+      tau_SSB: '4'
+      SCENARIO_NORMAL: '0'
+      SCENARIO_COMM_DEGRADED: '1'
+      SCENARIO_SENSING_DEGRADED: '2'
+      SCENARIO_JOINT_DEGRADED: '3'
+      W_OFDM: '0'
+      W_OTFS: '1'
+      W_AFDM: '2'
+      W_SC: '3'
+      W_OTHER: '4'
+      SINRCLASS_OUTAGE: '0'
+      SINRCLASS_LOW: '1'
+      SINRCLASS_OK: '2'
+      SINRCLASS_HIGH: '3'
+      BLERCLASS_OK: '0'
+      BLERCLASS_HIGH: '1'
+      BLERCLASS_CRITICAL: '2'
+      CQICLASS_GOOD: '0'
+      CQICLASS_LIMITED: '1'
+      CQICLASS_BAD: '2'
+      ICLASS_OK: '0'
+      ICLASS_HIGH: '1'
+      ICLASS_CRITICAL: '2'
+      DOPPLERCLASS_OK: '0'
+      DOPPLERCLASS_HIGH: '1'
+      DELAYSPREADCLASS_OK: '0'
+      DELAYSPREADCLASS_HIGH: '1'
+      POWERCLASS_OK: '0'
+      POWERCLASS_LOW: '1'
+      POWERCLASS_ABSENT: '2'
+      DRTCLASS_OK: '0'
+      DRTCLASS_BAD: '1'
+      PILOTDENSITYCLASS_OK: '0'
+      PILOTDENSITYCLASS_LOW: '1'
+      PILOTDENSITYCLASS_FAILED: '2'
+      PAYLOADSENSECLASS_OK: '0'
+      PAYLOADSENSECLASS_LIMITED: '1'
+      PAYLOADSENSECLASS_FAILED: '2'
+      PRSCLASS_OK: '0'
+      PRSCLASS_LIMITED: '1'
+      PRSCLASS_FAILED: '2'
+      BEAMERRORCLASS_LOCKABLE: '0'
+      BEAMERRORCLASS_UNSTABLE: '1'
+      BEAMERRORCLASS_CRITICAL: '2'
+      BLOCKAGECLASS_NONE: '0'
+      BLOCKAGECLASS_SUSPECTED: '1'
+      BLOCKAGECLASS_CONFIRMED: '2'
+      PDCLASS_OK: '0'
+      PDCLASS_LOW: '1'
+      PDCLASS_FAILED: '2'
+      RFACLASS_OK: '0'
+      RFACLASS_HIGH: '1'
+      RFACLASS_CRITICAL: '2'
+      ACCCLASS_OK: '0'
+      ACCCLASS_LIMITED: '1'
+      ACCCLASS_FAILED: '2'
+      CRBCLASS_OK: '0'
+      CRBCLASS_LOOSE: '1'
+      CRBCLASS_UNUSABLE: '2'
+      AOSCLASS_FRESH: '0'
+      AOSCLASS_STALE: '1'
+      AOSCLASS_EXPIRED: '2'
+      CAPCLASS_OK: '0'
+      CAPCLASS_LIMITED: '1'
+      CAPCLASS_FAILED: '2'
+      COVERAGECLASS_OK: '0'
+      COVERAGECLASS_LIMITED: '1'
+      COVERAGECLASS_FAILED: '2'
+      RESOURCESHARECLASS_OK: '0'
+      RESOURCESHARECLASS_LIMITED: '1'
+      RESOURCESHARECLASS_STARVED: '2'
+      MISCLASS_OK: '0'
+      MISCLASS_WARN: '1'
+      MISCLASS_CRITICAL: '2'
+      BMOVERHEADCLASS_OK: '0'
+      BMOVERHEADCLASS_HIGH: '1'
+      BMOVERHEADCLASS_EXCESSIVE: '2'
+      CHANNELCLASS_NOMINAL: '0'
+      CHANNELCLASS_INTERFERENCE_LIMITED: '1'
+      CHANNELCLASS_MOBILITY_LIMITED: '2'
+      CHANNELCLASS_MULTIPATH_LIMITED: '3'
+      CHANNELCLASS_BLOCKAGE: '4'
+      CHANNELCLASS_OUTAGE: '5'
+      SIGNALCLASS_NOMINAL: '0'
+      SIGNALCLASS_PILOT_BASED: '1'
+      SIGNALCLASS_PAYLOAD_ASSISTED: '2'
+      SIGNALCLASS_RECONFIGURING: '3'
+      SIGNALCLASS_LIMITED: '4'
+      BEAMCLASS_SEARCH: '0'
+      BEAMCLASS_TRACK: '1'
+      BEAMCLASS_LOCKED: '2'
+      BEAMCLASS_PREDICT: '3'
+      BEAMCLASS_MISALIGNED: '4'
+      BEAMCLASS_RECOVERING: '5'
+      BEAMCLASS_HO_ASSIST: '6'
+      BEAMCLASS_FAILED: '7'
+      SENSINGSTATE_SENSINGQOSOK: '0'
+      SENSINGSTATE_PROBABILITYLIMITED: '1'
+      SENSINGSTATE_FALSEALARMLIMITED: '2'
+      SENSINGSTATE_ACCURACYLIMITED: '3'
+      SENSINGSTATE_FRESHNESSLIMITED: '4'
+      SENSINGSTATE_COVERAGELIMITED: '5'
+      SENSINGSTATE_CAPACITYLIMITED: '6'
+      SENSINGSTATE_SENSINGFAILURE: '7'
+      PHYSTATE_PHYNORMAL: '0'
+      PHYSTATE_PHYCOMMUNICATIONDEGRADED: '1'
+      PHYSTATE_PHYSENSINGDEGRADED: '2'
+      PHYSTATE_PHYJOINTDEGRADED: '3'
+      PHYSTATE_PHYRECOVERY: '4'
+      PHYSTATE_PHYFAILURE: '5'
+    mac:
+      D_collect: '2'
+      D_sched: '5'
+      D_phy_ack: '3'
+      D_queue_crit: '10'
+      D_buf_report: '4'
+      D_mac_report: '5'
+      D_phy_report: '10'
+    sdn:
+      D_mon: '5'
+      D_decision: '5'
+      D_rule_install: '8'
+      D_rule_ack: '5'
+      D_ctrl_ack: '5'
+      D_recovery: '20'
+      D_rollback: '10'
+      D_admission: '15'
+      D_sec_ack: '10'
+    app:
+      D_req: '3'
+      D_admission: '15'
+      D_event: '5'
+      D_update: '3'
+      D_fresh: '10'
+      D_sla_warn: '5'
+      D_sla_violation: '3'
+      D_safety: '2'
+      D_fresh_report: '3'
+      D_update_report: '3'
+      D_fa_report: '3'
+      D_miss_report: '2'
+      D_detect_warn: '5'
+      D_detect_violation: '3'
+      D_sensing_fresh: '10'
+  attempt_recording:
+    issue: 45
+    version: 1
+    passive: true
+    limits:
+      primary: 1
+      rollback: 1
+      total: 2
+    overflow_domains:
+      primary: 2
+      rollback: 2
+      total: 3
+    episode: accepted failure to local outcome
+    sticky_across_episodes: true
+  time_unit: abstract model unit; no physical calibration
+  new_since_timing_inventory:
+    queue:
+      K: 4
+      L: 1
+      M: 2
+      H: 4
+      source: 'accepted #43/#44'
+    attempt_limits:
+      primary: 1
+      rollback: 1
+      total: 2
+      source: 'accepted #45/#46'
+    attempt_saturation:
+      primary: 2
+      rollback: 2
+      total: 3
+      source: violation witness bounds, not allowed attempt limits
+instance_vector:
+  configuration_id: p2-single-uav-abstract-v2-queue-candidate
+  time_unit: abstract_model_unit
+  physical_time_scale_seconds: null
+  entities:
+    base_stations: 1
+    devices_total: 1
+    uav_devices_subset: 1
+    radio_links: 1
+    sensing_targets: 1
+    sdn_ric_controllers: 1
+    service_sessions: 1
+    aggregate_queue_classes: 1
+    explicit_packet_queues: 0
+    explicit_handover_destination_cells: 0
+  system_order:
+  - phy_A_CH_0
+  - phy_A_SIG_0
+  - phy_A_BM_0
+  - phy_A_SQ_0
+  - phy_A_PH_0
+  - mac_A_SCH_0
+  - mac_A_Q_0
+  - mac_A_BUF_0
+  - mac_A_RSRC_0
+  - mac_A_MAC_AGG_0
+  - sdn_A_MON_0
+  - sdn_A_RISK_0
+  - sdn_A_POLICY_0
+  - sdn_A_RULE_0
+  - sdn_A_REC_0
+  - sdn_A_SDN_AGG_0
+  - app_Req_0
+  - app_Sla_0
+  - app_Crit_0
+  - app_Agg_0
+  - boundary_E_PHY_INPUT_0
+  - boundary_E_MAC_LOAD_0
+  - boundary_E_FAULT_0
+  - boundary_E_SERVICE_0
+  - boundary_B_PHY_MAC_0
+  - boundary_B_POLICY_0
+  - boundary_B_ADMISSION_0
+  - boundary_B_KPI_0
+  - obs_phy_ObsSenseReport_0
+  - obs_phy_ObsFreshness_0
+  - obs_phy_ObsBeamRecovery_0
+  - obs_mac_ObsPhyAck_0
+  - obs_mac_ObsQueueCritical_0
+  - obs_mac_ObsSensingCritical_0
+  - obs_mac_ObsBufferOverflow_0
+  - obs_mac_ObsMacReportFreshness_0
+  - obs_sdn_ObsRuleMiss_0
+  - obs_sdn_ObsRecovery_0
+  - obs_sdn_ObsAdmission_0
+  - obs_sdn_ObsStaleTelemetry_0
+  - obs_sdn_ObsCommandAck_0
+  - obs_sdn_ObsSensingDecision_0
+  - obs_app_ObsAdmission_0
+  - obs_app_ObsWarn_0
+  - obs_app_ObsViolation_0
+  - obs_app_ObsFresh_0
+  - obs_app_ObsUpdate_0
+  - obs_app_ObsFa_0
+  - obs_app_ObsMiss_0
+  - obs_app_ObsSafety_0
+  process_count: 50
+  queue_abstraction:
+    issue: 43
+    version: 1
+    units: abstract work units
+    writer: boundary_E_MAC_LOAD_0
+    event: existing MAC load tick
+    update_order: service old work, then arrival
+    overflow: absorbing K+1 and sticky flag
+    service_modes:
+    - SCH_COMM
+    - SCH_JOINT
+    service_guaranteed: false
+    drop: 0
+    physical_calibration: false
+    policy_change: true
+  recovery_attempt_recording:
+    issue: 45
+    version: 1
+    passive: true
+    limits:
+      primary: 1
+      rollback: 1
+      total: 2
+    overflow_domains:
+      primary: 2
+      rollback: 2
+      total: 3
+    episode: accepted failure to local outcome
+    sticky_across_episodes: true
+  historical_vector:
+    schema_version: 1
+    configuration_id: p2-single-uav-abstract-v1-proposal
+    source_commit: 7baa86e8d0d9eb2fc2df8d728a360c6b7cfb91bb
+    status: proposed_not_implemented_not_accepted
+    baseline_id: reviewer-r1-candidate
+    physical_time_scale_seconds: null
+    time_unit: abstract_model_unit
+    entities:
+      base_stations: 1
+      devices_total: 1
+      uav_devices_subset: 1
+      radio_links: 1
+      sensing_targets: 1
+      sdn_ric_controllers: 1
+      service_sessions: 1
+      aggregate_queue_classes: 1
+      explicit_packet_queues: 0
+      explicit_handover_destination_cells: 0
+    bindings:
+      device_0:
+        kind: UAV
+        serving_bs: 0
+        link: 0
+        service: 0
+      link_0:
+        bs: 0
+        device: 0
+        target: 0
+      service_0:
+        controller: 0
+        device: 0
+        class: SVC_UAV
+    groups_in_system_order:
+    - group: phy
+      source: generated:phy:with_observers
+      retain:
+      - A_CH
+      - A_SIG
+      - A_BM
+      - A_SQ
+      - A_PH
+    - group: mac
+      source: generated:mac:with_observers
+      retain:
+      - A_SCH
+      - A_Q
+      - A_BUF
+      - A_RSRC
+      - A_MAC_AGG
+    - group: sdn
+      source: generated:sdn:with_observers
+      retain:
+      - A_MON
+      - A_RISK
+      - A_POLICY
+      - A_RULE
+      - A_REC
+      - A_SDN_AGG
+    - group: app
+      source: stored:app
+      retain:
+      - Req
+      - Sla
+      - Crit
+      - Agg
+    - group: boundary
+      source: new_templates_required
+      retain:
+      - E_PHY_INPUT
+      - E_MAC_LOAD
+      - E_FAULT
+      - E_SERVICE
+      - B_PHY_MAC
+      - B_POLICY
+      - B_ADMISSION
+      - B_KPI
+    - group: obs_phy
+      source: generated:phy:with_observers
+      retain:
+      - ObsSenseReport
+      - ObsFreshness
+      - ObsBeamRecovery
+    - group: obs_mac
+      source: generated:mac:with_observers
+      retain:
+      - ObsPhyAck
+      - ObsQueueCritical
+      - ObsSensingCritical
+      - ObsBufferOverflow
+      - ObsMacReportFreshness
+    - group: obs_sdn
+      source: generated:sdn:with_observers
+      retain:
+      - ObsRuleMiss
+      - ObsRecovery
+      - ObsAdmission
+      - ObsStaleTelemetry
+      - ObsCommandAck
+      - ObsSensingDecision
+    - group: obs_app
+      source: stored:app
+      retain:
+      - ObsAdmission
+      - ObsWarn
+      - ObsViolation
+      - ObsFresh
+      - ObsUpdate
+      - ObsFa
+      - ObsMiss
+      - ObsSafety
+    remove:
+      generated:phy:with_observers:
+      - ENV_CH
+      - ENV_TARGET
+      - ENV_MAC
+      - ENV_NET
+      generated:mac:with_observers:
+      - A_ENV_MAC
+      generated:sdn:with_observers:
+      - A_ENV_SDN
+      stored:app:
+      - Sdn
+      - Env
+      - Kpi
+      - Sink
+    new_template_contracts: interface-contract.md#boundary-processes
+    application_placeholders_retained_without_behavior:
+    - app_Crit_0
+    - app_Agg_0
+    optional_security_instances: 0
+    extended_phy_observers: 0
+    count_per_retained_process: 1
+    qualified_process_name: <group>_<original_process>_0
+    expected_process_counts:
+      core: 20
+      boundary: 8
+      observers: 22
+      total: 50
+    parameter_policy:
+      layer_profiles: default profiles recorded in inventory.json; APP constants from
+        stored:app
+      D_cmd: 1
+      D_bus: 1
+      T_input: 5
+      T_mac_tick: 5
+      T_demand: 1
+      T_complete: 40
+      fault_window:
+      - 12
+      - 13
+      max_fault_events: 1
+      max_requests_per_service: 1
+      max_outstanding_per_command_kind: 1
+      freshness_warn_age: 5
+      freshness_expire_age: 10
+      justification: Explicit abstract test choices for independent review, not calibrated
+        network bounds. See interface-contract.md for ownership, loss and timeout
+        rules.
+    implementation_preconditions:
+    - replace standalone environments with specified boundary processes
+    - namespace declarations and localize component clocks
+    - resolve service channel kinds and pre-synchronization payload staging
+    - separate rule and controller acknowledgements
+    - add missing lower-layer policy/command and KPI mappings
+    - retain failure and timeout behavior including absent receivers
+    - review APP placeholder scope and lack of complete service lifecycle
+    - obtain independent parameter/interface decision before Gate 1
+  historical_status_note: 'Original vector proposal label is provenance; acceptance
+    is #15/#17/#19 and #47.'
+tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011\
+  \ - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and\
+  \ Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL\
+  \ -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt\
+  \ with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11,\
+  \ and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering\
+  \ and Computer Systems (itmo.ru).\r\n"
+operating_environment: Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43
+native_hardware:
+  ram_bytes: 17106464768
+  os: Майкрософт Windows 11 Pro
+  cpu:
+  - Name: 'AMD Ryzen 5 1400 Quad-Core Processor           '
+    NumberOfCores: 4
+    NumberOfLogicalProcessors: 8
+  version: 10.0.26200
+limits: &id001
+  per_query_seconds: 60
+  memory_stop_bytes: 2147483648
+  parallelism: 1
+status: completed
+selected_property_ids:
+- C01-deadlock
+- C01-queue
+- C01-attempts
+- attempt-protocol
+- C02-ack-elapsed
+- queue-full
+- queue-overflow
+- attempt-start
+- attempt-primary
+- attempt-rollback
+- attempt-two
+- ack-start
+- ack-timeout
+- ack-unconditional-completion
+search_order: 1
+trace_kind: 0
+result_count: 14
+uppaal_version: UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023
+verifyta_version_output: version.stdout.txt
+operating_system: Майкрософт Windows 11 Pro
+execution_environment: Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43;
+  native Windows verifyta via PowerShell/WSL interop
+cpu_model: AMD Ryzen 5 1400 Quad-Core Processor
+logical_cpu_count: 8
+ram_bytes: 17106464768
+resource_limit: *id001
+query_hash: 3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18
+license_status: native executions recorded; evaluate each result status
+started_at_utc: '2026-09-23T13:16:08.1020934Z'
+finished_at_utc: '2026-09-23T13:26:40.4009161Z'
+runtime_seconds: 620.565922
+peak_memory_bytes: 202436608
+limitations:
+- states_explored not reported as a total by this build; progress Load is not substituted
+- Memory stop uses 50ms polling, not a hard allocation limit
+- Results require independent review; C06 conclusion additionally depends on P4
+results:
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:16:08.1020934Z'
+  native_process_id: 14664
+  timeout_seconds: 60
+  peak_working_set_bytes: 155070464
+  sampled_peak_private_bytes: 184176640
+  runtime_seconds: 60.0385989
+  finished_at_utc: '2026-09-23T13:17:08.2090367Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-01-C01-deadlock
+  property_id: C01-deadlock
+  role: structural
+  formal_query: A[] not deadlock
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\01-C01-deadlock-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\01-C01-deadlock.q
+  query_path: 01-C01-deadlock.q
+  stdout_path: 01-C01-deadlock.stdout.txt
+  stderr_path: 01-C01-deadlock.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 155070464
+  counterexample_reference: []
+  stdout_sha256: 2f087ca53cba43e16dc5af5326ce5d05e7439f8f919063258b24e01fd8c95d1f
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: completed
+  exit_code: 0
+  started_at_utc: '2026-09-23T13:17:08.9186438Z'
+  native_process_id: 6732
+  timeout_seconds: 60
+  peak_working_set_bytes: 191803392
+  sampled_peak_private_bytes: 249044992
+  runtime_seconds: 19.4386224
+  finished_at_utc: '2026-09-23T13:17:28.4379493Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-02-C01-queue
+  property_id: C01-queue
+  role: structural
+  formal_query: A[] !mac_queue_overflow_seen
+  status: success
+  verdict: violated
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 694501c262583dfe43e22a907f10080795fd63b8bc534a11cd9338c84a704051
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\02-C01-queue-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\02-C01-queue.q
+  query_path: 02-C01-queue.q
+  stdout_path: 02-C01-queue.stdout.txt
+  stderr_path: 02-C01-queue.stderr.txt
+  trace_paths: &id002
+  - 02-C01-queue-trace1.xml
+  states_explored: null
+  peak_memory_bytes: 191803392
+  counterexample_reference: *id002
+  stdout_sha256: e2f0cf1b9e686aafc02af95ae4b64284c4d1d6e125ac1c383373b90a96944ced
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:17:29.0972531Z'
+  native_process_id: 12248
+  timeout_seconds: 60
+  peak_working_set_bytes: 202436608
+  sampled_peak_private_bytes: 232419328
+  runtime_seconds: 60.076729099999994
+  finished_at_utc: '2026-09-23T13:18:29.2410680Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-03-C01-attempts
+  property_id: C01-attempts
+  role: structural
+  formal_query: A[] !sdn_attempt_bad
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: da6ec4273d466c06be9692af08e24c83fc9ee7b7940dd0cc603c87987c1cb382
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\03-C01-attempts-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\03-C01-attempts.q
+  query_path: 03-C01-attempts.q
+  stdout_path: 03-C01-attempts.stdout.txt
+  stderr_path: 03-C01-attempts.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 202436608
+  counterexample_reference: []
+  stdout_sha256: 6536af2f8fb5975ddaf2177f0eaabb5b99c159a4f2e669788df1eb8fedb3bc57
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:18:29.8935242Z'
+  native_process_id: 10484
+  timeout_seconds: 60
+  peak_working_set_bytes: 201420800
+  sampled_peak_private_bytes: 230776832
+  runtime_seconds: 60.0368772
+  finished_at_utc: '2026-09-23T13:19:30.0097077Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-04-attempt-protocol
+  property_id: attempt-protocol
+  role: recorder-validity
+  formal_query: A[] !sdn_attempt_protocol_error
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 2768be80c9e793b1a8bb1b188863b233d9676b4cdf8d26f4ead5830a8ede8616
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\04-attempt-protocol-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\04-attempt-protocol.q
+  query_path: 04-attempt-protocol.q
+  stdout_path: 04-attempt-protocol.stdout.txt
+  stderr_path: 04-attempt-protocol.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 201420800
+  counterexample_reference: []
+  stdout_sha256: a136217dd1317b2205c751904220cbb4b18e1079efd27017b0969a6a02b10ee4
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:19:30.6581872Z'
+  native_process_id: 14152
+  timeout_seconds: 60
+  peak_working_set_bytes: 201826304
+  sampled_peak_private_bytes: 231956480
+  runtime_seconds: 60.0804098
+  finished_at_utc: '2026-09-23T13:20:30.7989722Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-05-C02-ack-elapsed
+  property_id: C02-ack-elapsed
+  role: bounded-response-safety
+  formal_query: A[] (!mac_obs_ack_late && (mac_obs_ack_active imply mac_c_obs_ack
+    <= mac_D_phy_ack))
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\05-C02-ack-elapsed-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\05-C02-ack-elapsed.q
+  query_path: 05-C02-ack-elapsed.q
+  stdout_path: 05-C02-ack-elapsed.stdout.txt
+  stderr_path: 05-C02-ack-elapsed.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 201826304
+  counterexample_reference: []
+  stdout_sha256: 0da10108f6c39028eff043d46c4a43abd03270decc13074f4df9e0ed3b53acee
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: completed
+  exit_code: 0
+  started_at_utc: '2026-09-23T13:20:31.5496634Z'
+  native_process_id: 15040
+  timeout_seconds: 60
+  peak_working_set_bytes: 174866432
+  sampled_peak_private_bytes: 225304576
+  runtime_seconds: 17.2232517
+  finished_at_utc: '2026-09-23T13:20:48.8412486Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-06-queue-full
+  property_id: queue-full
+  role: nonvacuity
+  formal_query: E<> mac_queue_q == mac_queue_K && !mac_queue_overflow_seen
+  status: success
+  verdict: satisfied
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 132fb1f5ffd023f31064a089113bf1300f99fe75ce78394fb796d2873d67e6e6
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\06-queue-full-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\06-queue-full.q
+  query_path: 06-queue-full.q
+  stdout_path: 06-queue-full.stdout.txt
+  stderr_path: 06-queue-full.stderr.txt
+  trace_paths:
+  - 06-queue-full-trace1.xml
+  states_explored: null
+  peak_memory_bytes: 174866432
+  counterexample_reference: []
+  stdout_sha256: 471a30a0db4fcc3a3164f55083bf796854bb994c4f114d504244e1da993b27a1
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: completed
+  exit_code: 0
+  started_at_utc: '2026-09-23T13:20:49.5411796Z'
+  native_process_id: 11052
+  timeout_seconds: 60
+  peak_working_set_bytes: 191811584
+  sampled_peak_private_bytes: 249044992
+  runtime_seconds: 22.2454948
+  finished_at_utc: '2026-09-23T13:21:11.8579293Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-07-queue-overflow
+  property_id: queue-overflow
+  role: negative-result-diagnostic
+  formal_query: E<> mac_queue_overflow_seen
+  status: success
+  verdict: satisfied
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 716ec20a3050dbbb7276f786f356042787f5611b315676fe012623d6bc551b78
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\07-queue-overflow-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\07-queue-overflow.q
+  query_path: 07-queue-overflow.q
+  stdout_path: 07-queue-overflow.stdout.txt
+  stderr_path: 07-queue-overflow.stderr.txt
+  trace_paths:
+  - 07-queue-overflow-trace1.xml
+  states_explored: null
+  peak_memory_bytes: 191811584
+  counterexample_reference: []
+  stdout_sha256: 2ce1f42e35b2769291098b0dee2d93a2d03eb95cc7463083fd0d478f2bce10ad
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:21:12.5815812Z'
+  native_process_id: 11512
+  timeout_seconds: 60
+  peak_working_set_bytes: 190873600
+  sampled_peak_private_bytes: 220495872
+  runtime_seconds: 60.057111899999995
+  finished_at_utc: '2026-09-23T13:22:12.7815231Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-08-attempt-start
+  property_id: attempt-start
+  role: nonvacuity
+  formal_query: E<> sdn_attempt_active
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: b2bd4430e694dc28cbe282e253a50b0f2554b37b0901a0bb378cec8eda3757c4
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\08-attempt-start-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\08-attempt-start.q
+  query_path: 08-attempt-start.q
+  stdout_path: 08-attempt-start.stdout.txt
+  stderr_path: 08-attempt-start.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 190873600
+  counterexample_reference: []
+  stdout_sha256: 234165a65ba371b2144e2144e3867c62fcf6ab159bb4fae7acef7dd3c966a0a7
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:22:13.9183977Z'
+  native_process_id: 3252
+  timeout_seconds: 60
+  peak_working_set_bytes: 189181952
+  sampled_peak_private_bytes: 218796032
+  runtime_seconds: 60.0246594
+  finished_at_utc: '2026-09-23T13:23:14.0113452Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-09-attempt-primary
+  property_id: attempt-primary
+  role: nonvacuity
+  formal_query: E<> sdn_attempt_primary == 1
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 85eff20c9551756d9c7faed4aa1bfea46c4b9b4196e9d556f4541b766b57b1f1
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\09-attempt-primary-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\09-attempt-primary.q
+  query_path: 09-attempt-primary.q
+  stdout_path: 09-attempt-primary.stdout.txt
+  stderr_path: 09-attempt-primary.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 189181952
+  counterexample_reference: []
+  stdout_sha256: 0a670e4c79c60c24f06bfbb2c5c5e3aac8251a269255d3d9e64f9530ae210c28
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:23:14.9056357Z'
+  native_process_id: 6832
+  timeout_seconds: 60
+  peak_working_set_bytes: 187670528
+  sampled_peak_private_bytes: 217153536
+  runtime_seconds: 60.0335897
+  finished_at_utc: '2026-09-23T13:24:15.0661417Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-10-attempt-rollback
+  property_id: attempt-rollback
+  role: nonvacuity
+  formal_query: E<> sdn_attempt_rollback == 1
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 941ab6cc9a4fdfb2803b0b549c2452a11e2cecbfcef52d9af712af7772fdb124
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\10-attempt-rollback-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\10-attempt-rollback.q
+  query_path: 10-attempt-rollback.q
+  stdout_path: 10-attempt-rollback.stdout.txt
+  stderr_path: 10-attempt-rollback.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 187670528
+  counterexample_reference: []
+  stdout_sha256: 9c16a4bf292babbe40769b2b356188e99929e3ce3880d25298feba7244f93d2e
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:24:16.0096725Z'
+  native_process_id: 3252
+  timeout_seconds: 60
+  peak_working_set_bytes: 193191936
+  sampled_peak_private_bytes: 222920704
+  runtime_seconds: 60.0579652
+  finished_at_utc: '2026-09-23T13:25:16.1476396Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-11-attempt-two
+  property_id: attempt-two
+  role: nonvacuity
+  formal_query: E<> sdn_attempt_total == 2
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 8af32325090a035603a9d1a944c9d529b70f760b04c753a03279b8e1855478f0
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\11-attempt-two-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\11-attempt-two.q
+  query_path: 11-attempt-two.q
+  stdout_path: 11-attempt-two.stdout.txt
+  stderr_path: 11-attempt-two.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 193191936
+  counterexample_reference: []
+  stdout_sha256: f108e04148545c3d07664d4767f9392ea5a8ea1ce1d44112b80eb1b84a1a8710
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: completed
+  exit_code: 0
+  started_at_utc: '2026-09-23T13:25:17.0839966Z'
+  native_process_id: 13212
+  timeout_seconds: 60
+  peak_working_set_bytes: 133681152
+  sampled_peak_private_bytes: 170000384
+  runtime_seconds: 11.2588259
+  finished_at_utc: '2026-09-23T13:25:28.4184477Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-12-ack-start
+  property_id: ack-start
+  role: nonvacuity
+  formal_query: E<> mac_obs_ack_active
+  status: success
+  verdict: satisfied
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 3d5b58517dd881b78d198f47d517e391ca4234b2cec59701834a6ad2cd6d29e6
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\12-ack-start-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\12-ack-start.q
+  query_path: 12-ack-start.q
+  stdout_path: 12-ack-start.stdout.txt
+  stderr_path: 12-ack-start.stderr.txt
+  trace_paths:
+  - 12-ack-start-trace1.xml
+  states_explored: null
+  peak_memory_bytes: 133681152
+  counterexample_reference: []
+  stdout_sha256: ab4079189b21540b003d92acb1ce81b5ad32d44500ce48532838c9d8a28ddaaf
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: timeout
+  exit_code: -1
+  started_at_utc: '2026-09-23T13:25:29.3815715Z'
+  native_process_id: 3024
+  timeout_seconds: 60
+  peak_working_set_bytes: 183836672
+  sampled_peak_private_bytes: 213372928
+  runtime_seconds: 60.088618499999995
+  finished_at_utc: '2026-09-23T13:26:29.5438842Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-13-ack-timeout
+  property_id: ack-timeout
+  role: nonvacuity
+  formal_query: E<> mac_phy_ack_timeout
+  status: timeout
+  verdict: null
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 4892fb12401d1ce0a6e9b09652a39d47130aa1e0d69eb3926c8e00157a508714
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\13-ack-timeout-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\13-ack-timeout.q
+  query_path: 13-ack-timeout.q
+  stdout_path: 13-ack-timeout.stdout.txt
+  stderr_path: 13-ack-timeout.stderr.txt
+  trace_paths: []
+  states_explored: null
+  peak_memory_bytes: 183836672
+  counterexample_reference: []
+  stdout_sha256: 9937d23c5033877fd0c1408d7d56d64a3cc1edaf408357d39baee3b9e576a265
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+- memory_measurement: Windows Process.PeakWorkingSet64, observed every 50ms; private
+    bytes sampled. Stop threshold is not a hard allocation cap.
+  termination: completed
+  exit_code: 0
+  started_at_utc: '2026-09-23T13:26:30.4093593Z'
+  native_process_id: 1892
+  timeout_seconds: 60
+  peak_working_set_bytes: 134987776
+  sampled_peak_private_bytes: 171728896
+  runtime_seconds: 9.9051675
+  finished_at_utc: '2026-09-23T13:26:40.4009161Z'
+  memory_stop_bytes: 2147483648
+  run_id: p3-20260923-003-14-ack-unconditional-completion
+  property_id: ack-unconditional-completion
+  role: completion-diagnostic-not-time-divergence-restricted
+  formal_query: mac_obs_ack_active --> !mac_obs_ack_active
+  status: success
+  verdict: violated
+  model_hash: 592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2
+  query_hash: 3f406107b55e4e196c2416c16e0573e3b362e2ff0396ab3ac696b183e252d249
+  tool_version: "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c)\
+    \ 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University\
+    \ and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA\
+    \ -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI\
+    \ -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6,\
+    \ UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University,\
+    \ Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+  source_commit: a602ec48c2c00842f8461e13db32f7bbf283f0bc
+  exact_command:
+  - D:\UPPAAL\app\bin\verifyta.exe
+  - -o
+  - '1'
+  - -t
+  - '0'
+  - -X
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\14-ack-unconditional-completion-trace
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\governance\20260906-baseline\gate1-20260923\model.xml
+  - \\wsl.localhost\Ubuntu\tmp\uppaal-p3-20260923\evidence\verification\runs\p3-20260923-003\14-ack-unconditional-completion.q
+  query_path: 14-ack-unconditional-completion.q
+  stdout_path: 14-ack-unconditional-completion.stdout.txt
+  stderr_path: 14-ack-unconditional-completion.stderr.txt
+  trace_paths: &id003
+  - 14-ack-unconditional-completion-trace1.xml
+  states_explored: null
+  peak_memory_bytes: 134987776
+  counterexample_reference: *id003
+  stdout_sha256: 29b4b3cc40046cccd4ad2b372fd6a812f333cc287c5f0c26fd8c6f275f0852d0
+  stderr_sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855

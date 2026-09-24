@@ -1,0 +1,3 @@
+57 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+01-C02-ack-elapsed timeout None 600.1356182999999 1144475648
+Saved /tmp/uppaal-c02-20260924/evidence/verification/runs/p3-20260924-c02-600-002

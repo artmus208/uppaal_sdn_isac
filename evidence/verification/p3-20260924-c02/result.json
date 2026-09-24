@@ -1,0 +1,49 @@
+{
+  "issue": 39,
+  "base_commit": "31bc321dcc61f805b75a12a323285a8008a7c439",
+  "source_commit": "313733cf8382644b27a2df7f23ce2ede2ccb4e82",
+  "run_id": "p3-20260924-c02-600-001-01-C02-ack-elapsed",
+  "status": "error",
+  "verdict": null,
+  "blocker": "License does not cover verifier.",
+  "native_exit_code": 1,
+  "launcher_exit_code": 0,
+  "launcher_command": [
+    "/tmp/uppaal-pr50-venv/bin/python",
+    "-B",
+    "evidence/verification/p3-20260923/run.py",
+    "--run-id",
+    "p3-20260924-c02-600-001",
+    "--ids",
+    "C02-ack-elapsed",
+    "--search-order",
+    "0",
+    "--trace-kind",
+    "0",
+    "--timeout-seconds",
+    "600",
+    "--verifyta",
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe"
+  ],
+  "external_timeout_seconds": 720,
+  "external_kill_after_seconds": 10,
+  "requested_query_timeout_seconds": 600,
+  "wrapper_timeout_seconds": 630,
+  "runtime_seconds": 2.6518173999999997,
+  "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "query_hash": "cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\n",
+  "native_hardware": {
+    "ram_bytes": 17033019392,
+    "os": "Майкрософт Windows 10 Домашняя для одного языка",
+    "cpu": [
+      {
+        "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+        "NumberOfCores": 4,
+        "NumberOfLogicalProcessors": 8
+      }
+    ],
+    "version": "10.0.19045"
+  },
+  "note": "Successful orchestration exit does not mean successful verification. No formula verdict was emitted."
+}
