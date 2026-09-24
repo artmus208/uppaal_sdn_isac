@@ -87,3 +87,47 @@ results. A failed/error/timeout run cannot substantiate a property claim.
 
 Acceptance still requires independent evidence and abstraction review, not author
 self-acceptance. The active baseline and C02 acceptance status are not changed.
+
+## Observed native results
+
+Execution source: `ef32ac485dd95d7bf4514975c672ddd44d1d61e7` (clean, published).
+Run prefix: `p3-20260924-c02-reduced-001`; tool: UPPAAL 5.0.0
+(rev. 714BA9DB36F49691), June 2023; full captured version in run metadata.
+
+| Run suffix | Status | Verdict | Seconds |
+|---|---|---|---|
+| C02 | success | satisfied | 0.065999 |
+| active | success | satisfied | 0.067853 |
+| deadline | success | satisfied | 0.066517 |
+| negative-control | success | violated | 0.071250 |
+
+Reduced model SHA256: `536233940526a1716006d6769c84c9faf6dc3d7bf0e6ffa0981aa60b56a49241`.
+
+Negative control SHA256: `b474572cb0ceb80d821fb08ea74954569324ddfcb8dacfdfc10a1b9eea885fd6`.
+
+Exact C02 query SHA256: `cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db`.
+
+Each complete run ID, query hash, actual version, native timing/memory,
+command and trace references is in `runs/p3-20260924-c02-reduced-001/results.json`.
+`audit.py <run-directory>` checks raw byte hashes, machine verdicts and that
+the control differs only by the waiting invariant. Both witness traces and the
+negative-control counterexample are saved alongside stdout/stderr.
+
+The reduced C02 result is satisfied; full-model C02 still has no completed
+verification run. Acceptance of the safety transfer remains an independent
+review obligation. No claim of full-model completion or P3 acceptance.
+
+Validation: 180 project tests OK (28.188 seconds); frozen baseline audit checks
+57 file hashes and both aggregate hashes without mismatches. See `checks.txt`,
+`software-tests.log`, `baseline-audit.json`. No production files were changed.
+Final handoff: this package and all raw runs are on the existing named GitHub
+branch / PR #50; the exact final head is recorded in Issue #39 and PR metadata.
+Next step is independent review of the simulation argument and evidence. The
+package is a separate experimental artifact; it does not modify Gate 1 inputs.
+
+Measurement limitation: these runs finish before the existing wrapper obtains a
+working-set sample. Raw native records contain zero memory counters; interpret
+peak memory as **not available**, never as zero memory consumed. Runtime is the
+native wrapper stopwatch measurement, not total orchestration elapsed time.
+Raw Windows stdout/JSON retains CRLF bytes for hash fidelity; default
+`git diff --check` reports those CR endings. They are preserved intentionally.

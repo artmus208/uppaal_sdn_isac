@@ -1,0 +1,31 @@
+{
+  "run_id": "p3-20260924-c02-reduced-001",
+  "source_commit": "ef32ac485dd95d7bf4514975c672ddd44d1d61e7",
+  "source_tree_clean_at_start": true,
+  "issue": 39,
+  "full_model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "generator_path": "evidence/verification/p3-20260924-c02-reduced/build.py",
+  "generator_hash": "d35d4926990e93455b3765d571f1409a97d313be88c86e42b15393e6abbf8a1a",
+  "parameter_set": {
+    "mac_D_phy_ack": 3
+  },
+  "instance_vector": {
+    "C02Ack": 1
+  },
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "operating_environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "hardware": {
+    "ram_bytes": 17033019392,
+    "os": "Майкрософт Windows 10 Домашняя для одного языка",
+    "cpu": [
+      {
+        "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+        "NumberOfCores": 4,
+        "NumberOfLogicalProcessors": 8
+      }
+    ],
+    "version": "10.0.19045"
+  },
+  "scope": "experimental abstraction only; full baseline timeout remains unchanged",
+  "status": "completed"
+}
