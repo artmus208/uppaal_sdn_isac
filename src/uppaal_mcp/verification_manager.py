@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import errno
 import ctypes
 import hashlib
 import json
@@ -49,6 +50,10 @@ def save(path, value):
         tmp.unlink(missing_ok=True)
 
 
+class QueueBusy(RuntimeError):
+    pass
+
+
 @contextmanager
 def lock_queue(directory):
     """OS lock, automatically released on owner exit; never steal a live queue."""
@@ -65,7 +70,9 @@ def lock_queue(directory):
                 import fcntl
                 fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
         except OSError as exc:
-            raise RuntimeError('Queue already has an active worker') from exc
+            if exc.errno in (errno.EACCES, errno.EAGAIN):
+                raise QueueBusy('Queue already has an active worker') from exc
+            raise RuntimeError('Queue filesystem cannot provide an OS lock; use a local disk (not WSL/UNC storage)') from exc
         try:
             yield
         finally:
@@ -149,6 +156,8 @@ def initialize(directory, model, queries, executable, timeout=600, memory_mib=20
         raise ValueError('Run this manager in Windows Python for Windows verifyta; WSL PID metrics are not native metrics')
     if os.name != 'nt' and not sys.platform.startswith('linux'):
         raise ValueError('Resource monitoring supports native Windows and Linux only')
+    if os.name == 'nt' and str(directory).startswith('\\\\'):
+        raise ValueError('Store the queue on a local Windows drive, not a WSL/UNC path')
     model_bytes = Path(model).read_bytes()
     query_bytes = Path(queries).read_bytes()
     formulas = parse_queries_text(query_bytes.decode('utf-8-sig'))
@@ -190,7 +199,7 @@ def status(directory):
     try:
         with lock_queue(directory):
             result['worker_active'] = False
-    except RuntimeError:
+    except QueueBusy:
         result['worker_active'] = True
     return result
 

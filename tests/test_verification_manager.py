@@ -1,4 +1,5 @@
 import contextlib
+import errno
 import io
 import json
 import os
@@ -152,6 +153,13 @@ if 'failure' in q: sys.exit(1)
         self.assertEqual(self.run_queue(), 0)
         self.assertTrue((attempt/'attempt.json').exists())
         self.assertEqual(len(list((self.queue/'attempts').iterdir())), 2)
+
+    @unittest.skipIf(os.name == 'nt', 'POSIX flock failure injection')
+    def test_unsupported_lock_is_not_reported_as_live_worker(self):
+        self.init()
+        with patch('fcntl.flock', side_effect=OSError(errno.EINVAL, 'unsupported')):
+            with self.assertRaisesRegex(RuntimeError, 'filesystem'):
+                m.status(self.queue)
 
     def test_limits_reject_nonfinite(self):
         with self.assertRaises(ValueError): self.init(timeout=float('nan'))
