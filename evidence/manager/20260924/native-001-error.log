@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-verification-manager\src\uppaal_mcp\verification_manager.py", line 63, in lock_queue
+    msvcrt.locking(f.fileno(), msvcrt.LK_NBLCK, 1)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-verification-manager\evidence\manager\20260924\native-smoke.py", line 25, in <module>
+    code = m.start(queue, interval=.05)
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-verification-manager\src\uppaal_mcp\verification_manager.py", line 284, in start
+    with lock_queue(directory):
+         ~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Local\Programs\Python\Python313\Lib\contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-verification-manager\src\uppaal_mcp\verification_manager.py", line 68, in lock_queue
+    raise RuntimeError('Queue already has an active worker') from exc
+RuntimeError: Queue already has an active worker

@@ -1,0 +1,37 @@
+{
+  "run_id": "002-966e7b270e2c40fa8e9bcc8379b428d6",
+  "started_at": "2026-09-24T12:55:10.523604+00:00",
+  "command": [
+    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "C:\\Users\\musta\\AppData\\Local\\Temp\\uppaal-manager-51-native-002\\queue\\attempts\\002-966e7b270e2c40fa8e9bcc8379b428d6\\trace",
+    "C:\\Users\\musta\\AppData\\Local\\Temp\\uppaal-manager-51-native-002\\queue\\model.xml",
+    "C:\\Users\\musta\\AppData\\Local\\Temp\\uppaal-manager-51-native-002\\queue\\query-002.q"
+  ],
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+  "model_hash": "dc99b78db1382d84fd5758d06ee04fff15cd7778c6cbf3c57ac013dce6e4f40d",
+  "query_hash": "614176ef562244b7750e39297fca4400830f036f2a2d8f14fd5db95eff49c300",
+  "formula": "A[] x < 1",
+  "session": "b968e01829984c36860adb5964fa2a3d",
+  "timeout_seconds": 30,
+  "memory_stop_bytes": 268435456,
+  "pid": 2016,
+  "finished_at": "2026-09-24T12:55:10.600696+00:00",
+  "elapsed_seconds": 0.07248650000110501,
+  "status": "success",
+  "verdict": "violated",
+  "returncode": 0,
+  "peak_rss_bytes": 17170432,
+  "cpu_seconds": 0.078125,
+  "states_explored": null,
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+  "stdout_reference": "stdout.txt",
+  "stderr_reference": "stderr.txt",
+  "trace_paths": [
+    "trace1.xml"
+  ]
+}

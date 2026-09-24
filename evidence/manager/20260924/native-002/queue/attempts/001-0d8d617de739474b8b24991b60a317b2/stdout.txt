@@ -1,0 +1,10 @@
+Options for the verification:
+  Generating some trace
+  Search order is breadth first
+  Using conservative space optimisation
+  Seed is 1790254510
+  State space representation uses minimal constraint systems with future testing
+  Using HashMap + Compress integers for discrete state storage
+[2K
+Verifying formula 1 at C:\Users\musta\AppData\Local\Temp\uppaal-manager-51-native-002\queue\query-001.q:1
+[2K -- Formula is satisfied.

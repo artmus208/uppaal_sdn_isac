@@ -1,0 +1,23 @@
+{
+  "run_id": "002-966e7b270e2c40fa8e9bcc8379b428d6",
+  "started_at": "2026-09-24T12:55:10.523604+00:00",
+  "command": [
+    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "C:\\Users\\musta\\AppData\\Local\\Temp\\uppaal-manager-51-native-002\\queue\\attempts\\002-966e7b270e2c40fa8e9bcc8379b428d6\\trace",
+    "C:\\Users\\musta\\AppData\\Local\\Temp\\uppaal-manager-51-native-002\\queue\\model.xml",
+    "C:\\Users\\musta\\AppData\\Local\\Temp\\uppaal-manager-51-native-002\\queue\\query-002.q"
+  ],
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+  "model_hash": "dc99b78db1382d84fd5758d06ee04fff15cd7778c6cbf3c57ac013dce6e4f40d",
+  "query_hash": "614176ef562244b7750e39297fca4400830f036f2a2d8f14fd5db95eff49c300",
+  "formula": "A[] x < 1",
+  "session": "b968e01829984c36860adb5964fa2a3d",
+  "timeout_seconds": 30,
+  "memory_stop_bytes": 268435456,
+  "pid": 2016
+}

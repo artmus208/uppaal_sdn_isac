@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-24T12:55:10.224110+00:00",
+  "model_hash": "dc99b78db1382d84fd5758d06ee04fff15cd7778c6cbf3c57ac013dce6e4f40d",
+  "query_pack_hash": "e156c4043ff47ae7295bbd8fe617040be310f09512103f0a076ec5b994be876c",
+  "executable": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "executable_hash": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "timeout_seconds": 30,
+  "memory_stop_bytes": 268435456,
+  "options": [
+    "-o",
+    "0",
+    "-t",
+    "0"
+  ],
+  "tasks": [
+    {
+      "id": "001",
+      "query": "A[] x <= 1",
+      "file": "query-001.q",
+      "query_hash": "13303dfe93bfb5d5b9c8d4601f17e6a47a53f8b7b58255540a1c87a66013cc45"
+    },
+    {
+      "id": "002",
+      "query": "A[] x < 1",
+      "file": "query-002.q",
+      "query_hash": "614176ef562244b7750e39297fca4400830f036f2a2d8f14fd5db95eff49c300"
+    }
+  ]
+}

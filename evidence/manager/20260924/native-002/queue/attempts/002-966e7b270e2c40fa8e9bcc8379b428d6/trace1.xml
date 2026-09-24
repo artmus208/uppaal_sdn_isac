@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trace trace_options="symbolic"><system><clock name="#t(0)" id="sys.#t(0)"/><clock name="#time" id="sys.#time"/><clock name="x" id="sys.x"/><process id="C" name="C"/></system></trace>
