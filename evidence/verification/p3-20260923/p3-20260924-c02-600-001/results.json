@@ -1,0 +1,41 @@
+[
+  {
+    "memory_measurement": "Windows Process.PeakWorkingSet64, observed every 50ms; private bytes sampled. Stop threshold is not a hard allocation cap.",
+    "termination": "completed",
+    "exit_code": 1,
+    "started_at_utc": "2026-09-24T09:33:52.9269425Z",
+    "native_process_id": 19124,
+    "timeout_seconds": 600,
+    "peak_working_set_bytes": 10784768,
+    "sampled_peak_private_bytes": 2875392,
+    "runtime_seconds": 2.6518173999999997,
+    "finished_at_utc": "2026-09-24T09:33:55.6227242Z",
+    "memory_stop_bytes": 2147483648,
+    "run_id": "p3-20260924-c02-600-001-01-C02-ack-elapsed",
+    "property_id": "C02-ack-elapsed",
+    "role": "bounded-response-safety",
+    "formal_query": "A[] (!mac_obs_ack_late && (mac_obs_ack_active imply mac_c_obs_ack <= mac_D_phy_ack))",
+    "status": "error",
+    "verdict": null,
+    "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+    "query_hash": "cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\n",
+    "source_commit": "313733cf8382644b27a2df7f23ce2ede2ccb4e82",
+    "exact_command": [
+      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+      "-o",
+      "0",
+      "-t",
+      "0",
+      "-X",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\runs\\p3-20260924-c02-600-001\\01-C02-ack-elapsed-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\governance\\20260906-baseline\\gate1-20260923\\model.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-c02-20260924\\evidence\\verification\\runs\\p3-20260924-c02-600-001\\01-C02-ack-elapsed.q"
+    ],
+    "query_path": "01-C02-ack-elapsed.q",
+    "stdout_path": "01-C02-ack-elapsed.stdout.txt",
+    "stderr_path": "01-C02-ack-elapsed.stderr.txt",
+    "trace_paths": [],
+    "states_explored": null
+  }
+]
