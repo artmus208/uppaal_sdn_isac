@@ -1,0 +1,72 @@
+Extracted archive SHA256 / published JSON-YAML copies / native metadata / config / timeout / raw logs match.
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+
+exit_code=0
+
+$ ['/tmp/uppaal-pr50-venv/bin/python', '-B', 'evidence/verification/p3-20260924-c02/test_runner.py', '-v']
+test_positive_timeout_required (__main__.RunnerTimeoutTests.test_positive_timeout_required) ... ok
+test_timeout_and_executable_reach_native_config_and_wrapper (__main__.RunnerTimeoutTests.test_timeout_and_executable_reach_native_config_and_wrapper) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.033s
+
+OK
+
+exit_code=0
+
+$ ['/tmp/uppaal-pr50-venv/bin/python', '-B', 'scripts/check_coordination.py']
+Coordination artifacts are structurally consistent (not a hash audit or verification).
+
+exit_code=0
+
+$ ['/tmp/uppaal-pr50-venv/bin/python', '-m', 'pip', 'check']
+No broken requirements found.
+WARNING: The directory '/home/artmus208/.cache/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.
+
+exit_code=0
+
+$ ['/tmp/uppaal-pr50-venv/bin/python', '-B', '-c', 'from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)']
+FastMCP
+
+exit_code=0
+
+$ ['/tmp/uppaal-pr50-venv/bin/uppaal-verifyta', 'list-examples']
+[
+  {
+    "name": "bounded_response",
+    "category": "generic",
+    "description": "Controller skeleton with a deadline invariant and Done reachability.",
+    "is_phy": false
+  },
+  {
+    "name": "deadlock",
+    "category": "generic",
+    "description": "Urgent stuck location; A[] not deadlock should be violated.",
+    "is_phy": false
+  },
+  {
+    "name": "deadlock_free",
+    "category": "generic",
+    "description": "Tiny model where time can always pass; A[] not deadlock should be satisfied.",
+    "is_phy": false
+  },
+  {
+    "name": "phy_contract_skeleton",
+    "category": "phy",
+    "description": "Minimal PHY-contract shape: A_CH/A_SIG/A_BM/A_SQ/A_PH plus ENV.",
+    "is_phy": true
+  },
+  {
+    "name": "queue_overflow",
+    "category": "generic",
+    "description": "Small bounded queue model with an reachable Overflow location.",
+    "is_phy": false
+  }
+]
+
+exit_code=0
+
+Full suite: PYTHONDONTWRITEBYTECODE=1 timeout --kill-after=5s 180s /tmp/uppaal-pr50-venv/bin/python -m unittest discover -s tests -v
+exit_code=0; 180 tests, 28.176s, OK; raw output software-tests-002.log. Executed outside sandbox.
+Focused runner tests: 2 tests OK.
+Baseline audit: 57 hashes / 2 aggregate hashes match; report baseline-audit-002.json. Synthetic mismatches in unittest output belong to negative-control tests, not this baseline.

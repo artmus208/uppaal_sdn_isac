@@ -1,0 +1,33 @@
+{
+  "issue": 39,
+  "source_commit": "984d104d744b1da7d6e2def6e49f17f2d999915f",
+  "run_id": "p3-20260924-c02-600-002-01-C02-ack-elapsed",
+  "status": "timeout",
+  "verdict": null,
+  "native_exit_code": -1,
+  "launcher_exit_code": 0,
+  "requested_query_timeout_seconds": 600,
+  "wrapper_timeout_seconds": 630,
+  "runtime_seconds": 600.1356182999999,
+  "peak_working_set_bytes": 1144475648,
+  "sampled_peak_private_bytes": 1195937792,
+  "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "query_hash": "cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "native_hardware": {
+    "ram_bytes": 17033019392,
+    "os": "Майкрософт Windows 10 Домашняя для одного языка",
+    "cpu": [
+      {
+        "Name": "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz",
+        "NumberOfCores": 4,
+        "NumberOfLogicalProcessors": 8
+      }
+    ],
+    "version": "10.0.19045"
+  },
+  "license_error_observed": false,
+  "last_reported_load": 5816615,
+  "states_explored": null,
+  "note": "Load is the verifier progress statistic, not a final explored-state count or a completion percentage. A 600-second timeout is inconclusive. The earlier license error is preserved separately."
+}

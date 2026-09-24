@@ -5,6 +5,51 @@ Owner/runner: vadimnbkg. No independent acceptance or P3 closure is implied.
 Continuation base: `31bc321dcc61f805b75a12a323285a8008a7c439`.
 Original task base: `adea99b05195191eec115621613d4190eba06bf0`.
 
+## Latest result: C02 still inconclusive after 600 seconds
+
+After the user installed the license, run
+`p3-20260924-c02-600-002-01-C02-ack-elapsed` reached actual verification but
+stopped at **600.1356183 seconds**: `status=timeout`, `verdict=null`, native
+exit code -1. No formula verdict or diagnostic trace was emitted. Licensing
+preflight succeeded and query stderr was empty; the previous license blocker
+was not reproduced. No 1800-second attempt was made.
+
+Peak native working set: **1,144,475,648 bytes (1.066 GiB)**, below the sampled
+2 GiB stop threshold. Sampled peak private bytes: 1,195,937,792. The stop reason
+was time, not memory. Raw progress ends with `Load: 5816615 states`; that is not
+a final explored-state count or a completion percentage, so `states_explored`
+remains null. The tenfold time allowance did not yield a C02 verdict.
+
+Source: clean published commit `984d104d744b1da7d6e2def6e49f17f2d999915f`.
+Hardware: Intel Core i5-8300H, 4 cores/8 logical processors, 17,033,019,392 bytes
+visible RAM, Windows 10 version 10.0.19045; WSL orchestration. This is a
+different host from the original September 23 runs, not a controlled scaling
+benchmark. Actual UPPAAL version, original formula, model/query hashes and
+complete parameters/vector are recorded in `result-002.json` and
+`../p3-20260923/p3-20260924-c02-600-002/{run.json,run.yaml,results.json}`.
+
+Raw archive: `evidence/verification/runs/p3-20260924-c02-600-002.tar.xz`;
+SHA256 in the corresponding `archive.json`. Baseline hash identity and the
+saved-evidence audit pass. These are consistency checks, not a positive C02
+verification result. The failed attempt 001 below remains preserved.
+
+```bash
+mkdir -p /tmp/c02-review
+tar -xJf evidence/verification/runs/p3-20260924-c02-600-002.tar.xz -C /tmp/c02-review
+python -B evidence/verification/p3-20260923/audit.py /tmp/c02-review/p3-20260924-c02-600-002
+```
+
+The completed attempt used the command below with run ID ending `-002`.
+Any further attempt needs a new ID and an explicit resource/strategy decision;
+do not overwrite old evidence or silently alter the frozen model/formula.
+
+Final checks after attempt 002: **180 project tests OK**, **2 focused runner
+tests OK**, baseline 57 file hashes and 2 aggregate hashes match, coordination,
+dependency check, FastMCP construction and example listing succeed. Re-extracted
+archive matches the published summaries; native measurements/config/raw output
+agree with JSON/YAML records. Logs: `checks-002.txt`, `software-tests-002.log`,
+`baseline-audit-002.json`. These checks do not turn the C02 timeout into a verdict.
+
 Frozen baseline `reviewer-r1-gate1-20260923`, its complete model, parameter set,
 instance vector and selected query set remain unchanged. Run only the original
 `C02-ack-elapsed` formula; retain the sampled 2 GiB working-set stop threshold.
@@ -36,7 +81,7 @@ Focused software checks (mocked native boundary, no verifier verdict):
 python -B evidence/verification/p3-20260924-c02/test_runner.py -v
 ```
 
-## Execution result: license-blocked, no C02 verdict
+## Historical attempt 001: license-blocked, no C02 verdict
 
 The requested attempt ran from clean published source commit
 `313733cf8382644b27a2df7f23ce2ede2ccb4e82` with BFS, some diagnostic trace,
@@ -79,6 +124,5 @@ timeout-without-verdict propagation). Baseline audit: 57 hashes, zero file or
 aggregate mismatches. The complete raw-evidence audit passed for the one failed
 attempt; this only checks evidence consistency.
 
-Next step: provide a working licensed verifier of the accepted version, then
-repeat the command with a fresh run ID on a clean source checkpoint. C02 and P3
-remain unaccepted. Historical runs 001/002/003 were not changed.
+The licensing prerequisite was resolved for attempt 002 above. C02 and P3
+remain unaccepted. Historical run records were not changed.
