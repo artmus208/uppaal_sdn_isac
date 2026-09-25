@@ -1,0 +1,46 @@
+{
+  "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "classification": "saved-witness guard diagnosis only",
+  "observations": [
+    {
+      "run_id": "p3-20260925-recovery-001-01-attempt-start",
+      "trace": "p3-20260925-recovery-001/01-attempt-start-trace1.xml",
+      "state": "State128",
+      "values": {
+        "sdn_standby_available": "0",
+        "sdn_alternative_config_exists": "1",
+        "sdn_telemetryClass": "2",
+        "sdn_policyClass": "5"
+      },
+      "guard_evaluation": {
+        "fresh_telemetry": false,
+        "policy_permits": false,
+        "reconfig_allowed": false,
+        "primary_standby_guard": false,
+        "primary_alternative_guard": false,
+        "direct_rollback_guard": true
+      }
+    },
+    {
+      "run_id": "p3-20260925-recovery-002-02-attempt-rollback",
+      "trace": "p3-20260925-recovery-002/02-attempt-rollback-trace1.xml",
+      "state": "State120",
+      "values": {
+        "sdn_standby_available": "0",
+        "sdn_alternative_config_exists": "0",
+        "sdn_telemetryClass": "0",
+        "sdn_policyClass": "5"
+      },
+      "guard_evaluation": {
+        "fresh_telemetry": true,
+        "policy_permits": false,
+        "reconfig_allowed": false,
+        "primary_standby_guard": false,
+        "primary_alternative_guard": false,
+        "direct_rollback_guard": true
+      }
+    }
+  ],
+  "synthetic_control": "fresh telemetry + permitted policy + alternative enables the local primary guard; flipping either policy or freshness disables it; reachability and synchronization not tested",
+  "remaining": "a globally reachable state satisfying a primary guard AND binary receiver/target constraints; then separately primary followed by rollback"
+}

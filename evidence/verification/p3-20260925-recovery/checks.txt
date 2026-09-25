@@ -1,0 +1,21 @@
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+{
+  "run_id": "p3-20260925-recovery-001-01-attempt-start",
+  "status": "success",
+  "verdict": "satisfied",
+  "witness_transitions": 127,
+  "endpoint": "State128",
+  "final_edges": [
+    "boundary_E_FAULT_0.Edge3",
+    "sdn_A_REC_0.Edge1"
+  ],
+  "endpoint_active": true,
+  "endpoint_counts": {
+    "primary": 0,
+    "rollback": 0,
+    "total": 0
+  },
+  "recovery_location": "FailureDetected",
+  "trigger": "sdn_link_failure",
+  "limitation": "existential start witness only; not recovery success, universal termination or deadlock freedom"
+}

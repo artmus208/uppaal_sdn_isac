@@ -1,0 +1,17 @@
+[
+  {
+    "id": "joint-prerequisites",
+    "query": "E<> (sdn_A_REC_0.FailureDetected && sdn_reconfig_allowed() && (sdn_standby_available || sdn_alternative_config_exists))",
+    "role": "supplemental-primary-diagnostic"
+  },
+  {
+    "id": "standby-receiver",
+    "query": "E<> (sdn_A_REC_0.FailureDetected && sdn_reconfig_allowed() && sdn_standby_available && boundary_B_POLICY_0.Idle)",
+    "role": "supplemental-primary-diagnostic"
+  },
+  {
+    "id": "alternative-receiver",
+    "query": "E<> (sdn_A_REC_0.FailureDetected && sdn_reconfig_allowed() && sdn_alternative_config_exists && (boundary_E_FAULT_0.Before_Idle || boundary_E_FAULT_0.Rule_Idle || boundary_E_FAULT_0.Link_Idle || boundary_E_FAULT_0.Node_Idle || boundary_E_FAULT_0.Done_Idle))",
+    "role": "supplemental-primary-diagnostic"
+  }
+]
