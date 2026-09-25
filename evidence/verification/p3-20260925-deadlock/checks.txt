@@ -1,0 +1,59 @@
+Native result: error/null; -1073741819 (0xc0000005); no formula verdict or trace.
+System Python lacked mcp/pip/ensurepip. Standard venv creation failed before tests; used --without-pip and official https://bootstrap.pypa.io/pip/pip.pyz in /tmp to install isolated test dependencies. No global Python change.
+Full suite: PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/tmp/uppaal-deadlock-20260925/src /tmp/uppaal-deadlock-test-venv/bin/python -m unittest discover -s tests -v; exit 0; 193 tests in 82.193s, OK. Full output software-tests.log. Fixture-induced hash mismatches in that log are expected negative tests, not baseline audit failures.
+$ /tmp/uppaal-deadlock-test-venv/bin/python -B scripts/check_coordination.py --audit-hashes --commit ebfe0a63d2b7842bfac195e6d541118ce3a89d91 --output /tmp/deadlock-final-baseline.json
+57 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+
+
+exit=0
+$ /tmp/uppaal-deadlock-test-venv/bin/python -B evidence/verification/p3-20260923/audit.py /tmp/deadlock-final-archive-audit/p3-20260925-deadlock-001
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+
+
+exit=0
+$ /tmp/uppaal-deadlock-test-venv/bin/python -c from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)
+FastMCP
+
+
+exit=0
+$ /tmp/uppaal-deadlock-test-venv/bin/uppaal-verifyta list-examples
+[
+  {
+    "name": "bounded_response",
+    "category": "generic",
+    "description": "Controller skeleton with a deadline invariant and Done reachability.",
+    "is_phy": false
+  },
+  {
+    "name": "deadlock",
+    "category": "generic",
+    "description": "Urgent stuck location; A[] not deadlock should be violated.",
+    "is_phy": false
+  },
+  {
+    "name": "deadlock_free",
+    "category": "generic",
+    "description": "Tiny model where time can always pass; A[] not deadlock should be satisfied.",
+    "is_phy": false
+  },
+  {
+    "name": "phy_contract_skeleton",
+    "category": "phy",
+    "description": "Minimal PHY-contract shape: A_CH/A_SIG/A_BM/A_SQ/A_PH plus ENV.",
+    "is_phy": true
+  },
+  {
+    "name": "queue_overflow",
+    "category": "generic",
+    "description": "Small bounded queue model with an reachable Overflow location.",
+    "is_phy": false
+  }
+]
+
+
+exit=0
+$ git diff --check 66c0f1f706993170ff3165c77188fe00eb1e700b
+
+
+exit=0
+Raw archive hash rechecked; extracted metadata/commands/banner/error classification checks in audit.json.
