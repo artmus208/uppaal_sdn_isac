@@ -1,0 +1,9 @@
+{
+  "reviewer_document": "/mnt/c/users/musta/desktop/pysources/mcp_uppaal/rewievs/18100004273 - Comments for authors.docx",
+  "document_sha256": "cc3d28d486710303d46eb81563804b381cdb26abc61b4927bf1e4d16e0da5875",
+  "review2_media": "word/media/image3.png",
+  "review2_media_sha256": "c2350a72f18154cd50308bcf54f3f6c399a0aa62431cb322e7b4e15b6da20372",
+  "transcription_method": "direct visual inspection of extracted original image; not OCR",
+  "quote": "one bounded-response property on the actual XML models",
+  "scope": "Reviewer 2 asks for structural checks plus one bounded-response property; no specific demand for guaranteed successful PHY ACK."
+}
