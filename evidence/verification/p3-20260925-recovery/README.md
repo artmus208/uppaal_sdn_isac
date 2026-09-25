@@ -176,3 +176,55 @@ formulas only **attempt-primary and attempt-two** remain unresolved. Existing
 accepted attempt/protocol and scoped C02 proofs remain separate from native
 results; deadlock remains temporarily deferred. No resource escalation, new
 Issue, PR acceptance/merge or P3 closure is implied.
+
+## Why the saved witnesses do not show a primary attempt
+
+`diagnose-primary.py` evaluates the exact pinned recovery guards against the
+FailureDetected states in the two saved witnesses. Reproduce with:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 evidence/verification/p3-20260925-recovery/diagnose-primary.py
+```
+
+Output is `primary-guard-diagnosis.json`. Both archives are hash-checked before
+reading; earlier raw audits remain applicable. Exact function/guard syntax and
+numeric enum definitions are checked before evaluating their transcription.
+No general UPPAAL evaluator, symbolic replay or new verifier run is claimed.
+
+| Witness state | Standby | Alternative | Telemetry | Policy | Both primary guards |
+| --- | --- | --- | --- | --- | --- |
+| recovery-001 / State128 | false | true | MISSING (2) | REJECT (5) | false |
+| recovery-002 / State120 | false | false | FRESH (0) | REJECT (5) | false |
+
+Primary dispatch requires either standby or an alternative **and** fresh
+telemetry **and** a policy other than CONSTRAINED/REJECT. In the first witness
+availability alone is insufficient; telemetry and policy both prohibit the
+primary. In the second, fresh telemetry alone is insufficient; availability
+and policy prohibit it. The direct rollback guard holds in both states.
+These are observed local blockers, not the cause of the entire search timeout
+and not an invariant over every reachable state. The stored policy is checked
+at this state; we do not infer why a previous policy evaluation selected it.
+
+Primary guards alone are not sufficient for a global transition. Channels
+`bus_rec_policy_request` and `bus_rec_flow_request` are binary. The policy
+receiver is Boundary_B_POLICY.Idle; the flow receivers are the five *_Idle
+locations of Boundary_E_FAULT. Receiver availability, updates and target
+invariants still have to hold. The XML contains selectable availability flags,
+so their false initial values cannot establish permanent absence of a primary.
+
+The next discriminating question is whether FailureDetected can coexist with
+available standby/alternative, fresh telemetry, a permitted policy and a
+compatible binary receiver. A new targeted reachability probe would need its
+own query identity and explicit diagnostic scope; its witness would still need
+to include the actual dispatch to close the original attempt-primary formula.
+Alternatively, another bounded seed on the original formula could seek that
+witness directly, with no assurance of success. Neither experiment is executed
+or silently added here. Changing the frozen initial flags or forcing NORMAL
+policy would change the model and cannot prove the original claim.
+
+Synthetic guard checks confirm that fresh/permitted/alternative=true enables
+the local alternative guard, and flipping either freshness or policy disables
+it. These checks are not evidence that such a valuation is reachable. For
+attempt-two, a primary dispatch must precede rollback in the same episode
+under the accepted recorder invariant; direct rollback with total=1 does not
+suffice. Global deadlock remains deferred. No resource increase or new Issue.
