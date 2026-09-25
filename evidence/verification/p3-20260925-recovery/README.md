@@ -126,3 +126,53 @@ primary, two-attempt and ACK-timeout. Further identical primary/two repeats
 are not scheduled automatically; a useful next diagnostic is the previously
 selected ACK-timeout reachability, with a separate preserved run. Deadlock
 remains deferred; no PR acceptance, merge, P3 closure or new Issue inferred.
+
+## ACK-timeout follow-up
+
+User instructed «Работай» after dispatch checks. Original selected formula
+`E<> mac_phy_ack_timeout` now has a positive full-model result:
+`p3-20260925-ack-timeout-001-01-ack-timeout`, status=success,
+verdict=satisfied, native exit 0, runtime 10.1930517 seconds, peak native working
+set 192172032 bytes. Clean published execution source:
+`e5361bdbb7daa56a0b747345390689e533524f0e`.
+
+Same full frozen model SHA256
+`592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2` and actual
+UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023. Individual query hash and full
+version are in `evidence/verification/p3-20260923/p3-20260925-ack-timeout-001/results.json`.
+That directory also retains run.json/run.yaml with source/generator identity,
+parameters/vector, hardware/OS/environment and exact command. Complete raw
+archive: `evidence/verification/runs/p3-20260925-ack-timeout-001.tar.xz`;
+its SHA256 is in the group's archive.json.
+
+The 134-transition symbolic witness ends at `mac_A_SCH_0.ScheduleFailure`:
+ACK-timeout=1, PHY-command-pending=0, ACK-observer-active=0,
+ACK-observer-late=0 and MAC-report-pending=1. This witnesses the timeout outcome
+and closure of the observed ACK wait in this execution. It does not show that
+a report has been delivered, that every wait ends, successful ACK delivery or
+absence of deadlock. Trace length is not an explored-state count. Endpoint
+inspection is not independent timed replay or a concrete timing measurement.
+
+```sh
+python3 evidence/verification/p3-20260923/run.py \
+  --run-id p3-20260925-ack-timeout-001 --ids ack-timeout \
+  --search-order 2 --seed 20260925 --state-representation 1 \
+  --trace-kind 0 --timeout-seconds 60 \
+  --verifyta /mnt/d/UPPAAL/app/bin/verifyta.exe
+python3 evidence/verification/p3-20260925-recovery/audit-ack-timeout.py
+```
+
+Same symbolic randomized DFS/exact compact DBM/seed and 60-second/sampled
+2-GiB limits. Use a fresh run ID for native reproduction. Extracted archive,
+raw-file hashes, metadata copies, formula/result identity, trace and endpoint
+checks pass; audit output in checks-ack-timeout.txt. All 57 frozen file hashes
+and both aggregates match. Application/runner unchanged; current-head CI is
+recorded in the PR, separately from the UPPAAL result.
+
+Cumulative full-model evidence now: 43 executions, 9 completed machine results,
+7 distinct satisfied formulas, 2 violated, 6 directly machine-inconclusive.
+Earlier counts are historical snapshots. Among the selected reachability
+formulas only **attempt-primary and attempt-two** remain unresolved. Existing
+accepted attempt/protocol and scoped C02 proofs remain separate from native
+results; deadlock remains temporarily deferred. No resource escalation, new
+Issue, PR acceptance/merge or P3 closure is implied.

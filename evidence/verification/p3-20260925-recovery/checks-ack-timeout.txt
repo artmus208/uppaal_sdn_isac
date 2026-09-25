@@ -1,0 +1,20 @@
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+{
+  "run_id": "p3-20260925-ack-timeout-001-01-ack-timeout",
+  "status": "success",
+  "verdict": "satisfied",
+  "witness_transitions": 134,
+  "endpoint": "State135",
+  "final_edges": [
+    "mac_A_SCH_0.Edge4"
+  ],
+  "scheduler_location": "mac_A_SCH_0.ScheduleFailure",
+  "endpoint_values": {
+    "sys.mac_mac_report_pending": "1",
+    "sys.mac_phy_ack_timeout": "1",
+    "sys.mac_phy_command_pending": "0",
+    "sys.mac_obs_ack_active": "0",
+    "sys.mac_obs_ack_late": "0"
+  },
+  "limitation": "existential ACK-timeout witness only; not universal completion, successful ACK delivery or deadlock freedom"
+}
