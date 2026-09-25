@@ -1,3 +1,4 @@
+$ /usr/bin/python3 -B evidence/verification/p3-20260925-c01-structure/check.py
 {
   "kind": "static inductive proof support; NOT model checking",
   "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
@@ -188,3 +189,23 @@
     }
   ]
 }
+
+
+exit=0
+$ /usr/bin/python3 -B scripts/check_coordination.py --audit-hashes --commit 840105be7990a5527d7934450bb3dce0f3e04f7a --output /tmp/c01-structure-baseline.json
+57 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+
+
+exit=0
+$ git diff --check 840105be7990a5527d7934450bb3dce0f3e04f7a
+
+
+exit=0
+manifests/v1.md SHA256 f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075
+manifests/collaboration-v1.yaml SHA256 31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0
+manifests/baselines/reviewer-r1.yaml SHA256 d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7
+evidence/verification/p3-20260925-c01-structure/check.py SHA256 4f9efb8d45a22a18eb80ed03dd5980ee687d2d05e3b9572d587e75de630c3514
+Static premises and 35 induction obligations pass; 4 mutations rejected. NOT model checking.
+Tool help/version captured, normalized help SHA256 matches tool-info.json. No native model query executed.
+No production/runner/model changes; full application tests not repeated locally. CI is tracked in PR.
+Initial staged whitespace check returned exit 2 for trailing blanks emitted by native --help; documentation copy normalized and its hash/normalization record updated. No verifier result modified.

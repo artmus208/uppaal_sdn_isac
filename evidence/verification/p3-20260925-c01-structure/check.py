@@ -180,7 +180,7 @@ def main():
     else:
         raise AssertionError('Repeated dispatch not rejected')
     print(json.dumps(dict(kind='static inductive proof support; NOT model checking',
-                         model_hash=MODEL_HASH, scheduler_instances=1,
+                         model_hash=MODEL_HASH, recovery_instances=1,
                          checked_edge_valuation_obligations=checked,
                          rejected_mutations=mutations, edges=inventory), indent=2))
 

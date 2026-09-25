@@ -1,0 +1,27 @@
+{
+  "kind": "tool help/version capture only; no model checking",
+  "captured_at_utc": "2026-09-25T09:37:38.673461+00:00",
+  "calls": [
+    {
+      "command": [
+        "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout_raw_sha256": "930017fb677dcead4e7b7baef29264a97a92dbe7f4f0e914f79d85687d50a73b",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout_raw_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+      "stderr": ""
+    }
+  ],
+  "help_file_sha256": "d2128b5b15d5defe454394032be7581e617f81851be0367610eab51ed169602c",
+  "help_normalization": "CRLF to LF and trailing whitespace stripped for documentation; raw-output hash retained",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n"
+}
