@@ -1,0 +1,549 @@
+{
+  "issue": 39,
+  "baseline_id": "reviewer-r1-gate1-20260923",
+  "execution_source": "152d167165f0ff07a801d85a8671b6cd6bb96b54",
+  "kind": "full-model results index; no automatic acceptance",
+  "properties": [
+    {
+      "property_id": "C01-deadlock",
+      "formal_query": "A[] not deadlock",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "C01-deadlock",
+          "run_id": "p3-20260923-002-01-C01-deadlock",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "A[] not deadlock",
+          "runtime_seconds": 60.0722964,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "C01-deadlock",
+          "run_id": "p3-20260923-003-01-C01-deadlock",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "A[] not deadlock",
+          "runtime_seconds": 60.0385989,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        },
+        {
+          "property_id": "C01-deadlock",
+          "run_id": "p3-20260925-c01-001-01-C01-deadlock",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "152d167165f0ff07a801d85a8671b6cd6bb96b54",
+          "formal_query": "A[] not deadlock",
+          "runtime_seconds": 300.0672247,
+          "record_path": "evidence/verification/p3-20260923/p3-20260925-c01-001/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "C01-queue",
+      "formal_query": "A[] !mac_queue_overflow_seen",
+      "full_model_verdict": "violated",
+      "runs": [
+        {
+          "property_id": "C01-queue",
+          "run_id": "p3-20260923-002-02-C01-queue",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "694501c262583dfe43e22a907f10080795fd63b8bc534a11cd9338c84a704051",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "A[] !mac_queue_overflow_seen",
+          "runtime_seconds": 60.0720101,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "C01-queue",
+          "run_id": "p3-20260923-003-02-C01-queue",
+          "status": "success",
+          "verdict": "violated",
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "694501c262583dfe43e22a907f10080795fd63b8bc534a11cd9338c84a704051",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "A[] !mac_queue_overflow_seen",
+          "runtime_seconds": 19.4386224,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "C01-attempts",
+      "formal_query": "A[] !sdn_attempt_bad",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "C01-attempts",
+          "run_id": "p3-20260923-002-03-C01-attempts",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "da6ec4273d466c06be9692af08e24c83fc9ee7b7940dd0cc603c87987c1cb382",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "A[] !sdn_attempt_bad",
+          "runtime_seconds": 60.0534359,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "C01-attempts",
+          "run_id": "p3-20260923-003-03-C01-attempts",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "da6ec4273d466c06be9692af08e24c83fc9ee7b7940dd0cc603c87987c1cb382",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "A[] !sdn_attempt_bad",
+          "runtime_seconds": 60.076729099999994,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        },
+        {
+          "property_id": "C01-attempts",
+          "run_id": "p3-20260925-c01-001-02-C01-attempts",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "da6ec4273d466c06be9692af08e24c83fc9ee7b7940dd0cc603c87987c1cb382",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "152d167165f0ff07a801d85a8671b6cd6bb96b54",
+          "formal_query": "A[] !sdn_attempt_bad",
+          "runtime_seconds": 300.096745,
+          "record_path": "evidence/verification/p3-20260923/p3-20260925-c01-001/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "attempt-protocol",
+      "formal_query": "A[] !sdn_attempt_protocol_error",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "attempt-protocol",
+          "run_id": "p3-20260923-002-04-attempt-protocol",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "2768be80c9e793b1a8bb1b188863b233d9676b4cdf8d26f4ead5830a8ede8616",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "A[] !sdn_attempt_protocol_error",
+          "runtime_seconds": 60.0835484,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "attempt-protocol",
+          "run_id": "p3-20260923-003-04-attempt-protocol",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "2768be80c9e793b1a8bb1b188863b233d9676b4cdf8d26f4ead5830a8ede8616",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "A[] !sdn_attempt_protocol_error",
+          "runtime_seconds": 60.0368772,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        },
+        {
+          "property_id": "attempt-protocol",
+          "run_id": "p3-20260925-c01-001-03-attempt-protocol",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "2768be80c9e793b1a8bb1b188863b233d9676b4cdf8d26f4ead5830a8ede8616",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "152d167165f0ff07a801d85a8671b6cd6bb96b54",
+          "formal_query": "A[] !sdn_attempt_protocol_error",
+          "runtime_seconds": 300.1218034,
+          "record_path": "evidence/verification/p3-20260923/p3-20260925-c01-001/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "C02-ack-elapsed",
+      "formal_query": "A[] (!mac_obs_ack_late && (mac_obs_ack_active imply mac_c_obs_ack <= mac_D_phy_ack))",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "C02-ack-elapsed",
+          "run_id": "p3-20260923-002-05-C02-ack-elapsed",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "A[] (!mac_obs_ack_late && (mac_obs_ack_active imply mac_c_obs_ack <= mac_D_phy_ack))",
+          "runtime_seconds": 60.040984599999994,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "C02-ack-elapsed",
+          "run_id": "p3-20260923-003-05-C02-ack-elapsed",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "cec919bc6e2d960160976799d3d52ff4f25eea9f136f7b0231c02cec13f162db",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "A[] (!mac_obs_ack_late && (mac_obs_ack_active imply mac_c_obs_ack <= mac_D_phy_ack))",
+          "runtime_seconds": 60.0804098,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "queue-nonempty",
+      "formal_query": "E<> mac_queue_q > 0",
+      "full_model_verdict": "satisfied",
+      "runs": [
+        {
+          "property_id": "queue-nonempty",
+          "run_id": "p3-20260923-002-06-queue-nonempty",
+          "status": "success",
+          "verdict": "satisfied",
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "8b2bd0fe93ab5abd133b7677adc18fd339d6177314bc9a8507756c6ccfaa67cc",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> mac_queue_q > 0",
+          "runtime_seconds": 11.9989029,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "queue-full",
+      "formal_query": "E<> mac_queue_q == mac_queue_K && !mac_queue_overflow_seen",
+      "full_model_verdict": "satisfied",
+      "runs": [
+        {
+          "property_id": "queue-full",
+          "run_id": "p3-20260923-002-07-queue-full",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "132fb1f5ffd023f31064a089113bf1300f99fe75ce78394fb796d2873d67e6e6",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> mac_queue_q == mac_queue_K && !mac_queue_overflow_seen",
+          "runtime_seconds": 60.097336,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "queue-full",
+          "run_id": "p3-20260923-003-06-queue-full",
+          "status": "success",
+          "verdict": "satisfied",
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "132fb1f5ffd023f31064a089113bf1300f99fe75ce78394fb796d2873d67e6e6",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> mac_queue_q == mac_queue_K && !mac_queue_overflow_seen",
+          "runtime_seconds": 17.2232517,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "queue-overflow",
+      "formal_query": "E<> mac_queue_overflow_seen",
+      "full_model_verdict": "satisfied",
+      "runs": [
+        {
+          "property_id": "queue-overflow",
+          "run_id": "p3-20260923-002-08-queue-overflow",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "716ec20a3050dbbb7276f786f356042787f5611b315676fe012623d6bc551b78",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> mac_queue_overflow_seen",
+          "runtime_seconds": 60.075482099999995,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "queue-overflow",
+          "run_id": "p3-20260923-003-07-queue-overflow",
+          "status": "success",
+          "verdict": "satisfied",
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "716ec20a3050dbbb7276f786f356042787f5611b315676fe012623d6bc551b78",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> mac_queue_overflow_seen",
+          "runtime_seconds": 22.2454948,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "attempt-start",
+      "formal_query": "E<> sdn_attempt_active",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "attempt-start",
+          "run_id": "p3-20260923-002-09-attempt-start",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "b2bd4430e694dc28cbe282e253a50b0f2554b37b0901a0bb378cec8eda3757c4",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> sdn_attempt_active",
+          "runtime_seconds": 60.082679199999994,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "attempt-start",
+          "run_id": "p3-20260923-003-08-attempt-start",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "b2bd4430e694dc28cbe282e253a50b0f2554b37b0901a0bb378cec8eda3757c4",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> sdn_attempt_active",
+          "runtime_seconds": 60.057111899999995,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "attempt-primary",
+      "formal_query": "E<> sdn_attempt_primary == 1",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "attempt-primary",
+          "run_id": "p3-20260923-002-10-attempt-primary",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "85eff20c9551756d9c7faed4aa1bfea46c4b9b4196e9d556f4541b766b57b1f1",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> sdn_attempt_primary == 1",
+          "runtime_seconds": 60.0605105,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "attempt-primary",
+          "run_id": "p3-20260923-003-09-attempt-primary",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "85eff20c9551756d9c7faed4aa1bfea46c4b9b4196e9d556f4541b766b57b1f1",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> sdn_attempt_primary == 1",
+          "runtime_seconds": 60.0246594,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "attempt-rollback",
+      "formal_query": "E<> sdn_attempt_rollback == 1",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "attempt-rollback",
+          "run_id": "p3-20260923-002-11-attempt-rollback",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "941ab6cc9a4fdfb2803b0b549c2452a11e2cecbfcef52d9af712af7772fdb124",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> sdn_attempt_rollback == 1",
+          "runtime_seconds": 60.040110899999995,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "attempt-rollback",
+          "run_id": "p3-20260923-003-10-attempt-rollback",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "941ab6cc9a4fdfb2803b0b549c2452a11e2cecbfcef52d9af712af7772fdb124",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> sdn_attempt_rollback == 1",
+          "runtime_seconds": 60.0335897,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "attempt-two",
+      "formal_query": "E<> sdn_attempt_total == 2",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "attempt-two",
+          "run_id": "p3-20260923-002-12-attempt-two",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "8af32325090a035603a9d1a944c9d529b70f760b04c753a03279b8e1855478f0",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> sdn_attempt_total == 2",
+          "runtime_seconds": 60.1116118,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "attempt-two",
+          "run_id": "p3-20260923-003-11-attempt-two",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "8af32325090a035603a9d1a944c9d529b70f760b04c753a03279b8e1855478f0",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> sdn_attempt_total == 2",
+          "runtime_seconds": 60.0579652,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "ack-start",
+      "formal_query": "E<> mac_obs_ack_active",
+      "full_model_verdict": "satisfied",
+      "runs": [
+        {
+          "property_id": "ack-start",
+          "run_id": "p3-20260923-002-13-ack-start",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "3d5b58517dd881b78d198f47d517e391ca4234b2cec59701834a6ad2cd6d29e6",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> mac_obs_ack_active",
+          "runtime_seconds": 60.083205299999996,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "ack-start",
+          "run_id": "p3-20260923-003-12-ack-start",
+          "status": "success",
+          "verdict": "satisfied",
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "3d5b58517dd881b78d198f47d517e391ca4234b2cec59701834a6ad2cd6d29e6",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> mac_obs_ack_active",
+          "runtime_seconds": 11.2588259,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "ack-timeout",
+      "formal_query": "E<> mac_phy_ack_timeout",
+      "full_model_verdict": null,
+      "runs": [
+        {
+          "property_id": "ack-timeout",
+          "run_id": "p3-20260923-002-14-ack-timeout",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "4892fb12401d1ce0a6e9b09652a39d47130aa1e0d69eb3926c8e00157a508714",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "E<> mac_phy_ack_timeout",
+          "runtime_seconds": 60.045126499999995,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "ack-timeout",
+          "run_id": "p3-20260923-003-13-ack-timeout",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "4892fb12401d1ce0a6e9b09652a39d47130aa1e0d69eb3926c8e00157a508714",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "E<> mac_phy_ack_timeout",
+          "runtime_seconds": 60.088618499999995,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    },
+    {
+      "property_id": "ack-unconditional-completion",
+      "formal_query": "mac_obs_ack_active --> !mac_obs_ack_active",
+      "full_model_verdict": "violated",
+      "runs": [
+        {
+          "property_id": "ack-unconditional-completion",
+          "run_id": "p3-20260923-002-15-ack-unconditional-completion",
+          "status": "timeout",
+          "verdict": null,
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "3f406107b55e4e196c2416c16e0573e3b362e2ff0396ab3ac696b183e252d249",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "efc7978f398f05f072712b3ca88e3c7cfe2cc87c",
+          "formal_query": "mac_obs_ack_active --> !mac_obs_ack_active",
+          "runtime_seconds": 60.047117799999995,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-002/results.json"
+        },
+        {
+          "property_id": "ack-unconditional-completion",
+          "run_id": "p3-20260923-003-14-ack-unconditional-completion",
+          "status": "success",
+          "verdict": "violated",
+          "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+          "query_hash": "3f406107b55e4e196c2416c16e0573e3b362e2ff0396ab3ac696b183e252d249",
+          "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+          "source_commit": "a602ec48c2c00842f8461e13db32f7bbf283f0bc",
+          "formal_query": "mac_obs_ack_active --> !mac_obs_ack_active",
+          "runtime_seconds": 9.9051675,
+          "record_path": "evidence/verification/p3-20260923/p3-20260923-003/results.json"
+        }
+      ]
+    }
+  ],
+  "C02_accepted_reasoning": {
+    "decision": "user accepted PR53 audit with scoped transfer",
+    "decision_references": [
+      "https://github.com/artmus208/uppaal_sdn_isac/issues/39",
+      "https://github.com/artmus208/uppaal_sdn_isac/pull/53"
+    ],
+    "scope": "elapsed safety and ACK-or-timeout within 3 abstract units on time-divergent executions; no unconditional completion or universal continuation existence",
+    "reduced_run_id": "p3-20260924-c02-reduced-001-C02",
+    "results_path": "evidence/verification/p3-20260924-c02-reduced/runs/p3-20260924-c02-reduced-001/results.json"
+  },
+  "excluded_run": {
+    "run_id": "001-29c3409912fe43029fa925b140dbf40a",
+    "reason": "user confirmed lost raw archive; supplied historical summary only, excluded from accepted quantitative evidence"
+  },
+  "additional_full_C02_retry": {
+    "results_path": "evidence/verification/p3-20260923/p3-20260924-c02-600-002/results.json",
+    "status": "timeout",
+    "verdict": null
+  },
+  "P3_acceptance": "open; C01 unresolved and C06 depends on P4"
+}
