@@ -43,7 +43,48 @@ Frozen full model SHA256:
 Frozen selected-query pack SHA256:
 `3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18`.
 
-Execution source, actual version, native hardware, complete command, query hash,
-limits, stdout/stderr and any trace will be retained with the run. This checkpoint
-prepares the execution; it does not claim a model-checking result. No automatic
-retry, resource increase, baseline change or P3 acceptance.
+## Observed result
+
+Execution source: `ebfe0a63d2b7842bfac195e6d541118ce3a89d91` (clean published checkpoint).
+Run ID: `p3-20260925-deadlock-001-01-C01-deadlock`.
+Status **error**, verdict **null**. Native exit code `-1073741819`
+(unsigned hexadecimal `0xc0000005`), after 15.8519758 seconds;
+peak working set 186265600 bytes. The process exited before
+300 seconds and below the 2 GiB stop threshold. Native stderr is empty; stdout
+contains search progress but no formula verdict. No trace was produced.
+This is a tool/process failure, not a deadlock counterexample or proof of freedom.
+The crash cause is not established by these files. No automatic retry performed.
+
+Native wrapper termination="completed" means the process exited on its own;
+its nonzero exit and absent formula result correctly produce status=error.
+Raw options banner confirms random DFS, the explicit seed and DBM representation.
+The full argument vector also explicitly selects symbolic exploration 0.
+
+Query SHA256: `a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334`.
+Tool: UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023 (complete captured version in records).
+Full model/query/parameter/vector identities are unchanged.
+
+## Evidence and validation
+
+- [Complete raw archive](../runs/p3-20260925-deadlock-001.tar.xz).
+- [Run metadata](../p3-20260923/p3-20260925-deadlock-001/run.yaml),
+  [per-query result](../p3-20260923/p3-20260925-deadlock-001/results.json),
+  [archive SHA256](../p3-20260923/p3-20260925-deadlock-001/archive.json).
+- Native hardware, actual version, complete command, limits and stdout/stderr
+  are inside the archive. `audit.json` records archive/copy/option/result checks.
+- `options-check.json`: legacy defaults preserved, unseeded random DFS,
+  negative seed, approximation representations 2/3 and zero timeout rejected.
+- `checks.txt` and `software-tests.log` record final validation separately from
+  model checking. Software success does not turn this error into a query verdict.
+
+Extract the archive separately and run:
+
+```sh
+python3 -B evidence/verification/p3-20260923/audit.py /PATH/p3-20260925-deadlock-001
+```
+
+The original timeout records remain unchanged. The accepted PR #55 direct
+attempt/protocol argument and PR #53 scoped C02 argument remain separate.
+C01 global deadlock is still inconclusive. Review the tool failure before any
+further run; no resource increase, model repair, baseline change or P3 acceptance
+is inferred. Exact published HEAD and PR reference are recorded in Issue #39.

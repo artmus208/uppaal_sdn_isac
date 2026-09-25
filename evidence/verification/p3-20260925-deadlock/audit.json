@@ -1,0 +1,21 @@
+{
+  "kind": "archived evidence audit, not an independent acceptance",
+  "archive_sha256": "52a24d395254a513cd13f51b8632bd96b51e39f405f123fe0b6417d1c05e213f",
+  "run_id": "p3-20260925-deadlock-001-01-C01-deadlock",
+  "status": "error",
+  "verdict": null,
+  "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "query_hash": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+  "source_commit": "ebfe0a63d2b7842bfac195e6d541118ce3a89d91",
+  "exit_code": -1073741819,
+  "exit_code_unsigned_hex": "0xc0000005",
+  "runtime_seconds": 15.8519758,
+  "peak_working_set_bytes": 186265600,
+  "archive_and_copies_match": true,
+  "planned_recorded_and_native_options_match": true,
+  "native_stderr_empty": true,
+  "formula_verdict_present": false,
+  "trace_paths": [],
+  "evidence_audit_output": "Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.\n"
+}
