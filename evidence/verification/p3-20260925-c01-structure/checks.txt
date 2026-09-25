@@ -1,0 +1,211 @@
+$ /usr/bin/python3 -B evidence/verification/p3-20260925-c01-structure/check.py
+{
+  "kind": "static inductive proof support; NOT model checking",
+  "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "recovery_instances": 1,
+  "checked_edge_valuation_obligations": 35,
+  "rejected_mutations": [
+    "missing-finish",
+    "external-write",
+    "duplicate-instance",
+    "repeated-primary-invariant-obligation"
+  ],
+  "edges": [
+    {
+      "edge": 0,
+      "source": "StableConfig",
+      "target": "FailureDetected",
+      "operation": "start",
+      "guard": null,
+      "synchronization": "sdn_link_failure?"
+    },
+    {
+      "edge": 1,
+      "source": "StableConfig",
+      "target": "FailureDetected",
+      "operation": "start",
+      "guard": null,
+      "synchronization": "sdn_node_failure?"
+    },
+    {
+      "edge": 2,
+      "source": "FailureDetected",
+      "target": "StandbySwitch",
+      "operation": "primary",
+      "guard": "sdn_standby_available && sdn_reconfig_allowed()",
+      "synchronization": "bus_rec_policy_request!"
+    },
+    {
+      "edge": 3,
+      "source": "FailureDetected",
+      "target": "ReactiveReembedding",
+      "operation": "primary",
+      "guard": "sdn_alternative_config_exists && sdn_reconfig_allowed()",
+      "synchronization": "bus_rec_flow_request!"
+    },
+    {
+      "edge": 4,
+      "source": "FailureDetected",
+      "target": "Rollback",
+      "operation": "rollback",
+      "guard": "!sdn_standby_available && !sdn_alternative_config_exists || !sdn_reconfig_allowed()",
+      "synchronization": "bus_rollback_request!"
+    },
+    {
+      "edge": 5,
+      "source": "StandbySwitch",
+      "target": "StableConfig",
+      "operation": "finish",
+      "guard": "(sdn_c_rec <= sdn_D_recovery) && sdn_c_obs_rec <= (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": "bus_rec_policy_ack?"
+    },
+    {
+      "edge": 6,
+      "source": "ReactiveReembedding",
+      "target": "StableConfig",
+      "operation": "finish",
+      "guard": "(sdn_c_rec <= sdn_D_recovery) && sdn_c_obs_rec <= (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": "bus_rec_flow_ack?"
+    },
+    {
+      "edge": 7,
+      "source": "StandbySwitch",
+      "target": "Rollback",
+      "operation": "rollback",
+      "guard": "sdn_c_rec == sdn_D_recovery",
+      "synchronization": "bus_rollback_request!"
+    },
+    {
+      "edge": 8,
+      "source": "ReactiveReembedding",
+      "target": "Rollback",
+      "operation": "rollback",
+      "guard": "sdn_c_rec == sdn_D_recovery",
+      "synchronization": "bus_rollback_request!"
+    },
+    {
+      "edge": 9,
+      "source": "Rollback",
+      "target": "StableConfig",
+      "operation": "finish",
+      "guard": "(sdn_c_rollback <= sdn_D_rollback) && sdn_c_obs_rec <= (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": "bus_rec_rollback_ack?"
+    },
+    {
+      "edge": 10,
+      "source": "Rollback",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rollback == sdn_D_rollback) && sdn_c_obs_rec <= (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    },
+    {
+      "edge": 11,
+      "source": "FailureDetected",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rec == sdn_D_recovery) && sdn_c_obs_rec <= (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    },
+    {
+      "edge": 12,
+      "source": "StandbySwitch",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rec == sdn_D_recovery) && sdn_c_obs_rec <= (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    },
+    {
+      "edge": 13,
+      "source": "ReactiveReembedding",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rec == sdn_D_recovery) && sdn_c_obs_rec <= (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    },
+    {
+      "edge": 14,
+      "source": "RecoveryFailed",
+      "target": "RecoveryFailed",
+      "operation": "none",
+      "guard": "sdn_recovery_report_pending",
+      "synchronization": "sdn_failure_report!"
+    },
+    {
+      "edge": 15,
+      "source": "StandbySwitch",
+      "target": "StableConfig",
+      "operation": "finish",
+      "guard": "(sdn_c_rec <= sdn_D_recovery) && sdn_c_obs_rec > (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": "bus_rec_policy_ack?"
+    },
+    {
+      "edge": 16,
+      "source": "ReactiveReembedding",
+      "target": "StableConfig",
+      "operation": "finish",
+      "guard": "(sdn_c_rec <= sdn_D_recovery) && sdn_c_obs_rec > (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": "bus_rec_flow_ack?"
+    },
+    {
+      "edge": 17,
+      "source": "Rollback",
+      "target": "StableConfig",
+      "operation": "finish",
+      "guard": "(sdn_c_rollback <= sdn_D_rollback) && sdn_c_obs_rec > (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": "bus_rec_rollback_ack?"
+    },
+    {
+      "edge": 18,
+      "source": "Rollback",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rollback == sdn_D_rollback) && sdn_c_obs_rec > (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    },
+    {
+      "edge": 19,
+      "source": "FailureDetected",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rec == sdn_D_recovery) && sdn_c_obs_rec > (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    },
+    {
+      "edge": 20,
+      "source": "StandbySwitch",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rec == sdn_D_recovery) && sdn_c_obs_rec > (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    },
+    {
+      "edge": 21,
+      "source": "ReactiveReembedding",
+      "target": "RecoveryFailed",
+      "operation": "finish",
+      "guard": "(sdn_c_rec == sdn_D_recovery) && sdn_c_obs_rec > (sdn_D_recovery + sdn_D_rollback)",
+      "synchronization": null
+    }
+  ]
+}
+
+
+exit=0
+$ /usr/bin/python3 -B scripts/check_coordination.py --audit-hashes --commit 840105be7990a5527d7934450bb3dce0f3e04f7a --output /tmp/c01-structure-baseline.json
+57 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+
+
+exit=0
+$ git diff --check 840105be7990a5527d7934450bb3dce0f3e04f7a
+
+
+exit=0
+manifests/v1.md SHA256 f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075
+manifests/collaboration-v1.yaml SHA256 31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0
+manifests/baselines/reviewer-r1.yaml SHA256 d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7
+evidence/verification/p3-20260925-c01-structure/check.py SHA256 4f9efb8d45a22a18eb80ed03dd5980ee687d2d05e3b9572d587e75de630c3514
+Static premises and 35 induction obligations pass; 4 mutations rejected. NOT model checking.
+Tool help/version captured, normalized help SHA256 matches tool-info.json. No native model query executed.
+No production/runner/model changes; full application tests not repeated locally. CI is tracked in PR.
+Initial staged whitespace check returned exit 2 for trailing blanks emitted by native --help; documentation copy normalized and its hash/normalization record updated. No verifier result modified.
