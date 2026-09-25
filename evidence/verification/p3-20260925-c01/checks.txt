@@ -1,0 +1,19 @@
+Archive SHA256 and three published summary copies match extracted archive.
+Initial audit invocation omitted required --output: check_coordination.py returned exit 2; corrected invocation follows. No model-checking result was involved.
+$ /usr/bin/python3 -B evidence/verification/p3-20260923/audit.py /tmp/c01-final-archive-audit/p3-20260925-c01-001
+Evidence audit OK: 3 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+
+
+exit=0
+$ /usr/bin/python3 -B scripts/check_coordination.py --audit-hashes --commit 152d167165f0ff07a801d85a8671b6cd6bb96b54 --output /tmp/c01-final-baseline-audit.json
+57 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+
+
+exit=0
+$ git diff --check 152d167165f0ff07a801d85a8671b6cd6bb96b54
+
+
+exit=0
+Results index: 15 original formulas, 32 full-model records match source JSON; additional 600-second C02 retry referenced separately.
+No new production or runner code: full software suite not rerun locally.
+Raw first-two-query checkpoint retained; not a completed run.
