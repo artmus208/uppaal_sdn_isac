@@ -1,0 +1,19 @@
+{
+  "source": "Windows Application log, event ID 1000, verifyta.exe, UTC window 2026-09-25T09:50:00Z to 10:05:00Z",
+  "projection": "Only diagnosis fields retained; computer name, account SID and report identifiers omitted. Original EventData ProcessId matches native result PID 5772.",
+  "events": [
+    {
+      "time": "2026-09-25T09:55:38.9170381Z",
+      "event_id": 1000,
+      "fields": {
+        "AppName": "verifyta.exe",
+        "ModuleName": "verifyta.exe",
+        "ExceptionCode": "c0000005",
+        "FaultingOffset": "00000000003a72dc",
+        "ProcessId": "0x168c",
+        "AppPath": "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "ModulePath": "D:\\UPPAAL\\app\\bin\\verifyta.exe"
+      }
+    }
+  ]
+}
