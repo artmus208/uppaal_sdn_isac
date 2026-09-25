@@ -1,3 +1,16 @@
 Static audit development: initial priority check rejected identifier/comment occurrences of 'priority'; narrowed to actual channel-priority syntax, with process-priority syntax checked separately. Initial clock-declaration recognition missed comma-separated declarations and conservatively produced zero certificates; fixed declaration parsing and added an explicit positive control. No earlier intermediate count is used as evidence.
 python3 evidence/verification/p3-20260925-deadlock-structure/audit.py --output evidence/verification/p3-20260925-deadlock-structure/inventory.json
 Exit 0: 50 templates, 272 locations, 851 edges, 50 committed, 0 urgent locations, 62 invariant locations, 5 narrow committed escape certificates; four rejected in-memory mutations. Global deadlock verdict: null.
+
+Published source checked: 87b6627b4d101ec4f84c3e0b895f353c44346fd0 (identical tree to local initial checkpoint).
+python3 evidence/verification/p3-20260925-deadlock-structure/audit.py
+Exit 0: saved inventory reproduces exactly; positive control and four rejected mutations.
+python3 scripts/check_coordination.py --audit-hashes --commit HEAD --output /tmp/deadlock-structure-baseline.json
+Exit 0: 57 hashes, zero mismatches, zero aggregate mismatches; saved baseline-audit.json.
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/tmp/uppaal-deadlock-structure-20260925/src /tmp/uppaal-deadlock-test-venv/bin/python -m unittest discover -s tests -v
+Exit 0; full output software-tests.log.
+Ran 193 tests in 68.002s
+
+OK
+Scope and git diff --check pass. No new native verification run.
+Initial final-log excerpt accidentally included a truncated line with trailing whitespace; corrected before publication. Final whitespace check passes.
