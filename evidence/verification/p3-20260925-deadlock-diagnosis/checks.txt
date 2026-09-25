@@ -1,0 +1,9 @@
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Verified archive /tmp/uppaal-deadlock-20260925/evidence/verification/runs/p3-20260925-deadlock-diag-001.tar.xz bytes 13604
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Verified archive /tmp/uppaal-deadlock-20260925/evidence/verification/runs/p3-20260925-deadlock-diag-002.tar.xz bytes 13580
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Verified archive /tmp/uppaal-deadlock-20260925/evidence/verification/runs/p3-20260925-deadlock-diag-003.tar.xz bytes 13448
+
+Runner/application code unchanged from published 0a5dca04cfe37f5d7dae533c43ef6c49deca2fd5. Its 193-test result is preserved in ../p3-20260925-deadlock/software-tests.log; full suite not repeated for evidence-only additions.
+Independent archive-extraction/comparison audit: all three controls match native results and input identity; timeout/null throughout.
