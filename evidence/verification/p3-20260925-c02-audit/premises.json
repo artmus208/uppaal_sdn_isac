@@ -1,0 +1,29 @@
+{
+  "scheduler_edges": 17,
+  "retained_write_edges": [
+    2,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10
+  ],
+  "boundary_edges": [
+    5,
+    6,
+    7,
+    9,
+    10
+  ],
+  "scheduler_instances": 1,
+  "static_premises": "matched pinned declarations, writers, clocks, guards, mappings and stutter edges",
+  "kind": "static proof-premise audit, NOT model checking",
+  "full_model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "reduced_model_hash": "536233940526a1716006d6769c84c9faf6dc3d7bf0e6ffa0981aa60b56a49241",
+  "rejected_mutations": [
+    "missing-invariant",
+    "external-reset",
+    "missing-active-exit"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "source_attempt_directory": "/mnt/c/users/musta/desktop/pysources/mcp_uppaal/evidence/verification/worktrees/p3-20260925-c02-24h-001/evidence/verification/p3-20260925-c02-24h-001/queue/attempts/001-29c3409912fe43029fa925b140dbf40a",
+  "verified_file_hashes": {
+    "attempt.json": "50410489f4e7b9072e4f1f01d8456d3fe0bfdb248e720cdc6d1e077c4d18eeb4",
+    "result.json": "69a1156dd8b3df4ceedf4071911b6d3aac84eb7f82f0e75421fbbc8d52689a50",
+    "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.txt": "9ddf02b0beb95a4ba0842d3462b2a20a12483bd89d03bc55b5f3af885181f046",
+    "telemetry.csv": "4ce0716acaa47fe8c9901f1435332f56bbd99a2c23fb13e072aca7827fdab7fd"
+  },
+  "sample_count": 8201,
+  "representative_samples": [
+    {
+      "elapsed_seconds": "0.009835599999860278",
+      "rss_bytes": "5099520",
+      "peak_rss_bytes": "5103616",
+      "cpu_seconds": "0.0",
+      "throughput": "",
+      "load": ""
+    },
+    {
+      "elapsed_seconds": "830.1977923999993",
+      "rss_bytes": "1521213440",
+      "peak_rss_bytes": "1521217536",
+      "cpu_seconds": "823.25",
+      "throughput": "1635",
+      "load": "7806524"
+    },
+    {
+      "elapsed_seconds": "2077.4674051",
+      "rss_bytes": "3064623104",
+      "peak_rss_bytes": "3064627200",
+      "cpu_seconds": "2063.78125",
+      "throughput": "9958",
+      "load": "14924173"
+    },
+    {
+      "elapsed_seconds": "4158.8644652",
+      "rss_bytes": "4928593920",
+      "peak_rss_bytes": "4928598016",
+      "cpu_seconds": "4135.09375",
+      "throughput": "1723",
+      "load": "23838663"
+    },
+    {
+      "elapsed_seconds": "6240.4883978",
+      "rss_bytes": "6887497728",
+      "peak_rss_bytes": "6887501824",
+      "cpu_seconds": "6205.53125",
+      "throughput": "2138",
+      "load": "32511449"
+    },
+    {
+      "elapsed_seconds": "7490.2744162",
+      "rss_bytes": "7985913856",
+      "peak_rss_bytes": "7985917952",
+      "cpu_seconds": "7445.953125",
+      "throughput": "9569",
+      "load": "37782061"
+    },
+    {
+      "elapsed_seconds": "8323.3759092",
+      "rss_bytes": "8590028800",
+      "peak_rss_bytes": "8590032896",
+      "cpu_seconds": "8273.859375",
+      "throughput": "1746",
+      "load": "41068920"
+    }
+  ],
+  "cpu_to_elapsed_ratio": 0.9939727936623948,
+  "note": "Raw source attempt is read-only; full telemetry and stdout remain in the supplied worktree/bundle. This is an audit summary, not a new execution."
+}
