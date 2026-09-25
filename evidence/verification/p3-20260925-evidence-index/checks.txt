@@ -1,0 +1,24 @@
+Evidence audit OK: 15 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 14 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 3 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+Evidence audit OK: 1 formulas, frozen identity, raw hashes, statuses and trace presence. No independent acceptance.
+{
+  "archives": 9,
+  "executions": 38,
+  "properties": 15,
+  "execution_statuses": {
+    "timeout": 30,
+    "error": 2,
+    "success": 6
+  },
+  "unique_machine_verdicts": {
+    "inconclusive": 9,
+    "violated": 2,
+    "satisfied": 4
+  }
+}
