@@ -1,0 +1,49 @@
+[
+  {
+    "memory_measurement": "Windows Process.PeakWorkingSet64, observed every 50ms; private bytes sampled. Stop threshold is not a hard allocation cap.",
+    "termination": "completed",
+    "exit_code": 0,
+    "started_at_utc": "2026-09-25T11:56:19.1713364Z",
+    "native_process_id": 9592,
+    "timeout_seconds": 60,
+    "peak_working_set_bytes": 186454016,
+    "sampled_peak_private_bytes": 226242560,
+    "runtime_seconds": 10.0101312,
+    "finished_at_utc": "2026-09-25T11:56:29.2461952Z",
+    "memory_stop_bytes": 2147483648,
+    "run_id": "p3-20260925-recovery-001-01-attempt-start",
+    "property_id": "attempt-start",
+    "role": "nonvacuity",
+    "formal_query": "E<> sdn_attempt_active",
+    "status": "success",
+    "verdict": "satisfied",
+    "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+    "query_hash": "b2bd4430e694dc28cbe282e253a50b0f2554b37b0901a0bb378cec8eda3757c4",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\r\nCopyright (c) 2011 - 2023, Aalborg University.\r\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\r\nAll rights reserved.\r\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \r\nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\r\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\r\n",
+    "source_commit": "7a4ac3c47329548612b0a563bf9cae20e3835384",
+    "exact_command": [
+      "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+      "-o",
+      "2",
+      "-t",
+      "0",
+      "--exploration",
+      "0",
+      "-r",
+      "20260925",
+      "--state-representation",
+      "1",
+      "-X",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-recovery-20260925\\evidence\\verification\\runs\\p3-20260925-recovery-001\\01-attempt-start-trace",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-recovery-20260925\\evidence\\governance\\20260906-baseline\\gate1-20260923\\model.xml",
+      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-recovery-20260925\\evidence\\verification\\runs\\p3-20260925-recovery-001\\01-attempt-start.q"
+    ],
+    "query_path": "01-attempt-start.q",
+    "stdout_path": "01-attempt-start.stdout.txt",
+    "stderr_path": "01-attempt-start.stderr.txt",
+    "trace_paths": [
+      "01-attempt-start-trace1.xml"
+    ],
+    "states_explored": null
+  }
+]
