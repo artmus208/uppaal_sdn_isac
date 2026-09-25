@@ -1,0 +1,38 @@
+{
+  "kind": "CLI validation, not model checking",
+  "legacy_defaults_unchanged": true,
+  "rejected_cases": [
+    [
+      "--search-order",
+      "2"
+    ],
+    [
+      "--seed",
+      "-1"
+    ],
+    [
+      "--state-representation",
+      "2"
+    ],
+    [
+      "--state-representation",
+      "3"
+    ],
+    [
+      "--timeout-seconds",
+      "0"
+    ]
+  ],
+  "planned_options": [
+    "-o",
+    "2",
+    "-t",
+    "0",
+    "--exploration",
+    "0",
+    "-r",
+    "20260925",
+    "--state-representation",
+    "0"
+  ]
+}
