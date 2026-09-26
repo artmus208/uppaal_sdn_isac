@@ -1,0 +1,50 @@
+P3 core acceptance proposal, Issue #39, 2026-09-26.
+Worktree /tmp/uppaal-p3-core-20260926; Python 3.12.3.
+Base read/1bf6c51c73e0f6a2dc1e785104dadd7dcc8ff46b.
+No UPPAAL invocation in this deliverable.
+
+/tmp/uppaal-p3-dispositions-venv/bin/python -m pip install -e .
+exit 0; binds isolated environment to this worktree. install.log retained.
+
+PYTHONDONTWRITEBYTECODE=1 /tmp/uppaal-p3-dispositions-venv/bin/python -m unittest discover -s tests -v
+exit 0; 193 tests in 45.973s, OK. software-tests.log retained.
+Two-file mismatch reports are expected test fixtures, not frozen-baseline errors.
+
+/tmp/uppaal-p3-dispositions-venv/bin/python scripts/check_coordination.py
+exit 0; coordination structurally consistent (not verification).
+
+/tmp/uppaal-p3-dispositions-venv/bin/python scripts/check_coordination.py --audit-hashes --commit HEAD --output evidence/verification/p3-20260926-core-acceptance/baseline-audit.json
+exit 0; checkpoint cb83dbc, 57 file hashes, zero file/aggregate mismatches.
+All subsequent changes are only proposal/review/check records.
+
+python3 -B evidence/verification/p3-20260926-core-acceptance/build_registry.py --write
+python3 -B evidence/verification/p3-20260926-core-acceptance/build_registry.py
+exit 0; proposed registry reproduced exactly, proposal status/identity checked.
+12 archived groups, 43 selected-query records; 4 reduced/control records;
+1 recovered diagnostic; 3 excluded joint metadata-only records.
+Includes original PR #60 raw audit, reduced raw audit and static proof scripts.
+Existing mutation controls reject missing-invariant, external-reset,
+missing-active-exit, missing-finish, external-write, duplicate-instance and
+repeated-primary-invariant-obligation. No new model-checking run IDs created.
+
+/tmp/uppaal-p3-dispositions-venv/bin/python -c 'from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)'
+/tmp/uppaal-p3-dispositions-venv/bin/uppaal-verifyta list-examples
+exit 0; FastMCP and examples available.
+
+git diff --check 1bf6c51c73e0f6a2dc1e785104dadd7dcc8ff46b...HEAD
+exit 0; only evidence/verification/p3-20260926-core-acceptance/** added.
+
+Joint archive search details and bounded scope: archive-search.json.
+No archive at pinned read/PR #59 head, no local path history or matching file
+in workspace/tmp; known D:/uppaal-handoffs directory absent. No raw replacement.
+
+Approval limitation: an attempted command recording author acceptance was
+rejected by automatic approval review. Stated reason: AGENTS.md forbids an author
+from accepting a gate/own result; existing user permission was deemed insufficient.
+The rejected command did not execute. Continued with a concrete proposal, status
+proposed_for_user_acceptance and P3_core_evidence_accepted=false. No bypass,
+acceptance action or merge is performed by these files.
+
+Shell sandbox has the known unsupported /mnt/wslg/distro mount; approved escalated
+commands used. Shared dirty user checkout untouched. Previous local Git HTTPS
+credentials unavailable; publication uses the connected GitHub and durable bundle.

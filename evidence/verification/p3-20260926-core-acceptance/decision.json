@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "issue": 39,
+  "milestone": "P3_core_evidence_accepted",
+  "status": "proposed_for_user_acceptance",
+  "P3_core_evidence_accepted": false,
+  "prepared_at_utc": "2026-09-26T11:05:45.303347+00:00",
+  "decision_actor": null,
+  "prepared_by": "vadimnbkg via Codex",
+  "authorization": "User authorized preparing P3 core decision, author review and merge. Automatic approval review rejected recording author acceptance under AGENTS.md; this file is a concrete proposal for an explicit user decision, not acceptance.",
+  "independent_review": false,
+  "base_ref": "read",
+  "base_commit": "1bf6c51c73e0f6a2dc1e785104dadd7dcc8ff46b",
+  "baseline_id": "reviewer-r1-gate1-20260923",
+  "full_model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+  "source_hash": "e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a",
+  "generator_hash": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
+  "covered_comment_ids": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05"
+  ],
+  "requirement_outcomes": {
+    "C01": {
+      "proposed_disposition": "Accept evidence with explicit limitations, without asserting complete structural correctness.",
+      "queue_safety": "violated",
+      "queue_decision": "Retain negative result and qualify integration claims; no model repair or rebaseline.",
+      "global_deadlock": "deferred_unproved",
+      "deadlock_decision": "Remain unresolved; no deadlock-free claim, automatic resumption or permanent scientific waiver.",
+      "attempt_bounds_and_protocol": "Existing accepted concrete-XML argument from PR #55; direct model checking remains inconclusive.",
+      "primary_two_attempt_receiver_reachability": "unconfirmed; withhold positive claims and do not infer unreachability"
+    },
+    "C02": {
+      "proposed_disposition": "Retain accepted PR #53 scoped argument.",
+      "direct_full_model": "inconclusive",
+      "accepted_argument_scope": "Pinned elapsed safety plus conditional ACK-or-ScheduleFailure completion within 3 abstract time units on time-divergent executions.",
+      "not_established": [
+        "unconditional completion",
+        "guaranteed successful ACK delivery",
+        "global deadlock freedom",
+        "absence of Zeno executions",
+        "time-divergent continuation from every request",
+        "physical time calibration"
+      ]
+    },
+    "C03": {
+      "proposed_disposition": "Accept whitelisted actual positive, negative and inconclusive results exactly as recorded.",
+      "all_formulas_satisfied": false
+    },
+    "C04": {
+      "proposed_disposition": "Accept both raw full-model counterexamples and the separate reduced negative control."
+    },
+    "C05": {
+      "proposed_disposition": "Accept auditable provenance and available resource measurements with explicit exclusions.",
+      "recovered_C02": "Reinstate only as diagnostic/resource observation on its exact host/configuration; memory_limit/null unchanged. Not a positive C02 verdict or P4 scaling boundary.",
+      "joint_probe": "Exclude three metadata-only records from current reproducible core evidence/numeric totals/P5; preserve historical review decision.",
+      "reduced_memory": "For four short reduced/control runs raw zero means no sample; citable peak memory=null.",
+      "states_explored": "Null if not reported; do not substitute trace length or Load."
+    }
+  },
+  "run_registry": "accepted-runs.json",
+  "run_registry_sha256": "a6f6f71fcd482510b106cb9573030e00fd0cbc41522d886bba8670f9f63c193b",
+  "accepted_run_ids": [
+    "p3-20260923-002-01-C01-deadlock",
+    "p3-20260923-002-02-C01-queue",
+    "p3-20260923-002-03-C01-attempts",
+    "p3-20260923-002-04-attempt-protocol",
+    "p3-20260923-002-05-C02-ack-elapsed",
+    "p3-20260923-002-06-queue-nonempty",
+    "p3-20260923-002-07-queue-full",
+    "p3-20260923-002-08-queue-overflow",
+    "p3-20260923-002-09-attempt-start",
+    "p3-20260923-002-10-attempt-primary",
+    "p3-20260923-002-11-attempt-rollback",
+    "p3-20260923-002-12-attempt-two",
+    "p3-20260923-002-13-ack-start",
+    "p3-20260923-002-14-ack-timeout",
+    "p3-20260923-002-15-ack-unconditional-completion",
+    "p3-20260923-003-01-C01-deadlock",
+    "p3-20260923-003-02-C01-queue",
+    "p3-20260923-003-03-C01-attempts",
+    "p3-20260923-003-04-attempt-protocol",
+    "p3-20260923-003-05-C02-ack-elapsed",
+    "p3-20260923-003-06-queue-full",
+    "p3-20260923-003-07-queue-overflow",
+    "p3-20260923-003-08-attempt-start",
+    "p3-20260923-003-09-attempt-primary",
+    "p3-20260923-003-10-attempt-rollback",
+    "p3-20260923-003-11-attempt-two",
+    "p3-20260923-003-12-ack-start",
+    "p3-20260923-003-13-ack-timeout",
+    "p3-20260923-003-14-ack-unconditional-completion",
+    "p3-20260924-c02-600-001-01-C02-ack-elapsed",
+    "p3-20260924-c02-600-002-01-C02-ack-elapsed",
+    "p3-20260925-ack-timeout-001-01-ack-timeout",
+    "p3-20260925-c01-001-01-C01-deadlock",
+    "p3-20260925-c01-001-02-C01-attempts",
+    "p3-20260925-c01-001-03-attempt-protocol",
+    "p3-20260925-deadlock-001-01-C01-deadlock",
+    "p3-20260925-deadlock-diag-001-01-C01-deadlock",
+    "p3-20260925-deadlock-diag-002-01-C01-deadlock",
+    "p3-20260925-deadlock-diag-003-01-C01-deadlock",
+    "p3-20260925-recovery-001-01-attempt-start",
+    "p3-20260925-recovery-002-01-attempt-primary",
+    "p3-20260925-recovery-002-02-attempt-rollback",
+    "p3-20260925-recovery-002-03-attempt-two",
+    "p3-20260924-c02-reduced-001-C02",
+    "p3-20260924-c02-reduced-001-active",
+    "p3-20260924-c02-reduced-001-deadline",
+    "p3-20260924-c02-reduced-001-negative-control",
+    "001-29c3409912fe43029fa925b140dbf40a"
+  ],
+  "excluded_run_ids": [
+    "p3-20260925-primary-joint-001-01-joint-prerequisites",
+    "p3-20260925-primary-joint-001-02-standby-receiver",
+    "p3-20260925-primary-joint-001-03-alternative-receiver"
+  ],
+  "registry_status": "proposed only; no run gains acceptance from this file before user decision",
+  "proposed_scope_exception": "Accept P3 core package despite listed negative/unresolved obligations, as explicit scientific limitations. Do not claim that all original structural/reachability requirements hold.",
+  "proposed_supersessions": [
+    "Replace lost-archive exclusion of recovered attempt 001-29c3409912fe43029fa925b140dbf40a with diagnostic/resource acceptance based on original raw files restored by PR #60.",
+    "Retain historical joint-prerequisite reviewer acceptance but exclude its three executions from this reproducible whitelist until original raw archive is restored and accepted."
+  ],
+  "would_unlock": "P3 prerequisite for P5 acceptance; each P5 scenario still needs exact run-based causal mapping and its own acceptance.",
+  "does_not_accept": [
+    "P5 scenarios",
+    "P4",
+    "P3_complete",
+    "Gate 2",
+    "P9a",
+    "P8",
+    "P9b"
+  ],
+  "C06_status": "pending_P4",
+  "P3_complete": false,
+  "Gate_2_passed": false,
+  "issue_remains_open": true,
+  "new_UPPAAL_runs": 0,
+  "frozen_inputs_changed": false,
+  "manuscript_changed": false
+}
