@@ -1,0 +1,57 @@
+Issue #39, 2026-09-26. Isolated clone /tmp/uppaal-p3-dispositions-20260926.
+Environment /tmp/uppaal-p3-dispositions-venv, Python 3.12.
+Commands below concern software/evidence integrity, not new verification.
+
+python3 -m venv /tmp/uppaal-p3-dispositions-venv
+/tmp/uppaal-p3-dispositions-venv/bin/python -m pip install -e . PyYAML
+exit 0; installation log retained as install.log.
+
+PYTHONDONTWRITEBYTECODE=1 /tmp/uppaal-p3-dispositions-venv/bin/python -m unittest discover -s tests -v
+exit 0; 193 tests in 46.542s, OK; full software-tests.log retained.
+The two-file mismatch messages at the end are deliberate test fixtures,
+not mismatches in the frozen baseline.
+
+/tmp/uppaal-p3-dispositions-venv/bin/python scripts/check_coordination.py
+exit 0; structural checks pass (not a hash audit/model checking).
+
+/tmp/uppaal-p3-dispositions-venv/bin/python scripts/check_coordination.py --audit-hashes --commit 6917722 --output evidence/verification/p3-20260926-dispositions/baseline-audit.json
+exit 0; 57 file hashes, zero mismatches; zero aggregate mismatches.
+No baseline files changed after the audited checkpoint.
+
+python3 -B evidence/verification/p3-20260926-dispositions/audit.py --write
+python3 -B evidence/verification/p3-20260926-dispositions/audit.py
+exit 0; output reproduces exactly; 12 audited archives, 43 selected-query
+executions (9 success, 32 timeout, 2 error), 15 formulas (7 satisfied,
+2 violated, 6 inconclusive). Three supplementary records are metadata-only:
+the referenced joint-probe raw archive is absent and is not treated as audited.
+Recovered C02 attempt: five artifact hashes, model/query hashes, raw version,
+session/queue hash, actual manager hash, parameters/vector, 8201 telemetry
+samples and original summary identity checked. Status memory_limit/null.
+
+Negative controls in disposable /tmp directories, without modifying prior evidence:
+- Extract original 003 archive; queue_diagnosis accepts original trace. Replace
+  terminal sys.mac_queue_q value 5 with 4; queue_diagnosis raises AssertionError.
+- Copy recovered archive/provenance; flip its final byte; recover_c02 raises
+  AssertionError at the archive hash check before extraction.
+Both rejected as expected.
+
+/tmp/uppaal-p3-dispositions-venv/bin/python -c 'from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)'
+/tmp/uppaal-p3-dispositions-venv/bin/uppaal-verifyta list-examples
+exit 0; FastMCP and example list available. No verifier started.
+
+git diff --check 6304dd83da71bb2b22fe829f60c32d1832d40aaf...HEAD
+exit 0. Changed paths confined to evidence/verification/p3-20260926-dispositions/.
+
+Limitations encountered:
+- Normal shell/apply_patch sandbox failed due to unsupported /mnt/wslg/distro
+  host mount; commands used approved escalation. Dirty shared checkout untouched.
+- No installed mcp in default Python; isolated environment installed successfully.
+- Initial archive inventory exposed missing joint-probe archive and stopped at
+  FileNotFoundError. This is a recorded evidence gap, not hidden or repaired by
+  changing historical metadata. No matching archive found in workspace or /tmp.
+- Initial read of queue-nonempty summary under run 003 failed; actual queue
+  counterexample is at p3-20260923/queue-counterexample.json.
+- HTTPS git push dry-run cannot authenticate (terminal prompts disabled).
+  Durable local bundle created before tests; publication uses connected GitHub.
+
+No new scientific verification claim, gate decision or formal P3 acceptance.

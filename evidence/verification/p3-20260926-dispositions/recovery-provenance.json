@@ -1,0 +1,14 @@
+{
+  "source_commit": "93f8dfee5ff08d73d4ad6e289b6d418bd747a662",
+  "source_path": "evidence/verification/p3-20260925-c02-24h-001",
+  "transport": "owner-local full-history bundle and matching named branch; exact Git blobs exported, not dirty working files",
+  "bundle_path_at_discovery": "C:/Users/musta/Desktop/pySources/mcp_uppaal/evidence/verification/p3-20260925-c02-24h-001.bundle",
+  "archive": "recovered-c02.tar.xz",
+  "archive_sha256": "14221cc7615b817b12c828dbe069dcb94fddc5b242bd35af1b0e2136706af8b9",
+  "archive_bytes": 477296,
+  "manager_source_commit": "48ee12bd24bed28163bd4fd40729c79392bebff9",
+  "manager_file": "recovered-manager.py",
+  "manager_sha256": "4cf633aa447b3e90026f2f11cd3f21ad847d209b20b5df222dca21914b363f95",
+  "acceptance": "recovered diagnostic evidence; historical exclusion from accepted quantitative evidence remains until explicit disposition",
+  "new_verifier_execution": false
+}
