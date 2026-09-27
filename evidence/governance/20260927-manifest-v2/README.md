@@ -1,6 +1,6 @@
 # Предложение манифеста v2 — Issue #62
 
-Статус: **proposal / not active**, готовится к review. Это governance deliverable,
+Статус: **proposal / not active**, подготовлен для review. Это governance deliverable,
 а не новая научная приёмка или verification evidence.
 
 - Issue: https://github.com/artmus208/uppaal_sdn_isac/issues/62
@@ -76,5 +76,28 @@ git diff --check fef5e9f71d58803727a63efc36ab944e08655a31...HEAD
 v1 и его hashes, а не научную правильность/активацию v2. Ни эти проверки,
 ни `verifyta version` не являются model checking.
 
-Результаты команд будут сохранены отдельным validation record перед handoff.
-Научная приёмка, активация v2 и downstream workstreams этим пакетом не открываются.
+Результаты: [validation.json](validation.json), [логи](logs/),
+[hash audit](baseline-hashes.json), [окружение](environment.txt).
+Все восемь команд завершились с exit code 0: 193 unit tests, proposal integrity,
+coordination, 57 точных file hashes и aggregate hashes без расхождений, server
+и examples smoke, доступность verifier и whitespace check. Строки о намеренных
+hash mismatches внутри unit-test stdout относятся к отрицательным fixtures;
+самостоятельный audit текущего baseline расхождений не обнаружил.
+`verifyta --version` вернул UPPAAL 5.0.0 (rev. 714BA9DB36F49691); моделей в рамках
+этой задачи не проверяли. После тестов меняются только summary/evidence artifacts,
+тексты v2 и migration и код остаются на проверенном source tree.
+
+## Сохранность результата
+
+Тестируемый локальный source commit и опубликованный source commit имеют
+одинаковое Git tree; точное соответствие записано в
+[publication-source.json](publication-source.json). Публикация через GitHub API
+меняет commit metadata/историю checkpoint, но не байты проверенных входов.
+Полная локальная история дополнительно экспортирована в bundle в долговременном
+checkout владельца; SHA-256 artifacts сохраняются в
+[artifacts-sha256.json](artifacts-sha256.json). Финальный head с validation records
+указан в PR и Issue #62; он не встраивается в собственные tracked bytes.
+
+Следующий шаг — независимое review предложения; активация требует отдельного
+scope по карте перехода. Научная приёмка и downstream workstreams этим пакетом
+не открываются.

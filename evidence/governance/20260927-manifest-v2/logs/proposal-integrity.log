@@ -1,0 +1,26 @@
+{
+  "kind": "proposal_integrity_audit_not_verification",
+  "base_commit": "fef5e9f71d58803727a63efc36ab944e08655a31",
+  "checked_head": "9208422132c0446d202896d537e66b3ae29bcac9",
+  "changed_paths": [
+    "evidence/governance/20260927-manifest-v2/README.md",
+    "evidence/governance/20260927-manifest-v2/check_proposal.py",
+    "evidence/governance/20260927-manifest-v2/inputs.json",
+    "manifests/v2-migration.md",
+    "manifests/v2.md"
+  ],
+  "atomic_ids": 25,
+  "local_links_checked": 15,
+  "preserved_inputs_sha256": {
+    "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+    "manifests/collaboration-v1.yaml": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+    "manifests/baselines/reviewer-r1.yaml": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7",
+    "AGENTS.md": "e4fde1df5f51a582d2b0f06daef9a2a98d3a96195c3201584d7d5e801d038b28",
+    "CONTRIBUTING.md": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+    "src/uppaal_mcp/integrated/inputs.py": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
+    "scripts/check_coordination.py": "8266140a0708402b68efcf408aed4ea4050dde14e21c320d61f27dee1e24d665",
+    "tests/test_coordination.py": "d6e0f024a0a7496c73e2299ca390069e05e272db4323537f0c5aaa8a6cc9e3fd"
+  },
+  "errors": [],
+  "result": "pass"
+}
