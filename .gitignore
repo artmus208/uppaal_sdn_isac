@@ -5,3 +5,8 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+
+# Local worktrees and Git handoff backups
+/.worktrees/
+/evidence/verification/worktrees/
+*.bundle
