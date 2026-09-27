@@ -1,0 +1,38 @@
+{
+  "issue": 62,
+  "base_ref": "read",
+  "base_commit": "fef5e9f71d58803727a63efc36ab944e08655a31",
+  "baseline_id": "reviewer-r1-gate1-20260923",
+  "proposal_status": "not_active",
+  "scientific_acceptance_claimed": false,
+  "inputs": [
+    {
+      "path": "manifests/v1.md",
+      "sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075"
+    },
+    {
+      "path": "manifests/collaboration-v1.yaml",
+      "sha256": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0"
+    },
+    {
+      "path": "manifests/baselines/reviewer-r1.yaml",
+      "sha256": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7"
+    },
+    {
+      "path": "pdfs/018100004273.pdf",
+      "sha256": "31ebd85a51c3ccf858b46088d3e94db11e99ac533e0e130148a0be451efae109"
+    },
+    {
+      "path": "pdfs/dissertation.pdf",
+      "sha256": "4f8a778c52ff1e6b33383d447ebc13e91b8d18ce8161996d79d86dc32d0f5de6"
+    },
+    {
+      "path": "evidence/governance/20260910-p1-p2-review/final-20260923/README.md",
+      "sha256": "354a515504dabf6df2c80750e4cce4ffff49bc51def6faace127c4483d5b7631"
+    },
+    {
+      "path": "evidence/verification/p3-20260926-dispositions/README.md",
+      "sha256": "33a6370aecb98510ade12e71c11877c9767017bd764f9e090920079be02f3600"
+    }
+  ]
+}
