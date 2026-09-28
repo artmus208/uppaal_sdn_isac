@@ -1,0 +1,13 @@
+{
+  "local_source_commit": "9208422132c0446d202896d537e66b3ae29bcac9",
+  "published_source_commit": "9939d19e718aa8681604ab14daf5facc2f7fc044",
+  "identical_tree_sha": "36f7f62b9320fedcbcbbd42e300ffe051556debc",
+  "published_branch": "codex/vadimnbkg/62-manifest-v2",
+  "repository": "https://github.com/artmus208/uppaal_sdn_isac",
+  "base_commit": "fef5e9f71d58803727a63efc36ab944e08655a31",
+  "transport": "GitHub Git data API; SSH unavailable due to host-key verification",
+  "source_bundle": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/evidence/governance/20260927-manifest-v2/handoff/source-ready.bundle",
+  "bundle_complete_history": true,
+  "source_tree_tests": "validation.json",
+  "post_test_changes": "Only validation artifacts and summary; proposal documents and code unchanged."
+}

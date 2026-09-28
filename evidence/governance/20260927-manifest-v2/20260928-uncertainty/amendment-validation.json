@@ -1,0 +1,69 @@
+{
+  "kind": "documentation_amendment_validation_not_verification",
+  "issue": 62,
+  "pull_request": 63,
+  "previous_published_head": "469e749096634481f9195998ba2031a717e90837",
+  "checked_source_commit": "c3300e0327119e3baa73803ef5031178c72c5bd8",
+  "source_checkpoint_bundle": "/mnt/c/users/musta/desktop/pysources/mcp_uppaal/evidence/governance/20260927-manifest-v2/handoff/uncertainty-source-20260928.bundle",
+  "source_tree_clean_before_validation": true,
+  "python": "3.12.3",
+  "change": "Explicit bounded uncertainty, justified tradeoffs and continuation of independent work; gates and mandatory dependencies unchanged.",
+  "author_auxiliary_review": "Wording checked for assumption/guarantee distinction, no automatic obligation waiver, no separate report per open question; not independent acceptance.",
+  "document_hashes": {
+    "manifests/v2.md": "c5c7f6a84e77e854990537a26c2a18c5063b5b361d270ec8ac6ba7c28b14e313",
+    "manifests/v2-migration.md": "3c9461700ce97a30f302c098fab11f50ea30090b17181ff14d7a8cb65615924c"
+  },
+  "checks": [
+    {
+      "name": "proposal-integrity",
+      "command": [
+        "/usr/bin/python3",
+        "evidence/governance/20260927-manifest-v2/check_proposal.py"
+      ],
+      "exit_code": 0,
+      "seconds": 2.483,
+      "output": "{\n  \"kind\": \"proposal_integrity_audit_not_verification\",\n  \"base_commit\": \"fef5e9f71d58803727a63efc36ab944e08655a31\",\n  \"checked_head\": \"c3300e0327119e3baa73803ef5031178c72c5bd8\",\n  \"changed_paths\": [\n    \"evidence/governance/20260927-manifest-v2/README.md\",\n    \"evidence/governance/20260927-manifest-v2/artifacts-sha256.json\",\n    \"evidence/governance/20260927-manifest-v2/baseline-hashes.json\",\n    \"evidence/governance/20260927-manifest-v2/check_proposal.py\",\n    \"evidence/governance/20260927-manifest-v2/environment.txt\",\n    \"evidence/governance/20260927-manifest-v2/inputs.json\",\n    \"evidence/governance/20260927-manifest-v2/logs/baseline-hashes.log\",\n    \"evidence/governance/20260927-manifest-v2/logs/coordination.log\",\n    \"evidence/governance/20260927-manifest-v2/logs/diff-whitespace.log\",\n    \"evidence/governance/20260927-manifest-v2/logs/examples-smoke.log\",\n    \"evidence/governance/20260927-manifest-v2/logs/final-proposal-integrity.json\",\n    \"evidence/governance/20260927-manifest-v2/logs/proposal-integrity.log\",\n    \"evidence/governance/20260927-manifest-v2/logs/server-smoke.log\",\n    \"evidence/governance/20260927-manifest-v2/logs/unit-tests.log\",\n    \"evidence/governance/20260927-manifest-v2/logs/verifier-availability.log\",\n    \"evidence/governance/20260927-manifest-v2/publication-source.json\",\n    \"evidence/governance/20260927-manifest-v2/validation.json\",\n    \"manifests/v2-migration.md\",\n    \"manifests/v2.md\"\n  ],\n  \"atomic_ids\": 25,\n  \"local_links_checked\": 15,\n  \"preserved_inputs_sha256\": {\n    \"manifests/v1.md\": \"f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075\",\n    \"manifests/collaboration-v1.yaml\": \"31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0\",\n    \"manifests/baselines/reviewer-r1.yaml\": \"d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7\",\n    \"AGENTS.md\": \"e4fde1df5f51a582d2b0f06daef9a2a98d3a96195c3201584d7d5e801d038b28\",\n    \"CONTRIBUTING.md\": \"ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85\",\n    \"src/uppaal_mcp/integrated/inputs.py\": \"7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52\",\n    \"scripts/check_coordination.py\": \"8266140a0708402b68efcf408aed4ea4050dde14e21c320d61f27dee1e24d665\",\n    \"tests/test_coordination.py\": \"d6e0f024a0a7496c73e2299ca390069e05e272db4323537f0c5aaa8a6cc9e3fd\"\n  },\n  \"errors\": [],\n  \"result\": \"pass\"\n}\n"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/usr/bin/python3",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.053,
+      "output": "Coordination artifacts are structurally consistent (not a hash audit or verification).\n"
+    },
+    {
+      "name": "coordination-tests",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_coordination.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 0.3,
+      "output": "test_pending_candidate_and_inconsistent_freeze (test_coordination.BaselineStateTests.test_pending_candidate_and_inconsistent_freeze) ... ok\ntest_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... ok\ntest_invalid_input_and_construction (test_coordination.HashAuditTests.test_invalid_input_and_construction) ... ok\ntest_missing_input_and_immutable_output (test_coordination.HashAuditTests.test_missing_input_and_immutable_output) ... Hash audit error: [Errno 17] File exists: '/tmp/tmp9vbsapjb/result.json'\nok\ntest_canonical_storage (test_coordination.RunStorageTests.test_canonical_storage) ... ok\ntest_invalid_mappings (test_coordination.RunStorageTests.test_invalid_mappings) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.177s\n\nOK\n2 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).\n2 file hashes; 1 mismatches; 2 aggregate mismatches (not verification).\n"
+    },
+    {
+      "name": "diff-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "469e749096634481f9195998ba2031a717e90837...HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.296,
+      "output": ""
+    }
+  ],
+  "full_suite_note": "No source/test/active-contract changes. Run existing relevant coordination tests locally; complete suite is executed by GitHub PR CI. Historical 193-test result remains tied to its original checkpoint.",
+  "result": "pass"
+}

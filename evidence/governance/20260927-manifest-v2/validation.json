@@ -1,0 +1,101 @@
+{
+  "kind": "technical_validation_not_model_checking",
+  "checked_commit": "9208422132c0446d202896d537e66b3ae29bcac9",
+  "environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "checks": [
+    {
+      "name": "proposal-integrity",
+      "command": [
+        "/tmp/uppaal-manifest-v2-62/.venv/bin/python",
+        "/tmp/uppaal-manifest-v2-62/evidence/governance/20260927-manifest-v2/check_proposal.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.351,
+      "log": "logs/proposal-integrity.log"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/uppaal-manifest-v2-62/.venv/bin/python",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.048,
+      "log": "logs/coordination.log"
+    },
+    {
+      "name": "baseline-hashes",
+      "command": [
+        "/tmp/uppaal-manifest-v2-62/.venv/bin/python",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "/tmp/uppaal-manifest-v2-62/evidence/governance/20260927-manifest-v2/baseline-hashes.json"
+      ],
+      "exit_code": 0,
+      "seconds": 11.458,
+      "log": "logs/baseline-hashes.log"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/tmp/uppaal-manifest-v2-62/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 50.845,
+      "log": "logs/unit-tests.log"
+    },
+    {
+      "name": "server-smoke",
+      "command": [
+        "/tmp/uppaal-manifest-v2-62/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "seconds": 0.815,
+      "log": "logs/server-smoke.log"
+    },
+    {
+      "name": "examples-smoke",
+      "command": [
+        "/tmp/uppaal-manifest-v2-62/.venv/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "seconds": 0.37,
+      "log": "logs/examples-smoke.log"
+    },
+    {
+      "name": "verifier-availability",
+      "command": [
+        "/tmp/uppaal-manifest-v2-62/.venv/bin/uppaal-verifyta",
+        "version"
+      ],
+      "exit_code": 0,
+      "seconds": 1.109,
+      "log": "logs/verifier-availability.log"
+    },
+    {
+      "name": "diff-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "fef5e9f71d58803727a63efc36ab944e08655a31...HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.167,
+      "log": "logs/diff-whitespace.log"
+    }
+  ]
+}
