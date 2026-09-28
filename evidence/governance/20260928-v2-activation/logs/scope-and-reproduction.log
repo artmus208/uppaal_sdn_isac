@@ -1,0 +1,59 @@
+{
+  "kind": "activation_integrity_and_generation_identity_not_verification",
+  "base_commit": "09d5eac96128e9f90a428584dd661addb5488931",
+  "checked_commit": "a5b9c49b67976ed28a7282cef06bad98ac0196df",
+  "configured": {
+    "schema_version": 1,
+    "scientific_plan": "manifests/v2.md",
+    "collaboration_manifest": "manifests/collaboration-v2.yaml",
+    "baseline_manifest": "manifests/baselines/reviewer-r1.yaml",
+    "migration_map": "manifests/v2-migration.md",
+    "activation_issue": "https://github.com/artmus208/uppaal_sdn_isac/issues/64",
+    "contributing_guide": "CONTRIBUTING-v2.md"
+  },
+  "activation_accepted_by_this_check": false,
+  "changed_paths": [
+    ".github/ISSUE_TEMPLATE/workstream.yml",
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    "AGENTS.md",
+    "CONTRIBUTING-v2.md",
+    "evidence/governance/20260928-v2-activation/README.md",
+    "evidence/governance/20260928-v2-activation/check_activation.py",
+    "evidence/governance/20260928-v2-activation/logs/coordination.log",
+    "evidence/governance/20260928-v2-activation/open-issues-map.json",
+    "manifests/collaboration-v2.yaml",
+    "manifests/current.json",
+    "manifests/v2-migration.md",
+    "manifests/v2.md",
+    "scripts/check_coordination.py",
+    "tests/test_coordination.py",
+    "tests/test_coordination_activation.py"
+  ],
+  "preserved_inputs_sha256": {
+    "CONTRIBUTING.md": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+    "manifests/v1.md": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+    "manifests/collaboration-v1.yaml": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+    "manifests/baselines/reviewer-r1.yaml": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7"
+  },
+  "yaml_parsed": [
+    "manifests/collaboration-v2.yaml",
+    "manifests/collaboration-v1.yaml",
+    "manifests/baselines/reviewer-r1.yaml",
+    ".github/ISSUE_TEMPLATE/workstream.yml"
+  ],
+  "local_links_checked": 22,
+  "reproduction": {
+    "model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+    "candidate_query_hash": "97aff5896eba43a49c41fa45030550e42be63fb5a555803aef6d0dbbe67b1ab9",
+    "frozen_reference": "evidence/governance/20260906-baseline/gate1-20260923",
+    "generator_hash": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
+    "operational_context": {
+      "pinned_sha256": "cb2ed0d4b60678bfe9e8153c626dce28d1cd17d201154eac954c729047845c78",
+      "actual_sha256": "e9717f8d1ae99176277fd9a60146e063d1416fe92eb3f305ae4b820a881e5996",
+      "role": "operational_context_not_model_input"
+    },
+    "model_checking": "not_run"
+  },
+  "errors": [],
+  "result": "pass"
+}

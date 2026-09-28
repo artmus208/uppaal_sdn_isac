@@ -3,6 +3,7 @@
 - Closes issue: <!-- #123 -->
 - Workstream: <!-- P0-P7, P9a, P8, or P9b -->
 - Atomic review-comment IDs: <!-- C01-C06, R01-R07, V01-V05, I01-I06, D01; or N/A — coordination-only -->
+- Coordination pointer/plan/contract: <!-- manifests/current.json; resolved paths/hashes; activation decision -->
 - Baseline manifest/ID/SHA-256: <!-- path; baseline_id; manifest sha256 -->
 - Baseline commit SHA: <!-- full 40-character SHA -->
 - Head commit SHA: <!-- full 40-character SHA -->

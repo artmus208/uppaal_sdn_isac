@@ -5,7 +5,9 @@ body:
   - type: markdown
     attributes:
       value: |
-        Create one issue per independently owned workstream. Reference the stable
+        Read manifests/current.json and its selected plan/coordination contract;
+        record the activation decision and exact input versions. Historical baseline
+        inputs remain unchanged. Create one issue per independently owned workstream. Reference the stable
         atomic review-comment IDs from the response matrix; do not copy or merge
         review requirements informally. Valid IDs are C01-C06, R01-R07, V01-V05,
         I01-I06, and D01. Use N/A only for coordination-only work that closes no
@@ -56,7 +58,7 @@ body:
     attributes:
       label: Baseline manifest and hash
       description: Give the repository path, baseline ID, and SHA-256 of the baseline manifest consumed by this workstream.
-      placeholder: manifests/baselines/reviewer-r1.yaml; reviewer-r1-candidate; sha256:...
+      placeholder: manifests/baselines/reviewer-r1.yaml; reviewer-r1-gate1-20260923; sha256:...
     validations:
       required: true
 
@@ -74,7 +76,7 @@ body:
     attributes:
       label: Inputs
       description: List exact source paths, manifests, evidence bundles, issue or PR references, and their versions.
-      placeholder: One versioned input per line
+      placeholder: manifests/current.json + selected plan/contract/activation decision; one versioned input per line
     validations:
       required: true
 

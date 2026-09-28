@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "scientific_plan": "manifests/v2.md",
+  "collaboration_manifest": "manifests/collaboration-v2.yaml",
+  "baseline_manifest": "manifests/baselines/reviewer-r1.yaml",
+  "migration_map": "manifests/v2-migration.md",
+  "activation_issue": "https://github.com/artmus208/uppaal_sdn_isac/issues/64",
+  "contributing_guide": "CONTRIBUTING-v2.md"
+}
