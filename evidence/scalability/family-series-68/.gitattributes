@@ -1,0 +1,6 @@
+# Immutable raw Windows output: preserve byte hashes and native CRLF/encoding.
+checks/**/*.stdout.txt -text -diff
+checks/**/*.stderr.txt -text -diff
+checks/**/*.memory.csv -text -diff
+checks/**/*.monitor.json -text -diff
+checks/**/hardware.json -text -diff

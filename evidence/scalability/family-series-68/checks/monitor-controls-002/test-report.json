@@ -1,0 +1,74 @@
+{
+  "all_controls_passed": true,
+  "cases": [
+    {
+      "actual_status": "success",
+      "checks": {
+        "expected_status": true,
+        "measured_peak_working_set": true,
+        "measured_private_memory": true,
+        "measured_sample_gap": true,
+        "process_reaped": true,
+        "sampled_memory": true,
+        "stderr_exact": true,
+        "stdout_exact": true
+      },
+      "expected_status": "success",
+      "monitor_reference": "normal.monitor.json",
+      "name": "normal"
+    },
+    {
+      "actual_status": "timeout",
+      "checks": {
+        "expected_status": true,
+        "measured_peak_working_set": true,
+        "measured_private_memory": true,
+        "measured_sample_gap": true,
+        "process_reaped": true,
+        "sampled_memory": true
+      },
+      "expected_status": "timeout",
+      "monitor_reference": "timeout.monitor.json",
+      "name": "timeout"
+    },
+    {
+      "actual_status": "memory_limit",
+      "checks": {
+        "expected_status": true,
+        "measured_peak_working_set": true,
+        "measured_private_memory": true,
+        "measured_sample_gap": true,
+        "measured_threshold_crossed": true,
+        "process_reaped": true,
+        "sampled_memory": true
+      },
+      "expected_status": "memory_limit",
+      "monitor_reference": "memory.monitor.json",
+      "name": "memory"
+    }
+  ],
+  "hardware": {
+    "available_physical_ram_bytes": 4509339648,
+    "cpu_models": [
+      "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+    ],
+    "dotnet_version": "4.0.30319.42000",
+    "logical_cpu_count": 8,
+    "measured_at_utc": "2026-09-28T21:52:44.1048270Z",
+    "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+    "memory_probe": {
+      "peak_working_set_bytes": 80764928,
+      "private_bytes": 71327744,
+      "working_set_bytes": 80617472
+    },
+    "os": "Майкрософт Windows 10 Домашняя для одного языка",
+    "os_build": "19045",
+    "os_version": "10.0.19045",
+    "powershell_version": "5.1.19041.6456",
+    "total_physical_ram_bytes": 17033019392
+  },
+  "kind": "native monitor controls only, no verifier or model checking",
+  "source_commit": "c696d1133be64af5d420b4e157f2b6e72db9f1ab",
+  "verdict_parser_controls": "passed",
+  "working_tree_before_test": "clean"
+}

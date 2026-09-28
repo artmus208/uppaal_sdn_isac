@@ -1,0 +1,20 @@
+{
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+  ],
+  "arguments_windows": "-NoProfile -NonInteractive -EncodedCommand JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA",
+  "compile_only": false,
+  "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+  "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-002\\timeout.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-002\\timeout.memory.csv",
+  "stderr": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-002\\timeout.stderr.txt",
+  "stdout": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-002\\timeout.stdout.txt",
+  "timeout_seconds": 1
+}
