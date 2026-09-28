@@ -1,0 +1,30 @@
+{
+  "evidence_kind": "static_validation",
+  "property_verdict": "not_applicable",
+  "sizes": {
+    "1": {
+      "processes": 50,
+      "load_step_cases": 160,
+      "endpoint_count": 581,
+      "frozen_singleton_step_cases": 80
+    },
+    "2": {
+      "processes": 99,
+      "load_step_cases": 12000,
+      "endpoint_count": 1162,
+      "rejected_mutations": [
+        "cross-entity queue state",
+        "cross-entity clock",
+        "cross-entity ACK",
+        "cross-entity scratch input",
+        "wrong shared tick destination",
+        "wrong shared sample destination",
+        "global clock alias",
+        "independent second queue service",
+        "lost zero-time delivery",
+        "wrong instance binding",
+        "duplicate shared server"
+      ]
+    }
+  }
+}

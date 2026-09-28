@@ -1,0 +1,4650 @@
+[
+  {
+    "channel": "u0_phy_measure_tick?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_measure_tick?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_measure_tick?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_measure_tick?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_measure_tick?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_measure_tick?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_measure_tick?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_power_cmd?",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_channel_report!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_channel_report!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_channel_report!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_channel_report!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_channel_degraded!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_mobility_alert!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_multipath_alert!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_blockage_detected!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_phy_outage!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ch!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ch!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ch!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ch!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ch!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ch!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ch!",
+    "template": "u0_phy_Template_A_CH"
+  },
+  {
+    "channel": "u0_phy_waveform_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_pilot_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_prs_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_payload_sensing_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_waveform_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_pilot_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_prs_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_payload_sensing_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_waveform_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_pilot_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_prs_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_payload_sensing_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_waveform_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_pilot_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_prs_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_payload_sensing_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_waveform_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_pilot_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_prs_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_payload_sensing_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_waveform_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_pilot_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_prs_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_payload_sensing_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_signal_report!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_signal_report!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_signal_report!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_signal_report!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_signal_degraded!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_waveform_config?",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sig!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sig!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sig!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sig!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sig!",
+    "template": "u0_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_ssb_burst_config?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_assist_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_target_detected?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_report!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_report!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_report!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_report!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_report!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_extra_ssb_cmd?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_recovery_start!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_misaligned!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_restored!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_handover_hint!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_beam_failure!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_new_beam_confirmed?",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_contract_violation_bm!",
+    "template": "u0_phy_Template_A_BM"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_report!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_report!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_report!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_report!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_degraded!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_degraded!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_degraded!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_degraded!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_degraded!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_degraded!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_sensing_failure!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_contract_violation_sq!",
+    "template": "u0_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_channel_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_signal_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_beam_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_recovery_cmd?",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_phy_failure!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_degradation_event!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_degradation_event!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_degradation_event!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ph!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ph!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ph!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ph!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ph!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ph!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_phy_contract_violation_ph!",
+    "template": "u0_phy_Template_A_PH"
+  },
+  {
+    "channel": "u0_mac_mac_tick?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_mac_phy_kpi_report?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_mac_mac_schedule_cmd!",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_mac_phy_ack?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_mac_mac_report!",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_mac_phy_ack?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_bus_policy?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_bus_policy?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_bus_policy?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_bus_policy?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_bus_policy?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_bus_policy?",
+    "template": "u0_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u0_mac_resource_reject!",
+    "template": "u0_mac_Template_A_Q"
+  },
+  {
+    "channel": "u0_mac_mac_report!",
+    "template": "u0_mac_Template_A_BUF"
+  },
+  {
+    "channel": "u0_mac_resource_reject!",
+    "template": "u0_mac_Template_A_RSRC"
+  },
+  {
+    "channel": "u0_mac_mac_report!",
+    "template": "u0_mac_Template_A_MAC_AGG"
+  },
+  {
+    "channel": "u0_mac_mac_report!",
+    "template": "u0_mac_Template_A_MAC_AGG"
+  },
+  {
+    "channel": "u0_sdn_mac_report?",
+    "template": "u0_sdn_Template_A_MON"
+  },
+  {
+    "channel": "u0_sdn_phy_kpi_report?",
+    "template": "u0_sdn_Template_A_MON"
+  },
+  {
+    "channel": "u0_bus_admit_request?",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_mac_report?",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_phy_kpi_report?",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_service_reject!",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_service_degraded!",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_service_degraded!",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_service_accept!",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_service_accept!",
+    "template": "u0_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u0_sdn_rule_miss?",
+    "template": "u0_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u0_sdn_flow_mod!",
+    "template": "u0_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u0_sdn_drop_report!",
+    "template": "u0_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u0_sdn_forward_cmd!",
+    "template": "u0_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u0_bus_rule_ack?",
+    "template": "u0_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u0_sdn_timeout_report!",
+    "template": "u0_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u0_sdn_timeout_report!",
+    "template": "u0_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u0_sdn_link_failure?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_sdn_node_failure?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_policy_request!",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_flow_request!",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rollback_request!",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_policy_ack?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_flow_ack?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rollback_request!",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rollback_request!",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_rollback_ack?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_sdn_failure_report!",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_policy_ack?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_flow_ack?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_rec_rollback_ack?",
+    "template": "u0_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u0_bus_ctrl_request!",
+    "template": "u0_sdn_Template_A_SDN_AGG"
+  },
+  {
+    "channel": "u0_bus_ctrl_ack?",
+    "template": "u0_sdn_Template_A_SDN_AGG"
+  },
+  {
+    "channel": "u0_sdn_timeout_report!",
+    "template": "u0_sdn_Template_A_SDN_AGG"
+  },
+  {
+    "channel": "u0_app_new_demand?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_request!",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_accept?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_degraded?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_reject?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_kpi_update?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_kpi_update?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_degraded_notice?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_kpi_update?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_degraded_accept_report!",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_complete?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_service_complete?",
+    "template": "u0_app_A_REQ"
+  },
+  {
+    "channel": "u0_app_sla_warn?",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_sla_violation?",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_sla_warning_report!",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_service_kpi_update?",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_sla_violation?",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_service_kpi_update?",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_sla_violation_report!",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_service_reconfigure!",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_service_terminate!",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_sla_violation?",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_app_sla_warn?",
+    "template": "u0_app_A_SLA"
+  },
+  {
+    "channel": "u0_bus_new_sample!",
+    "template": "u0_Boundary_E_PHY_INPUT"
+  },
+  {
+    "channel": "u0_phy_measure_tick!",
+    "template": "u0_Boundary_E_PHY_INPUT"
+  },
+  {
+    "channel": "u0_phy_target_detected!",
+    "template": "u0_Boundary_E_PHY_INPUT"
+  },
+  {
+    "channel": "u0_sdn_rule_miss!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_link_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_node_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_rule_miss!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_link_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_node_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_rule_miss!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_link_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_node_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_rule_miss!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_link_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_node_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_rule_miss!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_link_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_node_failure!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_flow_mod?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_forward_cmd?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rule_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rollback_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_rollback_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_flow_mod?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_forward_cmd?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rule_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rollback_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_rollback_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_flow_mod?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_forward_cmd?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rule_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rollback_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_rollback_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_flow_mod?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_forward_cmd?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rule_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rollback_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_rollback_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_flow_mod?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_forward_cmd?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rule_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_flow_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rollback_request?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_bus_rec_rollback_ack!",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_drop_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_failure_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_sdn_timeout_report?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_mac_resource_reject?",
+    "template": "u0_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u0_app_new_demand!",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_complete!",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_sla_warning_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_sla_violation_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_reconfigure?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_degraded_accept_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_terminate?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_sla_warning_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_sla_violation_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_reconfigure?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_degraded_accept_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_terminate?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_sla_warning_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_sla_violation_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_reconfigure?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_degraded_accept_report?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_terminate?",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_app_service_complete!",
+    "template": "u0_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u0_mac_mac_schedule_cmd?",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_phy_waveform_config!",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd!",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_phy_waveform_config!",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_phy_sensing_mode_cmd!",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_phy_power_cmd!",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_mac_phy_ack!",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_mac_mac_schedule_cmd?",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_mac_mac_schedule_cmd?",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_mac_mac_schedule_cmd?",
+    "template": "u0_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u0_bus_ctrl_request?",
+    "template": "u0_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u0_bus_rec_policy_request?",
+    "template": "u0_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u0_bus_policy!",
+    "template": "u0_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u0_bus_ctrl_ack!",
+    "template": "u0_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u0_bus_rec_policy_ack!",
+    "template": "u0_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u0_app_service_request?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_bus_admit_request!",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_accept?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_accept?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_accept?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_accept?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_accept?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_reject?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_reject?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_reject?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_reject?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_reject?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_degraded?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_degraded?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_degraded?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_degraded?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_sdn_service_degraded?",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_app_service_accept!",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_app_service_reject!",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_app_service_degraded!",
+    "template": "u0_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_mac_report?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_bus_new_sample?",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_aos_ctrl_expired!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_mac_phy_kpi_report!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_sdn_phy_kpi_report!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_app_service_kpi_update!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_app_sla_violation!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_app_sla_warn!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_mac_report_delivered!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_controller_report_delivered!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_sdn_mac_report!",
+    "template": "u0_Boundary_B_KPI"
+  },
+  {
+    "channel": "u0_phy_sensing_degraded?",
+    "template": "u0_phy_Template_ObsSenseReport"
+  },
+  {
+    "channel": "u0_phy_phy_kpi_report?",
+    "template": "u0_phy_Template_ObsSenseReport"
+  },
+  {
+    "channel": "u0_phy_aos_ctrl_expired?",
+    "template": "u0_phy_Template_ObsFreshness"
+  },
+  {
+    "channel": "u0_phy_sensing_report?",
+    "template": "u0_phy_Template_ObsFreshness"
+  },
+  {
+    "channel": "u0_phy_recovery_start?",
+    "template": "u0_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u0_phy_beam_restored?",
+    "template": "u0_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u0_phy_handover_hint?",
+    "template": "u0_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u0_phy_beam_failure?",
+    "template": "u0_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u1_phy_measure_tick?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_measure_tick?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_measure_tick?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_measure_tick?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_measure_tick?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_measure_tick?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_measure_tick?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_power_cmd?",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_channel_report!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_channel_report!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_channel_report!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_channel_report!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_channel_degraded!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_mobility_alert!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_multipath_alert!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_blockage_detected!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_phy_outage!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ch!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ch!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ch!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ch!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ch!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ch!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ch!",
+    "template": "u1_phy_Template_A_CH"
+  },
+  {
+    "channel": "u1_phy_waveform_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_pilot_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_prs_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_payload_sensing_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_waveform_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_pilot_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_prs_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_payload_sensing_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_waveform_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_pilot_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_prs_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_payload_sensing_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_waveform_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_pilot_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_prs_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_payload_sensing_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_waveform_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_pilot_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_prs_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_payload_sensing_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_waveform_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_pilot_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_prs_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_payload_sensing_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_signal_report!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_signal_report!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_signal_report!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_signal_report!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_signal_degraded!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_waveform_config?",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sig!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sig!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sig!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sig!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sig!",
+    "template": "u1_phy_Template_A_SIG"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_ssb_burst_config?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_assist_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_target_detected?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_report!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_report!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_report!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_report!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_report!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_extra_ssb_cmd?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_recovery_start!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_misaligned!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_restored!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_handover_hint!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_beam_failure!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_new_beam_confirmed?",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_contract_violation_bm!",
+    "template": "u1_phy_Template_A_BM"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_report!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_report!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_report!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_report!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_degraded!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_degraded!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_degraded!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_degraded!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_degraded!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_degraded!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_sensing_failure!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_contract_violation_sq!",
+    "template": "u1_phy_Template_A_SQ"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_channel_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_signal_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_beam_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_recovery_cmd?",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_phy_failure!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_degradation_event!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_degradation_event!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_degradation_event!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ph!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ph!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ph!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ph!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ph!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ph!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_phy_contract_violation_ph!",
+    "template": "u1_phy_Template_A_PH"
+  },
+  {
+    "channel": "u1_mac_mac_tick?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_mac_phy_kpi_report?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_mac_mac_schedule_cmd!",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_mac_phy_ack?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_mac_mac_report!",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_mac_phy_ack?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_bus_policy?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_bus_policy?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_bus_policy?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_bus_policy?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_bus_policy?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_bus_policy?",
+    "template": "u1_mac_Template_A_SCH"
+  },
+  {
+    "channel": "u1_mac_resource_reject!",
+    "template": "u1_mac_Template_A_Q"
+  },
+  {
+    "channel": "u1_mac_mac_report!",
+    "template": "u1_mac_Template_A_BUF"
+  },
+  {
+    "channel": "u1_mac_resource_reject!",
+    "template": "u1_mac_Template_A_RSRC"
+  },
+  {
+    "channel": "u1_mac_mac_report!",
+    "template": "u1_mac_Template_A_MAC_AGG"
+  },
+  {
+    "channel": "u1_mac_mac_report!",
+    "template": "u1_mac_Template_A_MAC_AGG"
+  },
+  {
+    "channel": "u1_sdn_mac_report?",
+    "template": "u1_sdn_Template_A_MON"
+  },
+  {
+    "channel": "u1_sdn_phy_kpi_report?",
+    "template": "u1_sdn_Template_A_MON"
+  },
+  {
+    "channel": "u1_bus_admit_request?",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_mac_report?",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_phy_kpi_report?",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_service_reject!",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_service_degraded!",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_service_degraded!",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_service_accept!",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_service_accept!",
+    "template": "u1_sdn_Template_A_POLICY"
+  },
+  {
+    "channel": "u1_sdn_rule_miss?",
+    "template": "u1_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u1_sdn_flow_mod!",
+    "template": "u1_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u1_sdn_drop_report!",
+    "template": "u1_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u1_sdn_forward_cmd!",
+    "template": "u1_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u1_bus_rule_ack?",
+    "template": "u1_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u1_sdn_timeout_report!",
+    "template": "u1_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u1_sdn_timeout_report!",
+    "template": "u1_sdn_Template_A_RULE"
+  },
+  {
+    "channel": "u1_sdn_link_failure?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_sdn_node_failure?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_policy_request!",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_flow_request!",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rollback_request!",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_policy_ack?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_flow_ack?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rollback_request!",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rollback_request!",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_rollback_ack?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_sdn_failure_report!",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_policy_ack?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_flow_ack?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_rec_rollback_ack?",
+    "template": "u1_sdn_Template_A_REC"
+  },
+  {
+    "channel": "u1_bus_ctrl_request!",
+    "template": "u1_sdn_Template_A_SDN_AGG"
+  },
+  {
+    "channel": "u1_bus_ctrl_ack?",
+    "template": "u1_sdn_Template_A_SDN_AGG"
+  },
+  {
+    "channel": "u1_sdn_timeout_report!",
+    "template": "u1_sdn_Template_A_SDN_AGG"
+  },
+  {
+    "channel": "u1_app_new_demand?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_request!",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_accept?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_degraded?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_reject?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_kpi_update?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_kpi_update?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_degraded_notice?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_kpi_update?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_degraded_accept_report!",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_complete?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_service_complete?",
+    "template": "u1_app_A_REQ"
+  },
+  {
+    "channel": "u1_app_sla_warn?",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_sla_violation?",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_sla_warning_report!",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_service_kpi_update?",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_sla_violation?",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_service_kpi_update?",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_sla_violation_report!",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_service_reconfigure!",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_service_terminate!",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_sla_violation?",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_app_sla_warn?",
+    "template": "u1_app_A_SLA"
+  },
+  {
+    "channel": "u1_bus_new_sample!",
+    "template": "u1_Boundary_E_PHY_INPUT"
+  },
+  {
+    "channel": "u1_phy_measure_tick!",
+    "template": "u1_Boundary_E_PHY_INPUT"
+  },
+  {
+    "channel": "u1_phy_target_detected!",
+    "template": "u1_Boundary_E_PHY_INPUT"
+  },
+  {
+    "channel": "u1_sdn_rule_miss!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_link_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_node_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_rule_miss!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_link_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_node_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_rule_miss!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_link_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_node_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_rule_miss!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_link_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_node_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_rule_miss!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_link_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_node_failure!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_flow_mod?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_forward_cmd?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rule_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rollback_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_rollback_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_flow_mod?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_forward_cmd?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rule_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rollback_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_rollback_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_flow_mod?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_forward_cmd?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rule_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rollback_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_rollback_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_flow_mod?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_forward_cmd?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rule_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rollback_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_rollback_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_flow_mod?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_forward_cmd?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rule_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_flow_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rollback_request?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_bus_rec_rollback_ack!",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_drop_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_failure_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_sdn_timeout_report?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_mac_resource_reject?",
+    "template": "u1_Boundary_E_FAULT"
+  },
+  {
+    "channel": "u1_app_new_demand!",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_complete!",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_sla_warning_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_sla_violation_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_reconfigure?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_degraded_accept_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_terminate?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_sla_warning_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_sla_violation_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_reconfigure?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_degraded_accept_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_terminate?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_sla_warning_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_sla_violation_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_reconfigure?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_degraded_accept_report?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_terminate?",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_app_service_complete!",
+    "template": "u1_Boundary_E_SERVICE"
+  },
+  {
+    "channel": "u1_mac_mac_schedule_cmd?",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_phy_waveform_config!",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd!",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_phy_waveform_config!",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_phy_sensing_mode_cmd!",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_phy_power_cmd!",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_mac_phy_ack!",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_mac_mac_schedule_cmd?",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_mac_mac_schedule_cmd?",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_mac_mac_schedule_cmd?",
+    "template": "u1_Boundary_B_PHY_MAC"
+  },
+  {
+    "channel": "u1_bus_ctrl_request?",
+    "template": "u1_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u1_bus_rec_policy_request?",
+    "template": "u1_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u1_bus_policy!",
+    "template": "u1_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u1_bus_ctrl_ack!",
+    "template": "u1_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u1_bus_rec_policy_ack!",
+    "template": "u1_Boundary_B_POLICY"
+  },
+  {
+    "channel": "u1_app_service_request?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_bus_admit_request!",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_accept?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_accept?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_accept?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_accept?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_accept?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_reject?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_reject?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_reject?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_reject?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_reject?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_degraded?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_degraded?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_degraded?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_degraded?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_sdn_service_degraded?",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_app_service_accept!",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_app_service_reject!",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_app_service_degraded!",
+    "template": "u1_Boundary_B_ADMISSION"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_mac_report?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_bus_new_sample?",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_aos_ctrl_expired!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_mac_phy_kpi_report!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_sdn_phy_kpi_report!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_app_service_kpi_update!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_app_sla_violation!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_app_sla_warn!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_mac_report_delivered!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_controller_report_delivered!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_sdn_mac_report!",
+    "template": "u1_Boundary_B_KPI"
+  },
+  {
+    "channel": "u1_phy_sensing_degraded?",
+    "template": "u1_phy_Template_ObsSenseReport"
+  },
+  {
+    "channel": "u1_phy_phy_kpi_report?",
+    "template": "u1_phy_Template_ObsSenseReport"
+  },
+  {
+    "channel": "u1_phy_aos_ctrl_expired?",
+    "template": "u1_phy_Template_ObsFreshness"
+  },
+  {
+    "channel": "u1_phy_sensing_report?",
+    "template": "u1_phy_Template_ObsFreshness"
+  },
+  {
+    "channel": "u1_phy_recovery_start?",
+    "template": "u1_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u1_phy_beam_restored?",
+    "template": "u1_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u1_phy_handover_hint?",
+    "template": "u1_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u1_phy_beam_failure?",
+    "template": "u1_phy_Template_ObsBeamRecovery"
+  },
+  {
+    "channel": "u0_bus_new_mac_sample!",
+    "template": "SharedLoad"
+  },
+  {
+    "channel": "u0_mac_mac_tick!",
+    "template": "SharedLoad"
+  },
+  {
+    "channel": "u1_bus_new_mac_sample!",
+    "template": "SharedLoad"
+  },
+  {
+    "channel": "u1_mac_mac_tick!",
+    "template": "SharedLoad"
+  }
+]

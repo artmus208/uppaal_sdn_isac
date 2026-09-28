@@ -1,0 +1,56 @@
+{
+  "source_commit": "a14b823de8415c6e73fd01607ce0a8343e2f2d09",
+  "source": "git archive of exact clean committed tree; no untracked files or prior generated runtime inputs",
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "-B",
+        "evidence/scalability/family-feasibility-66/generate.py"
+      ],
+      "exit_code": 0,
+      "stdout": "N=1: 50 processes; generated\nN=2: 99 processes; generated\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "evidence/scalability/family-feasibility-66/generate.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "N=1: 50 processes; exact artifact reproduction\nN=2: 99 processes; exact artifact reproduction\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "evidence/scalability/family-feasibility-66/check.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"evidence_kind\": \"static_validation\",\n  \"property_verdict\": \"not_applicable\",\n  \"sizes\": {\n    \"1\": {\n      \"processes\": 50,\n      \"load_step_cases\": 160,\n      \"endpoint_count\": 581,\n      \"frozen_singleton_step_cases\": 80\n    },\n    \"2\": {\n      \"processes\": 99,\n      \"load_step_cases\": 12000,\n      \"endpoint_count\": 1162,\n      \"rejected_mutations\": [\n        \"cross-entity queue state\",\n        \"cross-entity clock\",\n        \"cross-entity ACK\",\n        \"cross-entity scratch input\",\n        \"wrong shared tick destination\",\n        \"wrong shared sample destination\",\n        \"global clock alias\",\n        \"independent second queue service\",\n        \"lost zero-time delivery\",\n        \"wrong instance binding\",\n        \"duplicate shared server\"\n      ]\n    }\n  }\n}\n",
+      "stderr": ""
+    }
+  ],
+  "artifact_hashes": {
+    "generated/n1/instance-vector.json": "8c0e23f1cadc50e32056b92f1599593096afb2ec92f9b8af6fc9b7b9e16b3282",
+    "generated/n1/interface-inventory.json": "284751016206cbb486ff1eb745e05f03ca24d64364bb72739d9eed8553d553cd",
+    "generated/n1/load.q": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "generated/n1/metadata.json": "53de771d856281ad9e76cc415ab01c287a4fc0ea022e7e73506a8e32ee53054f",
+    "generated/n1/model.xml": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "generated/n1/parameters.json": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18",
+    "generated/n1/queries.json": "72a877f50891464d3a97e01304996ebdc695d72603c4383dc2164c6822989efb",
+    "generated/n1/queries.q": "57ecc666c1f74ae8fff267dd93854f69f5d8e66397b1f92d224ecc78c61c116d",
+    "generated/n2/instance-vector.json": "89f16cc68733655856cb0c2354f00102505430534be1b342285ade1062596adb",
+    "generated/n2/interface-inventory.json": "20c46710edffdbb1fc706ec5d73a00305a5e5fcc575345dcc4ce1382e4640621",
+    "generated/n2/load.q": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "generated/n2/metadata.json": "11907c08b729a59ddfc868af640e77a5a6f796fc89e2803dcdd20d8338d65b2a",
+    "generated/n2/model.xml": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "generated/n2/parameters.json": "e60ccf74cbd67ce304c4b21bcc4576262fae32020c839cc7af43070414f48361",
+    "generated/n2/queries.json": "ec62b48a9fc7abfc649c3d2909e583a4ca75dc0b5b70fb6468b9a699e6ae6bf9",
+    "generated/n2/queries.q": "414af5cde7c2d364be2bc3f2d796a8f9ca980f6b84c72d4259eb248969d6b60e"
+  },
+  "evidence_kind": "static_validation"
+}
