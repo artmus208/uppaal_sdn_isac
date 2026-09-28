@@ -24,7 +24,7 @@ auditor = module("baseline_audit", ROOT / "evidence/governance/20260906-baseline
 
 class RunStorageTests(unittest.TestCase):
     def setUp(self):
-        self.text = (ROOT / "manifests/collaboration-v1.yaml").read_text()
+        self.text = (ROOT / checker.current_configuration(ROOT)["collaboration_manifest"]).read_text()
 
     def test_canonical_storage(self):
         self.assertEqual(checker.check_run_storage(self.text), [])
@@ -46,7 +46,7 @@ class RunStorageTests(unittest.TestCase):
 
 class BaselineStateTests(unittest.TestCase):
     def test_pending_candidate_and_inconsistent_freeze(self):
-        text = (ROOT / "manifests/baselines/reviewer-r1.yaml").read_text()
+        text = (ROOT / checker.current_configuration(ROOT)["baseline_manifest"]).read_text()
         self.assertEqual(checker.check_baseline_state(text), [])
         text = text.replace("status: frozen", "status: candidate").replace("frozen: true", "frozen: false").replace("status: accepted", "status: pending").replace("passed: true", "passed: false")
         frozen = text.replace("status: candidate", "status: frozen").replace("frozen: false", "frozen: true").replace("status: pending", "status: accepted").replace("passed: false", "passed: true")

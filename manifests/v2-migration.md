@@ -1,12 +1,13 @@
-# Переход от v1 к v2: предложение
+# Переход от v1 к v2: принятый план миграции
 
-Статус: **proposal / not active**. Подготовлено в рамках
-[Issue #62](https://github.com/artmus208/uppaal_sdn_isac/issues/62).
-База сопоставления: `read`, commit
-`fef5e9f71d58803727a63efc36ab944e08655a31`.
-Документ дополняет [предложение v2](v2.md); действующий контракт остаётся
-[collaboration-v1.yaml](collaboration-v1.yaml), научный план - [v1.md](v1.md).
-Публикация или merge этого предложения сами по себе не активируют v2.
+Текст перехода принят в [PR #63](https://github.com/artmus208/uppaal_sdn_isac/pull/63)
+по [Issue #62](https://github.com/artmus208/uppaal_sdn_isac/issues/62).
+База исходного сопоставления: `read`, `fef5e9f71d58803727a63efc36ab944e08655a31`.
+Технический пакет активации — [Issue #64](https://github.com/artmus208/uppaal_sdn_isac/issues/64),
+его base commit — `09d5eac96128e9f90a428584dd661addb5488931`.
+Текущая конфигурация checkout выбирается [current.json](current.json);
+официальная активация требует отдельного решения Integrator после merge в `read`.
+Слияние предложения #63 само по себе такого решения не создаёт.
 
 ## Что сохраняется
 
@@ -23,7 +24,7 @@ Gate 1 и ограниченная область P1/P2 не становятс�
 сохраняются рядом с их evidence; предложение не принимает заново эти результаты.
 
 `manifests/v1.md`, `manifests/collaboration-v1.yaml` и
-`manifests/baselines/reviewer-r1.yaml` в данном переходе остаются байт-в-байт
+`manifests/baselines/reviewer-r1.yaml` и pinned `CONTRIBUTING.md` остаются байт-в-байт
 неизменными. Frozen baseline `reviewer-r1-gate1-20260923`, его source commit,
 hashes, параметры, instance vector и query set сохраняют историческую идентичность.
 Исходные run records, отрицательные результаты, timeout/error и прежние
@@ -84,12 +85,12 @@ gates и изменение scope по явной disposition сохраняют
 различаются. Изменение обязательства, его отсрочка или закрытие с ограничением
 требуют отдельного review/disposition с обоснованием и последствиями для gates.
 
-Предложение не принимает [PR #61](https://github.com/artmus208/uppaal_sdn_isac/pull/61),
+Сам переход не принимает [PR #61](https://github.com/artmus208/uppaal_sdn_isac/pull/61),
 не объявляет P3 или Gate 2 пройденными, не превращает временную отсрочку deadlock
 в waiver и не принимает новое ограничение queue-safety claim. Семейство для P4
 и новая модель также не возникают посредством изменения документации.
 
-## Будущая активация: отдельный governance scope
+## Порядок активации: Issue #64
 
 1. Reviewer/integrator рассматривает предложение и перечисляет принимаемые
    уточнения, сохранённые решения и вопросы, требующие отдельных dispositions.
@@ -102,18 +103,21 @@ gates и изменение scope по явной disposition сохраняют
    воспроизведение старого baseline продолжает читать его прежние pinned inputs.
    Старые v1, collaboration-v1 и reviewer-r1 baseline сохраняются как точные
    исторические документы; новый указатель не подменяет их содержимое.
-4. Tooling обновляется осознанно: сейчас `scripts/check_coordination.py` и
-   `tests/test_coordination.py` обращаются к v1, а
-   `src/uppaal_mcp/integrated/inputs.py` использует reviewer-r1 baseline.
-   Нельзя глобальной заменой путей незаметно изменить generation inputs.
-   Проверки должны различать активный контракт и воспроизведение исторической базы.
+4. Пакет #64 переводит `scripts/check_coordination.py` и текущие coordination
+   tests на `manifests/current.json`. Historical v1 проверяется отдельно;
+   `src/uppaal_mcp/integrated/inputs.py` сохраняет прежние pinned inputs.
+   Проверки обязаны различать текущий контракт и воспроизведение исторической базы.
 5. Сохраняются checks старых hashes и воспроизведения старой конфигурации;
    отдельно проверяется новый coordination contract. Изменение модели, generator,
    queries, параметров или instance vector обрабатывается по baseline rules,
    с новыми hashes и явной областью повторного использования evidence.
 6. Integrator записывает commit и момент активации, новый contract и соответствие
-   открытых Issues. До этой записи v2 остаётся предложением; после неё старые
+   открытых Issues. До этой записи v2 не считается активированным; после неё старые
    acceptance records продолжают действовать ровно в своей исходной области.
+
+Карта наблюдаемых открытых Issues и шаблон решения шага 4 находятся в
+[пакете активации](../evidence/governance/20260928-v2-activation/README.md).
+Это единоразовое соответствие, а не новый status board.
 
 ## Основания уточнений
 

@@ -1,0 +1,105 @@
+{
+  "kind": "activation_technical_validation_not_verification",
+  "checked_source_commit": "a5b9c49b67976ed28a7282cef06bad98ac0196df",
+  "source_tree_clean_before_checks": true,
+  "base_commit": "09d5eac96128e9f90a428584dd661addb5488931",
+  "source_checkpoint_bundle": "/mnt/c/users/musta/desktop/pysources/mcp_uppaal/evidence/governance/20260928-v2-activation/handoff/checked-source.bundle",
+  "environment": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "checks": [
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/uppaal-v2-activation-64/.venv/bin/python",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.05,
+      "log": "logs/coordination.log"
+    },
+    {
+      "name": "scope-and-reproduction",
+      "command": [
+        "/tmp/uppaal-v2-activation-64/.venv/bin/python",
+        "/tmp/uppaal-v2-activation-64/evidence/governance/20260928-v2-activation/check_activation.py"
+      ],
+      "exit_code": 0,
+      "seconds": 2.249,
+      "log": "logs/scope-and-reproduction.log"
+    },
+    {
+      "name": "baseline-hashes",
+      "command": [
+        "/tmp/uppaal-v2-activation-64/.venv/bin/python",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "/tmp/uppaal-v2-activation-64/evidence/governance/20260928-v2-activation/baseline-hashes.json"
+      ],
+      "exit_code": 0,
+      "seconds": 24.198,
+      "log": "logs/baseline-hashes.log"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/tmp/uppaal-v2-activation-64/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 50.698,
+      "log": "logs/unit-tests.log"
+    },
+    {
+      "name": "server-smoke",
+      "command": [
+        "/tmp/uppaal-v2-activation-64/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "seconds": 0.725,
+      "log": "logs/server-smoke.log"
+    },
+    {
+      "name": "examples-smoke",
+      "command": [
+        "/tmp/uppaal-v2-activation-64/.venv/bin/uppaal-verifyta",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "seconds": 0.345,
+      "log": "logs/examples-smoke.log"
+    },
+    {
+      "name": "verifier-availability",
+      "command": [
+        "/tmp/uppaal-v2-activation-64/.venv/bin/uppaal-verifyta",
+        "version"
+      ],
+      "exit_code": 0,
+      "seconds": 1.106,
+      "log": "logs/verifier-availability.log"
+    },
+    {
+      "name": "diff-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "09d5eac96128e9f90a428584dd661addb5488931...HEAD"
+      ],
+      "exit_code": 0,
+      "seconds": 0.353,
+      "log": "logs/diff-whitespace.log"
+    }
+  ],
+  "all_commands_exit_zero": true
+}

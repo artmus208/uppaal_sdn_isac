@@ -1,0 +1,142 @@
+{
+  "observed_at_utc": "2026-09-28T20:05:19.127Z",
+  "base_commit": "09d5eac96128e9f90a428584dd661addb5488931",
+  "query": "repo:artmus208/uppaal_sdn_isac is:issue is:open",
+  "purpose": "One-time transition mapping; not a live status board or acceptance decision.",
+  "default_policy": {
+    "owner": "unchanged",
+    "write_scope": "unchanged",
+    "mandatory_dependencies": "unchanged",
+    "historical_evidence": "interpret under its original inputs and acceptance scope",
+    "new_work_after_activation": "use current.json and selected v2 contract"
+  },
+  "issues": [
+    {
+      "issue": 62,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/62",
+      "title": "P0 governance: propose scientific manifest v2 and migration from v1",
+      "declared_process": "P0 — governance",
+      "transition": "Proposal published in merged PR #63; operational v2 document write ownership transferred to #64 by linked scope handoff. Prior evidence remains historical."
+    },
+    {
+      "issue": 51,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/51",
+      "title": "P0: add durable verification queue and resource monitor",
+      "declared_process": "P0 — verification tooling support.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 41,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/41",
+      "title": "P2: define MAC queue abstraction contract for C01",
+      "declared_process": "P2 — abstraction specification.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 39,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/39",
+      "title": "P3: verify the frozen Gate 1 baseline (C01–C06)",
+      "declared_process": "P3 — Core verification.",
+      "transition": "P3 IDs/milestones unchanged. Preserve decisions in #39/#61; this activation neither accepts nor reopens scientific obligations."
+    },
+    {
+      "issue": 36,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/36",
+      "title": "P2: correlate APP and SDN admission recording with actual outcomes",
+      "declared_process": "P2 — scoped correction supporting #33 and V03/#15.",
+      "transition": "Existing deferral remains; no implementation or gate is unblocked by activation."
+    },
+    {
+      "issue": 35,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/35",
+      "title": "P2: implement recovery 20/10 contract and passive event recorder",
+      "declared_process": "P2 — scoped correction supporting #33 and V03/#15.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 33,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/33",
+      "title": "P2: resolve recovery/admission timing contracts from V03 audit",
+      "declared_process": "P2 — Instantiation and abstraction",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 32,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/32",
+      "title": "P1: audit complete V03 timing contracts after ACK observer correction",
+      "declared_process": "P1 — Validation (supplement to #15)",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 30,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/30",
+      "title": "P2: согласовать наблюдатель PHY ACK с интервалом отправка–завершение",
+      "declared_process": "P2 — scoped correction supporting V03 in #15 and implementation #19.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 25,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/25",
+      "title": "P0: prepare author contribution, assumptions and claim-scope proposal",
+      "declared_process": "P0 — coordination support for author claim-scope review.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 23,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/23",
+      "title": "P2: исправить восемь пороговых равенств и закрепить точную версию преобразователя",
+      "declared_process": "P2 — implementation correction, with decision-document supplement.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 21,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/21",
+      "title": "P0: audit integrated candidate readiness for Gate 1",
+      "declared_process": "P0 — Gate 1 readiness audit",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 13,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/13",
+      "title": "P0: validate combined read after healthcheck merges",
+      "declared_process": "P0 — post-merge software diagnostics",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 5,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/5",
+      "title": "P2 healthcheck: provide usable native Windows verifyta and MCP configuration",
+      "declared_process": "P0 — local runtime configuration support",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 4,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/4",
+      "title": "P2 healthcheck: propagate operation failures through CLI exit status",
+      "declared_process": "P0 — software reliability support; healthcheck priorities P1/P2 are severity, not scientific workstream IDs.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 3,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/3",
+      "title": "P1 healthcheck: make fresh MCP installation start reliably",
+      "declared_process": "P0 — software reliability support; healthcheck priorities P1/P2 are severity, not scientific workstream IDs.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 2,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/2",
+      "title": "P1 healthcheck: reject failed or incomplete verifyta runs",
+      "declared_process": "P0 — software reliability support; healthcheck priorities P1/P2 are severity, not scientific workstream IDs.",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    },
+    {
+      "issue": 1,
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/1",
+      "title": "P0 coordination: prioritize and hand off 2026-09-06 healthcheck remediation",
+      "declared_process": "P0 — coordination support",
+      "transition": "Preserve owner, scope, dependencies and prior decisions; use v2 for subsequent scoped work after activation."
+    }
+  ],
+  "activation_issue": 64
+}
