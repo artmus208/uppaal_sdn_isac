@@ -1,0 +1,19 @@
+{
+  "N": 2,
+  "acceptance_status": "candidate",
+  "base_commit": "05ac107789532b6d2eac9914433a4b8408835057",
+  "files": {
+    "instance-vector.json": "89f16cc68733655856cb0c2354f00102505430534be1b342285ade1062596adb",
+    "load.q": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "model.xml": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "parameters.json": "e60ccf74cbd67ce304c4b21bcc4576262fae32020c839cc7af43070414f48361",
+    "queries.json": "ec62b48a9fc7abfc649c3d2909e583a4ca75dc0b5b70fb6468b9a699e6ae6bf9",
+    "queries.q": "414af5cde7c2d364be2bc3f2d796a8f9ca980f6b84c72d4259eb248969d6b60e"
+  },
+  "generator_hash": "cb0bb36c1b4cdbabe55cc5244717da1730d87550970caf1e163b90603a1c7075",
+  "hash_algorithm": "sha256 exact bytes",
+  "reproduce": "python3 -B evidence/scalability/family-feasibility-66/generate.py",
+  "scientific_queries_executed": false,
+  "source_hash": "d7c0a0fcf394345d80f763a6bb06a491eb35099d152f168ad5f922d0a802bb87",
+  "source_input_model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2"
+}

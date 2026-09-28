@@ -1,0 +1,58 @@
+{
+  "preflight_version": {
+    "status": "ok",
+    "returncode": 0,
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "--version"
+    ],
+    "model_path": null,
+    "query_path": null,
+    "stdout": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+    "stderr": "",
+    "elapsed_ms": null,
+    "timeout_sec": null,
+    "query_results": [],
+    "validation": null,
+    "artifact_dir": null
+  },
+  "preflight_license_probe": {
+    "status": "satisfied",
+    "returncode": 0,
+    "command": [
+      "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+      "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260928T204903Z-eca9ff587ea6-9c559205\\model.xml",
+      "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260928T204903Z-eca9ff587ea6-9c559205\\queries.q"
+    ],
+    "model_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260928T204903Z-eca9ff587ea6-9c559205/model.xml",
+    "query_path": "/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/.uppaal_mcp_workspace/runs/20260928T204903Z-eca9ff587ea6-9c559205/queries.q",
+    "stdout": "Options for the verification:\n  Generating no trace\n  Search order is breadth first\n  Using conservative space optimisation\n  Seed is 1790628543\n  State space representation uses minimal constraint systems with future testing\n  Using HashMap + Compress integers for discrete state storage\n\u001b[2K\nVerifying formula 1 at C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.uppaal_mcp_workspace\\runs\\20260928T204903Z-eca9ff587ea6-9c559205\\queries.q:1\n\u001b[2K -- Formula is satisfied.\n",
+    "stderr": "",
+    "elapsed_ms": 105,
+    "timeout_sec": 10,
+    "query_results": [
+      {
+        "index": 1,
+        "formula": "E<> P.Ready",
+        "status": "satisfied",
+        "raw_line": "\u001b[2K -- Formula is satisfied."
+      }
+    ],
+    "validation": {
+      "ok": true,
+      "errors": [],
+      "warnings": [],
+      "templates": [
+        "Probe"
+      ],
+      "queries": [
+        "E<> P.Ready"
+      ]
+    },
+    "artifact_dir": null
+  },
+  "probe_model": "<?xml version=\"1.0\" encoding=\"utf-8\"?><nta><declaration></declaration><template><name>Probe</name><location id=\"id0\"><name>Ready</name></location><init ref=\"id0\"/></template><system>P = Probe(); system P;</system></nta>",
+  "query": "E<> P.Ready\n",
+  "scope": "availability only; performed before repository work, not scientific model checking",
+  "base_commit": "05ac107789532b6d2eac9914433a4b8408835057"
+}
