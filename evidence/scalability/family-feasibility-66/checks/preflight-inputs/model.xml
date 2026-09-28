@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><nta><declaration></declaration><template><name>Probe</name><location id="id0"><name>Ready</name></location><init ref="id0"/></template><system>P = Probe(); system P;</system></nta>

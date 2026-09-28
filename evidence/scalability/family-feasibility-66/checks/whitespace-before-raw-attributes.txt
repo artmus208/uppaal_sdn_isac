@@ -1,0 +1,70 @@
+evidence/scalability/family-feasibility-66/checks/diagnosis-001/frozen.stdout.txt:1: trailing whitespace.
++
+evidence/scalability/family-feasibility-66/checks/diagnosis-001/frozen.stdout.txt:2: trailing whitespace.
++Verifying formula 1 at C:\Users\musta\Desktop\pySources\mcp_uppaal\.worktrees\66-family-feasibility\evidence\scalability\family-feasibility-66\generated\n1\load.q:1
+evidence/scalability/family-feasibility-66/checks/diagnosis-001/frozen.stdout.txt:3: trailing whitespace.
++ -- Formula is satisfied.
+evidence/scalability/family-feasibility-66/checks/diagnosis-001/n1.stderr.txt:1: trailing whitespace.
++EXCEPTION: Unexpected end.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/n1-compile.stderr.txt:1: trailing whitespace.
++EXCEPTION: Unexpected end.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/version.stdout.txt:1: trailing whitespace.
++UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/version.stdout.txt:2: trailing whitespace.
++Copyright (c) 2011 - 2023, Aalborg University.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/version.stdout.txt:3: trailing whitespace.
++Copyright (c) 1995 - 2011, Uppsala University and Aalborg University.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/version.stdout.txt:4: trailing whitespace.
++All rights reserved.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/version.stdout.txt:5: trailing whitespace.
++Compiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC 
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/version.stdout.txt:6: trailing whitespace.
++Built with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1
+evidence/scalability/family-feasibility-66/checks/uppaal-load-001/version.stdout.txt:7: trailing whitespace.
++Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/n1-load.stdout.txt:1: trailing whitespace.
++
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/n1-load.stdout.txt:2: trailing whitespace.
++Verifying formula 1 at C:\Users\musta\Desktop\pySources\mcp_uppaal\.worktrees\66-family-feasibility\evidence\scalability\family-feasibility-66\generated\n1\load.q:1
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/n1-load.stdout.txt:3: trailing whitespace.
++ -- Formula is satisfied.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/version.stdout.txt:1: trailing whitespace.
++UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/version.stdout.txt:2: trailing whitespace.
++Copyright (c) 2011 - 2023, Aalborg University.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/version.stdout.txt:3: trailing whitespace.
++Copyright (c) 1995 - 2011, Uppsala University and Aalborg University.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/version.stdout.txt:4: trailing whitespace.
++All rights reserved.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/version.stdout.txt:5: trailing whitespace.
++Compiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC 
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/version.stdout.txt:6: trailing whitespace.
++Built with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1
+evidence/scalability/family-feasibility-66/checks/uppaal-load-002/version.stdout.txt:7: trailing whitespace.
++Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/n1-load.stdout.txt:1: trailing whitespace.
++
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/n1-load.stdout.txt:2: trailing whitespace.
++Verifying formula 1 at C:\Users\musta\Desktop\pySources\mcp_uppaal\.worktrees\66-family-feasibility\evidence\scalability\family-feasibility-66\generated\n1\load.q:1
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/n1-load.stdout.txt:3: trailing whitespace.
++ -- Formula is satisfied.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/n2-load.stdout.txt:1: trailing whitespace.
++
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/n2-load.stdout.txt:2: trailing whitespace.
++Verifying formula 1 at C:\Users\musta\Desktop\pySources\mcp_uppaal\.worktrees\66-family-feasibility\evidence\scalability\family-feasibility-66\generated\n2\load.q:1
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/n2-load.stdout.txt:3: trailing whitespace.
++ -- Formula is satisfied.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/version.stdout.txt:1: trailing whitespace.
++UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/version.stdout.txt:2: trailing whitespace.
++Copyright (c) 2011 - 2023, Aalborg University.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/version.stdout.txt:3: trailing whitespace.
++Copyright (c) 1995 - 2011, Uppsala University and Aalborg University.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/version.stdout.txt:4: trailing whitespace.
++All rights reserved.
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/version.stdout.txt:5: trailing whitespace.
++Compiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC 
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/version.stdout.txt:6: trailing whitespace.
++Built with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1
+evidence/scalability/family-feasibility-66/checks/uppaal-load-003/version.stdout.txt:7: trailing whitespace.
++Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).

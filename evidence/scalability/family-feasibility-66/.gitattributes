@@ -1,0 +1,2 @@
+# Preserve native verifier CRLF and trailing bytes in raw/diagnostic text logs.
+checks/**/*.txt whitespace=-trailing-space
