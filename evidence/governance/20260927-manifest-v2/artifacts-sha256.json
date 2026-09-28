@@ -1,5 +1,5 @@
 {
-  "evidence/governance/20260927-manifest-v2/README.md": "8d45b984759e469d14504ae726572b619cc635819c34c19eea76927f4e40d105",
+  "evidence/governance/20260927-manifest-v2/README.md": "44a6141f40c28313765f36ccfb3f6b5dd994473ce9d01a959a47e03ee4698c29",
   "evidence/governance/20260927-manifest-v2/baseline-hashes.json": "446d3a8d310c9ec78ad6ebf7aac6395247665e329165658288737dfc8691115e",
   "evidence/governance/20260927-manifest-v2/check_proposal.py": "1c491dabf0045a4adc28149281aac189413a2db29390d10c7eac00c8d5f8dd19",
   "evidence/governance/20260927-manifest-v2/environment.txt": "280c5d13af56ed8e9f7241c6bca306a840ed8e69f39fafbf2a8bf3792e0b6fd6",
@@ -15,6 +15,7 @@
   "evidence/governance/20260927-manifest-v2/logs/verifier-availability.log": "db63e0ce45c83d8d91fe6251ccffd3b8d2ced7bf684a1dda88f962b6cee371cd",
   "evidence/governance/20260927-manifest-v2/publication-source.json": "b2b40ff19ab6687b101608d815933131dd44de44addf2a55c05a0b93e104ba2a",
   "evidence/governance/20260927-manifest-v2/validation.json": "33cfad7b6f2e2eaf5e62555eb2883465219f96f0f41c693ea80e3886a17ca9ce",
-  "manifests/v2-migration.md": "84d2ddbb2c5f5783f289bfc77968f2b45f76aae0e226d4fa30315ea96886103d",
-  "manifests/v2.md": "1ecb689a67daa0f494d2ecce860862a06152b76575d4065b632ad1bd219d189c"
+  "manifests/v2-migration.md": "3c9461700ce97a30f302c098fab11f50ea30090b17181ff14d7a8cb65615924c",
+  "manifests/v2.md": "c5c7f6a84e77e854990537a26c2a18c5063b5b361d270ec8ac6ba7c28b14e313",
+  "evidence/governance/20260927-manifest-v2/20260928-uncertainty/amendment-validation.json": "d945824e11e1bd02f7ea5f5c058b7ed2b93ad118c8b76cd1ed7638e16e1d8c1e"
 }

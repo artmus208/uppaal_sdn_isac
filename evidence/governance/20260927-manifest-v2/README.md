@@ -76,7 +76,7 @@ git diff --check fef5e9f71d58803727a63efc36ab944e08655a31...HEAD
 v1 и его hashes, а не научную правильность/активацию v2. Ни эти проверки,
 ни `verifyta version` не являются model checking.
 
-Результаты: [validation.json](validation.json), [логи](logs/),
+Исходная проверка от 2026-09-27: [validation.json](validation.json), [логи](logs/),
 [hash audit](baseline-hashes.json), [окружение](environment.txt).
 Все восемь команд завершились с exit code 0: 193 unit tests, proposal integrity,
 coordination, 57 точных file hashes и aggregate hashes без расхождений, server
@@ -84,8 +84,16 @@ coordination, 57 точных file hashes и aggregate hashes без расхо�
 hash mismatches внутри unit-test stdout относятся к отрицательным fixtures;
 самостоятельный audit текущего baseline расхождений не обнаружил.
 `verifyta --version` вернул UPPAAL 5.0.0 (rev. 714BA9DB36F49691); моделей в рамках
-этой задачи не проверяли. После тестов меняются только summary/evidence artifacts,
-тексты v2 и migration и код остаются на проверенном source tree.
+этой задачи не проверяли. Эти результаты относятся к исходной редакции,
+опубликованной в commit `469e749096634481f9195998ba2031a717e90837`.
+
+Уточнение от 2026-09-28 добавляет §1.1 о решениях при неполной информации,
+правило продолжения независимой работы после исчерпания бюджета и согласует
+карту перехода. Пользователь предложил это для ускорения получения результата;
+решение о подготовке зафиксировано в Issue #62. Уточнение остаётся в прежнем
+scope и не активирует v2. Проверки новой редакции и её точные hashes:
+[amendment-validation.json](20260928-uncertainty/amendment-validation.json).
+Исходные test logs и verification artifacts сохранены без изменений.
 
 ## Сохранность результата
 
