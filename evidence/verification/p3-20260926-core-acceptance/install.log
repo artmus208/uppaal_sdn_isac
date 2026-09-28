@@ -1,0 +1,50 @@
+Obtaining file:///tmp/uppaal-p3-core-20260926
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: mcp<2,>=1.28 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from uppaal-mcp==0.1.0) (1.30.0)
+Requirement already satisfied: anyio>=4.5 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (4.15.1)
+Requirement already satisfied: httpx-sse>=0.4 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.4.3)
+Requirement already satisfied: httpx<1.0.0,>=0.27.1 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.28.1)
+Requirement already satisfied: jsonschema>=4.20.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (4.26.0)
+Requirement already satisfied: pydantic-settings>=2.5.2 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (2.15.0)
+Requirement already satisfied: pydantic<3.0.0,>=2.11.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (2.13.5)
+Requirement already satisfied: pyjwt>=2.10.1 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (2.15.0)
+Requirement already satisfied: python-multipart>=0.0.9 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.0.32)
+Requirement already satisfied: sse-starlette>=1.6.1 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (3.4.11)
+Requirement already satisfied: starlette>=0.27 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (1.7.0)
+Requirement already satisfied: typing-extensions>=4.9.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.1 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.4.4)
+Requirement already satisfied: uvicorn>=0.31.1 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.54.0)
+Requirement already satisfied: idna>=2.8 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from anyio>=4.5->mcp<2,>=1.28->uppaal-mcp==0.1.0) (3.20)
+Requirement already satisfied: certifi in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from httpx<1.0.0,>=0.27.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (2026.7.22)
+Requirement already satisfied: httpcore==1.* in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from httpx<1.0.0,>=0.27.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (1.0.9)
+Requirement already satisfied: h11>=0.16 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from httpcore==1.*->httpx<1.0.0,>=0.27.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.16.0)
+Requirement already satisfied: attrs>=22.2.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from jsonschema>=4.20.0->mcp<2,>=1.28->uppaal-mcp==0.1.0) (26.1.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from jsonschema>=4.20.0->mcp<2,>=1.28->uppaal-mcp==0.1.0) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from jsonschema>=4.20.0->mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.37.0)
+Requirement already satisfied: rpds-py>=0.25.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from jsonschema>=4.20.0->mcp<2,>=1.28->uppaal-mcp==0.1.0) (2026.6.3)
+Requirement already satisfied: annotated-types>=0.6.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.28->uppaal-mcp==0.1.0) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.5 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from pydantic<3.0.0,>=2.11.0->mcp<2,>=1.28->uppaal-mcp==0.1.0) (2.46.5)
+Requirement already satisfied: python-dotenv>=0.21.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from pydantic-settings>=2.5.2->mcp<2,>=1.28->uppaal-mcp==0.1.0) (1.2.3)
+Requirement already satisfied: cryptography>=3.4.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from pyjwt[crypto]>=2.10.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (50.0.1)
+Requirement already satisfied: click>=7.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from uvicorn>=0.31.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (8.5.0)
+Requirement already satisfied: cffi>=2.0.0 in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (2.1.1)
+Requirement already satisfied: pycparser in /tmp/uppaal-p3-dispositions-venv/lib/python3.12/site-packages (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]>=2.10.1->mcp<2,>=1.28->uppaal-mcp==0.1.0) (3.0)
+Building wheels for collected packages: uppaal-mcp
+  Building editable for uppaal-mcp (pyproject.toml): started
+  Building editable for uppaal-mcp (pyproject.toml): finished with status 'done'
+  Created wheel for uppaal-mcp: filename=uppaal_mcp-0.1.0-0.editable-py3-none-any.whl size=18563 sha256=21d6460b50361f29fc7ff53355e23b2753b3fad289739a8660af658154c1e0ce
+  Stored in directory: /tmp/pip-ephem-wheel-cache-0987czrc/wheels/77/7d/ce/51150591d245c9552e127e48ffacbd94e9e13c57d2de8e0d47
+Successfully built uppaal-mcp
+Installing collected packages: uppaal-mcp
+  Attempting uninstall: uppaal-mcp
+    Found existing installation: uppaal-mcp 0.1.0
+    Uninstalling uppaal-mcp-0.1.0:
+      Successfully uninstalled uppaal-mcp-0.1.0
+Successfully installed uppaal-mcp-0.1.0

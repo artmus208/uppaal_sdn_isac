@@ -1,0 +1,619 @@
+{
+  "diagnostic_class": "hash_identity_not_verification",
+  "source_root": "/tmp/uppaal-p3-core-20260926",
+  "source_commit": "cb83dbcfb111cbec39609c340171887874f6da51",
+  "input_mode": "exact_git_blobs",
+  "observed_at_utc": "2026-09-26T11:06:15.239522+00:00",
+  "command": [
+    "/tmp/uppaal-p3-dispositions-venv/bin/python",
+    "scripts/check_coordination.py",
+    "--audit-hashes",
+    "--commit",
+    "HEAD",
+    "--output",
+    "evidence/verification/p3-20260926-core-acceptance/baseline-audit.json"
+  ],
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "pyyaml_version": "6.0.3",
+  "manifest_path": "manifests/baselines/reviewer-r1.yaml",
+  "manifest_sha256": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7",
+  "baseline_id": "reviewer-r1-gate1-20260923",
+  "baseline_frozen": true,
+  "gate_1_status": "accepted",
+  "file_pairs": [
+    {
+      "field": "supersedes.historical_capture",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml",
+      "expected_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "actual_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "matches": true
+    },
+    {
+      "field": "coordination_inputs.scientific_plan",
+      "path": "manifests/v1.md",
+      "expected_sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "actual_sha256": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[0]",
+      "path": ".uppaal_mcp_workspace/Application_service_layer_uppaal.xml",
+      "expected_sha256": "fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f",
+      "actual_sha256": "fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[1]",
+      "path": ".uppaal_mcp_workspace/mac_generated/model.xml",
+      "expected_sha256": "e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7",
+      "actual_sha256": "e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[2]",
+      "path": ".uppaal_mcp_workspace/phy_generated/model.xml",
+      "expected_sha256": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd",
+      "actual_sha256": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[3]",
+      "path": ".uppaal_mcp_workspace/sdn_generated_smoke/model.xml",
+      "expected_sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de",
+      "actual_sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[4]",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml",
+      "expected_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "actual_sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[5]",
+      "path": "evidence/instantiation/20260907-p2-scope/instance-vector.json",
+      "expected_sha256": "ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45",
+      "actual_sha256": "ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[6]",
+      "path": "evidence/instantiation/20260907-p2-scope/inventory.json",
+      "expected_sha256": "ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195",
+      "actual_sha256": "ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[7]",
+      "path": "evidence/validation/20260907-p1/inventory.json",
+      "expected_sha256": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4",
+      "actual_sha256": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[8]",
+      "path": "evidence/validation/20260907-p1/validation-report.md",
+      "expected_sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+      "actual_sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[9]",
+      "path": "levels_tex/Application_service_layer_formalization.tex",
+      "expected_sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807",
+      "actual_sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[10]",
+      "path": "levels_tex/MAC_resource_scheduling_formalization.tex",
+      "expected_sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+      "actual_sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[11]",
+      "path": "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+      "expected_sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+      "actual_sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[12]",
+      "path": "levels_tex/SDN_RIC_control_plane_formalization.tex",
+      "expected_sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
+      "actual_sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[13]",
+      "path": "src/uppaal_mcp/layers.py",
+      "expected_sha256": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec",
+      "actual_sha256": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[14]",
+      "path": "src/uppaal_mcp/layout_core.py",
+      "expected_sha256": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471",
+      "actual_sha256": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[15]",
+      "path": "src/uppaal_mcp/mac/__init__.py",
+      "expected_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "actual_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[16]",
+      "path": "src/uppaal_mcp/mac/alpha.py",
+      "expected_sha256": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7",
+      "actual_sha256": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[17]",
+      "path": "src/uppaal_mcp/mac/defaults.py",
+      "expected_sha256": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b",
+      "actual_sha256": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[18]",
+      "path": "src/uppaal_mcp/mac/generator.py",
+      "expected_sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+      "actual_sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[19]",
+      "path": "src/uppaal_mcp/mac/ir.py",
+      "expected_sha256": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49",
+      "actual_sha256": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[20]",
+      "path": "src/uppaal_mcp/mac/layout.py",
+      "expected_sha256": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244",
+      "actual_sha256": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[21]",
+      "path": "src/uppaal_mcp/mac/property_pack.py",
+      "expected_sha256": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0",
+      "actual_sha256": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[22]",
+      "path": "src/uppaal_mcp/phy/__init__.py",
+      "expected_sha256": "7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868",
+      "actual_sha256": "7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[23]",
+      "path": "src/uppaal_mcp/phy/alpha.py",
+      "expected_sha256": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e",
+      "actual_sha256": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[24]",
+      "path": "src/uppaal_mcp/phy/defaults.py",
+      "expected_sha256": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c",
+      "actual_sha256": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[25]",
+      "path": "src/uppaal_mcp/phy/generator.py",
+      "expected_sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7",
+      "actual_sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[26]",
+      "path": "src/uppaal_mcp/phy/ir.py",
+      "expected_sha256": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54",
+      "actual_sha256": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[27]",
+      "path": "src/uppaal_mcp/phy/layout.py",
+      "expected_sha256": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5",
+      "actual_sha256": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[28]",
+      "path": "src/uppaal_mcp/phy/property_pack.py",
+      "expected_sha256": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6",
+      "actual_sha256": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[29]",
+      "path": "src/uppaal_mcp/sdn/__init__.py",
+      "expected_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "actual_sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[30]",
+      "path": "src/uppaal_mcp/sdn/alpha.py",
+      "expected_sha256": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f",
+      "actual_sha256": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[31]",
+      "path": "src/uppaal_mcp/sdn/defaults.py",
+      "expected_sha256": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70",
+      "actual_sha256": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[32]",
+      "path": "src/uppaal_mcp/sdn/generator.py",
+      "expected_sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272",
+      "actual_sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[33]",
+      "path": "src/uppaal_mcp/sdn/ir.py",
+      "expected_sha256": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25",
+      "actual_sha256": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[34]",
+      "path": "src/uppaal_mcp/sdn/layout.py",
+      "expected_sha256": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8",
+      "actual_sha256": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8",
+      "matches": true
+    },
+    {
+      "field": "source_inputs[35]",
+      "path": "src/uppaal_mcp/sdn/property_pack.py",
+      "expected_sha256": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec",
+      "actual_sha256": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[0]",
+      "path": "src/uppaal_mcp/integrated/__init__.py",
+      "expected_sha256": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7",
+      "actual_sha256": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[1]",
+      "path": "src/uppaal_mcp/integrated/adapt.py",
+      "expected_sha256": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba",
+      "actual_sha256": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[2]",
+      "path": "src/uppaal_mcp/integrated/boundary.py",
+      "expected_sha256": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804",
+      "actual_sha256": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[3]",
+      "path": "src/uppaal_mcp/integrated/generator.py",
+      "expected_sha256": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521",
+      "actual_sha256": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[4]",
+      "path": "src/uppaal_mcp/integrated/inputs.py",
+      "expected_sha256": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
+      "actual_sha256": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[5]",
+      "path": "src/uppaal_mcp/integrated/replay.py",
+      "expected_sha256": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103",
+      "actual_sha256": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103",
+      "matches": true
+    },
+    {
+      "field": "implementation_sources[6]",
+      "path": "src/uppaal_mcp/integrated/xmlutil.py",
+      "expected_sha256": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b",
+      "actual_sha256": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b",
+      "matches": true
+    },
+    {
+      "field": "manuscript.editable_source",
+      "path": "levels_tex/samplepaper.tex",
+      "expected_sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "actual_sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "matches": true
+    },
+    {
+      "field": "model_topology.integrated_model",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/model.xml",
+      "expected_sha256": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+      "actual_sha256": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2",
+      "matches": true
+    },
+    {
+      "field": "model_topology.interface_contract",
+      "path": "evidence/instantiation/20260907-p2-scope/interface-contract.md",
+      "expected_sha256": "9b625912c264cdaa09da73adcb322b696b1be371031da6aff01da80fc02ffe51",
+      "actual_sha256": "9b625912c264cdaa09da73adcb322b696b1be371031da6aff01da80fc02ffe51",
+      "matches": true
+    },
+    {
+      "field": "model_topology.contract_amendments",
+      "path": "evidence/instantiation/20260917-v03-contract-disposition/contracts.md",
+      "expected_sha256": "24022cb6101cbeb9006b47542bc1c43c177d80e01331216af8881472c55d0994",
+      "actual_sha256": "24022cb6101cbeb9006b47542bc1c43c177d80e01331216af8881472c55d0994",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.uppaal.version_output",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/verifyta-version.txt",
+      "expected_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+      "actual_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.license.evidence",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/tool-evidence.json",
+      "expected_sha256": "283201158075a8af73d058acf85a83a94933f30a3dab5b1b8eaccf8dea98adbe",
+      "actual_sha256": "283201158075a8af73d058acf85a83a94933f30a3dab5b1b8eaccf8dea98adbe",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.canonical_parameter_set",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/parameters.json",
+      "expected_sha256": "da4f1bd09a4f3892f87da7f4fc321515cca7a70899c03466899d13cfc497a31b",
+      "actual_sha256": "da4f1bd09a4f3892f87da7f4fc321515cca7a70899c03466899d13cfc497a31b",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.canonical_instance_vector",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/instance-vector.json",
+      "expected_sha256": "9b7162e15d1cf681a766cce60a9e92e2ff627b1be1085c9753828a90a18f3ca0",
+      "actual_sha256": "9b7162e15d1cf681a766cce60a9e92e2ff627b1be1085c9753828a90a18f3ca0",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.canonical_query_set",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/selected-queries.q",
+      "expected_sha256": "3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18",
+      "actual_sha256": "3027dedb1a68d21fce84efc532e3490602eade5306c5dafc9652d38cc4e2eb18",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.candidate_query_set",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/candidate-queries.q",
+      "expected_sha256": "97aff5896eba43a49c41fa45030550e42be63fb5a555803aef6d0dbbe67b1ab9",
+      "actual_sha256": "97aff5896eba43a49c41fa45030550e42be63fb5a555803aef6d0dbbe67b1ab9",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.query_disposition",
+      "path": "evidence/governance/20260906-baseline/gate1-20260923/query-disposition.json",
+      "expected_sha256": "ac6c5bfe0c7d9e3370bb590228079ae8665e1f3c03664c914534833ef466f58d",
+      "actual_sha256": "ac6c5bfe0c7d9e3370bb590228079ae8665e1f3c03664c914534833ef466f58d",
+      "matches": true
+    },
+    {
+      "field": "verification_configuration.claim_scope",
+      "path": "evidence/governance/20260910-p1-p2-review/final-20260923/README.md",
+      "expected_sha256": "354a515504dabf6df2c80750e4cce4ffff49bc51def6faace127c4483d5b7631",
+      "actual_sha256": "354a515504dabf6df2c80750e4cce4ffff49bc51def6faace127c4483d5b7631",
+      "matches": true
+    }
+  ],
+  "common_hashes": [
+    {
+      "name": "source_hash",
+      "expected_sha256": "e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a",
+      "actual_sha256": "e3594a008ea0d04fb426465767860b9e74e8ec924b48743d1b8a4df721354b5a",
+      "matches": true,
+      "inputs": [
+        {
+          "path": ".uppaal_mcp_workspace/Application_service_layer_uppaal.xml",
+          "sha256": "fbdcd4de31e5b705bc0628204e7b1cce948ba856be543213a39d76d6b12ecc5f"
+        },
+        {
+          "path": ".uppaal_mcp_workspace/mac_generated/model.xml",
+          "sha256": "e857814f21cc40d61fb694dbe4990fba9ad0c34a9e68cf9f58de5c39a013cad7"
+        },
+        {
+          "path": ".uppaal_mcp_workspace/phy_generated/model.xml",
+          "sha256": "e3ef7652428ea2fc87083a7b62c86c6bef3200b81eac625001274487e87337dd"
+        },
+        {
+          "path": ".uppaal_mcp_workspace/sdn_generated_smoke/model.xml",
+          "sha256": "af36acb972e978d2545cbb8da8c3a71b6305044c8d427f8d963a5847f410f5de"
+        },
+        {
+          "path": "evidence/governance/20260906-baseline/gate1-20260923/historical-candidate.yaml",
+          "sha256": "89b8d6f520546c873649643b3cf90fd80f58e4458a443832369e3d1d28bf719a"
+        },
+        {
+          "path": "evidence/instantiation/20260907-p2-scope/instance-vector.json",
+          "sha256": "ebbaabd0603eb3dfc8b537b19e61e36f35878f84173cca398e243871eb572a45"
+        },
+        {
+          "path": "evidence/instantiation/20260907-p2-scope/inventory.json",
+          "sha256": "ed6a022a2744bed0ee8b30586157f73723ae89d01568e904fb6b3baff8b7a195"
+        },
+        {
+          "path": "evidence/validation/20260907-p1/inventory.json",
+          "sha256": "b49628200a0290edacc037cd333eac8a13adc6373746d93de62690f88ac97ec4"
+        },
+        {
+          "path": "evidence/validation/20260907-p1/validation-report.md",
+          "sha256": "23d62e29254786ddb7e3091584da5df4f6a79946fb69f293e03cbb74dafd637c"
+        },
+        {
+          "path": "levels_tex/Application_service_layer_formalization.tex",
+          "sha256": "44e89502e7dad6a2f381d640821317e34102101e275e0396fa7b6f91d30e2807"
+        },
+        {
+          "path": "levels_tex/MAC_resource_scheduling_formalization.tex",
+          "sha256": "262658baab78dbdbae6d94dd3e0d0664768c855c17cdfc6aeb7649ba3a637527"
+        },
+        {
+          "path": "levels_tex/PHY_level_formalization_reviewed-2026-06-06-143000.tex",
+          "sha256": "b121fb122e68edbc92b2b2f3dd4e86d954fce0c56760d97dcecc77270ea125df"
+        },
+        {
+          "path": "levels_tex/SDN_RIC_control_plane_formalization.tex",
+          "sha256": "c4a0b90a582563adb2299808a5c2bc1129272f94f17166f91e02de31622e6812"
+        },
+        {
+          "path": "src/uppaal_mcp/layers.py",
+          "sha256": "d610e5a8746e0f2b9103d8838c0b476d7d81b1919523c0f2cac39265abe058ec"
+        },
+        {
+          "path": "src/uppaal_mcp/layout_core.py",
+          "sha256": "a8e2a6f27afcf4162256ed8d2f899a0b2b923b33695f3acd715cf06b4cf9d471"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/__init__.py",
+          "sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/alpha.py",
+          "sha256": "d8f0d93e6ea8aa937cc37843ab2c10238ad4bceb77e7af6d9529a7f3f737c4d7"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/defaults.py",
+          "sha256": "78a54d0fc8d894f2b24e75eed695766abb1de13a4eed8ef68b1ecddafc99448b"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/generator.py",
+          "sha256": "e3e639fd6b67c7e3fe7ef2c2b0d2a57626a2b640fedd91e5f062632d6332ae58"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/ir.py",
+          "sha256": "b7627f19a0e5770ebca33b59c16e0ef56764aa44d7a6116ee4759d5535df5f49"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/layout.py",
+          "sha256": "466f3f3780052bdb6112a52c77c633822ebd580df3448e368375af327ebce244"
+        },
+        {
+          "path": "src/uppaal_mcp/mac/property_pack.py",
+          "sha256": "4433358915875642d0f2161152bf157a4bc72de4c29dfbd75f97d5df06e10ad0"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/__init__.py",
+          "sha256": "7f1270e42bd0afc976ee7a33a655c7c626c03164629ed3676e1868c4d342c868"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/alpha.py",
+          "sha256": "cdaa6798d3e278c630a7b379b88b96b78287bf92e7a48d958489eeff851cb42e"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/defaults.py",
+          "sha256": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/generator.py",
+          "sha256": "e79871ad38e2cab1365bb88a5e2293139fe3934aecce495916073b8a057670c7"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/ir.py",
+          "sha256": "47db7e61c30e7430ffe10b089318815b4e94d023a476fbb88c1c23b583a51d54"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/layout.py",
+          "sha256": "c94916ece29bdad5f38b64b738924fb2da7a455c21569aadf15dc895c1fbdbf5"
+        },
+        {
+          "path": "src/uppaal_mcp/phy/property_pack.py",
+          "sha256": "b1e326909ec5ef3f5e4ee92e66c80813010c82be1b75c34e9a554a7b83230fd6"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/__init__.py",
+          "sha256": "4a8993d92b1a11b9842965d085f5e30308d8e9830abc832db266d16157509463"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/alpha.py",
+          "sha256": "5acb7dbeeaf72fbb33eaa664316b20bf68340d8b886f1c269cfd13d3f68db44f"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/defaults.py",
+          "sha256": "ab3c0e77fab4873ceae5b382b5c04fd1fdd43d82465fd2ae35913e6bac1a8a70"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/generator.py",
+          "sha256": "b32404b37f3351d247a6005644d851dafd6ae04e2ff395918509fc3b6e139272"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/ir.py",
+          "sha256": "4becb0a07d31ce4425f4ce0fce493230b1f82cbbd0c568af444f3043616ddb25"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/layout.py",
+          "sha256": "422bf10010a0f2c442498d47f737c226ac4e9e7fcebba3cafe6b71d7343e91f8"
+        },
+        {
+          "path": "src/uppaal_mcp/sdn/property_pack.py",
+          "sha256": "05b6d43562ab4232611b7c81df568d52373aecc5f4122c925032880fcc6ad0ec"
+        }
+      ]
+    },
+    {
+      "name": "generator_hash",
+      "expected_sha256": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
+      "actual_sha256": "8ca2ed569467540c98b2f1446b4a428f6602326c4f2cb513c837b3f9b0942a60",
+      "matches": true,
+      "inputs": [
+        {
+          "path": "src/uppaal_mcp/integrated/__init__.py",
+          "sha256": "7a0ad79108dc5203067731ea424f9420bd4503ab8e28999d6fbb2d51977c02a7"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/adapt.py",
+          "sha256": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/boundary.py",
+          "sha256": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/generator.py",
+          "sha256": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/inputs.py",
+          "sha256": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/replay.py",
+          "sha256": "0e846f7eec1674b2799bbef40f48bfc7c631cf10417c2827d6337ea584d7c103"
+        },
+        {
+          "path": "src/uppaal_mcp/integrated/xmlutil.py",
+          "sha256": "e5c124fc537d8f3065242cc8544cb0c18dcb941ce8b53c444838adfc9c6f731b"
+        }
+      ]
+    }
+  ],
+  "recorded_file_count": 57,
+  "mismatch_count": 0,
+  "common_hash_mismatch_count": 0,
+  "hash_status": "match"
+}

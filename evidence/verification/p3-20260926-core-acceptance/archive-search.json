@@ -1,0 +1,34 @@
+{
+  "searched_at_utc": "2026-09-26T11:05:45.303347+00:00",
+  "target": "evidence/verification/runs/p3-20260925-primary-joint-001.tar.xz",
+  "expected_sha256": "3d00c5cd34ab59266a1dcc159ade2d5a7d75109ec4dd03df5da8fc515ae9c4c7",
+  "scope": "Available repository refs, current workspace, /tmp and known D:/uppaal-handoffs location; not all machines or storage.",
+  "checks": [
+    {
+      "command": "git ls-tree -r --name-only 1bf6c51c73e0f6a2dc1e785104dadd7dcc8ff46b -- <target> <raw-directory>",
+      "result": "absent"
+    },
+    {
+      "command": "git ls-tree -r --name-only 72c323b6f21b901b1686f1700a2e969240f65417 -- <target> <raw-directory>",
+      "result": "absent from PR #59 head"
+    },
+    {
+      "command": "git log --all --format=%H -- <target>",
+      "result": "no path commits in available refs"
+    },
+    {
+      "command": "git ls-remote origin refs/heads/*39*",
+      "result": "recovery branch remains 72c323b6f21b901b1686f1700a2e969240f65417"
+    },
+    {
+      "command": "rg --files /tmp /mnt/c/Users/musta/Desktop/pySources/mcp_uppaal -g *primary-joint* -g *.bundle",
+      "result": "target not found; listed bundles belong to manager/C02/disposition work"
+    },
+    {
+      "path": "/mnt/d/uppaal-handoffs",
+      "result": "known directory absent"
+    }
+  ],
+  "outcome": "not_found_in_searched_sources",
+  "proposed_disposition": "exclude three metadata-only records from current core evidence; retain historical metadata/review; no rerun or fabricated replacement"
+}
