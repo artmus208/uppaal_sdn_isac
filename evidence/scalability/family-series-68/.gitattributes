@@ -4,3 +4,4 @@ checks/**/*.stderr.txt -text -diff
 checks/**/*.memory.csv -text -diff
 checks/**/*.monitor.json -text -diff
 checks/**/hardware.json -text -diff
+checks/**/*-trace* -text -diff

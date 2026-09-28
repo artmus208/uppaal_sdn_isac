@@ -96,6 +96,9 @@ Preparation in #68 uses one diagnostic attempt per selected N/query only,
 at most 60 s per invocation and 1200 s total verifier wall time, 2 GiB stop.
 It is not the three-repeat series above. The executable diagnostic plan and
 actual per-invocation budgets are saved with the runs. No automatic retries.
+The preparation runner captures available physical RAM once before its campaign
+and repeats that timestamped snapshot in each record; it is not a per-run free-RAM
+measurement. Future P4 must perform the headroom probe before each scheduled run.
 
 ## Measurement boundaries
 
@@ -107,10 +110,13 @@ actual per-invocation budgets are saved with the runs. No automatic retries.
   `E<> true`; it is a load test, never nonvacuity evidence.
 - Model checking: fresh verifier invocation for a single scientific query;
   external wall/CPU/peak memory includes process startup and compilation. Also
-  retain the tool's reported verification CPU time/states/memory, if supplied,
-  as the engine-only metric. Do not subtract a separately measured compile time
-  to manufacture an exact model-checking time. If the tool does not expose a
-  separate engine metric, mark it unavailable and report the end-to-end metric.
+  retain the tool's reported summary CPU time/states/memory, if supplied, under
+  their literal labels. The exact timer boundary of UPPAAL 5.0.0's summary CPU
+  field has not been established here; do not label it pure search time. Do not
+  subtract a separately measured compile time to manufacture an exact
+  model-checking time. Pure engine time is unavailable unless its timer boundary
+  is independently established; report the end-to-end metric and separate
+  compile-only measurement meanwhile.
 - Memory: native process private bytes and working set sampled with documented
   interval; the larger observed value triggers the stop. Preserve peak working
   set and sampled peak private bytes separately. Sampling is a stop threshold,

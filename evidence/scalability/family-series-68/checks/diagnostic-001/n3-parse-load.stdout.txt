@@ -1,0 +1,8 @@
+
+Verifying formula 1 at C:\Users\musta\Desktop\pySources\mcp_uppaal\.worktrees\68-family-series\evidence\scalability\family-series-68\checks\diagnostic-001\n3-parse-all.q:1
+ -- Formula is satisfied.
+ -- States stored : 1 states
+ -- States explored : 0 states
+ -- CPU user time used : 15 ms
+ -- Virtual memory used : 191644 KiB
+ -- Resident memory used : 79904 KiB

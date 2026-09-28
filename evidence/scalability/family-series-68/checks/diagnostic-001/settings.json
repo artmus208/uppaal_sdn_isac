@@ -1,0 +1,213 @@
+{
+  "all_four_compile_and_load": true,
+  "behavior_timeout_seconds": 30,
+  "budget_used_seconds": 721.8765209000001,
+  "campaign_id": "diagnostic-001",
+  "completed_at_utc": "2026-09-28T22:11:23.056800+00:00",
+  "execution": "sequential fresh native Windows process, no retries",
+  "kind": "P2 bounded diagnostics, not P4",
+  "memory_limit_bytes": 2147483648,
+  "monitor_hash": "37b267f49a4ed0a35a9db2f1ea8040132058ebbf01c7fe76354812467c6c2531",
+  "plan": [
+    {
+      "N": 1,
+      "query_id": "compile",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 1,
+      "query_id": "parse-load",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 2,
+      "query_id": "compile",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 2,
+      "query_id": "parse-load",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 3,
+      "query_id": "compile",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 3,
+      "query_id": "parse-load",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 4,
+      "query_id": "compile",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 4,
+      "query_id": "parse-load",
+      "timeout_seconds": 10
+    },
+    {
+      "N": 1,
+      "query_id": "shared-capacity",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 1,
+      "query_id": "u0-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 1,
+      "query_id": "joint-backlog",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 1,
+      "query_id": "u0-queue-safety",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 1,
+      "query_id": "u0-queue-full",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 2,
+      "query_id": "shared-capacity",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 2,
+      "query_id": "u0-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 2,
+      "query_id": "u1-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 2,
+      "query_id": "joint-backlog",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 2,
+      "query_id": "u0-queue-safety",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 2,
+      "query_id": "u0-queue-full",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 3,
+      "query_id": "shared-capacity",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 3,
+      "query_id": "u0-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 3,
+      "query_id": "u1-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 3,
+      "query_id": "u2-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 3,
+      "query_id": "joint-backlog",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 3,
+      "query_id": "u0-queue-safety",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 3,
+      "query_id": "u0-queue-full",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "shared-capacity",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "u0-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "u1-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "u2-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "u3-service",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "joint-backlog",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "u0-queue-safety",
+      "timeout_seconds": 30
+    },
+    {
+      "N": 4,
+      "query_id": "u0-queue-full",
+      "timeout_seconds": 30
+    }
+  ],
+  "planned_upper_bound_seconds": 880,
+  "runner_hash": "92be2aa51aa7e7c995f17ac3f01f70e7fe5a10fb0373d8622425ec948be79e3c",
+  "sample_interval_ms": 50,
+  "search_arguments": [
+    "-q",
+    "-s",
+    "-u",
+    "-o",
+    "1",
+    "--exploration",
+    "0",
+    "--state-representation",
+    "1",
+    "-S",
+    "1",
+    "-n",
+    "0",
+    "-r",
+    "68"
+  ],
+  "setup_timeout_seconds": 10,
+  "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+  "stop_condition": "per-run timeout/memory threshold; stop campaign if monitor fails, tool metadata unavailable, or total budget exhausted",
+  "total_verifier_budget_seconds": 1200,
+  "trace_arguments": [
+    "-t",
+    "0",
+    "-f",
+    "<unique-prefix>"
+  ]
+}

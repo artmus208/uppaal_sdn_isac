@@ -1,0 +1,9 @@
+
+Verifying formula 1 at C:\Users\musta\Desktop\pySources\mcp_uppaal\.worktrees\68-family-series\evidence\scalability\family-series-68\generated\n3\p4\joint-backlog.q:1
+ -- Formula is satisfied.
+ -- States stored : 42015 states
+ -- States explored : 82 states
+ -- CPU user time used : 17266 ms
+ -- Virtual memory used : 268992 KiB
+ -- Resident memory used : 119164 KiB
+ -- Writing witness trace to C:\Users\musta\Desktop\pySources\mcp_uppaal\.worktrees\68-family-series\evidence\scalability\family-series-68\checks\diagnostic-001\n3-joint-backlog-trace-1
