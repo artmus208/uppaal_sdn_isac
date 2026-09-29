@@ -1,0 +1,20 @@
+{
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+  ],
+  "arguments_windows": "-NoProfile -NonInteractive -EncodedCommand JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA",
+  "compile_only": false,
+  "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+  "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "memory_limit_bytes": 1048576,
+  "mode": "run",
+  "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\memory.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\memory.memory.csv",
+  "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\memory.stderr.txt",
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\memory.stdout.txt",
+  "timeout_seconds": 5
+}
