@@ -1,0 +1,22 @@
+{
+  "evidence/governance/family-baseline-activation-20260929/README.md": "6113bc452a3396cccda621758561936808447a02fa29caa8ac10a6861a9f073b",
+  "evidence/governance/family-baseline-activation-20260929/checks/cli-smoke.log": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+  "evidence/governance/family-baseline-activation-20260929/checks/coordination.log": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d",
+  "evidence/governance/family-baseline-activation-20260929/checks/family-current.log": "c1c0c7604ccf7eae7f811eed4be1fbe1bf08eb27eda3314e9c755f58488ee031",
+  "evidence/governance/family-baseline-activation-20260929/checks/family-history.log": "ce1caf761efb018f445ac03930540ad2840209e5ad491ab4321f37cc0bf7a3d4",
+  "evidence/governance/family-baseline-activation-20260929/checks/historical-audit-retry.json": "e153d2190d82b143928d1770eb49f2a48d401bc9aadb646b482fa31d30eb7e0a",
+  "evidence/governance/family-baseline-activation-20260929/checks/historical-audit-system.json": "dfaf18049baa897fa8535b75f80a22da7a90b9a628cab6e40a4c05c72a4f3b6b",
+  "evidence/governance/family-baseline-activation-20260929/checks/historical-audit-system.log": "ca6c043b3f485e3a31acf20acb240d4236a57f06b0baf71f5f91eba2ebb3852c",
+  "evidence/governance/family-baseline-activation-20260929/checks/historical-audit.log": "8934e0a9b19ad45ff0c138c76f4f740d0335d77b9b8b2bfa7e8eed678df30731",
+  "evidence/governance/family-baseline-activation-20260929/checks/materialize.log": "7a613e6e9ff980cb1d267783e5b75b0ea48a5107f51f69ffb1bb90150243bfff",
+  "evidence/governance/family-baseline-activation-20260929/checks/mcp-smoke.log": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+  "evidence/governance/family-baseline-activation-20260929/checks/scope.json": "7a27ed160e2d4528f24844a401210576a15cc5abe159eb01060fbbe86ab4215c",
+  "evidence/governance/family-baseline-activation-20260929/checks/summary.json": "650de23cad3ef531cb5c1d5470189c24a00943719588f147c74e3c308d1cbca4",
+  "evidence/governance/family-baseline-activation-20260929/checks/unit-tests.log": "eb93bef4bf0391cc4becfd6b40f7a2ca4bcddfda8d235451647dd20d46ffeed5",
+  "evidence/governance/family-baseline-activation-20260929/checks/validation.json": "203696f54fcc1be866bffc436b62b65f3972e73786bf15d73638004d5ca71256",
+  "evidence/governance/family-baseline-activation-20260929/materialize.py": "1e9852d5d58b6b3be3e6eef23471b8dd59205271058bc69280d139dc788f6d17",
+  "manifests/baselines/uav-family-r1.yaml": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf",
+  "manifests/collaboration-v2.yaml": "8bcf342c27030b750c2586394383b4ed291fdd9d5690c3aa56c354441cac4475",
+  "scripts/check_family_baseline.py": "2daa3c38e1d93b436a17bf1f3574b01aec25c7dde341e68e75e1510594328617",
+  "tests/test_family_baseline.py": "e05263a24c2449d51f04019945cd07c7030dbbfaa40ff44c1fe5ee60778ddd17"
+}

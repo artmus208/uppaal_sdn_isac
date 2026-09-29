@@ -1,0 +1,113 @@
+{
+  "source_commit": "56de369f77b139f459809021a2963c0799c83886",
+  "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "python": "3.14.4",
+  "environment_overrides": {
+    "PYTHONPATH": "src",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "checks": [
+    {
+      "name": "materialize",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "evidence/governance/family-baseline-activation-20260929/materialize.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.10186326499933784,
+      "log": "materialize.log"
+    },
+    {
+      "name": "family-current",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "scripts/check_family_baseline.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.156943637999575,
+      "log": "family-current.log"
+    },
+    {
+      "name": "family-history",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "scripts/check_family_baseline.py",
+        "--audit-history"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.8476062879999517,
+      "log": "family-history.log"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.11087571600000956,
+      "log": "coordination.log"
+    },
+    {
+      "name": "historical-audit",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "evidence/governance/family-baseline-activation-20260929/checks/historical-audit.json"
+      ],
+      "exit_code": 2,
+      "wall_seconds": 0.10955210799966153,
+      "log": "historical-audit.log"
+    },
+    {
+      "name": "unit-tests",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 74.14658150200012,
+      "log": "unit-tests.log"
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 1.636953901999732,
+      "log": "mcp-smoke.log"
+    },
+    {
+      "name": "cli-smoke",
+      "command": [
+        "/tmp/uppaal-review-69-env/bin/python",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "wall_seconds": 0.5321260239998082,
+      "log": "cli-smoke.log"
+    }
+  ]
+}

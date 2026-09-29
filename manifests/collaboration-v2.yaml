@@ -671,3 +671,17 @@ merge_gate:
       - P8_accepted
       - P9b_accepted
       - release_manifest_committed
+
+family_baseline_selection:
+  manifest: manifests/baselines/uav-family-r1.yaml
+  baseline_id: uav-family-r1-20260929
+  eligible_workstream: P4
+  historical_default: manifests/baselines/reviewer-r1.yaml
+  input_scope_decision: https://github.com/artmus208/uppaal_sdn_isac/pull/73#issuecomment-5890790922
+  activation_issue: https://github.com/artmus208/uppaal_sdn_isac/issues/74
+  activation_rule: Independent Integrator acceptance, merge into read, then decision with exact merge commit and UTC time.
+  selection_rule: P4 Issue explicitly pins baseline ID, manifest SHA256, source commit and activation decision; no implicit default change.
+  gate_rule: For an explicitly selected family, use its scoped input decision and operational activation record; the historical gate decision_source remains the default only.
+  audit_command: python3 scripts/check_family_baseline.py
+  automatic_P3_transfer: false
+  execution_authorized_by_selection: false
