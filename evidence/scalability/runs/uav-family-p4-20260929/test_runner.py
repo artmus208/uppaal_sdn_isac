@@ -3,6 +3,8 @@ import importlib.util
 from pathlib import Path
 import json
 import unittest
+import tempfile
+from unittest.mock import patch
 
 HERE=Path(__file__).resolve().parent
 spec=importlib.util.spec_from_file_location('p4runner',HERE/'runner.py')
@@ -41,5 +43,25 @@ class RunnerTests(unittest.TestCase):
             self.assertEqual(s['memory_stop_bytes'],2*1024**3)
             self.assertEqual(s['arguments'][s['arguments'].index('-o')+1],'1')
             self.assertEqual(s['arguments'][s['arguments'].index('-r')+1],'68')
+
+    def test_continuation_requires_decision_and_zero_prior_verifier_cells(self):
+        with self.assertRaisesRegex(RuntimeError, 'authorization'):
+            r.continuation('campaign-002', None)
+        with tempfile.TemporaryDirectory() as tmp, patch.object(r,'HERE',Path(tmp)):
+            p=Path(tmp)/'campaign-001';p.mkdir()
+            (p/'settings.json').write_text(json.dumps({'status':'stopped','used_seconds':0.1355}))
+            rows=[{'phase':'generation','status':'error'},{'phase':'model-checking','status':'not_started'}]
+            (p/'runs.json').write_text(json.dumps(rows))
+            self.assertEqual(r.continuation('campaign-002','https://github.com/artmus208/uppaal_sdn_isac/issues/76')['used_seconds'],0.1355)
+            rows[1]['status']='timeout'
+            (p/'runs.json').write_text(json.dumps(rows))
+            with self.assertRaisesRegex(RuntimeError, 'zero verifier'):
+                r.continuation('campaign-002','https://github.com/artmus208/uppaal_sdn_isac/issues/76')
+
+    def test_generation_regression_exact_70_files(self):
+        report=json.loads((HERE/'checks/generation-regression.json').read_text())
+        self.assertEqual(report['count'],70)
+        for relative, digest in report['files'].items():
+            self.assertEqual(r.sha(r.SOURCE/'generated'/relative),digest)
 
 if __name__=='__main__': unittest.main()

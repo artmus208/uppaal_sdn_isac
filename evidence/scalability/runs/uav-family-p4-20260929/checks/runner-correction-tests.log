@@ -1,0 +1,10 @@
+test_continuation_requires_decision_and_zero_prior_verifier_cells (test_runner.RunnerTests.test_continuation_requires_decision_and_zero_prior_verifier_cells) ... ok
+test_generation_regression_exact_70_files (test_runner.RunnerTests.test_generation_regression_exact_70_files) ... ok
+test_no_verdict_from_censoring_or_error (test_runner.RunnerTests.test_no_verdict_from_censoring_or_error) ... ok
+test_plan_matches_pinned_queries_and_order (test_runner.RunnerTests.test_plan_matches_pinned_queries_and_order) ... ok
+test_success_requires_single_explicit_verdict (test_runner.RunnerTests.test_success_requires_single_explicit_verdict) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.061s
+
+OK

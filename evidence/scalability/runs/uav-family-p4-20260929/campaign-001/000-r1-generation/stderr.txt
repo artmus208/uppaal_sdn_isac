@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/tmp/uppaal-p4-76/evidence/scalability/runs/uav-family-p4-20260929/generate_phase.py", line 13, in <module>
+    pins = generate.inputs()
+  File "/tmp/uppaal-p4-76/evidence/scalability/family-series-68/generate.py", line 36, in inputs
+    raise ValueError(f'Pinned input changed: {path}')
+ValueError: Pinned input changed: manifests/collaboration-v2.yaml

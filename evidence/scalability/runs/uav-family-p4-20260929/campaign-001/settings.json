@@ -1,0 +1,86 @@
+{
+  "activation_reference": "https://github.com/artmus208/uppaal_sdn_isac/pull/75#issuecomment-5891123461",
+  "authorization_reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/76",
+  "base_commit": "c6b07b252f7d25e4879d49b9cb32bf381e9555fb",
+  "baseline_id": "uav-family-r1-20260929",
+  "baseline_manifest_sha256": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf",
+  "binary_sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "budget_measure": "conservative Python elapsed around each verifier/monitor invocation, including monitor overhead; metadata included",
+  "budget_seconds": 7200,
+  "error": "RuntimeError: Generation failed",
+  "metadata": [
+    {
+      "command": [
+        "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "hardware": {
+        "available_physical_ram_bytes": 7741853696,
+        "cpu_models": [
+          "AMD Ryzen 5 1400 Quad-Core Processor           "
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T13:49:10.3685818Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 82210816,
+          "private_bytes": 68792320,
+          "working_set_bytes": 81928192
+        },
+        "os": "\u041c\u0430\u0439\u043a\u0440\u043e\u0441\u043e\u0444\u0442 Windows 11 Pro",
+        "os_build": "26200",
+        "os_version": "10.0.26200",
+        "powershell_version": "5.1.26100.6899",
+        "total_physical_ram_bytes": 17106464768
+      },
+      "kind": "metadata_not_model_checking",
+      "memory": "not_available_short_metadata_process",
+      "runtime_seconds": 0.07418831100039824,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47"
+    },
+    {
+      "command": [
+        "/mnt/d/UPPAAL/app/bin/verifyta.exe",
+        "--help"
+      ],
+      "exit_code": 0,
+      "hardware": {
+        "available_physical_ram_bytes": 7743229952,
+        "cpu_models": [
+          "AMD Ryzen 5 1400 Quad-Core Processor           "
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T13:49:12.4934400Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 82030592,
+          "private_bytes": 68874240,
+          "working_set_bytes": 81747968
+        },
+        "os": "\u041c\u0430\u0439\u043a\u0440\u043e\u0441\u043e\u0444\u0442 Windows 11 Pro",
+        "os_build": "26200",
+        "os_version": "10.0.26200",
+        "powershell_version": "5.1.26100.6899",
+        "total_physical_ram_bytes": 17106464768
+      },
+      "kind": "metadata_not_model_checking",
+      "memory": "not_available_short_metadata_process",
+      "runtime_seconds": 0.06131829699916125,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "930017fb677dcead4e7b7baef29264a97a92dbe7f4f0e914f79d85687d50a73b"
+    }
+  ],
+  "monitor_sha256": "37b267f49a4ed0a35a9db2f1ea8040132058ebbf01c7fe76354812467c6c2531",
+  "operating_environment": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "prelaunch_reserve_seconds": 90,
+  "runner_sha256": "66cc672790f244191b317d90df01bea213fc518f4612e54c81fa268627ae7b64",
+  "source_commit": "2c6433d994beffd64e9036ae42be69b54ce7c73c",
+  "status": "stopped",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+  "used_seconds": 0.1355066079995595,
+  "working_tree_at_start": "clean"
+}

@@ -62,3 +62,27 @@ Branch: codex/vadimnbkg/76-family-cost-series. Scope: this directory only.
 Target: read. Exact published checkpoints and outcome are recorded in Issue #76.
 Durable bundle: /mnt/d/uppaal_mcp/evidence/scalability/runs/uav-family-p4-20260929/handoff/campaign.bundle.
 Historical manifests/model/query inputs and original dirty checkout are unchanged.
+
+## Retained preparation failure and correction
+
+`campaign-001` stopped at its first generation phase: the old generator correctly
+rejected changed operational `manifests/collaboration-v2.yaml`. No scientific,
+compile or load invocation occurred. Its version/help metadata used
+0.1355066079995595 s of the common verifier budget. The original runner incorrectly
+read the operational checkout for generation; the generator and its pins were
+not changed or bypassed.
+
+The corrected worker reconstructs 29 required files from the accepted candidate
+commit a51a77e7852aee514bb0217a17d970fcf94cb704 in an isolated ignored scratch
+folder INSIDE this Issue scope. It checks all 26 source pins, executes the exact
+committed generator, compares all 70 outputs to the frozen artifacts and retains
+those outputs. Snapshot preparation, generator subprocess and copy/compare timings
+are separate. The wrapper elapsed time includes all three; it is not mislabeled
+as pure generation time. Static regression reproduced all 70 files exactly.
+
+`campaign-002` is permitted only by a separately recorded user decision after the
+stop. It preserves campaign-001, reuses its captured version/help without retry,
+and starts budget accounting at the previous used seconds. It refuses any prior
+scientific/compile/load attempt and any third/unsupported campaign. The correction
+does not authorize resumption by itself. Native monitor/limits remain unchanged;
+its already successful controls remain applicable.

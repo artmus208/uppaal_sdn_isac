@@ -125,7 +125,21 @@ def classify(rec, stdout, phase):
     return rec['status'], explicit if rec['status'] == 'success' else None
 
 
-def campaign(exe):
+def continuation(campaign_id, resume_authorization):
+    prior = None
+    if campaign_id == 'campaign-002':
+        if not resume_authorization or not resume_authorization.startswith('https://github.com/artmus208/uppaal_sdn_isac/issues/76'):
+            raise RuntimeError('Explicit separately recorded resume authorization required')
+        prior = json.loads((HERE/'campaign-001/settings.json').read_text())
+        previous_runs = json.loads((HERE/'campaign-001/runs.json').read_text())
+        if prior['status'] != 'stopped' or any(x['status'] != 'not_started' for x in previous_runs if x['phase'] != 'generation'):
+            raise RuntimeError('Continuation only supports stopped pre-generation campaign with zero verifier cells')
+    elif campaign_id != 'campaign-001' or resume_authorization:
+        raise RuntimeError('Unsupported campaign/retry')
+    return prior
+
+
+def campaign(exe, campaign_id="campaign-001", resume_authorization=None):
     pins()
     if git('status', '--porcelain'):
         raise RuntimeError('Clean committed and published source required')
@@ -134,11 +148,12 @@ def campaign(exe):
     if not json.loads((HERE/'controls/report.json').read_text()).get('all_passed'):
         raise RuntimeError('Monitor controls not passed')
     source_commit = git('rev-parse', 'HEAD')
-    folder = HERE/'campaign-001'
+    prior = continuation(campaign_id, resume_authorization)
+    folder = HERE/campaign_id
     folder.mkdir()
     manifest = json.loads((ROOT/MANIFEST).read_text())
     steps = plan()
-    records = [{**s, 'status': 'not_started', 'reason': 'pending', 'run_id': 'uav-p4-76-'+s['cell_id']} for s in steps]
+    records = [{**s, 'status': 'not_started', 'reason': 'pending', 'run_id': 'uav-p4-76-'+campaign_id+'-'+s['cell_id']} for s in steps]
     settings = {'source_commit': source_commit, 'base_commit': BASE,
                 'baseline_id': manifest['metadata']['id'], 'baseline_manifest_sha256': MANIFEST_HASH,
                 'authorization_reference': 'https://github.com/artmus208/uppaal_sdn_isac/issues/76',
@@ -148,9 +163,14 @@ def campaign(exe):
                 'prelaunch_reserve_seconds': 90, 'working_tree_at_start': 'clean',
                 'runner_sha256': sha(Path(__file__)), 'monitor_sha256': sha(HERE/'monitor.ps1'),
                 'binary_sha256': sha(exe), 'metadata': [], 'operating_environment': platform.platform()}
-    used = 0.0
+    used = prior['used_seconds'] if prior else 0.0
     blocked = set()
-    version = None
+    version = prior['tool_version'] if prior else None
+    if prior:
+        settings.update(continuation_of='campaign-001', prior_verifier_budget_seconds=used,
+                        resume_authorization=resume_authorization, tool_version=version,
+                        reused_metadata_reference='campaign-001/settings.json',
+                        reused_metadata_sha256=sha(HERE/'campaign-001/settings.json'))
 
     def persist():
         settings['used_seconds'] = used
@@ -159,7 +179,7 @@ def campaign(exe):
 
     persist()
     try:
-        for option in ('--version', '--help'):
+        for option in (() if prior else ('--version', '--help')):
             cell = folder / option[2:]
             cell.mkdir()
             h = hardware(cell)
@@ -300,6 +320,8 @@ def campaign(exe):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=['pins', 'controls', 'run'])
+    parser.add_argument('--campaign', choices=['campaign-001','campaign-002'], default='campaign-001')
+    parser.add_argument('--resume-authorization')
     parser.add_argument('--verifyta', type=Path, default=Path('/mnt/d/UPPAAL/app/bin/verifyta.exe'))
     args = parser.parse_args()
     if args.action=='pins':
@@ -307,4 +329,4 @@ if __name__ == '__main__':
     elif args.action=='controls':
         controls()
     else:
-        campaign(args.verifyta.resolve())
+        campaign(args.verifyta.resolve(), args.campaign, args.resume_authorization)
