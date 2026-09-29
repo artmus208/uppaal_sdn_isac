@@ -1,0 +1,898 @@
+{
+  "kind": "bounded_verifier_cost_observations",
+  "campaign_status": "completed",
+  "baseline_id": "uav-family-r1-20260929",
+  "baseline_manifest_sha256": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf",
+  "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+  "query_counts": {
+    "timeout": 72,
+    "success": 18
+  },
+  "all_phase_counts": {
+    "success": 45,
+    "timeout": 72
+  },
+  "budget_charged_seconds_including_prior": 4984.3867605700125,
+  "query_groups": [
+    {
+      "N": 1,
+      "query_id": "family-queue-safety",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 3,
+      "timeout": 0,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": 13.1977209,
+      "completed_min_seconds": 10.3666845,
+      "completed_max_seconds": 14.4998189,
+      "max_observed_memory_bytes": 112959488,
+      "verdicts": {
+        "violated": 3
+      }
+    },
+    {
+      "N": 1,
+      "query_id": "joint-backlog",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 3,
+      "timeout": 0,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": 2.7920825,
+      "completed_min_seconds": 1.9864936999999998,
+      "completed_max_seconds": 3.2409179,
+      "max_observed_memory_bytes": 76816384,
+      "verdicts": {
+        "satisfied": 3
+      }
+    },
+    {
+      "N": 1,
+      "query_id": "shared-capacity",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 242462720,
+      "verdicts": {}
+    },
+    {
+      "N": 1,
+      "query_id": "u0-queue-full",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 3,
+      "timeout": 0,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": 12.467221799999999,
+      "completed_min_seconds": 8.970101699999999,
+      "completed_max_seconds": 14.383358399999999,
+      "max_observed_memory_bytes": 105545728,
+      "verdicts": {
+        "satisfied": 3
+      }
+    },
+    {
+      "N": 1,
+      "query_id": "u0-queue-safety",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 3,
+      "timeout": 0,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": 12.7388912,
+      "completed_min_seconds": 10.4575651,
+      "completed_max_seconds": 17.3299242,
+      "max_observed_memory_bytes": 112975872,
+      "verdicts": {
+        "violated": 3
+      }
+    },
+    {
+      "N": 1,
+      "query_id": "u0-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 242065408,
+      "verdicts": {}
+    },
+    {
+      "N": 2,
+      "query_id": "family-queue-safety",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 154136576,
+      "verdicts": {}
+    },
+    {
+      "N": 2,
+      "query_id": "joint-backlog",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 3,
+      "timeout": 0,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": 15.3348126,
+      "completed_min_seconds": 9.2488728,
+      "completed_max_seconds": 18.8037164,
+      "max_observed_memory_bytes": 111136768,
+      "verdicts": {
+        "satisfied": 3
+      }
+    },
+    {
+      "N": 2,
+      "query_id": "shared-capacity",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 153272320,
+      "verdicts": {}
+    },
+    {
+      "N": 2,
+      "query_id": "u0-queue-full",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 154030080,
+      "verdicts": {}
+    },
+    {
+      "N": 2,
+      "query_id": "u0-queue-safety",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 153657344,
+      "verdicts": {}
+    },
+    {
+      "N": 2,
+      "query_id": "u0-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 153878528,
+      "verdicts": {}
+    },
+    {
+      "N": 2,
+      "query_id": "u1-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 154243072,
+      "verdicts": {}
+    },
+    {
+      "N": 3,
+      "query_id": "family-queue-safety",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 191815680,
+      "verdicts": {}
+    },
+    {
+      "N": 3,
+      "query_id": "joint-backlog",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 3,
+      "timeout": 0,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": 43.503478,
+      "completed_min_seconds": 27.7991571,
+      "completed_max_seconds": 58.9681631,
+      "max_observed_memory_bytes": 165683200,
+      "verdicts": {
+        "satisfied": 3
+      }
+    },
+    {
+      "N": 3,
+      "query_id": "shared-capacity",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 191877120,
+      "verdicts": {}
+    },
+    {
+      "N": 3,
+      "query_id": "u0-queue-full",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 191893504,
+      "verdicts": {}
+    },
+    {
+      "N": 3,
+      "query_id": "u0-queue-safety",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 192204800,
+      "verdicts": {}
+    },
+    {
+      "N": 3,
+      "query_id": "u0-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 191836160,
+      "verdicts": {}
+    },
+    {
+      "N": 3,
+      "query_id": "u1-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 191983616,
+      "verdicts": {}
+    },
+    {
+      "N": 3,
+      "query_id": "u2-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 191856640,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "family-queue-safety",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 219754496,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "joint-backlog",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 220246016,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "shared-capacity",
+      "query_category": "growing-global-predicate",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 220909568,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "u0-queue-full",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 220471296,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "u0-queue-safety",
+      "query_category": "fixed-u0",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 219893760,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "u0-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 220766208,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "u1-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 220119040,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "u2-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 219852800,
+      "verdicts": {}
+    },
+    {
+      "N": 4,
+      "query_id": "u3-service",
+      "query_category": "service-coverage",
+      "scheduled": 3,
+      "completed": 0,
+      "timeout": 3,
+      "memory_limit": 0,
+      "not_started": 0,
+      "other": 0,
+      "completed_median_seconds": null,
+      "completed_min_seconds": null,
+      "completed_max_seconds": null,
+      "max_observed_memory_bytes": 219623424,
+      "verdicts": {}
+    }
+  ],
+  "scope": "N=1..4 exact finite models; not working-network scalability; no closure of R03/R04/C06",
+  "timing_scope": "fresh-process native verifier wall time including compilation/trace writing; not pure engine search time",
+  "resource_observations": {
+    "minimum_available_ram_bytes": 6361853952,
+    "maximum_sample_gap_seconds": 0.6184413999999983,
+    "maximum_observed_memory_bytes": 242462720,
+    "requested_sample_interval_ms": 50,
+    "timeout_observed_range_seconds": [
+      62.0628895,
+      62.2845966
+    ]
+  },
+  "preparation": [
+    {
+      "run_id": "uav-p4-76-campaign-002-000-r1-generation",
+      "repeat": 1,
+      "N": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "phase": "generation",
+      "status": "success",
+      "runtime_seconds": 1.3331667149996065,
+      "snapshot_preparation_seconds": 0.18589994399917487,
+      "generator_subprocess_seconds": 1.002586546999737,
+      "copy_and_compare_seconds": 0.05543436900006782
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-039-r2-generation",
+      "repeat": 2,
+      "N": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "phase": "generation",
+      "status": "success",
+      "runtime_seconds": 1.6991979609992995,
+      "snapshot_preparation_seconds": 0.2269207909994293,
+      "generator_subprocess_seconds": 1.2682505220000166,
+      "copy_and_compare_seconds": 0.05106291500123916
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-078-r3-generation",
+      "repeat": 3,
+      "N": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "phase": "generation",
+      "status": "success",
+      "runtime_seconds": 1.6435735909999494,
+      "snapshot_preparation_seconds": 0.2147790549988713,
+      "generator_subprocess_seconds": 1.208214393000162,
+      "copy_and_compare_seconds": 0.05815518599956704
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-001-r1-n1-compile",
+      "repeat": 1,
+      "N": 1,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 1.1126076999999999
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-009-r1-n2-compile",
+      "repeat": 1,
+      "N": 2,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 1.8135739
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-018-r1-n3-compile",
+      "repeat": 1,
+      "N": 3,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 2.7596924
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-028-r1-n4-compile",
+      "repeat": 1,
+      "N": 4,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 3.7639679999999998
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-040-r2-n1-compile",
+      "repeat": 2,
+      "N": 1,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 1.430624
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-048-r2-n2-compile",
+      "repeat": 2,
+      "N": 2,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 2.9340967
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-057-r2-n3-compile",
+      "repeat": 2,
+      "N": 3,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 3.9920329
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-067-r2-n4-compile",
+      "repeat": 2,
+      "N": 4,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 4.6501483
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-079-r3-n1-compile",
+      "repeat": 3,
+      "N": 1,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 1.223821
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-087-r3-n2-compile",
+      "repeat": 3,
+      "N": 2,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 3.4456653
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-096-r3-n3-compile",
+      "repeat": 3,
+      "N": 3,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 7.595288
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-106-r3-n4-compile",
+      "repeat": 3,
+      "N": 4,
+      "phase": "compile",
+      "status": "success",
+      "runtime_seconds": 5.3793755999999995
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-002-r1-n1-load-and-parse",
+      "repeat": 1,
+      "N": 1,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 0.7542814999999999
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-010-r1-n2-load-and-parse",
+      "repeat": 1,
+      "N": 2,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 1.4166288999999999
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-019-r1-n3-load-and-parse",
+      "repeat": 1,
+      "N": 3,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 2.2138168
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-029-r1-n4-load-and-parse",
+      "repeat": 1,
+      "N": 4,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 3.1870898999999997
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-041-r2-n1-load-and-parse",
+      "repeat": 2,
+      "N": 1,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 1.1563215
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-049-r2-n2-load-and-parse",
+      "repeat": 2,
+      "N": 2,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 1.8825079
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-058-r2-n3-load-and-parse",
+      "repeat": 2,
+      "N": 3,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 3.1303392999999997
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-068-r2-n4-load-and-parse",
+      "repeat": 2,
+      "N": 4,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 4.091151099999999
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-080-r3-n1-load-and-parse",
+      "repeat": 3,
+      "N": 1,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 0.9042692999999999
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-088-r3-n2-load-and-parse",
+      "repeat": 3,
+      "N": 2,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 3.7901341
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-097-r3-n3-load-and-parse",
+      "repeat": 3,
+      "N": 3,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 3.8056951999999997
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-107-r3-n4-load-and-parse",
+      "repeat": 3,
+      "N": 4,
+      "phase": "load-and-parse",
+      "status": "success",
+      "runtime_seconds": 3.8808341
+    }
+  ],
+  "service_coverage_workloads": [
+    {
+      "repeat": 1,
+      "N": 1,
+      "scheduled": 1,
+      "status_counts": {
+        "timeout": 1
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 62.1187968,
+      "observed_runtime_max_seconds": 62.1187968
+    },
+    {
+      "repeat": 1,
+      "N": 2,
+      "scheduled": 2,
+      "status_counts": {
+        "timeout": 2
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 124.2131091,
+      "observed_runtime_max_seconds": 62.1096363
+    },
+    {
+      "repeat": 1,
+      "N": 3,
+      "scheduled": 3,
+      "status_counts": {
+        "timeout": 3
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 186.2292878,
+      "observed_runtime_max_seconds": 62.0953276
+    },
+    {
+      "repeat": 1,
+      "N": 4,
+      "scheduled": 4,
+      "status_counts": {
+        "timeout": 4
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 248.3715575,
+      "observed_runtime_max_seconds": 62.111469
+    },
+    {
+      "repeat": 2,
+      "N": 1,
+      "scheduled": 1,
+      "status_counts": {
+        "timeout": 1
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 62.1410537,
+      "observed_runtime_max_seconds": 62.1410537
+    },
+    {
+      "repeat": 2,
+      "N": 2,
+      "scheduled": 2,
+      "status_counts": {
+        "timeout": 2
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 124.2363238,
+      "observed_runtime_max_seconds": 62.149536399999995
+    },
+    {
+      "repeat": 2,
+      "N": 3,
+      "scheduled": 3,
+      "status_counts": {
+        "timeout": 3
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 186.4140473,
+      "observed_runtime_max_seconds": 62.248753
+    },
+    {
+      "repeat": 2,
+      "N": 4,
+      "scheduled": 4,
+      "status_counts": {
+        "timeout": 4
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 248.3964514,
+      "observed_runtime_max_seconds": 62.110269699999996
+    },
+    {
+      "repeat": 3,
+      "N": 1,
+      "scheduled": 1,
+      "status_counts": {
+        "timeout": 1
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 62.073955899999994,
+      "observed_runtime_max_seconds": 62.073955899999994
+    },
+    {
+      "repeat": 3,
+      "N": 2,
+      "scheduled": 2,
+      "status_counts": {
+        "timeout": 2
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 124.2819961,
+      "observed_runtime_max_seconds": 62.1694113
+    },
+    {
+      "repeat": 3,
+      "N": 3,
+      "scheduled": 3,
+      "status_counts": {
+        "timeout": 3
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 186.3605724,
+      "observed_runtime_max_seconds": 62.1367584
+    },
+    {
+      "repeat": 3,
+      "N": 4,
+      "scheduled": 4,
+      "status_counts": {
+        "timeout": 4
+      },
+      "all_completed": false,
+      "observed_runtime_sum_seconds": 248.31235879999997,
+      "observed_runtime_max_seconds": 62.083837499999994
+    }
+  ]
+}

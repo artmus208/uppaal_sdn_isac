@@ -1,0 +1,17 @@
+{
+  "arguments": [
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\model.xml"
+  ],
+  "arguments_windows": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\model.xml",
+  "compile_only": true,
+  "cwd": "D:\\UPPAAL\\app\\bin",
+  "executable": "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\106-r3-n4-compile\\tool.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\106-r3-n4-compile\\tool.memory.csv",
+  "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\106-r3-n4-compile\\tool.stderr.txt",
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\106-r3-n4-compile\\tool.stdout.txt",
+  "timeout_seconds": 60
+}

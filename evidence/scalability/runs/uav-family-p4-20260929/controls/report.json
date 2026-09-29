@@ -1,0 +1,208 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 7728283648,
+        "cpu_models": [
+          "AMD Ryzen 5 1400 Quad-Core Processor           "
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T13:44:50.9063111Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 81797120,
+          "private_bytes": 68722688,
+          "working_set_bytes": 81653760
+        },
+        "os": "\u041c\u0430\u0439\u043a\u0440\u043e\u0441\u043e\u0444\u0442 Windows 11 Pro",
+        "os_build": "26200",
+        "os_version": "10.0.26200",
+        "powershell_version": "5.1.26100.6899",
+        "total_physical_ram_bytes": 17106464768
+      },
+      "monitor": {
+        "command": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-EncodedCommand",
+          "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABbAEMAbwBuAHMAbwBsAGUAXQA6ADoATwB1AHQALgBXAHIAaQB0AGUAKAAnAG8AdQB0ACcAKQA7ACAAWwBDAG8AbgBzAG8AbABlAF0AOgA6AEUAcgByAG8AcgAuAFcAcgBpAHQAZQAoACcAZQByAHIAJwApADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxAA=="
+        ],
+        "compile_only": false,
+        "cpu_seconds": 0.46875,
+        "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "enforcement": "sampled stop threshold, not a hard allocation cap; target process only",
+        "error": null,
+        "exit_code": 0,
+        "finished_at_utc": "2026-09-29T13:44:53.3378980Z",
+        "kill_tree_requested": false,
+        "maximum_sample_gap_seconds": 0.11442749999999999,
+        "measured_memory_overshoot_bytes": 0,
+        "memory_limit_bytes": 2147483648,
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+        "peak_private_bytes": 59424768,
+        "peak_reported_working_set_bytes": 68157440,
+        "peak_working_set_bytes": 68157440,
+        "process_id": 3068,
+        "process_reaped": true,
+        "runtime_seconds": 1.4132498,
+        "sample_interval_ms": 50,
+        "samples": 18,
+        "started_at_utc": "2026-09-29T13:44:51.9163571Z",
+        "status": "success",
+        "timeout_seconds": 5,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\controls\\normal\\tool.config.json"
+        ]
+      },
+      "name": "normal",
+      "passed": true
+    },
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 7715696640,
+        "cpu_models": [
+          "AMD Ryzen 5 1400 Quad-Core Processor           "
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T13:44:55.4269416Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 82681856,
+          "private_bytes": 68808704,
+          "working_set_bytes": 81985536
+        },
+        "os": "\u041c\u0430\u0439\u043a\u0440\u043e\u0441\u043e\u0444\u0442 Windows 11 Pro",
+        "os_build": "26200",
+        "os_version": "10.0.26200",
+        "powershell_version": "5.1.26100.6899",
+        "total_physical_ram_bytes": 17106464768
+      },
+      "monitor": {
+        "command": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-EncodedCommand",
+          "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+        ],
+        "compile_only": false,
+        "cpu_seconds": 0.453125,
+        "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "enforcement": "sampled stop threshold, not a hard allocation cap; target process only",
+        "error": null,
+        "exit_code": -1,
+        "finished_at_utc": "2026-09-29T13:44:59.5185592Z",
+        "kill_tree_requested": true,
+        "maximum_sample_gap_seconds": 0.12609979999999998,
+        "measured_memory_overshoot_bytes": 0,
+        "memory_limit_bytes": 2147483648,
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+        "peak_private_bytes": 59228160,
+        "peak_reported_working_set_bytes": 67358720,
+        "peak_working_set_bytes": 67358720,
+        "process_id": 13356,
+        "process_reaped": true,
+        "runtime_seconds": 3.0813615999999997,
+        "sample_interval_ms": 50,
+        "samples": 14,
+        "started_at_utc": "2026-09-29T13:44:56.4277182Z",
+        "status": "timeout",
+        "timeout_seconds": 1,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\controls\\timeout\\tool.config.json"
+        ]
+      },
+      "name": "timeout",
+      "passed": true
+    },
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 7761862656,
+        "cpu_models": [
+          "AMD Ryzen 5 1400 Quad-Core Processor           "
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T13:45:02.0412409Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 82108416,
+          "private_bytes": 68521984,
+          "working_set_bytes": 81862656
+        },
+        "os": "\u041c\u0430\u0439\u043a\u0440\u043e\u0441\u043e\u0444\u0442 Windows 11 Pro",
+        "os_build": "26200",
+        "os_version": "10.0.26200",
+        "powershell_version": "5.1.26100.6899",
+        "total_physical_ram_bytes": 17106464768
+      },
+      "monitor": {
+        "command": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-EncodedCommand",
+          "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+        ],
+        "compile_only": false,
+        "cpu_seconds": 0.53125,
+        "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "enforcement": "sampled stop threshold, not a hard allocation cap; target process only",
+        "error": null,
+        "exit_code": -1,
+        "finished_at_utc": "2026-09-29T13:45:05.2148483Z",
+        "kill_tree_requested": true,
+        "maximum_sample_gap_seconds": 0.1088528,
+        "measured_memory_overshoot_bytes": 25501696,
+        "memory_limit_bytes": 1048576,
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+        "peak_private_bytes": 26550272,
+        "peak_reported_working_set_bytes": 21291008,
+        "peak_working_set_bytes": 21291008,
+        "process_id": 2912,
+        "process_reaped": true,
+        "runtime_seconds": 2.2316515,
+        "sample_interval_ms": 50,
+        "samples": 1,
+        "started_at_utc": "2026-09-29T13:45:02.9733059Z",
+        "status": "memory_limit",
+        "timeout_seconds": 5,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\controls\\memory\\tool.config.json"
+        ]
+      },
+      "name": "memory",
+      "passed": true
+    }
+  ],
+  "kind": "monitor_controls_not_verification",
+  "source_commit": "a72ffc2fd3a95b3e9ef2412d280dfcd108558272"
+}

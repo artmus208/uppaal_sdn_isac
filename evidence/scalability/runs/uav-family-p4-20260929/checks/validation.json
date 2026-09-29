@@ -1,0 +1,50 @@
+[
+  {
+    "command": "python3 -B -m unittest discover -s evidence/scalability/runs/uav-family-p4-20260929 -p test_*.py -v",
+    "exit_code": 0,
+    "log": "final-runner-evidence-tests.txt",
+    "result": "10 passed"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/python -m unittest discover -s tests -v",
+    "exit_code": 1,
+    "log": "final-unit-tests.log",
+    "result": "sandbox: 208 passed, MCP stdio initialization timeout"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "log": "final-unit-tests-unsandboxed.log",
+    "result": "outside sandbox: 209 passed"
+  },
+  {
+    "command": "python3 -B scripts/check_coordination.py",
+    "exit_code": 0,
+    "log": "final-coordination.log",
+    "result": "static"
+  },
+  {
+    "command": "python3 -B scripts/check_family_baseline.py --audit-history",
+    "exit_code": 0,
+    "log": "final-family-pins.json",
+    "result": "static pins"
+  },
+  {
+    "command": "python3 -B evidence/scalability/runs/uav-family-p4-20260929/audit_evidence.py --root .",
+    "exit_code": 0,
+    "log": "evidence-audit.json",
+    "result": "static evidence audit"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/python -c \"from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)\"",
+    "exit_code": 0,
+    "log": "final-mcp-smoke.log",
+    "result": "MCP smoke"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/uppaal-verifyta list-examples",
+    "exit_code": 0,
+    "log": "final-cli-smoke.log",
+    "result": "CLI smoke"
+  }
+]

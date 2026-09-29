@@ -1,0 +1,8 @@
+
+Verifying formula 1 at \\wsl.localhost\Ubuntu\tmp\uppaal-p4-76\evidence\scalability\family-series-68\generated\n1\parse-all.q:1
+ -- Formula is satisfied.
+ -- States stored : 1 states
+ -- States explored : 0 states
+ -- CPU user time used : 15 ms
+ -- Virtual memory used : 112336 KiB
+ -- Resident memory used : 41740 KiB
