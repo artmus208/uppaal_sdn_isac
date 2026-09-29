@@ -35,6 +35,7 @@
     "evidence/scalability/n1-service-diagnosis-78/README.md",
     "evidence/scalability/n1-service-diagnosis-78/artifact-hashes.json",
     "evidence/scalability/n1-service-diagnosis-78/audit.py",
+    "evidence/scalability/n1-service-diagnosis-78/authorization.json",
     "evidence/scalability/n1-service-diagnosis-78/checks/cli-smoke.stderr.txt",
     "evidence/scalability/n1-service-diagnosis-78/checks/cli-smoke.stdout.txt",
     "evidence/scalability/n1-service-diagnosis-78/checks/coordination.stderr.txt",
@@ -51,21 +52,26 @@
     "evidence/scalability/n1-service-diagnosis-78/checks/mcp-smoke.stderr.txt",
     "evidence/scalability/n1-service-diagnosis-78/checks/mcp-smoke.stdout.txt",
     "evidence/scalability/n1-service-diagnosis-78/checks/package-audit.json",
+    "evidence/scalability/n1-service-diagnosis-78/checks/runner-tests.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/runner-tests.stdout.txt",
     "evidence/scalability/n1-service-diagnosis-78/checks/unit-tests.stderr.txt",
     "evidence/scalability/n1-service-diagnosis-78/checks/unit-tests.stdout.txt",
     "evidence/scalability/n1-service-diagnosis-78/checks/validation.json",
     "evidence/scalability/n1-service-diagnosis-78/history.json",
     "evidence/scalability/n1-service-diagnosis-78/inspect_history.py",
     "evidence/scalability/n1-service-diagnosis-78/inspect_model.py",
+    "evidence/scalability/n1-service-diagnosis-78/metadata.ps1",
     "evidence/scalability/n1-service-diagnosis-78/model-inventory.json",
     "evidence/scalability/n1-service-diagnosis-78/protocol.json",
     "evidence/scalability/n1-service-diagnosis-78/queries/d1-kpi-consumed.q",
     "evidence/scalability/n1-service-diagnosis-78/queries/d2-service-ready.q",
-    "evidence/scalability/n1-service-diagnosis-78/queries/d3-useful-grant.q"
+    "evidence/scalability/n1-service-diagnosis-78/queries/d3-useful-grant.q",
+    "evidence/scalability/n1-service-diagnosis-78/run_diagnostics.py",
+    "evidence/scalability/n1-service-diagnosis-78/test_diagnostics.py"
   ],
   "artifact_index_exclusions": [
     "artifact-hashes.json",
     "checks/package-audit.json"
   ],
-  "hashed_artifacts": 29
+  "hashed_artifacts": 35
 }
