@@ -86,3 +86,25 @@ and starts budget accounting at the previous used seconds. It refuses any prior
 scientific/compile/load attempt and any third/unsupported campaign. The correction
 does not authorize resumption by itself. Native monitor/limits remain unchanged;
 its already successful controls remain applicable.
+
+## Completed authorized series
+
+campaign-002 completed all 117 scheduled phases: three exact generations,
+12 compile-only, 12 load/parse and 90 scientific attempts. Scientific statuses:
+18 success (12 satisfied, six violated), 72 timeout; no memory stops or omitted
+cells. These counts are backed by [runs.json](campaign-002/runs.json), with exact
+run IDs, hashes and actual tool version. Common budget: 4984.387 / 7200 s.
+
+Read [RESULTS.md](RESULTS.md), [SUMMARY.json](SUMMARY.json) and
+[query-observations.csv](query-observations.csv). Static evidence auditing does
+not add new verification runs. Reproduce only the audit/report, without relaunching:
+
+```sh
+python3 -B evidence/scalability/runs/uav-family-p4-20260929/audit_evidence.py --root .
+python3 -B -m unittest discover -s evidence/scalability/runs/uav-family-p4-20260929 -p test_evidence.py -v
+python3 -B evidence/scalability/runs/uav-family-p4-20260929/build_report.py .
+```
+
+The report builder reads the completed immutable records. It refuses an active
+campaign. `checks/evidence-audit.json` contains the integrity audit and exact
+successful-query claim tuples; acceptance remains with the independent reviewer.
