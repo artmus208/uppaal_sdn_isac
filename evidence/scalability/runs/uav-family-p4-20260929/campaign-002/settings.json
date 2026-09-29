@@ -18,7 +18,7 @@
   "reused_metadata_sha256": "c577e33b0e74f1335b0358e5a03f352bbfa40b522777e0dc67cddedd96f11f8f",
   "runner_sha256": "909fe63021b1adcc1bec32348ff02411d8c4ec0cf8e36d12d0e1202a2fac3879",
   "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
-  "status": "running",
+  "status": "completed",
   "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
   "used_seconds": 4984.3867605700125,
   "working_tree_at_start": "clean"
