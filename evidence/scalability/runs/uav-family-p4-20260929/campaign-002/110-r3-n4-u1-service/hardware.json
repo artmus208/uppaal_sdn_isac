@@ -1,0 +1,20 @@
+{
+    "os":  "Майкрософт Windows 11 Pro",
+    "os_version":  "10.0.26200",
+    "os_build":  "26200",
+    "total_physical_ram_bytes":  17106464768,
+    "available_physical_ram_bytes":  7049564160,
+    "cpu_models":  [
+                       "AMD Ryzen 5 1400 Quad-Core Processor           "
+                   ],
+    "logical_cpu_count":  8,
+    "powershell_version":  "5.1.26100.6899",
+    "dotnet_version":  "4.0.30319.42000",
+    "measured_at_utc":  "2026-09-29T15:25:09.4935543Z",
+    "memory_probe":  {
+                         "private_bytes":  68558848,
+                         "working_set_bytes":  81899520,
+                         "peak_working_set_bytes":  82546688
+                     },
+    "memory_measure":  "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process"
+}
