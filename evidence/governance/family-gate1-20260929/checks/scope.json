@@ -1,0 +1,21 @@
+{
+  "base_commit": "52c5c8d94122f5fbd2a7b689fd9e764583de3226",
+  "allowed_prefix": "evidence/governance/family-gate1-20260929/",
+  "files": [
+    "evidence/governance/family-gate1-20260929/DECISION-DRAFT.md",
+    "evidence/governance/family-gate1-20260929/HANDOFF.md",
+    "evidence/governance/family-gate1-20260929/QUERY_TABLE.md",
+    "evidence/governance/family-gate1-20260929/README.md",
+    "evidence/governance/family-gate1-20260929/baseline-candidate.json",
+    "evidence/governance/family-gate1-20260929/build_packet.py",
+    "evidence/governance/family-gate1-20260929/checks/cli-smoke.log",
+    "evidence/governance/family-gate1-20260929/checks/coordination.log",
+    "evidence/governance/family-gate1-20260929/checks/mcp-smoke.log",
+    "evidence/governance/family-gate1-20260929/checks/packet-final.log",
+    "evidence/governance/family-gate1-20260929/checks/packet.log",
+    "evidence/governance/family-gate1-20260929/checks/unit-tests.log",
+    "evidence/governance/family-gate1-20260929/checks/validation.json",
+    "evidence/governance/family-gate1-20260929/input-hashes.json",
+    "evidence/governance/family-gate1-20260929/query-dispositions.json"
+  ]
+}

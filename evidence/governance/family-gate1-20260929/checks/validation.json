@@ -1,0 +1,94 @@
+[
+  {
+    "name": "packet",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-B",
+      "evidence/governance/family-gate1-20260929/build_packet.py",
+      "--self-test"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.693502193999848,
+    "log": "packet.log",
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  {
+    "name": "unit-tests",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 85.35574176099999,
+    "log": "unit-tests.log",
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  {
+    "name": "coordination",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.20150894100015648,
+    "log": "coordination.log",
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  {
+    "name": "mcp-smoke",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 2.2237924129999556,
+    "log": "mcp-smoke.log",
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  {
+    "name": "cli-smoke",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-m",
+      "uppaal_mcp.cli",
+      "list-examples"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.729576785000063,
+    "log": "cli-smoke.log",
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    }
+  },
+  {
+    "name": "packet-final",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-B",
+      "evidence/governance/family-gate1-20260929/build_packet.py",
+      "--self-test"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 3.9270519480000985,
+    "log": "packet-final.log"
+  }
+]

@@ -1,0 +1,948 @@
+[
+  {
+    "N": 1,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+        "property_verdict": null,
+        "query_hash": "91a397f4dfa84865086e4eb1dfc9fb3a6d2e5fa9fb3c8af3c07060c07df86513",
+        "run_id": "diagnostic-001-n1-shared-capacity",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one global invariant at this N; not an arbitrary-N theorem",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "A[] ((family_grant_0 ? 1 : 0) <= 1)",
+    "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "nonvacuity": [
+      "u0-service"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "91a397f4dfa84865086e4eb1dfc9fb3a6d2e5fa9fb3c8af3c07060c07df86513",
+    "query_id": "shared-capacity",
+    "query_path": "evidence/scalability/family-series-68/generated/n1/p4/shared-capacity.q",
+    "requirement_closed": false,
+    "role": "global-safety"
+  },
+  {
+    "N": 1,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "diagnostic-001-n1-u0-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "service-002-n1-u0-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 0 in full N=1 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_0",
+    "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+    "query_id": "u0-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n1/p4/u0-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 1,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+        "property_verdict": "satisfied",
+        "query_hash": "706bd493fef18a2de31be212156825af913ef21adde7d15cda47dc1bc1825afe",
+        "run_id": "diagnostic-001-n1-joint-backlog",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "success",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one simultaneous encoded-backlog existential; not necessarily pre-overflow backlog, simultaneous service or sustained congestion",
+    "disposition_status": "proposed_only",
+    "evidence_state": "explicit_result",
+    "formula": "E<> u0_mac_queue_q > 0",
+    "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "nonvacuity": [
+      "all queues start empty; a witness must include queue arrivals"
+    ],
+    "observed_verdicts": [
+      "satisfied"
+    ],
+    "query_hash": "706bd493fef18a2de31be212156825af913ef21adde7d15cda47dc1bc1825afe",
+    "query_id": "joint-backlog",
+    "query_path": "evidence/scalability/family-series-68/generated/n1/p4/joint-backlog.q",
+    "requirement_closed": false,
+    "role": "global-reachability"
+  },
+  {
+    "N": 1,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+        "property_verdict": "violated",
+        "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+        "run_id": "diagnostic-001-n1-u0-queue-safety",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "success",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "original C01-queue predicate for fixed entity u0 inside full composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "explicit_result",
+    "formula": "A[] !u0_mac_queue_overflow_seen",
+    "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "nonvacuity": [
+      "u0-queue-full"
+    ],
+    "observed_verdicts": [
+      "violated"
+    ],
+    "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+    "query_id": "u0-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n1/p4/u0-queue-safety.q",
+    "requirement_closed": false,
+    "role": "fixed-entity-original-obligation"
+  },
+  {
+    "N": 1,
+    "attempts": [],
+    "claim_scope": "one query with a growing predicate; kept separate from fixed-u0 cost and an N-query suite",
+    "disposition_status": "proposed_only",
+    "evidence_state": "not_attempted",
+    "formula": "A[] !(u0_mac_queue_overflow_seen)",
+    "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "nonvacuity": [
+      "joint-backlog",
+      "u0-queue-full; does not establish queue-full reachability for every entity"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "c820090fc19ffc80284d62194b40f62396cdeedc10fc1db0d853f4293b64656e",
+    "query_id": "family-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n1/p4/family-queue-safety.q",
+    "requirement_closed": false,
+    "role": "whole-family-original-obligation"
+  },
+  {
+    "N": 1,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+        "property_verdict": "satisfied",
+        "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+        "run_id": "diagnostic-001-n1-u0-queue-full",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "success",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "fixed u0; not evidence for all other entities or time divergence",
+    "disposition_status": "proposed_only",
+    "evidence_state": "explicit_result",
+    "formula": "E<> u0_mac_queue_q == u0_mac_queue_K && !u0_mac_queue_overflow_seen",
+    "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "nonvacuity": [
+      "predicate false initially; requires arrivals over multiple epochs"
+    ],
+    "observed_verdicts": [
+      "satisfied"
+    ],
+    "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+    "query_id": "u0-queue-full",
+    "query_path": "evidence/scalability/family-series-68/generated/n1/p4/u0-queue-full.q",
+    "requirement_closed": false,
+    "role": "nonvacuity"
+  },
+  {
+    "N": 2,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": null,
+        "query_hash": "24520a4484b9f6107ac75786247cfc9116d0e418ff2ce327416f5e8f03d9e3ae",
+        "run_id": "diagnostic-001-n2-shared-capacity",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one global invariant at this N; not an arbitrary-N theorem",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "A[] ((family_grant_0 ? 1 : 0) + (family_grant_1 ? 1 : 0) <= 1)",
+    "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "nonvacuity": [
+      "u0-service",
+      "u1-service"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "24520a4484b9f6107ac75786247cfc9116d0e418ff2ce327416f5e8f03d9e3ae",
+    "query_id": "shared-capacity",
+    "query_path": "evidence/scalability/family-series-68/generated/n2/p4/shared-capacity.q",
+    "requirement_closed": false,
+    "role": "global-safety"
+  },
+  {
+    "N": 2,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "diagnostic-001-n2-u0-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "service-002-n2-u0-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 0 in full N=2 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_0",
+    "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+    "query_id": "u0-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n2/p4/u0-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 2,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": null,
+        "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+        "run_id": "diagnostic-001-n2-u1-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": null,
+        "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+        "run_id": "service-002-n2-u1-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 1 in full N=2 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_1",
+    "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+    "query_id": "u1-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n2/p4/u1-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 2,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": "satisfied",
+        "query_hash": "eef1fd0aa322d66e7142f4a04573aadb213b02b62eb0a5d3630572a0b98d5cfc",
+        "run_id": "diagnostic-001-n2-joint-backlog",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "success",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one simultaneous encoded-backlog existential; not necessarily pre-overflow backlog, simultaneous service or sustained congestion",
+    "disposition_status": "proposed_only",
+    "evidence_state": "explicit_result",
+    "formula": "E<> u0_mac_queue_q > 0 && u1_mac_queue_q > 0",
+    "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "nonvacuity": [
+      "all queues start empty; a witness must include queue arrivals"
+    ],
+    "observed_verdicts": [
+      "satisfied"
+    ],
+    "query_hash": "eef1fd0aa322d66e7142f4a04573aadb213b02b62eb0a5d3630572a0b98d5cfc",
+    "query_id": "joint-backlog",
+    "query_path": "evidence/scalability/family-series-68/generated/n2/p4/joint-backlog.q",
+    "requirement_closed": false,
+    "role": "global-reachability"
+  },
+  {
+    "N": 2,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": null,
+        "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+        "run_id": "diagnostic-001-n2-u0-queue-safety",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "original C01-queue predicate for fixed entity u0 inside full composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "A[] !u0_mac_queue_overflow_seen",
+    "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "nonvacuity": [
+      "u0-queue-full"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+    "query_id": "u0-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n2/p4/u0-queue-safety.q",
+    "requirement_closed": false,
+    "role": "fixed-entity-original-obligation"
+  },
+  {
+    "N": 2,
+    "attempts": [],
+    "claim_scope": "one query with a growing predicate; kept separate from fixed-u0 cost and an N-query suite",
+    "disposition_status": "proposed_only",
+    "evidence_state": "not_attempted",
+    "formula": "A[] !(u0_mac_queue_overflow_seen || u1_mac_queue_overflow_seen)",
+    "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "nonvacuity": [
+      "joint-backlog",
+      "u0-queue-full; does not establish queue-full reachability for every entity"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "6356fe1780c9a2a4138dd65b566bcccfa79da6531e6c956f9fe4d296bbc31521",
+    "query_id": "family-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n2/p4/family-queue-safety.q",
+    "requirement_closed": false,
+    "role": "whole-family-original-obligation"
+  },
+  {
+    "N": 2,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+        "property_verdict": null,
+        "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+        "run_id": "diagnostic-001-n2-u0-queue-full",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "fixed u0; not evidence for all other entities or time divergence",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> u0_mac_queue_q == u0_mac_queue_K && !u0_mac_queue_overflow_seen",
+    "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+    "nonvacuity": [
+      "predicate false initially; requires arrivals over multiple epochs"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+    "query_id": "u0-queue-full",
+    "query_path": "evidence/scalability/family-series-68/generated/n2/p4/u0-queue-full.q",
+    "requirement_closed": false,
+    "role": "nonvacuity"
+  },
+  {
+    "N": 3,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "29044e405dcf9a80e1b4ae98861904fac458bb40a5d8a645254c95b34503da49",
+        "run_id": "diagnostic-001-n3-shared-capacity",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one global invariant at this N; not an arbitrary-N theorem",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "A[] ((family_grant_0 ? 1 : 0) + (family_grant_1 ? 1 : 0) + (family_grant_2 ? 1 : 0) <= 1)",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "u0-service",
+      "u1-service",
+      "u2-service"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "29044e405dcf9a80e1b4ae98861904fac458bb40a5d8a645254c95b34503da49",
+    "query_id": "shared-capacity",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/shared-capacity.q",
+    "requirement_closed": false,
+    "role": "global-safety"
+  },
+  {
+    "N": 3,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "diagnostic-001-n3-u0-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "service-002-n3-u0-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 0 in full N=3 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_0",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+    "query_id": "u0-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/u0-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 3,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+        "run_id": "diagnostic-001-n3-u1-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+        "run_id": "service-002-n3-u1-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 1 in full N=3 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_1",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+    "query_id": "u1-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/u1-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 3,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+        "run_id": "diagnostic-001-n3-u2-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+        "run_id": "service-002-n3-u2-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 2 in full N=3 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_2",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+    "query_id": "u2-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/u2-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 3,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": "satisfied",
+        "query_hash": "08c11b52543f7ce4217ecdddaa73b5a7b30bee3c702aaf9977f976c81781704d",
+        "run_id": "diagnostic-001-n3-joint-backlog",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "success",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one simultaneous encoded-backlog existential; not necessarily pre-overflow backlog, simultaneous service or sustained congestion",
+    "disposition_status": "proposed_only",
+    "evidence_state": "explicit_result",
+    "formula": "E<> u0_mac_queue_q > 0 && u1_mac_queue_q > 0 && u2_mac_queue_q > 0",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "all queues start empty; a witness must include queue arrivals"
+    ],
+    "observed_verdicts": [
+      "satisfied"
+    ],
+    "query_hash": "08c11b52543f7ce4217ecdddaa73b5a7b30bee3c702aaf9977f976c81781704d",
+    "query_id": "joint-backlog",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/joint-backlog.q",
+    "requirement_closed": false,
+    "role": "global-reachability"
+  },
+  {
+    "N": 3,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+        "run_id": "diagnostic-001-n3-u0-queue-safety",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "original C01-queue predicate for fixed entity u0 inside full composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "A[] !u0_mac_queue_overflow_seen",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "u0-queue-full"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+    "query_id": "u0-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/u0-queue-safety.q",
+    "requirement_closed": false,
+    "role": "fixed-entity-original-obligation"
+  },
+  {
+    "N": 3,
+    "attempts": [],
+    "claim_scope": "one query with a growing predicate; kept separate from fixed-u0 cost and an N-query suite",
+    "disposition_status": "proposed_only",
+    "evidence_state": "not_attempted",
+    "formula": "A[] !(u0_mac_queue_overflow_seen || u1_mac_queue_overflow_seen || u2_mac_queue_overflow_seen)",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "joint-backlog",
+      "u0-queue-full; does not establish queue-full reachability for every entity"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "7819351f2340c87b6f6fc959aa1474f27bb5356f3f5d59d400936965c45563d4",
+    "query_id": "family-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/family-queue-safety.q",
+    "requirement_closed": false,
+    "role": "whole-family-original-obligation"
+  },
+  {
+    "N": 3,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+        "property_verdict": null,
+        "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+        "run_id": "diagnostic-001-n3-u0-queue-full",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "fixed u0; not evidence for all other entities or time divergence",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> u0_mac_queue_q == u0_mac_queue_K && !u0_mac_queue_overflow_seen",
+    "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+    "nonvacuity": [
+      "predicate false initially; requires arrivals over multiple epochs"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+    "query_id": "u0-queue-full",
+    "query_path": "evidence/scalability/family-series-68/generated/n3/p4/u0-queue-full.q",
+    "requirement_closed": false,
+    "role": "nonvacuity"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "fefa5071ccc30359c590cb4c167064c33a81b89a86cedd5e8b7af27a44ee9795",
+        "run_id": "diagnostic-001-n4-shared-capacity",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one global invariant at this N; not an arbitrary-N theorem",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "A[] ((family_grant_0 ? 1 : 0) + (family_grant_1 ? 1 : 0) + (family_grant_2 ? 1 : 0) + (family_grant_3 ? 1 : 0) <= 1)",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "u0-service",
+      "u1-service",
+      "u2-service",
+      "u3-service"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "fefa5071ccc30359c590cb4c167064c33a81b89a86cedd5e8b7af27a44ee9795",
+    "query_id": "shared-capacity",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/shared-capacity.q",
+    "requirement_closed": false,
+    "role": "global-safety"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "diagnostic-001-n4-u0-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+        "run_id": "service-002-n4-u0-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 0 in full N=4 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_0",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+    "query_id": "u0-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/u0-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+        "run_id": "diagnostic-001-n4-u1-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+        "run_id": "service-002-n4-u1-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 1 in full N=4 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_1",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+    "query_id": "u1-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/u1-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+        "run_id": "diagnostic-001-n4-u2-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+        "run_id": "service-002-n4-u2-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 2 in full N=4 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_2",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+    "query_id": "u2-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/u2-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "4cc61a783e99dc1baedefaa495179adb9b3bbb3a4b063dad52146272a8091c01",
+        "run_id": "diagnostic-001-n4-u3-service",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      },
+      {
+        "index": "evidence/scalability/service-reachability-20260929/runs/service-002/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "4cc61a783e99dc1baedefaa495179adb9b3bbb3a4b063dad52146272a8091c01",
+        "run_id": "service-002-n4-u3-service",
+        "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "entity 3 in full N=4 composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> family_grant_3",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "predicate false initially; witness must traverse shared service epoch"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "4cc61a783e99dc1baedefaa495179adb9b3bbb3a4b063dad52146272a8091c01",
+    "query_id": "u3-service",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/u3-service.q",
+    "requirement_closed": false,
+    "role": "entity-reachability"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "4136909666b2c6e1b62ee8573168e37a8af8af070ca667ec25d0ace43654111b",
+        "run_id": "diagnostic-001-n4-joint-backlog",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "one simultaneous encoded-backlog existential; not necessarily pre-overflow backlog, simultaneous service or sustained congestion",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> u0_mac_queue_q > 0 && u1_mac_queue_q > 0 && u2_mac_queue_q > 0 && u3_mac_queue_q > 0",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "all queues start empty; a witness must include queue arrivals"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "4136909666b2c6e1b62ee8573168e37a8af8af070ca667ec25d0ace43654111b",
+    "query_id": "joint-backlog",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/joint-backlog.q",
+    "requirement_closed": false,
+    "role": "global-reachability"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+        "run_id": "diagnostic-001-n4-u0-queue-safety",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "original C01-queue predicate for fixed entity u0 inside full composition",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "A[] !u0_mac_queue_overflow_seen",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "u0-queue-full"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+    "query_id": "u0-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/u0-queue-safety.q",
+    "requirement_closed": false,
+    "role": "fixed-entity-original-obligation"
+  },
+  {
+    "N": 4,
+    "attempts": [],
+    "claim_scope": "one query with a growing predicate; kept separate from fixed-u0 cost and an N-query suite",
+    "disposition_status": "proposed_only",
+    "evidence_state": "not_attempted",
+    "formula": "A[] !(u0_mac_queue_overflow_seen || u1_mac_queue_overflow_seen || u2_mac_queue_overflow_seen || u3_mac_queue_overflow_seen)",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "joint-backlog",
+      "u0-queue-full; does not establish queue-full reachability for every entity"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "1597d414e16dc56a9b062576dcf9445a43310e9d4a469f6dd4e28d5dd3588070",
+    "query_id": "family-queue-safety",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/family-queue-safety.q",
+    "requirement_closed": false,
+    "role": "whole-family-original-obligation"
+  },
+  {
+    "N": 4,
+    "attempts": [
+      {
+        "index": "evidence/scalability/family-series-68/checks/diagnostic-001/runs.json",
+        "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+        "property_verdict": null,
+        "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+        "run_id": "diagnostic-001-n4-u0-queue-full",
+        "source_commit": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+        "status": "timeout",
+        "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+      }
+    ],
+    "claim_scope": "fixed u0; not evidence for all other entities or time divergence",
+    "disposition_status": "proposed_only",
+    "evidence_state": "open_no_verdict",
+    "formula": "E<> u0_mac_queue_q == u0_mac_queue_K && !u0_mac_queue_overflow_seen",
+    "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "nonvacuity": [
+      "predicate false initially; requires arrivals over multiple epochs"
+    ],
+    "observed_verdicts": [],
+    "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+    "query_id": "u0-queue-full",
+    "query_path": "evidence/scalability/family-series-68/generated/n4/p4/u0-queue-full.q",
+    "requirement_closed": false,
+    "role": "nonvacuity"
+  }
+]

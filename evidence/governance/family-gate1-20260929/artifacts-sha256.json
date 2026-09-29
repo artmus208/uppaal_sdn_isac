@@ -1,0 +1,18 @@
+{
+  "DECISION-DRAFT.md": "bee30f22f19649f1029b684e46a11aa13eb5b77a7a76cff00373f080e65d7d54",
+  "HANDOFF.md": "d2bb9835a8c5bb0533c92b97fd7b20e841d622c7550c4735ce8dde2b20c33d63",
+  "QUERY_TABLE.md": "1d59c96be94aa43b6387beea46fc873986a767c8f29ce75ad252e0b49d7dea31",
+  "README.md": "e8b278d5b00d9c6b17f94fa9729dbd056d0eaa7fada729e6915ee3aaa8ae7c44",
+  "baseline-candidate.json": "6f6ae3a4db4b56d2e6192631971f85b601b72f1441a6ddb9876dc6c47defd4db",
+  "build_packet.py": "a424770f5ec212c687c0b3524282a44441f97efa98923bd40b48ac485588a1d6",
+  "checks/cli-smoke.log": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+  "checks/coordination.log": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d",
+  "checks/mcp-smoke.log": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+  "checks/packet-final.log": "919cd900e47ddb6de5a7f6d5d51de32465a464421ee697710b4d68b4087de4f3",
+  "checks/packet.log": "919cd900e47ddb6de5a7f6d5d51de32465a464421ee697710b4d68b4087de4f3",
+  "checks/scope.json": "4213ad0319cdb6616e9cdccd91bab43abf947a13d8a45c6a48d4197a45d5dfe0",
+  "checks/unit-tests.log": "416a46a7e550c80bc16c86eaee76aa72a7f1bf8a12cced93d3c99400cd5324e4",
+  "checks/validation.json": "ab807c79b9699c9fb5118e905237a1b4dc0f1a57b5fcca1af1680b43cc6a1e84",
+  "input-hashes.json": "4a080b95ad7812e64385eda72e7311f50435fac2b5574f677c85fd902c1ec6a6",
+  "query-dispositions.json": "78e721c774d238be34bf935cbc3f6f00cd29fcfe47c61596093954d21db3b654"
+}

@@ -1,0 +1,12 @@
+{
+  "kind": "static_proposal_audit_not_verification",
+  "models": 4,
+  "queries": 30,
+  "scientific_attempts": 36,
+  "explicit_result_queries": 5,
+  "open_queries_with_attempts": 21,
+  "not_attempted_queries": 4,
+  "input_hashes": 107,
+  "rejected_mutations": 8,
+  "gate_accepted": false
+}
