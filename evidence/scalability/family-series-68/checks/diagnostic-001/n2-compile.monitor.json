@@ -1,0 +1,30 @@
+{
+    "status":  "success",
+    "exit_code":  0,
+    "process_id":  18576,
+    "started_at_utc":  "2026-09-28T21:58:51.9758127Z",
+    "finished_at_utc":  "2026-09-28T21:58:52.9880954Z",
+    "runtime_seconds":  1.0084038,
+    "timeout_seconds":  10,
+    "memory_limit_bytes":  2147483648,
+    "sample_interval_ms":  50,
+    "memory_measure":  "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+    "enforcement":  "sampled stop threshold, not a hard allocation cap; target process only",
+    "samples":  13,
+    "maximum_sample_gap_seconds":  0.13316420000000007,
+    "peak_private_bytes":  52453376,
+    "peak_working_set_bytes":  55418880,
+    "peak_reported_working_set_bytes":  57204736,
+    "cpu_seconds":  0.8125,
+    "measured_memory_overshoot_bytes":  0,
+    "kill_tree_requested":  false,
+    "process_reaped":  true,
+    "error":  null,
+    "command":  [
+                    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+                    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\generated\\n2\\model.xml",
+                    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\generated\\n2\\load.q"
+                ],
+    "cwd":  "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+    "compile_only":  true
+}

@@ -1,0 +1,343 @@
+{
+  "evidence_kind": "static_validation",
+  "property_verdict": "not_applicable",
+  "sizes": {
+    "1": {
+      "processes": 50,
+      "load_step": {
+        "method": "dependency-checked factored local truth tables",
+        "guard_cases": 240,
+        "allowed_update_cases": 160,
+        "sample_domain_cases": 20,
+        "competition_outcomes": 2,
+        "independent_sticky_flags": true,
+        "scope": "local expressions only; not model checking or whole-system equivalence"
+      },
+      "endpoint_count": 581,
+      "rejected_mutations": [
+        {
+          "mutation": "ineligible singleton service",
+          "rejection": "exact shared service eligibility guard"
+        },
+        {
+          "mutation": "lost zero-time Sample",
+          "rejection": "staging is zero-time"
+        },
+        {
+          "mutation": "lost zero-time Publish",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "lost zero-time Offer",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "wrong selector bound",
+          "rejection": "single bounded shared service selector"
+        },
+        {
+          "mutation": "wrong last-server recorder",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "lost epoch reset",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "duplicate shared server",
+          "rejection": "unique process/template count"
+        }
+      ],
+      "frozen_singleton_step_cases": 80,
+      "prototype_exact_bytes": {
+        "model.xml": {
+          "equal": true,
+          "sha256": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385"
+        },
+        "queries.q": {
+          "equal": true,
+          "sha256": "57ecc666c1f74ae8fff267dd93854f69f5d8e66397b1f92d224ecc78c61c116d"
+        },
+        "queries.json": {
+          "equal": true,
+          "sha256": "72a877f50891464d3a97e01304996ebdc695d72603c4383dc2164c6822989efb"
+        }
+      }
+    },
+    "2": {
+      "processes": 99,
+      "load_step": {
+        "method": "dependency-checked factored local truth tables",
+        "guard_cases": 720,
+        "allowed_update_cases": 560,
+        "sample_domain_cases": 40,
+        "competition_outcomes": 3,
+        "independent_sticky_flags": true,
+        "scope": "local expressions only; not model checking or whole-system equivalence"
+      },
+      "endpoint_count": 1162,
+      "rejected_mutations": [
+        {
+          "mutation": "cross-entity queue state",
+          "rejection": "exact shared service eligibility guard"
+        },
+        {
+          "mutation": "cross-entity clock",
+          "rejection": "cross-entity state/clock/channel reference"
+        },
+        {
+          "mutation": "cross-entity ACK",
+          "rejection": "cross-entity state/clock/channel reference"
+        },
+        {
+          "mutation": "cross-entity scratch input",
+          "rejection": "private sample scratch state"
+        },
+        {
+          "mutation": "cross-entity service scratch read",
+          "rejection": "per-entity service expression separability"
+        },
+        {
+          "mutation": "wrong shared tick destination",
+          "rejection": "shared tick routing"
+        },
+        {
+          "mutation": "wrong shared sample destination",
+          "rejection": "shared publication routing"
+        },
+        {
+          "mutation": "global clock alias",
+          "rejection": "global state/function/clock isolation"
+        },
+        {
+          "mutation": "two queues consume one selected slot",
+          "rejection": "wrong entity queue/service update"
+        },
+        {
+          "mutation": "two simultaneous grant records",
+          "rejection": "grant records exactly one selected entity"
+        },
+        {
+          "mutation": "wrong instance binding",
+          "rejection": "instance bindings and broadcast receiver order"
+        },
+        {
+          "mutation": "lost zero-time Sample",
+          "rejection": "staging is zero-time"
+        },
+        {
+          "mutation": "lost zero-time Publish",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "lost zero-time Offer",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "wrong selector bound",
+          "rejection": "single bounded shared service selector"
+        },
+        {
+          "mutation": "wrong last-server recorder",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "lost epoch reset",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "duplicate shared server",
+          "rejection": "unique process/template count"
+        }
+      ],
+      "prototype_exact_bytes": {
+        "model.xml": {
+          "equal": true,
+          "sha256": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208"
+        },
+        "queries.q": {
+          "equal": true,
+          "sha256": "414af5cde7c2d364be2bc3f2d796a8f9ca980f6b84c72d4259eb248969d6b60e"
+        },
+        "queries.json": {
+          "equal": true,
+          "sha256": "ec62b48a9fc7abfc649c3d2909e583a4ca75dc0b5b70fb6468b9a699e6ae6bf9"
+        }
+      }
+    },
+    "3": {
+      "processes": 148,
+      "load_step": {
+        "method": "dependency-checked factored local truth tables",
+        "guard_cases": 1440,
+        "allowed_update_cases": 1200,
+        "sample_domain_cases": 60,
+        "competition_outcomes": 4,
+        "independent_sticky_flags": true,
+        "scope": "local expressions only; not model checking or whole-system equivalence"
+      },
+      "endpoint_count": 1743,
+      "rejected_mutations": [
+        {
+          "mutation": "cross-entity queue state",
+          "rejection": "exact shared service eligibility guard"
+        },
+        {
+          "mutation": "cross-entity clock",
+          "rejection": "cross-entity state/clock/channel reference"
+        },
+        {
+          "mutation": "cross-entity ACK",
+          "rejection": "cross-entity state/clock/channel reference"
+        },
+        {
+          "mutation": "cross-entity scratch input",
+          "rejection": "private sample scratch state"
+        },
+        {
+          "mutation": "cross-entity service scratch read",
+          "rejection": "per-entity service expression separability"
+        },
+        {
+          "mutation": "wrong shared tick destination",
+          "rejection": "shared tick routing"
+        },
+        {
+          "mutation": "wrong shared sample destination",
+          "rejection": "shared publication routing"
+        },
+        {
+          "mutation": "global clock alias",
+          "rejection": "global state/function/clock isolation"
+        },
+        {
+          "mutation": "two queues consume one selected slot",
+          "rejection": "wrong entity queue/service update"
+        },
+        {
+          "mutation": "two simultaneous grant records",
+          "rejection": "grant records exactly one selected entity"
+        },
+        {
+          "mutation": "wrong instance binding",
+          "rejection": "instance bindings and broadcast receiver order"
+        },
+        {
+          "mutation": "lost zero-time Sample",
+          "rejection": "staging is zero-time"
+        },
+        {
+          "mutation": "lost zero-time Publish",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "lost zero-time Offer",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "wrong selector bound",
+          "rejection": "single bounded shared service selector"
+        },
+        {
+          "mutation": "wrong last-server recorder",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "lost epoch reset",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "duplicate shared server",
+          "rejection": "unique process/template count"
+        }
+      ]
+    },
+    "4": {
+      "processes": 197,
+      "load_step": {
+        "method": "dependency-checked factored local truth tables",
+        "guard_cases": 2400,
+        "allowed_update_cases": 2080,
+        "sample_domain_cases": 80,
+        "competition_outcomes": 5,
+        "independent_sticky_flags": true,
+        "scope": "local expressions only; not model checking or whole-system equivalence"
+      },
+      "endpoint_count": 2324,
+      "rejected_mutations": [
+        {
+          "mutation": "cross-entity queue state",
+          "rejection": "exact shared service eligibility guard"
+        },
+        {
+          "mutation": "cross-entity clock",
+          "rejection": "cross-entity state/clock/channel reference"
+        },
+        {
+          "mutation": "cross-entity ACK",
+          "rejection": "cross-entity state/clock/channel reference"
+        },
+        {
+          "mutation": "cross-entity scratch input",
+          "rejection": "private sample scratch state"
+        },
+        {
+          "mutation": "cross-entity service scratch read",
+          "rejection": "per-entity service expression separability"
+        },
+        {
+          "mutation": "wrong shared tick destination",
+          "rejection": "shared tick routing"
+        },
+        {
+          "mutation": "wrong shared sample destination",
+          "rejection": "shared publication routing"
+        },
+        {
+          "mutation": "global clock alias",
+          "rejection": "global state/function/clock isolation"
+        },
+        {
+          "mutation": "two queues consume one selected slot",
+          "rejection": "wrong entity queue/service update"
+        },
+        {
+          "mutation": "two simultaneous grant records",
+          "rejection": "grant records exactly one selected entity"
+        },
+        {
+          "mutation": "wrong instance binding",
+          "rejection": "instance bindings and broadcast receiver order"
+        },
+        {
+          "mutation": "lost zero-time Sample",
+          "rejection": "staging is zero-time"
+        },
+        {
+          "mutation": "lost zero-time Publish",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "lost zero-time Offer",
+          "rejection": "zero-time delivery chain"
+        },
+        {
+          "mutation": "wrong selector bound",
+          "rejection": "single bounded shared service selector"
+        },
+        {
+          "mutation": "wrong last-server recorder",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "lost epoch reset",
+          "rejection": "shared recorder and clock update"
+        },
+        {
+          "mutation": "duplicate shared server",
+          "rejection": "unique process/template count"
+        }
+      ]
+    }
+  }
+}

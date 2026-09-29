@@ -1,0 +1,17 @@
+{
+  "arguments": [
+    "--help"
+  ],
+  "arguments_windows": "--help",
+  "compile_only": false,
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+  "executable": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\help.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\help.memory.csv",
+  "stderr": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\help.stderr.txt",
+  "stdout": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\help.stdout.txt",
+  "timeout_seconds": 10
+}

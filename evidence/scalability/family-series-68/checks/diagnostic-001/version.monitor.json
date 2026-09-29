@@ -1,0 +1,29 @@
+{
+    "status":  "success",
+    "exit_code":  0,
+    "process_id":  13912,
+    "started_at_utc":  "2026-09-28T21:58:47.3335899Z",
+    "finished_at_utc":  "2026-09-28T21:58:47.4694988Z",
+    "runtime_seconds":  0.13839089999999998,
+    "timeout_seconds":  10,
+    "memory_limit_bytes":  2147483648,
+    "sample_interval_ms":  50,
+    "memory_measure":  "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+    "enforcement":  "sampled stop threshold, not a hard allocation cap; target process only",
+    "samples":  1,
+    "maximum_sample_gap_seconds":  0.0510736,
+    "peak_private_bytes":  2248704,
+    "peak_working_set_bytes":  7929856,
+    "peak_reported_working_set_bytes":  7933952,
+    "cpu_seconds":  0.03125,
+    "measured_memory_overshoot_bytes":  0,
+    "kill_tree_requested":  false,
+    "process_reaped":  true,
+    "error":  null,
+    "command":  [
+                    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+                    "--version"
+                ],
+    "cwd":  "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+    "compile_only":  false
+}

@@ -1,0 +1,20 @@
+{
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "WwBDAG8AbgBzAG8AbABlAF0AOgA6AE8AdQB0AC4AVwByAGkAdABlACgAJwBzAGEAbQBwAGwAZQAgAHMAdABkAG8AdQB0ACcAKQA7ACAAWwBDAG8AbgBzAG8AbABlAF0AOgA6AEUAcgByAG8AcgAuAFcAcgBpAHQAZQAoACcAcwBhAG0AcABsAGUAIABzAHQAZABlAHIAcgAnACkAOwAgAFMAdABhAHIAdAAtAFMAbABlAGUAcAAgAC0AUwBlAGMAbwBuAGQAcwAgADEA"
+  ],
+  "arguments_windows": "-NoProfile -NonInteractive -EncodedCommand WwBDAG8AbgBzAG8AbABlAF0AOgA6AE8AdQB0AC4AVwByAGkAdABlACgAJwBzAGEAbQBwAGwAZQAgAHMAdABkAG8AdQB0ACcAKQA7ACAAWwBDAG8AbgBzAG8AbABlAF0AOgA6AEUAcgByAG8AcgAuAFcAcgBpAHQAZQAoACcAcwBhAG0AcABsAGUAIABzAHQAZABlAHIAcgAnACkAOwAgAFMAdABhAHIAdAAtAFMAbABlAGUAcAAgAC0AUwBlAGMAbwBuAGQAcwAgADEA",
+  "compile_only": false,
+  "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+  "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-001\\normal.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-001\\normal.memory.csv",
+  "stderr": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-001\\normal.stderr.txt",
+  "stdout": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\monitor-controls-001\\normal.stdout.txt",
+  "timeout_seconds": 5
+}

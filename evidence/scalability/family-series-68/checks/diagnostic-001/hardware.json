@@ -1,0 +1,20 @@
+{
+    "os":  "Майкрософт Windows 10 Домашняя для одного языка",
+    "os_version":  "10.0.19045",
+    "os_build":  "19045",
+    "total_physical_ram_bytes":  17033019392,
+    "available_physical_ram_bytes":  5107851264,
+    "cpu_models":  [
+                       "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+                   ],
+    "logical_cpu_count":  8,
+    "powershell_version":  "5.1.19041.6456",
+    "dotnet_version":  "4.0.30319.42000",
+    "measured_at_utc":  "2026-09-28T21:58:46.6258264Z",
+    "memory_probe":  {
+                         "private_bytes":  70852608,
+                         "working_set_bytes":  80322560,
+                         "peak_working_set_bytes":  80470016
+                     },
+    "memory_measure":  "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process"
+}

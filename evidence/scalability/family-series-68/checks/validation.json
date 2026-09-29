@@ -1,0 +1,80 @@
+{
+  "source_commit_for_reproduction": "2548ec82a8fa98b3e152641fbc7a5eda30e4e07c",
+  "base_commit": "54531a34e612c8f056984531a63acb939e6af877",
+  "evidence_kind": "static_validation",
+  "property_verdict": "not_applicable",
+  "commands": [
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 evidence/scalability/family-series-68/.venv/bin/python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "result": "200 tests, 0 failures, 0 skips; 105.475 seconds",
+      "stdout": "checks/unit-tests.stdout.txt",
+      "stderr": "checks/unit-tests.stderr.txt",
+      "scope": "repository suite; src and tests unchanged from base"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 evidence/scalability/family-series-68/.venv/bin/python scripts/check_coordination.py",
+      "exit_code": 0,
+      "stdout": "Configured coordination: manifests/v2.md / manifests/collaboration-v2.yaml; historical pins match. Structural validation only; not activation approval, full baseline audit or verification."
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 evidence/scalability/family-series-68/.venv/bin/python -c 'from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)'",
+      "exit_code": 0,
+      "stdout": "FastMCP"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 evidence/scalability/family-series-68/.venv/bin/uppaal-verifyta list-examples",
+      "exit_code": 0,
+      "observed_example_names": [
+        "bounded_response",
+        "deadlock",
+        "deadlock_free",
+        "phy_contract_skeleton",
+        "queue_overflow"
+      ]
+    },
+    {
+      "command": "python3 -B evidence/scalability/family-series-68/generate.py --check",
+      "exit_code": 0,
+      "result": "N1..4 exact reproduction"
+    },
+    {
+      "command": "python3 -B evidence/scalability/family-series-68/check.py",
+      "exit_code": 0,
+      "result_reference": "checks/static.json"
+    },
+    {
+      "command": "python3 -B evidence/scalability/family-series-68/reproduce.py --output evidence/scalability/family-series-68/.venv/clean-reproduction.json",
+      "exit_code": 0,
+      "result_reference": "checks/clean-reproduction.json"
+    },
+    {
+      "command": "python3 -B evidence/scalability/family-series-68/test_monitor.py --run-id monitor-controls-001",
+      "exit_code": 1,
+      "result_reference": "checks/monitor-controls-001/test-report.json",
+      "disposition": "preserved failed harmless control; progress CLIXML and rounded sample gaps corrected before verifier launch"
+    },
+    {
+      "command": "python3 -B evidence/scalability/family-series-68/test_monitor.py --run-id monitor-controls-002",
+      "exit_code": 0,
+      "result_reference": "checks/monitor-controls-002/test-report.json"
+    },
+    {
+      "command": "git diff --check 54531a34e612c8f056984531a63acb939e6af877...HEAD",
+      "exit_code_before_raw_attributes": 2,
+      "exit_code_after_raw_attributes": 0,
+      "disposition": "raw Windows CRLF outputs preserved with scoped -text/-diff attributes; raw bytes not normalized"
+    },
+    {
+      "command": "python3 -B evidence/scalability/family-series-68/audit_artifacts.py --write-index",
+      "exit_code": 0,
+      "result": "399 exact artifact hashes and 36 tool run records checked; source commits, raw monitor fields, explicit verdicts, compressed logs and traces match; no model checking executed"
+    },
+    {
+      "command": "python3 -B evidence/scalability/family-series-68/run_checks.py --verifyta \"/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe\" --run-id diagnostic-001",
+      "exit_code": 0,
+      "result_reference": "checks/diagnostic-001/runs.json",
+      "note": "36 invocations; 21 behavioral timeouts have no verdict; see RESULTS.md for exact scientific outcomes; exit0 means plan completed and all models loaded, not all predicates satisfied"
+    }
+  ]
+}

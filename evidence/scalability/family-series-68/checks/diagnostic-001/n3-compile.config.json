@@ -1,0 +1,18 @@
+{
+  "arguments": [
+    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\generated\\n3\\model.xml",
+    "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\generated\\n3\\load.q"
+  ],
+  "arguments_windows": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\generated\\n3\\model.xml C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\generated\\n3\\load.q",
+  "compile_only": true,
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+  "executable": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\n3-compile.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\n3-compile.memory.csv",
+  "stderr": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\n3-compile.stderr.txt",
+  "stdout": "C:\\Users\\musta\\Desktop\\pySources\\mcp_uppaal\\.worktrees\\68-family-series\\evidence\\scalability\\family-series-68\\checks\\diagnostic-001\\n3-compile.stdout.txt",
+  "timeout_seconds": 10
+}
