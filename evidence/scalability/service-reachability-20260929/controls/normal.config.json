@@ -1,0 +1,20 @@
+{
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABbAEMAbwBuAHMAbwBsAGUAXQA6ADoATwB1AHQALgBXAHIAaQB0AGUAKAAnAG8AdQB0ACcAKQA7ACAAWwBDAG8AbgBzAG8AbABlAF0AOgA6AEUAcgByAG8AcgAuAFcAcgBpAHQAZQAoACcAZQByAHIAJwApADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxAA=="
+  ],
+  "arguments_windows": "-NoProfile -NonInteractive -EncodedCommand JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABbAEMAbwBuAHMAbwBsAGUAXQA6ADoATwB1AHQALgBXAHIAaQB0AGUAKAAnAG8AdQB0ACcAKQA7ACAAWwBDAG8AbgBzAG8AbABlAF0AOgA6AEUAcgByAG8AcgAuAFcAcgBpAHQAZQAoACcAZQByAHIAJwApADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxAA==",
+  "compile_only": false,
+  "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+  "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\normal.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\normal.memory.csv",
+  "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\normal.stderr.txt",
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\controls\\normal.stdout.txt",
+  "timeout_seconds": 5
+}

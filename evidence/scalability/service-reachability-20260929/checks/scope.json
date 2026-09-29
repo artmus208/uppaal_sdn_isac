@@ -1,0 +1,10 @@
+{
+  "base_commit": "a51a77e7852aee514bb0217a17d970fcf94cb704",
+  "scope_prefix": "evidence/scalability/service-reachability-20260929/",
+  "out_of_scope_files": [],
+  "whitespace_exit_code": 0,
+  "repository_tests": 200,
+  "test_failures": 0,
+  "test_skips": 0,
+  "model_checking_performed_by_this_check": false
+}

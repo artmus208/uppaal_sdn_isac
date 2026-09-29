@@ -1,0 +1,89 @@
+{
+  "kind": "static_evidence_audit_not_new_verification",
+  "records": 10,
+  "input_hashes": 82,
+  "rejected_mutations": 4,
+  "verifier_wall_seconds": 322.12842336000006,
+  "outcomes": [
+    {
+      "run_id": "service-002-n1-u0-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n2-u0-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n2-u1-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n3-u0-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n3-u1-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n3-u2-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n4-u0-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "query_hash": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n4-u1-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "query_hash": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n4-u2-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "query_hash": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "run_id": "service-002-n4-u3-service",
+      "status": "timeout",
+      "verdict": null,
+      "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "query_hash": "4cc61a783e99dc1baedefaa495179adb9b3bbb3a4b063dad52146272a8091c01",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    }
+  ]
+}

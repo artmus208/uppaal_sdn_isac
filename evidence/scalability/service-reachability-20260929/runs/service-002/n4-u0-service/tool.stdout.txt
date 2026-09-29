@@ -1,0 +1,9 @@
+Options for the verification:
+  Generating some trace
+  Search order is random depth first
+  Using conservative space optimisation
+  Seed is 20260929
+  State space representation uses minimal constraint systems with future testing
+  Using HashMap + Compress integers for discrete state storage
+
+Verifying formula 1 at \\wsl.localhost\Ubuntu\tmp\uppaal-service70\evidence\scalability\family-series-68\generated\n4\p4\u0-service.q:1

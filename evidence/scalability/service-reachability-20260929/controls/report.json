@@ -1,0 +1,45 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "actual": "success",
+      "expected": "success",
+      "name": "normal",
+      "passed": true
+    },
+    {
+      "actual": "timeout",
+      "expected": "timeout",
+      "name": "timeout",
+      "passed": true
+    },
+    {
+      "actual": "memory_limit",
+      "expected": "memory_limit",
+      "name": "memory",
+      "passed": true
+    }
+  ],
+  "evidence_kind": "monitor_controls_not_model_checking",
+  "hardware": {
+    "available_physical_ram_bytes": 7532220416,
+    "cpu_models": [
+      "AMD Ryzen 5 1400 Quad-Core Processor           "
+    ],
+    "dotnet_version": "4.0.30319.42000",
+    "logical_cpu_count": 8,
+    "measured_at_utc": "2026-09-29T11:46:44.9676372Z",
+    "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+    "memory_probe": {
+      "peak_working_set_bytes": 82112512,
+      "private_bytes": 68702208,
+      "working_set_bytes": 81969152
+    },
+    "os": "\u041c\u0430\u0439\u043a\u0440\u043e\u0441\u043e\u0444\u0442 Windows 11 Pro",
+    "os_build": "26200",
+    "os_version": "10.0.26200",
+    "powershell_version": "5.1.26100.6899",
+    "total_physical_ram_bytes": 17106464768
+  },
+  "source_commit": "e36ce14940a72d21cb5792a3dc8a9ba7b4ca1744"
+}

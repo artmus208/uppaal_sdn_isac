@@ -1,0 +1,71 @@
+{
+  "attempts_per_query": 1,
+  "base_commit": "a51a77e7852aee514bb0217a17d970fcf94cb704",
+  "error": "Native Windows monitor failed (2); see /tmp/uppaal-service70/evidence/scalability/service-reachability-20260929/runs/service-001/version/tool.config.json",
+  "memory_limit_bytes": 2147483648,
+  "per_behavior_seconds": 30,
+  "plan": [
+    {
+      "N": 1,
+      "entity": 0
+    },
+    {
+      "N": 2,
+      "entity": 0
+    },
+    {
+      "N": 2,
+      "entity": 1
+    },
+    {
+      "N": 3,
+      "entity": 0
+    },
+    {
+      "N": 3,
+      "entity": 1
+    },
+    {
+      "N": 3,
+      "entity": 2
+    },
+    {
+      "N": 4,
+      "entity": 0
+    },
+    {
+      "N": 4,
+      "entity": 1
+    },
+    {
+      "N": 4,
+      "entity": 2
+    },
+    {
+      "N": 4,
+      "entity": 3
+    }
+  ],
+  "search": [
+    "-s",
+    "-u",
+    "-o",
+    "2",
+    "--exploration",
+    "0",
+    "--state-representation",
+    "1",
+    "-S",
+    "1",
+    "-n",
+    "0",
+    "-r",
+    "20260929"
+  ],
+  "seed": 20260929,
+  "source_commit": "70a380e8d694f7a035c3b2359e35823de02f3804",
+  "status": "stopped",
+  "total_verifier_seconds": 420,
+  "used_seconds": 0.0,
+  "working_tree_before_campaign": "clean"
+}
