@@ -1,0 +1,31 @@
+{
+  "base_commit": "939ccbcba8d6d3381eb4c4288a0cd6de432dfd2d",
+  "allowed_paths": [
+    "manifests/baselines/uav-family-r1.yaml",
+    "manifests/collaboration-v2.yaml",
+    "scripts/check_family_baseline.py",
+    "tests/test_family_baseline.py"
+  ],
+  "allowed_evidence_prefix": "evidence/governance/family-baseline-activation-20260929/",
+  "changed_paths": [
+    "evidence/governance/family-baseline-activation-20260929/README.md",
+    "evidence/governance/family-baseline-activation-20260929/checks/cli-smoke.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/coordination.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/family-current.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/family-history.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/historical-audit-retry.json",
+    "evidence/governance/family-baseline-activation-20260929/checks/historical-audit-system.json",
+    "evidence/governance/family-baseline-activation-20260929/checks/historical-audit-system.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/historical-audit.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/materialize.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/mcp-smoke.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/unit-tests.log",
+    "evidence/governance/family-baseline-activation-20260929/checks/validation.json",
+    "evidence/governance/family-baseline-activation-20260929/materialize.py",
+    "manifests/baselines/uav-family-r1.yaml",
+    "manifests/collaboration-v2.yaml",
+    "scripts/check_family_baseline.py",
+    "tests/test_family_baseline.py"
+  ],
+  "result": "within_scope"
+}

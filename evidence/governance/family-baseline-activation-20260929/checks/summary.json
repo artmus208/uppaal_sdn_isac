@@ -1,0 +1,7 @@
+{
+  "unit_tests": 209,
+  "all_required_checks_completed": true,
+  "initial_failure": "optional PyYAML missing in test virtualenv",
+  "resolved_by": "historical-audit-retry.json",
+  "new_model_checking_runs": 0
+}

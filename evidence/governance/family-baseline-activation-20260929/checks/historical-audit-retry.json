@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "scripts/check_coordination.py",
+    "--audit-hashes",
+    "--commit",
+    "HEAD",
+    "--output",
+    "evidence/governance/family-baseline-activation-20260929/checks/historical-audit-system.json"
+  ],
+  "exit_code": 0,
+  "wall_seconds": 0.9452352079997581,
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "pyyaml": "6.0.3",
+  "reason": "First attempt could not import optional PyYAML in test venv; system Python already has it",
+  "log": "historical-audit-system.log"
+}
