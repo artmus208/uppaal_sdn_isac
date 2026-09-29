@@ -1,0 +1,20 @@
+{
+  "issue": 76,
+  "deliverable": "Completed bounded three-repeat P4 verifier-cost evidence and report",
+  "status": "local_checks_complete_external_publication_blocked",
+  "branch": "codex/vadimnbkg/76-family-cost-series",
+  "base_commit": "c6b07b252f7d25e4879d49b9cb32bf381e9555fb",
+  "published_source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+  "checked_result_checkpoint": "e6a33266a2183ad8707d7f7ec0fe0db4215308f5",
+  "repository_destination": "artmus208/uppaal_sdn_isac",
+  "pr_target": "read",
+  "scope": "evidence/scalability/runs/uav-family-p4-20260929/**",
+  "blocked_action": "GitHub create_blob for compressed compile stdout; no new result ref or PR published",
+  "rejected_blob_git_sha": "40ad07224ed0e82b8d387414a06ec199ca086d38",
+  "approval_review_reason": "Large evidence payload may contain sensitive internal data; explicit user authorization to transmit this payload to this external repository required.",
+  "inspected_payload": "398199-byte gzip of UPPAAL compile-only stdout (3152258 bytes), identical across all three N=1 repeats; begins with UPPAAL layout/clock/variable declarations.",
+  "next_step": "Explicit user permission to publish this completed scoped evidence/report package to the named repository, then exact-tree publication and PR to read; no rerun or new budget needed.",
+  "durable_bundle": "/mnt/d/uppaal_mcp/evidence/scalability/runs/uav-family-p4-20260929/handoff/campaign.bundle",
+  "latest_head_locator": "handoff/checkpoint.txt next to the bundle",
+  "acceptance": "not_reviewed; no self-acceptance or gate change"
+}
