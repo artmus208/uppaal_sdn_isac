@@ -22069,18 +22069,31 @@
       3,
       4
     ],
+    "acceptance_status": "not_reviewed",
+    "baseline_id": "uav-family-r1-20260929",
+    "baseline_manifest_sha256": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf",
     "cell_id": "039-r2-generation",
     "command": [
-      "python3",
+      "/usr/bin/python3",
       "-B",
-      "generate.py"
+      "/tmp/uppaal-p4-76/evidence/scalability/runs/uav-family-p4-20260929/generate_phase.py",
+      "/tmp/uppaal-p4-76/evidence/scalability/runs/uav-family-p4-20260929/campaign-002/039-r2-generation/generated"
     ],
+    "evidence_kind": "static_generation_not_model_checking",
+    "exit_code": 0,
+    "operating_environment": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
     "phase": "generation",
-    "reason": "pending",
+    "property_verdict": null,
+    "reason": null,
     "repeat": 2,
     "run_id": "uav-p4-76-campaign-002-039-r2-generation",
-    "status": "not_started",
-    "timeout_seconds": 30
+    "runtime_seconds": 1.6991979609992995,
+    "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+    "status": "success",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "1041d0e5f04ef50e3bf8bd91f702b421f5615eb45ca824780777ce7f1e7c7414",
+    "timeout_seconds": 30,
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
   },
   {
     "N": 1,
