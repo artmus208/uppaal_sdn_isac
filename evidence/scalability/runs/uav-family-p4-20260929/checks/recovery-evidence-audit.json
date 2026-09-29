@@ -1,0 +1,152 @@
+{
+  "kind": "evidence_integrity_audit_not_new_verification",
+  "scheduled_cells": 117,
+  "completed_verifier_cells": 114,
+  "budget_seconds": 4984.3867605700125,
+  "successful_query_records": [
+    {
+      "run_id": "uav-p4-76-campaign-002-005-r1-n1-joint-backlog",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "706bd493fef18a2de31be212156825af913ef21adde7d15cda47dc1bc1825afe",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-006-r1-n1-u0-queue-safety",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "violated"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-007-r1-n1-family-queue-safety",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "c820090fc19ffc80284d62194b40f62396cdeedc10fc1db0d853f4293b64656e",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "violated"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-008-r1-n1-u0-queue-full",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-014-r1-n2-joint-backlog",
+      "status": "success",
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "query_hash": "eef1fd0aa322d66e7142f4a04573aadb213b02b62eb0a5d3630572a0b98d5cfc",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-024-r1-n3-joint-backlog",
+      "status": "success",
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "query_hash": "08c11b52543f7ce4217ecdddaa73b5a7b30bee3c702aaf9977f976c81781704d",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-044-r2-n1-joint-backlog",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "706bd493fef18a2de31be212156825af913ef21adde7d15cda47dc1bc1825afe",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-045-r2-n1-u0-queue-safety",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "violated"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-046-r2-n1-family-queue-safety",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "c820090fc19ffc80284d62194b40f62396cdeedc10fc1db0d853f4293b64656e",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "violated"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-047-r2-n1-u0-queue-full",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-053-r2-n2-joint-backlog",
+      "status": "success",
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "query_hash": "eef1fd0aa322d66e7142f4a04573aadb213b02b62eb0a5d3630572a0b98d5cfc",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-063-r2-n3-joint-backlog",
+      "status": "success",
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "query_hash": "08c11b52543f7ce4217ecdddaa73b5a7b30bee3c702aaf9977f976c81781704d",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-083-r3-n1-joint-backlog",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "706bd493fef18a2de31be212156825af913ef21adde7d15cda47dc1bc1825afe",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-084-r3-n1-u0-queue-safety",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "violated"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-085-r3-n1-family-queue-safety",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "c820090fc19ffc80284d62194b40f62396cdeedc10fc1db0d853f4293b64656e",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "violated"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-086-r3-n1-u0-queue-full",
+      "status": "success",
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-092-r3-n2-joint-backlog",
+      "status": "success",
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "query_hash": "eef1fd0aa322d66e7142f4a04573aadb213b02b62eb0a5d3630572a0b98d5cfc",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    },
+    {
+      "run_id": "uav-p4-76-campaign-002-102-r3-n3-joint-backlog",
+      "status": "success",
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "query_hash": "08c11b52543f7ce4217ecdddaa73b5a7b30bee3c702aaf9977f976c81781704d",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "property_verdict": "satisfied"
+    }
+  ]
+}

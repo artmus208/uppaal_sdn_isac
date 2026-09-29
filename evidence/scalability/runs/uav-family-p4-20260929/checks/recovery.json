@@ -1,0 +1,19 @@
+{
+  "restored_from": "D:/uppaal_mcp/evidence/scalability/runs/uav-family-p4-20260929/handoff/campaign.bundle",
+  "bundle_verified": true,
+  "restored_head": "c79008d7f6c5f81193fb77c0d7c8035973aa0604",
+  "original_checkout": "D:/uppaal_mcp",
+  "original_branch": "read",
+  "original_head": "c6b07b252f7d25e4879d49b9cb32bf381e9555fb",
+  "original_dirty_changes": "preserved; no reset/stash/overwrite",
+  "linux_runner_processes": [],
+  "native_windows_verifyta_processes": [],
+  "native_probe_sandbox_failure": "WSL ERROR: UtilBindVsockAnyPort:309: socket failed 1",
+  "native_probe_outside_sandbox": "exit 0, empty process array",
+  "campaign_001": "stopped: generation error, 116 not_started, zero scientific/compile/load",
+  "campaign_002": "completed: 117 phases, 90 scientific attempts (18 success,72 timeout)",
+  "common_budget_used_seconds": 4984.3867605700125,
+  "recovery_action": "read-only evidence audit and 10 tests passed; no verifier launch or retry",
+  "publication_authorized": true,
+  "git_push_limitation": "fatal: could not read Username for https://github.com: terminal prompts disabled; using authorized GitHub connector"
+}
