@@ -42,3 +42,22 @@ For read-only reproduction use input and evidence audits. All exact commands,
 actual version, hashes, clean source commit, per-run hardware, status/verdict,
 resource samples, stdout/stderr and trace availability are retained. Existing
 results from #68 and historical P3 remain unchanged. Acceptance is pending.
+
+## Retained preflight failure and narrow implementation correction
+
+`service-001` stopped during `--version`, before any model/query invocation.
+The process returned exit 0 and version text, but finished before a native memory
+sample was captured (0.1113343 s). Its monitor status remains `monitor_error`;
+zero resource measurements are not valid measurements. Raw files are retained.
+The driver initially failed to see the result file immediately across WSL/Windows;
+the subsequently visible native record identifies the zero-sample condition.
+
+The corrected runner permits only continuation from this exact stopped preflight
+with zero scientific attempts. It reuses the already emitted version bytes and
+counts that process's time against the total budget. `--version` is NOT rerun.
+`--help` is called once with a 10 s timeout; metadata memory is explicitly
+unavailable. Metadata does not execute a model and makes no verification claim.
+`service-002` contains the original ten planned scientific attempts. Their memory
+measurement and fail-closed stop conditions are unchanged. No model/query is
+retried, no seed/strategy/budget is changed. The original setup failure remains
+visible; this is a repair to metadata handling, not a successful monitored run.

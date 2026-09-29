@@ -1,0 +1,29 @@
+{
+    "status":  "monitor_error",
+    "exit_code":  0,
+    "process_id":  9448,
+    "started_at_utc":  "2026-09-29T11:48:35.6954238Z",
+    "finished_at_utc":  "2026-09-29T11:48:35.8169208Z",
+    "runtime_seconds":  0.1113343,
+    "timeout_seconds":  10,
+    "memory_limit_bytes":  2147483648,
+    "sample_interval_ms":  50,
+    "memory_measure":  "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+    "enforcement":  "sampled stop threshold, not a hard allocation cap; target process only",
+    "samples":  0,
+    "maximum_sample_gap_seconds":  0,
+    "peak_private_bytes":  0,
+    "peak_working_set_bytes":  0,
+    "peak_reported_working_set_bytes":  0,
+    "cpu_seconds":  0.0625,
+    "measured_memory_overshoot_bytes":  0,
+    "kill_tree_requested":  false,
+    "process_reaped":  true,
+    "error":  "No valid target-process memory measurement; verdict unusable",
+    "command":  [
+                    "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+                    "--version"
+                ],
+    "cwd":  "D:\\UPPAAL\\app\\bin",
+    "compile_only":  false
+}

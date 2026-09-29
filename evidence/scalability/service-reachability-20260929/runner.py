@@ -8,6 +8,7 @@ import platform
 import re
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -93,16 +94,33 @@ def campaign(exe):
     if not json.loads((HERE/'controls/report.json').read_text()).get('all_passed'):
         raise RuntimeError('Monitor controls required')
     source = git('rev-parse', 'HEAD')
-    folder = HERE/'runs'/'service-001'
+    previous = HERE/'runs'/'service-001'
+    previous_settings = json.loads((previous/'settings.json').read_text())
+    previous_monitor = json.loads((previous/'version/tool.monitor.json').read_text())
+    if previous_settings['status'] != 'stopped' or list(previous.glob('n*-*')):
+        raise RuntimeError('Only the retained preflight with zero scientific attempts may continue')
+    if previous_monitor['command'][-1:] != ['--version'] or previous_monitor['exit_code'] != 0 or not previous_monitor['process_reaped']:
+        raise RuntimeError('Cannot reuse incomplete tool metadata')
+    prior_stdout = (previous/'version/tool.stdout.txt').read_text()
+    folder = HERE/'runs'/'service-002'
     folder.mkdir(parents=True)
     records = []
-    version = None
-    used = 0.0
+    version = next((line.strip() for line in prior_stdout.splitlines() if line.startswith('UPPAAL ')), None)
+    if not version:
+        raise RuntimeError('Captured tool version missing')
+    used = previous_monitor['runtime_seconds']
     settings = {'source_commit': source, 'base_commit': BASE, 'search': SEARCH,
                 'seed': 20260929, 'per_behavior_seconds': 30, 'memory_limit_bytes': 2*1024**3,
                 'total_verifier_seconds': 420, 'attempts_per_query': 1,
                 'plan': [{'N': n, 'entity': i} for n in range(1,5) for i in range(n)],
-                'working_tree_before_campaign': 'clean', 'status': 'running'}
+                'working_tree_before_campaign': 'clean', 'status': 'running',
+                'continuation': 'service-001 stopped during metadata only; no command or query is retried',
+                'version_reference': str((previous/'version/tool.stdout.txt').relative_to(HERE)),
+                'version_sha256': sha(previous/'version/tool.stdout.txt'),
+                'version_source_commit': previous_settings['source_commit'],
+                'version_monitor_status': previous_monitor['status'],
+                'version_metadata_valid': True, 'version_memory': 'not_available',
+                'prior_metadata_seconds': used}
     save(folder/'settings.json', settings)
 
     def run(name, args, seconds, n=None, i=None):
@@ -118,7 +136,7 @@ def campaign(exe):
         explicit = driver.verdict(stdout) if n else None
         if name == 'version' and rec['status'] == 'success':
             version = next((s.strip() for s in stdout.splitlines() if s.startswith('UPPAAL ')), None)
-        rec.update(run_id='service-001-'+name, source_commit=source, candidate_commit=BASE,
+        rec.update(run_id='service-002-'+name, source_commit=source, candidate_commit=BASE,
                    tool_version=version, N=n, entity=i, hardware_description=h,
                    operating_environment={'driver': platform.platform(), 'target': 'native Windows via WSL'},
                    execution_status=rec['status'], evidence_kind='direct_model_checking' if n else 'tool_metadata',
@@ -158,11 +176,24 @@ def campaign(exe):
         return rec, stdout
 
     try:
-        rec, _ = run('version', ['--version'], 10)
-        if rec['status']!='success' or not version:
-            raise RuntimeError('Tool version unavailable')
-        rec, help_text = run('help', ['--help'], 10)
-        if rec['status']!='success' or '2:Random depth first' not in help_text:
+        # Help/version are metadata, not model checks. The emitted version is
+        # reused verbatim; no retry of the fast process that escaped sampling.
+        help_dir = folder/'help'
+        help_dir.mkdir()
+        help_hw = hardware(help_dir)
+        command = [str(exe), '--help']
+        begin = time.monotonic()
+        result = subprocess.run(command, capture_output=True, timeout=10)
+        elapsed = time.monotonic()-begin
+        used += elapsed
+        (help_dir/'stdout.txt').write_bytes(result.stdout)
+        (help_dir/'stderr.txt').write_bytes(result.stderr)
+        save(help_dir/'metadata.json', {'source_commit':source, 'kind':'tool_metadata_not_model_checking',
+             'command':command, 'exit_code':result.returncode, 'runtime_seconds':elapsed,
+             'hardware':help_hw, 'memory':'not_available; short metadata process',
+             'stdout_sha256':sha(help_dir/'stdout.txt'), 'stderr_sha256':sha(help_dir/'stderr.txt')})
+        help_text = result.stdout.decode(errors='replace')
+        if result.returncode or '2:Random depth first' not in help_text:
             raise RuntimeError('Required search order unavailable')
         for n in range(1,5):
             for i in range(n):

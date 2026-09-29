@@ -1,0 +1,17 @@
+{
+  "arguments": [
+    "--version"
+  ],
+  "arguments_windows": "--version",
+  "compile_only": false,
+  "cwd": "D:\\UPPAAL\\app\\bin",
+  "executable": "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\runs\\service-001\\version\\tool.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\runs\\service-001\\version\\tool.memory.csv",
+  "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\runs\\service-001\\version\\tool.stderr.txt",
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service70\\evidence\\scalability\\service-reachability-20260929\\runs\\service-001\\version\\tool.stdout.txt",
+  "timeout_seconds": 10
+}
