@@ -34,6 +34,14 @@ for repeat in (1,2,3):
         observed=[x['runtime_seconds'] for x in cells if x.get('runtime_seconds') is not None]
         counts=Counter(x['status'] for x in cells)
         coverage.append(dict(repeat=repeat,N=n,scheduled=len(cells),status_counts=dict(counts),all_completed=counts['success']==n,observed_runtime_sum_seconds=sum(observed) if observed else None,observed_runtime_max_seconds=max(observed) if observed else None))
+verifier=[x for x in r if x['phase']!='generation' and x['status']!='not_started']
+summary['resource_observations']={
+    'minimum_available_ram_bytes':min(x['hardware_description']['available_physical_ram_bytes'] for x in verifier),
+    'maximum_sample_gap_seconds':max(x['maximum_sample_gap_seconds'] for x in verifier),
+    'maximum_observed_memory_bytes':max(max(x['peak_private_bytes'],x['peak_reported_working_set_bytes']) for x in verifier),
+    'requested_sample_interval_ms':50,
+    'timeout_observed_range_seconds':[min(x['runtime_seconds'] for x in q if x['status']=='timeout'),max(x['runtime_seconds'] for x in q if x['status']=='timeout')],
+}
 summary['preparation']=preparation
 summary['service_coverage_workloads']=coverage
 (here/'SUMMARY.json').write_text(json.dumps(summary,indent=2)+'\n')
@@ -49,6 +57,8 @@ for x in sorted(rows,key=lambda row:(row['query_category'],row['query_id'],row['
 lines += ['', '## Наблюдаемая память', '', 'Максимум по трём попыткам, включая таймауты. Это наблюдаемый пик target process, а не память, необходимая для завершения запроса. Порог остановки 2048 MiB является выборочным; фактические интервалы измерений и overshoot сохранены в каждом run.', '', '| N | Запрос | Максимум private / reported working set, MiB |', '|---:|---|---:|']
 for x in rows:
     lines.append(f"| {x['N']} | {x['query_id']} | {x['max_observed_memory_bytes']/1024**2:.2f} |")
+resource=summary['resource_observations']
+lines += ['', f"Зафиксированный максимальный интервал между отсчётами памяти — {resource['maximum_sample_gap_seconds']:.3f} с при запрошенных 50 мс; это не жёсткая гарантия частоты. Минимум доступной RAM перед запуском — {resource['minimum_available_ram_bytes']/1024**3:.3f} GiB (порог 3 GiB). Максимальный наблюдаемый пик target process — {resource['maximum_observed_memory_bytes']/1024**2:.2f} MiB. Остановок по памяти не было.", '']
 lines += ['', '## Подготовительные фазы', '', '| Повтор | N | Фаза | Статус | Полное время, с | Генератор, с |', '|---:|---|---|---|---:|---:|']
 for x in preparation:
     elapsed='—' if x['runtime_seconds'] is None else f"{x['runtime_seconds']:.3f}"

@@ -509,6 +509,16 @@
   ],
   "scope": "N=1..4 exact finite models; not working-network scalability; no closure of R03/R04/C06",
   "timing_scope": "fresh-process native verifier wall time including compilation/trace writing; not pure engine search time",
+  "resource_observations": {
+    "minimum_available_ram_bytes": 6361853952,
+    "maximum_sample_gap_seconds": 0.6184413999999983,
+    "maximum_observed_memory_bytes": 242462720,
+    "requested_sample_interval_ms": 50,
+    "timeout_observed_range_seconds": [
+      62.0628895,
+      62.2845966
+    ]
+  },
   "preparation": [
     {
       "run_id": "uav-p4-76-campaign-002-000-r1-generation",

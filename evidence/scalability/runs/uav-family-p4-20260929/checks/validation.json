@@ -1,50 +1,50 @@
 [
   {
-    "name": "unit-tests",
-    "command": [
-      "/tmp/uppaal-review-69-env/bin/python",
-      "-B",
-      "-m",
-      "unittest",
-      "discover",
-      "-s",
-      "tests",
-      "-v"
-    ],
+    "command": "python3 -B -m unittest discover -s evidence/scalability/runs/uav-family-p4-20260929 -p test_*.py -v",
     "exit_code": 0,
-    "wall_seconds": 81.56581367199942
+    "log": "final-runner-evidence-tests.txt",
+    "result": "10 passed"
   },
   {
-    "name": "coordination",
-    "command": [
-      "/tmp/uppaal-review-69-env/bin/python",
-      "-B",
-      "scripts/check_coordination.py"
-    ],
-    "exit_code": 0,
-    "wall_seconds": 0.12887312000020756
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/python -m unittest discover -s tests -v",
+    "exit_code": 1,
+    "log": "final-unit-tests.log",
+    "result": "sandbox: 208 passed, MCP stdio initialization timeout"
   },
   {
-    "name": "mcp-smoke",
-    "command": [
-      "/tmp/uppaal-review-69-env/bin/python",
-      "-B",
-      "-c",
-      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
-    ],
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/python -m unittest discover -s tests -v",
     "exit_code": 0,
-    "wall_seconds": 1.7419107950008765
+    "log": "final-unit-tests-unsandboxed.log",
+    "result": "outside sandbox: 209 passed"
   },
   {
-    "name": "cli-smoke",
-    "command": [
-      "/tmp/uppaal-review-69-env/bin/python",
-      "-B",
-      "-m",
-      "uppaal_mcp.cli",
-      "list-examples"
-    ],
+    "command": "python3 -B scripts/check_coordination.py",
     "exit_code": 0,
-    "wall_seconds": 0.5662391160003608
+    "log": "final-coordination.log",
+    "result": "static"
+  },
+  {
+    "command": "python3 -B scripts/check_family_baseline.py --audit-history",
+    "exit_code": 0,
+    "log": "final-family-pins.json",
+    "result": "static pins"
+  },
+  {
+    "command": "python3 -B evidence/scalability/runs/uav-family-p4-20260929/audit_evidence.py --root .",
+    "exit_code": 0,
+    "log": "evidence-audit.json",
+    "result": "static evidence audit"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/python -c \"from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)\"",
+    "exit_code": 0,
+    "log": "final-mcp-smoke.log",
+    "result": "MCP smoke"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src /tmp/uppaal-review-69-env/bin/uppaal-verifyta list-examples",
+    "exit_code": 0,
+    "log": "final-cli-smoke.log",
+    "result": "CLI smoke"
   }
 ]

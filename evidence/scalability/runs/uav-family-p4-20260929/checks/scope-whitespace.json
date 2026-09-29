@@ -1,0 +1,17 @@
+{
+  "kind": "static_scope_and_whitespace_audit",
+  "scope": "evidence/scalability/runs/uav-family-p4-20260929/**",
+  "changed_tracked_paths": 1559,
+  "out_of_scope": [],
+  "default_diff_check_exit_code": 2,
+  "cr_at_eol_diff_check_exit_code": 2,
+  "authored_python_markdown_diff_check_exit_code": 0,
+  "remaining_raw_artifact_warning_files": [
+    "evidence/scalability/runs/uav-family-p4-20260929/campaign-001/help/stdout.txt",
+    "evidence/scalability/runs/uav-family-p4-20260929/campaign-001/version/stdout.txt",
+    "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/005-r1-n1-joint-backlog/trace-1",
+    "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/044-r2-n1-joint-backlog/trace-1",
+    "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/083-r3-n1-joint-backlog/trace-1"
+  ],
+  "disposition": "Preserve exact raw verifier help/version and trace bytes; do not normalize scientific evidence."
+}

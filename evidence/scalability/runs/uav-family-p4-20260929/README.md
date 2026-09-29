@@ -108,3 +108,11 @@ python3 -B evidence/scalability/runs/uav-family-p4-20260929/build_report.py .
 The report builder reads the completed immutable records. It refuses an active
 campaign. `checks/evidence-audit.json` contains the integrity audit and exact
 successful-query claim tuples; acceptance remains with the independent reviewer.
+
+Final checks: 10 runner/evidence tests passed; 209 repository tests passed outside
+sandbox. The preceding sandbox run retained one MCP stdio initialization timeout
+(208 passed); both logs are retained. Coordination/family historical-pin audits,
+MCP import/build and CLI list-examples passed. Authored Python/Markdown whitespace
+checks passed. Whole-evidence diff --check returns 2 for untouched raw Windows
+CRLF/help/version/trace whitespace; see checks/scope-whitespace.json. No raw bytes
+were normalized to silence those warnings.
