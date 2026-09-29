@@ -1,0 +1,37 @@
+{
+  "N": 4,
+  "acceptance_status": "candidate",
+  "base_commit": "54531a34e612c8f056984531a63acb939e6af877",
+  "files": {
+    "instance-vector.json": "ba9f74d0d5dabc7b93377ab1f34a18d7c03c9e3a1def942926193fa56996d5d3",
+    "interface-inventory.json": "23c3f073fbae518f21643378f184590eb46d2db61bef5e9d3f5a01e834d4cbde",
+    "load.q": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726",
+    "model.xml": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+    "p4-queries.json": "cdeb5916c70e49bd06d4111c35157853d745b4ab15ee47e096fd20c0e61dbe55",
+    "p4/family-queue-safety.q": "1597d414e16dc56a9b062576dcf9445a43310e9d4a469f6dd4e28d5dd3588070",
+    "p4/joint-backlog.q": "4136909666b2c6e1b62ee8573168e37a8af8af070ca667ec25d0ace43654111b",
+    "p4/shared-capacity.q": "fefa5071ccc30359c590cb4c167064c33a81b89a86cedd5e8b7af27a44ee9795",
+    "p4/u0-queue-full.q": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55",
+    "p4/u0-queue-safety.q": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291",
+    "p4/u0-service.q": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789",
+    "p4/u1-service.q": "2a298fb175728e04657e2f3a08a8b6d08cfdc59f13f34de49df8e537d25c7fdd",
+    "p4/u2-service.q": "e840ed6d42baa248dd7895afcba51f5bfbfec6c13846b2177441a4e4628a01d1",
+    "p4/u3-service.q": "4cc61a783e99dc1baedefaa495179adb9b3bbb3a4b063dad52146272a8091c01",
+    "parameters.json": "0fff214da07d4e417f0380d191bd6cbb685b10d464f2d60dd152611ef5f9e9b5",
+    "parse-all.q": "a6bd17b36659d3f1afa09b6d5f77b1470f64b02c8215942e105899f59b573bd3",
+    "queries.json": "f93a9ee9c924809ecdca7c2090a42d7a60e14dd708cb02e8907445d59d356ed2",
+    "queries.q": "48ac02406068911e07ccbe21c861bd6c49d45b3aec8b758f7a510096dd160e20"
+  },
+  "generator_hash": "4b54f27d7925d07c9070a51d845dbee0659965b79e2d2baf3640157a12e9cdc8",
+  "generator_hash_rule": "sha256 of sorted sha256sum records over generator_source_files",
+  "generator_source_files": {
+    "generate.py": "386c08d1f3bec9f5a5602f483948cb74bbe7f8f075d7bde2b7e71aa805871384",
+    "query_schema.py": "1b4169a0daac762b72adc48836729ee8d6414d8a872d60ac82b14e235470a11d"
+  },
+  "hash_algorithm": "sha256 exact bytes",
+  "query_schema_hash": "1b4169a0daac762b72adc48836729ee8d6414d8a872d60ac82b14e235470a11d",
+  "reproduce": "python3 -B evidence/scalability/family-series-68/generate.py",
+  "scientific_queries_executed": false,
+  "source_hash": "a8854d7a40d8329b185bda911ff7ae8aa55fac129a7bce53854445efedb635d8",
+  "source_input_model_hash": "592678ed678ce8f70cf278f542e48bd2bb739969b53a962423d3e63f91e3e1e2"
+}
