@@ -1,0 +1,66 @@
+[
+  {
+    "name": "unit-tests",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit_code": 0,
+    "wall_seconds": 101.3820164419999,
+    "log": "unit-tests.log"
+  },
+  {
+    "name": "coordination",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "scripts/check_coordination.py"
+    ],
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit_code": 0,
+    "wall_seconds": 0.17286400500006494,
+    "log": "coordination.log"
+  },
+  {
+    "name": "mcp-smoke",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit_code": 0,
+    "wall_seconds": 2.2075660720001906,
+    "log": "mcp-smoke.log"
+  },
+  {
+    "name": "cli-smoke",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-m",
+      "uppaal_mcp.cli",
+      "list-examples"
+    ],
+    "environment_overrides": {
+      "PYTHONPATH": "src",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit_code": 0,
+    "wall_seconds": 0.7535261230000287,
+    "log": "cli-smoke.log"
+  }
+]

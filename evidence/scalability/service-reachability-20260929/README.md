@@ -61,3 +61,15 @@ unavailable. Metadata does not execute a model and makes no verification claim.
 measurement and fail-closed stop conditions are unchanged. No model/query is
 retried, no seed/strategy/budget is changed. The original setup failure remains
 visible; this is a repair to metadata handling, not a successful monitored run.
+
+## Results and review
+
+See [RESULTS.md](RESULTS.md): all ten attempts timed out without a verdict.
+Read-only evidence reproduction:
+
+```sh
+python3 -B evidence/scalability/service-reachability-20260929/audit.py --self-test
+```
+
+This audit checks provenance, raw outcomes, resources and four rejected
+metadata/verdict mutations. It does not launch UPPAAL.

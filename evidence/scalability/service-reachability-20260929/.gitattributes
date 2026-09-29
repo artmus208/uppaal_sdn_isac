@@ -1,3 +1,4 @@
 *.ps1 -text
-runs/** -text
-controls/** -text
+# Preserve exact native Windows output, including CRLF and tool trailing spaces.
+runs/** -text -whitespace
+controls/** -text -whitespace

@@ -1,0 +1,78 @@
+{
+  "attempts_per_query": 1,
+  "base_commit": "a51a77e7852aee514bb0217a17d970fcf94cb704",
+  "continuation": "service-001 stopped during metadata only; no command or query is retried",
+  "memory_limit_bytes": 2147483648,
+  "per_behavior_seconds": 30,
+  "plan": [
+    {
+      "N": 1,
+      "entity": 0
+    },
+    {
+      "N": 2,
+      "entity": 0
+    },
+    {
+      "N": 2,
+      "entity": 1
+    },
+    {
+      "N": 3,
+      "entity": 0
+    },
+    {
+      "N": 3,
+      "entity": 1
+    },
+    {
+      "N": 3,
+      "entity": 2
+    },
+    {
+      "N": 4,
+      "entity": 0
+    },
+    {
+      "N": 4,
+      "entity": 1
+    },
+    {
+      "N": 4,
+      "entity": 2
+    },
+    {
+      "N": 4,
+      "entity": 3
+    }
+  ],
+  "prior_metadata_seconds": 0.1113343,
+  "search": [
+    "-s",
+    "-u",
+    "-o",
+    "2",
+    "--exploration",
+    "0",
+    "--state-representation",
+    "1",
+    "-S",
+    "1",
+    "-n",
+    "0",
+    "-r",
+    "20260929"
+  ],
+  "seed": 20260929,
+  "source_commit": "ecf08b52dadce0d5413307775f6b1d36cd13fabb",
+  "status": "completed",
+  "total_verifier_seconds": 420,
+  "used_seconds": 322.12842336000006,
+  "version_memory": "not_available",
+  "version_metadata_valid": true,
+  "version_monitor_status": "monitor_error",
+  "version_reference": "runs/service-001/version/tool.stdout.txt",
+  "version_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+  "version_source_commit": "70a380e8d694f7a035c3b2359e35823de02f3804",
+  "working_tree_before_campaign": "clean"
+}
