@@ -1,0 +1,71 @@
+{
+  "evidence_kind": "static_validation",
+  "model_checking_performed": false,
+  "base_commit": "8237e8c2bec41aa1bb943cc33be1ac9586d03759",
+  "n1_baseline_pins_match": true,
+  "model_templates": 50,
+  "historical_audit": {
+    "n1_rows": 32,
+    "service_attempts": 5,
+    "service_status_counts": {
+      "timeout": 5
+    },
+    "service_model_hashes": [
+      "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385"
+    ],
+    "service_query_hashes": [
+      "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789"
+    ],
+    "unique_saved_n1_traces": 3,
+    "saved_trace_files": 15,
+    "service_verdicts": [
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "service_trace_files": 0,
+    "raw_state_metadata_gap_count": 15
+  },
+  "proposed_queries_exact_and_location_refs_exist": true,
+  "query_compilation_performed": false,
+  "changed_paths": [
+    "evidence/scalability/n1-service-diagnosis-78/PROTOCOL.md",
+    "evidence/scalability/n1-service-diagnosis-78/README.md",
+    "evidence/scalability/n1-service-diagnosis-78/artifact-hashes.json",
+    "evidence/scalability/n1-service-diagnosis-78/audit.py",
+    "evidence/scalability/n1-service-diagnosis-78/checks/cli-smoke.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/cli-smoke.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/coordination.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/coordination.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/family-baseline.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/family-baseline.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/history-audit.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/host-probe.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/host-probe.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/host-proposal.json",
+    "evidence/scalability/n1-service-diagnosis-78/checks/install.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/install.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/internal-review.json",
+    "evidence/scalability/n1-service-diagnosis-78/checks/mcp-smoke.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/mcp-smoke.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/package-audit.json",
+    "evidence/scalability/n1-service-diagnosis-78/checks/unit-tests.stderr.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/unit-tests.stdout.txt",
+    "evidence/scalability/n1-service-diagnosis-78/checks/validation.json",
+    "evidence/scalability/n1-service-diagnosis-78/history.json",
+    "evidence/scalability/n1-service-diagnosis-78/inspect_history.py",
+    "evidence/scalability/n1-service-diagnosis-78/inspect_model.py",
+    "evidence/scalability/n1-service-diagnosis-78/model-inventory.json",
+    "evidence/scalability/n1-service-diagnosis-78/protocol.json",
+    "evidence/scalability/n1-service-diagnosis-78/queries/d1-kpi-consumed.q",
+    "evidence/scalability/n1-service-diagnosis-78/queries/d2-service-ready.q",
+    "evidence/scalability/n1-service-diagnosis-78/queries/d3-useful-grant.q"
+  ],
+  "artifact_index_exclusions": [
+    "artifact-hashes.json",
+    "checks/package-audit.json"
+  ],
+  "hashed_artifacts": 29
+}
