@@ -1,0 +1,29 @@
+{
+    "status":  "success",
+    "exit_code":  0,
+    "process_id":  1584,
+    "started_at_utc":  "2026-09-29T15:22:20.3041445Z",
+    "finished_at_utc":  "2026-09-29T15:22:25.6999435Z",
+    "runtime_seconds":  5.3793755999999995,
+    "timeout_seconds":  60,
+    "memory_limit_bytes":  2147483648,
+    "sample_interval_ms":  50,
+    "memory_measure":  "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+    "enforcement":  "sampled stop threshold, not a hard allocation cap; target process only",
+    "samples":  71,
+    "maximum_sample_gap_seconds":  0.15101980000000026,
+    "peak_private_bytes":  102211584,
+    "peak_working_set_bytes":  101289984,
+    "peak_reported_working_set_bytes":  101588992,
+    "cpu_seconds":  2.515625,
+    "measured_memory_overshoot_bytes":  0,
+    "kill_tree_requested":  false,
+    "process_reaped":  true,
+    "error":  null,
+    "command":  [
+                    "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\model.xml"
+                ],
+    "cwd":  "D:\\UPPAAL\\app\\bin",
+    "compile_only":  true
+}
