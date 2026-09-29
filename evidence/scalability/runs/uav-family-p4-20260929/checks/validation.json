@@ -1,0 +1,50 @@
+[
+  {
+    "name": "unit-tests",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 81.56581367199942
+  },
+  {
+    "name": "coordination",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-B",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.12887312000020756
+  },
+  {
+    "name": "mcp-smoke",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-B",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 1.7419107950008765
+  },
+  {
+    "name": "cli-smoke",
+    "command": [
+      "/tmp/uppaal-review-69-env/bin/python",
+      "-B",
+      "-m",
+      "uppaal_mcp.cli",
+      "list-examples"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.5662391160003608
+  }
+]

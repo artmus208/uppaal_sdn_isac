@@ -1,0 +1,20 @@
+{
+  "arguments": [
+    "-NoProfile",
+    "-NonInteractive",
+    "-EncodedCommand",
+    "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+  ],
+  "arguments_windows": "-NoProfile -NonInteractive -EncodedCommand JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA",
+  "compile_only": false,
+  "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+  "executable": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\controls\\timeout\\tool.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\controls\\timeout\\tool.memory.csv",
+  "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\controls\\timeout\\tool.stderr.txt",
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\controls\\timeout\\tool.stdout.txt",
+  "timeout_seconds": 1
+}
