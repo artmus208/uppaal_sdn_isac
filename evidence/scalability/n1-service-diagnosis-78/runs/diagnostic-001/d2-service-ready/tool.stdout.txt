@@ -1,0 +1,2 @@
+
+Verifying formula 1 at \\wsl.localhost\Ubuntu\tmp\uppaal-n1-diagnosis-78\evidence\scalability\n1-service-diagnosis-78\queries\d2-service-ready.q:1

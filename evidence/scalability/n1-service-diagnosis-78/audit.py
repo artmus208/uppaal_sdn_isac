@@ -60,7 +60,8 @@ def run(write=False):
     report = {'evidence_kind': 'static_validation', 'model_checking_performed': False,
         'base_commit': BASE, 'n1_baseline_pins_match': True, 'model_templates': len(model['templates']),
         'historical_audit': history['summary'], 'proposed_queries_exact_and_location_refs_exist': True,
-        'query_compilation_performed': False, 'changed_paths': paths,
+        'query_compilation_performed_by_this_audit': False,
+        'current_campaign_audit': load_module('inspect_execution').inspect(), 'changed_paths': paths,
         'artifact_index_exclusions': sorted(excludes), 'hashed_artifacts': len(hashes)}
     if write:
         (HERE / 'artifact-hashes.json').write_text(json.dumps(hashes, indent=2, sort_keys=True) + '\n')

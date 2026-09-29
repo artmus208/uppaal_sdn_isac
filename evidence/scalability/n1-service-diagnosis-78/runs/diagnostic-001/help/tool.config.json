@@ -1,0 +1,17 @@
+{
+  "arguments": [
+    "--help"
+  ],
+  "arguments_windows": "--help",
+  "compile_only": false,
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+  "executable": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "memory_limit_bytes": 2147483648,
+  "mode": "run",
+  "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\help\\tool.monitor.json",
+  "sample_interval_ms": 50,
+  "samples": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\help\\tool.memory.csv",
+  "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\help\\tool.stderr.txt",
+  "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\help\\tool.stdout.txt",
+  "timeout_seconds": 10
+}

@@ -1,0 +1,66 @@
+{
+  "source_commit": "6bc27f79a619d6f63705d81ddbc1676a959a6e59",
+  "commands": [
+    {
+      "name": "execution-unit-tests",
+      "command": [
+        "/tmp/uppaal-n1-diagnosis-78/.venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 40.653546042000016,
+      "stdout": "evidence/scalability/n1-service-diagnosis-78/checks/execution-unit-tests.stdout.txt",
+      "stderr": "evidence/scalability/n1-service-diagnosis-78/checks/execution-unit-tests.stderr.txt"
+    },
+    {
+      "name": "execution-runner-tests",
+      "command": [
+        "/tmp/uppaal-n1-diagnosis-78/.venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evidence/scalability/n1-service-diagnosis-78",
+        "-p",
+        "test_diagnostics.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.7164073399999324,
+      "stdout": "evidence/scalability/n1-service-diagnosis-78/checks/execution-runner-tests.stdout.txt",
+      "stderr": "evidence/scalability/n1-service-diagnosis-78/checks/execution-runner-tests.stderr.txt"
+    },
+    {
+      "name": "execution-coordination",
+      "command": [
+        "/tmp/uppaal-n1-diagnosis-78/.venv/bin/python",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.06438052200019229,
+      "stdout": "evidence/scalability/n1-service-diagnosis-78/checks/execution-coordination.stdout.txt",
+      "stderr": "evidence/scalability/n1-service-diagnosis-78/checks/execution-coordination.stderr.txt"
+    },
+    {
+      "name": "execution-family-baseline",
+      "command": [
+        "/tmp/uppaal-n1-diagnosis-78/.venv/bin/python",
+        "-B",
+        "scripts/check_family_baseline.py",
+        "--audit-history"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 10.740173497999876,
+      "stdout": "evidence/scalability/n1-service-diagnosis-78/checks/execution-family-baseline.stdout.txt",
+      "stderr": "evidence/scalability/n1-service-diagnosis-78/checks/execution-family-baseline.stderr.txt"
+    }
+  ]
+}

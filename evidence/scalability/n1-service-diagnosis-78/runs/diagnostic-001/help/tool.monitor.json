@@ -1,0 +1,10 @@
+{
+    "status":  "success",
+    "exit_code":  0,
+    "process_id":  20064,
+    "process_reaped":  true,
+    "runtime_seconds":  0.0783016,
+    "started_at_utc":  "2026-09-29T21:34:45.1145121Z",
+    "finished_at_utc":  "2026-09-29T21:34:45.1999122Z",
+    "error":  null
+}

@@ -1,0 +1,55 @@
+{
+  "evidence_kind": "static_audit_of_preserved_model_checking_attempts",
+  "this_audit_invokes_verifier": false,
+  "source_commit": "98901b40e443308970c614afd3045e6a57a5d7e2",
+  "campaign_status": "completed",
+  "wall_seconds": 154.42796602499993,
+  "budget_seconds": 300,
+  "native_controls_passed": 3,
+  "actual_tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+  "attempts": [
+    {
+      "run_id": "n1-service-78-diagnostic-001-d1-kpi-consumed",
+      "status": "timeout",
+      "property_verdict": null,
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "4f760b6b51c931c5ced300ac5791ca7e67d1720423d3c046c7d17f4d1b8e4f8b",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "runtime_seconds": 32.059875,
+      "cpu_seconds": 31.828125,
+      "native_peak_bytes": 167673856,
+      "prelaunch_available_ram_bytes": 5520535552,
+      "maximum_sample_gap_seconds": 0.08761559999999999,
+      "trace_files": 0
+    },
+    {
+      "run_id": "n1-service-78-diagnostic-001-d2-service-ready",
+      "status": "timeout",
+      "property_verdict": null,
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "1deedcf65f045eb7dbb84b85bfc16d00b1f521c64fa3ed3717188463f38fbf11",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "runtime_seconds": 32.0735667,
+      "cpu_seconds": 31.578125,
+      "native_peak_bytes": 166043648,
+      "prelaunch_available_ram_bytes": 5546057728,
+      "maximum_sample_gap_seconds": 0.529149499999999,
+      "trace_files": 0
+    },
+    {
+      "run_id": "n1-service-78-diagnostic-001-d3-useful-grant",
+      "status": "timeout",
+      "property_verdict": null,
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "query_hash": "96e43207d397a98ad1ce08797e3215461b1703b97c4802c7eca46b4bbd134ca9",
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+      "runtime_seconds": 32.0445038,
+      "cpu_seconds": 31.8125,
+      "native_peak_bytes": 167686144,
+      "prelaunch_available_ram_bytes": 5505671168,
+      "maximum_sample_gap_seconds": 0.092394800000001,
+      "trace_files": 0
+    }
+  ],
+  "conclusion": "Three timeouts; no property verdict, no witness, no localization of reachability blocker."
+}

@@ -5,7 +5,9 @@
 Установлены точный смысл запроса, условия локального перехода обслуживания и
 несоответствие между grant и более сильным ожиданием «доставленный пакет / SLA».
 Ранее сохранённые результаты доказывают достижимость непустой/полной очереди и
-overflow, но не service. Новый UPPAAL-запуск не выполнялся.
+overflow, но не service. После явного разрешения пользователя выполнены **три
+новые диагностические проверки**: D1/D2/D3 завершились timeout без verdict и
+трассы. Они не локализовали причину; подробности и полный provenance — в §8.
 
 Owner/account-id: **vadimnbkg**, подтверждённый GitHub account. Reviewer/Integrator:
 **artmus208**. [Issue #78](https://github.com/artmus208/uppaal_sdn_isac/issues/78).
@@ -213,9 +215,9 @@ runner не исправлялись. Для service states действител
 
 | Гипотеза | Основания и различающая проверка | Статус |
 |---|---|---|
-| Service существует, поиск не успевает | Пять censored searches; 2592 staging branches; ручной кандидат. Новый BFS с промежуточными D1/D2 и полезным D3 проверит короткий путь при том же полном XML. | Правдоподобна, **не доказана**. CPU/timeouts не устанавливают state explosion как точную причину. |
-| Query/observer не соответствует ожидаемому событию | Grant допускается после overflow и до ACK; нет APP/SLA correlation. D3 уточняет абстрактное обслуживание до overflow. | **Установлено различие смыслов**, но это не объяснение недостижимости самого grant. Ошибка observer как причина timeout не установлена. |
-| Guards/синхронизация блокируют переход | Нужны одновременно backlog, COMM/JOINT и shared epoch. Публикацию можно пропустить, fallback может выбрать CONSTRAINED. D1 проверяет CollectKPI→SelectMode, D2 — pre-service guard с дополнительным ограничением q≤K. | Обязательная блокировка **не найдена**; полностью исключать скрытую композиционную блокировку нельзя. |
+| Service существует, поиск не успевает | Пять censored searches; 2592 staging branches; ручной кандидат. Новый BFS с D1/D2/D3 выполнен на том же полном XML: все три timeout (§8). | Правдоподобна, **не доказана**. CPU/timeouts не устанавливают state explosion как точную причину. |
+| Query/observer не соответствует ожидаемому событию | Grant допускается после overflow и до ACK; нет APP/SLA correlation. D3 уточняет абстрактное обслуживание до overflow, но его запуск тоже завершился timeout. | **Установлено различие смыслов**, но это не объяснение недостижимости самого grant. Ошибка observer как причина timeout не установлена. |
+| Guards/синхронизация блокируют переход | Нужны одновременно backlog, COMM/JOINT и shared epoch. Публикацию можно пропустить, fallback может выбрать CONSTRAINED. D1 проверяет CollectKPI→SelectMode, D2 — pre-service guard с дополнительным ограничением q≤K; оба запуска дали timeout. | Обязательная блокировка **не найдена**; полностью исключать скрытую композиционную блокировку нельзя. |
 | Обязательный вход отсутствует | Источник arrivals и успешные backlog/full runs есть. PHY input/report/KPI edges есть; ручной порядок совместим локально. | Отсутствие arrivals **исключено**. Отсутствие нужного KPI ordering на всех трассах пока не исключено машинно. Admission/ACK не обязательные условия grant. |
 | Overflow/другой режим мешает | q=5 поглощает updates; старые trace modes только IDLE/CONSTRAINED. D2 ограничивает q≤K и mode; D3 проверяет полезный outcome. | Ветви overflow/fallback подтверждены, их неизбежность до любого service **не установлена**. |
 | Starvation исключает E<> | Сервер может всегда выбирать -1, notifications могут теряться. | Логически неверный вывод: отсутствие all-trace гарантии не опровергает existential reachability. |
@@ -223,18 +225,20 @@ runner не исправлялись. Для service states действител
 
 Вариант (a) не заявляется: machine witness service отсутствует. Вариант (b) не
 заявляется: конкретный обязательный blocking mechanism не установлен. Вариант
-(c) — завершённый диагностический результат в разрешённом статическом бюджете:
-новых научных запусков 0, пять старых service attempts разобраны, наиболее
-информативная следующая проверка конкретизирована.
+(c) — завершённый диагностический результат: пять старых service attempts
+разобраны, три отдельно разрешённые новые проверки выполнены в бюджете. Ни одна
+не дала verdict; причина остаётся открытой.
 
-## 6. Следующий эксперимент и границы исправлений
+## 6. Одобренный эксперимент и границы исправлений
 
 [PROTOCOL.md](PROTOCOL.md) и [protocol.json](protocol.json) содержат три новые
 формулы на неизменной полной модели: D1 SelectMode, D2 healthy service-ready
 Sample_1, D3 immediate grant без overflow. По одному BFS-запуску, 30 s/query,
 2 GiB sampled stop, минимум 3 GiB свободной RAM перед каждым запуском, общий
-wall cap 300 s с metadata/controls/cleanup. Это **предложение, не разрешение**.
-Команды, hashes, настоящий доступный Windows10/Intel host и stop rules заданы.
+wall cap 300 s с metadata/controls/cleanup. Эти два файла сохраняют **исходный
+снимок предложения**. Их pending labels заменены явным решением пользователя
+«Даю добро» в Issue #78 и [authorization.json](authorization.json). Эксперимент
+выполнен, результаты в §8; новых разрешений или повторов не запрашивается.
 Положительный verdict не требуется для приёмки этого диагностического отчёта.
 Успешный отрицательный D2 исключит D3, но **не исходный grant через q=5**: q≤K
 является дополнительным ограничением диагностического вопроса.
@@ -267,16 +271,95 @@ production code не менялся; добавленные extraction scripts �
 artifacts. `checks/package-audit.json` фиксирует pins, query structure, scope и
 hash index. Статические проверки не называются model checking.
 
+После сохранения результатов серия проверок повторена на checkpoint
+`6bc27f79a619d6f63705d81ddbc1676a959a6e59`: **209 repository tests и 9 runner tests**,
+coordination и family baseline/history audit завершились с exit 0, без skipped
+или failed tests. Команды, время и raw logs сохранены в
+[checks/execution-validation.json](checks/execution-validation.json).
+Package audit повторно проверяет также сырые результаты текущей серии;
+`model_checking_performed=false` описывает сам audit, который verifier не вызывает.
+
 Работа изолирована в `/tmp/uppaal-n1-diagnosis-78`; исходный dirty checkout с
 промтами сохранён. Sandbox exec не запускался из-за bubblewrap bind-mount
 `/mnt/wslg/distro`; разрешённые команды выполнены вне него. SSH fetch завершился
-host-key error, публичные Git refs получены через HTTPS. Ни один scientific
-verifier process не запускался, version не подставлялась. Raw failure запуска
+host-key error, публичные Git refs получены через HTTPS. До разрешения scientific verifier не запускался. После него выполнены ровно три
+заявленные проверки; version получена реальным вызовом и не подставлялась. Raw failure запуска
 sandbox сохранён в описании окружения, не выдан за ошибку модели.
 
 Checkpoint bundles хранятся вне `/tmp` в
 `/mnt/c/Users/musta/Desktop/pySources/mcp_uppaal/evidence/scalability/n1-service-diagnosis-78/handoff/`.
 Финальный remote HEAD, scope, clean state, bundle и PR перечислены в GitHub
 handoff Issue #78. Следующий шаг — независимое review отчёта; отдельно — решение
-пользователя о предложенном эксперименте. Автор не принимает результат, не
+о дальнейшей диагностике только при наличии нового различающего метода.
+Одобренная серия закончена, повторов нет. Автор не принимает результат, не
 сливает PR и не закрывает R03/R04/C06.
+
+
+## 8. Выполненная серия после разрешения пользователя
+
+Пользователь подтвердил протокол словами **«Даю добро»**. Решение записано в
+Issue #78 и authorization.json; immutable PROTOCOL.md/protocol.json относятся
+к состоянию до этого решения. При запуске использован опубликованный clean
+source **98901b40e443308970c614afd3045e6a57a5d7e2**. Никакие model/query bytes,
+параметры или стратегия после подтверждения не изменялись.
+
+Перед проверками прошли 9 программных регрессий runner, затем в рамках общего
+лимита — три native controls (normal, timeout, memory), --version и --help.
+Вызван ровно один свежий verifier process на каждый D1/D2/D3, BFS `-o 0`, seed78,
+exploration0/representation1, `-S1/-n0`, diagnostic trace requested. Native host:
+Windows10/build19045, Intel i5-8300H, 8 logical CPUs. Реальная версия:
+**UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023**. Binary hash совпал с
+согласованным. Все native children завершены и reaped.
+
+| run_id | status / verdict | Предел / process wall, s | CPU, s | Native peak, bytes | Prelaunch free RAM, bytes |
+|---|---|---:|---:|---:|---:|
+| `n1-service-78-diagnostic-001-d1-kpi-consumed` | timeout / отсутствует | 30 / 32.059875 | 31.828125 | 167673856 | 5520535552 |
+| `n1-service-78-diagnostic-001-d2-service-ready` | timeout / отсутствует | 30 / 32.073567 | 31.578125 | 166043648 | 5546057728 |
+| `n1-service-78-diagnostic-001-d3-useful-grant` | timeout / отсутствует | 30 / 32.044504 | 31.812500 | 167686144 | 5505671168 |
+
+Все три попытки имеют model_hash
+`5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385`.
+Query hashes соответственно:
+
+- D1: `4f760b6b51c931c5ced300ac5791ca7e67d1720423d3c046c7d17f4d1b8e4f8b`.
+- D2: `1deedcf65f045eb7dbb84b85bfc16d00b1f521c64fa3ed3717188463f38fbf11`.
+- D3: `96e43207d397a98ad1ce08797e3215461b1703b97c4802c7eca46b4bbd134ca9`.
+
+Полный monotonic wall interval с controls, probes, metadata, subprocess wrappers,
+очисткой и промежуточными checkpoints: **154.427966 s / 300 s**. Период выполнения
+2026-09-29 21:34:21.156003–21:36:55.583964 UTC. Финальный перенос уже завершённого
+evidence в bundle не является verifier execution. 30-секундный stop threshold
+плюс завершение процесса объясняют process wall около 32 секунд. Memory stops
+не было; максимум 167686144 bytes (159.918 MiB), существенно ниже 2 GiB. Sample
+period был запрошен 50 ms; максимальный фактический разрыв 0.5291495 s, поэтому
+это sampled stop, не гарантия непрерывного измерения.
+
+Raw stderr пуст. Во всех stdout отсутствуют explicit verdict и state counts;
+`result_per_query=[]`, `states_explored=not_available`. Trace запрошен, но файлов
+нет. Эти новые формулы отличаются от пяти прежних service queries; их нельзя
+добавлять к старым результатам как однородные повторы. **D1/D2/D3 не подтвердили и
+не опровергли свои состояния**, значит новые попытки не различили гипотезы §5.
+Утверждения о нехватке времени поиска или обязательной блокировке остаются
+гипотезами. Это не доказательство недостижимости.
+
+Evidence: [runs/diagnostic-001/settings.json](runs/diagnostic-001/settings.json),
+[runs.json](runs/diagnostic-001/runs.json), отдельные hardware/config/monitor/
+memory/stdout/stderr files. Source/model/query/generator hashes, параметры,
+instance vector, полные команды и cwd, версия, native environment, времена,
+лимиты и cleanup сохранены. Каждый законченный этап закоммичен и экспортирован
+в проверенный durable execution.bundle. [Execution audit](checks/execution-audit.json)
+повторно сверяет записи с native monitor, raw bytes и CSV memory samples.
+
+```sh
+python3 -B evidence/scalability/n1-service-diagnosis-78/inspect_execution.py
+python3 -B -m unittest discover -s evidence/scalability/n1-service-diagnosis-78 -p 'test_diagnostics.py' -v
+```
+
+Обе команды не запускают verifier. Они не повторяют эксперимент. Реальный runner
+откажет при уже существующем diagnostic-001; автоматическая серия/повтор не
+предусмотрены. Если возвращаться к открытому вопросу, следующий различающий шаг —
+пошагово воспроизвести конкретный ручной порядок §3 в симуляторе исходной полной
+модели и сохранить точный первый запрещённый шаг либо допустимую трассу. Это
+отдельная будущая постановка: simulation не будет выдана за query verdict, а
+очередное увеличение timeout сейчас не обосновано. В этом поручении новых
+проверок больше нет.
