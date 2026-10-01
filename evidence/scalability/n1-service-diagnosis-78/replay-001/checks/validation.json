@@ -1,0 +1,81 @@
+[
+  {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 1,
+    "stdout": "01.stdout.txt",
+    "stderr": "01.stderr.txt"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0,
+    "stdout": "02.stdout.txt",
+    "stderr": "02.stderr.txt"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "scripts/check_family_baseline.py",
+      "--audit-history"
+    ],
+    "exit_code": 0,
+    "stdout": "03.stdout.txt",
+    "stderr": "03.stderr.txt"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0,
+    "stdout": "04.stdout.txt",
+    "stderr": "04.stderr.txt"
+  },
+  {
+    "command": [
+      ".venv/bin/uppaal-verifyta",
+      "list-examples"
+    ],
+    "exit_code": 0,
+    "stdout": "05.stdout.txt",
+    "stderr": "05.stderr.txt"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "stdout": "06.stdout.txt",
+    "stderr": "06.stderr.txt"
+  },
+  {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "evidence/scalability/n1-service-diagnosis-78/replay-001",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "stdout": "07.stdout.txt",
+    "stderr": "07.stderr.txt"
+  }
+]

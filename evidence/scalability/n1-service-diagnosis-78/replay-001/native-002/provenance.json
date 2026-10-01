@@ -1,0 +1,41 @@
+{
+  "source_commit": "3e927608fde7cfe0b0363105ca29412d7d5c4363",
+  "input_checkpoint": "b403fd3903b1d9f925cb51382ba5433810612f99",
+  "hashes": {
+    "/tmp/uppaal-replay-oct02/evidence/scalability/family-series-68/generated/n1/model.xml": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+    "/tmp/uppaal-replay-oct02/evidence/scalability/n1-service-diagnosis-78/manual-001/05-service-before-overflow.xtr": "8186e1b68324ba288abe6249abdc73fa771400d95414d4bf77d2d1f9fdfbfcf7",
+    "/tmp/uppaal-replay-oct02/evidence/scalability/n1-service-diagnosis-78/replay-001/TimedReplay.java": "1e9c28a4692d614ff63d15eac742872955c6d02bc5c6511bd9246e13fd3c9782",
+    "/tmp/uppaal-replay-oct02/evidence/scalability/n1-service-diagnosis-78/replay-001/native.ps1": "ae65b9718c7336785a2e65630211b61034f6d84c94e7ad70f47ff8798871ed5e",
+    "/tmp/uppaal-replay-oct02/evidence/scalability/n1-service-diagnosis-78/replay-001/run_replay.py": "c3a6f6a3a64861535c20c71661d33c70d510735f3a03b93f51760fbcc20e67ec",
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/server.exe": "6595f8f5a417061026f9f05ae1b9ab20ea166c88cf12478eb3d305683f26a1a4",
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/lib/model.jar": "987408dc5e9aa00c1077e5664db25126e3b611e9a0d1d2b35e055a96d9e4470a",
+    "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/uppaal.jar": "e0993ee3153e1721abccda3a984ccd075da3276de4cfcb27e4747d40320fda31",
+    "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe": "b3afe83e1ab067da4c56f1a7b2ba4c14ec832d694333f35b2b45178e9ac596ef"
+  },
+  "compile_command": [
+    "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/javac.exe",
+    "-encoding",
+    "UTF-8",
+    "-cp",
+    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\model.jar",
+    "-d",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\TimedReplay.java"
+  ],
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "execution_status": "wrapper_complete",
+  "property_verdict": null,
+  "wrapper_command": [
+    "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-NonInteractive",
+    "-ExecutionPolicy",
+    "Bypass",
+    "-File",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native.ps1",
+    "-ConfigPath",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\config.json"
+  ],
+  "wrapper_exit": 0,
+  "wall_seconds": 27.25185003899992
+}

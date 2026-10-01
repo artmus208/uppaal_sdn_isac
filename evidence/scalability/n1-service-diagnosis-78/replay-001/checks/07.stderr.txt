@@ -1,0 +1,9 @@
+test_clock_corruption_fails (test_inspect_replay.SavedEvidenceControls.test_clock_corruption_fails) ... ok
+test_discrete_corruption_fails (test_inspect_replay.SavedEvidenceControls.test_discrete_corruption_fails) ... ok
+test_false_property_claim_fails (test_inspect_replay.SavedEvidenceControls.test_false_property_claim_fails) ... ok
+test_saved_positive (test_inspect_replay.SavedEvidenceControls.test_saved_positive) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.104s
+
+OK

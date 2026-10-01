@@ -1,0 +1,83 @@
+{
+  "java": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0",
+  "cells": [
+    {
+      "mode": "replay",
+      "run_id": "n1-service-78-replay-001-replay",
+      "command": [
+        "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+        "TimedReplay",
+        "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\manual-001\\05-service-before-overflow.xtr",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay",
+        "replay"
+      ],
+      "argument_string": "-Xmx512m -Djava.awt.headless=true -cp \"\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar\" TimedReplay \"C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe\" \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\manual-001\\05-service-before-overflow.xtr \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay replay",
+      "hardware": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay\\hardware.json",
+      "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay\\stdout.txt",
+      "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay\\stderr.txt",
+      "memory": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay\\memory.csv",
+      "monitor": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay\\monitor.json",
+      "owned": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay\\owned.json",
+      "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\replay\\result.json"
+    },
+    {
+      "mode": "negative-discrete",
+      "run_id": "n1-service-78-replay-001-negative-discrete",
+      "command": [
+        "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+        "TimedReplay",
+        "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\manual-001\\05-service-before-overflow.xtr",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete",
+        "negative-discrete"
+      ],
+      "argument_string": "-Xmx512m -Djava.awt.headless=true -cp \"\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar\" TimedReplay \"C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe\" \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\manual-001\\05-service-before-overflow.xtr \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete negative-discrete",
+      "hardware": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete\\hardware.json",
+      "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete\\stdout.txt",
+      "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete\\stderr.txt",
+      "memory": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete\\memory.csv",
+      "monitor": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete\\monitor.json",
+      "owned": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete\\owned.json",
+      "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-discrete\\result.json"
+    },
+    {
+      "mode": "negative-clock",
+      "run_id": "n1-service-78-replay-001-negative-clock",
+      "command": [
+        "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+        "TimedReplay",
+        "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\manual-001\\05-service-before-overflow.xtr",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock",
+        "negative-clock"
+      ],
+      "argument_string": "-Xmx512m -Djava.awt.headless=true -cp \"\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar\" TimedReplay \"C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe\" \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\manual-001\\05-service-before-overflow.xtr \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock negative-clock",
+      "hardware": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock\\hardware.json",
+      "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock\\stdout.txt",
+      "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock\\stderr.txt",
+      "memory": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock\\memory.csv",
+      "monitor": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock\\monitor.json",
+      "owned": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock\\owned.json",
+      "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\negative-clock\\result.json"
+    }
+  ],
+  "prior_native_wall_seconds": 2.2721119,
+  "summary": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-002\\native-summary.json"
+}

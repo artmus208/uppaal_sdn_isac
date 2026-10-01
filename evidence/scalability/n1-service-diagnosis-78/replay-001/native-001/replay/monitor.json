@@ -1,0 +1,45 @@
+{
+    "exit_code":  2,
+    "peak_tree_sample_bytes":  398897152,
+    "run_id":  "n1-service-78-replay-001-replay",
+    "process_tree_reaped":  true,
+    "command":  [
+                    "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe",
+                    "-Xmx512m",
+                    "-Djava.awt.headless=true",
+                    "-cp",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+                    "TimedReplay",
+                    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\manual-001\\05-service-before-overflow.xtr",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-replay-oct02\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\native-001\\replay",
+                    "replay"
+                ],
+    "runtime_seconds":  0.7996424,
+    "requested_sleep_ms":  100,
+    "owned_process_identities":  [
+                                     {
+                                         "id":  16428,
+                                         "start":  "2026-10-01T22:40:17.9246546Z"
+                                     },
+                                     {
+                                         "id":  16564,
+                                         "start":  "2026-10-01T22:40:17.6553033Z"
+                                     },
+                                     {
+                                         "id":  18936,
+                                         "start":  "2026-10-01T22:40:17.9185555Z"
+                                     },
+                                     {
+                                         "id":  14420,
+                                         "start":  "2026-10-01T22:40:17.6603894Z"
+                                     }
+                                 ],
+    "started_utc":  "2026-10-01T22:40:17.6278714Z",
+    "timeout_seconds":  60,
+    "mode":  "replay",
+    "native_status":  "success",
+    "memory_limit_bytes":  2147483648,
+    "finished_utc":  "2026-10-01T22:40:18.4282321Z"
+}
