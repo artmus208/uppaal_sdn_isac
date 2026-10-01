@@ -1,7 +1,17 @@
 # Диагностика обслуживания N=1 — Issue #78
 
-**Итог: вариант (c), причина таймаутов не установлена.** Машинного свидетельства
-обслуживания полной исходной модели нет. Обязательная блокировка не доказана.
+**Текущий результат:** [replay-001](replay-001/README.md) содержит сохранённый
+engine-directed replay допустимого пути обслуживания исходной полной N=1 модели:
+68 переходов / 69 состояний, очередь 1 → 0 при модельном времени 10,
+grant=1, JOINT, без overflow. Оба отрицательных контроля отклонены.
+Это directed symbolic simulation, не новый verdict verifyta: APP request остаётся
+pending, завершение APP, доставка пакета и SLA не установлены. Точные run_id,
+статусы, hashes и фактическая версия движка приведены в пакете replay.
+
+**Исторический итог диагностики поиска — вариант (c): причина таймаутов не
+установлена.** До ручной трассы и её replay свидетельства обслуживания не было.
+Обязательная блокировка не доказана. Разделы 1–8 ниже сохраняют этот этап;
+упоминания будущего replay в них относятся к состоянию до `replay-001`.
 Установлены точный смысл запроса, условия локального перехода обслуживания и
 несоответствие между grant и более сильным ожиданием «доставленный пакет / SLA».
 Ранее сохранённые результаты доказывают достижимость непустой/полной очереди и
@@ -254,15 +264,28 @@ wall cap 300 s с metadata/controls/cleanup. Эти два файла сохра
 
 ## 7. Воспроизведение и handoff
 
-Без UPPAAL и без изменения исходных evidence:
+Текущий общий read-only audit: без UPPAAL, без изменения исходных evidence.
+Он сверяет модель, исторические запуски и текущую диагностическую серию,
+вызывает самостоятельный audit replay и проверяет полный текущий inventory:
 
 ```sh
 python3 -B evidence/scalability/n1-service-diagnosis-78/audit.py
+python3 -B evidence/scalability/n1-service-diagnosis-78/replay-001/inspect_replay.py
 python3 -B evidence/scalability/n1-service-diagnosis-78/inspect_model.py \
   --check evidence/scalability/n1-service-diagnosis-78/model-inventory.json
 python3 -B evidence/scalability/n1-service-diagnosis-78/inspect_history.py \
   --check evidence/scalability/n1-service-diagnosis-78/history.json
 ```
+
+`current-artifact-hashes.json` и `checks/current-package-audit.json` относятся
+к текущему пакету. Старые `artifact-hashes.json` и `checks/package-audit.json`
+сохранены побайтно как historical snapshots на commit
+`b403fd3903b1d9f925cb51382ba5433810612f99`; они не описывают добавленный replay.
+`audit.py --write` обновляет только два файла с префиксом `current-`.
+Самостоятельный audit replay продолжает проверять его исходный inventory.
+Исправление документации и handoff: [documentation-fix.md](documentation-fix.md).
+
+Следующие записи проверок относятся к историческим checkpoints:
 
 `checks/validation.json` сохраняет точные команды/exit codes/raw logs: **209 unit
 tests**, coordination, family baseline/history hash audit, MCP и CLI smoke checks
