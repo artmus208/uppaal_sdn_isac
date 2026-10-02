@@ -48,9 +48,12 @@
       "queue_model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
       "queue_bytes_identical": true,
       "attempt_consumed": true,
-      "status": "reserved",
+      "status": "timeout",
       "verdict": null,
-      "reason": "Durable attempt reservation; interrupted attempt counts as used"
+      "reason": null,
+      "result_path": "runs/issue87-03-enqueue-attempt01-20261002/attempts/001-1159501368734c50befdcaeea8aa005d/result.json",
+      "execution_source_commit": "ef3ba7e83e75e1fc56ed23797dcc12163914a170",
+      "manager_exit_code": 2
     },
     {
       "query_id": "attempt",
