@@ -1,0 +1,11 @@
+{
+    "logical_cpu":  8,
+    "cpu":  [
+                "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+            ],
+    "os_version":  "10.0.19045",
+    "total_visible_ram_bytes":  17033019392,
+    "available_ram_bytes":  5182013440,
+    "measured_utc":  "2026-10-02T03:37:43.0510815Z",
+    "os":  "Майкрософт Windows 10 Домашняя для одного языка"
+}

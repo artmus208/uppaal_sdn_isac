@@ -1,0 +1,5 @@
+# Raw Windows output and XTR formatting are byte-preserved scientific inputs.
+*.xtr -text -diff
+*.txt -text whitespace=-blank-at-eol,-blank-at-eof
+*.csv -text whitespace=-blank-at-eol,-blank-at-eof
+*.json -text whitespace=-blank-at-eol,-blank-at-eof

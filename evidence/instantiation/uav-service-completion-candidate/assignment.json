@@ -1,0 +1,186 @@
+{
+  "issue": {
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/82",
+    "title": "P2: build request-correlated UAV result delivery and truthful APP completion candidate",
+    "issue_number": 82,
+    "body": "Process / workstream: P2 — causal APP service-completion candidate.\nDeliverable: one reproducible full N=1 candidate composition in which successful completion means APP receives a fresh UAV detection result belonging to its own admitted request before its service deadline.\nAtomic IDs: R02/R05/R06 supporting P2 composition work; no reassignment or closure. R07 remains the downstream responsibility of #80.\nOwner: proposed vadimnbkg (existing authenticated account-id); unassigned until a separate implementation chat claims this Issue.\nIndependent reviewer / Integrator: proposed artmus208; appointment/acceptance is not implied.\nBase ref: origin/read.\nExact implementation base: 91113a1b634f030c7e895f54f5c36a0b140d66eb (merged PR #79, remote read checked 2026-10-02).\nTarget branch: read.\nTask branch after claim: codex/vadimnbkg/<issue-number>-uav-service-completion.\n\n## Confirmed requirement and service deadline\n\nOn 2026-10-02 the user confirmed: success is APP receipt of a fresh UAV detection result for its request within the deadline. A grant, command ACK, elapsed global timer or termination event cannot substitute for this receipt.\n\nConfirmed by the user on 2026-10-02 (recorded at 02:51:55 UTC): D_service = 40 model-time units, measured from the actual APP service_request emission and including admission and subsequent work. Timely receipt means request age <= 40; receipt after 40 cannot complete successfully. This is a relative service bound for the new candidate. The historical bus_T_complete=40 absolute trigger remains an immutable input, not the candidate completion condition. No physical-unit calibration is claimed.\n\nFreshness is age of the actual sensing sample at APP receipt, not age of its notification or the newest unrelated global KPI. Preserve the existing strict UAV quality/update/freshness requirement predicates; document the exact class/age mapping and boundary equalities. Any additional numeric parameter must have explicit assumption/provenance.\n\n## Problem and read-only inputs\n\nThe frozen N=1 composition has 50 automata. Boundary_E_SERVICE broadcasts service_complete at global time 40 and also after service_terminate. APP A_REQ accepts this broadcast from Accepted/AcceptedDegraded without a delivered-result guard. Shared queue service has no request-correlated result delivery. Consequently Completed does not establish the requested end-to-end success criterion.\n\nInputs:\n- evidence/scalability/family-series-68/generated/n1/model.xml; SHA256 5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385.\n- manifests/baselines/uav-family-r1.yaml; SHA256 5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf; family uav-family-r1-20260929.\n- historical default baseline manifests/baselines/reviewer-r1.yaml selected by manifests/current.json; retain its separate scope.\n- accepted limited P1/P2 decision in PR73#issuecomment-5890790922; family P4 activation PR75#issuecomment-5891123461; v2 activation #64. These decisions do not freeze or verify the new candidate.\n- merged PR #79 / #78: actual engine replay reaches a shared grant at t=10 with APP still pending.\n- optional read-only diagnostic context: draft PR #81 at dbc63cf92d2381040670b516cc6b11cd81a1639c shows a request rejection plus SLA violation report; not a successful result or an accepted dependency.\n- src/uppaal_mcp/integrated/{adapt,boundary,generator}.py and family-series-68/generate.py for provenance.\n\nRequired dependencies for candidate preparation: merged historical family-preparation/activation packages #69/#73/#75 and diagnosis #79. PR #81 acceptance is not required for independently preparing this candidate. New P1/P2 acceptance and a new Gate 1 decision are required before downstream P3/P5 verification claims.\n\n## Write scope and method\n\nSOLE authorized write scope:\n- evidence/instantiation/uav-service-completion-candidate/**\n\nAll other paths are read-only, including src/**, tests/**, existing family generators and generated XML, old evidence, manifests/** and levels_tex/samplepaper.tex. Place the deterministic transformer, tests, parameter contract, new XML, new query pack and evidence inside the sole directory. Use the exact historical full XML as a hash-checked compiler input and publish a separately identified candidate. Do not overwrite or relabel a frozen model.\n\nThis scope deliberately avoids source-path reservations in #30/#35/#36. Production-generator integration is a later separately scoped task after independent candidate review and any necessary scope transfer; this Issue does not release their reservations. The existing family generator compiles a frozen XML input: editing the integrated Python source alone would not alter that family.\n\n## Acceptance criteria\n\n1. Publish a small causal contract and deterministic generation command. Preserve the full N=1 PHY/MAC/SDN/APP composition; enumerate all changed templates, guards, assignments, synchronization channels, clocks and added instances. No reduced-model transfer claim.\n2. Introduce bounded request/job correlation appropriate to the existing single-request abstraction. Bind request emission, accepted admission, an actual PHY detection/measurement event for the UAV job, its stored result and quality values, transmission work, and actual APP receipt. A healthy KPI snapshot alone is not a produced UAV detection result. Initial/default values, uncorrelated traffic, stale/duplicate events and unrelated grants cannot complete the request.\n3. Couple result transmission to queue insertion and actual MAC eligibility/service; preserve capacity and overflow semantics. Distinguish scheduling/grant, attempted transmission, any applicable command ACK and actual delivery. Preserve a failure/loss branch; receipt cannot be assigned unconditionally when a grant occurs.\n4. Completed requires admitted matching request, matching received sample/result, consistent sensing quality satisfying the strict APP request, sample age satisfying freshness at receipt, and request age <= D_service. Do not evaluate stored payload quality using later unrelated global KPI values. Record completion ages on receipt rather than allowing clocks in terminal locations to invalidate a retrospective success claim.\n5. Replace the timer/termination completion shortcut. Add explicit timeout/failure/cancel outcomes that cannot set a successful-completion flag. Record whether admission failure and service failure are separate outcomes. Prevent completion after rejection, cancellation or expiry; preserve existing admission-loss/timeout and safety downgrade policies.\n6. Reset the service clock only on actual APP request emission; reset sample age only on the actual matching sensing measurement. Specify deadline and freshness equality behavior. Bound invariants/timeout transitions must allow failure rather than introduce an artificial time lock; inspect committed/urgent behavior.\n7. Add meaningful regression controls for early fake completion, wrong request/sample, stale result, failed sensing, grant without delivery, missing/late delivery, cancellation and deadline equality. Include a healthy matching timely case. Static checks establish structure only.\n8. Publish exact success-reachability and completion-safety queries plus non-vacuity controls. A directed UPPAAL engine witness/replay must audit every step of the healthy causal chain and terminal state; engine-confirmed simulation and exhaustive query verdicts remain distinct. A witness does not establish universal completion/fairness. A timeout remains open.\n9. Before native execution checkpoint the candidate and record an executable bounded protocol: exact model/query/source hashes, commands, actual tool version, unique run IDs, per-cell/total time and memory caps, fresh resource checks, raw output/trace and cleanup. No budget transfer, rerun or semantic-evidence transfer from #78/#80. Failed/incomplete runs remain visible. Each model configuration has its own model hash/run IDs.\n10. Run relevant CONTRIBUTING tests/checks and scoped regressions; publish a clean named branch and PR to read with exact HEAD/base, scope audit and durable branch/bundle handoff. Reviewer decides acceptance; author does not freeze a baseline or close R07.\n\nExpected outputs under the sole scope: contract.md, parameter/provenance records, deterministic candidate generator, full model.xml, instance/interface inventories, query pack, causal trace/evidence index, regression tests and HANDOFF.md. Exact filenames may vary.\n\nEvidence class: changed-model candidate + static validation + separately recorded engine simulation/model-checking evidence when actually executed.\nNo automatic transfer of old verification results. New baseline activation/freeze needs a governance Issue with manifest-specific scope. The numerical deadline is confirmed. The one-Issue-per-chat rule requires implementation in a separate chat assigned to this Issue.\n\nStatus: ready for claim in a separate implementation chat. The deadline clarification is complete; no implementation has started. The new chat must recheck dependencies, current open scopes, input hashes and the exact pinned base before claiming. This Issue records the discovered problem and concrete handoff; no automata have been changed by its creation.\n",
+    "state": "open",
+    "user": {
+      "login": "vadimnbkg",
+      "name": "vadimnbkg",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/331199267?v=4",
+      "id": 331199267
+    },
+    "assignees": null,
+    "labels": [
+      {
+        "name": "status/ready",
+        "color": "ededed",
+        "description": null
+      },
+      {
+        "name": "workstream/P2",
+        "color": "ededed",
+        "description": null
+      },
+      {
+        "name": "type/evidence",
+        "color": "ededed",
+        "description": null
+      }
+    ],
+    "milestone": null,
+    "state_reason": null,
+    "comments": 0,
+    "created_at": "2026-10-02T02:50:54Z",
+    "updated_at": "2026-10-02T02:52:17Z",
+    "closed_at": null,
+    "display_url": "https://github.com/artmus208/uppaal_sdn_isac/issues/82",
+    "display_title": "P2: build request-correlated UAV result delivery and truthful APP completion candidate"
+  },
+  "profile": {
+    "id": "331199267",
+    "name": null,
+    "email": "vadimnbkg@gmail.com",
+    "nickname": "vadimnbkg",
+    "picture": "https://avatars.githubusercontent.com/u/331199267?v=4",
+    "workspace_id": null,
+    "workspace_name": null,
+    "workspace_picture": null
+  },
+  "dependency_prs": [
+    {
+      "number": 69,
+      "merged": true,
+      "merge_commit_sha": "93e3a0c8688d56ba4b2520d8cbf4287e6d52f281",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/69"
+    },
+    {
+      "number": 73,
+      "merged": true,
+      "merge_commit_sha": "939ccbcba8d6d3381eb4c4288a0cd6de432dfd2d",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/73"
+    },
+    {
+      "number": 75,
+      "merged": true,
+      "merge_commit_sha": "c6b07b252f7d25e4879d49b9cb32bf381e9555fb",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/75"
+    },
+    {
+      "number": 79,
+      "merged": true,
+      "merge_commit_sha": "91113a1b634f030c7e895f54f5c36a0b140d66eb",
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/79"
+    }
+  ],
+  "decisions": [
+    {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/issues/64#issuecomment-5878071165",
+      "body": "## Решение об активации v2\n\nПо прямому поручению пользователя / Integrator в текущей сессии: «Запишем активацию», фиксируется активация scientific plan `manifests/v2.md` и coordination contract `manifests/collaboration-v2.yaml` через `manifests/current.json` для новых задач в `read`.\n\n- **Activation commit:** `05ac107789532b6d2eac9914433a4b8408835057`.\n- **Effective at:** **2026-09-28 20:38:12 UTC**. Это время решения об активации; оно не переносится задним числом на время merge.\n- **Activation PR:** https://github.com/artmus208/uppaal_sdn_isac/pull/65 — merged into `read` 2026-09-28 20:33:33 UTC.\n- **Independent approval:** `artmus208`, APPROVED, 2026-09-28 20:33:14 UTC.\n- **Decision authority:** прямое поручение пользователя / Integrator после независимого approval и merge. Запись внесена ассистентом через аккаунт `vadimnbkg`; она не является самостоятельной приёмкой автора.\n- **Operational guide:** `CONTRIBUTING-v2.md`.\n- **Baseline:** `manifests/baselines/reviewer-r1.yaml`, `reviewer-r1-gate1-20260923`.\n- **Migration map:** `manifests/v2-migration.md`.\n- **Open-issue mapping:** [evidence/governance/20260928-v2-activation/open-issues-map.json](https://github.com/artmus208/uppaal_sdn_isac/blob/05ac107789532b6d2eac9914433a4b8408835057/evidence/governance/20260928-v2-activation/open-issues-map.json).\n\n**Scope:** operational coordination only. Исторические generation inputs, baseline, evidence и прежние scientific acceptance records сохраняются в исходной области. Эта запись не принимает новые научные gates, не закрывает P3 и не меняет ownership, write scopes или обязательные зависимости существующих Issues. Для новых задач действует v2, включая принцип обоснованного компромисса и открытой неопределённости в пределах выбранного бюджета.\n\nПроверены фактические merge/approval и содержимое pointer/contract на указанном merge commit. Head PR совпадает с ранее проверенным `6f9e5e08df33fdbd52aed0d36c4b2f1ed15b4817`; [CI успешен](https://github.com/artmus208/uppaal_sdn_isac/actions/runs/36478079073). Ранее сохранены 200 успешных tests и audit 57 file hashes без расхождений. Новые model-checking runs не выполнялись.\n\nDeliverable #64 принят в указанной governance-области; условия активации выполнены. Issue можно закрыть как completed."
+    },
+    {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/73#issuecomment-5890790922",
+      "body": "## Решение Integrator: A/B и применимость P1/P2\nЗафиксировано 2026-09-29 после явного решения пользователя/Integrator в текущей сессии:\n> Подтверждаю A/B и применимость P1/P2 в этой ограниченной области\n\nRecorded by: vadimnbkg (запись решения пользователя, не самостоятельная приёмка автором).\n\nПринятый пакет: PR #73, HEAD c439b0811c8f0063ee44e968587d08a46361b4b4; merge в read 939ccbcba8d6d3381eb4c4288a0cd6de432dfd2d.\nИсходная база пакета: read, 52c5c8d94122f5fbd2a7b689fd9e764583de3226.\nТочные входы и hashes: [baseline-candidate.json](https://github.com/artmus208/uppaal_sdn_isac/blob/c439b0811c8f0063ee44e968587d08a46361b4b4/evidence/governance/family-gate1-20260929/baseline-candidate.json), [input-hashes.json](https://github.com/artmus208/uppaal_sdn_isac/blob/c439b0811c8f0063ee44e968587d08a46361b4b4/evidence/governance/family-gate1-20260929/input-hashes.json).\nИдентификатор для последующей фиксации: uav-family-r1-20260929.\n\n**A — ACCEPTED:** точное конечное семейство N=1,2,3,4 (50/99/148/197 автоматов) принято для последующей фиксации baseline. Сохранены абстрактные параметры, один общий необязательный выбор обслуживания за эпоху, частные SDN-контексты, observers и известные ограничения. Это приёмка объекта исследования, не истинности формул.\n\n**P1/P2 applicability — ACCEPTED в ограниченной области:** применимы сохранённые методика, абстрактные единицы/классы/параметры и описание частных компонентов/интерфейсов вместе с расширением композиции #68/#69 и ограничениями из follow-up в Issue #72. Эмпирическая калибровка, внешняя validation, whole-system timed equivalence и автоматический перенос P3 не принимаются. Изменение SharedLoad и последовательности уведомлений явно учтено; структурные/локальные проверки не становятся model checking.\n\n**B — ACCEPTED:** допустимая область будущего P4 — затраты запусков verifier на точных полных моделях и запросах при заданных условиях/лимитах. Завершённые проверки и прерванные по лимитам наблюдения учитываются отдельно. Достижимость обслуживания остаётся OPEN. Нет выводов о работоспособности сети, полезной пропускной способности, fairness, SLA или универсальной queue safety. R03/R04/C06 автоматически не закрываются.\n\nИсторический Gate 1 reviewer-r1-gate1-20260923 сохраняется.\nДанное решение снимает ожидание A/B и applicability; прежние пометки «awaiting decision» в proposal — историческое состояние до этого решения.\nОперационная фиксация/активация нового baseline требует отдельного governance Issue с manifest-specific scope и проверки совместимости выбора baseline. Этот комментарий не утверждает завершение такой активации.\nP4 execution authorization: NOT GRANTED; нужен отдельный Issue и принятый протокол исполнения. Новых запусков UPPAAL нет."
+    },
+    {
+      "url": "https://github.com/artmus208/uppaal_sdn_isac/pull/75#issuecomment-5891123461",
+      "body": "## Operational activation — ACCEPTED\nDecision actor: user/integrator, explicitly authorized in this session.\nRecorded by: vadimnbkg (recording the user's decision).\nActivation time UTC: 2026-09-29 13:19:03 UTC.\nActivation merge commit: c6b07b252f7d25e4879d49b9cb32bf381e9555fb.\nAccepted PR: https://github.com/artmus208/uppaal_sdn_isac/pull/75\nAcceptance record: https://github.com/artmus208/uppaal_sdn_isac/pull/75#issuecomment-5891105108\nReviewed HEAD: 62502c782dd317d32af1c33cb4ec3d33c33f51be.\nBase ref / commit: read / 939ccbcba8d6d3381eb4c4288a0cd6de432dfd2d.\n\nBaseline ID: uav-family-r1-20260929.\nManifest: manifests/baselines/uav-family-r1.yaml.\nManifest SHA256 at the actual merge commit: 5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf.\nThe fetched merge tree exactly matches the reviewed HEAD tree.\n\nInput scope / P1/P2 / A/B decision: https://github.com/artmus208/uppaal_sdn_isac/pull/73#issuecomment-5890790922\nExact model, generator, source, query, parameter and instance-vector hashes are pinned in the manifest at the above merge commit; finite N=1,2,3,4 only, 50/99/148/197 automata and 30 P4 query files.\nPinned observed tool version: UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023. Future run records must capture their actual tool/environment.\n\nActivation: accepted for explicit selection by a P4 Issue in the limited A/B scope. The accepted input freeze and this operational activation record satisfy the family-specific baseline/Gate 1 prerequisite in that scope. The P4 Issue must pin the baseline ID, manifest SHA256, source commit and this activation record.\nHistorical baseline/default reviewer-r1-gate1-20260923 remains unchanged; no automatic P3 transfer.\nService reachability: OPEN. Completed and limit-censored verifier attempts must be reported separately. No working-network scalability, useful-throughput, fairness, SLA, calibration or universal queue-safety claim.\nR03/R04/C06 are not closed by activation.\nP4 execution authorization: NOT GRANTED by this activation; separate Issue and execution protocol required.\n\nThe manifest's pending-activation wording is the immutable preparation snapshot; this post-merge Issue record is the current operational decision, as specified in the accepted README. No extra manifest rewrite is required.\nIssue #74 deliverable completed. CI 36573344606 succeeded; 209 local tests and family/historical audits passed. No new UPPAAL run.\n\nAuthoritative activation Issue: https://github.com/artmus208/uppaal_sdn_isac/issues/74"
+    }
+  ],
+  "open_scopes": [
+    {
+      "number": 82,
+      "scope": "Write scope and method\n\nSOLE authorized write scope:\n- evidence/instantiation/uav-service-completion-candidate/**\n\nAll other paths are read-only, including src/**, tests/**, existing family generators and generated XML, old evidence, manifests/** and levels_tex/samplepaper.tex. Place the deterministic transformer, tests, parameter contract, new XML, new query pack and evidence inside the sole directory. Use "
+    },
+    {
+      "number": 80,
+      "scope": "Write scope\n- evidence/scenarios/r07-uav-n1-20261002/**\n\nAll models, generators, manifests, prior evidence, Issue #78 package and levels_tex/samplepaper.tex are read-only. A new scoped driver may reuse the existing replay implementation as read-only input. No overlapping scenario scope exists in the audited Issue inventory; recheck before work.\n\n## Assignment basis\nThe user requested a detailed prompt for ag"
+    },
+    {
+      "number": 78,
+      "scope": "Write scope: evidence/scalability/n1-service-diagnosis-78/**.\nRead-only: all source models, generators, manifests, historical evidence, manuscript and other paths.\nScope audit: existing open Issues inspected; no diagnosis Issue or overlapping unique diagnostic directory found.\nAuthorization: user explicitly authorized creation/claim, static diagnostic work, checkpoint publication and PR to read. New verifier"
+    },
+    {
+      "number": 76,
+      "scope": "Write scope\nevidence/scalability/runs/uav-family-p4-20260929/**\nThis unique directory contains the runner/support scripts, protocol binding, tests/controls, scratch generation isolated from historical artifacts, immutable run subdirectories and report. No overlap with inspected open Issue scopes.\nAll manifests, source/models/queries, previous evidence and manuscript are read-only. Generate in an isolated scr"
+    },
+    {
+      "number": 66,
+      "scope": "Write scope\nevidence/scalability/family-feasibility-66/**\nThis issue-number substitution is the only allowed directory; it will be resolved before editing. User explicitly authorizes this P2 prototype inside scalability evidence. Existing src, manifests, frozen inputs, previous evidence, manuscript are read-only. No open issue has an overlapping scope (checked at creation).\n\n## Candidate choice\nIncrease UAV "
+    },
+    {
+      "number": 62,
+      "scope": "Write scope\n- manifests/v2.md\n- manifests/v2-migration.md\n- evidence/governance/20260927-manifest-v2/**\n\nВсе остальные пути read-only, включая старые manifests, baseline, source/generator, проверочные scripts/tests, рукопись и прежние evidence. Новые результаты model checking и активация v2 не входят в scope.\nScope audit: открытые Issues проверены; перечисленные новые пути не пересекаются с их write scopes. "
+    },
+    {
+      "number": 51,
+      "scope": "Write scope:\n- src/uppaal_mcp/verification_manager.py\n- tests/test_verification_manager.py\n- docs/verification-manager.md\n- evidence/manager/20260924/**\nRead-only: existing runner, frozen inputs, prior evidence, manifests, manuscript.\nAcceptance: sequential explicit query jobs; exclusive queue ownership; persisted immutable inputs/results; completed decisive formulas skipped on continuation; incomplete attem"
+    },
+    {
+      "number": 41,
+      "scope": "Write scope:\n- evidence/instantiation/20260922-queue-abstraction-contract/**\nRead-only inputs: all source/model/generator files, prior evidence, manuscripts and manifests.\nOut of scope: implementation of numerical occupancy, queue policy changes, recovery recorder, admission correction, manuscript/manifests changes, model checking and Gate acceptance.\nAcceptance criteria:\n1. Identify the MAC queue and distin"
+    },
+    {
+      "number": 39,
+      "scope": "Write scope only evidence/verification/p3-20260926-core-acceptance/**. Other evidence, model, generators, manifests and manuscript read-only.\n\nAcceptance: bounded search for exact joint archive; audit of retained run identities/provenance and proof inputs; negative queue result retained as accepted limitation (not satisfied); deadlock remains deferred/unproved; C02 scope preserved; primary/two/receiver claim"
+    },
+    {
+      "number": 36,
+      "scope": "write scope (inactive until all dependencies and scope releases):\n- src/uppaal_mcp/integrated/adapt.py\n- src/uppaal_mcp/integrated/boundary.py\n- src/uppaal_mcp/integrated/generator.py\n- tests/test_integrated_admission_contract.py\n- evidence/instantiation/20260917-admission-contract/**\nAcceptance:\n1. APP age starts on actual send, ends on matching APP accept/degraded/reject or local timeout=15. SDN age starts"
+    },
+    {
+      "number": 35,
+      "scope": "Write scope:\n- src/uppaal_mcp/integrated/adapt.py\n- src/uppaal_mcp/integrated/boundary.py\n- src/uppaal_mcp/integrated/generator.py\n- tests/test_integrated_recovery_contract.py\n- evidence/instantiation/20260917-recovery-contract/**\nAcceptance:\n1. Start at A_REC receipt of link/node failure; end on matching typed ACK or local failed outcome. FailureDetected waiting is included. Preserve D_recovery=20, D_rollba"
+    },
+    {
+      "number": 33,
+      "scope": "Write scope:\n- evidence/instantiation/20260917-v03-contract-disposition/**\nRead-only inputs: src/**, tests/**, all existing evidence, manuscripts and manifests.\nOut of scope: production changes under this initial specification scope; existing ACK requirement; physical calibration; full model verification; acceptance of P1/P2/Gate 1.\nStatus: in-review.\nInput readiness: PR #34 merged at 4bf759fe7b76cf6c57d0d40"
+    },
+    {
+      "number": 32,
+      "scope": "Write scope:\n- evidence/validation/20260917-v03-timing/**\nRead-only inputs: all source code, existing model/query/evidence files, manifests and manuscripts.\nOut of scope: production/model corrections, changing historical evidence or manifests, model checking, P1/P2/Gate 1 acceptance.\nAcceptance criteria:\n- Cover all 43 layer-qualified source timing constants and all integration parameter_set entries, separat"
+    },
+    {
+      "number": 30,
+      "scope": "Write scope:\n- src/uppaal_mcp/integrated/adapt.py\n- tests/test_integrated_ack_observer.py\n- evidence/instantiation/20260916-ack-observer/**\nRead-only: all other files. Historical evidence/manifests, standalone generators and manuscript unchanged.\nScope coordination: per user's explicit instruction, artmus208 alone writes the above adapt.py for this correction; overlapping #19 scope is suspended for this file"
+    },
+    {
+      "number": 25,
+      "scope": "Write scope:\n- evidence/author-position/20260910-claim-scope/**\nRead-only inputs: manuscript and layer TeX sources; P1/P2 evidence; external D:/ПЗ психология/validation-report.md; open Issue/PR metadata.\nOut of scope: manuscript/TeX/model/generator edits; changes to manifests, old evidence or review governance; empirical calibration; model checking; new ownership of scientific reviewer requirements.\nAcceptan"
+    },
+    {
+      "number": 23,
+      "scope": "Write scope:\n- src/uppaal_mcp/phy/alpha.py\n- src/uppaal_mcp/integrated/inputs.py\n- tests/test_phy_threshold_boundaries.py\n- tests/test_integrated_pin_revision.py\n- evidence/governance/20260908-gate1-readiness/decision-documents-ru/**\nScope coordination: direct user instructions authorize this exact correction, pin revision, documentation and PR. Continuation overlaps historical #19 inputs.py and #21 document"
+    },
+    {
+      "number": 21,
+      "scope": "Write scope:\n- evidence/governance/20260908-gate1-readiness/**\nRead-only inputs: every other repository path, manifests, models, historical evidence and original dirty checkout.\nOut of scope: model fixes, manifest edits/freeze, scientific acceptance, closing scientific IDs/issues, P3/P4, model checking or licensing smoke.\nAcceptance criteria:\n- Every current Gate 1 requirement maps to precise artifact/commit"
+    },
+    {
+      "number": 13,
+      "scope": "Write scope:\n- evidence/healthcheck/20260907-postmerge/**\nRead-only inputs: all source, models, manifests, prior evidence and original dirty checkout.\nOut of scope: implementation fixes, baseline replacement/freeze, scientific P1/P2 work, model checking, manuscript changes, changes to global configuration or license.\nAcceptance criteria:\n- Pin clean combined source commit and merged dependency SHAs.\n- Record"
+    },
+    {
+      "number": 5,
+      "scope": "Write scope:\n- src/uppaal_mcp/config.py\n- mcp_conf.conf\n- tests/test_config.py\n- evidence/healthcheck/20260906-config/**\n- README.md\nRead-only inputs: all manifests, model sources, original diagnostics.\nOut of scope: global user environment changes, unrelated app settings, license changes, manifests and baseline freezing.\nAcceptance criteria:\n- Explicit and environment verifyta paths retain precedence.\n- Nat"
+    },
+    {
+      "number": 4,
+      "scope": "Write scope:\n- src/uppaal_mcp/cli.py\n- tests/test_cli.py\n- evidence/healthcheck/20260906-cli/**\nOut of scope: other source files, manifests, manuscript, generated model artifacts, scientific model-checking claims.\nAcceptance criteria:\nActual CLI child processes return nonzero for error, timeout, tool_not_found, unknown/inconclusive and failed aggregate operations, while preserving JSON output. Define/documen"
+    },
+    {
+      "number": 3,
+      "scope": "Write scope:\n- pyproject.toml\n- src/uppaal_mcp/server.py\n- tests/test_phy_layer.py\n- tests/test_mcp_startup.py\n- evidence/healthcheck/20260906-mcp/**\nOut of scope: other source files, manifests, manuscript, generated model artifacts, scientific model-checking claims.\nAcceptance criteria:\nDeclare a compatible supported MCP SDK range based on actual APIs. A fresh isolated editable install passes pip check, bui"
+    },
+    {
+      "number": 2,
+      "scope": "Write scope:\n- src/uppaal_mcp/verifyta.py\n- tests/test_verifyta_parser.py\n- evidence/healthcheck/20260906-runner/**\nOut of scope: other source files, manifests, manuscript, generated model artifacts, scientific model-checking claims.\nAcceptance criteria:\nNonzero process exits and explicit error diagnostics take precedence over partial verdicts. Only a complete, correctly indexed set of submitted query result"
+    },
+    {
+      "number": 1,
+      "scope": "Write scope:\n- evidence/healthcheck/20260906-remediation/**\nRead-only inputs: all manifests, model sources, original dirty checkout and original healthcheck evidence.\nOut of scope: manuscript edits, accepted model-checking claims, baseline freezing or gate approval, direct pushes to read/main.\nAcceptance criteria:\n- Separate scoped issues track runner false positives, MCP installation/startup, CLI exit codes"
+    }
+  ]
+}

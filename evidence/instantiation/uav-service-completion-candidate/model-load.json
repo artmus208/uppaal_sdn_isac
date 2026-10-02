@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/java.exe",
+    "-Xmx512m",
+    "-Djava.awt.headless=true",
+    "-cp",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+    "CausalReplay",
+    "--model-check",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\model.xml"
+  ],
+  "exit_code": 0,
+  "engine_invoked": false
+}

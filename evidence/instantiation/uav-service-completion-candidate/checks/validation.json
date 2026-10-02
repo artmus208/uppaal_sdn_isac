@@ -1,0 +1,96 @@
+{
+  "verification": false,
+  "checks": [
+    {
+      "name": "scoped_regression",
+      "command": "python3 -B -m unittest discover -s evidence/instantiation/uav-service-completion-candidate -p 'test_*.py' -v",
+      "exit_code": 0,
+      "log": "regression-final.txt",
+      "test_count": 12
+    },
+    {
+      "name": "repository_tests",
+      "command": "PYTHONDONTWRITEBYTECODE=1 evidence/instantiation/uav-service-completion-candidate/.venv/bin/python -m unittest discover -s tests -v",
+      "exit_code": 0,
+      "log": "repository-tests-unsandboxed.txt",
+      "test_count": 209
+    },
+    {
+      "name": "initial_repository_tests",
+      "command": "PYTHONDONTWRITEBYTECODE=1 evidence/instantiation/uav-service-completion-candidate/.venv/bin/python -m unittest discover -s tests -v",
+      "exit_code": 1,
+      "log": "repository-tests.txt",
+      "test_count": 209
+    },
+    {
+      "name": "targeted_mcp_startup",
+      "command": "PYTHONDONTWRITEBYTECODE=1 evidence/instantiation/uav-service-completion-candidate/.venv/bin/python -m unittest discover -s tests -p test_mcp_startup.py -v",
+      "exit_code": 0,
+      "log": "mcp-startup-unsandboxed.txt",
+      "test_count": 6
+    },
+    {
+      "name": "coordination",
+      "command": "evidence/instantiation/uav-service-completion-candidate/.venv/bin/python scripts/check_coordination.py",
+      "exit_code": 0,
+      "log": "coordination.txt",
+      "test_count": null
+    },
+    {
+      "name": "mcp_smoke",
+      "command": "evidence/instantiation/uav-service-completion-candidate/.venv/bin/python -c \"from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)\"",
+      "exit_code": 0,
+      "log": "mcp-smoke.txt",
+      "test_count": null
+    },
+    {
+      "name": "cli_examples",
+      "command": "evidence/instantiation/uav-service-completion-candidate/.venv/bin/uppaal-verifyta list-examples",
+      "exit_code": 0,
+      "log": "cli-smoke.txt",
+      "test_count": null
+    },
+    {
+      "name": "cli_version_wrong_interpreter",
+      "command": "python3 -B evidence/instantiation/uav-service-completion-candidate/.venv/bin/uppaal-verifyta version",
+      "exit_code": 1,
+      "log": "cli-version.txt",
+      "test_count": null
+    },
+    {
+      "name": "cli_version_sandbox",
+      "command": "evidence/instantiation/uav-service-completion-candidate/.venv/bin/uppaal-verifyta version",
+      "exit_code": 2,
+      "log": "cli-version-corrected.txt",
+      "test_count": null
+    },
+    {
+      "name": "cli_version_native",
+      "command": "evidence/instantiation/uav-service-completion-candidate/.venv/bin/uppaal-verifyta version",
+      "exit_code": 0,
+      "log": "cli-version-unsandboxed.txt",
+      "test_count": null
+    },
+    {
+      "name": "deterministic_generation",
+      "command": "python3 -B evidence/instantiation/uav-service-completion-candidate/generate.py --check",
+      "exit_code": 0,
+      "log": "generation.txt",
+      "test_count": null
+    },
+    {
+      "name": "evidence_audit",
+      "command": "python3 -B evidence/instantiation/uav-service-completion-candidate/audit.py",
+      "exit_code": 0,
+      "log": "evidence-audit.txt",
+      "test_count": null
+    },
+    {
+      "name": "diff_check",
+      "command": "git diff --check 91113a1b634f030c7e895f54f5c36a0b140d66eb",
+      "exit_code": 0,
+      "log": "diff-check.txt",
+      "test_count": null
+    }
+  ]
+}

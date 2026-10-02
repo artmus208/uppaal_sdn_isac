@@ -1,0 +1,162 @@
+{
+  "runs/negative-clock-001/reachable-prefix.xtr": {
+    "bytes": 5540039,
+    "entry": "runs/negative-clock-001/reachable-prefix.xtr",
+    "sha256": "9a664ad83c6d20ac9177267b96924f349568d3e644d9f44df95c5c2fdc85fee3"
+  },
+  "runs/negative-clock-001/stdout.txt": {
+    "bytes": 9375,
+    "entry": "runs/negative-clock-001/stdout.txt",
+    "sha256": "063388955bea3d3acf5d2e560833f611b2c34e8553c706547b8f70e6f2d70fd0"
+  },
+  "runs/negative-clock-001/steps.jsonl": {
+    "bytes": 1405172,
+    "entry": "runs/negative-clock-001/steps.jsonl",
+    "sha256": "9b6cf71ad50b9fff910e9a8c065f54626d23108034001d445d90c7dac22d5278"
+  },
+  "runs/negative-discrete-001/reachable-prefix.xtr": {
+    "bytes": 5540039,
+    "entry": "runs/negative-discrete-001/reachable-prefix.xtr",
+    "sha256": "9a664ad83c6d20ac9177267b96924f349568d3e644d9f44df95c5c2fdc85fee3"
+  },
+  "runs/negative-discrete-001/stdout.txt": {
+    "bytes": 9382,
+    "entry": "runs/negative-discrete-001/stdout.txt",
+    "sha256": "1d18f38917ccf8fcd4566a865afde764ce7ea9aecb565e7e7af724a360659332"
+  },
+  "runs/negative-discrete-001/steps.jsonl": {
+    "bytes": 1405172,
+    "entry": "runs/negative-discrete-001/steps.jsonl",
+    "sha256": "fe8100b180aee2984bd7405aa456c7baccbff4581cede212e007c5e197686b11"
+  },
+  "runs/replay-001/reachable-prefix.xtr": {
+    "bytes": 5596760,
+    "entry": "runs/replay-001/reachable-prefix.xtr",
+    "sha256": "0ca6cf212c74284782dbc67eded3a48b9369a832cf585b94f5c0ecab7dcb2ddb"
+  },
+  "runs/replay-001/stdout.txt": {
+    "bytes": 9286,
+    "entry": "runs/replay-001/stdout.txt",
+    "sha256": "eb60ceafebd070fd452ebd8d9c9643416eb1ade4a19cb1849d6a411fb9b59d32"
+  },
+  "runs/replay-001/steps.jsonl": {
+    "bytes": 1420565,
+    "entry": "runs/replay-001/steps.jsonl",
+    "sha256": "f54e456d16bb167e8d898325015d958a3654a91e04c6aa6d80ba1682eeba5247"
+  },
+  "runs/simulate-001/model.xml": {
+    "bytes": 418799,
+    "entry": "runs/simulate-001/model.xml",
+    "sha256": "e30ffbf901bb20eabc8b587c44bae24920a58586aca0f675446244ce9d2b7bf1"
+  },
+  "runs/simulate-001/stdout.txt": {
+    "bytes": 630,
+    "entry": "runs/simulate-001/stdout.txt",
+    "sha256": "7f030a99fbc0e1de25563b4fa2b3c371b433518289058bd3994a7737a322c771"
+  },
+  "runs/simulate-001/steps.jsonl": {
+    "bytes": 0,
+    "entry": "runs/simulate-001/steps.jsonl",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "runs/simulate-002/model.xml": {
+    "bytes": 418799,
+    "entry": "runs/simulate-002/model.xml",
+    "sha256": "ff6aed3ff89e263100a1204d6c61687489d4a0d06f47fefb7857aa608f64beca"
+  },
+  "runs/simulate-002/stdout.txt": {
+    "bytes": 712,
+    "entry": "runs/simulate-002/stdout.txt",
+    "sha256": "9cce73df2d7d549038f988c11fd9562e54e743334f321d4322b8cb905bf50920"
+  },
+  "runs/simulate-002/steps.jsonl": {
+    "bytes": 0,
+    "entry": "runs/simulate-002/steps.jsonl",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "runs/simulate-003/model.xml": {
+    "bytes": 419473,
+    "entry": "runs/simulate-003/model.xml",
+    "sha256": "5eb0d00bcb5ee85a02c4aa7bfb6bfb7f73f71fbe16a54aed2d5ae859533b3c6a"
+  },
+  "runs/simulate-003/partial.xtr": {
+    "bytes": 51915,
+    "entry": "runs/simulate-003/partial.xtr",
+    "sha256": "e4d8a1248b5965d19a4c4583b533cbad1a7df0fc96bbc08879d13892e5cdf3df"
+  },
+  "runs/simulate-003/stdout.txt": {
+    "bytes": 22715,
+    "entry": "runs/simulate-003/stdout.txt",
+    "sha256": "6ca592c96317e1bdbc496e4c376157f12205548cbe0996e1e1a9c019f1701e43"
+  },
+  "runs/simulate-003/steps.jsonl": {
+    "bytes": 538122,
+    "entry": "runs/simulate-003/steps.jsonl",
+    "sha256": "33e46363c3c4744fc88386bb5b56b11cead40be109b532cf3c7d3fe51fcfb96c"
+  },
+  "runs/simulate-003/trace.xtr": {
+    "bytes": 51915,
+    "entry": "runs/simulate-003/trace.xtr",
+    "sha256": "e4d8a1248b5965d19a4c4583b533cbad1a7df0fc96bbc08879d13892e5cdf3df"
+  },
+  "runs/simulate-004/model.xml": {
+    "bytes": 419473,
+    "entry": "runs/simulate-004/model.xml",
+    "sha256": "5eb0d00bcb5ee85a02c4aa7bfb6bfb7f73f71fbe16a54aed2d5ae859533b3c6a"
+  },
+  "runs/simulate-004/partial.xtr": {
+    "bytes": 94016,
+    "entry": "runs/simulate-004/partial.xtr",
+    "sha256": "c74adc24cb90f9602fdc9e66ad23e16714550f5836c13008fd59522a6dcc0be0"
+  },
+  "runs/simulate-004/stdout.txt": {
+    "bytes": 23541,
+    "entry": "runs/simulate-004/stdout.txt",
+    "sha256": "7cec7c9669602e269c7744aeb2f4b373810090ecd5a145a96c5ee9c2b57e1018"
+  },
+  "runs/simulate-004/steps.jsonl": {
+    "bytes": 945754,
+    "entry": "runs/simulate-004/steps.jsonl",
+    "sha256": "6823c56ab7bf85a17cd45c4e0e6f98f18e8a33c3bcb48a737ae321731ed66445"
+  },
+  "runs/simulate-004/trace.xtr": {
+    "bytes": 94016,
+    "entry": "runs/simulate-004/trace.xtr",
+    "sha256": "c74adc24cb90f9602fdc9e66ad23e16714550f5836c13008fd59522a6dcc0be0"
+  },
+  "runs/simulate-005/partial.xtr": {
+    "bytes": 146725,
+    "entry": "runs/simulate-005/partial.xtr",
+    "sha256": "7e22b79f6caba5e1cffde5ac3e60ff31ba57f8b91632e6630c2e8c14e1141200"
+  },
+  "runs/simulate-005/stdout.txt": {
+    "bytes": 9202,
+    "entry": "runs/simulate-005/stdout.txt",
+    "sha256": "3b2a702f500437f74a1f16b59e60e7c9c6244bcd7086ca03b9a531ebfb53c2ef"
+  },
+  "runs/simulate-005/steps.jsonl": {
+    "bytes": 1608773,
+    "entry": "runs/simulate-005/steps.jsonl",
+    "sha256": "b891097c8f2046046697bc6b2b4d1395e4adf1095b300cb6307f84bc9cad0d3b"
+  },
+  "runs/simulate-006/partial.xtr": {
+    "bytes": 147169,
+    "entry": "runs/simulate-006/partial.xtr",
+    "sha256": "7ef37b0e6abc77eace7aa270ce3aea6a35d10724cb662508e1f54104123ddfaf"
+  },
+  "runs/simulate-006/stdout.txt": {
+    "bytes": 24509,
+    "entry": "runs/simulate-006/stdout.txt",
+    "sha256": "4a39300cc78ee672c001ed59c0b242bbe4e0e54c76dbdb4f171e3ec71b754d08"
+  },
+  "runs/simulate-006/steps.jsonl": {
+    "bytes": 1608973,
+    "entry": "runs/simulate-006/steps.jsonl",
+    "sha256": "f773825b5966c1a364e987ff40fdc8097a9b1719e81e3202a343840b837b0326"
+  },
+  "runs/simulate-006/trace.xtr": {
+    "bytes": 147169,
+    "entry": "runs/simulate-006/trace.xtr",
+    "sha256": "7ef37b0e6abc77eace7aa270ce3aea6a35d10724cb662508e1f54104123ddfaf"
+  }
+}

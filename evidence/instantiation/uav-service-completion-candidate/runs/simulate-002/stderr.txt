@@ -1,0 +1,51 @@
+Duplicate edge id="id8" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id9" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id10" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id11" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id12" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id13" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id14" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id15" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id16" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id17" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id18" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id25" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id26" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id27" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id28" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id29" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id30" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id31" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id32" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id33" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id63" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id64" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id65" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id69" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id70" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id71" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id75" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id76" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id77" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id81" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id82" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id83" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id87" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id88" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id89" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id93" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id94" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id95" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id99" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id100" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id101" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id105" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id106" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+Duplicate edge id="id107" found, assuming that previous id was auto-generated: regenerating a new id for the previous one
+java.lang.IllegalArgumentException: Compilation: error
+/nta/template[17]/transition[13]/label[1]
+1 1 1 761┬√Ёрцхэшх Єшяр (constraint) эх ьюцхЄ с√Є№ шёяюы№чютрэю ъръ яЁхфєёыютшх.(typechecking)
+
+	at TimedReplay.require(TimedReplay.java:36)
+	at CausalReplay.require(CausalReplay.java:18)
+	at CausalReplay.main(CausalReplay.java:137)

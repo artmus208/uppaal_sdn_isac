@@ -1,0 +1,34 @@
+{
+  "java": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0",
+  "cells": [
+    {
+      "mode": "simulate",
+      "run_id": "uav-completion-82-20261002-simulate-004",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+        "CausalReplay",
+        "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\spine-corrected.tsv",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004",
+        "simulate",
+        "5eb0d00bcb5ee85a02c4aa7bfb6bfb7f73f71fbe16a54aed2d5ae859533b3c6a"
+      ],
+      "argument_string": "-Xmx512m -Djava.awt.headless=true -cp \"\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar\" CausalReplay \"C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe\" \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\model.xml \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\spine-corrected.tsv \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004 simulate 5eb0d00bcb5ee85a02c4aa7bfb6bfb7f73f71fbe16a54aed2d5ae859533b3c6a",
+      "hardware": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\hardware.json",
+      "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\stdout.txt",
+      "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\stderr.txt",
+      "memory": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\memory.csv",
+      "monitor": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\monitor.json",
+      "owned": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\owned.json",
+      "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\result.json"
+    }
+  ],
+  "prior_native_wall_seconds": 0,
+  "summary": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004\\native-summary.json"
+}
