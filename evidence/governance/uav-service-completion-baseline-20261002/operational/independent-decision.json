@@ -1,0 +1,93 @@
+{
+  "A": "accepted_limited_P1_P2_applicability",
+  "B": "accepted_exact_inputs_gate_1",
+  "C": "pending_separate_postmerge_activation_decision",
+  "D": "open_verdicts_no_universal_P3_R07_acceptance",
+  "N": 1,
+  "active_write_scope": [
+    "evidence/governance/uav-service-completion-baseline-20261002/**",
+    "manifests/baselines/uav-service-completion-r1.yaml",
+    "manifests/collaboration-v2.yaml \u2014 only new selection block"
+  ],
+  "approved_patch_sha256": "00ec9a8f4755df1a3db8285d41a959bebaf8adb5da9c6831acdebe6f1b95bd9d",
+  "baseline_id": "uav-service-completion-r1-20261002",
+  "decision_authority": "explicit user/Integrator instruction in this session",
+  "decision_reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/84#issuecomment-5946722646",
+  "github_comment_id": 5946722646,
+  "processes": 51,
+  "proposal_merge_commit": "efb6d6c0d936c2c62fbf902e383a144e6b616a0a",
+  "proposal_merged_at": "2026-10-02T06:20:24Z",
+  "recorded_at_utc": "2026-10-02T06:27:43Z",
+  "recorded_by": "vadimnbkg",
+  "reviewed_proposal_head": "6ff7f63b03c16bc3cc4b6acb861604d6fb46906a",
+  "scientific_input_pins": {
+    "activation_status": "pending",
+    "baseline_id": "uav-service-completion-r1-20261002",
+    "gate_1_status": "pending_independent_decision",
+    "generation_source_hash": "df56acfacd2b6655735ffd8bbcf52fe9ef648982b5a444d7e439520b86fdb79e",
+    "generator": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/generate.py",
+      "sha256": "a5310747b9e2f1b837d0fefdff26d04c9218b7f22a87672bfaa13e7ee58e0ba2"
+    },
+    "input_commit": "61386aa358805082b705dcd00c8cbfde5fb98248",
+    "input_inventory": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/input-hashes.json",
+      "sha256": "aca3724e77a9061ef7fa98e22d38c088fe05669da557bf0afc0b706ca8a9e5bd"
+    },
+    "instance_inventory": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/instance-inventory.json",
+      "sha256": "1e50f63437f9f787f9670a8cfee40450a7c127ec49e58661277b6bb7fa86fc17"
+    },
+    "instance_vector": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/instance-vector.json",
+      "sha256": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c"
+    },
+    "manuscript": {
+      "path": "levels_tex/samplepaper.tex",
+      "sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f"
+    },
+    "model": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/model.xml",
+      "sha256": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02"
+    },
+    "operational_patch": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/proposed-operational.patch",
+      "sha256": "00ec9a8f4755df1a3db8285d41a959bebaf8adb5da9c6831acdebe6f1b95bd9d"
+    },
+    "parameter_set": {
+      "candidate": {
+        "path": "evidence/instantiation/uav-service-completion-candidate/parameters.json",
+        "sha256": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a"
+      },
+      "inherited": {
+        "path": "evidence/scalability/family-series-68/generated/n1/parameters.json",
+        "sha256": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18"
+      },
+      "inventory": {
+        "path": "evidence/governance/uav-service-completion-baseline-20261002/parameter-inventory.json",
+        "sha256": "d4448839e66b2e7dfc9d4d9085a2b794e7975b3a8a48a4842ca7580287ccdaac"
+      }
+    },
+    "proposal_manifest": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/proposed-baseline.yaml",
+      "sha256": "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d"
+    },
+    "publication_commit": "fdbfd5619385eae31101dcfc285010b96cc85b45",
+    "query_inventory": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/query-inventory.json",
+      "sha256": "edcd0c74e05571edd2af28f56dea8982f702141006e5a96825841eceb0fa05c3"
+    },
+    "selected_query_set_hash": "2b31aad5e75374eac5b81c5e062e28eaca6ebfffb974abd32709b4f9d8ad2b23",
+    "tool_evidence": {
+      "capture_method": "Engine.getVersion saved by CausalReplay",
+      "future_run_version_required": true,
+      "license_scope": "Observed historical candidate executions only; no current native probe or new execution authorization.",
+      "source": {
+        "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/result.json",
+        "sha256": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0"
+      },
+      "version": "UPPAAL version 5.0.0 (rev. 714BA9DB36F49691), June 2023 -- server. Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru)"
+    }
+  },
+  "status_semantics": "scientific_input_pins and installed exact approved manifest retain immutable proposal preparation wording. This independent Issue decision is authoritative for A/B only. C is pending, all 11 verdicts remain null."
+}

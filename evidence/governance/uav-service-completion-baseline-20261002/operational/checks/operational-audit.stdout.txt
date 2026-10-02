@@ -1,0 +1,10 @@
+{
+  "activation": "pending_separate_postmerge_decision",
+  "base_commit": "efb6d6c0d936c2c62fbf902e383a144e6b616a0a",
+  "check": "operational_static_audit_ok",
+  "gate_1": "accepted_exact_inputs_by_issue_84_decision",
+  "manifest_sha256": "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d",
+  "new_native_runs": 0,
+  "query_verdicts": "all_11_open",
+  "sealed_proposal_files": 58
+}
