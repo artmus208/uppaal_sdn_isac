@@ -1,0 +1,8 @@
+test_censored_native_run_cannot_be_positive_evidence (test_audit.EvidenceControls.test_censored_native_run_cannot_be_positive_evidence) ... ok
+test_verdict_laundering_is_rejected (test_audit.EvidenceControls.test_verdict_laundering_is_rejected) ... ok
+test_wrong_APP_result_is_rejected (test_audit.EvidenceControls.test_wrong_APP_result_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.028s
+
+OK

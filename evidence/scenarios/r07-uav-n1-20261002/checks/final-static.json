@@ -1,0 +1,18 @@
+{
+  "diff_check_exit": 0,
+  "scope_paths": 129,
+  "out_of_scope": [],
+  "repository_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "tests": 209,
+    "skipped": 0,
+    "seconds": 46.259
+  },
+  "package_tests": {
+    "command": "python3 -B -m unittest discover -s evidence/scenarios/r07-uav-n1-20261002 -p 'test_*.py' -v",
+    "exit_code": 0,
+    "tests": 3,
+    "skipped": 0
+  }
+}

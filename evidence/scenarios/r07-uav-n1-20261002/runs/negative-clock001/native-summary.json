@@ -1,0 +1,52 @@
+{
+    "prior_native_wall_seconds":  0,
+    "total_wall_seconds":  7.5254360999999994,
+    "total_limit_seconds":  600,
+    "cells":  [
+                  {
+                      "exit_code":  1,
+                      "peak_tree_sample_bytes":  831901696,
+                      "run_id":  "r07-80-20261002-negative-clock001",
+                      "process_tree_reaped":  true,
+                      "command":  [
+                                      "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+                                      "-Xmx512m",
+                                      "-Djava.awt.headless=true",
+                                      "-cp",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+                                      "DirectedScenario",
+                                      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\trace.xtr",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\negative-clock001",
+                                      "negative-clock"
+                                  ],
+                      "runtime_seconds":  6.1629961,
+                      "requested_sleep_ms":  100,
+                      "owned_process_identities":  [
+                                                       {
+                                                           "id":  16008,
+                                                           "start":  "2026-10-02T01:42:10.5039013Z"
+                                                       },
+                                                       {
+                                                           "id":  21060,
+                                                           "start":  "2026-10-02T01:42:10.4993224Z"
+                                                       },
+                                                       {
+                                                           "id":  6008,
+                                                           "start":  "2026-10-02T01:42:10.1466628Z"
+                                                       },
+                                                       {
+                                                           "id":  18760,
+                                                           "start":  "2026-10-02T01:42:10.1385239Z"
+                                                       }
+                                                   ],
+                      "started_utc":  "2026-10-02T01:42:10.1020726Z",
+                      "timeout_seconds":  60,
+                      "mode":  "negative-clock",
+                      "native_status":  "success",
+                      "memory_limit_bytes":  2147483648,
+                      "finished_utc":  "2026-10-02T01:42:16.2657874Z"
+                  }
+              ]
+}

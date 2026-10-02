@@ -1,0 +1,56 @@
+[
+  {
+    "name": "coordination",
+    "command": [
+      ".venv/bin/python",
+      "-B",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "family-baseline",
+    "command": [
+      ".venv/bin/python",
+      "-B",
+      "scripts/check_family_baseline.py",
+      "--audit-history"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "mcp-smoke",
+    "command": [
+      ".venv/bin/python",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "cli-smoke",
+    "command": [
+      ".venv/bin/uppaal-verifyta",
+      "list-examples"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "pip-check",
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "verifier-version",
+    "command": [
+      ".venv/bin/uppaal-verifyta",
+      "version"
+    ],
+    "exit_code": 0
+  }
+]

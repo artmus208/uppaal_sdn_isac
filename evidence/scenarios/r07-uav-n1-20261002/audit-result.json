@@ -1,0 +1,30 @@
+{
+  "status": "saved_evidence_consistent",
+  "property_verdict": null,
+  "artifacts": 130,
+  "cells": [
+    {
+      "run_id": "r07-80-20261002-negative-clock001",
+      "status": "rejected",
+      "accepted_transitions": 62
+    },
+    {
+      "run_id": "r07-80-20261002-negative-discrete001",
+      "status": "rejected",
+      "accepted_transitions": 62
+    },
+    {
+      "run_id": "r07-80-20261002-replay001",
+      "status": "replay_complete",
+      "accepted_transitions": 63
+    },
+    {
+      "run_id": "r07-80-20261002-sim001",
+      "status": "goal_reached",
+      "accepted_transitions": 63
+    }
+  ],
+  "APP_result": "Rejected",
+  "report_time": 5,
+  "report_elapsed": 0
+}

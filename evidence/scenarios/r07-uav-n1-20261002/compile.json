@@ -1,0 +1,15 @@
+{
+  "command": [
+    "/mnt/c/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/javac.exe",
+    "-encoding",
+    "UTF-8",
+    "-cp",
+    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\model.jar",
+    "-d",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80-build",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scalability\\n1-service-diagnosis-78\\replay-001\\TimedReplay.java",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\DirectedScenario.java"
+  ],
+  "exit_code": 0,
+  "engine_invoked": false
+}

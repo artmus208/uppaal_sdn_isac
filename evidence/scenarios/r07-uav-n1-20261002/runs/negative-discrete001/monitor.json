@@ -1,0 +1,45 @@
+{
+    "exit_code":  1,
+    "peak_tree_sample_bytes":  830717952,
+    "run_id":  "r07-80-20261002-negative-discrete001",
+    "process_tree_reaped":  true,
+    "command":  [
+                    "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+                    "-Xmx512m",
+                    "-Djava.awt.headless=true",
+                    "-cp",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+                    "DirectedScenario",
+                    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\trace.xtr",
+                    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\negative-discrete001",
+                    "negative-discrete"
+                ],
+    "runtime_seconds":  5.9731480999999995,
+    "requested_sleep_ms":  100,
+    "owned_process_identities":  [
+                                     {
+                                         "id":  11276,
+                                         "start":  "2026-10-02T01:41:50.4787238Z"
+                                     },
+                                     {
+                                         "id":  19764,
+                                         "start":  "2026-10-02T01:41:50.4840104Z"
+                                     },
+                                     {
+                                         "id":  16172,
+                                         "start":  "2026-10-02T01:41:50.2010900Z"
+                                     },
+                                     {
+                                         "id":  21308,
+                                         "start":  "2026-10-02T01:41:50.2059475Z"
+                                     }
+                                 ],
+    "started_utc":  "2026-10-02T01:41:50.1765720Z",
+    "timeout_seconds":  60,
+    "mode":  "negative-discrete",
+    "native_status":  "success",
+    "memory_limit_bytes":  2147483648,
+    "finished_utc":  "2026-10-02T01:41:56.1501386Z"
+}

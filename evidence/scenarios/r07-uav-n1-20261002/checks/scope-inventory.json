@@ -1,0 +1,31 @@
+{
+  "checked_at_utc": "2026-10-02 01:54:38 UTC",
+  "issues_observed": 80,
+  "open_issue_numbers": [
+    80,
+    78,
+    76,
+    66,
+    62,
+    51,
+    41,
+    39,
+    36,
+    35,
+    33,
+    32,
+    30,
+    25,
+    23,
+    21,
+    13,
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "overlap_with_80": false,
+  "write_scope": "evidence/scenarios/r07-uav-n1-20261002/**",
+  "note": "No other open issue in the complete 80-issue inventory declares this scenario path. Other scopes are source, governance, validation, instantiation, verification or distinct scalability paths."
+}
