@@ -1,0 +1,21 @@
+{
+  "command": [
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+    "-c",
+    "import time; b=bytearray(64*1024**2); b[::4096]=bytes([1])*len(b[::4096]); print(\"ready\",flush=True); time.sleep(5)"
+  ],
+  "ready": "ready\n",
+  "samples": [
+    {
+      "rss_bytes": 4022272,
+      "peak_rss_bytes": 4022272,
+      "cpu_seconds": 0.0
+    },
+    {
+      "rss_bytes": 4022272,
+      "peak_rss_bytes": 4022272,
+      "cpu_seconds": 0.0
+    }
+  ],
+  "sample_exceeds_32_mib": false
+}

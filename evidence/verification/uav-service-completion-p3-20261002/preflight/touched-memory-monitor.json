@@ -1,0 +1,9 @@
+{
+  "command_kind": "Python touched 64 MiB native memory probe; no query execution",
+  "metrics": {
+    "rss_bytes": 4022272,
+    "peak_rss_bytes": 4022272,
+    "cpu_seconds": 0.0
+  },
+  "sample_exceeds_32_mib": false
+}

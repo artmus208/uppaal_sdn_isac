@@ -22,6 +22,8 @@ def main():
     assert ledger['campaign_status']=='prepared' and not any(q['attempt_consumed'] for q in ledger['queries']),'No restart/retry; inspect durable ledger and owned processes'
     pre=json.loads((HERE/'preflight/verifier.json').read_text());assert pre['version_matches']
     env=json.loads((HERE/'environment.json').read_text())
+    assert Path(sys.executable).resolve()==Path(env['executable']).resolve(),'Use direct native Python, not a venv launcher'
+    assert json.loads((HERE/'preflight/direct-python-memory-monitor.json').read_text())['sample_exceeds_32_mib']
     assert sha(VERIFIER)==pre['executable_hash']
     ps=subprocess.run(['C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe','-NoProfile','-Command','@(Get-Process verifyta -ErrorAction SilentlyContinue).Count'],capture_output=True,text=True,check=True)
     assert ps.stdout.strip()=='0','Existing native verifier: do not overlap/kill'

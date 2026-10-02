@@ -1,0 +1,21 @@
+{
+  "command": [
+    "C:\\Users\\pEw\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+    "-c",
+    "import time; b=bytearray(64*1024**2); b[::4096]=bytes([1])*len(b[::4096]); print(\"ready\",flush=True); time.sleep(5)"
+  ],
+  "ready": "ready\n",
+  "samples": [
+    {
+      "rss_bytes": 78131200,
+      "peak_rss_bytes": 78131200,
+      "cpu_seconds": 0.03125
+    },
+    {
+      "rss_bytes": 78131200,
+      "peak_rss_bytes": 78131200,
+      "cpu_seconds": 0.03125
+    }
+  ],
+  "sample_exceeds_32_mib": true
+}
