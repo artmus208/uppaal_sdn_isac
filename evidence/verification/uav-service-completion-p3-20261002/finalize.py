@@ -5,15 +5,17 @@ from prepare import HERE,ROOT,BASE,BRANCH,sha,save,GIT
 
 def main():
     a=json.loads((HERE/'assignment.json').read_text());env=json.loads((HERE/'environment.json').read_text());ledger=json.loads((HERE/'query-ledger.json').read_text());records=[]
+    manifest=json.loads((ROOT/'manifests/baselines/uav-service-completion-r1.yaml').read_text())
     for q in ledger['queries']:
         folder=HERE/q['queue_path'];paths=list(folder.glob('attempts/*/result.json'))
         raw=json.loads(paths[0].read_text()) if len(paths)==1 else {}
         p=json.loads((folder/'provenance.json').read_text()) if (folder/'provenance.json').exists() else {}
-        r={'query_id':q['query_id'],'run_id':q['run_id'],'manager_attempt_id':raw.get('run_id'),'status':q['status'],'verdict':q['verdict'],'reason':q['reason'],'formula':q['formula'],'query_hash':q['query_hash'],'model_hash':a['model_hash'],'tool_version':raw.get('tool_version',a['tool_version']),'executable_hash':a['executable_hash'],'execution_source_commit':q.get('execution_source_commit'),'parameter_set':a['parameters'],'instance_vector':a['instance_vector'],'environment':env,'manager_command':p.get('manager_command'),'verifier_command':raw.get('command'),'cwd':raw.get('cwd'),'start_utc':raw.get('started_at'),'end_utc':raw.get('finished_at'),'wall_seconds':raw.get('elapsed_seconds'),'cpu_seconds':raw.get('cpu_seconds'),'peak_rss_bytes':raw.get('peak_rss_bytes'),'states_explored':raw.get('states_explored'),'trace_paths':raw.get('trace_paths',[]),'metric_null_reason':'not_executed: no process or measurements' if not raw else 'Field null when manager/tool did not supply it; states_explored not parsed by manager','raw_files':[],'acceptance_status':'pending_independent_review'}
+        r={'source_hash':manifest['hashing']['generation_source_hash'],'generator_hash':manifest['generator']['sha256'],'scientific_source_commit':a['scientific_input_commit'],'query_id':q['query_id'],'run_id':q['run_id'],'manager_attempt_id':raw.get('run_id'),'status':q['status'],'verdict':q['verdict'],'reason':q['reason'],'formula':q['formula'],'query_hash':q['query_hash'],'model_hash':a['model_hash'],'tool_version':raw.get('tool_version',a['tool_version']),'executable_hash':a['executable_hash'],'execution_source_commit':q.get('execution_source_commit'),'parameter_set':a['parameters'],'instance_vector':a['instance_vector'],'environment':env,'manager_command':p.get('manager_command'),'verifier_command':raw.get('command'),'cwd':raw.get('cwd'),'start_utc':raw.get('started_at'),'end_utc':raw.get('finished_at'),'wall_seconds':raw.get('elapsed_seconds'),'cpu_seconds':raw.get('cpu_seconds'),'peak_rss_bytes':raw.get('peak_rss_bytes'),'states_explored':raw.get('states_explored'),'trace_paths':raw.get('trace_paths',[]),'metric_null_reason':'not_executed: no process or measurements' if not raw else 'Field null when manager/tool did not supply it; states_explored not parsed by manager','raw_files':[],'acceptance_status':'pending_independent_review'}
         for path in sorted(folder.rglob('*')):
             if path.is_file():r['raw_files'].append({'path':path.relative_to(HERE).as_posix(),'sha256':sha(path),'bytes':path.stat().st_size})
         records.append(r)
     save('results.json',{'issue':87,'baseline_id':a['baseline_id'],'campaign_status':ledger['campaign_status'],'queries':records,'acceptance_status':'pending_independent_review','verification_claim_scope':'Full N=1, 51 processes, accepted A/B assumptions; per-success explicit formulas only'})
+    total_wall=sum(r['wall_seconds'] or 0 for r in records)
     status_counts=dict(Counter(r['status'] for r in records))
     rows=['| Query | Status | Verdict | Wall seconds | Peak MiB |','|---|---|---|---:|---:|']
     for r in records:rows.append('| '+r['query_id']+' | '+r['status']+' | '+str(r['verdict'])+' | '+(f"{r['wall_seconds']:.3f}" if r['wall_seconds'] is not None else 'null')+' | '+(f"{r['peak_rss_bytes']/1024**2:.2f}" if r['peak_rss_bytes'] is not None else 'null')+' |')
@@ -39,6 +41,20 @@ per-run provenance.json supplies the source, exact commands, parameters and vect
 Missing measurements remain null. Native Windows physical RAM {env['physical_ram_bytes']}
 bytes; sampled stop threshold {env['memory_mib']} MiB / {env['memory_stop_bytes']} bytes.
 Sampling is every second, not a hard allocation cap. No retries/new formulas.
+
+**Budget deviation:** sum of recorded attempt wall times is {total_wall:.9f}
+seconds, exceeding the 6600-second maximum by {max(0,total_wall-6600):.9f} seconds.
+The per-query manager thresholds remained 600 seconds; recorded walls include
+sampled timeout/termination/serialization. The supplemental aggregate guard
+failed with native PermissionError while reading atomically replaced status.json.
+Manual stop was requested after discovering the guard failure; the final query
+had already timed out. All 11 statuses remain timeout, not stopped. No query
+was retried. budget-stop-failure.json retains the exact observed failure/deviation.
+Budget compliance is NOT claimed; acceptance requires independent disposition.
+No remaining verifier processes were found after the series. No diagnostic
+traces were emitted for these incomplete searches; stdout/stderr and telemetry
+remain available. The evidence audit checks integrity separately from policy
+compliance and exposes aggregate_wall_budget_compliant=false.
 
 {chr(10).join(check_rows)}
 

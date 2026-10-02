@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-10-02T10:00:30.438404+00:00",
+  "reason": "Aggregate guard exited on native PermissionError reading atomically replaced status.json; manual stop requested on discovering failure",
+  "guard_exit_code": 1,
+  "guard_error": "PermissionError: [Errno 13] Permission denied: status.json",
+  "last_observed_query_elapsed_seconds": 594.4075196000013,
+  "control_action": "stop",
+  "budget_compliance": "must audit actual elapsed; do not claim compliant",
+  "actual_attempt_wall_seconds": 6607.477845500001,
+  "maximum_authorized_seconds": 6600,
+  "excess_seconds": 7.477845500001422,
+  "actual_last_status": "timeout",
+  "manual_stop_effect": "No effect: last native query had already reached timeout and final checkpoint was published"
+}

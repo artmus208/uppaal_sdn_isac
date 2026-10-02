@@ -1,5 +1,5 @@
 """Read-only offline evidence audit. No verifier execution."""
-import hashlib,json,subprocess,sys
+import csv,hashlib,json,subprocess,sys
 from pathlib import Path
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[2]
 sys.path.insert(0,str(ROOT/'src'))
@@ -48,7 +48,7 @@ def audit():
         require(raw['run_id']==r['manager_attempt_id'] and raw['status']==r['status'] and raw['verdict']==r['verdict'],'raw verdict identity')
         require(raw['tool_version']==r['tool_version']==a['tool_version'],'full actual tool version')
         require(cfg['executable_hash']==a['executable_hash']==r['executable_hash'],'executable identity')
-        require(raw['command'][1:5]==['-o','0','-t','0'] and Path(raw['command'][-1]).name=='query-001.q' and Path(raw['command'][-2]).name=='model.xml','actual flags')
+        require(raw['command'][1:5]==['-o','0','-t','0'] and raw['command'][-1].replace('\\','/').rsplit('/',1)[-1]=='query-001.q' and raw['command'][-2].replace('\\','/').rsplit('/',1)[-1]=='model.xml','actual flags')
         session=read(q/'sessions'/raw['session']/'session.json');require(session['queue_hash']==sha(q/'queue.json') and session['hardware']['manager_hash']==p['manager_hash'],'session provenance')
         out=(folder/'stdout.txt').read_text(encoding='utf-8',errors='replace');err=(folder/'stderr.txt').read_text(encoding='utf-8',errors='replace')
         if raw['status']=='success':
@@ -57,8 +57,18 @@ def audit():
         else:require(r['verdict'] is None,'inconclusive must have null verdict')
         for item in r['raw_files']:require(sha(HERE/item['path'])==item['sha256'],'registry raw hash '+item['path'])
         require(r['wall_seconds']==raw['elapsed_seconds'] and r['cpu_seconds']==raw['cpu_seconds'] and r['peak_rss_bytes']==raw['peak_rss_bytes'],'measurement provenance')
+        rows=list(csv.DictReader((folder/'telemetry.csv').open(encoding='utf-8',newline='')))
+        require(bool(rows),'telemetry retained')
+        peaks=[int(row['peak_rss_bytes']) for row in rows if row['peak_rss_bytes']]
+        cpus=[float(row['cpu_seconds']) for row in rows if row['cpu_seconds']]
+        require((max(peaks) if peaks else None)==r['peak_rss_bytes'],'telemetry peak identity')
+        require((cpus[-1] if cpus else None)==r['cpu_seconds'],'telemetry CPU identity')
+        require(float(rows[-1]['elapsed_seconds'])<=r['wall_seconds'],'wall measurement includes final sample')
+        require(r['source_hash']==read(ROOT/'manifests/baselines/uav-service-completion-r1.yaml')['hashing']['generation_source_hash'],'generation source hash')
+        require(r['generator_hash']==sha(ROOT/'evidence/instantiation/uav-service-completion-candidate/generate.py'),'generator hash')
         checked+=1
     if (HERE/'artifacts-sha256.json').exists():
         for name,h in read(HERE/'artifacts-sha256.json').items():require(sha(HERE/name)==h,'artifact integrity '+name)
-    return {'audit':'ok','kind':'offline_static_evidence_integrity','queries':11,'attempts_audited':checked,'statuses':statuses,'new_verifier_executions':0,'acceptance_status':'pending_independent_review'}
+    total_wall=sum(r['wall_seconds'] or 0 for r in records)
+    return {'aggregate_attempt_wall_seconds':total_wall,'authorized_maximum_seconds':6600,'aggregate_wall_budget_compliant':total_wall<=6600,'budget_deviation_seconds':max(0,total_wall-6600),'budget_disposition':'pending_independent_review; see budget-stop-failure.json' if total_wall>6600 else 'within cap','audit':'ok','kind':'offline_static_evidence_integrity','queries':11,'attempts_audited':checked,'statuses':statuses,'new_verifier_executions':0,'acceptance_status':'pending_independent_review'}
 if __name__=='__main__':print(json.dumps(audit(),indent=2))

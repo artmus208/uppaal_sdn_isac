@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "@(Get-Process verifyta -ErrorAction SilentlyContinue).Count"
+  ],
+  "exit_code": 0,
+  "stdout": "0\r\n",
+  "stderr": "",
+  "native_verifier_processes_after_series": 0
+}
