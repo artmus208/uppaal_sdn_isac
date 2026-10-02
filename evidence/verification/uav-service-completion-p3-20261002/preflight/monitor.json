@@ -1,0 +1,9 @@
+{
+  "status": "available",
+  "sample": {
+    "rss_bytes": 2674688,
+    "peak_rss_bytes": 2674688,
+    "cpu_seconds": 0.0
+  },
+  "kind": "native OS metrics probe on Python child; no verifier/query execution"
+}
