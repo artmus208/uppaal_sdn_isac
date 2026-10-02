@@ -101,10 +101,10 @@
       "queue_query_hash": "cc7fcd3791741da3b6df29a6e91cad409773a16d6424a4d85aceaa33cd5a618f",
       "queue_model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
       "queue_bytes_identical": true,
-      "attempt_consumed": false,
-      "status": "not_executed",
+      "attempt_consumed": true,
+      "status": "reserved",
       "verdict": null,
-      "reason": "Prepared only; execution prerequisites pending"
+      "reason": "Durable attempt reservation; interrupted attempt counts as used"
     },
     {
       "query_id": "timeout",
