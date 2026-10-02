@@ -1,0 +1,26 @@
+{
+  "tested_commit": "c05aa43187d279859d65e391a3477cb4c284e0f2",
+  "checks_kind": "static_and_software_only",
+  "native_runs": 0,
+  "commands": [
+    {
+      "check": "full-unit-suite",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/operational/checks/full-unit-suite.stdout.txt",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/operational/checks/full-unit-suite.stderr.txt",
+      "stderr_sha256": "e0350e33f5b30cd5f5c0bcc5a0e4d4eb2c87402bdd216a8eaa271180a310ac78"
+    }
+  ]
+}

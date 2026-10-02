@@ -1,0 +1,31 @@
+{
+  "status": "template_only_not_activated",
+  "issue": 84,
+  "decision_A_B_D": "https://github.com/artmus208/uppaal_sdn_isac/issues/84#issuecomment-5946722646",
+  "proposal_pr": 85,
+  "proposal_head": "6ff7f63b03c16bc3cc4b6acb861604d6fb46906a",
+  "proposal_merge_sha": "efb6d6c0d936c2c62fbf902e383a144e6b616a0a",
+  "operational_pr": null,
+  "independent_operational_acceptance": null,
+  "operational_merge_sha": null,
+  "operational_merged_at_utc": null,
+  "activation_decision_url": null,
+  "activation_decided_at_utc": null,
+  "manifest_path": "manifests/baselines/uav-service-completion-r1.yaml",
+  "manifest_sha256": "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d",
+  "scope": {
+    "baseline_id": "uav-service-completion-r1-20261002",
+    "N": 1,
+    "processes": 51,
+    "requests": 1,
+    "results": 1,
+    "query_inputs": 11,
+    "query_verdicts": "all_open",
+    "P3_accepted": false,
+    "R07_closed": false,
+    "universal_guarantees_accepted": false,
+    "native_execution_authorized": false
+  },
+  "scientific_input_pins": "../decision-pins.json",
+  "next_step": "After independent acceptance and merge, fill actual SHA/time and prepare the record; activation still requires a separate explicit Integrator decision."
+}
