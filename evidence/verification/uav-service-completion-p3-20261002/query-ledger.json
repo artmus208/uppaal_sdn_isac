@@ -156,9 +156,12 @@
       "queue_model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
       "queue_bytes_identical": true,
       "attempt_consumed": true,
-      "status": "reserved",
+      "status": "timeout",
       "verdict": null,
-      "reason": "Durable attempt reservation; interrupted attempt counts as used"
+      "reason": null,
+      "result_path": "runs/issue87-09-deadline-equality-attempt01-20261002/attempts/001-f7e594c5d5514974acfef99d2ec1715e/result.json",
+      "execution_source_commit": "a9db43f7c5455fe61160731fba07beecc86f34ba",
+      "manager_exit_code": 2
     },
     {
       "query_id": "completion-safety",
