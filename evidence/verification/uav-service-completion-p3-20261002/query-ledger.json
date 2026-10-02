@@ -174,9 +174,12 @@
       "queue_model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
       "queue_bytes_identical": true,
       "attempt_consumed": true,
-      "status": "reserved",
+      "status": "timeout",
       "verdict": null,
-      "reason": "Durable attempt reservation; interrupted attempt counts as used"
+      "reason": null,
+      "result_path": "runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/result.json",
+      "execution_source_commit": "451510645b8eef2788d41b2859500d91009c0462",
+      "manager_exit_code": 2
     },
     {
       "query_id": "deadlock",
