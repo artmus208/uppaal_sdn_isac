@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/tmp/uppaal-service-82/evidence/instantiation/uav-service-completion-candidate/.venv/bin/uppaal-verifyta", line 5, in <module>
+    from uppaal_mcp.cli import main
+ModuleNotFoundError: No module named 'uppaal_mcp'

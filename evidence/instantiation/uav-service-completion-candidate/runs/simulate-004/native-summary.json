@@ -1,0 +1,53 @@
+{
+    "prior_native_wall_seconds":  0,
+    "total_wall_seconds":  5.9343588999999994,
+    "total_limit_seconds":  600,
+    "cells":  [
+                  {
+                      "exit_code":  2,
+                      "peak_tree_sample_bytes":  834981888,
+                      "run_id":  "uav-completion-82-20261002-simulate-004",
+                      "process_tree_reaped":  true,
+                      "command":  [
+                                      "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+                                      "-Xmx512m",
+                                      "-Djava.awt.headless=true",
+                                      "-cp",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+                                      "CausalReplay",
+                                      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\model.xml",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\spine-corrected.tsv",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-004",
+                                      "simulate",
+                                      "5eb0d00bcb5ee85a02c4aa7bfb6bfb7f73f71fbe16a54aed2d5ae859533b3c6a"
+                                  ],
+                      "runtime_seconds":  4.593214,
+                      "requested_sleep_ms":  100,
+                      "owned_process_identities":  [
+                                                       {
+                                                           "id":  8328,
+                                                           "start":  "2026-10-02T03:28:06.2399217Z"
+                                                       },
+                                                       {
+                                                           "id":  4204,
+                                                           "start":  "2026-10-02T03:28:06.5114959Z"
+                                                       },
+                                                       {
+                                                           "id":  10412,
+                                                           "start":  "2026-10-02T03:28:06.5054042Z"
+                                                       },
+                                                       {
+                                                           "id":  17816,
+                                                           "start":  "2026-10-02T03:28:06.2316087Z"
+                                                       }
+                                                   ],
+                      "started_utc":  "2026-10-02T03:28:06.2076343Z",
+                      "timeout_seconds":  60,
+                      "mode":  "simulate",
+                      "native_status":  "success",
+                      "memory_limit_bytes":  2147483648,
+                      "finished_utc":  "2026-10-02T03:28:10.8012977Z"
+                  }
+              ]
+}

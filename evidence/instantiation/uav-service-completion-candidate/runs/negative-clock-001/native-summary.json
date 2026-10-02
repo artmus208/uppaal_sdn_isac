@@ -1,0 +1,53 @@
+{
+    "prior_native_wall_seconds":  0,
+    "total_wall_seconds":  13.252134199999999,
+    "total_limit_seconds":  600,
+    "cells":  [
+                  {
+                      "exit_code":  1,
+                      "peak_tree_sample_bytes":  834519040,
+                      "run_id":  "uav-completion-82-20261002-negative-clock-001",
+                      "process_tree_reaped":  true,
+                      "command":  [
+                                      "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+                                      "-Xmx512m",
+                                      "-Djava.awt.headless=true",
+                                      "-cp",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+                                      "CausalReplay",
+                                      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\model.xml",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\simulate-006\\trace.xtr",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-service-82\\evidence\\instantiation\\uav-service-completion-candidate\\runs\\negative-clock-001",
+                                      "negative-clock",
+                                      "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02"
+                                  ],
+                      "runtime_seconds":  11.9896602,
+                      "requested_sleep_ms":  100,
+                      "owned_process_identities":  [
+                                                       {
+                                                           "id":  15972,
+                                                           "start":  "2026-10-02T03:42:59.8100488Z"
+                                                       },
+                                                       {
+                                                           "id":  4812,
+                                                           "start":  "2026-10-02T03:42:59.8034725Z"
+                                                       },
+                                                       {
+                                                           "id":  20268,
+                                                           "start":  "2026-10-02T03:42:59.5249773Z"
+                                                       },
+                                                       {
+                                                           "id":  8248,
+                                                           "start":  "2026-10-02T03:42:59.5195957Z"
+                                                       }
+                                                   ],
+                      "started_utc":  "2026-10-02T03:42:59.4949135Z",
+                      "timeout_seconds":  60,
+                      "mode":  "negative-clock",
+                      "native_status":  "success",
+                      "memory_limit_bytes":  2147483648,
+                      "finished_utc":  "2026-10-02T03:43:11.4853731Z"
+                  }
+              ]
+}

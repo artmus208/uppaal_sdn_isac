@@ -1,0 +1,7 @@
+java.lang.IllegalArgumentException: Compilation: error
+/nta/system
+1 1 1 2╤шэЄръёшўхёър  ю°шсър: эхюцшфрээ√щ ъюэхЎ ттюфр
+
+	at TimedReplay.require(TimedReplay.java:36)
+	at CausalReplay.require(CausalReplay.java:18)
+	at CausalReplay.main(CausalReplay.java:131)
