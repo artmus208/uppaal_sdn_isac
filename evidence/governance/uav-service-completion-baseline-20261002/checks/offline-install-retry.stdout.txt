@@ -1,0 +1,15 @@
+Processing /tmp/uppaal84-install
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: uppaal-mcp
+  Building wheel for uppaal-mcp (pyproject.toml): started
+  Building wheel for uppaal-mcp (pyproject.toml): finished with status 'done'
+  Created wheel for uppaal-mcp: filename=uppaal_mcp-0.1.0-py3-none-any.whl size=207750 sha256=0e97da4cb91d38a98b095e2abe6f84c3241be60ff7b159963d2df44ef0619414
+  Stored in directory: /tmp/pip-ephem-wheel-cache-lc_v09wy/wheels/3d/3b/1b/b2fdf42199ff3e3dc2983d317903599247c242c35dd8486942
+Successfully built uppaal-mcp
+Installing collected packages: uppaal-mcp
+  Attempting uninstall: uppaal-mcp
+    Found existing installation: uppaal-mcp 0.1.0
+    Not uninstalling uppaal-mcp at /tmp/uppaal-r07-80/.venv/lib/python3.12/site-packages, outside environment /tmp/uppaal-baseline-84-venv
+    Can't uninstall 'uppaal-mcp'. No files were found to uninstall.
+Successfully installed uppaal-mcp-0.1.0

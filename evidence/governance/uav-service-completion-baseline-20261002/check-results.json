@@ -1,0 +1,358 @@
+{
+  "commands": [
+    {
+      "check": "candidate-generate",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "evidence/instantiation/uav-service-completion-candidate/generate.py",
+        "--check"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/candidate-generate.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/candidate-generate.stdout.txt",
+      "stdout_sha256": "2b78c4f0fa22d1a1018ca4a4b4c28ebb116cadf475726e62442f399adaca9026"
+    },
+    {
+      "check": "candidate-audit",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "evidence/instantiation/uav-service-completion-candidate/audit.py"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/candidate-audit.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/candidate-audit.stdout.txt",
+      "stdout_sha256": "c8bd224aed4a97e3bbefd990ea6ca075a727aa67a47ba7f2822297a27312d424"
+    },
+    {
+      "check": "baseline-audit",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "evidence/governance/uav-service-completion-baseline-20261002/check.py",
+        "--source-history"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/baseline-audit.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/baseline-audit.stdout.txt",
+      "stdout_sha256": "78d872368ecce343db384094871342389e624bbc1b280ca455278201e9ad7833"
+    },
+    {
+      "check": "negative-controls",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evidence/governance/uav-service-completion-baseline-20261002",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/negative-controls.stderr.txt",
+      "stderr_sha256": "c2019825823afdff1c384ff6bad243e0b7a01317f12d07e6bfa66b2307b8abdb",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/negative-controls.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "candidate-controls",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evidence/instantiation/uav-service-completion-candidate",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/candidate-controls.stderr.txt",
+      "stderr_sha256": "d805b5959242b3c31fa9cee349abb1dcf47909d963517e72dd85de127b0d5ff5",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/candidate-controls.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "repository-tests",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 1,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/repository-tests.stderr.txt",
+      "stderr_sha256": "53f46b357b58f0076add4778b444383ffe0c8164a33b99e9c86b6a1c4206ebf9",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/repository-tests.stdout.txt",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
+    },
+    {
+      "check": "coordination",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/coordination.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/coordination.stdout.txt",
+      "stdout_sha256": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d"
+    },
+    {
+      "check": "historical-family",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "scripts/check_family_baseline.py"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/historical-family.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/historical-family.stdout.txt",
+      "stdout_sha256": "c1c0c7604ccf7eae7f811eed4be1fbe1bf08eb27eda3314e9c755f58488ee031"
+    },
+    {
+      "check": "mcp-smoke",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/mcp-smoke.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/mcp-smoke.stdout.txt",
+      "stdout_sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc"
+    },
+    {
+      "check": "cli-examples",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/cli-examples.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/cli-examples.stdout.txt",
+      "stdout_sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f"
+    },
+    {
+      "check": "patch-applicability",
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "evidence/governance/uav-service-completion-baseline-20261002/proposed-operational.patch"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/patch-applicability.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/patch-applicability.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "61386aa358805082b705dcd00c8cbfde5fb98248"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/whitespace.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/whitespace.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "mcp-startup-outside",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_mcp_startup.py",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "sandbox": "outside",
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/mcp-startup-outside.stderr.txt",
+      "stderr_sha256": "876361f6a295c70e4ba9a272667841fea9a06489f3bc67ecd68d79c052448406",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/mcp-startup-outside.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "check": "repository-tests-outside",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 1,
+      "sandbox": "outside",
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/repository-tests-outside.stderr.txt",
+      "stderr_sha256": "f9cc0d1ff24b70a9549562cc2849f12287cb101962fc3f112ab85ac97e07a15d",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/repository-tests-outside.stdout.txt",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
+    },
+    {
+      "check": "offline-install",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-build-isolation",
+        "/tmp/uppaal84-install"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 2,
+      "sandbox": "workspace-write",
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/offline-install.stderr.txt",
+      "stderr_sha256": "14d5dc51718f68e6005f3ceca51ab4facebc96991f6c70aee7a68ada73ad9eef",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/offline-install.stdout.txt",
+      "stdout_sha256": "447a902b21c16e506c085c25c33f11ce17f001379e0c9a15df7fe12bf98d0da4"
+    },
+    {
+      "check": "builddeps",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "/tmp/uppaal84-builddeps/setuptools-82.0.1-py3-none-any.whl",
+        "/tmp/uppaal84-builddeps/wheel-0.46.3-py3-none-any.whl"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "sandbox": "workspace-write",
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/builddeps.stderr.txt",
+      "stderr_sha256": "c2d0c69f8a8a34ce182ad1feb1a6ff03b2548055311927f15f2700d30c898c67",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/builddeps.stdout.txt",
+      "stdout_sha256": "92fcc2762acb00648daf6d6a381c7e68510f4b10b3e16091005e4cf8154ede73"
+    },
+    {
+      "check": "offline-install-retry",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--no-index",
+        "--no-deps",
+        "--no-build-isolation",
+        "/tmp/uppaal84-install"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "sandbox": "workspace-write",
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/offline-install-retry.stderr.txt",
+      "stderr_sha256": "c2d0c69f8a8a34ce182ad1feb1a6ff03b2548055311927f15f2700d30c898c67",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/offline-install-retry.stdout.txt",
+      "stdout_sha256": "4d0d5c9f3b3186e409d65a08c6b31fd885b7a26cd0c74b1d1b9407411e8b531c"
+    },
+    {
+      "check": "repository-tests-installed-outside",
+      "command": [
+        "/tmp/uppaal-baseline-84-venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "sandbox": "outside",
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/repository-tests-installed-outside.stderr.txt",
+      "stderr_sha256": "29460bfd36b33ee8700bce306220cc09e324de62d8abd5a86f10f37e9d7939da",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/repository-tests-installed-outside.stdout.txt",
+      "stdout_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
+    },
+    {
+      "check": "final-controls",
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evidence/governance/uav-service-completion-baseline-20261002",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "/tmp/uppaal-baseline-84",
+      "exit_code": 0,
+      "stderr": "evidence/governance/uav-service-completion-baseline-20261002/checks/final-controls.stderr.txt",
+      "stderr_sha256": "9ef87e9154e2de05bb01fa94d355215f7d3d6713066cba5ef65969963b34c37b",
+      "stdout": "evidence/governance/uav-service-completion-baseline-20261002/checks/final-controls.stdout.txt",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "/tmp/uppaal-baseline-84/src"
+  },
+  "evidence_class": "static_validation_and_software_tests",
+  "final_disposition": {
+    "candidate_controls": "12 tests, OK",
+    "gate_1": "pending_independent_decision",
+    "initial_failures": "sandbox MCP stdio timeout and missing CLI entrypoint; initial outside retry retained CLI failures; initial offline install missing setuptools. All logs preserved; corrected installed outside suite OK.",
+    "new_native_runs": 0,
+    "operational_activation": "pending",
+    "proposal_controls": "12 tests, OK",
+    "repository_tests": "209 tests, OK, no skipped tests, installed environment outside sandbox",
+    "static_checks": "all listed candidate/proposal/coordination/family/patch checks exit 0"
+  },
+  "native_uppaal_runs": 0,
+  "platform": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "setup": "Isolated venv with read-only reused MCP dependencies. Missing CLI fixed by offline installation from exact current source-copy staging at /tmp/uppaal84-install after installing cached setuptools 82.0.1 and wheel 0.46.3. Checkout src precedes all dependency paths via PYTHONPATH. No network dependency fetch.",
+  "tool_version_probe": "not_run; exact historical engine responses audited"
+}

@@ -1,0 +1,17 @@
+test_added_bounded_locations_have_failure_exits (test_candidate.CandidateTests.test_added_bounded_locations_have_failure_exits) ... ok
+test_admission_rejection_cannot_overwrite_cancellation (test_candidate.CandidateTests.test_admission_rejection_cannot_overwrite_cancellation) ... ok
+test_clock_resets_and_retrospective_completion (test_candidate.CandidateTests.test_clock_resets_and_retrospective_completion) ... ok
+test_deterministic_and_pinned (test_candidate.CandidateTests.test_deterministic_and_pinned) ... ok
+test_every_stored_quality_combination (test_candidate.CandidateTests.test_every_stored_quality_combination) ... ok
+test_fake_wrong_duplicate_missing_and_failed_events (test_candidate.CandidateTests.test_fake_wrong_duplicate_missing_and_failed_events) ... ok
+test_full_composition_and_unchanged_templates (test_candidate.CandidateTests.test_full_composition_and_unchanged_templates) ... ok
+test_healthy_receipt_and_age_equalities (test_candidate.CandidateTests.test_healthy_receipt_and_age_equalities) ... ok
+test_nta_template_element_order (test_candidate.CandidateTests.test_nta_template_element_order) ... ok
+test_quality_does_not_use_later_global_kpis (test_candidate.CandidateTests.test_quality_does_not_use_later_global_kpis) ... ok
+test_queue_original_capacity_update_and_result_insert (test_candidate.CandidateTests.test_queue_original_capacity_update_and_result_insert) ... ok
+test_timer_termination_grant_and_ack_cannot_complete (test_candidate.CandidateTests.test_timer_termination_grant_and_ack_cannot_complete) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.519s
+
+OK
