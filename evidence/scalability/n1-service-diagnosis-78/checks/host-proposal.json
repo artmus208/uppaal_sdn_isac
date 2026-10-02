@@ -1,0 +1,18 @@
+{
+  "exit_code": 0,
+  "powershell_script": "$ErrorActionPreference='Stop'; $ProgressPreference='SilentlyContinue'; [Console]::OutputEncoding=New-Object System.Text.UTF8Encoding($false); $o=Get-CimInstance Win32_OperatingSystem; $c=@(Get-CimInstance Win32_Processor); [ordered]@{os=$o.Caption; build=$o.BuildNumber; cpu=@($c | ForEach-Object {$_.Name}); logical_cpus=($c | Measure-Object NumberOfLogicalProcessors -Sum).Sum; total_ram_bytes=[long]$o.TotalVisibleMemorySize*1024; available_ram_bytes=[long]$o.FreePhysicalMemory*1024; measured_at_utc=[DateTime]::UtcNow.ToString('o')} | ConvertTo-Json",
+  "executable": "/mnt/c/Program Files (x86)/UPPAAL-5.0.0/bin/verifyta.exe",
+  "executable_sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "tool_version": "not_probed; must capture before any authorized scientific run",
+  "host": {
+    "os": "Майкрософт Windows 10 Домашняя для одного языка",
+    "build": "19045",
+    "cpu": [
+      "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+    ],
+    "logical_cpus": 8,
+    "total_ram_bytes": 17033019392,
+    "available_ram_bytes": 3976790016,
+    "measured_at_utc": "2026-09-29T21:09:22.6615491Z"
+  }
+}

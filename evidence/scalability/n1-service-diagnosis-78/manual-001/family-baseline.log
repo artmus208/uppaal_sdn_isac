@@ -1,0 +1,10 @@
+{
+  "kind": "static_validation_not_model_checking",
+  "manifest_sha256": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf",
+  "models": 4,
+  "queries": 30,
+  "current_input_hashes_checked": 106,
+  "historical_input_hashes_checked": 0,
+  "activation_checked": false,
+  "P4_execution_authorized": false
+}

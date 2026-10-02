@@ -1,0 +1,103 @@
+{
+  "source": "D:\\UPPAAL-debug-N1",
+  "files": [
+    {
+      "path": "03-kpi-received.xtr",
+      "bytes": 72738,
+      "sha256": "e1f6d836fa3750bd0e03ef0ba63c3bc92499c0140dcc8c91a713d2b8342027e5"
+    },
+    {
+      "path": "04-joint-selected.xtr",
+      "bytes": 76724,
+      "sha256": "9cdc5f2352e45b51abcfd63ad80d63b447403affc9e4b28120ee3fc90a8ae904"
+    },
+    {
+      "path": "05-service-before-overflow.xtr",
+      "bytes": 91407,
+      "sha256": "8186e1b68324ba288abe6249abdc73fa771400d95414d4bf77d2d1f9fdfbfcf7"
+    },
+    {
+      "path": "instance-vector.json",
+      "bytes": 2447,
+      "sha256": "69b5105223a5dd3a2bae34513f6126416fdb15fad0b99a6b405f977332feddad"
+    },
+    {
+      "path": "interface-inventory.json",
+      "bytes": 51618,
+      "sha256": "284751016206cbb486ff1eb745e05f03ca24d64364bb72739d9eed8553d553cd"
+    },
+    {
+      "path": "load.q",
+      "bytes": 9,
+      "sha256": "644d8b224aad11e172d30865588d6aaa856d72a3195c22029cb7a47cb9ee1726"
+    },
+    {
+      "path": "metadata.json",
+      "bytes": 2328,
+      "sha256": "099fa60d81e60d961fd5ce8866a615c7dd910556965edbb5325d12c729d147d8"
+    },
+    {
+      "path": "model.xml",
+      "bytes": 380346,
+      "sha256": "2f3ebdf7148098e2037cd90aeeca3434d4366472027b24ef115ee3dae79875af"
+    },
+    {
+      "path": "p4/family-queue-safety.q",
+      "bytes": 34,
+      "sha256": "c820090fc19ffc80284d62194b40f62396cdeedc10fc1db0d853f4293b64656e"
+    },
+    {
+      "path": "p4/joint-backlog.q",
+      "bytes": 23,
+      "sha256": "706bd493fef18a2de31be212156825af913ef21adde7d15cda47dc1bc1825afe"
+    },
+    {
+      "path": "p4/shared-capacity.q",
+      "bytes": 36,
+      "sha256": "91a397f4dfa84865086e4eb1dfc9fb3a6d2e5fa9fb3c8af3c07060c07df86513"
+    },
+    {
+      "path": "p4/u0-queue-full.q",
+      "bytes": 68,
+      "sha256": "3818bec4871dc7de0d63514ca87ad26065f0abecee33e8cb6f45d999ddd09e55"
+    },
+    {
+      "path": "p4/u0-queue-safety.q",
+      "bytes": 32,
+      "sha256": "48989eef927665697ce2687c5eccfcd99da2a9e46b97640003421fd620ca3291"
+    },
+    {
+      "path": "p4/u0-service.q",
+      "bytes": 19,
+      "sha256": "5aeca4a4152577404ee725b1b2c2c697bdb02803c291742ce01c73b9a0d6c789"
+    },
+    {
+      "path": "p4-queries.json",
+      "bytes": 5320,
+      "sha256": "289b119c62b25660b7eebcdf9862435b7dd01c54766305dad33ad29655f854ea"
+    },
+    {
+      "path": "parameters.json",
+      "bytes": 6957,
+      "sha256": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18"
+    },
+    {
+      "path": "parse-all.q",
+      "bytes": 1713,
+      "sha256": "0013d2d8dc565999cb21752b77a0cce6cc731cc6ad01bedb57b075f6eb08d8ce"
+    },
+    {
+      "path": "queries.json",
+      "bytes": 3570,
+      "sha256": "72a877f50891464d3a97e01304996ebdc695d72603c4383dc2164c6822989efb"
+    },
+    {
+      "path": "queries.q",
+      "bytes": 1492,
+      "sha256": "57ecc666c1f74ae8fff267dd93854f69f5d8e66397b1f92d224ecc78c61c116d"
+    }
+  ],
+  "file_count": 19,
+  "copy_byte_identical": true,
+  "screenshots_present": false
+}

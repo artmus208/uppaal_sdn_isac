@@ -1,0 +1,409 @@
+{
+  "approved_protocol_commit": "701295a3339c9935bad1c6840e90fa8fc89dbb23",
+  "authorization_reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/78",
+  "authorization_sha256": "c7cf10ff2beb77008f40eefe544da389594794f137326d5ce9f4b333b7a0ba1f",
+  "binary_hash": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "budget_measure": "one monotonic wall interval from before first native probe through final cleanup, including controls, metadata, probes, wrapper and checkpoints",
+  "budget_seconds": 300,
+  "controls": [
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 5563617280,
+        "cpu_models": [
+          "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T21:34:22.9384219Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 80023552,
+          "private_bytes": 70942720,
+          "working_set_bytes": 79876096
+        },
+        "os": "Майкрософт Windows 10 Домашняя для одного языка",
+        "os_build": "19045",
+        "os_version": "10.0.19045",
+        "powershell_version": "5.1.19041.6456",
+        "total_physical_ram_bytes": 17033019392,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\controls\\normal\\hardware.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "monitor": {
+        "command": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-EncodedCommand",
+          "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABbAEMAbwBuAHMAbwBsAGUAXQA6ADoATwB1AHQALgBXAHIAaQB0AGUAKAAnAG8AdQB0ACcAKQA7ACAAWwBDAG8AbgBzAG8AbABlAF0AOgA6AEUAcgByAG8AcgAuAFcAcgBpAHQAZQAoACcAZQByAHIAJwApADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxAA=="
+        ],
+        "compile_only": false,
+        "cpu_seconds": 0.28125,
+        "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "enforcement": "sampled stop threshold, not a hard allocation cap; target process only",
+        "error": null,
+        "exit_code": 0,
+        "finished_at_utc": "2026-09-29T21:34:24.8254728Z",
+        "kill_tree_requested": false,
+        "maximum_sample_gap_seconds": 0.0983842,
+        "measured_memory_overshoot_bytes": 0,
+        "memory_limit_bytes": 2147483648,
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+        "peak_private_bytes": 61456384,
+        "peak_reported_working_set_bytes": 66633728,
+        "peak_working_set_bytes": 66629632,
+        "process_id": 17352,
+        "process_reaped": true,
+        "runtime_seconds": 1.2900584,
+        "sample_interval_ms": 50,
+        "samples": 19,
+        "started_at_utc": "2026-09-29T21:34:23.5301960Z",
+        "status": "success",
+        "timeout_seconds": 5,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\controls\\normal\\tool.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "name": "normal",
+      "passed": true
+    },
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 5569355776,
+        "cpu_models": [
+          "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T21:34:26.4790731Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 80379904,
+          "private_bytes": 71032832,
+          "working_set_bytes": 80232448
+        },
+        "os": "Майкрософт Windows 10 Домашняя для одного языка",
+        "os_build": "19045",
+        "os_version": "10.0.19045",
+        "powershell_version": "5.1.19041.6456",
+        "total_physical_ram_bytes": 17033019392,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\controls\\timeout\\hardware.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "monitor": {
+        "command": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-EncodedCommand",
+          "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+        ],
+        "compile_only": false,
+        "cpu_seconds": 0.296875,
+        "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "enforcement": "sampled stop threshold, not a hard allocation cap; target process only",
+        "error": null,
+        "exit_code": -1,
+        "finished_at_utc": "2026-09-29T21:34:30.1164869Z",
+        "kill_tree_requested": true,
+        "maximum_sample_gap_seconds": 0.10343759999999999,
+        "measured_memory_overshoot_bytes": 0,
+        "memory_limit_bytes": 2147483648,
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+        "peak_private_bytes": 61255680,
+        "peak_reported_working_set_bytes": 66088960,
+        "peak_working_set_bytes": 66084864,
+        "process_id": 1304,
+        "process_reaped": true,
+        "runtime_seconds": 3.072319,
+        "sample_interval_ms": 50,
+        "samples": 15,
+        "started_at_utc": "2026-09-29T21:34:27.0384792Z",
+        "status": "timeout",
+        "timeout_seconds": 1,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\controls\\timeout\\tool.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "name": "timeout",
+      "passed": true
+    },
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 5566267392,
+        "cpu_models": [
+          "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T21:34:31.7700139Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 80457728,
+          "private_bytes": 71008256,
+          "working_set_bytes": 80310272
+        },
+        "os": "Майкрософт Windows 10 Домашняя для одного языка",
+        "os_build": "19045",
+        "os_version": "10.0.19045",
+        "powershell_version": "5.1.19041.6456",
+        "total_physical_ram_bytes": 17033019392,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\controls\\memory\\hardware.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "monitor": {
+        "command": [
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-EncodedCommand",
+          "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+        ],
+        "compile_only": false,
+        "cpu_seconds": 0.328125,
+        "cwd": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "enforcement": "sampled stop threshold, not a hard allocation cap; target process only",
+        "error": null,
+        "exit_code": -1,
+        "finished_at_utc": "2026-09-29T21:34:34.4628792Z",
+        "kill_tree_requested": true,
+        "maximum_sample_gap_seconds": 0.059668799999999994,
+        "measured_memory_overshoot_bytes": 15347712,
+        "memory_limit_bytes": 1048576,
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+        "peak_private_bytes": 16396288,
+        "peak_reported_working_set_bytes": 13721600,
+        "peak_working_set_bytes": 13717504,
+        "process_id": 3388,
+        "process_reaped": true,
+        "runtime_seconds": 2.1355744999999997,
+        "sample_interval_ms": 50,
+        "samples": 1,
+        "started_at_utc": "2026-09-29T21:34:32.3206039Z",
+        "status": "memory_limit",
+        "timeout_seconds": 5,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\controls\\memory\\tool.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "name": "memory",
+      "passed": true
+    }
+  ],
+  "elapsed_wall_seconds": 154.42796602499993,
+  "environment": {
+    "LANG": "C.UTF-8",
+    "LC_ALL": "C.UTF-8",
+    "target": "native Windows via WSL"
+  },
+  "finished_at_utc": "2026-09-29T21:36:55.583964+00:00",
+  "inherited_UPPAAL_flags_removed": true,
+  "metadata": [
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 5534269440,
+        "cpu_models": [
+          "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T21:34:42.3577179Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 80318464,
+          "private_bytes": 70860800,
+          "working_set_bytes": 80171008
+        },
+        "os": "Майкрософт Windows 10 Домашняя для одного языка",
+        "os_build": "19045",
+        "os_version": "10.0.19045",
+        "powershell_version": "5.1.19041.6456",
+        "total_physical_ram_bytes": 17033019392,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\version\\hardware.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "option": "--version",
+      "result": {
+        "error": null,
+        "exit_code": 0,
+        "finished_at_utc": "2026-09-29T21:34:42.9539019Z",
+        "process_id": 14412,
+        "process_reaped": true,
+        "runtime_seconds": 0.0846389,
+        "started_at_utc": "2026-09-29T21:34:42.8625545Z",
+        "status": "success",
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\metadata.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\version\\tool.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "stderr": {
+        "encoding": "raw",
+        "path": "evidence/scalability/n1-service-diagnosis-78/runs/diagnostic-001/version/tool.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "encoding": "raw",
+        "path": "evidence/scalability/n1-service-diagnosis-78/runs/diagnostic-001/version/tool.stdout.txt",
+        "sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47",
+        "storage_sha256": "1a7d72ceb2f0d086fe11af6d3bc98c2c19a4ee33dc432322e4d4c0acb918bd47"
+      }
+    },
+    {
+      "hardware": {
+        "available_physical_ram_bytes": 5528129536,
+        "cpu_models": [
+          "Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz"
+        ],
+        "dotnet_version": "4.0.30319.42000",
+        "logical_cpu_count": 8,
+        "measured_at_utc": "2026-09-29T21:34:44.5998572Z",
+        "memory_measure": "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64), native Windows target process",
+        "memory_probe": {
+          "peak_working_set_bytes": 80269312,
+          "private_bytes": 70868992,
+          "working_set_bytes": 80121856
+        },
+        "os": "Майкрософт Windows 10 Домашняя для одного языка",
+        "os_build": "19045",
+        "os_version": "10.0.19045",
+        "powershell_version": "5.1.19041.6456",
+        "total_physical_ram_bytes": 17033019392,
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\family-series-68\\monitor.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\help\\hardware.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "option": "--help",
+      "result": {
+        "error": null,
+        "exit_code": 0,
+        "finished_at_utc": "2026-09-29T21:34:45.1999122Z",
+        "process_id": 20064,
+        "process_reaped": true,
+        "runtime_seconds": 0.0783016,
+        "started_at_utc": "2026-09-29T21:34:45.1145121Z",
+        "status": "success",
+        "wrapper_command": [
+          "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\metadata.ps1",
+          "-ConfigPath",
+          "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-n1-diagnosis-78\\evidence\\scalability\\n1-service-diagnosis-78\\runs\\diagnostic-001\\help\\tool.config.json"
+        ],
+        "wrapper_exit_code": 0
+      },
+      "stderr": {
+        "encoding": "raw",
+        "path": "evidence/scalability/n1-service-diagnosis-78/runs/diagnostic-001/help/tool.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "encoding": "raw",
+        "path": "evidence/scalability/n1-service-diagnosis-78/runs/diagnostic-001/help/tool.stdout.txt",
+        "sha256": "930017fb677dcead4e7b7baef29264a97a92dbe7f4f0e914f79d85687d50a73b",
+        "storage_sha256": "930017fb677dcead4e7b7baef29264a97a92dbe7f4f0e914f79d85687d50a73b"
+      }
+    }
+  ],
+  "metadata_helper_hash": "2109d3479247fa7cf07aee50eadebb1d7b10b7fa8c84a576dff2074664cdc8bc",
+  "monitor_hash": "37b267f49a4ed0a35a9db2f1ea8040132058ebbf01c7fe76354812467c6c2531",
+  "operating_environment": "Linux-6.18.40.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "protocol_hash": "88b76094d6952806712c89e2a26a390df54ff3b540f88f4cf37734532e3c2ae7",
+  "runner_hash": "f6caedab4e81df6bb73ed56b9bf5b8ed0e781d94d000874bbc804c3a081a5149",
+  "source_commit": "98901b40e443308970c614afd3045e6a57a5d7e2",
+  "started_at_utc": "2026-09-29T21:34:21.156003+00:00",
+  "status": "completed",
+  "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023",
+  "within_total_budget": true,
+  "working_tree_at_start": "clean"
+}

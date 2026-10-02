@@ -1,0 +1,298 @@
+test_cli (unittest.loader._FailedTest.test_cli) ... ERROR
+test_config (unittest.loader._FailedTest.test_config) ... ERROR
+test_pending_candidate_and_inconsistent_freeze (test_coordination.BaselineStateTests.test_pending_candidate_and_inconsistent_freeze) ... ok
+test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... ok
+test_invalid_input_and_construction (test_coordination.HashAuditTests.test_invalid_input_and_construction) ... ok
+test_missing_input_and_immutable_output (test_coordination.HashAuditTests.test_missing_input_and_immutable_output) ... Hash audit error: [Errno 17] File exists: '/tmp/tmprhqp7a_9/result.json'
+ok
+test_canonical_storage (test_coordination.RunStorageTests.test_canonical_storage) ... ok
+test_invalid_mappings (test_coordination.RunStorageTests.test_invalid_mappings) ... ok
+test_bad_paths_and_contract_disagreement_are_rejected (test_coordination_activation.CoordinationActivationTests.test_bad_paths_and_contract_disagreement_are_rejected) ... ok
+test_current_v2_and_historical_v1_coexist (test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist) ... ok
+test_historical_input_drift_is_rejected (test_coordination_activation.CoordinationActivationTests.test_historical_input_drift_is_rejected) ... ok
+test_migration_ids_remain_unique_and_conditional (test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional) ... ok
+test_missing_or_invalid_pointer_never_falls_back (test_coordination_activation.CoordinationActivationTests.test_missing_or_invalid_pointer_never_falls_back) ... ok
+test_owner_and_gate_changes_are_rejected (test_coordination_activation.CoordinationActivationTests.test_owner_and_gate_changes_are_rejected) ... ok
+test_generator_ignores_operational_v2_and_reproduces_frozen_bytes (test_coordination_activation.FrozenGenerationTests.test_generator_ignores_operational_v2_and_reproduces_frozen_bytes) ... ERROR
+test_current_family_and_historical_default_coexist (test_family_baseline.FamilyBaselineTests.test_current_family_and_historical_default_coexist) ... ok
+test_default_switch_and_selection_policy_drift_rejected (test_family_baseline.FamilyBaselineTests.test_default_switch_and_selection_policy_drift_rejected) ... ok
+test_duplicate_fields_rejected (test_family_baseline.FamilyBaselineTests.test_duplicate_fields_rejected) ... ok
+test_incomplete_family_or_query_set_rejected (test_family_baseline.FamilyBaselineTests.test_incomplete_family_or_query_set_rejected) ... ok
+test_input_drift_rejected (test_family_baseline.FamilyBaselineTests.test_input_drift_rejected) ... ok
+test_manifest_and_packet_cannot_be_rehashed_together (test_family_baseline.FamilyBaselineTests.test_manifest_and_packet_cannot_be_rehashed_together) ... ok
+test_operational_contract_history_not_confused_with_current (test_family_baseline.FamilyBaselineTests.test_operational_contract_history_not_confused_with_current) ... ok
+test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected) ... ok
+test_scope_widening_and_forged_decision_rejected (test_family_baseline.FamilyBaselineTests.test_scope_widening_and_forged_decision_rejected) ... ok
+test_integrated_ack_observer (unittest.loader._FailedTest.test_integrated_ack_observer) ... ERROR
+test_integrated_pin_revision (unittest.loader._FailedTest.test_integrated_pin_revision) ... ERROR
+test_integrated_queue_contract (unittest.loader._FailedTest.test_integrated_queue_contract) ... ERROR
+test_integrated_recovery_attempts (unittest.loader._FailedTest.test_integrated_recovery_attempts) ... ERROR
+test_integrated_recovery_contract (unittest.loader._FailedTest.test_integrated_recovery_contract) ... ERROR
+test_mac_layer (unittest.loader._FailedTest.test_mac_layer) ... ERROR
+test_mcp_startup (unittest.loader._FailedTest.test_mcp_startup) ... ERROR
+test_paths (unittest.loader._FailedTest.test_paths) ... ERROR
+test_phy_layer (unittest.loader._FailedTest.test_phy_layer) ... ERROR
+test_phy_threshold_boundaries (unittest.loader._FailedTest.test_phy_threshold_boundaries) ... ERROR
+test_sdn_layer (unittest.loader._FailedTest.test_sdn_layer) ... ERROR
+test_validation (unittest.loader._FailedTest.test_validation) ... ERROR
+test_verification_manager (unittest.loader._FailedTest.test_verification_manager) ... ERROR
+test_verifyta_parser (unittest.loader._FailedTest.test_verifyta_parser) ... ERROR
+
+======================================================================
+ERROR: test_cli (unittest.loader._FailedTest.test_cli)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_cli
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_cli.py", line 12, in <module>
+    from uppaal_mcp.examples import get_builtin_example
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_config (unittest.loader._FailedTest.test_config)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_config
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_config.py", line 7, in <module>
+    from uppaal_mcp import config
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_generator_ignores_operational_v2_and_reproduces_frozen_bytes (test_coordination_activation.FrozenGenerationTests.test_generator_ignores_operational_v2_and_reproduces_frozen_bytes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/uppaal-78-trace-audit/tests/test_coordination_activation.py", line 109, in test_generator_ignores_operational_v2_and_reproduces_frozen_bytes
+    from uppaal_mcp.integrated.generator import generate
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+======================================================================
+ERROR: test_integrated_ack_observer (unittest.loader._FailedTest.test_integrated_ack_observer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_integrated_ack_observer
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_integrated_ack_observer.py", line 7, in <module>
+    from uppaal_mcp.integrated.generator import generate
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_integrated_pin_revision (unittest.loader._FailedTest.test_integrated_pin_revision)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_integrated_pin_revision
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_integrated_pin_revision.py", line 6, in <module>
+    from uppaal_mcp.integrated.inputs import load, SOURCE_PIN_REVISIONS
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_integrated_queue_contract (unittest.loader._FailedTest.test_integrated_queue_contract)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_integrated_queue_contract
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_integrated_queue_contract.py", line 7, in <module>
+    from uppaal_mcp.integrated.generator import generate
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_integrated_recovery_attempts (unittest.loader._FailedTest.test_integrated_recovery_attempts)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_integrated_recovery_attempts
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_integrated_recovery_attempts.py", line 9, in <module>
+    from uppaal_mcp.integrated.adapt import RECOVERY_ATTEMPTS
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_integrated_recovery_contract (unittest.loader._FailedTest.test_integrated_recovery_contract)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_integrated_recovery_contract
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_integrated_recovery_contract.py", line 9, in <module>
+    from uppaal_mcp.integrated.adapt import record_recovery, recovery_policy
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_mac_layer (unittest.loader._FailedTest.test_mac_layer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_mac_layer
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_mac_layer.py", line 7, in <module>
+    from uppaal_mcp.mac.alpha import check_no_continuous_guards, default_profile, validate_threshold_policy
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_mcp_startup (unittest.loader._FailedTest.test_mcp_startup)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_mcp_startup
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_mcp_startup.py", line 10, in <module>
+    from uppaal_mcp.server import build_mcp
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_paths (unittest.loader._FailedTest.test_paths)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_paths
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_paths.py", line 4, in <module>
+    from uppaal_mcp.paths import (
+    ...<4 lines>...
+    )
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_phy_layer (unittest.loader._FailedTest.test_phy_layer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_phy_layer
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_phy_layer.py", line 8, in <module>
+    from uppaal_mcp.phy.alpha import (
+    ...<4 lines>...
+    )
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_phy_threshold_boundaries (unittest.loader._FailedTest.test_phy_threshold_boundaries)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_phy_threshold_boundaries
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_phy_threshold_boundaries.py", line 4, in <module>
+    from uppaal_mcp.phy.alpha import classify_sample
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_sdn_layer (unittest.loader._FailedTest.test_sdn_layer)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_sdn_layer
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_sdn_layer.py", line 7, in <module>
+    from uppaal_mcp.layers import available_layer_adapters
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_validation (unittest.loader._FailedTest.test_validation)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_validation
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_validation.py", line 3, in <module>
+    from uppaal_mcp.examples import EXAMPLE_DESCRIPTIONS, get_builtin_example, list_builtin_examples
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_verification_manager (unittest.loader._FailedTest.test_verification_manager)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_verification_manager
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_verification_manager.py", line 14, in <module>
+    from uppaal_mcp import verification_manager as m
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+======================================================================
+ERROR: test_verifyta_parser (unittest.loader._FailedTest.test_verifyta_parser)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_verifyta_parser
+Traceback (most recent call last):
+  File "/usr/lib/python3.14/unittest/loader.py", line 426, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.14/unittest/loader.py", line 367, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/tmp/uppaal-78-trace-audit/tests/test_verifyta_parser.py", line 7, in <module>
+    from uppaal_mcp.config import UppaalConfig
+ModuleNotFoundError: No module named 'uppaal_mcp'
+
+
+----------------------------------------------------------------------
+Ran 38 tests in 0.865s
+
+FAILED (errors=17)
+2 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+2 file hashes; 1 mismatches; 2 aggregate mismatches (not verification).

@@ -1,0 +1,32 @@
+{
+    "status":  "memory_limit",
+    "exit_code":  -1,
+    "process_id":  3388,
+    "started_at_utc":  "2026-09-29T21:34:32.3206039Z",
+    "finished_at_utc":  "2026-09-29T21:34:34.4628792Z",
+    "runtime_seconds":  2.1355744999999997,
+    "timeout_seconds":  5,
+    "memory_limit_bytes":  1048576,
+    "sample_interval_ms":  50,
+    "memory_measure":  "max(PrivateMemorySize64, WorkingSet64, PeakWorkingSet64)",
+    "enforcement":  "sampled stop threshold, not a hard allocation cap; target process only",
+    "samples":  1,
+    "maximum_sample_gap_seconds":  0.059668799999999994,
+    "peak_private_bytes":  16396288,
+    "peak_working_set_bytes":  13717504,
+    "peak_reported_working_set_bytes":  13721600,
+    "cpu_seconds":  0.328125,
+    "measured_memory_overshoot_bytes":  15347712,
+    "kill_tree_requested":  true,
+    "process_reaped":  true,
+    "error":  null,
+    "command":  [
+                    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                    "-NoProfile",
+                    "-NonInteractive",
+                    "-EncodedCommand",
+                    "JABQAHIAbwBnAHIAZQBzAHMAUAByAGUAZgBlAHIAZQBuAGMAZQA9ACcAUwBpAGwAZQBuAHQAbAB5AEMAbwBuAHQAaQBuAHUAZQAnADsAIABTAHQAYQByAHQALQBTAGwAZQBlAHAAIAAtAFMAZQBjAG8AbgBkAHMAIAAxADAA"
+                ],
+    "cwd":  "C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+    "compile_only":  false
+}

@@ -1,0 +1,26 @@
+{
+  "status": "saved_evidence_consistent",
+  "property_verdict": null,
+  "final_time": 10,
+  "cells": [
+    {
+      "mode": "replay",
+      "accepted_transitions": 68,
+      "status": "replay_complete",
+      "run_id": "n1-service-78-replay-001-replay"
+    },
+    {
+      "mode": "negative-discrete",
+      "accepted_transitions": 67,
+      "status": "rejected",
+      "run_id": "n1-service-78-replay-001-negative-discrete"
+    },
+    {
+      "mode": "negative-clock",
+      "accepted_transitions": 67,
+      "status": "rejected",
+      "run_id": "n1-service-78-replay-001-negative-clock"
+    }
+  ],
+  "artifacts_checked": 82
+}

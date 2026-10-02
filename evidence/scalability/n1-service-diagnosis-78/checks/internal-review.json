@@ -1,0 +1,7 @@
+{
+  "kind": "internal_quality_review_not_acceptance",
+  "scientific_review": "Clarified that negative healthy-ready D2 does not rule out original overflow grant; restored queue observer queueClass!=Q_CRIT alternative.",
+  "historical_review": "Run IDs, limits, strategies, metrics, hashes, trace decode and metadata gap checked against original artifacts; no material defect found.",
+  "manual_candidate_machine_replayed": false,
+  "independent_integrator_acceptance": "pending"
+}

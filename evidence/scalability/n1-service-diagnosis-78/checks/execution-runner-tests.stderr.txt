@@ -1,0 +1,14 @@
+test_approved_query_snapshot_and_limits (test_diagnostics.DiagnosticsTests.test_approved_query_snapshot_and_limits) ... ok
+test_cleanup_sampling_exit_required (test_diagnostics.DiagnosticsTests.test_cleanup_sampling_exit_required) ... ok
+test_early_wrapper_exit_with_live_pid_triggers_cleanup (test_diagnostics.DiagnosticsTests.test_early_wrapper_exit_with_live_pid_triggers_cleanup) ... ok
+test_error_diagnostic_overrides_verdict (test_diagnostics.DiagnosticsTests.test_error_diagnostic_overrides_verdict) ... ok
+test_exact_single_verdict_and_formula_index (test_diagnostics.DiagnosticsTests.test_exact_single_verdict_and_formula_index) ... ok
+test_failed_or_censored_run_never_promotes_partial_verdict (test_diagnostics.DiagnosticsTests.test_failed_or_censored_run_never_promotes_partial_verdict) ... ok
+test_unconfirmed_live_pid_cleanup_fails_closed (test_diagnostics.DiagnosticsTests.test_unconfirmed_live_pid_cleanup_fails_closed) ... ok
+test_wall_budget_includes_elapsed_outside_invocation (test_diagnostics.DiagnosticsTests.test_wall_budget_includes_elapsed_outside_invocation) ... ok
+test_watchdog_uses_config_result_not_config_stem (test_diagnostics.DiagnosticsTests.test_watchdog_uses_config_result_not_config_stem) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.620s
+
+OK

@@ -1,0 +1,12 @@
+test_import_failure_without_distribution_metadata_keeps_cause (test_mcp_startup.McpDependencyDiagnosticsTests.test_import_failure_without_distribution_metadata_keeps_cause) ... ok
+test_missing_fastmcp_api_is_reported_as_incompatible (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_fastmcp_api_is_reported_as_incompatible) ... ok
+test_missing_fastmcp_symbol_preserves_import_error (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_fastmcp_symbol_preserves_import_error) ... ok
+test_missing_sdk_is_reported_as_missing (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_sdk_is_reported_as_missing) ... ok
+test_missing_transitive_dependency_is_not_reported_as_missing_sdk (test_mcp_startup.McpDependencyDiagnosticsTests.test_missing_transitive_dependency_is_not_reported_as_missing_sdk) ... ok
+test_server_initializes_and_lists_registered_tools (test_mcp_startup.McpStdioStartupTests.test_server_initializes_and_lists_registered_tools) ... Processing request of type ListToolsRequest
+ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.257s
+
+OK

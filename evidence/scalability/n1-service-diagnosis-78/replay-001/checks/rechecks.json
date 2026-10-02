@@ -1,0 +1,38 @@
+{
+  "sandbox_full_suite": {
+    "exit_code": 1,
+    "tests": 209,
+    "errors": 1,
+    "error": "MCP stdio initialize timeout at 30s"
+  },
+  "unsandboxed_mcp": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_mcp_startup.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 6
+  },
+  "unsandboxed_full": {
+    "command": [
+      ".venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 0,
+    "tests": 209
+  },
+  "PYTHONDONTWRITEBYTECODE": "1",
+  "scientific_engine_rerun": false
+}

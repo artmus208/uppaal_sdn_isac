@@ -1,0 +1,15 @@
+{
+  "issue": 78,
+  "user_quote": "Даю добро",
+  "recorded_at_utc": "2026-09-29 21:26:07 UTC",
+  "recorded_by": "vadimnbkg",
+  "approved_commit": "701295a3339c9935bad1c6840e90fa8fc89dbb23",
+  "authorization_reference": "https://github.com/artmus208/uppaal_sdn_isac/issues/78",
+  "queries": 3,
+  "per_query_seconds": 30,
+  "total_wall_seconds": 300,
+  "memory_sampled_stop_bytes": 2147483648,
+  "minimum_available_native_ram_bytes": 3221225472,
+  "retries": 0,
+  "scope": "original full N=1 model, supplemental diagnostic queries D1/D2/D3; no merge or acceptance"
+}
