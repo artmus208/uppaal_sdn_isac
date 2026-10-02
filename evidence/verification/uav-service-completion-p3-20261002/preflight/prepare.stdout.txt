@@ -1,0 +1,169 @@
+https://github.com/artmus208/uppaal_sdn_isac/issues/64#issuecomment-5878071165 vadimnbkg ## –ешение об активации v2
+
+ѕо пр€мому поручению пользовател€ / Integrator в текущей сессии: Ђ«апишем активациюї, фиксируетс€ активаци€ scientific plan `manifests/v2.md` и coordination contract `manifests/collaboration-v2.yaml` через `manifests/current.json` дл€ новых задач в `read`.
+
+- **Activation commit:** `05ac107789532b6d2eac9914433a4b8408835057`.
+- **Effective at:** **2026-09-28 20:38:12 UTC**. Ёто врем€ решени€ об активации; оно не переноситс€ задним числом на врем€ merge.
+- **Activation PR:** https://github.com/artmus208/uppaal_sdn_isac/pull/65 Ч merged into `read` 2026-09-28 20:33:33 UTC.
+- **Independent approval:** `artmus208`, APPROVED, 2026-09-28 20:33:14 UTC.
+- **Decision authority:** пр€мое поручение пользовател€ / Integrator после независимого approval и merge. «апись внесена ассистентом через аккаунт `vadimnbkg`; она не €вл€етс€ самосто€тельной приЄмкой автора.
+- **Operational guide:** `CONTRIBUTING-v2.md`.
+- **Baseline:** `manifests/baselines/reviewer-r1.yaml`, `reviewer-r1-gate1-20260923`.
+- **Migration map:** `manifests/v2-migration.md`.
+- **Open-issue mapping:** [evidence/governance/20260928-v2-activation/open-issues-map.json](https://github.com/artmus208/uppaal_sdn_isac/blob/05ac107789532b6d2eac9914433a4b8408835057/evidence/governance/20260928-v2-activation/open-issues-map.json).
+
+**Scope:** operational coordination only. »сторические generation inputs, baseline, evidence и прежние scientific acceptance records сохран€ютс€ в исходной области. Ёта запись не принимает новые научные gates, не закрывает P3 и не мен€ет ownership, write scopes или об€зательные зависимости существующих Issues. ƒл€ новых задач действует v2, включа€ принцип обоснованного компромисса и открытой неопределЄнности в пределах выбранного бюджета.
+
+ѕроверены фактические merge/approval и содержимое pointer/contract на указанном merge commit. Head PR совпадает с ранее проверенным `6f9e5e08df33fdbd52aed0d36c4b2f1ed15b4817`; [CI успешен](https://github.com/artmus208/uppaal_sdn_isac/actions/runs/36478079073). –анее сохранены 200 успешных tests и audit 57 file hashes без расхождений. Ќовые model-checking runs не выполн€лись.
+
+Deliverable #64 прин€т в указанной governance-области; услови€ активации выполнены. Issue можно закрыть как completed.
+https://github.com/artmus208/uppaal_sdn_isac/issues/84#issuecomment-5946722646 vadimnbkg ## Independent Integrator decision A/B/D and phase-two scope Ч ACCEPTED
+
+Decision authority: the user's explicit Integrator instruction in this Issue #84 session, concerning PR #85 HEAD `6ff7f63b03c16bc3cc4b6acb861604d6fb46906a`. Recorded by vadimnbkg; this records the user's decision, not author self-approval.
+Recorded at: 2026-10-02 06:27:38 UTC.
+Proposal PR #85 is actually merged into read: `efb6d6c0d936c2c62fbf902e383a144e6b616a0a`, merged_at `2026-10-02T06:20:24Z`. Its tree equals the reviewed proposal tree.
+
+> ѕодтверждаю решени€ A и B из proposed-integrator-decision.md: ограниченную применимость P1/P2 и Gate 1 дл€ точной модели uav-service-completion-r1-20261002, N=1, 51 процесс. ѕринимаю все 11 запросов как входы; их verdicts остаютс€ открытыми.
+>
+> ѕодтверждаю D: универсальные гарантии, P3 и закрытие R07 этим решением не принимаютс€.
+
+**A Ч ACCEPTED:** limited P1/P2 applicability to this exact changed full N=1 composition, one admitted request and one correlated result; the assumptions and age=5/40 boundaries in the [reviewed decision document](https://github.com/artmus208/uppaal_sdn_isac/blob/6ff7f63b03c16bc3cc4b6acb861604d6fb46906a/evidence/governance/uav-service-completion-baseline-20261002/proposed-integrator-decision.md) are accepted in that abstract scope. Fixed five-unit acquisition, age-class/update mapping, FIFO result rank in K=4 queue, optional MAC service, lossy bounded one-attempt transport and no physical calibration/fairness or ID reuse remain explicit assumptions. No whole-system equivalence or verification transfer.
+
+**B Ч ACCEPTED:** exact input freeze / Gate 1 for `uav-service-completion-r1-20261002`, N=1, 51 processes. Base ref origin/read; scientific input commit `61386aa358805082b705dcd00c8cbfde5fb98248`. All eleven exact query files/formulas are accepted AS INPUTS: success, completion-safety, admitted, measurement, enqueue, attempt, loss, timeout, cancel, deadline-equality, deadlock. Their hashes/formulas are pinned in the [reviewed query inventory](https://github.com/artmus208/uppaal_sdn_isac/blob/6ff7f63b03c16bc3cc4b6acb861604d6fb46906a/evidence/governance/uav-service-completion-baseline-20261002/query-inventory.json). Every verdict remains null/not_executed. Working tool evidence is the preserved historical engine response, not a new execution.
+
+Exact accepted Gate 1 pins (SHA256 exact bytes; generation and query aggregate rules are in the reviewed inventories):
+```json
+{
+  "baseline_id": "uav-service-completion-r1-20261002",
+  "generation_source_hash": "df56acfacd2b6655735ffd8bbcf52fe9ef648982b5a444d7e439520b86fdb79e",
+  "generator": {
+    "path": "evidence/instantiation/uav-service-completion-candidate/generate.py",
+    "sha256": "a5310747b9e2f1b837d0fefdff26d04c9218b7f22a87672bfaa13e7ee58e0ba2"
+  },
+  "input_commit": "61386aa358805082b705dcd00c8cbfde5fb98248",
+  "input_inventory": {
+    "path": "evidence/governance/uav-service-completion-baseline-20261002/input-hashes.json",
+    "sha256": "aca3724e77a9061ef7fa98e22d38c088fe05669da557bf0afc0b706ca8a9e5bd"
+  },
+  "instance_inventory": {
+    "path": "evidence/governance/uav-service-completion-baseline-20261002/instance-inventory.json",
+    "sha256": "1e50f63437f9f787f9670a8cfee40450a7c127ec49e58661277b6bb7fa86fc17"
+  },
+  "instance_vector": {
+    "path": "evidence/instantiation/uav-service-completion-candidate/instance-vector.json",
+    "sha256": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c"
+  },
+  "manuscript": {
+    "path": "levels_tex/samplepaper.tex",
+    "sha256": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f"
+  },
+  "model": {
+    "path": "evidence/instantiation/uav-service-completion-candidate/model.xml",
+    "sha256": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02"
+  },
+  "operational_patch": {
+    "path": "evidence/governance/uav-service-completion-baseline-20261002/proposed-operational.patch",
+    "sha256": "00ec9a8f4755df1a3db8285d41a959bebaf8adb5da9c6831acdebe6f1b95bd9d"
+  },
+  "parameter_set": {
+    "candidate": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/parameters.json",
+      "sha256": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a"
+    },
+    "inherited": {
+      "path": "evidence/scalability/family-series-68/generated/n1/parameters.json",
+      "sha256": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18"
+    },
+    "inventory": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/parameter-inventory.json",
+      "sha256": "d4448839e66b2e7dfc9d4d9085a2b794e7975b3a8a48a4842ca7580287ccdaac"
+    }
+  },
+  "proposal_manifest": {
+    "path": "evidence/governance/uav-service-completion-baseline-20261002/proposed-baseline.yaml",
+    "sha256": "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d"
+  },
+  "publication_commit": "fdbfd5619385eae31101dcfc285010b96cc85b45",
+  "query_inventory": {
+    "path": "evidence/governance/uav-service-completion-baseline-20261002/query-inventory.json",
+    "sha256": "edcd0c74e05571edd2af28f56dea8982f702141006e5a96825841eceb0fa05c3"
+  },
+  "selected_query_set_hash": "2b31aad5e75374eac5b81c5e062e28eaca6ebfffb974abd32709b4f9d8ad2b23",
+  "tool_evidence": {
+    "capture_method": "Engine.getVersion saved by CausalReplay",
+    "future_run_version_required": true,
+    "license_scope": "Observed historical candidate executions only; no current native probe or new execution authorization.",
+    "source": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/result.json",
+      "sha256": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0"
+    },
+    "version": "UPPAAL version 5.0.0 (rev. 714BA9DB36F49691), June 2023 -- server. Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru)"
+  }
+}
+```
+
+**D Ч CONFIRMED:** universal completion/SLA/fairness/deadlock guarantees, P3_core_evidence_accepted, full P3 and R07 closure are NOT accepted. All eleven exhaustive query verdicts stay open. R07 remains owned by #80. Prior P3/P4/PR81 evidence stays confined to its original model.
+
+**Phase-two Write scope Ч ACTIVE**, expressly authorized by the user:
+- `evidence/governance/uav-service-completion-baseline-20261002/**` (existing scope, for operational checks/handoff records);
+- `manifests/baselines/uav-service-completion-r1.yaml`;
+- `manifests/collaboration-v2.yaml` ONLY the new selection block.
+
+Approved patch SHA256: `00ec9a8f4755df1a3db8285d41a959bebaf8adb5da9c6831acdebe6f1b95bd9d`; independently recalculated from exact reviewed bytes, matching the user's instruction and decision-pins.json.
+The initial operational manifest remains the immutable proposal snapshot installed by this exact approved patch. Its preparation wording is superseded for A/B only by this independent Issue decision; it is not an activation record.
+
+Scope audit at 2026-10-02 06:27:38 UTC: inspected 24 open Issues (#84, #82, #80, #78, #76, #66, #62, #51, #41, #39, #36, #35, #33, #32, #30, #25, #23, #21, #13, #5, #4, #3, #2, #1). No other declared active Write scope reserves either operational path or this unique evidence directory; read-only mentions were not treated as reservations. No overlapping-scope exception is needed. Future changes require rechecking scope.
+
+Operational implementation base: read `efb6d6c0d936c2c62fbf902e383a144e6b616a0a`; branch `codex/vadimnbkg/84-uav-completion-operational`; target read. Historical current.json, v1/baseline/generator inputs and old P4 policy remain unchanged.
+
+**C Ч NOT ACTIVATED.** Implement only the approved patch, run checks, publish checkpoint and open an operational PR into read for independent acceptance. After actual independent acceptance/merge, prepare activation with the real merge SHA, manifest hash and application scope; a separate explicit Integrator activation decision is still required. Baseline selection is not execution authorization or native budget.
+
+https://github.com/artmus208/uppaal_sdn_isac/issues/84#issuecomment-5947256320 vadimnbkg ## C Ч explicit post-merge activation decision / governance handoff
+
+**ACTIVATED:** `uav-service-completion-r1-20261002` for P3/P5 Issues explicitly selecting this baseline, **only N=1, 51 processes, one request and one result**, with the exact inputs and assumptions accepted by A/B.
+
+Decision authority: the user's explicit Integrator instruction in this session, after independent acceptance and actual merge of PR #86. Recorded by vadimnbkg as the user's decision, not author self-approval.
+**Decision time UTC: 2026-10-02T07:18:22Z** Ч current UTC captured when materializing this confirmed decision; not the merge time or an inferred chat-message timestamp.
+
+### Exact published references
+
+- Accepted operational PR: https://github.com/artmus208/uppaal_sdn_isac/pull/86
+- Reviewed operational HEAD: `2ac969da182a222aee99a510ad86ae8b93cee107`
+- **Actual operational merge commit in read: `46bf268c66d6ec2c106ae4ce8e8d5f893315ad91`**
+- Actual PR merge time: `2026-10-02T07:14:49Z`; merged by `artmus208`
+- Operational base / actual proposal PR #85 merge: `efb6d6c0d936c2c62fbf902e383a144e6b616a0a`
+- Reviewed proposal HEAD: `6ff7f63b03c16bc3cc4b6acb861604d6fb46906a`
+- Actual merged tree: `e922c8bdaa1866d131077543eabe3fcab8d61733` Ч equals reviewed operational HEAD tree; merge parents contain that HEAD and base.
+- Scientific input commit remains `61386aa358805082b705dcd00c8cbfde5fb98248`.
+- Manifest at actual merge: [manifests/baselines/uav-service-completion-r1.yaml](https://github.com/artmus208/uppaal_sdn_isac/blob/46bf268c66d6ec2c106ae4ce8e8d5f893315ad91/manifests/baselines/uav-service-completion-r1.yaml)
+- **Manifest SHA256 on that merge: `4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d`**, recalculated from exact fetched bytes and compared with accepted HEAD bytes.
+- Selection block SHA256 (whole collaboration file): `fcce78b4ef3286e3e618de9cf107bcd4ed343908f3facec614f33e8d324cf97e`.
+- Preserved current.json SHA256: `bf2d455d13cec0d5870cb7777d26efd424653ba6bb2c1b56af0ae0b7149e626f`.
+- A/B applicability / exact input Gate 1 decision: https://github.com/artmus208/uppaal_sdn_isac/issues/84#issuecomment-5946722646
+- Exact scientific pins and all eleven query formulas/hashes: [decision-pins.json at the merge](https://github.com/artmus208/uppaal_sdn_isac/blob/46bf268c66d6ec2c106ae4ce8e8d5f893315ad91/evidence/governance/uav-service-completion-baseline-20261002/decision-pins.json) and [query inventory](https://github.com/artmus208/uppaal_sdn_isac/blob/46bf268c66d6ec2c106ae4ce8e8d5f893315ad91/evidence/governance/uav-service-completion-baseline-20261002/query-inventory.json).
+
+### Application scope and D Ч retained
+
+P3/P5 selection must explicitly pin baseline ID, manifest SHA256, scientific input commit and this activation decision. The accepted A/B assumptions and freshness/service boundaries remain unchanged. No other N/composition is included. Historical default/current.json and old-family P4 policy remain intact.
+
+**All eleven verification verdicts remain OPEN.** Accepted query inputs: admitted, attempt, cancel, completion-safety, deadline-equality, deadlock, enqueue, loss, measurement, success, timeout. Activation transfers no old results; authorizes no new native runs or execution budget; accepts neither P3 nor universal guarantees; does not close R07 (Issue #80). Zero new native runs in this governance handoff.
+
+The installed manifest and the sealed operational template retain their immutable preparation snapshot flags and null fields. They are historical artifacts of the exact approved patch, not the current decision record. A/B are authoritative in the linked independent decision; this Issue comment is the authoritative post-merge C record. No manifest rewriting or model/query change is made.
+
+### Completed governance handoff
+
+Issue #84 deliverable: accepted exact baseline inputs and explicit post-merge operational selection.
+Branch: `codex/vadimnbkg/84-uav-completion-operational`; HEAD/base pinned above; isolated working tree clean.
+Checks from accepted operational package: 209/209 software tests, 12/12 candidate controls, static/scope/seal audits, 57 historical hashes with no mismatches and MCP/CLI smoke. CI 36974694972 success. These are software/static checks, not model-checking verdicts.
+This step additionally confirmed merged metadata, reviewed-tree equality and exact manifest/current/selection bytes on the actual merge.
+Durable retrieval: canonical read merge and operational branch; complete-history `handoff/operational-final.bundle` (SHA256 `f3aef9a3d58319d1dab0706de96bcdf26c3a48036fdf3e55fd7d5c982335777a`) in the owner's persistent repository. Decision source of truth: this GitHub Issue record.
+Remaining governance step: read back and verify this activation record, then close Issue #84 as completed. Future P3/P5 tasks need their own explicit selection and authorization; R07 remains separate.
+
+VERSION: UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023
+Copyright (c) 2011 - 2023, Aalborg University.
+Copyright (c) 1995 - 2011, Uppsala University and Aalborg University.
+All rights reserved.
+Compiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC 
+Built with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1
+Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).
+ MEMORY MiB: 8156
