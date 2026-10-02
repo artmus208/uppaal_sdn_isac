@@ -65,10 +65,10 @@
       "queue_query_hash": "738df1dd189ee021898ecf777b3e1f03cfc5f59e82f116556fe6f8cff59840d2",
       "queue_model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
       "queue_bytes_identical": true,
-      "attempt_consumed": false,
-      "status": "not_executed",
+      "attempt_consumed": true,
+      "status": "reserved",
       "verdict": null,
-      "reason": "Prepared only; execution prerequisites pending"
+      "reason": "Durable attempt reservation; interrupted attempt counts as used"
     },
     {
       "query_id": "success",
