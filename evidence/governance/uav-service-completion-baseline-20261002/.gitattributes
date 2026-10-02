@@ -1,0 +1,2 @@
+# Preserve diagnostic stdout/stderr byte-for-byte, including intentional test formatting.
+checks/*.txt -text whitespace=-blank-at-eol,-blank-at-eof

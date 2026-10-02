@@ -1,0 +1,3 @@
+Processing /tmp/uppaal84-install
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'

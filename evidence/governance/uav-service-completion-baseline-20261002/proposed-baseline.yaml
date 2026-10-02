@@ -1,0 +1,307 @@
+{
+  "accepted_verification_runs": [],
+  "assumptions": [
+    "one request/result with bounded identities, no ID reuse",
+    "fixed five-unit acquisition after sensing readiness",
+    "sample age classes [0,5), [5,10), [10,infinity); update class also age-based",
+    "FIFO rank for one result in abstract queue K=4 with absorbing overflow",
+    "optional one eligible COMM/JOINT service per five-unit epoch; no fairness",
+    "lossy one-attempt transport bounded by one unit; no retry",
+    "abstract units and classes; no physical calibration"
+  ],
+  "boundaries": {
+    "freshness": "sample age <5; age=5 stale",
+    "service": "request age <=40; receipt and timeout alternatives at equality"
+  },
+  "decisions": {
+    "candidate_acceptance": "https://github.com/artmus208/uppaal_sdn_isac/pull/83#pullrequestreview-5388261528",
+    "historical_P1_P2": "https://github.com/artmus208/uppaal_sdn_isac/pull/73#issuecomment-5890790922",
+    "historical_P4_activation": "https://github.com/artmus208/uppaal_sdn_isac/pull/75#issuecomment-5891123461",
+    "new_decision": null,
+    "v2_activation": "https://github.com/artmus208/uppaal_sdn_isac/issues/64#issuecomment-5878071165"
+  },
+  "gate_1": {
+    "P1_applicability": "proposed",
+    "P2_applicability": "proposed",
+    "decision_record": null,
+    "passed": false,
+    "reviewer_proposed": "artmus208",
+    "status": "pending_independent_decision"
+  },
+  "generation_inputs": [
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/model.xml",
+      "sha256": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385"
+    },
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/instance-vector.json",
+      "sha256": "69b5105223a5dd3a2bae34513f6126416fdb15fad0b99a6b405f977332feddad"
+    }
+  ],
+  "generator": {
+    "path": "evidence/instantiation/uav-service-completion-candidate/generate.py",
+    "sha256": "a5310747b9e2f1b837d0fefdff26d04c9218b7f22a87672bfaa13e7ee58e0ba2"
+  },
+  "hashing": {
+    "algorithm": "sha256",
+    "generation_source_hash": "df56acfacd2b6655735ffd8bbcf52fe9ef648982b5a444d7e439520b86fdb79e",
+    "generation_source_hash_rule": "SHA256 of default json.dumps(sorted-key dictionary of the three live generation read paths to SHA256).encode(UTF-8)",
+    "input_inventory": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/input-hashes.json",
+      "sha256": "aca3724e77a9061ef7fa98e22d38c088fe05669da557bf0afc0b706ca8a9e5bd"
+    },
+    "rule": "exact_file_bytes"
+  },
+  "instance_inventory": {
+    "path": "evidence/governance/uav-service-completion-baseline-20261002/instance-inventory.json",
+    "sha256": "1e50f63437f9f787f9670a8cfee40450a7c127ec49e58661277b6bb7fa86fc17"
+  },
+  "instance_vector": {
+    "path": "evidence/instantiation/uav-service-completion-candidate/instance-vector.json",
+    "sha256": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c"
+  },
+  "kind": "single-model-baseline-proposal",
+  "limitations": [
+    "No universal completion, SLA, fairness, deadlock or whole-system equivalence established.",
+    "Historical P1/P2 component decisions need an explicit disposition for the changed composition.",
+    "Prior model results and PR81 old-model rejection trace do not transfer."
+  ],
+  "machine_evidence": {
+    "path": "evidence/governance/uav-service-completion-baseline-20261002/machine-evidence-inventory.json",
+    "sha256": "772c69716261b7ead3cbdf5411328ecf461f11d802ef6f4ea6ea9f7928207378"
+  },
+  "metadata": {
+    "activated": false,
+    "frozen": false,
+    "id": "uav-service-completion-r1-20261002",
+    "maturity": "awaiting_independent_decision",
+    "status": "proposed"
+  },
+  "model": {
+    "path": "evidence/instantiation/uav-service-completion-candidate/model.xml",
+    "sha256": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02"
+  },
+  "operational_activation": {
+    "decision_record": null,
+    "decision_time_utc": null,
+    "issue": "https://github.com/artmus208/uppaal_sdn_isac/issues/84",
+    "merge_commit": null,
+    "status": "pending"
+  },
+  "parameters": {
+    "candidate": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/parameters.json",
+      "sha256": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a"
+    },
+    "inherited": {
+      "path": "evidence/scalability/family-series-68/generated/n1/parameters.json",
+      "sha256": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18"
+    },
+    "inventory": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/parameter-inventory.json",
+      "sha256": "d4448839e66b2e7dfc9d4d9085a2b794e7975b3a8a48a4842ca7580287ccdaac"
+    }
+  },
+  "query_set": {
+    "files": [
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> c82_admitted",
+        "id": "admitted",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/admitted.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential causal or failure non-vacuity diagnostic",
+        "selected_proposal": true,
+        "sha256": "40794bff7b5afc7a2e8de7a3a353826c409b5396d6441fa5541c4aaff7fbb106",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> c82_attempted",
+        "id": "attempt",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/attempt.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential causal or failure non-vacuity diagnostic",
+        "selected_proposal": true,
+        "sha256": "738df1dd189ee021898ecf777b3e1f03cfc5f59e82f116556fe6f8cff59840d2",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> u0_app_Req_0.Cancelled",
+        "id": "cancel",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/cancel.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential causal or failure non-vacuity diagnostic",
+        "selected_proposal": true,
+        "sha256": "5265ffc294528d7bc18db8a8146ac3a53cd38a8951e17c9a3d83ced30d4c2298",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "A[] (u0_app_Req_0.Completed imply (c82_success && c82_received && c82_admitted && c82_request_id==c82_received_request_id && c82_sample_id==c82_received_sample_id && c82_job_id==c82_request_id && c82_admitted_id==c82_request_id && c82_tx_request_id==c82_request_id && c82_tx_sample_id==c82_sample_id && c82_payload_quality() && c82_req_fresh==2 && c82_req_update==2 && c82_sample_request_id==c82_request_id && c82_enqueued && c82_dispatched && c82_attempted && c82_sampled && c82_receipt_timely && c82_receipt_quality && c82_receipt_sample_band==0 && c82_receipt_service_band>0 && !c82_cancelled && !c82_sensing_failed && !c82_tx_lost && !c82_queue_failed && c82_outcome==1))",
+        "id": "completion-safety",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/completion-safety.q",
+        "query_hash_in_executed_runs": null,
+        "role": "universal completion safety obligation",
+        "selected_proposal": true,
+        "sha256": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> c82_success && c82_receipt_service_band==2",
+        "id": "deadline-equality",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/deadline-equality.q",
+        "query_hash_in_executed_runs": null,
+        "role": "boundary reachability diagnostic",
+        "selected_proposal": true,
+        "sha256": "0e613481a75b4f41db6e5c1a8bb103b28e169f0ee069b5b5fe431a87cffedcb4",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "A[] not deadlock",
+        "id": "deadlock",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/deadlock.q",
+        "query_hash_in_executed_runs": null,
+        "role": "universal global deadlock obligation",
+        "selected_proposal": true,
+        "sha256": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> c82_enqueued",
+        "id": "enqueue",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/enqueue.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential causal or failure non-vacuity diagnostic",
+        "selected_proposal": true,
+        "sha256": "f53c1a24aff330214fd481f8d733f655b6fadc0ee1cd511f99e6a1ed6a0e1157",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> c82_tx_lost && u0_app_Req_0.ServiceFailed",
+        "id": "loss",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/loss.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential causal or failure non-vacuity diagnostic",
+        "selected_proposal": true,
+        "sha256": "cc7fcd3791741da3b6df29a6e91cad409773a16d6424a4d85aceaa33cd5a618f",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> c82_sampled",
+        "id": "measurement",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/measurement.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential causal or failure non-vacuity diagnostic",
+        "selected_proposal": true,
+        "sha256": "ceaf3bf6ea788bd8679e801c9238b2f634c6d45445ccc8be2a28db175176f409",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> u0_app_Req_0.Completed && c82_success",
+        "id": "success",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/success.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential success / non-vacuity",
+        "selected_proposal": true,
+        "sha256": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+        "verdict": null
+      },
+      {
+        "disposition": "proposed_input_awaiting_independent_selection",
+        "execution_status": "not_executed",
+        "formula": "E<> u0_app_Req_0.ServiceTimeout",
+        "id": "timeout",
+        "path": "evidence/instantiation/uav-service-completion-candidate/queries/timeout.q",
+        "query_hash_in_executed_runs": null,
+        "role": "existential causal or failure non-vacuity diagnostic",
+        "selected_proposal": true,
+        "sha256": "139271712e0e0144bcf7471257bf9e99d9e7f2779a20006bcfe1e6803a5798d9",
+        "verdict": null
+      }
+    ],
+    "inventory": {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/query-inventory.json",
+      "sha256": "edcd0c74e05571edd2af28f56dea8982f702141006e5a96825841eceb0fa05c3"
+    },
+    "selected_query_set_hash": "2b31aad5e75374eac5b81c5e062e28eaca6ebfffb974abd32709b4f9d8ad2b23",
+    "selection_disposition": "proposed_all_11_awaiting_independent_acceptance",
+    "verdicts": {
+      "admitted": null,
+      "attempt": null,
+      "cancel": null,
+      "completion-safety": null,
+      "deadline-equality": null,
+      "deadlock": null,
+      "enqueue": null,
+      "loss": null,
+      "measurement": null,
+      "success": null,
+      "timeout": null
+    }
+  },
+  "repository": {
+    "accepted_publication_commit": "fdbfd5619385eae31101dcfc285010b96cc85b45",
+    "branch": "read",
+    "candidate_merge_commit": "07e45268bbfbb4c1293e4e4f4227792794583509",
+    "execution_checkpoints": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/source-index.json",
+      "sha256": "7b73699f2e6498a674c6af5bec4f40f59bbf878ab8e5516cf8217711912ac32e"
+    },
+    "input_commit": "61386aa358805082b705dcd00c8cbfde5fb98248",
+    "url": "https://github.com/artmus208/uppaal_sdn_isac"
+  },
+  "reproduction_commands": [
+    "python3 -B evidence/instantiation/uav-service-completion-candidate/generate.py --check",
+    "python3 -B evidence/instantiation/uav-service-completion-candidate/audit.py",
+    "python3 -B evidence/governance/uav-service-completion-baseline-20261002/check.py",
+    "python3 -B -m unittest discover -s evidence/governance/uav-service-completion-baseline-20261002 -p 'test_*.py' -v"
+  ],
+  "schema_version": "1.0",
+  "scope": {
+    "N": 1,
+    "composition": "PHY || MAC || SDN || APP || ENV || OBS || ResultJob",
+    "other_N_included": [],
+    "processes": 51,
+    "requests": 1,
+    "results": 1
+  },
+  "selection": {
+    "automatic_verdict_transfer": false,
+    "eligible_workstreams": [
+      "P3",
+      "P5"
+    ],
+    "execution_authorized_by_selection": false,
+    "explicit_issue_selection_required": true,
+    "historical_P4_policy_preserved": true,
+    "historical_current_pointer_preserved": true
+  },
+  "tool_evidence": {
+    "capture_method": "Engine.getVersion saved by CausalReplay",
+    "future_run_version_required": true,
+    "license_scope": "Observed historical candidate executions only; no current native probe or new execution authorization.",
+    "source": {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/result.json",
+      "sha256": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0"
+    },
+    "version": "UPPAAL version 5.0.0 (rev. 714BA9DB36F49691), June 2023 -- server. Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru)"
+  }
+}

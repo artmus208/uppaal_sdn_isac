@@ -1,0 +1,15 @@
+uav_completion_baseline_selection:
+  manifest: manifests/baselines/uav-service-completion-r1.yaml
+  baseline_id: uav-service-completion-r1-20261002
+  eligible_workstreams: [P3, P5]
+  scope: Full UAV N=1 only, 51 processes, one request and one result.
+  historical_default: manifests/baselines/reviewer-r1.yaml
+  activation_issue: https://github.com/artmus208/uppaal_sdn_isac/issues/84
+  activation_rule: Independent applicability and Gate 1 decisions, approved operational scope, merge into read, then explicit activation with actual merge SHA and UTC time.
+  selection_rule: P3/P5 Issue explicitly pins baseline ID, manifest SHA256, input commit and activation decision; current.json and historical P4 selection are preserved.
+  gate_rule: Use the exact changed-model Gate 1 and post-merge activation decision; candidate acceptance and old-family decisions alone are insufficient.
+  audit_command: python3 -B evidence/governance/uav-service-completion-baseline-20261002/check.py --operational
+  automatic_verdict_transfer: false
+  execution_authorized_by_selection: false
+  P3_core_evidence_accepted_by_selection: false
+  R07_closed_by_selection: false

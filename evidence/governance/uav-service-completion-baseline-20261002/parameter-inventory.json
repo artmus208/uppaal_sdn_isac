@@ -1,0 +1,1054 @@
+{
+  "candidate": {
+    "D_service": 40,
+    "D_service_provenance": "user confirmation in Issue #82, 2026-10-02 02:51:55 UTC",
+    "boundary_equalities": {
+      "deadline40": "receipt may succeed; timeout is also enabled",
+      "sample_age10": "expired",
+      "sample_age5": "stale, strict request cannot succeed"
+    },
+    "candidate_id": "uav-service-completion-candidate-82-n1",
+    "freshness_mapping": {
+      "expired": "sample_age>=10",
+      "fresh": "0<=sample_age<5",
+      "stale": "5<=sample_age<10"
+    },
+    "frozen_parameters_path": "evidence/scalability/family-series-68/generated/n1/parameters.json",
+    "measurement_duration": 5,
+    "measurement_provenance": "u0_phy_D_sense (new deliberate fixed-duration acquisition assumption)",
+    "queue_capacity": 4,
+    "single_request_bound": 1,
+    "single_sample_bound": 1,
+    "time_units": "abstract model units; no physical calibration",
+    "transmission_bound": 1,
+    "transmission_provenance": "u0_bus_D_bus (new lossy result transport assumption)",
+    "update_mapping": "UPD_OK/UPD_SLOW/UPD_VIOLATED uses the same sample-age bands as the historical B_KPI mapping; this is NOT a measured physical update period"
+  },
+  "emitted_constant_declarations": [
+    {
+      "declaration": "const int FAMILY_N=1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_bus_D_cmd=1, u0_bus_D_bus=1, u0_bus_T_input=5, u0_bus_T_mac_tick=5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_bus_T_demand=1, u0_bus_T_complete=40;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_queue_K=4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_queue_L=1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_queue_M=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_queue_H=4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_D_meas = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_D_sig = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_D_sense = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_D_report = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_D_BM = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_D_child = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_D_net = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_T_meas = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_J_meas = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_T_report = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_J_SSB = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_tau_SSB = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SCENARIO_NORMAL = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SCENARIO_COMM_DEGRADED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SCENARIO_SENSING_DEGRADED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SCENARIO_JOINT_DEGRADED = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_W_OFDM = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_W_OTFS = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_W_AFDM = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_W_SC = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_W_OTHER = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SINRCLASS_OUTAGE = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SINRCLASS_LOW = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SINRCLASS_OK = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SINRCLASS_HIGH = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BLERCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BLERCLASS_HIGH = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BLERCLASS_CRITICAL = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CQICLASS_GOOD = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CQICLASS_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CQICLASS_BAD = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_ICLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_ICLASS_HIGH = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_ICLASS_CRITICAL = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_DOPPLERCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_DOPPLERCLASS_HIGH = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_DELAYSPREADCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_DELAYSPREADCLASS_HIGH = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_POWERCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_POWERCLASS_LOW = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_POWERCLASS_ABSENT = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_DRTCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_DRTCLASS_BAD = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PILOTDENSITYCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PILOTDENSITYCLASS_LOW = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PILOTDENSITYCLASS_FAILED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PAYLOADSENSECLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PAYLOADSENSECLASS_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PAYLOADSENSECLASS_FAILED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PRSCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PRSCLASS_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PRSCLASS_FAILED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMERRORCLASS_LOCKABLE = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMERRORCLASS_UNSTABLE = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMERRORCLASS_CRITICAL = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BLOCKAGECLASS_NONE = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BLOCKAGECLASS_SUSPECTED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BLOCKAGECLASS_CONFIRMED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PDCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PDCLASS_LOW = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PDCLASS_FAILED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_RFACLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_RFACLASS_HIGH = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_RFACLASS_CRITICAL = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_ACCCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_ACCCLASS_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_ACCCLASS_FAILED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CRBCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CRBCLASS_LOOSE = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CRBCLASS_UNUSABLE = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_AOSCLASS_FRESH = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_AOSCLASS_STALE = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_AOSCLASS_EXPIRED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CAPCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CAPCLASS_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CAPCLASS_FAILED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_COVERAGECLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_COVERAGECLASS_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_COVERAGECLASS_FAILED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_RESOURCESHARECLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_RESOURCESHARECLASS_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_RESOURCESHARECLASS_STARVED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_MISCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_MISCLASS_WARN = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_MISCLASS_CRITICAL = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BMOVERHEADCLASS_OK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BMOVERHEADCLASS_HIGH = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BMOVERHEADCLASS_EXCESSIVE = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CHANNELCLASS_NOMINAL = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CHANNELCLASS_INTERFERENCE_LIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CHANNELCLASS_MOBILITY_LIMITED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CHANNELCLASS_MULTIPATH_LIMITED = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CHANNELCLASS_BLOCKAGE = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_CHANNELCLASS_OUTAGE = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SIGNALCLASS_NOMINAL = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SIGNALCLASS_PILOT_BASED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SIGNALCLASS_PAYLOAD_ASSISTED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SIGNALCLASS_RECONFIGURING = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SIGNALCLASS_LIMITED = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_SEARCH = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_TRACK = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_LOCKED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_PREDICT = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_MISALIGNED = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_RECOVERING = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_HO_ASSIST = 6;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_BEAMCLASS_FAILED = 7;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_SENSINGQOSOK = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_PROBABILITYLIMITED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_FALSEALARMLIMITED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_ACCURACYLIMITED = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_FRESHNESSLIMITED = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_COVERAGELIMITED = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_CAPACITYLIMITED = 6;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_SENSINGSTATE_SENSINGFAILURE = 7;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PHYSTATE_PHYNORMAL = 0;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PHYSTATE_PHYCOMMUNICATIONDEGRADED = 1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PHYSTATE_PHYSENSINGDEGRADED = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PHYSTATE_PHYJOINTDEGRADED = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PHYSTATE_PHYRECOVERY = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_phy_PHYSTATE_PHYFAILURE = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_D_collect = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_D_sched = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_D_phy_ack = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_D_queue_crit = 10;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_D_buf_report = 4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_D_mac_report = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_mac_D_phy_report = 10;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_QueueClass_t u0_mac_Q_EMPTY=0, u0_mac_Q_LOW=1, u0_mac_Q_MED=2, u0_mac_Q_HIGH=3, u0_mac_Q_CRIT=4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_BufferClass_t u0_mac_B_SAFE=0, u0_mac_B_WARN=1, u0_mac_B_OVERFLOW=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_DelayClass_t u0_mac_D_OK=0, u0_mac_D_WARN=1, u0_mac_D_DEADLINE_RISK=2, u0_mac_D_VIOLATED=3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_DropClass_t u0_mac_DROP_NONE=0, u0_mac_DROP_LOW=1, u0_mac_DROP_HIGH=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_ResourceClass_t u0_mac_RES_FREE=0, u0_mac_RES_BALANCED=1, u0_mac_RES_TIGHT=2, u0_mac_RES_EXHAUSTED=3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_SensingDemand_t u0_mac_SENS_NOMINAL=0, u0_mac_SENS_BOOST_REQ=1, u0_mac_SENS_CRITICAL=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_CommDemand_t u0_mac_COMM_NOMINAL=0, u0_mac_COMM_HIGH=1, u0_mac_COMM_CRITICAL=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_KPIFreshnessClass_t u0_mac_KPI_FRESH=0, u0_mac_KPI_STALE=1, u0_mac_KPI_MISSING=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_ScheduleMode_t u0_mac_SCH_IDLE=0, u0_mac_SCH_COMM=1, u0_mac_SCH_SENS=2, u0_mac_SCH_JOINT=3, u0_mac_SCH_CONSTRAINED=4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_mac_MacReason_t u0_mac_REASON_NONE=0, u0_mac_REASON_RESOURCE_EXHAUSTED=1, u0_mac_REASON_PHY_ACK_TIMEOUT=2, u0_mac_REASON_QUEUE_CRITICAL=3, u0_mac_REASON_SENS_COMM_CONFLICT=4, u0_mac_REASON_STALE_PHY_KPI=5, u0_mac_REASON_BUFFER_OVERFLOW=6;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_mon = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_decision = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_rule_install = 8;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_rule_ack = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_ctrl_ack = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_recovery = 20;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_rollback = 10;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_admission = 15;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_sdn_D_sec_ack = 10;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_TelemetryClass_t u0_sdn_TEL_FRESH=0, u0_sdn_TEL_STALE=1, u0_sdn_TEL_MISSING=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_RiskClass_t u0_sdn_RISK_LOW=0, u0_sdn_RISK_MED=1, u0_sdn_RISK_HIGH=2, u0_sdn_RISK_CRIT=3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_PolicyClass_t u0_sdn_POL_NORMAL=0, u0_sdn_POL_SENS_BOOST=1, u0_sdn_POL_COMM_PRIO=2, u0_sdn_POL_CONSTRAINED=3, u0_sdn_POL_REROUTE=4, u0_sdn_POL_REJECT=5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_RuleClass_t u0_sdn_RULE_OK=0, u0_sdn_RULE_MISS=1, u0_sdn_RULE_PENDING=2, u0_sdn_RULE_ACKED=3, u0_sdn_RULE_TIMEOUT=4, u0_sdn_RULE_DROP=5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_RecoveryClass_t u0_sdn_REC_STABLE=0, u0_sdn_REC_STANDBY=1, u0_sdn_REC_REEMBED=2, u0_sdn_REC_ROLLBACK=3, u0_sdn_REC_FAILED=4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_SliceClass_t u0_sdn_SLICE_OK=0, u0_sdn_SLICE_WARN=1, u0_sdn_SLICE_VIOLATED=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_ServiceImpact_t u0_sdn_IMPACT_NONE=0, u0_sdn_IMPACT_DEGRADED=1, u0_sdn_IMPACT_REJECTED=2, u0_sdn_IMPACT_FAILED=3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_sdn_SdnReason_t u0_sdn_SDN_NONE=0, u0_sdn_SDN_STALE_TELEMETRY=1, u0_sdn_SDN_RULE_TIMEOUT=2, u0_sdn_SDN_RECOVERY_FAILED=3, u0_sdn_SDN_RESOURCE_LIMITED=4, u0_sdn_SDN_SENSING_FAILURE=5, u0_sdn_SDN_POLICY_REJECT=6;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_req = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_admission = 15;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_event = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_update = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_fresh = 10;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_sla_warn = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_sla_violation = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_safety = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_fresh_report = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_update_report = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_fa_report = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_miss_report = 2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_detect_warn = 5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_detect_violation = 3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int u0_app_D_sensing_fresh = 10;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_ServiceClass_t u0_app_SVC_URLLC=0, u0_app_SVC_EMBB=1, u0_app_SVC_MMTC=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_ServiceClass_t u0_app_SVC_ISAC_SENSING=3, u0_app_SVC_UAV=4, u0_app_SVC_INDUSTRIAL=5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_CriticalityClass_t u0_app_CRIT_LOW=0, u0_app_CRIT_MED=1, u0_app_CRIT_HIGH=2, u0_app_CRIT_SAFETY=3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_SLAClass_t u0_app_SLA_OK=0, u0_app_SLA_WARN=1, u0_app_SLA_VIOLATED=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_AdmissionClass_t u0_app_ADM_PENDING=0, u0_app_ADM_ACCEPTED=1;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_AdmissionClass_t u0_app_ADM_REJECTED=2, u0_app_ADM_DEGRADED=3;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_DemandClass_t u0_app_DEMAND_COMM=0, u0_app_DEMAND_SENS=1, u0_app_DEMAND_JOINT=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_DetectionFreshnessClass_t u0_app_DET_FRESH=0, u0_app_DET_STALE=1, u0_app_DET_EXPIRED=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_UpdatePeriodClass_t u0_app_UPD_OK=0, u0_app_UPD_SLOW=1, u0_app_UPD_VIOLATED=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_FalseAlarmClass_t u0_app_FA_OK=0, u0_app_FA_HIGH=1, u0_app_FA_CRITICAL=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_MissedDetectionClass_t u0_app_MISS_OK=0, u0_app_MISS_HIGH=1, u0_app_MISS_CRITICAL=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_PdClass_t u0_app_PD_OK=0, u0_app_PD_LOW=1, u0_app_PD_FAILED=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_QualityClass_t u0_app_OK=0, u0_app_LIMITED=1, u0_app_FAILED=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_RequirementClass_t u0_app_REQ_RELAXED=0, u0_app_REQ_NORMAL=1, u0_app_REQ_STRICT=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_DegradedReason_t u0_app_DEG_NONE=0, u0_app_DEG_STALE=1, u0_app_DEG_LOW_PD=2;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_DegradedReason_t u0_app_DEG_HIGH_PFA=3, u0_app_DEG_UPDATE_SLOW=4;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_DegradedReason_t u0_app_DEG_RESOURCE_LIMITED=5;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const u0_app_DegradedReason_t u0_app_DEG_COMM_LIMITED=6;",
+      "owner": "global"
+    },
+    {
+      "declaration": "const int c82_D_service=40;",
+      "owner": "global"
+    }
+  ],
+  "inherited": {
+    "family": {
+      "N": 1,
+      "fairness": false,
+      "shared_service_capacity": 1,
+      "synchronous_period": 5
+    },
+    "per_uav_frozen_parameters": {
+      "attempt_recording": {
+        "episode": "accepted failure to local outcome",
+        "issue": 45,
+        "limits": {
+          "primary": 1,
+          "rollback": 1,
+          "total": 2
+        },
+        "overflow_domains": {
+          "primary": 2,
+          "rollback": 2,
+          "total": 3
+        },
+        "passive": true,
+        "sticky_across_episodes": true,
+        "version": 1
+      },
+      "integration": {
+        "D_bus": 1,
+        "D_cmd": 1,
+        "T_complete": 40,
+        "T_demand": 1,
+        "T_input": 5,
+        "T_mac_tick": 5,
+        "fault_window": [
+          12,
+          13
+        ],
+        "freshness_expire_age": 10,
+        "freshness_warn_age": 5,
+        "justification": "Explicit abstract test choices for independent review, not calibrated network bounds. See interface-contract.md for ownership, loss and timeout rules.",
+        "layer_profiles": "default profiles recorded in inventory.json; APP constants from stored:app",
+        "mac_queue": {
+          "H": 4,
+          "K": 4,
+          "L": 1,
+          "M": 2
+        },
+        "max_fault_events": 1,
+        "max_outstanding_per_command_kind": 1,
+        "max_requests_per_service": 1
+      },
+      "layer_source_constants": {
+        "app": {
+          "D_admission": "15",
+          "D_detect_violation": "3",
+          "D_detect_warn": "5",
+          "D_event": "5",
+          "D_fa_report": "3",
+          "D_fresh": "10",
+          "D_fresh_report": "3",
+          "D_miss_report": "2",
+          "D_req": "3",
+          "D_safety": "2",
+          "D_sensing_fresh": "10",
+          "D_sla_violation": "3",
+          "D_sla_warn": "5",
+          "D_update": "3",
+          "D_update_report": "3"
+        },
+        "mac": {
+          "D_buf_report": "4",
+          "D_collect": "2",
+          "D_mac_report": "5",
+          "D_phy_ack": "3",
+          "D_phy_report": "10",
+          "D_queue_crit": "10",
+          "D_sched": "5"
+        },
+        "phy": {
+          "ACCCLASS_FAILED": "2",
+          "ACCCLASS_LIMITED": "1",
+          "ACCCLASS_OK": "0",
+          "AOSCLASS_EXPIRED": "2",
+          "AOSCLASS_FRESH": "0",
+          "AOSCLASS_STALE": "1",
+          "BEAMCLASS_FAILED": "7",
+          "BEAMCLASS_HO_ASSIST": "6",
+          "BEAMCLASS_LOCKED": "2",
+          "BEAMCLASS_MISALIGNED": "4",
+          "BEAMCLASS_PREDICT": "3",
+          "BEAMCLASS_RECOVERING": "5",
+          "BEAMCLASS_SEARCH": "0",
+          "BEAMCLASS_TRACK": "1",
+          "BEAMERRORCLASS_CRITICAL": "2",
+          "BEAMERRORCLASS_LOCKABLE": "0",
+          "BEAMERRORCLASS_UNSTABLE": "1",
+          "BLERCLASS_CRITICAL": "2",
+          "BLERCLASS_HIGH": "1",
+          "BLERCLASS_OK": "0",
+          "BLOCKAGECLASS_CONFIRMED": "2",
+          "BLOCKAGECLASS_NONE": "0",
+          "BLOCKAGECLASS_SUSPECTED": "1",
+          "BMOVERHEADCLASS_EXCESSIVE": "2",
+          "BMOVERHEADCLASS_HIGH": "1",
+          "BMOVERHEADCLASS_OK": "0",
+          "CAPCLASS_FAILED": "2",
+          "CAPCLASS_LIMITED": "1",
+          "CAPCLASS_OK": "0",
+          "CHANNELCLASS_BLOCKAGE": "4",
+          "CHANNELCLASS_INTERFERENCE_LIMITED": "1",
+          "CHANNELCLASS_MOBILITY_LIMITED": "2",
+          "CHANNELCLASS_MULTIPATH_LIMITED": "3",
+          "CHANNELCLASS_NOMINAL": "0",
+          "CHANNELCLASS_OUTAGE": "5",
+          "COVERAGECLASS_FAILED": "2",
+          "COVERAGECLASS_LIMITED": "1",
+          "COVERAGECLASS_OK": "0",
+          "CQICLASS_BAD": "2",
+          "CQICLASS_GOOD": "0",
+          "CQICLASS_LIMITED": "1",
+          "CRBCLASS_LOOSE": "1",
+          "CRBCLASS_OK": "0",
+          "CRBCLASS_UNUSABLE": "2",
+          "DELAYSPREADCLASS_HIGH": "1",
+          "DELAYSPREADCLASS_OK": "0",
+          "DOPPLERCLASS_HIGH": "1",
+          "DOPPLERCLASS_OK": "0",
+          "DRTCLASS_BAD": "1",
+          "DRTCLASS_OK": "0",
+          "D_BM": "5",
+          "D_child": "5",
+          "D_meas": "5",
+          "D_net": "5",
+          "D_report": "5",
+          "D_sense": "5",
+          "D_sig": "5",
+          "ICLASS_CRITICAL": "2",
+          "ICLASS_HIGH": "1",
+          "ICLASS_OK": "0",
+          "J_SSB": "1",
+          "J_meas": "1",
+          "MISCLASS_CRITICAL": "2",
+          "MISCLASS_OK": "0",
+          "MISCLASS_WARN": "1",
+          "PAYLOADSENSECLASS_FAILED": "2",
+          "PAYLOADSENSECLASS_LIMITED": "1",
+          "PAYLOADSENSECLASS_OK": "0",
+          "PDCLASS_FAILED": "2",
+          "PDCLASS_LOW": "1",
+          "PDCLASS_OK": "0",
+          "PHYSTATE_PHYCOMMUNICATIONDEGRADED": "1",
+          "PHYSTATE_PHYFAILURE": "5",
+          "PHYSTATE_PHYJOINTDEGRADED": "3",
+          "PHYSTATE_PHYNORMAL": "0",
+          "PHYSTATE_PHYRECOVERY": "4",
+          "PHYSTATE_PHYSENSINGDEGRADED": "2",
+          "PILOTDENSITYCLASS_FAILED": "2",
+          "PILOTDENSITYCLASS_LOW": "1",
+          "PILOTDENSITYCLASS_OK": "0",
+          "POWERCLASS_ABSENT": "2",
+          "POWERCLASS_LOW": "1",
+          "POWERCLASS_OK": "0",
+          "PRSCLASS_FAILED": "2",
+          "PRSCLASS_LIMITED": "1",
+          "PRSCLASS_OK": "0",
+          "RESOURCESHARECLASS_LIMITED": "1",
+          "RESOURCESHARECLASS_OK": "0",
+          "RESOURCESHARECLASS_STARVED": "2",
+          "RFACLASS_CRITICAL": "2",
+          "RFACLASS_HIGH": "1",
+          "RFACLASS_OK": "0",
+          "SCENARIO_COMM_DEGRADED": "1",
+          "SCENARIO_JOINT_DEGRADED": "3",
+          "SCENARIO_NORMAL": "0",
+          "SCENARIO_SENSING_DEGRADED": "2",
+          "SENSINGSTATE_ACCURACYLIMITED": "3",
+          "SENSINGSTATE_CAPACITYLIMITED": "6",
+          "SENSINGSTATE_COVERAGELIMITED": "5",
+          "SENSINGSTATE_FALSEALARMLIMITED": "2",
+          "SENSINGSTATE_FRESHNESSLIMITED": "4",
+          "SENSINGSTATE_PROBABILITYLIMITED": "1",
+          "SENSINGSTATE_SENSINGFAILURE": "7",
+          "SENSINGSTATE_SENSINGQOSOK": "0",
+          "SIGNALCLASS_LIMITED": "4",
+          "SIGNALCLASS_NOMINAL": "0",
+          "SIGNALCLASS_PAYLOAD_ASSISTED": "2",
+          "SIGNALCLASS_PILOT_BASED": "1",
+          "SIGNALCLASS_RECONFIGURING": "3",
+          "SINRCLASS_HIGH": "3",
+          "SINRCLASS_LOW": "1",
+          "SINRCLASS_OK": "2",
+          "SINRCLASS_OUTAGE": "0",
+          "T_meas": "5",
+          "T_report": "5",
+          "W_AFDM": "2",
+          "W_OFDM": "0",
+          "W_OTFS": "1",
+          "W_OTHER": "4",
+          "W_SC": "3",
+          "tau_SSB": "4"
+        },
+        "sdn": {
+          "D_admission": "15",
+          "D_ctrl_ack": "5",
+          "D_decision": "5",
+          "D_mon": "5",
+          "D_recovery": "20",
+          "D_rollback": "10",
+          "D_rule_ack": "5",
+          "D_rule_install": "8",
+          "D_sec_ack": "10"
+        }
+      },
+      "new_since_timing_inventory": {
+        "attempt_limits": {
+          "primary": 1,
+          "rollback": 1,
+          "source": "accepted #45/#46",
+          "total": 2
+        },
+        "attempt_saturation": {
+          "primary": 2,
+          "rollback": 2,
+          "source": "violation witness bounds, not allowed attempt limits",
+          "total": 3
+        },
+        "queue": {
+          "H": 4,
+          "K": 4,
+          "L": 1,
+          "M": 2,
+          "source": "accepted #43/#44"
+        }
+      },
+      "time_unit": "abstract model unit; no physical calibration"
+    }
+  },
+  "note": "Inherited T_complete=40 is inactive for completion; new relative c82_D_service=40 controls receipt. All units abstract.",
+  "source": {
+    "path": "evidence/instantiation/uav-service-completion-candidate/parameters.json",
+    "sha256": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a"
+  }
+}

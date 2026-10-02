@@ -1,0 +1,1 @@
+{"activation": "pending", "check": "static_audit_ok", "gate_1": "pending_independent_decision", "inputs": 192, "new_native_runs": 0, "processes": 51, "queries_without_verdict": 11, "retained_native_cells": 9, "source_tree_membership": "checked_git_execution_history"}
