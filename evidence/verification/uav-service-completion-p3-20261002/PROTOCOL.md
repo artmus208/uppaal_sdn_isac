@@ -61,3 +61,18 @@ use scoped audit.py for this package. driver.py is a one-shot campaign, not an a
 To reproduce on another device, restore this branch, inspect durable ledger,
 install package dependencies and substitute measured native host paths only under
 a new separately authorized campaign. Original host paths document actual commands.
+
+## Aggregate budget guard (recorded after seven completed attempts)
+
+The existing manager's one-second sampling plus termination/serialization produces
+recorded attempt wall times slightly above the configured 600-second threshold.
+No timeout field or verifier flag is changed. budget_guard.py conservatively sums
+FULL previous attempt wall times, including teardown, and the final live attempt.
+At aggregate >=6597 seconds it uses the manager's existing stop control, reserving
+3 seconds for sampled termination, to respect the 6600-second campaign maximum.
+This can yield ten timeout outcomes and one stopped outcome; stopped is
+inconclusive with null verdict and halts the campaign. This is no retry or search
+strategy change. Guard does not execute queries, modify inputs or change limits.
+The guard code must be committed/published before launch; its checkpoint will be
+included in the next clean execution source. A final budget-stop.json records the
+exact aggregate observation and stop request. audit checks the actual total.
