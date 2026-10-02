@@ -76,3 +76,16 @@ strategy change. Guard does not execute queries, modify inputs or change limits.
 The guard code must be committed/published before launch; its checkpoint will be
 included in the next clean execution source. A final budget-stop.json records the
 exact aggregate observation and stop request. audit checks the actual total.
+
+## Observed outcome / policy limitation
+
+All eleven native attempts completed as timeout with null verdict. Aggregate
+recorded attempt wall time is 6607.477845500001 seconds (7.477845500001 seconds over
+6600). The supplementary guard exited on PermissionError reading status.json;
+it did not send its intended budget stop. Manual stop on discovering this failure
+arrived after the final timeout, so no raw result is relabeled stopped. This guard
+failure is preserved; do not reuse it as a reliable aggregate controller.
+Per-query recorded wall times exceed configured thresholds by sampled termination
+and serialization overhead; budget compliance is not asserted. Independent
+review/disposition of this deviation is required. No retries or further verifier
+executions occurred. Source/inputs/flags and raw attempt evidence remain intact.

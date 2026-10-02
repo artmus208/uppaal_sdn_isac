@@ -1,0 +1,31 @@
+{
+  "audit_negative_controls": "ok",
+  "controls": [
+    {
+      "control": "registry_verdict",
+      "detected": true,
+      "diagnostic": "ledger/result status"
+    },
+    {
+      "control": "formula_identity",
+      "detected": true,
+      "diagnostic": "formula identity"
+    },
+    {
+      "control": "query_hash_identity",
+      "detected": true,
+      "diagnostic": "exact accepted query bytes"
+    },
+    {
+      "control": "model_hash_identity",
+      "detected": true,
+      "diagnostic": "model identity"
+    },
+    {
+      "control": "raw_attempt_status",
+      "detected": true,
+      "diagnostic": "raw verdict identity"
+    }
+  ],
+  "new_verifier_executions": 0
+}

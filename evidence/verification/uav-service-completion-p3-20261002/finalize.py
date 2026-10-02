@@ -18,7 +18,7 @@ def main():
     total_wall=sum(r['wall_seconds'] or 0 for r in records)
     status_counts=dict(Counter(r['status'] for r in records))
     rows=['| Query | Status | Verdict | Wall seconds | Peak MiB |','|---|---|---|---:|---:|']
-    for r in records:rows.append('| '+r['query_id']+' | '+r['status']+' | '+str(r['verdict'])+' | '+(f"{r['wall_seconds']:.3f}" if r['wall_seconds'] is not None else 'null')+' | '+(f"{r['peak_rss_bytes']/1024**2:.2f}" if r['peak_rss_bytes'] is not None else 'null')+' |')
+    for r in records:rows.append('| '+r['query_id']+' | '+r['status']+' | '+('null' if r['verdict'] is None else r['verdict'])+' | '+(f"{r['wall_seconds']:.3f}" if r['wall_seconds'] is not None else 'null')+' | '+(f"{r['peak_rss_bytes']/1024**2:.2f}" if r['peak_rss_bytes'] is not None else 'null')+' |')
     checks=[]
     for name in ('checks/results.json','checks-linux/results.json'):
         if (HERE/name).exists():checks.extend((name.split('/')[0],r) for r in json.loads((HERE/name).read_text()))
@@ -82,13 +82,18 @@ completion/fairness. Inconclusive outcomes establish neither truth nor falsehood
 Historical simulations/old-model verdicts do not transfer.
 
 P3_core_evidence_accepted, P3_complete, C06, Gate 2 and R07 remain unaccepted by this
-package. See coverage.md for obligations not covered. Next: independent review of
+package. See coverage.md for obligations not covered. Own offline integrity audit covers all eleven records; five in-memory negative
+controls detect registry verdict/formula/query/model/raw-status tampering.
+See check-results.json and checks/audit-controls.json.
+
+Next: independent review of
 exact provenance, machine results, traces and gaps, and explicit disposition for
 any additional query/budget. Do not run driver.py again to reproduce the audit.
 '''
     (HERE/'report.md').write_text(report,encoding='utf-8',newline='\n')
     coverage='''# C01–C05 coverage/gap index
 
+Actual outcomes: all 11 timeout/null; no property was established by this series.
 No requirement is automatically closed by publishing this campaign.
 
 | ID | Accepted input/evidence relationship | Remaining gap |

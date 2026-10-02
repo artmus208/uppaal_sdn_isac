@@ -1,0 +1,16 @@
+{
+  "aggregate_attempt_wall_seconds": 6607.477845500001,
+  "authorized_maximum_seconds": 6600,
+  "aggregate_wall_budget_compliant": false,
+  "budget_deviation_seconds": 7.477845500001422,
+  "budget_disposition": "pending_independent_review; see budget-stop-failure.json",
+  "audit": "ok",
+  "kind": "offline_static_evidence_integrity",
+  "queries": 11,
+  "attempts_audited": 11,
+  "statuses": {
+    "timeout": 11
+  },
+  "new_verifier_executions": 0,
+  "acceptance_status": "pending_independent_review"
+}

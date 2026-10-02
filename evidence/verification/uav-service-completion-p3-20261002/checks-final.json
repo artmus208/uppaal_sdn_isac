@@ -1,0 +1,42 @@
+[
+  {
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "evidence/verification/uav-service-completion-p3-20261002/finalize.py"
+    ],
+    "exit_code": 0,
+    "result": "offline audit of all 11 attempts; integrity ok; budget compliance false",
+    "output": "check-results.json"
+  },
+  {
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "evidence/verification/uav-service-completion-p3-20261002/audit_controls.py"
+    ],
+    "exit_code": 0,
+    "result": "five in-memory negative controls detected",
+    "output": "checks/audit-controls.json"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "46bf268c66d6ec2c106ae4ce8e8d5f893315ad91"
+    ],
+    "exit_code": 0,
+    "result": "no source whitespace errors; raw native logs retain binary attributes"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--name-only",
+      "46bf268c66d6ec2c106ae4ce8e8d5f893315ad91...HEAD"
+    ],
+    "exit_code": 0,
+    "result": "287 committed paths, all within approved scope; final publication scope check repeats after artifact commit"
+  }
+]
