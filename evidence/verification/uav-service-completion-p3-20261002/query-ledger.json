@@ -1,5 +1,5 @@
 {
-  "campaign_status": "running",
+  "campaign_status": "completed",
   "queries": [
     {
       "query_id": "admitted",
@@ -192,9 +192,12 @@
       "queue_model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
       "queue_bytes_identical": true,
       "attempt_consumed": true,
-      "status": "reserved",
+      "status": "timeout",
       "verdict": null,
-      "reason": "Durable attempt reservation; interrupted attempt counts as used"
+      "reason": null,
+      "result_path": "runs/issue87-11-deadlock-attempt01-20261002/attempts/001-6db8d39b7eb14af79e4a2c093acfc41e/result.json",
+      "execution_source_commit": "14cfbfcf819829653666186fdb9588956a20b1a8",
+      "manager_exit_code": 2
     }
   ]
 }
