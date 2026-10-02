@@ -1,0 +1,33 @@
+{
+  "java": "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0",
+  "cells": [
+    {
+      "mode": "simulate",
+      "run_id": "r07-80-20261002-sim001",
+      "command": [
+        "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+        "-Xmx512m",
+        "-Djava.awt.headless=true",
+        "-cp",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+        "DirectedScenario",
+        "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\spine.tsv",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001",
+        "simulate"
+      ],
+      "argument_string": "-Xmx512m -Djava.awt.headless=true -cp \"\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar\" DirectedScenario \"C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe\" \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\spine.tsv \\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001 simulate",
+      "hardware": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\hardware.json",
+      "stdout": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\stdout.txt",
+      "stderr": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\stderr.txt",
+      "memory": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\memory.csv",
+      "monitor": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\monitor.json",
+      "owned": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\owned.json",
+      "result": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\result.json"
+    }
+  ],
+  "prior_native_wall_seconds": 0,
+  "summary": "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\native-summary.json"
+}

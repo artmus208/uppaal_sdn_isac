@@ -1,0 +1,52 @@
+{
+    "prior_native_wall_seconds":  0,
+    "total_wall_seconds":  7.3064179,
+    "total_limit_seconds":  600,
+    "cells":  [
+                  {
+                      "exit_code":  0,
+                      "peak_tree_sample_bytes":  834420736,
+                      "run_id":  "r07-80-20261002-replay001",
+                      "process_tree_reaped":  true,
+                      "command":  [
+                                      "C:\\Program Files\\Eclipse Adoptium\\jdk-17.0.19.10-hotspot\\bin\\java.exe",
+                                      "-Xmx512m",
+                                      "-Djava.awt.headless=true",
+                                      "-cp",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80-build;C:\\Program Files (x86)\\UPPAAL-5.0.0\\lib\\*;C:\\Program Files (x86)\\UPPAAL-5.0.0\\uppaal.jar",
+                                      "DirectedScenario",
+                                      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\server.exe",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\sim001\\trace.xtr",
+                                      "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-r07-80\\evidence\\scenarios\\r07-uav-n1-20261002\\runs\\replay001",
+                                      "replay"
+                                  ],
+                      "runtime_seconds":  6.0448227999999995,
+                      "requested_sleep_ms":  100,
+                      "owned_process_identities":  [
+                                                       {
+                                                           "id":  21244,
+                                                           "start":  "2026-10-02T01:41:05.8220037Z"
+                                                       },
+                                                       {
+                                                           "id":  12800,
+                                                           "start":  "2026-10-02T01:41:05.8272815Z"
+                                                       },
+                                                       {
+                                                           "id":  19764,
+                                                           "start":  "2026-10-02T01:41:06.0735591Z"
+                                                       },
+                                                       {
+                                                           "id":  20432,
+                                                           "start":  "2026-10-02T01:41:06.0779842Z"
+                                                       }
+                                                   ],
+                      "started_utc":  "2026-10-02T01:41:05.7988623Z",
+                      "timeout_seconds":  60,
+                      "mode":  "replay",
+                      "native_status":  "success",
+                      "memory_limit_bytes":  2147483648,
+                      "finished_utc":  "2026-10-02T01:41:11.8448622Z"
+                  }
+              ]
+}
