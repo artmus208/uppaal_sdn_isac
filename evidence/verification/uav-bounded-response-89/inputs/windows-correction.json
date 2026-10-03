@@ -1,0 +1,12 @@
+{
+  "source": "user correction + Issue #89 comment 5968685095",
+  "preparation_only": true,
+  "native_execution_authorized": false,
+  "supersedes_linux_preparation": "9e4743bfcca06416c112693d8644ecec004a0a8f",
+  "verifyta_path": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "executable_sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "observed_host_record": "checks/windows-004/record.json",
+  "runner_os": "Windows",
+  "owner": "vadimnbkg",
+  "runner": "artmus208"
+}

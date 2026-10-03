@@ -1,0 +1,12 @@
+{
+  "os": "Windows",
+  "native_host": "DESKTOP-Q3CKGDN",
+  "machine_guid_sha256": "0a8584d7b2bebec97e47538eb32d6a04fdb5b396e953c8090759a2a99b208398",
+  "python_path": "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "python_sha256": "ff9b669828a66882f3d43ed2f9192ea9d8a08f80b8ffbc2186ee946823394418",
+  "python_version": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "physical_ram_bytes": 17033019392,
+  "logical_cpu_count": 8,
+  "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel"
+}

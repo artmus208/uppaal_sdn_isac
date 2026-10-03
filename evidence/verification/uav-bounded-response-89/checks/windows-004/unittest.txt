@@ -1,0 +1,31 @@
+test_missing_approval_rejected_before_native_calls (test_protocol.IntegrityTests.test_missing_approval_rejected_before_native_calls) ... ok
+test_offline_audit_rejects_query_and_code_tampering (test_protocol.IntegrityTests.test_offline_audit_rejects_query_and_code_tampering) ... ok
+test_exact_allowed_changes_and_preservation (test_protocol.ModelTests.test_exact_allowed_changes_and_preservation) ... ok
+test_formulas_and_receipt_boundaries (test_protocol.ModelTests.test_formulas_and_receipt_boundaries) ... ok
+test_reproducible_products (test_protocol.ModelTests.test_reproducible_products) ... ok
+test_source_drift_rejected (test_protocol.ModelTests.test_source_drift_rejected) ... ok
+test_atomic_write_failure_retains_old_record (test_protocol.ResultTests.test_atomic_write_failure_retains_old_record) ... ok
+test_fail_closed_parser (test_protocol.ResultTests.test_fail_closed_parser) ... ok
+test_approval_binds_native_host_python_path_and_binary (test_windows_guard.WindowsControls.test_approval_binds_native_host_python_path_and_binary) ... ok
+test_blocked_controller_does_not_block_deadline (test_windows_guard.WindowsControls.test_blocked_controller_does_not_block_deadline) ... ok
+test_breakaway_rejected (test_windows_guard.WindowsControls.test_breakaway_rejected) ... ok
+test_controller_eof_before_resume (test_windows_guard.WindowsControls.test_controller_eof_before_resume) ... ok
+test_dead_controller_stops_tree (test_windows_guard.WindowsControls.test_dead_controller_stops_tree) ... ok
+test_fast_exit_waits_for_owned_console_host_within_deadline (test_windows_guard.WindowsControls.test_fast_exit_waits_for_owned_console_host_within_deadline) ... ok
+test_leader_exit_with_descendants_is_error (test_windows_guard.WindowsControls.test_leader_exit_with_descendants_is_error) ... ok
+test_memory_stop_includes_descendant (test_windows_guard.WindowsControls.test_memory_stop_includes_descendant) ... ok
+test_monitor_failure_halts_and_cleans (test_windows_guard.WindowsControls.test_monitor_failure_halts_and_cleans) ... ok
+test_native_identity_api_layout_and_pe (test_windows_guard.WindowsControls.test_native_identity_api_layout_and_pe) ... ok
+test_status_json_unreadable_and_session_deadline (test_windows_guard.WindowsControls.test_status_json_unreadable_and_session_deadline) ... ok
+test_stop_command (test_windows_guard.WindowsControls.test_stop_command) ... ok
+test_success_nonzero_and_argument_quoting (test_windows_guard.WindowsControls.test_success_nonzero_and_argument_quoting) ... ok
+test_telemetry_flush_failure_stops_controller (test_windows_guard.WindowsControls.test_telemetry_flush_failure_stops_controller) ... ok
+test_telemetry_unwritable_blocks_launch (test_windows_guard.WindowsControls.test_telemetry_unwritable_blocks_launch) ... ok
+test_timeout_owned_tree_and_unrelated_survives (test_windows_guard.WindowsControls.test_timeout_owned_tree_and_unrelated_survives) ... ok
+test_watchdog_death_before_resume_kills_suspended_child (test_windows_guard.WindowsControls.test_watchdog_death_before_resume_kills_suspended_child) ... ok
+test_watchdog_death_kills_tree (test_windows_guard.WindowsControls.test_watchdog_death_kills_tree) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 19.718s
+
+OK

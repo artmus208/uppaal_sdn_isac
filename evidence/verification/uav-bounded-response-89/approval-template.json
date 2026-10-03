@@ -1,0 +1,30 @@
+{
+  "approver": "artmus208",
+  "runner": "artmus208",
+  "decision_url": null,
+  "preparation_head": null,
+  "native_execution_authorized": false,
+  "hnom_restrictions_and_materialization_approved": false,
+  "hnom_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+  "hnom_patch_hash": "b0d8e07da9401af0b64ec0224f9241456e1d8e408817c9f3432da0a868504742",
+  "query_hashes": [
+    "c599715a482970ae4b72e6fc1384cb1d05cd1631b166f4a9beb4f2a9507413d2",
+    "ff797cc96cc6d018f9e6a2fa8921e81a21c7ec4fc86638b96fdfbe6adf9c11de",
+    "9a4dc76aca31e0cd333d27ab3fab461e42128896929e2b6afa62df88b37701e9",
+    "9b89f698bcb9031e939ac9b653480a2c164ff8cb5fc8956d2b8f947e1da4bcaf",
+    "2507c2c36030471676705b6589d8d783b419bbf3bd96ef4171caedd4ae298dae",
+    "16b39342f932f42136802ec92947eaf2b2f102ce34e0013b7727e76fb11f7871"
+  ],
+  "config_hash": "44b26d2213e8450ebcc39043fb0342d88d6a407a44ab18976a2b79761c415c81",
+  "os": "Windows",
+  "native_host": "DESKTOP-Q3CKGDN",
+  "persistent_checkout": null,
+  "verifyta_path": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "executable_sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "expected_version_identity": "UPPAAL 5.0.0 rev. 714BA9DB36F49691",
+  "independent_scientific_acceptance": "separate reviewer or explicit Integrator disposition required",
+  "machine_guid_sha256": "0a8584d7b2bebec97e47538eb32d6a04fdb5b396e953c8090759a2a99b208398",
+  "python_path": "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "python_sha256": "ff9b669828a66882f3d43ed2f9192ea9d8a08f80b8ffbc2186ee946823394418",
+  "python_version": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]"
+}

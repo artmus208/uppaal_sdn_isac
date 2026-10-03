@@ -1,0 +1,22 @@
+test_controller_eof_stops_owned_group (test_protocol.GuardTests.test_controller_eof_stops_owned_group) ... ok
+test_dead_watchdog_controller_cleans_owned_group (test_protocol.GuardTests.test_dead_watchdog_controller_cleans_owned_group) ... ok
+test_memory_stop (test_protocol.GuardTests.test_memory_stop) ... ok
+test_replaced_status_json_irrelevant (test_protocol.GuardTests.test_replaced_status_json_irrelevant) ... ok
+test_session_limit_independent_of_slot_cap (test_protocol.GuardTests.test_session_limit_independent_of_slot_cap) ... ok
+test_stop_command (test_protocol.GuardTests.test_stop_command) ... ok
+test_success_and_error_exit (test_protocol.GuardTests.test_success_and_error_exit) ... ok
+test_telemetry_failure_kills_group (test_protocol.GuardTests.test_telemetry_failure_kills_group) ... ok
+test_timeout_kills_descendants_not_unrelated_child (test_protocol.GuardTests.test_timeout_kills_descendants_not_unrelated_child) ... ok
+test_missing_approval_rejected_before_native_calls (test_protocol.IntegrityTests.test_missing_approval_rejected_before_native_calls) ... ok
+test_offline_audit_rejects_query_and_code_tampering (test_protocol.IntegrityTests.test_offline_audit_rejects_query_and_code_tampering) ... ok
+test_exact_allowed_changes_and_preservation (test_protocol.ModelTests.test_exact_allowed_changes_and_preservation) ... ok
+test_formulas_and_receipt_boundaries (test_protocol.ModelTests.test_formulas_and_receipt_boundaries) ... ok
+test_reproducible_products (test_protocol.ModelTests.test_reproducible_products) ... ok
+test_source_drift_rejected (test_protocol.ModelTests.test_source_drift_rejected) ... ok
+test_atomic_write_failure_retains_old_record (test_protocol.ResultTests.test_atomic_write_failure_retains_old_record) ... ok
+test_fail_closed_parser (test_protocol.ResultTests.test_fail_closed_parser) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 5.395s
+
+OK
