@@ -1,0 +1,7 @@
+# Installed only for document/figure processing; not scientific model execution.
+python-docx==1.2.0
+reportlab>=4,<5
+Pillow>=11,<13
+pypandoc_binary==1.17
+pymupdf==1.28.2
+pdf2image>=1.17,<2

@@ -1,0 +1,22 @@
+{
+  "checks": "passed",
+  "paper_pages": 15,
+  "response_pages": 6,
+  "docx_render_pages": 16,
+  "docx_tables": 6,
+  "docx_images": 4,
+  "omml_nodes": 42,
+  "display_equations": 7,
+  "bibliography_items": 9,
+  "pdf_fonts_all_embedded": true,
+  "model_copies_unchanged": true,
+  "files": {
+    "levels_tex/samplepaper.tex": "43d6bcbd782b1ffe46fd9f1f76e79032c075462d8ad409e04a2e119915cf5c3e",
+    "monotec2026.bib": "676c77b8014e6ca68287bc74ca9dfd29bb52b84229b7d8142cdd43c599909d03",
+    "evidence/integration/20261003-submission/MoNoTeC-2026-paper.pdf": "b407b319f3507099d81a1fa4cbf578f5afdac8c81b6fadbbfb9acaed938ecd82",
+    "evidence/integration/20261003-submission/MoNoTeC-2026-paper.docx": "1d7d3271700248ae3474a088df2f1cd734fe6fe7e24086194c00b9d4f6022ace",
+    "evidence/integration/20261003-submission/reviewer-response.md": "bd5e5026cccbe73e480b9b52d2e9d24fc06ca4f31fec8af0d9f1bc05e137e6fb",
+    "evidence/integration/20261003-submission/reviewer-response.pdf": "9de689a2f98a9b733baaaa09f0d042552df6b57a74e2347f100aedff7eb3a3dc",
+    "evidence/integration/20261003-submission/reviewer-response.docx": "50c35cbf9b84f1e352bb918597831281d6fefbc1db85bd08f0ad3e3d0270e78d"
+  }
+}
