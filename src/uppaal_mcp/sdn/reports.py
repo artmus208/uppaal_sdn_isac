@@ -28,7 +28,7 @@ def generate_report_bundle(*, contract_json: dict, model_xml: str | None = None,
     }
     if model_xml is not None:
         reports.update(generate_layout_maps(contract_json, model_xml=model_xml))
-    if result_json:
+    if result_json is not None:
         reports["violations.md"] = _violations(result_json)
     if trace_text:
         reports["trace_explanation.md"] = _trace_explanation(trace_text, result_json=result_json)
@@ -59,10 +59,11 @@ def export_report_bundle(output_dir: str | Path, *, contract_json: dict, model_x
 
 
 def _report(contract: SdnContractModel, *, queries: str | None, result_json: dict | None) -> str:
-    result_by_query = {item.get("formula"): item.get("status") for item in (result_json or {}).get("query_results", [])}
-    lines = ["# SDN Property Report", "", "| Property | Category | Query | Result | Interpretation |", "|---|---|---|---|---|"]
+    result_by_query = _result_by_query(result_json)
+    default_result = "not_run" if result_json is None or _run_completed(result_json) else "not_verified"
+    lines = ["# SDN Property Report", "", *_run_summary(result_json), "| Property | Category | Query | Result | Interpretation |", "|---|---|---|---|---|"]
     for item in contract.properties:
-        lines.append(f"| `{item.name}` | `{item.category}` | `{item.query}` | {result_by_query.get(item.query, 'not_run')} | {item.interpretation} |")
+        lines.append(f"| `{item.name}` | `{item.category}` | `{item.query}` | {result_by_query.get(item.query, default_result)} | {item.interpretation} |")
     if queries:
         lines.append("")
         lines.append(f"Generated query lines: {len([line for line in queries.splitlines() if line.strip()])}.")
@@ -143,13 +144,61 @@ def _properties_csv(contract: SdnContractModel, *, result_json: dict | None) -> 
 
 
 def _violations(result_json: dict) -> str:
-    failed = [item for item in result_json.get("query_results", []) if item.get("status") != "satisfied"]
-    lines = ["# SDN Violations", ""]
-    if not failed:
-        lines.append("No failed query was parsed.")
-    for item in failed:
-        lines.append(f"- `{item.get('formula')}`: {item.get('status')}")
+    outcomes = result_json.get("query_results", [])
+    lines = ["# SDN Violations", "", *_run_summary(result_json)]
+    if not _run_completed(result_json):
+        if outcomes:
+            lines.extend(["## Parsed query output (diagnostic only)", ""])
+            for item in outcomes:
+                lines.append(f"- `{item.get('formula')}`: {item.get('status', 'unknown')} (diagnostic only)")
+        return "\n".join(lines) + "\n"
+    if not outcomes:
+        lines.append("No query results were reported; no property verdict is available.")
+        return "\n".join(lines) + "\n"
+    failed = [item for item in outcomes if item.get("status") == "not_satisfied"]
+    unresolved = [item for item in outcomes if item.get("status") not in {"satisfied", "not_satisfied"}]
+    if failed:
+        lines.extend(["## Violated properties", ""])
+        for item in failed:
+            lines.append(f"- `{item.get('formula')}`: not_satisfied")
+    if unresolved:
+        lines.extend(["", "## Queries without a decisive verdict", ""])
+        for item in unresolved:
+            lines.append(f"- `{item.get('formula')}`: {item.get('status', 'unknown')}")
+    if not failed and not unresolved:
+        lines.append("No violated property was reported among returned query results.")
     return "\n".join(lines) + "\n"
+
+
+def _run_completed(result_json: dict) -> bool:
+    # These are the runner's complete-run statuses, not scientific acceptance.
+    return result_json.get("status") in {"satisfied", "not_satisfied", "inconclusive"}
+
+
+def _run_summary(result_json: dict | None) -> list[str]:
+    if result_json is None:
+        return ["No verification result supplied.", ""]
+    lines = [f"Overall status: `{result_json.get('status', 'unknown')}`.", ""]
+    if not _run_completed(result_json):
+        lines.extend([
+            "No property verdicts established by this run. Static checks and partial "
+            "query output do not establish verification results.",
+            "",
+        ])
+    return lines
+
+
+def _result_by_query(result_json: dict | None) -> dict[str, str]:
+    if result_json is None or not _run_completed(result_json):
+        return {}
+    return {
+        item["formula"]: (
+            item["status"] if item.get("status") in {"satisfied", "not_satisfied", "maybe", "inconclusive"}
+            else "not_verified"
+        )
+        for item in result_json.get("query_results", [])
+        if item.get("formula")
+    }
 
 
 def _trace_explanation(trace_text: str, *, result_json: dict | None) -> str:
