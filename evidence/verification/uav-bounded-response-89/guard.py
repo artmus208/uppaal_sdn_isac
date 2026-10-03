@@ -1,245 +1,140 @@
-"""Linux-only independent monotonic watchdog; never reads a status JSON file.
+"""Independent native Windows watchdog. Never reads status JSON or kills by name.
 
-The watchdog owns one Linux process group per command. The exec child waits
-behind a pipe until both watchdog and controller know its group ID. Parent EOF,
-deadline, stop, telemetry error and monitor error all stop the owned group.
+Deadlines and monitoring run without controller/disk dependencies. Telemetry is
+bounded in watchdog memory and returned only AFTER cleanup; abrupt watchdog loss
+means unavailable metrics, never invented success. Child stdout/trace remain raw.
 """
-import ctypes
 import json
 import multiprocessing
 import os
 from pathlib import Path
-import select
 import signal
 import time
+import windows_native as win
 
-POLL = 0.05
+POLL=0.05
 
-def members(pgid):
-    result = []
-    for entry in Path('/proc').iterdir():
-        if not entry.name.isdigit():
-            continue
-        try:
-            fields = (entry/'stat').read_text().rsplit(') ',1)[1].split()
-        except (FileNotFoundError, ProcessLookupError):
-            continue
-        # All owned descendants remain in this native Linux group/session.
-        if int(fields[2]) == pgid:
-            result.append((int(entry.name), fields))
-    return result
-
-def metrics(pgid):
-    rows = members(pgid)
-    live = [f for _,f in rows if f[0] != 'Z']
-    return dict(rss_bytes=sum(int(f[21]) for f in live)*os.sysconf('SC_PAGE_SIZE'),
-                sampled_cpu_seconds=sum(int(f[11])+int(f[12]) for _,f in rows)/os.sysconf('SC_CLK_TCK'),
-                live_processes=len(live))
-
-def kill_group(pgid):
-    if pgid is None:
-        return
+def watchdog(conn,deadline,parent_pid):
+    job=None;parent=None
     try:
-        os.killpg(pgid, signal.SIGKILL)
-    except ProcessLookupError:
-        pass
-
-def reap(pid):
-    _, status, usage = os.wait4(pid, 0)
-    return os.waitstatus_to_exitcode(status), usage
-
-def launch(command, cwd, stdout, stderr, conn):
-    """Fork behind a gate: ownership acknowledged before exec or descendants."""
-    gate_r, gate_w = os.pipe()
-    ready_r, ready_w = os.pipe()
-    out = open(stdout, 'xb', buffering=0)
-    err = open(stderr, 'xb', buffering=0)
-    try:
-        parent = os.getpid()
-        pid = os.fork()
-        if pid == 0:
-            try:
-                conn.close()
-                os.close(gate_w)
-                os.close(ready_r)
-                os.setsid()
-                # Kill blocked exec child if watchdog disappears before handoff.
-                libc = ctypes.CDLL(None, use_errno=True)
-                if libc.prctl(1, signal.SIGKILL, 0, 0, 0) != 0 or os.getppid() != parent:
-                    os._exit(125)
-                signal.signal(signal.SIGINT, signal.SIG_DFL)
-                signal.signal(signal.SIGTERM, signal.SIG_DFL)
-                os.dup2(out.fileno(),1)
-                os.dup2(err.fileno(),2)
-                os.write(ready_w,b'R')
-                os.close(ready_w)
-                if os.read(gate_r,1) != b'G':
-                    os._exit(125)
-                os.close(gate_r)
-                os.chdir(cwd)
-                os.execv(command[0], command)
-            except BaseException:
-                os._exit(126)
-        os.close(gate_r)
-        os.close(ready_w)
-        if not select.select([ready_r],[],[],2)[0] or os.read(ready_r,1) != b'R':
-            # pid is ours even when setsid failed; never signal somebody else's group.
-            os.kill(pid,signal.SIGKILL)
-            reap(pid)
-            raise RuntimeError('Exec ownership gate failed')
-        return pid, gate_w
-    finally:
-        os.close(ready_r)
-        out.close()
-        err.close()
-
-def watchdog(conn, deadline):
-    current = None
-    halted = False
-    def stopping(*_):
-        nonlocal halted
-        halted = True
-    signal.signal(signal.SIGTERM, stopping)
-    signal.signal(signal.SIGINT, stopping)
-    try:
+        win.native()
+        # Ignore terminal Ctrl-C here: controller requests stop; deadlines remain live.
+        signal.signal(signal.SIGINT,signal.SIG_IGN)
+        parent=win.checked(win.open_process(0x100000,False,parent_pid))
         conn.send({'event':'ready'})
-        while not halted and time.monotonic() < deadline:
-            if not conn.poll(POLL):
-                continue
+        while time.monotonic()<deadline:
+            if win.completed(parent):return
+            if not conn.poll(POLL):continue
             msg=conn.recv()
-            if msg['op'] == 'close':
-                return
-            if msg['op'] != 'run':
-                raise RuntimeError('Invalid watchdog command')
+            if msg['op']=='close':return
+            if msg['op']!='run':raise RuntimeError('Invalid watchdog command')
             started=time.monotonic()
-            # Leave cleanup inside the approved cap, including sampling latency.
-            attempt_deadline=min(started+msg['cap']-min(2,msg['cap']/10), deadline-2)
-            current, gate=launch(msg['command'], msg['cwd'], msg['stdout'], msg['stderr'], conn)
-            conn.send({'event':'owned','pgid':current})
-            # Controller must know group before the verifier can run.
-            if not conn.poll(min(2,max(0,attempt_deadline-time.monotonic()))) or conn.recv() != {'op':'go'}:
-                os.close(gate)
-                raise RuntimeError('Controller did not acknowledge owned process group')
-            os.write(gate,b'G')
-            os.close(gate)
-            status='exited'
-            peak=0
-            max_cpu=0.0
-            reason=None
-            child_exit=None
-            usage=None
+            attempt_deadline=min(started+msg['cap']-min(2,msg['cap']/10),deadline-2)
+            job=win.Job()
+            job.launch(msg['command'],msg['cwd'],msg['stdout'],msg['stderr'])
+            conn.send(dict(event='owned',pid=job.pid))
+            if not conn.poll(min(2,max(0,attempt_deadline-time.monotonic()))) or conn.recv()!={'op':'go'}:
+                raise RuntimeError('Controller did not acknowledge owned Windows job')
+            if win.completed(parent) or time.monotonic()>=attempt_deadline:
+                raise RuntimeError('Controller gone or deadline during startup')
+            job.start()
+            status='exited';reason=None;peak=0;cpu=0.0;private_peak=0;telemetry=[];code=None
             try:
-                with open(msg['telemetry'],'x',encoding='utf-8',buffering=1) as log:
-                    while True:
-                        now=time.monotonic()
-                        if halted:
-                            status='stopped'; break
-                        if now >= attempt_deadline:
-                            status='session_limit' if attempt_deadline==deadline-2 else 'timeout'; break
-                        if conn.poll():
-                            control=conn.recv()  # EOF is a failure, followed by owned cleanup.
-                            if control['op']=='stop':
-                                status='stopped'; break
-                            raise RuntimeError('Unexpected command during attempt')
-                        sample=metrics(current)
-                        peak=max(peak,sample['rss_bytes'])
-                        max_cpu=max(max_cpu,sample['sampled_cpu_seconds'])
-                        log.write(json.dumps({'monotonic':now,**sample})+'\n')
-                        if sample['rss_bytes'] > msg['memory_bytes']:
-                            status='memory_limit'; break
-                        # wait4(WNOHANG) preserves kernel CPU/maxrss for a fast child.
-                        pid, raw, ru=os.wait4(current,os.WNOHANG)
-                        if pid:
-                            child_exit=os.waitstatus_to_exitcode(raw); usage=ru
-                            if sample['live_processes']:
-                                # A stale sample may include the just-exited leader.
-                                if any(p!=current and f[0]!='Z' for p,f in members(current)):
-                                    status='error'; reason='Command left descendants running'
-                            break
-                        time.sleep(POLL)
-            except BaseException as exc:
-                status='error'; reason=repr(exc)
-            finally:
-                kill_group(current)
-                if usage is None:
-                    child_exit,usage=reap(current)
-                until=time.monotonic()+1
-                while any(f[0]!='Z' for _,f in members(current)) and time.monotonic()<until:
+                while True:
+                    now=time.monotonic()
+                    if win.completed(parent):status='error';reason='Controller died';break
+                    if now>=attempt_deadline:
+                        status='session_limit' if attempt_deadline==deadline-2 else 'timeout';break
+                    if conn.poll():
+                        if conn.recv()=={'op':'stop'}:status='stopped';break
+                        raise RuntimeError('Unexpected control during attempt')
+                    sample=job.metrics()
+                    peak=max(peak,sample['rss_bytes'],sample['leader_peak_rss_bytes'])
+                    cpu=max(cpu,sample['cpu_seconds']);private_peak=max(private_peak,sample['peak_job_private_commit_bytes'])
+                    telemetry.append(dict(monotonic=now,**sample))
+                    if sample['rss_bytes']>msg['memory_bytes']:status='memory_limit';break
+                    if win.completed(job.process):
+                        code=job.result_code()
+                        # Windows conhost may outlive a fast console leader briefly.
+                        # Drain within the existing deadline; never extend a slot.
+                        until=min(time.monotonic()+0.25,attempt_deadline)
+                        while job.has_live_descendants() and time.monotonic()<until:time.sleep(0.01)
+                        if job.has_live_descendants():
+                            status='error';reason='Command left descendants running after bounded exit grace'
+                        if time.monotonic()>=attempt_deadline:
+                            status='session_limit' if attempt_deadline==deadline-2 else 'timeout'
+                        break
                     time.sleep(POLL)
-                if any(f[0]!='Z' for _,f in members(current)):
-                    status='error';reason='Owned group cleanup failed'
-                current=None
-            conn.send(dict(event='result',status=status,reason=reason,exit_code=child_exit,
-                           monotonic_start=started,monotonic_end=time.monotonic(),
-                           wall_seconds=time.monotonic()-started,
-                           cpu_seconds=usage.ru_utime+usage.ru_stime,
-                           sampled_group_cpu_seconds=max_cpu,
-                           peak_rss_bytes=max(peak,int(usage.ru_maxrss)*1024),
-                           metric_scope='CPU wait4 leader/reaped children; peak max(sampled group RSS, wait4 maxrss)',
-                           cleanup_confirmed=True))
-            if status not in ['exited','timeout','memory_limit']:
-                return
-        conn.send({'event':'halt','reason':'session deadline or stop'})
+            except BaseException as exc:status='error';reason=repr(exc)
+            finally:
+                job.terminate()
+                until=min(time.monotonic()+1.5,deadline)
+                while job.accounting().ActiveProcesses and time.monotonic()<until:time.sleep(0.01)
+                clean=job.accounting().ActiveProcesses==0
+                if not clean:status='error';reason='Owned Windows job cleanup unconfirmed'
+                if code is None and win.completed(job.process):code=job.result_code()
+                a=job.accounting();cpu=max(cpu,(a.TotalUserTime+a.TotalKernelTime)/1e7)
+                job.close();job=None
+            ended=time.monotonic()
+            conn.send(dict(event='result',status=status,reason=reason,exit_code=code,
+                           monotonic_start=started,monotonic_end=ended,wall_seconds=ended-started,
+                           cpu_seconds=cpu,peak_rss_bytes=peak,peak_job_private_commit_bytes=private_peak,
+                           metric_scope='Job cumulative CPU incl. exited descendants; max(sampled sum working sets, leader peak working set); private commit reported separately',
+                           cleanup_confirmed=clean,_telemetry=telemetry))
+            if status not in ['exited','timeout','memory_limit']:return
+        conn.send(dict(event='halt',reason='Whole-session deadline'))
     except BaseException as exc:
-        try:
-            conn.send({'event':'halt','reason':repr(exc)})
-        except (BrokenPipeError,EOFError,OSError):
-            pass
+        # Close job BEFORE reporting an error: a blocked/dead controller cannot keep children alive.
+        if job is not None:job.close();job=None
+        try:conn.send(dict(event='halt',reason=repr(exc)))
+        except (BrokenPipeError,EOFError,OSError):pass
     finally:
-        kill_group(current)
-        if current is not None:
-            try:
-                reap(current)
-            except ChildProcessError:
-                pass
+        if job is not None:job.close()
+        if parent:win.close(parent)
         conn.close()
 
 class Guard:
-    def __init__(self, seconds=1800):
-        if os.name!='posix' or not Path('/proc/self/stat').exists():
-            raise RuntimeError('Native Linux /proc required')
+    def __init__(self,seconds=1800):
+        win.native()
         ctx=multiprocessing.get_context('spawn')
-        self.conn,child=ctx.Pipe()
-        self.deadline=time.monotonic()+seconds
-        self.p=ctx.Process(target=watchdog,args=(child,self.deadline))
-        self.p.start(); child.close()
-        self.pgid=None
-        if not self.conn.poll(5) or self.conn.recv()!= {'event':'ready'}:
-            self.close(); raise RuntimeError('Watchdog startup failed')
+        self.conn,child=ctx.Pipe();self.deadline=time.monotonic()+seconds
+        self.p=ctx.Process(target=watchdog,args=(child,self.deadline,os.getpid()))
+        self.pid=None;self.closed=False
+        self.p.start();child.close()
+        if not self.conn.poll(5) or self.conn.recv()!={'event':'ready'}:
+            self.close();raise RuntimeError('Windows watchdog startup failed')
 
     def run(self,command,directory,cap,memory_bytes,cwd=None):
-        directory=Path(directory)
-        directory.mkdir(parents=True,exist_ok=True)
-        self.conn.send(dict(op='run',command=[str(x) for x in command],cwd=str(cwd or directory),
-                            cap=cap,memory_bytes=memory_bytes,stdout=str(directory/'stdout.txt'),
-                            stderr=str(directory/'stderr.txt'),telemetry=str(directory/'telemetry.jsonl')))
+        directory=Path(directory);directory.mkdir(parents=True,exist_ok=True)
+        # Check telemetry destination before spawning. Runtime write failures halt after cleanup.
+        log=open(directory/'telemetry.jsonl','x',encoding='utf-8')
         try:
+            self.conn.send(dict(op='run',command=[str(x) for x in command],cwd=str(cwd or directory),
+                                cap=cap,memory_bytes=memory_bytes,stdout=str(directory/'stdout.txt'),stderr=str(directory/'stderr.txt')))
             while True:
                 if self.conn.poll(POLL):
                     msg=self.conn.recv()
                     if msg['event']=='owned':
-                        self.pgid=msg['pgid']; self.conn.send({'op':'go'})
+                        self.pid=msg['pid'];self.conn.send({'op':'go'})
                     elif msg['event']=='result':
-                        self.pgid=None; return msg
-                    else:
-                        raise RuntimeError('Watchdog failure: '+repr(msg))
+                        self.pid=None
+                        samples=msg.pop('_telemetry')
+                        for sample in samples:log.write(json.dumps(sample)+'\n')
+                        log.flush();os.fsync(log.fileno())
+                        return msg
+                    else:raise RuntimeError('Watchdog failure: '+repr(msg))
                 if not self.p.is_alive() or time.monotonic()>self.deadline+1:
                     raise RuntimeError('Watchdog died or exceeded whole-session deadline')
-        except BaseException:
-            kill_group(self.pgid)
-            self.close()
-            raise
+        except BaseException:self.close();raise
+        finally:log.close()
 
     def close(self):
-        try:
-            self.conn.send({'op':'close' if self.pgid is None else 'stop'})
-        except (BrokenPipeError,EOFError,OSError):
-            pass
-        self.conn.close()
-        self.p.join(3)
+        if self.closed:return
+        self.closed=True
+        try:self.conn.send({'op':'close' if self.pid is None else 'stop'})
+        except (BrokenPipeError,EOFError,OSError):pass
+        self.conn.close();self.p.join(2)
         if self.p.is_alive():
-            kill_group(self.pgid)
+            # Terminate watchdog only; Windows closes its sole job handle and kills descendants.
             self.p.terminate();self.p.join(2)
-        if self.p.is_alive():
-            self.p.kill();self.p.join(2)
-            raise RuntimeError('Watchdog failed to stop cooperatively')
+        if self.p.is_alive():raise RuntimeError('Windows watchdog termination failed')

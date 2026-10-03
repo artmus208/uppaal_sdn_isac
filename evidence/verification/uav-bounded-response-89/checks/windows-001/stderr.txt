@@ -1,0 +1,21 @@
+test_blocked_controller_does_not_block_deadline (__main__.WindowsControls.test_blocked_controller_does_not_block_deadline) ... ok
+test_breakaway_rejected (__main__.WindowsControls.test_breakaway_rejected) ... ok
+test_controller_eof_before_resume (__main__.WindowsControls.test_controller_eof_before_resume) ... ok
+test_dead_controller_stops_tree (__main__.WindowsControls.test_dead_controller_stops_tree) ... ok
+test_leader_exit_with_descendants_is_error (__main__.WindowsControls.test_leader_exit_with_descendants_is_error) ... ok
+test_memory_stop_includes_descendant (__main__.WindowsControls.test_memory_stop_includes_descendant) ... ok
+test_monitor_failure_halts_and_cleans (__main__.WindowsControls.test_monitor_failure_halts_and_cleans) ... ok
+test_native_identity_api_layout_and_pe (__main__.WindowsControls.test_native_identity_api_layout_and_pe) ... ok
+test_status_json_unreadable_and_session_deadline (__main__.WindowsControls.test_status_json_unreadable_and_session_deadline) ... ok
+test_stop_command (__main__.WindowsControls.test_stop_command) ... ok
+test_success_nonzero_and_argument_quoting (__main__.WindowsControls.test_success_nonzero_and_argument_quoting) ... ok
+test_telemetry_flush_failure_stops_controller (__main__.WindowsControls.test_telemetry_flush_failure_stops_controller) ... ok
+test_telemetry_unwritable_blocks_launch (__main__.WindowsControls.test_telemetry_unwritable_blocks_launch) ... ok
+test_timeout_owned_tree_and_unrelated_survives (__main__.WindowsControls.test_timeout_owned_tree_and_unrelated_survives) ... ok
+test_watchdog_death_before_resume_kills_suspended_child (__main__.WindowsControls.test_watchdog_death_before_resume_kills_suspended_child) ... ok
+test_watchdog_death_kills_tree (__main__.WindowsControls.test_watchdog_death_kills_tree) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 15.867s
+
+OK

@@ -125,31 +125,40 @@ task. No model repair or manuscript edit is part of #89.
 
 Only Runner artmus208, after explicit Issue approval of the exact checkpoint,
 Hnom patch/hash, six query hashes, config hash, native host/executable and stop
-policy. User selected native Linux Python + Linux ELF verifyta. Host/path/hash
-must be supplied in the decision; historical version is only the expected
-identity. The actual full version and help are captured once, within the session.
+policy. The latest user selection is native Windows Python + Windows PE verifyta,
+superseding the Linux preparation preserved at 9e4743bf. The exact path/hash and
+observed host/Python bindings are in `approval-template.json`; the persistent
+native Windows checkout and accepted new preparation HEAD still require the
+Runner's decision. Historical UPPAAL version is an expected identity only; actual
+full version and help are captured once after authorization, within the session.
 
 At most six attempts, no retries; one verifier at a time; search allocation 1500 s;
 whole native session 1800 s from preflight to owned-process cleanup. There are
 two preflight commands (-v/-h), each capped at 30 s, and no preflight query.
 Options `-o 1 -t 0 -X <prefix>` must match actual help (symbolic DFS and some XML
-diagnostic trace). Memory stop is floor(min(physical RAM/2,8 GiB)/MiB) MiB of
-sampled native process-group RSS. This is not a hard allocation guarantee.
+diagnostic trace). Memory stop remains floor(min(physical RAM/2,8 GiB)/MiB) MiB,
+measured as sampled sum of Windows Job Object process working sets. Private
+commit is reported separately. Sampling is not a hard allocation guarantee.
 
-The independent `guard.py` process holds a monotonic whole-session deadline and
-per-command deadlines. It starts each native process in a new owned group behind
-an execution pipe; the controller acknowledges the group before exec. Linux
-parent-death signaling covers the pre-exec ownership handoff. The guard does not
-read any status JSON. A two-second margin inside production caps reserves cleanup;
-sampling and kernel scheduling can still overrun, which is reported honestly.
+The independent `guard.py` uses monotonic whole-session and per-command deadlines.
+`windows_native.py` assigns each suspended process atomically to an owned Windows
+Job Object at CreateProcess, before acknowledging ownership and resuming it.
+KILL_ON_JOB_CLOSE and the sole watchdog-owned handle terminate descendants even
+if the watchdog crashes. No Linux process-group watchdog is used. Native host,
+Python identity and PE path/format/hash are checked before the first command.
 
 Timeout/memory_limit => null verdict; later authorized slots may run with remaining
 budget. Error, preflight/version/help/monitor mismatch, watchdog failure, stop or
-measured budget overrun halts the series. Stop uses owned process groups only,
-never process names. Parent EOF and controller exceptions kill owned children.
-SIGINT/SIGTERM stop the controller; the guard handles its own stop signals and
-deadline independently. SIGKILL of both controller and watchdog, host loss or
-uninterruptible kernel I/O cannot be claimed to provide a hard realtime bound.
+measured budget overrun halts the series. Ctrl-C asks the controller to stop;
+controller death/EOF and watchdog death also stop owned processes. Termination
+never selects processes by name. Deadlines reserve two seconds for cleanup.
+Windows scheduling can still overrun; measured overruns are disclosed and halt.
+
+The watchdog never reads status JSON and performs no telemetry writes while
+children run. Samples are buffered and returned after cleanup, so a blocked
+controller or disk cannot delay child termination through telemetry I/O. Abrupt
+watchdog loss leaves unavailable metrics explicitly unknown. Full API contracts,
+measurement limits and real Windows synthetic test evidence are in `WINDOWS.md`.
 
 Each slot is consumed before launching, in a fsynced ledger and Git checkpoint
 with complete bundle in a persistent Runner checkout. Interrupted reservations

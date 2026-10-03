@@ -1,0 +1,14 @@
+{
+  "kind": "Windows fast-exit diagnosis; no verifier execution",
+  "source_commit": "cb1860e",
+  "observation": "Retained process-handle QueryFullProcessImageNameW identified conhost.exe as the short-lived owned descendant after Python leader exit. Not a leaked unowned verifier.",
+  "logs": {
+    "record.json": "562357e2007a748b085a5f9fa11ea10c78541fb6371a709dd33249b72be6c7c3",
+    "fast-exit-probe.py": "ace879af0f4dddf2d942785fb89711c6405fe3c912a975c5af16297e66f171f4",
+    "fast-exit-probe.jsonl": "d2a6ca5199ebf9d6f22f49db0051da54673b75a42bc8abb9ebbbb1427b42cadd",
+    "fast-exit-probe2.py": "d73fd270862549ce325f4868fa4ff9ed19a6ed840ddbd67ef68a82417deedf87",
+    "unittest.txt": "b2c461dca9b3af46700d11f7a93f8635a7ffad65b8011fc443c33c986e1b2056",
+    "fast-exit-probe2.jsonl": "96d354ccaf9cc8aca103efc1b444ad7c9337d76bb773b7a07860cd203c0dc337"
+  },
+  "fix": "Wait up to 250ms inside current attempt/session deadline for natural descendant exit; if still live, error and owned cleanup. No process-name exception, no cap extension."
+}

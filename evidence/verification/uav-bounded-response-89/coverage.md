@@ -7,7 +7,7 @@
 | Actual send and correlated admission | Q1/Q2 / same Hnom | Not executed; domain might be vacuous |
 | Terminal processing within 40 | Q6 / original M | Not executed; negative outcomes included; does not prove delivery |
 | Related C01 deadlock/progress | Q5 / same Hnom | Not executed; no fairness/time-divergence or all-C01 claim |
-| C03 method/automation support | Six pinned queries, Linux guarded driver | Software preparation only; actual native help/version and session still absent |
+| C03 method/automation support | Six pinned queries, native Windows Job Object driver | Software preparation only; actual native help/version and session still absent |
 | C04 diagnostic support | -t 0 -X and preserved raw/trace artifacts | No native trace; classification pending |
 | C05 reproducibility support | Pins, snapshots, scope, ledger, watchdog, tests/audit | Preparation checkpoint only; per-run native provenance pending |
 | Age=5 strict freshness | Preserved APP receipt guards and stored receipt band | Static inspection only; no separate equality query in budget |

@@ -10,16 +10,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/proposal.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/proposal.stdout.txt",
           "sha256": "0ddc31f1db28463dd7f18d480b1850825f43d741bf3064e4e9046df9501a8c95"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/proposal.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/proposal.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "proposal",
-      "started_at_utc": "2026-10-03T10:47:34.958712+00:00"
+      "started_at_utc": "2026-10-03T11:43:32.807674+00:00"
     },
     {
       "command": [
@@ -31,22 +31,22 @@
         "-s",
         "evidence/verification/uav-bounded-response-89",
         "-p",
-        "test_*.py",
+        "test_protocol.py",
         "-v"
       ],
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/software-controls.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/portable-software-controls.stdout.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/software-controls.stderr.txt",
-          "sha256": "151bb7d9dba2e009b94e7db8cb6776625e7c0e4b9b47276b8a18e66767c77dcd"
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/portable-software-controls.stderr.txt",
+          "sha256": "fd48e5a2f98a41a1450f942e588ce55c4907bba1ff10ae1404070ae91e448c81"
         }
       ],
-      "name": "software-controls",
-      "started_at_utc": "2026-10-03T10:47:35.108560+00:00"
+      "name": "portable-software-controls",
+      "started_at_utc": "2026-10-03T11:43:33.160000+00:00"
     },
     {
       "command": [
@@ -57,16 +57,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/coordination.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/coordination.stdout.txt",
           "sha256": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/coordination.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/coordination.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "coordination",
-      "started_at_utc": "2026-10-03T10:47:40.629150+00:00"
+      "started_at_utc": "2026-10-03T11:43:33.860216+00:00"
     },
     {
       "command": [
@@ -77,21 +77,21 @@
         "--commit",
         "HEAD",
         "--output",
-        "/tmp/uppaal-owner-89/evidence/verification/uav-bounded-response-89/checks/final-001/historical-hashes.json"
+        "/tmp/uppaal-owner-89/evidence/verification/uav-bounded-response-89/checks/windows-static-001/historical-hashes.json"
       ],
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/historical-hashes.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/historical-hashes.stdout.txt",
           "sha256": "ca6c043b3f485e3a31acf20acb240d4236a57f06b0baf71f5f91eba2ebb3852c"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/historical-hashes.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/historical-hashes.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "historical-hashes",
-      "started_at_utc": "2026-10-03T10:47:40.680396+00:00"
+      "started_at_utc": "2026-10-03T11:43:33.921979+00:00"
     },
     {
       "command": [
@@ -103,16 +103,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/candidate-generation.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/candidate-generation.stdout.txt",
           "sha256": "2b78c4f0fa22d1a1018ca4a4b4c28ebb116cadf475726e62442f399adaca9026"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/candidate-generation.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/candidate-generation.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "candidate-generation",
-      "started_at_utc": "2026-10-03T10:47:41.012452+00:00"
+      "started_at_utc": "2026-10-03T11:43:34.278540+00:00"
     },
     {
       "command": [
@@ -123,16 +123,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/candidate-audit.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/candidate-audit.stdout.txt",
           "sha256": "c8bd224aed4a97e3bbefd990ea6ca075a727aa67a47ba7f2822297a27312d424"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/candidate-audit.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/candidate-audit.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "candidate-audit",
-      "started_at_utc": "2026-10-03T10:47:41.145606+00:00"
+      "started_at_utc": "2026-10-03T11:43:34.426364+00:00"
     },
     {
       "command": [
@@ -144,16 +144,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/baseline-operational.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/baseline-operational.stdout.txt",
           "sha256": "9af390c7638fd7fa07985ab96dcf8dfcc6bcfeeccf6dfc647895404f44c6f647"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/baseline-operational.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/baseline-operational.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "baseline-operational",
-      "started_at_utc": "2026-10-03T10:47:41.862765+00:00"
+      "started_at_utc": "2026-10-03T11:43:35.291228+00:00"
     },
     {
       "command": [
@@ -166,19 +166,19 @@
         "tests",
         "-v"
       ],
-      "exit_code": 1,
+      "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/full-suite.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/full-suite.stdout.txt",
           "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/full-suite.stderr.txt",
-          "sha256": "245d6b9f46b6ecb8534af7ebd11d0766aee9d373da7cfc34454dbd5158e26aa7"
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/full-suite.stderr.txt",
+          "sha256": "5ee0dc3eaceb121a381b186119a8087ee78d1a3a92ef88e1a9903d2cb9562d93"
         }
       ],
       "name": "full-suite",
-      "started_at_utc": "2026-10-03T10:47:42.706430+00:00"
+      "started_at_utc": "2026-10-03T11:43:36.224216+00:00"
     },
     {
       "command": [
@@ -190,16 +190,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/mcp-smoke.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/mcp-smoke.stdout.txt",
           "sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/mcp-smoke.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/mcp-smoke.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "mcp-smoke",
-      "started_at_utc": "2026-10-03T10:49:00.967055+00:00"
+      "started_at_utc": "2026-10-03T11:44:17.358366+00:00"
     },
     {
       "command": [
@@ -212,16 +212,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/cli-examples.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/cli-examples.stdout.txt",
           "sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/cli-examples.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/cli-examples.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "cli-examples",
-      "started_at_utc": "2026-10-03T10:49:01.717620+00:00"
+      "started_at_utc": "2026-10-03T11:44:18.085711+00:00"
     },
     {
       "command": [
@@ -233,16 +233,16 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/pip-check.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/pip-check.stdout.txt",
           "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/pip-check.stderr.txt",
-          "sha256": "c2d0c69f8a8a34ce182ad1feb1a6ff03b2548055311927f15f2700d30c898c67"
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/pip-check.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "pip-check",
-      "started_at_utc": "2026-10-03T10:49:02.080137+00:00"
+      "started_at_utc": "2026-10-03T11:44:18.426760+00:00"
     },
     {
       "command": [
@@ -250,21 +250,21 @@
         "-B",
         "evidence/verification/uav-bounded-response-89/audit.py",
         "--output",
-        "/tmp/uppaal-owner-89/evidence/verification/uav-bounded-response-89/checks/final-001/offline-audit.json"
+        "/tmp/uppaal-owner-89/evidence/verification/uav-bounded-response-89/checks/windows-static-001/offline-audit.json"
       ],
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/offline-audit.stdout.txt",
-          "sha256": "ebd17862b7623a4a91c64218b39c9c4fb353f28183706eef422767f1d5f7e628"
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/offline-audit.stdout.txt",
+          "sha256": "17edff8f8761c8bc1af5dea7698295d890c4151b0176ca25292454fe2012e82f"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/offline-audit.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/offline-audit.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "offline-audit",
-      "started_at_utc": "2026-10-03T10:49:02.528983+00:00"
+      "started_at_utc": "2026-10-03T11:44:18.939045+00:00"
     },
     {
       "command": [
@@ -275,111 +275,23 @@
       "exit_code": 0,
       "logs": [
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/diff-check.stdout.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/diff-check.stdout.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         {
-          "path": "evidence/verification/uav-bounded-response-89/checks/final-001/diff-check.stderr.txt",
+          "path": "evidence/verification/uav-bounded-response-89/checks/windows-static-001/diff-check.stderr.txt",
           "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       ],
       "name": "diff-check",
-      "started_at_utc": "2026-10-03T10:49:02.732651+00:00"
-    },
-    {
-      "command": [
-        "/tmp/uppaal89-venv/bin/python",
-        "-m",
-        "unittest",
-        "discover",
-        "-s",
-        "tests",
-        "-p",
-        "test_mcp_startup.py",
-        "-v"
-      ],
-      "environment": "host execution outside sandbox",
-      "exit_code": 0,
-      "logs": [
-        {
-          "path": "evidence/verification/uav-bounded-response-89/checks/mcp-startup-host.stdout.txt",
-          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-        },
-        {
-          "path": "evidence/verification/uav-bounded-response-89/checks/mcp-startup-host.stderr.txt",
-          "sha256": "34eed912f5f8c138a57977dd81ff49907e19771074f1832ffb0248c553bf41a3"
-        }
-      ],
-      "name": "mcp-startup-host",
-      "source_commit": "0650290a528537935b8894cbd395be8d45c2e0d1"
-    },
-    {
-      "command": [
-        "/tmp/uppaal89-venv/bin/python",
-        "-m",
-        "unittest",
-        "discover",
-        "-s",
-        "tests",
-        "-v"
-      ],
-      "environment": "host execution outside sandbox",
-      "exit_code": 0,
-      "logs": [
-        {
-          "path": "evidence/verification/uav-bounded-response-89/checks/full-suite-host.stdout.txt",
-          "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
-        },
-        {
-          "path": "evidence/verification/uav-bounded-response-89/checks/full-suite-host.stderr.txt",
-          "sha256": "5c111c160ca0ec257f8aa3e15413de3155d8e035b01ead2660f5dd8c5463b443"
-        }
-      ],
-      "name": "full-suite-host",
-      "source_commit": "0650290a528537935b8894cbd395be8d45c2e0d1"
-    },
-    {
-      "command": [
-        "/tmp/uppaal89-venv/bin/python",
-        "-m",
-        "unittest",
-        "discover",
-        "-s",
-        "evidence/verification/uav-bounded-response-89",
-        "-p",
-        "test_*.py",
-        "-v"
-      ],
-      "environment": "sandbox software controls",
-      "exit_code": 0,
-      "logs": [
-        {
-          "path": "evidence/verification/uav-bounded-response-89/checks/software-controls-final.stdout.txt",
-          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-        },
-        {
-          "path": "evidence/verification/uav-bounded-response-89/checks/software-controls-final.stderr.txt",
-          "sha256": "57529585ae4ab51b5fd1a53333009ef4937fbd58494694b9b069f5684b034578"
-        }
-      ],
-      "name": "software-controls-final",
-      "source_commit": "0650290a528537935b8894cbd395be8d45c2e0d1"
+      "started_at_utc": "2026-10-03T11:44:19.150649+00:00"
     }
   ],
-  "failed": [
-    "full-suite"
-  ],
-  "final_validation": {
-    "current_unresolved_software_failures": [],
-    "historical_sandbox_failure": "209 executed; MCP stdio timeout, 208 succeeded; focused host module 6/6",
-    "native_runs": 0,
-    "protocol_controls": "17/17",
-    "repository_suite": "209/209 on host"
-  },
+  "failed": [],
   "kind": "software/static only, not verification",
-  "run_id": "final-001",
+  "run_id": "windows-static-001",
   "skipped": [
     "UPPAAL version/help and all queries: Owner has no native execution authorization"
   ],
-  "source_commit": "9e939baa467a63175c56eb662cb507a4175b2427"
+  "source_commit": "e81defb4d5047d17b9e3d40fc4d84b30946c5d56"
 }

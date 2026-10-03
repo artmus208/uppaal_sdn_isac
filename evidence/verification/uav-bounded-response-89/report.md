@@ -1,7 +1,7 @@
 # Preparation report — no machine verdict
 
 Issue #89 has a reproducible proposed Hnom restriction patch, six fixed queries,
-native Linux controller/watchdog, reserved-slot plan and offline controls. All
+native Windows controller/Job Object watchdog, reserved-slot plan and offline controls. All
 six queries are **not_executed / verdict=null**. The issue requires approval
 before materializing its restricted model, and a separate explicit decision
 before native execution. Neither decision is present in this preparation.
@@ -26,16 +26,18 @@ provide separate nonvacuity and causal coverage; their timeout would leave a gap
 Q5 checks terminal-location-aware deadlock but cannot establish fairness or time
 divergence. No query will be changed after a negative verdict.
 
-No witness, counterexample, native version observation or executable hash is
-available for #89 yet. Prior #87's eleven timeout/null attempts remain scoped to
+No witness, counterexample or native verifier version observation is
+available for #89 yet. Windows PE inspection confirmed the user-supplied executable
+SHA256 without invoking it. Prior #87's eleven timeout/null attempts remain scoped to
 their original campaign, and the reported 7.477845500001 s overrun remains an
 unresolved disposition in the retrieved records. Merge #88 does not accept it.
 
-The native Linux implementation was selected by the user. The actual Runner
-hostname, persistent path and verifier path/hash still need to be supplied in
-the exact checkpoint decision. The historical expected version is compared only
-after authorized preflight, never substituted for an observation. The prepared
-commands and decision text are in `RUNNER.md` and `proposed-decision.md`.
+The user corrected the Runner environment to Windows Python + Windows verifyta.
+Original Linux preparation 9e4743bf remains in history. Native host/Python and PE
+bytes/hash were inspected; the persistent checkout and exact new checkpoint still
+need artmus208's decision. Historical expected UPPAAL version is compared only
+after authorized preflight. Commands and decision text are in `RUNNER.md` and
+`proposed-decision.md`; Windows implementation details are in `WINDOWS.md`.
 
 Software/static validation is recorded in `checks/check-results.json`. Synthetic
 tests exercise owned-process cleanup, time/memory stops, watchdog death,
@@ -56,3 +58,15 @@ budget deviations and trace classifications. The English text below remains
 preparation-stage wording. Acceptance of this protocol is not C02/P3/Gate 2/R07
 acceptance. artmus208's participation in execution will be disclosed; subsequent
 producer review is not independent scientific acceptance.
+
+Windows revision validation: all 26 scoped tests completed on native Windows
+Python with zero failures/errors/skips (`checks/windows-004/record.json`). The
+first 16 process controls had passed, while three generic tests exposed system
+codepage decoding. Explicit UTF-8 restored the exact old model/query products.
+Two subsequent sets exposed transient console-host teardown; probes identified
+owned conhost.exe, and a 250 ms natural-exit grace bounded by the existing
+attempt deadline fixed the fast-exit regression. All failed logs/probes remain
+under checks/windows-001, checks/windows-final and checks/windows-003.
+
+The observed Windows verifier PE is AMD64 PE32+, 6,730,240 bytes, matching the
+user's SHA256. This is byte inspection, not execution or version evidence.

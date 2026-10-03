@@ -13,7 +13,7 @@ def main():
     out=HERE/'checks'/args.run_id;out.mkdir()
     commands=[
       ('proposal',[sys.executable,'-B',SCOPE+'/prepare.py','--check']),
-      ('software-controls',[sys.executable,'-B','-m','unittest','discover','-s',SCOPE,'-p','test_*.py','-v']),
+      ('portable-software-controls',[sys.executable,'-B','-m','unittest','discover','-s',SCOPE,'-p','test_protocol.py','-v']),
       ('coordination',[sys.executable,'-B','scripts/check_coordination.py']),
       ('historical-hashes',[sys.executable,'-B','scripts/check_coordination.py','--audit-hashes','--commit','HEAD','--output',str(out/'historical-hashes.json')]),
       ('candidate-generation',[sys.executable,'-B','evidence/instantiation/uav-service-completion-candidate/generate.py','--check']),

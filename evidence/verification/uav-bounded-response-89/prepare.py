@@ -79,7 +79,7 @@ def derive(source):
     return output, changes
 
 def queries():
-    body = json.loads((HERE/'inputs/issue-89.json').read_text())['body']
+    body = json.loads((HERE/'inputs/issue-89.json').read_text(encoding='utf-8'))['body']
     s = re.search(r'`S`:\s*~~~uppaal\s*(.*?)\s*~~~', body, re.S)[1]
     g = re.search(r'`G` —.*?~~~uppaal\s*(.*?)\s*~~~', body, re.S)[1]
     q = {i: re.search(r'Q%d:\s*~~~uppaal\s*(.*?)\s*~~~' % i, body, re.S)[1] for i in [2,5,6]}

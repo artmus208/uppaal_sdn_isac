@@ -1,119 +1,156 @@
-# Runner artmus208: Linux handoff
+# Runner artmus208: native Windows handoff
 
-Do not run verifyta (including -v/-h) before the explicit native decision in #89.
-`proposed-decision.md` identifies the exact inputs. Supply hostname, persistent
-clone path, ELF verifier path and SHA256 without executing verifyta. Confirm
-Linux Python >=3.10 and a readable native /proc. Use your own account/credentials.
-Current preparation has no native execution permission and no saved derived XML.
+Preparation only. Do not execute verifyta, including `-v` or `-h`, until artmus208
+posts the explicit decision for the NEW preparation HEAD in #89. The Linux
+preparation at `9e4743bfcca06416c112693d8644ecec004a0a8f` is historical; it is not
+the execution checkpoint. Current Hnom is still an unmaterialized proposal.
 
-## Recover the accepted preparation
+Use Windows 10+ x64, Windows PowerShell, native Git for Windows and the recorded
+Windows Python 3.11.3. WSL/Linux Python and UNC/WSL campaign checkouts are rejected.
+Synthetic tests were launched from WSL using native Windows Python; all tested
+children and Job Objects were native Windows, with Windows temporary directories.
+The campaign itself must use a persistent local Windows drive clone.
 
-Replace PREPARATION_HEAD with the exact published handoff commit accepted in #89.
-Use a persistent directory owned by Runner, not /tmp. The normal retrieval is:
+## Recover the exact accepted preparation
 
-```bash
-git clone https://github.com/artmus208/uppaal_sdn_isac.git /absolute/persistent/issue89
-cd /absolute/persistent/issue89
+Use your own credentials and Git identity. Replace the two placeholders before
+running; the checkout path must be persistent, dedicated and initially absent.
+
+```powershell
+$Preparation = '<EXACT_NEW_PREPARATION_HEAD_ACCEPTED_IN_89>'
+$Checkout = 'C:\Users\musta\source\uppaal-issue89'
+$Python = 'C:\Users\musta\AppData\Local\Programs\Python\Python311\python.exe'
+$Verifier = 'C:\Program Files (x86)\UPPAAL-5.0.0\bin\verifyta.exe'
+$Scope = 'evidence/verification/uav-bounded-response-89'
+$env:PYTHONDONTWRITEBYTECODE = '1'
+git -c core.autocrlf=false clone --no-checkout https://github.com/artmus208/uppaal_sdn_isac.git $Checkout
+Set-Location $Checkout
+git config core.autocrlf false
 git fetch origin codex/vadimnbkg/89-uav-bounded-response
-git switch -c codex/artmus208/89-uav-bounded-response-runs PREPARATION_HEAD
+git switch -c codex/artmus208/89-uav-bounded-response-runs $Preparation
 git status --short --branch
 git rev-parse HEAD
 git remote -v
 ```
 
-If branch publication is unavailable, clone the complete Owner handoff bundle,
-then set origin to the canonical URL above. Confirm the exact preparation SHA.
-Set your real local Git identity. Runner may write only `execution/**` inside this
-package, after the recorded sequential lease; do not edit the prepared sources.
+Stop after any failed command; PowerShell does not automatically stop on native
+nonzero exit codes. Confirm exact HEAD and canonical origin. A full published
+Owner bundle can replace the clone/fetch; restore canonical origin afterwards.
+Disabling CRLF conversion before checkout preserves historical input hashes.
+Scope `.gitattributes` additionally preserves exact preparation/evidence bytes.
 
-## Offline setup before native session
+## Approval, lease and offline controls
 
-These commands execute Python software controls only:
+Read `PROTOCOL.md`, `WINDOWS.md`, `proposed-decision.md` and the saved Windows test
+record. Approve Hnom restrictions/materialization separately from native execution
+in the same explicit Issue decision. Fill the accepted preparation HEAD and actual
+persistent checkout path; all host/Python/binary bindings are in
+`approval-template.json`. A changed binding requires a new concrete decision.
 
-```bash
-export PYTHONDONTWRITEBYTECODE=1
-scope=evidence/verification/uav-bounded-response-89
-python3 -B "$scope/prepare.py" --check
-python3 -B "$scope/audit.py"
-mkdir -p "$scope/execution"
-python3 -B -m unittest discover -s "$scope" -p 'test_*.py' -v > "$scope/execution/native-software-tests.stdout.txt" 2> "$scope/execution/native-software-tests.stderr.txt"
-hostname
-python3 --version
-sha256sum /absolute/path/to/verifyta
+Only the decision activates Runner's sequential write lease for `execution/**`.
+Owner suspends writes there. The following controls are offline and consume no
+query slots, but run them before materialization (one test checks its absence):
+
+```powershell
+& $Python -B "$Scope/windows_native.py"
+Get-FileHash -Algorithm SHA256 -LiteralPath $Verifier
+& $Python -B "$Scope/prepare.py" --check
+& $Python -B "$Scope/audit.py"
+& $Python -B "$Scope/run_windows_checks.py" --output "$Scope/execution/software-controls" --source-commit (git rev-parse HEAD)
 ```
 
-All software tests must succeed on the actual Runner host. They create only
-synthetic Python children in temporary directories and do not consume query slots.
-Read the test logs. If an offline check fails, stop and return it to Owner; no
-native session has started. Do not run the proposal test that asserts model
-absence after materialization; finish these controls first.
+Require zero failures, zero errors and zero skips; inspect `record.json` and
+`unittest.txt`. The process tests run synthetic Python children only. The test
+runner reads PE bytes/hash and host identity without invoking verifyta. On any
+failure, preserve logs and return to Owner before any campaign launch.
 
-After artmus208 has posted the concrete decision, copy `approval-template.json`
-to `execution/approval.json`, fill the exact accepted fields, set both approval
-booleans true only to record the actual decision, and save its exact text at
-`execution/decision.md`. The JSON is a local transcription, not an authentication
-mechanism; Reviewer checks the actual GitHub decision and author/authority.
+Copy `approval-template.json` to `execution/approval.json`. Record the actual
+Issue decision URL/accepted HEAD/checkout and set both approval booleans true
+only to transcribe that decision. Save its exact text at `execution/decision.md`.
+JSON is not authentication: Reviewer checks the actual GitHub author and decision.
+No verifier version is inferred from its hash; the version remains unobserved.
 
-```bash
-python3 -B "$scope/driver.py" materialize --approval "$scope/execution/approval.json"
-git add -- "$scope/execution"
-git commit -m 'P3: record approved host and materialize Hnom (#89)'
+```powershell
+& $Python -B "$Scope/driver.py" materialize --approval "$Scope/execution/approval.json"
+git add -- "$Scope/execution"
+git commit -m 'P3: record approved Windows host and materialize Hnom (#89)'
 git status --short --branch
 git log -1 --oneline --decorate
 git remote -v
 git push -u origin codex/artmus208/89-uav-bounded-response-runs
 ```
 
-`materialize` is offline: it checks approval, ELF bytes/hash, host, preparation
-seal and exact model bytes; it does not execute the verifier. Run from a clean
-tree after the materialized inputs and decision are committed and durable.
+Materialization is offline and validates the approval, native host/Python identity,
+PE format/path/hash, preparation seal and exact derived model. Publish this clean
+checkpoint or export/verify its full bundle in persistent `execution/recovery/`
+before starting. Do not launch from uncommitted inputs.
 
-## One native session only
+## One authorized native session
 
-Run in a dedicated terminal. Do not redirect console output into an uncommitted
-file before launch, because the driver requires a clean source tree.
+Run in a dedicated terminal. The driver requires a clean tree; do not redirect
+its console to an uncommitted file inside the checkout before launch.
 
-```bash
-python3 -B "$scope/driver.py" run --approval "$scope/execution/approval.json"
+```powershell
+& $Python -B "$Scope/driver.py" run --approval "$Scope/execution/approval.json"
 ```
 
-There is no retry/resume command. Do not delete session claims or reuse consumed
-slots. The driver refuses a prior session and checks for an existing native
-verifyta process. Another verifier must not be started concurrently on this host.
+There is no retry/resume. Do not delete session claims, reclaim interrupted slots
+or change formulas. Do not start another verifier on this host. Existing native
+verifyta processes are detected through Toolhelp and cause refusal; never kill them.
 
-Stop: Ctrl-C in that terminal (SIGINT), or `kill -TERM CONTROLLER_PID` for the
-PID saved in `execution/session-claimed.json`. Do not use pkill/killall or signal
-unowned processes. The watchdog holds its own monotonic deadlines and knows each
-owned group through a pipe, independently of JSON readability. On any watchdog,
-monitor, disk or checkpoint failure, halt the series and preserve available files.
+Stop with Ctrl-C in the campaign terminal. If that controller is unresponsive,
+terminate **only its recorded PID**, after confirming it is the campaign Python
+process (use a separate PowerShell terminal):
 
-The driver reserves each slot in the durable ledger and commits it before exec;
-exports a complete-history bundle under `execution/recovery/`; then saves raw
-logs/telemetry/traces and commits/exports the result. Recovery bundles are ignored
-by Git to avoid recursively archiving themselves, but remain inside the allowed
-execution scope in the persistent clone. Initial/source/result commits remain
-reachable from the final branch. Never force-push or rewrite execution history.
+```powershell
+$Claim = Get-Content -Raw "$Scope/execution/session-claimed.json" | ConvertFrom-Json
+$ControllerPid = [int]$Claim.pid
+Get-Process -Id $ControllerPid
+# Only after confirming that exact owned controller:
+Stop-Process -Id $ControllerPid
+```
+
+Do not use PowerShell's reserved `$PID` as a variable or kill by process name.
+The watchdog detects controller death through its retained process handle;
+closing the controller pipe also stops the attempt. If the watchdog itself dies,
+Windows closes its sole Job Object handle and terminates the entire owned tree.
+The watchdog never reads `status.json`/claim JSON. These instructions use the
+claim only to help the human select the correct controller.
+
+Deadlines include cleanup margins: 180/180/180/600/180/180 seconds, 1500 total
+search allocation, 1800 whole native session including -v/-h and cleanup.
+Timeout/memory stop has null verdict; only later authorized slots may continue.
+Error, monitor/watchdog/disk/checkpoint failure, explicit stop or budget overrun
+halts the series. Preserve available logs; an abrupt stop may leave an interrupted
+reservation and absent telemetry, which must stay unknown.
+
+The controller commits each consumed reservation before starting it and saves a
+full-history bundle in persistent `execution/recovery/`. Results get their own
+checkpoint/bundle. Job CPU includes exited descendants; peak working-set memory
+and private commit are distinct metrics. Telemetry is buffered by the independent
+watchdog and written after owned cleanup, so disk/controller blockage cannot keep
+a running verifier past the watchdog deadline. See `WINDOWS.md` for exact limits.
 
 ## Durable return to Owner
 
-```bash
-python3 -B "$scope/audit.py" --output "$scope/execution/offline-audit.json"
+```powershell
+& $Python -B "$Scope/audit.py" --output "$Scope/execution/offline-audit.json"
 git diff --check
-git add -- "$scope/execution"
-git commit -m 'P3: record native offline audit (#89)'
+git add -- "$Scope/execution"
+git commit -m 'P3: record native Windows offline audit (#89)'
 git status --short --branch
 git log -1 --oneline --decorate
 git remote -v
 git push -u origin codex/artmus208/89-uav-bounded-response-runs
 ```
 
-If push fails, export a final full bundle after those three pre-export checks:
-`git bundle create "$scope/execution/recovery/final.bundle" codex/artmus208/89-uav-bounded-response-runs`.
-Record bundle SHA256 and its persistent owner-accessible location. Verify it with
-`git bundle verify`. Do not call a local-only temporary commit a durable handoff.
+On failed push, after those status/log/remote checks export a complete final bundle:
+`git bundle create "$Scope/execution/recovery/final.bundle" codex/artmus208/89-uav-bounded-response-runs`.
+Run `git bundle verify` and `Get-FileHash -Algorithm SHA256`; record its persistent
+Owner-accessible location. Never force-push or erase execution commits.
 
-Post in #89: exact Runner HEAD, accepted preparation/execution base, clean/dirty,
-each slot's status/verdict/model/query hashes, actual tool version/binary hash,
-budget/stop deviations, raw evidence paths, branch or bundle retrieval, and
-explicit return of the execution write lease to Owner. This reports production;
-it is not independent scientific acceptance. Do not open a competing final PR.
+Post in #89: exact Runner HEAD and accepted preparation base, clean/dirty state,
+six statuses/verdicts/model/query hashes, actual version and executable hash,
+budget/stop deviations, raw paths, durable retrieval and explicit return of the
+write lease. Owner assembles results in the same PR #90. Runner's review is
+producer review; independent scientific acceptance remains separate.

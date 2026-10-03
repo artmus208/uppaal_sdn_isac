@@ -1,20 +1,53 @@
 {
-  "os": "Linux",
+  "os": "Windows",
   "runner": "artmus208",
   "max_attempts": 6,
   "retries": 0,
   "simultaneous_verifiers": 1,
   "search_allocation_seconds": 1500,
-  "slot_caps_seconds": [180, 180, 180, 600, 180, 180],
+  "slot_caps_seconds": [
+    180,
+    180,
+    180,
+    600,
+    180,
+    180
+  ],
   "whole_session_seconds": 1800,
   "minimum_slot_overhead_seconds": 15,
   "cleanup_margin_seconds": 2,
   "memory_mib_rule": "floor(min(measured_physical_RAM_bytes/2, 8*GiB)/MiB)",
-  "memory_kind": "sampled process-group RSS, not a hard allocation guarantee",
+  "memory_kind": "sampled sum of Windows job working sets; private commit reported separately; not a hard allocation guarantee",
   "method": "symbolic DFS with diagnostic XML trace",
-  "flags": ["-o", "1", "-t", "0", "-X"],
-  "help_required_patterns": ["-o.*1.*depth", "-t.*0.*(?:some|any)", "-X.*(?:xml|XML)"],
-  "stop_on": ["error", "monitor_failure", "watchdog_failure", "version_mismatch", "help_mismatch", "stop", "session_limit", "budget_overrun"],
-  "continue_on": ["success", "timeout", "memory_limit"],
-  "approval_required": true
+  "flags": [
+    "-o",
+    "1",
+    "-t",
+    "0",
+    "-X"
+  ],
+  "help_required_patterns": [
+    "-o.*1.*depth",
+    "-t.*0.*(?:some|any)",
+    "-X.*(?:xml|XML)"
+  ],
+  "stop_on": [
+    "error",
+    "monitor_failure",
+    "watchdog_failure",
+    "version_mismatch",
+    "help_mismatch",
+    "stop",
+    "session_limit",
+    "budget_overrun"
+  ],
+  "continue_on": [
+    "success",
+    "timeout",
+    "memory_limit"
+  ],
+  "approval_required": true,
+  "verifyta_path": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+  "executable_sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "watchdog": "Windows 10+ Job Object; atomic JOB_LIST assignment; KILL_ON_JOB_CLOSE; monotonic deadlines"
 }

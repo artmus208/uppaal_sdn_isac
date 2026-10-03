@@ -1,0 +1,24 @@
+{
+  "kind": "historical first Windows preparation tests",
+  "source_commit": "e255c259f70fea387d9b53d9bbbf4aa283c5929c",
+  "native_process_controls": {
+    "tests": 16,
+    "failures": 0,
+    "skips": 0,
+    "exit_code": 0
+  },
+  "generic_protocol": {
+    "tests": 8,
+    "errors": 3,
+    "exit_code": 1
+  },
+  "finding": "Windows system-codepage read_text corrupted the UTF-8 Issue body used to select G; explicit UTF-8 fixes reads, without changing models, patch, queries or hashes.",
+  "interop": "WSL sandbox invocation failed with UtilBindVsockAnyPort socket failed 1. Host-approved Windows Python invocation worked. No verifier execution.",
+  "logs": {
+    "stderr.txt": "2e4525238a855df4afcdb452b56ace27668d63c1420af0bdd985b9339b52023b",
+    "protocol.stderr.txt": "e87ee896bb0db0f72f4a4d1e597fc82f59b4b5645a5f7d1f2ba114ea46c4b2dd",
+    "protocol.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "host.json": "88ea569f791114a2a5af5b9001f31918ba895a21c6660f8988e2253f1794a8e0",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

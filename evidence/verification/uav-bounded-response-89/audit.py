@@ -10,12 +10,12 @@ def require(condition,message):
     if not condition: raise ValueError(message)
 
 def audit_preparation():
-    pins=json.loads((HERE/'input-pins.json').read_text())
+    pins=json.loads((HERE/'input-pins.json').read_text(encoding='utf-8'))
     for name,h in pins['files'].items():
         require(digest((ROOT/name).read_bytes())==h,'Input drift: '+name)
     for name,data in products().items():
         require((HERE/name).read_bytes()==data,'Prepared product drift: '+name)
-    inv=json.loads((HERE/'query-inventory.json').read_text())
+    inv=json.loads((HERE/'query-inventory.json').read_text(encoding='utf-8'))
     require([i['slot'] for i in inv]==list(range(1,7)),'Six ordered slots required')
     require(sum(i['cap_seconds'] for i in inv)==1500,'Allocation differs from 1500 s')
     require(len({i['model_hash'] for i in inv[:5]})==1,'Slots 1–5 differ in domain')
@@ -31,9 +31,9 @@ def audit_preparation():
     require(len(candidate.findtext('system').split('system ')[-1].strip(' ;\n').split(','))==51,'Process count')
     if (HERE/'execution/model.xml').exists():
         require((HERE/'execution/model.xml').read_bytes()==model,'Materialized model differs')
-        approval=json.loads((HERE/'execution/approval.json').read_text())
+        approval=json.loads((HERE/'execution/approval.json').read_text(encoding='utf-8'))
         require(approval.get('hnom_restrictions_and_materialization_approved') is True,'Unapproved materialization')
-    seal=json.loads((HERE/'seal.json').read_text())
+    seal=json.loads((HERE/'seal.json').read_text(encoding='utf-8'))
     for name,h in seal.items():
         require(digest((HERE/name).read_bytes())==h,'Preparation seal mismatch: '+name)
     changed=subprocess.check_output(['git','diff','--name-only',BASE],cwd=ROOT,text=True).splitlines()
@@ -47,9 +47,9 @@ def audit_execution():
     if not (execution/'session.json').exists():
         return dict(native_execution='not_executed',attempts=0,verdicts=[None]*6)
     from driver import parse_verdict
-    session=json.loads((execution/'session.json').read_text())
-    ledger=json.loads((execution/'ledger.json').read_text())
-    inventory=json.loads((HERE/'query-inventory.json').read_text())
+    session=json.loads((execution/'session.json').read_text(encoding='utf-8'))
+    ledger=json.loads((execution/'ledger.json').read_text(encoding='utf-8'))
+    inventory=json.loads((HERE/'query-inventory.json').read_text(encoding='utf-8'))
     require(len(ledger)==6,'Execution ledger size')
     attempts=sum(bool(x['attempt_consumed']) for x in ledger)
     require(attempts<=6,'Too many attempts')
@@ -63,7 +63,7 @@ def audit_execution():
         if not path.exists():
             require(slot['status'] in ['interrupted','error'] and slot['verdict'] is None,'Missing result mislabeled')
             gaps.append('Missing completed result for '+slot['run_id']);continue
-        r=json.loads(path.read_text())
+        r=json.loads(path.read_text(encoding='utf-8'))
         for key in ['slot','model_hash','query_hash','formula','cap_seconds','model_path','query_path']:
             require(r[key]==planned[key],'Run identity mismatch: '+key)
         require(r['tool_version']==session['tool_version'] and bool(r['tool_version']),'Actual version provenance')
@@ -76,8 +76,8 @@ def audit_execution():
         for name,h in r['artifacts'].items():
             require(digest((ROOT/name).read_bytes())==h,'Raw artifact drift: '+name)
         directory=path.parent
-        stdout=(directory/'stdout.txt').read_text(errors='replace') if (directory/'stdout.txt').exists() else ''
-        stderr=(directory/'stderr.txt').read_text(errors='replace') if (directory/'stderr.txt').exists() else ''
+        stdout=(directory/'stdout.txt').read_text(encoding='utf-8',errors='replace') if (directory/'stdout.txt').exists() else ''
+        stderr=(directory/'stderr.txt').read_text(encoding='utf-8',errors='replace') if (directory/'stderr.txt').exists() else ''
         parsed=parse_verdict(r['exit_code'],stdout,stderr)
         if not r.get('cleanup_confirmed'):gaps.append('Missing confirmed cleanup for '+slot['run_id'])
         require(r['status']!='success' or parsed is not None,'Success without an explicit machine verdict')
@@ -95,16 +95,30 @@ def audit_execution():
 def audit_check_logs():
     path=HERE/'checks/check-results.json'
     if not path.exists():return {'status':'not_yet_recorded'}
-    summary=json.loads(path.read_text());count=0
+    summary=json.loads(path.read_text(encoding='utf-8'));count=0
     for record in summary['commands']:
         for log in record['logs']:
             require(digest((ROOT/log['path']).read_bytes())==log['sha256'],'Check log drift: '+log['path'])
             count+=1
     return dict(log_hashes=count,recorded_failures=summary['failed'])
 
+def audit_windows_checks():
+    pointer=HERE/'checks/windows-check-results.json'
+    if not pointer.exists():return dict(status='not_yet_recorded')
+    selection=json.loads(pointer.read_text(encoding='utf-8'))
+    path=HERE/selection['record_path'];require(digest(path.read_bytes())==selection['sha256'],'Windows record drift')
+    record=json.loads(path.read_text(encoding='utf-8'))
+    require(record['successful'] and not record['failures'] and not record['errors'] and not record['skipped'],'Windows controls incomplete')
+    require(record['host']['os']=='Windows' and record['source_unchanged'],'Native Windows source provenance')
+    for name,h in record['source_files'].items():require(digest((HERE/name).read_bytes())==h,'Windows-tested source drift: '+name)
+    for log in record['logs']:require(digest((path.parent/log['path']).read_bytes())==log['sha256'],'Windows test log drift')
+    cfg=json.loads((HERE/'config.json').read_text(encoding='utf-8'))
+    require(record['verifyta_read_only_pe']['sha256']==cfg['executable_sha256'],'Windows inspected binary drift')
+    return dict(status='software_controls_complete',tests=record['tests_run'],skips=0,record=selection['record_path'],verifier_executions=0)
+
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--output',type=Path)
-    a=ap.parse_args();result=dict(preparation=audit_preparation(),execution=audit_execution(),checks=audit_check_logs())
+    a=ap.parse_args();result=dict(preparation=audit_preparation(),execution=audit_execution(),checks=audit_check_logs(),windows_checks=audit_windows_checks())
     out=json.dumps(result,indent=2)+'\n'
     if a.output:
         with a.output.open('x') as f:f.write(out)

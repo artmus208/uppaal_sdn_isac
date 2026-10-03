@@ -23,16 +23,16 @@ byte-identical. The current Issue requires approval before Hnom materialization;
 the exact patch, prospective model hash and 40-element change list are available
 for that decision. This is a conditional execution handoff, not an accepted run.
 
-Read `PROTOCOL.md`, `RUNNER.md`, `proposed-decision.md`, `approval-template.json`,
+Read `WINDOWS.md`, `PROTOCOL.md`, `RUNNER.md`, `proposed-decision.md`, `approval-template.json`,
 `input-pins.json`, `query-inventory.json` and `query-ledger.json`. `prepare.py
 --check` reproduces the patch and formulas without saving Hnom. `audit.py` is
 entirely offline. `checks/check-results.json` records commands, exit codes and
 log hashes; `checks/initial-findings.json` preserves earlier limitations/failure.
 
 Before native work, artmus208 must approve the exact preparation HEAD, Hnom
-patch/hash, six query hashes, method/config/budget/stop policy and actual Linux
-host/tool. Runner must supply hostname, persistent clone path, native Python and
-verifier path/hash. A separate explicit Issue decision activates the proposed
+patch/hash, six query hashes, method/config/budget/stop policy and actual Windows
+host/tool. Observed host/Python bindings and exact verifier path/hash are recorded
+in approval-template.json; Runner must declare its persistent Windows clone path. A separate explicit Issue decision activates the proposed
 execution-only write lease; Owner does not write there while Runner owns it.
 
 Runner begins from the accepted preparation HEAD, records actual preflight and
@@ -51,3 +51,17 @@ even if GitHub API publication uses equivalent tree commits.
 Next acceptance step: artmus208 reviews the concrete proposed decision. Native
 results and independent scientific acceptance remain pending. Do not close #89,
 C02, full P3, C06, Gate 2 or R07 on the strength of this preparation alone.
+
+Windows revision: `checks/windows-004/record.json` records 26/26 scoped native
+Windows tests, zero skips; both failure history and diagnostic probes are retained.
+`checks/windows-check-results.json` selects that successful record by SHA256;
+offline audit checks its raw log and current source hashes. config.json SHA256:
+`44b26d2213e8450ebcc39043fb0342d88d6a407a44ab18976a2b79761c415c81`.
+M, prospective Hnom, restriction patch and all six formula hashes are unchanged.
+The Windows binary hash was read and confirmed; its runtime version remains null.
+The original Linux commit 9e4743bf is retained in the published branch ancestry.
+
+The new preparation HEAD/seal hash, durable bundle/hash and clean working-tree
+confirmation are published together in the #89/#90 Windows handoff. That exact
+HEAD supersedes the prior Linux handoff for the upcoming decision. No native
+lease is active; artmus208 must post the filled concrete decision in #89 first.
