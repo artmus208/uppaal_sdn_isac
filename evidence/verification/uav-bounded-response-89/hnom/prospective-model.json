@@ -1,0 +1,9 @@
+{
+  "materialized": false,
+  "model_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+  "note": "Computed in memory for review. Not a frozen baseline or an execution authorization.",
+  "patch_sha256": "b0d8e07da9401af0b64ec0224f9241456e1d8e408817c9f3432da0a868504742",
+  "process_count": 51,
+  "restrictions_approved": false,
+  "source_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02"
+}

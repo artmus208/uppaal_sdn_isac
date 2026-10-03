@@ -1,0 +1,332 @@
+Ты — Owner задачи #89, account-id vadimnbkg.
+
+Подготовь, передай Runner и собери один воспроизводимый пакет проверки
+границ UAV-сервиса: достижимость корректного успеха, универсальный
+успешный ответ в выбранной диагностической области и отдельно
+ограниченное завершение обработки запроса.
+
+Не обещай положительный verdict. Отрицательный результат должен
+объяснять границу применимости модели; timeout оставляет вопрос открытым.
+
+НАЗНАЧЕНИЕ
+
+Repository:
+https://github.com/artmus208/uppaal_sdn_isac
+
+Issue:
+https://github.com/artmus208/uppaal_sdn_isac/issues/89
+
+Process: P3 Verification.
+Atomic IDs: основной C02, supporting C03–C05.
+C01: только связанные progress/deadlock diagnostics.
+C06, P3_complete, Gate 2 и финальное R07 не входят в эту задачу.
+
+Owner / account-id: vadimnbkg.
+Runner: artmus208.
+Reviewer подготовленного протокола и Integrator: artmus208.
+
+artmus208 участвует в производстве native evidence как Runner.
+Его последующий review этих запусков не обозначается независимой
+научной приёмкой. Для такой приёмки нужен отдельный reviewer,
+не участвовавший в подготовке и выполнении пакета, либо явная
+disposition интегратора о порядке приёмки. Не выдумывай такого участника.
+
+Operational base ref: origin/read.
+Operational base commit:
+452571598d4a5c1e070dace3a918ea737904e239
+Это фактический merge PR #88.
+
+Owner branch:
+codex/vadimnbkg/89-uav-bounded-response
+
+Target branch: read.
+
+Write scope:
+evidence/verification/uav-bounded-response-89/**
+
+Все остальные файлы read-only: production model/generator,
+shared verification manager, предыдущие evidence, queries,
+manifests, current.json и рукопись.
+
+Это назначение для подготовки reviewable пакета.
+Ограничения производной модели и native execution должны быть
+отдельно приняты artmus208 в Issue по конкретному checkpoint.
+Предлагаемый бюджет ниже сам по себе не является разрешением запуска.
+
+ИСТОЧНИКИ И ПРИНЯТЫЕ ВХОДЫ
+
+Научный baseline:
+uav-service-completion-r1-20261002
+N=1, 51 процесс, один запрос и один результат.
+
+Scientific input commit:
+61386aa358805082b705dcd00c8cbfde5fb98248
+
+Manifest:
+manifests/baselines/uav-service-completion-r1.yaml
+SHA256:
+4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d
+
+Исходная полная модель M:
+evidence/instantiation/uav-service-completion-candidate/model.xml
+SHA256:
+b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02
+
+Принятие P1/P2 и Gate 1:
+https://github.com/artmus208/uppaal_sdn_isac/issues/84#issuecomment-5946722646
+Активация:
+https://github.com/artmus208/uppaal_sdn_isac/issues/84#issuecomment-5947256320
+
+Предыдущая серия:
+https://github.com/artmus208/uppaal_sdn_isac/issues/87
+https://github.com/artmus208/uppaal_sdn_isac/pull/88
+
+PR #88 слит, но merge сам по себе не означает принятия всех
+научных claims, gates или бюджетного отклонения.
+Прочитай фактическое решение review/disposition.
+Все 11 прежних попыток — timeout/null. Их бюджет израсходован.
+
+Не смешивай scientific input commit, operational base и будущий
+execution source commit.
+
+СТАРТ
+
+1. Прочитай AGENTS.md, CONTRIBUTING-v2.md, CONTRIBUTING.md,
+   current pointer, выбранные plan/contract/baseline и активации.
+   Затем прочитай актуальный #89, включая последующие решения.
+2. Сохрани снимок постановки #89 в своём evidence scope.
+   Issue может изменяться; выполняемый протокол должен быть фиксирован.
+3. Сверь GitHub identity с назначением vadimnbkg.
+4. Проверь git status и canonical remote.
+   Используй отдельный чистый clone/worktree от точного base.
+   Чужие изменения не удаляй/reset/stash.
+5. Зафиксируй в #89 назначение, новый operational base, branch,
+   scope, зависимости и этап работы.
+   Сохрани историю: прежний base был до merge #88.
+6. Проверь активные scopes и hashes.
+   Никакой соседней работы по статье, P2 repair или manifests.
+
+НАУЧНАЯ ПОСТАНОВКА
+
+Различай три результата:
+
+A. Существует корректное успешное исполнение.
+B. Все запросы в объявленной области успешно завершаются за ≤40.
+C. Все запросы получают терминальный исход за ≤40,
+   включая отказ, timeout и отмену.
+
+A не доказывает B.
+C не является гарантией успешной доставки.
+Сочетание A и C содержательно полезно, но также не доказывает B.
+
+Service clock начинается при фактической отправке APP request.
+Admission его не сбрасывает.
+Strict receipt требует sample age<5.
+При request age=40 остаётся выбор receipt/timeout.
+Единицы времени абстрактные.
+
+По статическому разбору в модели сохраняются:
+внутренний sensing failure, потеря результата, необязательное
+обслуживание и ожидания без установленной гарантии прогресса.
+Благоприятные внешние входы эти альтернативы не устраняют.
+
+Не исправляй модель ради успешного verdict.
+Не называй преднамеренный failure автоматически ошибкой реализации.
+
+ПОДГОТОВКА Hnom
+
+Возьми точное определение Ωnom/Hnom из актуального #89.
+Это диагностическая область номинальных входов и изолированной нагрузки,
+а не уже установленное достаточное условие успешного сервиса.
+
+Подготовь внутри своего scope reviewable candidate:
+- детерминированный script построения Hnom из pinned M;
+- derived model.xml;
+- полный diff и SHA256;
+- перечень всех ограниченных внешних выборов;
+- rationale и область допустимого вывода.
+
+Меняй только перечисленные в #89 внешние selections.
+Сохрани 51 процесс, исходную инициализацию, observers,
+внутренние потери/отказы, возможность server=-1, отмену,
+timeouts, исходные guards, clocks и timing.
+
+Не вводи fairness, urgency, priority или новые временные границы.
+Не выбирай область по будущему успеху или отсутствию неудачных исходов.
+
+Проверяй каждый изменённый элемент структурным сравнением.
+Production M остаётся byte-identical.
+Hnom получает собственный hash и не становится новым frozen baseline.
+
+Если актуальный Issue прямо запрещает даже подготовку candidate
+до решения о restrictions, сначала подготовь точный proposed patch
+и перечень изменений, затем передай их artmus208.
+Не ограничивай запрос решения общим «разрешаете Hnom?».
+
+ШЕСТЬ ПРЕДЛАГАЕМЫХ ЗАПРОСОВ
+
+Используй точные S, G и Q2/Q5/Q6 из актуального #89.
+Разверни текстовые сокращения в реальные однострочные .q:
+UTF-8 без BOM, завершающий LF.
+Сохрани формулы, hashes и соответствие slot→model→query.
+
+1. Hnom: достижимость фактической отправки — 180 s.
+2. Hnom: достижимость matching admission — 180 s.
+3. Hnom: корректный correlated success за ≤40 — 180 s.
+4. Hnom: universal successful bounded response — 600 s.
+5. Hnom: отсутствие deadlock до терминального APP outcome — 180 s.
+6. M: universal terminal response за ≤40 — 180 s.
+
+Slots 1–5 используют один точный Hnom hash.
+Slot 6 использует исходный M hash.
+
+Проверь корректность predicates и clocks.
+Для freshness используй сохранённую запись на receipt,
+а не требование, чтобы продолжающий идти sample clock оставался <5
+после Completed.
+
+Не заменяй query после отрицательного verdict.
+Если область вакуумна, прямо укажи это.
+Timeout диагностик сохраняется как отдельный coverage gap.
+
+БЮДЖЕТ И МЕТОД ДЛЯ РЕШЕНИЯ RUNNER
+
+Предложение:
+- максимум шесть попыток, без повторов;
+- один native verifier одновременно;
+- суммарная search allocation 1500 s;
+- whole native session максимум 1800 s,
+  включая preflight и остановку owned процессов;
+- память: floor(min(50% измеренной physical RAM, 8 GiB)/MiB);
+- symbolic DFS и diagnostic trace;
+- flags из #89 сверить с фактическим verifyta help.
+
+До исполнения artmus208 должен записать решение по конкретным:
+checkpoint, Hnom diff/hash, шести query hashes, method,
+budget, stop policy и native host.
+
+В решении должно быть явно сказано, что native execution разрешён.
+Назначение Runner или merge #88 такого решения не заменяет.
+
+Используй native Python/verifier одной ОС.
+Сохрани настоящую version string и executable SHA256.
+Исторически ожидается UPPAAL 5.0.0 rev. 714BA9DB36F49691.
+Версию не подставляй из прошлого evidence.
+
+ПЕРЕДАЧА RUNNER
+
+Owner готовит:
+- PROTOCOL.md;
+- assignment и input pins;
+- Hnom generator/diff/model/hash;
+- шесть .q и query inventory;
+- ledger с шестью зарезервированными slots;
+- scoped driver/config;
+- проверки целостности и software tests;
+- RUNNER.md с точными host commands и stop policy.
+
+Watchdog должен использовать monotonic deadlines и owned processes,
+а не зависеть от чтения заменяемого status.json.
+Реализуй механизм для фактической ОС Runner.
+Общую инфраструктуру вне scope не изменяй.
+
+Сначала проверь остановку и failures на synthetic child processes.
+Такие software tests не исполняют UPPAAL queries.
+
+Закоммить и опубликуй подготовку в Owner branch либо передай полный
+доступный Runner git bundle. Укажи точный preparation HEAD.
+
+Runner работает в отдельном clone/worktree и собственной ветке:
+codex/artmus208/89-uav-bounded-response-runs
+Её execution base — принятый preparation HEAD, не движущийся read.
+
+Передача права записи производится последовательно:
+- Owner заканчивает подготовку и фиксирует checkpoint;
+- Runner получает scoped право на execution artifacts;
+- Owner в этот период не пишет в Runner scope;
+- после durable handoff Runner запись возвращается Owner.
+
+Запиши границы этапов и разрешённые subpaths в #89.
+Одна ветка не используется двумя аккаунтами одновременно.
+Основной Owner Issue остаётся vadimnbkg.
+
+ДЕЙСТВИЯ RUNNER
+
+После принятия протокола и явного execution-разрешения:
+1. Сверить checkpoint и все hashes.
+2. Зафиксировать native host, RAM, tool/version/executable.
+3. Перед каждой попыткой резервировать slot в durable ledger.
+4. Выполнить только разрешённые запросы в указанном порядке.
+5. Сохранить raw logs, metrics и traces после каждой попытки.
+6. Опубликовать checkpoint и передать результат Owner.
+
+Timeout/memory limit: verdict=null; следующий разрешённый slot
+допустим в остатке бюджета.
+Error/monitor/watchdog failure или stop: прекратить серию.
+Прерванная попытка считается использованной.
+Оставшиеся slots обозначить not_executed с причиной.
+
+Никаких дополнительных simulation/replay/control queries,
+увеличения timeout или исправления модели без отдельного решения.
+
+СБОРКА И ИНТЕРПРЕТАЦИЯ OWNER
+
+Owner получает точный опубликованный Runner HEAD.
+Перенеси результаты в Owner branch с сохранением execution provenance.
+Не перебазируй историю так, чтобы потерять заявленные execution commits.
+
+Для каждого run сохрани:
+run_id, status, явный verdict, model_hash, query_hash,
+tool_version и executable hash, execution source commit,
+параметры/vector, команды/flags, OS/Python/hardware,
+UTC start/end, wall/CPU/peak memory,
+stdout/stderr/telemetry/trace paths и hashes.
+
+Отрицательный trace классифицируй:
+admission, measurement, freshness/quality, queue/service,
+transport loss, cancellation, timeout, deadlock или мгновенный цикл.
+
+Различай:
+- машинный verdict;
+- статический аргумент;
+- успешный witness;
+- ограничения диагностической области;
+- открытые условия прогресса.
+
+Hnom result относится к Hnom.
+Вывод о M требует соответствующего обоснования.
+Не добавляй native replay вне утверждённого бюджета;
+при отсутствии подтверждения переноса ограничь формулировку Hnom.
+
+Подготовь:
+results.json, report.md, coverage.md, offline audit,
+английские фрагменты для статьи и ответа рецензенту,
+HANDOFF.md.
+
+Никакого изменения levels_tex/samplepaper.tex.
+Никакого автоматического закрытия C02/P3/Gate 2/R07.
+
+ПРОВЕРКИ И ЗАВЕРШЕНИЕ
+
+Выполни релевантные проверки CONTRIBUTING,
+offline integrity/budget/scope audit и git diff --check.
+Сохрани failures, skips и неизвестные метрики.
+Software tests не являются verification.
+
+Открой один итоговый PR в read по #89 с полным handoff.
+Не закрывай Issue одним подготовленным протоколом.
+
+Reviewer artmus208 проверяет подготовку и итоговый пакет,
+но участие в native execution должно быть явно раскрыто.
+Независимая научная приёмка оформляется отдельно:
+не обозначай самопроверку Runner как independent review.
+
+Финальный ответ:
+Issue, deliverable, Owner/Runner branches, точные HEAD/base,
+clean/dirty, шесть результатов, модель каждого запроса,
+checks, ограничения, durable retrieval и следующий шаг приёмки.
+
+Если native permission ещё отсутствует, доведи подготовку до
+опубликованного execution-ready checkpoint и передай artmus208
+конкретные inputs и готовый текст решения. Не запускай verifier
+от имени vadimnbkg вместо назначенного Runner.

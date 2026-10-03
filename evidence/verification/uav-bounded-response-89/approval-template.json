@@ -1,0 +1,26 @@
+{
+  "approver": "artmus208",
+  "runner": "artmus208",
+  "decision_url": null,
+  "preparation_head": null,
+  "native_execution_authorized": false,
+  "hnom_restrictions_and_materialization_approved": false,
+  "hnom_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+  "hnom_patch_hash": "b0d8e07da9401af0b64ec0224f9241456e1d8e408817c9f3432da0a868504742",
+  "query_hashes": [
+    "c599715a482970ae4b72e6fc1384cb1d05cd1631b166f4a9beb4f2a9507413d2",
+    "ff797cc96cc6d018f9e6a2fa8921e81a21c7ec4fc86638b96fdfbe6adf9c11de",
+    "9a4dc76aca31e0cd333d27ab3fab461e42128896929e2b6afa62df88b37701e9",
+    "9b89f698bcb9031e939ac9b653480a2c164ff8cb5fc8956d2b8f947e1da4bcaf",
+    "2507c2c36030471676705b6589d8d783b419bbf3bd96ef4171caedd4ae298dae",
+    "16b39342f932f42136802ec92947eaf2b2f102ce34e0013b7727e76fb11f7871"
+  ],
+  "config_hash": "1ce12cc9e0aea23e8f335c3d301a8e4e7e21348eed65d0e8acfc3300b6618afa",
+  "os": "Linux",
+  "native_host": null,
+  "persistent_checkout": null,
+  "verifyta_path": null,
+  "executable_sha256": null,
+  "expected_version_identity": "UPPAAL 5.0.0 rev. 714BA9DB36F49691",
+  "independent_scientific_acceptance": "separate reviewer or explicit Integrator disposition required"
+}
