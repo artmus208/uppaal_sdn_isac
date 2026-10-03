@@ -1,0 +1,152 @@
+{
+  "evidence_kind": "software_regression",
+  "started_utc": "2026-10-03T23:52:15.088774+00:00",
+  "source_commit": "286ca62e13793172329893c7fef26c5cbc18c4a4",
+  "base_commit": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "packages": {
+    "mcp": "1.30.0",
+    "PyYAML": "6.0.3"
+  },
+  "source_hashes": {
+    "src/uppaal_mcp/mac/reports.py": "8c193f36f5b3923c4cac20616fa16fa004bc05c11447d5f98f27bbbfc7819e42",
+    "src/uppaal_mcp/sdn/reports.py": "454f50b1f6498b71dc9f97e8a8ba09317bb1963676f0c5216c59a75d7ff417ad",
+    "tests/test_mac_sdn_report_status.py": "86864ed4c3e25904f117e0bbce82e4708a68964ddb44ddb93f94106d1e90c468"
+  },
+  "checks": [
+    {
+      "name": "unittest",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "elapsed_sec": 75.813,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/unittest.txt",
+      "sha256": "1d42d60ac349b45b43b68f605a508e5c696270c2a1d1e7f1d8c8febcc562cf18"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "elapsed_sec": 0.14,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/coordination.txt",
+      "sha256": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d"
+    },
+    {
+      "name": "baseline-audit",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "286ca62e13793172329893c7fef26c5cbc18c4a4",
+        "--output",
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\evidence\\healthcheck\\20261004-mac-sdn-reports\\baseline-audit.json"
+      ],
+      "exit_code": 0,
+      "elapsed_sec": 6.235,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/baseline-audit.txt",
+      "sha256": "ca6c043b3f485e3a31acf20acb240d4236a57f06b0baf71f5f91eba2ebb3852c"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "elapsed_sec": 1.281,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/pip-check.txt",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "elapsed_sec": 1.828,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/mcp-smoke.txt",
+      "sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc"
+    },
+    {
+      "name": "list-examples",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "elapsed_sec": 0.359,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/list-examples.txt",
+      "sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f"
+    },
+    {
+      "name": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa...HEAD"
+      ],
+      "exit_code": 0,
+      "elapsed_sec": 0.062,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/diff-check.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "baseline-windows-failures",
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\baseline-96",
+      "source_commit": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "-v",
+        "test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist",
+        "test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional",
+        "test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected",
+        "test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest",
+        "test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths",
+        "test_verification_manager.ManagerTests.test_memory_limit_measures_real_child"
+      ],
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\baseline-96\\src;C:\\Users\\musta\\.codex\\worktrees\\38c5\\mcp_uppaal\\.venv\\baseline-96\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8"
+      },
+      "exit_code": 1,
+      "elapsed_sec": 5.391,
+      "log": "evidence/healthcheck/20261004-mac-sdn-reports/baseline-windows-failures.txt",
+      "sha256": "68b2ff6b6481e5369985543fea1850ca7e35710ea9648133f9d434f0e751ce0f",
+      "observed_failures": [
+        "test_current_v2_and_historical_v1_coexist (test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist)",
+        "test_migration_ids_remain_unique_and_conditional (test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional)",
+        "test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected)",
+        "test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest)",
+        "test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths)",
+        "test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child)"
+      ]
+    }
+  ],
+  "baseline_comparison": {
+    "same_six_failure_ids": true,
+    "compared_base": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+    "tested_code_hashes_still_match": true
+  }
+}

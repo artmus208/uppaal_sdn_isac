@@ -22,4 +22,24 @@ Reproduce the focused check after installing the project:
 .venv\Scripts\python.exe -m unittest discover -s tests -p test_mac_sdn_report_status.py -v
 ```
 
-Check logs and the final handoff are stored beside this file.
+Check logs and [HANDOFF.md](HANDOFF.md) are stored beside this file. Diagnostic
+text logs use LF and may have trailing whitespace removed; they are software
+test transcripts, not native verifier evidence.
+
+Reporting semantics:
+
+- No result supplied: `not_run`.
+- Result supplied with any status other than the runner's `satisfied`,
+  `not_satisfied` or `inconclusive`: `not_verified`, with overall status visible.
+- For a completed run, retain explicit `satisfied`, `not_satisfied`, `maybe` and
+  `inconclusive` query outcomes. An absent query remains `not_run`; an absent or
+  unsupported query status becomes `not_verified`.
+- A `not_satisfied` query is a violated property. `maybe`, `inconclusive` and
+  unknown query statuses are unresolved, not violations.
+- Query output from an unsuccessful run is shown only under a diagnostic heading
+  in `violations.md`. Exported `results.json` and CSV columns are unchanged.
+
+These reporting functions consume the existing runner status contract. They do
+not independently authenticate input JSON, revalidate the entire run, establish
+provenance or accept a scientific claim. PHY reports and standalone trace
+classifiers are outside this Issue's write scope.
