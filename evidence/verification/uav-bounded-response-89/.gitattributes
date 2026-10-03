@@ -1,2 +1,4 @@
 # Hash-pinned scientific inputs, preparation and raw evidence must retain exact bytes.
 * -text
+# Native Windows check output keeps its original CRLF and terminal blank lines.
+checks/** whitespace=cr-at-eol,-blank-at-eof
