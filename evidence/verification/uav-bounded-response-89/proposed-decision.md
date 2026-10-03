@@ -1,14 +1,17 @@
-# Proposed decision for artmus208 — NOT APPROVED
+# Decision transcription template — not an approval
 
-Post only after review; replace the preparation and native-host fields with actual values. The Owner does not approve this text.
+Use only to transcribe the actual decision and any user-authorized delegation.
+Replace account, preparation and native-host fields with actual values. The
+recording account is not automatically the decision authority or an independent
+reviewer. This template grants no permission and supplies no default signature.
 
 ```text
-I, artmus208, approve the Issue #89 preparation at exact HEAD: <PREPARATION_HEAD>.
+I, <ACTUAL_DECISION_AUTHORITY>, approve the Issue #89 preparation at exact HEAD: <PREPARATION_HEAD>.
 I approve the nominal-input diagnostic restrictions, materialization and their limited scientific scope as described in PROTOCOL.md; this is not a sufficient-success assumption or a frozen baseline.
 Hnom prospective SHA256: 3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03
 Exact proposed patch SHA256: b0d8e07da9401af0b64ec0224f9241456e1d8e408817c9f3432da0a868504742
 Original full M SHA256: b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02
-Config SHA256: 44b26d2213e8450ebcc39043fb0342d88d6a407a44ab18976a2b79761c415c81
+Config SHA256: ee0ab52bfdc6ae3298defac8106a5cf074df968de0f51d13af0d5bd95bdd593e
 
 Six ordered query SHA256 values:
 Q1 (Hnom, 180 s): c599715a482970ae4b72e6fc1384cb1d05cd1631b166f4a9beb4f2a9507413d2
@@ -18,7 +21,7 @@ Q4 (Hnom, 600 s): 9b89f698bcb9031e939ac9b653480a2c164ff8cb5fc8956d2b8f947e1da4bc
 Q5 (Hnom, 180 s): 2507c2c36030471676705b6589d8d783b419bbf3bd96ef4171caedd4ae298dae
 Q6 (M, 180 s): 16b39342f932f42136802ec92947eaf2b2f102ce34e0013b7727e76fb11f7871
 
-Native execution IS AUTHORIZED for Runner artmus208 only on:
+Native execution IS AUTHORIZED for Runner <ACTUAL_RUNNER_ACCOUNT> on:
 Windows hostname: DESKTOP-Q3CKGDN; persistent local-drive checkout: <ABSOLUTE_WINDOWS_PATH>.
 MachineGuid SHA256: 0a8584d7b2bebec97e47538eb32d6a04fdb5b396e953c8090759a2a99b208398
 Native Python: C:\Users\musta\AppData\Local\Programs\Python\Python311\python.exe
@@ -32,8 +35,8 @@ Budget/method: six attempts maximum, no repeats, one native verifier, symbolic D
 Approve the independent monotonic Windows Job Object watchdog (atomic creation membership and KILL_ON_JOB_CLOSE), two-second cleanup margins, no status.json dependency, consumed interrupted reservations and stop policy in PROTOCOL.md.
 Timeout/memory_limit has null verdict; continue only the next authorized slot within remaining budget. Error, monitor/watchdog/version/help mismatch, stop or overrun halts; remaining slots are not_executed. No extra native replay, simulation, smoke/control query or model/query change.
 
-I delegate ONLY evidence/verification/uav-bounded-response-89/execution/** to Runner on codex/artmus208/89-uav-bounded-response-runs, including the exact approved execution/model.xml materialization. Its base is the exact approved preparation HEAD. Owner vadimnbkg suspends writes there until the durable Runner handoff returns the lease.
-I acknowledge that my participation as Runner makes my evidence review producer review, not independent scientific acceptance. Independent acceptance remains pending a separate reviewer or explicitly recorded disposition; no person is invented.
+I delegate ONLY evidence/verification/uav-bounded-response-89/execution/** to Runner on codex/<ACTUAL_RUNNER_ACCOUNT>/89-uav-bounded-response-runs, including the exact approved execution/model.xml materialization. Its base is the exact approved preparation HEAD. Owner vadimnbkg suspends writes there until the durable Runner handoff returns the lease.
+Any participation as Runner makes that account's evidence review producer review, not independent scientific acceptance. Independent acceptance remains pending a separate reviewer or explicitly recorded disposition; no person is invented.
 No C02/P3/C06/Gate 2/R07 closure or manuscript edit is authorized.
 ```
 

@@ -1,7 +1,8 @@
 # Issue #89: UAV service-boundary protocol
 
 Status: prepared for domain and native-execution decision; no verification result.
-Owner vadimnbkg; Runner and protocol reviewer/integrator artmus208. The Runner's
+Owner vadimnbkg; protocol reviewer/integrator artmus208. The Runner is the actual
+account declared in execution/approval.json. The Runner's
 later review is producer review. Independent scientific acceptance requires a
 separate reviewer or an explicit Integrator disposition, currently absent.
 
@@ -73,7 +74,7 @@ allowlisted transformation, and emits `hnom/proposed.patch`, `changes.json` and
 
 This is nominal external observations with isolated background load and no
 injected fault. It is a diagnostic scenario whose application relevance still
-needs artmus208's decision; it is not a sufficient success contract or a minimal
+needs the recorded domain decision; it is not a sufficient success contract or a minimal
 mathematical restriction. It is chosen from initialization, never by future
 success, admission, dispatch, receipt flags or absence of a negative outcome.
 
@@ -123,13 +124,15 @@ task. No model repair or manuscript edit is part of #89.
 
 ## Native budget and watchdog
 
-Only Runner artmus208, after explicit Issue approval of the exact checkpoint,
+The explicitly declared Runner uses the recorded Issue authorization of the exact checkpoint,
 Hnom patch/hash, six query hashes, config hash, native host/executable and stop
 policy. The latest user selection is native Windows Python + Windows PE verifyta,
 superseding the Linux preparation preserved at 9e4743bf. The exact path/hash and
 observed host/Python bindings are in `approval-template.json`; the persistent
 native Windows checkout and accepted new preparation HEAD still require the
-Runner's decision. Historical UPPAAL version is an expected identity only; actual
+execution record. Account names are declared explicitly, not matched to the
+repository owner. The Runner branch is codex/<runner>/89-uav-bounded-response-runs;
+bundles and session metadata use that same identity. Historical UPPAAL version is an expected identity only; actual
 full version and help are captured once after authorization, within the session.
 
 At most six attempts, no retries; one verifier at a time; search allocation 1500 s;

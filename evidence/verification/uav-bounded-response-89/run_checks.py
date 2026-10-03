@@ -40,7 +40,7 @@ def main():
     summary=dict(kind='software/static only, not verification',run_id=args.run_id,
                  source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
                  commands=records,failed=[r['name'] for r in records if r['exit_code']],
-                 skipped=['UPPAAL version/help and all queries: Owner has no native execution authorization'])
+                 skipped=['UPPAAL version/help and all queries: this command records software/static checks only'])
     (HERE/'checks/check-results.json').write_bytes(encoded(summary))
     return bool(summary['failed'])
 

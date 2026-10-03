@@ -16,8 +16,15 @@ from guard import Guard
 import windows_native as win
 from prepare import HERE, ROOT, M_PATH, M_HASH, SCOPE, BASE, derive, digest, encoded
 
-RUNNER_BRANCH='codex/artmus208/89-uav-bounded-response-runs'
 EXEC=HERE/'execution'
+
+def runner_branch(approval):
+    """Use declared accounts; authorization comes from the recorded decision."""
+    for field in ('approver','runner'):
+        account=approval.get(field)
+        if not isinstance(account,str) or not re.fullmatch(r'[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?',account):
+            raise ValueError('Explicit GitHub account required: '+field)
+    return 'codex/'+approval['runner']+'/89-uav-bounded-response-runs'
 
 def utc():
     return dt.datetime.now(dt.timezone.utc).isoformat()
@@ -43,8 +50,9 @@ def file_index(directory):
     return {p.relative_to(ROOT).as_posix():digest(p.read_bytes()) for p in sorted(Path(directory).rglob('*'))
             if p.is_file() and p.name!='result.json'}
 
-def checkpoint(label):
+def checkpoint(label,branch):
     # Do not commit anything outside the sequentially delegated execution scope.
+    if git('branch','--show-current')!=branch:raise ValueError('Use the declared Runner branch')
     paths=git('status','--porcelain','--untracked-files=all').splitlines()
     if any(not x[3:].startswith(SCOPE+'/execution/') for x in paths):
         raise RuntimeError('Dirty paths outside Runner execution scope')
@@ -56,7 +64,7 @@ def checkpoint(label):
         print(git(*args),flush=True)
     recovery=EXEC/'recovery';recovery.mkdir(exist_ok=True)
     bundle=recovery/(head+'.bundle')
-    git('bundle','create',str(bundle),RUNNER_BRANCH,timeout=60)
+    git('bundle','create',str(bundle),branch,timeout=60)
     git('bundle','verify',str(bundle),timeout=30)
     return head
 
@@ -87,10 +95,9 @@ def verify_native_inputs(a,cfg,root):
 def verify_approval(a):
     inv=json.loads((HERE/'query-inventory.json').read_text(encoding='utf-8'))
     prospective=json.loads((HERE/'hnom/prospective-model.json').read_text(encoding='utf-8'))
-    if a.get('approver')!='artmus208' or a.get('runner')!='artmus208':
-        raise ValueError('Wrong decision authority or Runner')
     if a.get('native_execution_authorized') is not True or a.get('hnom_restrictions_and_materialization_approved') is not True:
         raise ValueError('Separate domain/materialization and native execution approval required')
+    runner_branch(a)
     if not re.fullmatch(r'https://github.com/artmus208/uppaal_sdn_isac/issues/89#issuecomment-\d+',a.get('decision_url','')):
         raise ValueError('Exact Issue #89 decision URL required')
     prep=a['preparation_head']
@@ -111,7 +118,8 @@ def verify_approval(a):
 def run(a):
     from audit import audit_preparation
     audit_preparation()
-    if git('branch','--show-current')!=RUNNER_BRANCH:raise ValueError('Use the assigned Runner branch')
+    branch=runner_branch(a)
+    if git('branch','--show-current')!=branch:raise ValueError('Use the declared Runner branch')
     if git('status','--porcelain'):raise ValueError('Commit approval and offline inputs before starting')
     if git('remote','get-url','origin')!='https://github.com/artmus208/uppaal_sdn_isac.git':
         raise ValueError('Noncanonical remote')
@@ -127,7 +135,8 @@ def run(a):
     # An exclusive, never-deleted session claim blocks concurrent invocation.
     with open(EXEC/'session-claimed.json','x') as f:
         json.dump({'pid':os.getpid(),'claimed_at_utc':utc()},f);f.flush();os.fsync(f.fileno())
-    session=dict(started_at_utc=utc(),monotonic_start=time.monotonic(),status='preflight',runner='artmus208',
+    session=dict(started_at_utc=utc(),monotonic_start=time.monotonic(),status='preflight',runner=a['runner'],
+                 approver=a['approver'],runner_branch=branch,
                  preparation_head=a['preparation_head'],execution_initial_commit=git('rev-parse','HEAD'),
                  operational_base=BASE,scientific_input_commit='61386aa358805082b705dcd00c8cbfde5fb98248',
                  approval=a,physical_ram_bytes=ram,memory_limit_bytes=mem,
@@ -160,7 +169,7 @@ def run(a):
         for pattern in cfg['help_required_patterns']:
             if not re.search(pattern,helptext,re.I|re.S):raise RuntimeError('Actual help does not confirm '+pattern)
         session['status']='running';save(EXEC/'session.json',session)
-        checkpoint('retain actual native preflight')
+        checkpoint('retain actual native preflight',branch)
         for item in inv:
             slot=ledger[item['slot']-1]
             remaining=guard.deadline-time.monotonic()
@@ -171,7 +180,7 @@ def run(a):
             if digest((ROOT/item['query_path']).read_bytes())!=item['query_hash']:raise RuntimeError('Query changed')
             slot.update(state='reserved',attempt_consumed=True,reserved_at_utc=utc())
             save(EXEC/'ledger.json',ledger)
-            source=checkpoint('reserve slot '+str(item['slot']))
+            source=checkpoint('reserve slot '+str(item['slot']),branch)
             if git('status','--porcelain'):raise RuntimeError('Dirty execution source')
             directory=EXEC/'runs'/slot['run_id'];directory.mkdir(parents=True)
             command=[str(tool),*cfg['flags'],str(directory/'trace'),str(ROOT/item['model_path']),str(ROOT/item['query_path'])]
@@ -206,7 +215,7 @@ def run(a):
             slot.update(state='finished',status=status,verdict=verdict,result_path=(directory/'result.json').relative_to(ROOT).as_posix())
             session['total_search_wall_seconds']+=r['wall_seconds']
             save(EXEC/'ledger.json',ledger);save(EXEC/'session.json',session)
-            checkpoint('retain slot '+str(item['slot'])+' evidence')
+            checkpoint('retain slot '+str(item['slot'])+' evidence',branch)
             if status not in ['success','timeout','memory_limit']:
                 reason='Series stopped on '+status;break
             if r['wall_seconds']>item['cap_seconds'] or session['total_search_wall_seconds']>1500:
@@ -225,7 +234,7 @@ def run(a):
                        monotonic_end=ended,whole_native_wall_seconds=ended-session.get('native_monotonic_start',session['monotonic_start']))
         session['whole_session_overrun']=session['whole_native_wall_seconds']>1800
         save(EXEC/'ledger.json',ledger);save(EXEC/'session.json',session)
-        checkpoint('retain final native session disposition')
+        checkpoint('retain final native session disposition',branch)
     return 1 if reason else 0
 
 def main():

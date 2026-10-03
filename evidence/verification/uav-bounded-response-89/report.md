@@ -2,9 +2,11 @@
 
 Issue #89 has a reproducible proposed Hnom restriction patch, six fixed queries,
 native Windows controller/Job Object watchdog, reserved-slot plan and offline controls. All
-six queries are **not_executed / verdict=null**. The issue requires approval
-before materializing its restricted model, and a separate explicit decision
-before native execution. Neither decision is present in this preparation.
+six queries are **not_executed / verdict=null**. #89 comment 5969141901 records
+the earlier user execution authorization and the account-binding blocker. The
+2026-10-04 correction removes the hardcoded approver/Runner identity; an actual
+execution record with the declared accounts, current preparation seal and native
+bindings is still required. This correction performs no verifier invocation.
 
 The baseline remains exact full M (N=1, 51 processes). Hnom is a proposed
 nominal-input, isolated-load diagnostic region. Its prospective hash comes from
@@ -35,7 +37,7 @@ unresolved disposition in the retrieved records. Merge #88 does not accept it.
 The user corrected the Runner environment to Windows Python + Windows verifyta.
 Original Linux preparation 9e4743bf remains in history. Native host/Python and PE
 bytes/hash were inspected; the persistent checkout and exact new checkpoint still
-need artmus208's decision. Historical expected UPPAAL version is compared only
+need to match the actual execution decision. Historical expected UPPAAL version is compared only
 after authorized preflight. Commands and decision text are in `RUNNER.md` and
 `proposed-decision.md`; Windows implementation details are in `WINDOWS.md`.
 
@@ -56,7 +58,7 @@ Owner must assemble the actual results after Runner's durable handoff, retaining
 execution commits, raw hashes, any failed/interrupted attempts, missing metrics,
 budget deviations and trace classifications. The English text below remains
 preparation-stage wording. Acceptance of this protocol is not C02/P3/Gate 2/R07
-acceptance. artmus208's participation in execution will be disclosed; subsequent
+acceptance. The actual Runner's participation in execution will be disclosed; subsequent
 producer review is not independent scientific acceptance.
 
 Windows revision validation: all 26 scoped tests completed on native Windows

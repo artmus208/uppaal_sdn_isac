@@ -1,6 +1,6 @@
 {
-  "approver": "artmus208",
-  "runner": "artmus208",
+  "approver": null,
+  "runner": null,
   "decision_url": null,
   "preparation_head": null,
   "native_execution_authorized": false,
@@ -15,7 +15,7 @@
     "2507c2c36030471676705b6589d8d783b419bbf3bd96ef4171caedd4ae298dae",
     "16b39342f932f42136802ec92947eaf2b2f102ce34e0013b7727e76fb11f7871"
   ],
-  "config_hash": "44b26d2213e8450ebcc39043fb0342d88d6a407a44ab18976a2b79761c415c81",
+  "config_hash": "ee0ab52bfdc6ae3298defac8106a5cf074df968de0f51d13af0d5bd95bdd593e",
   "os": "Windows",
   "native_host": "DESKTOP-Q3CKGDN",
   "persistent_checkout": null,

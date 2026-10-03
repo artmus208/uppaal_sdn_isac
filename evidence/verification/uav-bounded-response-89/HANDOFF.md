@@ -2,11 +2,12 @@
 
 Deliverable: one reviewable UAV service-boundary protocol/evidence package,
 currently prepared for an exact domain/materialization and native-execution
-decision. Owner vadimnbkg; Runner and protocol reviewer/integrator artmus208.
+decision. Owner vadimnbkg; protocol reviewer/integrator artmus208. Runner is the actual
+account explicitly declared in execution/approval.json.
 Independent scientific acceptance is separate and not assigned here.
 
 - Owner branch: `codex/vadimnbkg/89-uav-bounded-response`.
-- Runner branch to create: `codex/artmus208/89-uav-bounded-response-runs`.
+- Runner branch to create: `codex/<runner>/89-uav-bounded-response-runs`.
 - Operational base: `452571598d4a5c1e070dace3a918ea737904e239`, actual #88 merge.
 - Scientific input commit: `61386aa358805082b705dcd00c8cbfde5fb98248`.
 - Previous proposal base: `46bf268c66d6ec2c106ae4ce8e8d5f893315ad91`.
@@ -29,7 +30,7 @@ Read `WINDOWS.md`, `PROTOCOL.md`, `RUNNER.md`, `proposed-decision.md`, `approval
 entirely offline. `checks/check-results.json` records commands, exit codes and
 log hashes; `checks/initial-findings.json` preserves earlier limitations/failure.
 
-Before native work, artmus208 must approve the exact preparation HEAD, Hnom
+Before native work, the execution record must identify authorization for the exact preparation HEAD, Hnom
 patch/hash, six query hashes, method/config/budget/stop policy and actual Windows
 host/tool. Observed host/Python bindings and exact verifier path/hash are recorded
 in approval-template.json; Runner must declare its persistent Windows clone path. A separate explicit Issue decision activates the proposed
@@ -39,8 +40,8 @@ Runner begins from the accepted preparation HEAD, records actual preflight and
 reserved attempt commits, and returns a durable branch/bundle plus exact HEAD.
 Owner then merges the Runner history, audits all raw files and budgets, inspects
 the traces offline, updates `results.json`, report/coverage/English fragments and
-the same final PR to read. No rebase may erase execution commits. A missing
-native permission is not permission for vadimnbkg to act as Runner.
+the same final PR to read. No rebase may erase execution commits. Account identity alone grants no native permission; use the recorded user
+authorization and delegation without inventing another account's signature.
 
 Durable retrieval: canonical Owner branch when published, with a full-history
 bundle fallback in the persistent owner repository under this scope's
@@ -48,20 +49,23 @@ bundle fallback in the persistent owner repository under this scope's
 bundle hashes. The original local preparation checkpoints are retained there
 even if GitHub API publication uses equivalent tree commits.
 
-Next acceptance step: artmus208 reviews the concrete proposed decision. Native
+Next execution step: record the actual decision accounts, current preparation
+HEAD and native bindings. See inputs/identity-correction.json and RUNNER.md. Native
 results and independent scientific acceptance remain pending. Do not close #89,
 C02, full P3, C06, Gate 2 or R07 on the strength of this preparation alone.
 
 Windows revision: `checks/windows-004/record.json` records 26/26 scoped native
 Windows tests, zero skips; both failure history and diagnostic probes are retained.
 `checks/windows-check-results.json` selects that successful record by SHA256;
-offline audit checks its raw log and current source hashes. config.json SHA256:
-`44b26d2213e8450ebcc39043fb0342d88d6a407a44ab18976a2b79761c415c81`.
+offline audit checks its raw log and current source hashes. current config.json SHA256:
+`ee0ab52bfdc6ae3298defac8106a5cf074df968de0f51d13af0d5bd95bdd593e`.
 M, prospective Hnom, restriction patch and all six formula hashes are unchanged.
 The Windows binary hash was read and confirmed; its runtime version remains null.
 The original Linux commit 9e4743bf is retained in the published branch ancestry.
 
 The new preparation HEAD/seal hash, durable bundle/hash and clean working-tree
 confirmation are published together in the #89/#90 Windows handoff. That exact
-HEAD supersedes the prior Linux handoff for the upcoming decision. No native
-lease is active; artmus208 must post the filled concrete decision in #89 first.
+HEAD supersedes the prior Linux handoff for the upcoming decision. No execution lease is activated by this code correction alone. The prior user
+authorization is recorded in #89 comment 5969141901; the driver now accepts the
+actual declared accounts instead of requiring artmus208. Historical preparation
+records below checks/ remain unchanged; current test pointers select new records.

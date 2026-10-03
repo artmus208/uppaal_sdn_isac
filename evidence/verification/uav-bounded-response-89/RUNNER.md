@@ -1,7 +1,12 @@
-# Runner artmus208: native Windows handoff
+# Runner: native Windows handoff
 
-Preparation only. Do not execute verifyta, including `-v` or `-h`, until artmus208
-posts the explicit decision for the NEW preparation HEAD in #89. The Linux
+This package contains preparation only. Transcribe the actual user-authorized
+Issue #89 decision, its preparation HEAD and the actual `approver` and `runner`
+accounts into the execution record. Neither account is hardcoded. The prior
+user authorization and account blocker are recorded in
+[#89](https://github.com/artmus208/uppaal_sdn_isac/issues/89#issuecomment-5969141901);
+`inputs/identity-correction.json` records the requested removal of that binding.
+Do not claim another account signed a decision. The Linux
 preparation at `9e4743bfcca06416c112693d8644ecec004a0a8f` is historical; it is not
 the execution checkpoint. Current Hnom is still an unmaterialized proposal.
 
@@ -13,11 +18,13 @@ The campaign itself must use a persistent local Windows drive clone.
 
 ## Recover the exact accepted preparation
 
-Use your own credentials and Git identity. Replace the two placeholders before
+Use your own credentials and Git identity. Replace the placeholders before
 running; the checkout path must be persistent, dedicated and initially absent.
 
 ```powershell
-$Preparation = '<EXACT_NEW_PREPARATION_HEAD_ACCEPTED_IN_89>'
+$Preparation = '<EXACT_PREPARATION_HEAD_COVERED_BY_THE_DECISION>'
+$Runner = '<ACTUAL_RUNNER_ACCOUNT>'
+$RunnerBranch = "codex/$Runner/89-uav-bounded-response-runs"
 $Checkout = 'C:\Users\musta\source\uppaal-issue89'
 $Python = 'C:\Users\musta\AppData\Local\Programs\Python\Python311\python.exe'
 $Verifier = 'C:\Program Files (x86)\UPPAAL-5.0.0\bin\verifyta.exe'
@@ -27,7 +34,7 @@ git -c core.autocrlf=false clone --no-checkout https://github.com/artmus208/uppa
 Set-Location $Checkout
 git config core.autocrlf false
 git fetch origin codex/vadimnbkg/89-uav-bounded-response
-git switch -c codex/artmus208/89-uav-bounded-response-runs $Preparation
+git switch -c $RunnerBranch $Preparation
 git status --short --branch
 git rev-parse HEAD
 git remote -v
@@ -65,9 +72,13 @@ runner reads PE bytes/hash and host identity without invoking verifyta. On any
 failure, preserve logs and return to Owner before any campaign launch.
 
 Copy `approval-template.json` to `execution/approval.json`. Record the actual
-Issue decision URL/accepted HEAD/checkout and set both approval booleans true
+Issue decision URL, actual `approver` and `runner`, preparation HEAD/checkout,
+and set both approval booleans true
 only to transcribe that decision. Save its exact text at `execution/decision.md`.
-JSON is not authentication: Reviewer checks the actual GitHub author and decision.
+JSON is not authentication: Reviewer checks the actual GitHub author, user
+authorization and any delegation. The recorder, decision authority and Runner
+need not be the same person. Do not substitute the repository owner for any of
+these identities. The branch is derived from `runner` and must match $RunnerBranch.
 No verifier version is inferred from its hash; the version remains unobserved.
 
 ```powershell
@@ -77,7 +88,7 @@ git commit -m 'P3: record approved Windows host and materialize Hnom (#89)'
 git status --short --branch
 git log -1 --oneline --decorate
 git remote -v
-git push -u origin codex/artmus208/89-uav-bounded-response-runs
+git push -u origin $RunnerBranch
 ```
 
 Materialization is offline and validates the approval, native host/Python identity,
@@ -141,11 +152,11 @@ git commit -m 'P3: record native Windows offline audit (#89)'
 git status --short --branch
 git log -1 --oneline --decorate
 git remote -v
-git push -u origin codex/artmus208/89-uav-bounded-response-runs
+git push -u origin $RunnerBranch
 ```
 
 On failed push, after those status/log/remote checks export a complete final bundle:
-`git bundle create "$Scope/execution/recovery/final.bundle" codex/artmus208/89-uav-bounded-response-runs`.
+`git bundle create "$Scope/execution/recovery/final.bundle" $RunnerBranch`.
 Run `git bundle verify` and `Get-FileHash -Algorithm SHA256`; record its persistent
 Owner-accessible location. Never force-push or erase execution commits.
 

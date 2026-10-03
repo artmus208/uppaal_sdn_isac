@@ -14,7 +14,7 @@
 | Age=40 receipt/timeout race | Both alternatives retained | Static inspection only; witness boundaries require offline inspection |
 | Hnom→M result transfer | Restriction map retained | No accepted transfer or native replay; claims confined to Hnom |
 | Whole-system time progress | No fairness/urgency/priority assumption added | Open; deadlock freedom alone would not resolve it |
-| Independent scientific acceptance | Separate reviewer or explicit disposition | Unassigned; Runner artmus208 cannot be labeled independent producer reviewer |
+| Independent scientific acceptance | Separate reviewer or explicit disposition | Unassigned; the actual Runner cannot be labeled an independent reviewer of their own evidence |
 
 C06, P3_complete, Gate 2, final R07, P5 #80, component repairs and manuscript
 assembly are outside #89. No positive claim follows from software tests, static

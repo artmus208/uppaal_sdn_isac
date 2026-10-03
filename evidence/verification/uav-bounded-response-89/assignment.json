@@ -1,7 +1,7 @@
 {
   "issue": 89,
   "owner": "vadimnbkg",
-  "runner": "artmus208",
+  "runner": null,
   "reviewer": "artmus208",
   "independent_scientific_reviewer": null,
   "stage": "preparation",
@@ -11,11 +11,12 @@
   "previous_proposed_base": "46bf268c66d6ec2c106ae4ce8e8d5f893315ad91",
   "scientific_input_commit": "61386aa358805082b705dcd00c8cbfde5fb98248",
   "owner_branch": "codex/vadimnbkg/89-uav-bounded-response",
-  "runner_branch": "codex/artmus208/89-uav-bounded-response-runs",
+  "runner_branch": null,
   "target": "read",
   "write_scope": "evidence/verification/uav-bounded-response-89/**",
   "native_execution_authorized": false,
   "hnom_materialization_authorized": false,
   "runner_write_scope_proposed": "evidence/verification/uav-bounded-response-89/execution/**",
-  "runner_write_lease_active": false
+  "runner_write_lease_active": false,
+  "runner_selection": "Explicit actual account in execution/approval.json; branch codex/<runner>/89-uav-bounded-response-runs. See inputs/identity-correction.json."
 }

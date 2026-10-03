@@ -1,6 +1,5 @@
 {
   "os": "Windows",
-  "runner": "artmus208",
   "max_attempts": 6,
   "retries": 0,
   "simultaneous_verifiers": 1,
