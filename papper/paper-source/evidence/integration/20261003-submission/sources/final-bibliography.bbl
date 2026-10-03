@@ -1,0 +1,57 @@
+\begin{thebibliography}{1}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
+\providecommand{\doi}[1]{https://doi.org/#1}
+
+\bibitem{alur_theory_1994}
+Alur, R., Dill, D.L.: A theory of timed automata. Theoretical Computer Science
+  \textbf{126}(2),  183--235 (1994). \doi{10.1016/0304-3975(94)90010-8}
+
+\bibitem{uppaal_tutorial_2004}
+Behrmann, G., David, A., Larsen, K.G.: A tutorial on {UPPAAL}. In: Bernardo,
+  M., Corradini, F. (eds.) Formal Methods for the Design of Real-Time Systems,
+  Lecture Notes in Computer Science, vol.~3185, pp. 200--236. Springer, Berlin,
+  Heidelberg (2004). \doi{10.1007/978-3-540-30080-9_7}
+
+\bibitem{uppaal_smc_2015}
+David, A., Larsen, K.G., Legay, A., Miku{\v c}ionis, M., Poulsen, D.B.: {UPPAAL
+  SMC} tutorial. International Journal on Software Tools for Technology
+  Transfer  \textbf{17}(4),  397--415 (2015). \doi{10.1007/s10009-014-0361-y}
+
+\bibitem{aodv_uppaal_2012}
+Fehnker, A., van Glabbeek, R., H{\"o}fner, P., McIver, A., Portmann, M., Tan,
+  W.L.: Automated analysis of {AODV} using {UPPAAL}. In: Flanagan, C.,
+  K{\"o}nig, B. (eds.) Tools and Algorithms for the Construction and Analysis
+  of Systems. Lecture Notes in Computer Science, vol.~7214, pp. 173--187.
+  Springer (2012). \doi{10.1007/978-3-642-28756-5_13}
+
+\bibitem{glonina_correctness_2018}
+Glonina, A.B., Balashov, V.V.: On the correctness of real-time modular computer
+  systems modeling with stopwatch automata networks. Automatic Control and
+  Computer Sciences  \textbf{52}(7),  817--827 (2018).
+  \doi{10.3103/S0146411618070271}
+
+\bibitem{glonina_thesis_2021}
+Glonina, A.B.: Analysis of Modular Computer System Configurations for Checking
+  Real-Time Constraints. Candidate of sciences dissertation, Lomonosov Moscow
+  State University, Moscow (2020),
+  \url{https://istina.msu.ru/dissertations/364890262/}, in Russian. Defended 23
+  September 2021
+
+\bibitem{isac_survey_2022}
+Liu, F., Cui, Y., Masouros, C., Xu, J., Han, T.X., Eldar, Y.C., Buzzi, S.:
+  Integrated sensing and communications: Toward dual-functional wireless
+  networks for {6G} and beyond. IEEE Journal on Selected Areas in
+  Communications  \textbf{40}(6),  1728--1767 (2022).
+  \doi{10.1109/JSAC.2022.3156632}
+
+\bibitem{ns3_manual}
+{ns-3 Project}: {ns-3} Manual,
+  \url{https://www.nsnam.org/docs/manual/html/index.html}, accessed 3 October
+  2026
+
+\bibitem{omnetpp_manual}
+{OMNeT++ Community}: {OMNeT++} Simulation Manual, 6.2.0 edn.,
+  \url{https://doc.omnetpp.org/omnetpp/manual/}, accessed 3 October 2026
+
+\end{thebibliography}

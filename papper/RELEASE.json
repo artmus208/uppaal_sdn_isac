@@ -1,0 +1,22 @@
+{
+  "integration_commit": "f60562ba057a1c47bf47dbfb240edc77ef5d2a3b",
+  "branch": "codex/vadimnbkg/92-monotec-submission",
+  "branch_location": "local; full self-contained Git bundle supplied",
+  "repository": "https://github.com/artmus208/uppaal_sdn_isac",
+  "integration_issue": 92,
+  "source_zip_file_count": 2626,
+  "zip_crc_and_sha256_verification": "passed",
+  "git_bundle_verified_in_empty_repository": true,
+  "files": {
+    "MoNoTeC-2026-paper.pdf": "b407b319f3507099d81a1fa4cbf578f5afdac8c81b6fadbbfb9acaed938ecd82",
+    "MoNoTeC-2026-paper.docx": "1d7d3271700248ae3474a088df2f1cd734fe6fe7e24086194c00b9d4f6022ace",
+    "reviewer-response.pdf": "9de689a2f98a9b733baaaa09f0d042552df6b57a74e2347f100aedff7eb3a3dc",
+    "reviewer-response.docx": "50c35cbf9b84f1e352bb918597831281d6fefbc1db85bd08f0ad3e3d0270e78d",
+    "reviewer-response.md": "bd5e5026cccbe73e480b9b52d2e9d24fc06ca4f31fec8af0d9f1bc05e137e6fb",
+    "AUTHOR-HANDOFF.md": "fb2e2843ab9068de4bbb4a663fb5996c4a9c37948b25eed95dee5ada8ff3c3a5",
+    "README.md": "239a5e232ecf8d50393ff63ab729d921dfdf5d49792b0829222da70a111b684e",
+    "EVIDENCE-INDEX.md": "71f6595a1b2d27831df2740d285f0a0eeedbf58ac7b4efe11135c02bbf5e230a",
+    "MoNoTeC-2026-source.zip": "fa6e6a91dcf61f089d3d3c9d880d6d60271ba2c518eda9e000622d0e74395fcb",
+    "MoNoTeC-2026-full.bundle": "af50bea88bad3a2d938f206995e829f9b1a1589517e258e6a8d0263547f10bc1"
+  }
+}

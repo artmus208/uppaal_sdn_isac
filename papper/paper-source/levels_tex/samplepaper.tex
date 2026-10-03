@@ -1,0 +1,272 @@
+\documentclass[runningheads]{llncs}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,graphicx,amsmath,amssymb,array,booktabs,tabularx,url}
+\usepackage[section]{placeins}
+\usepackage[hidelinks]{hyperref}
+\setlength{\emergencystretch}{2em}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\A}[1]{\mathcal{A}_{#1}}
+\newcommand{\figpath}{../evidence/integration/20261003-submission/figures/}
+\begin{document}
+\title{A Hierarchical Timed-Automata Model for SDN-Managed Resource Orchestration in 6G ISAC Networks}
+\titlerunning{Timed-Automata Model for SDN-Managed 6G ISAC}
+\author{Artur Mustafin\inst{1}\orcidID{0009-0008-8322-0864} \and
+Vadim Tinishov\inst{1}\orcidID{0009-0003-7319-1944}}
+\authorrunning{A. Mustafin and V. Tinishov}
+\institute{ITMO University, Faculty of Software Engineering and Computer Systems, Saint Petersburg, Russia\\
+\email{armustafin@itmo.ru}, \email{vadimtdot@gmail.com}}
+\maketitle
+\begin{abstract}
+Integrated sensing and communication (ISAC) couples radio quality, resource allocation, programmable control, and service deadlines. We present an executable hierarchy of timed automata for studying these dependencies in an abstract SDN-managed UAV service. Its current single-request configuration contains 51 concurrent processes and distinguishes admission, queue service, transmission, and receipt of a request-correlated sensing result. A historical configuration yields a queue-overflow counterexample at capacity four. A finite-family experiment with 50--197 processes produces 18 completed verdicts and 72 timeouts across 90 attempts; all 30 service-reachability attempts time out. On the current configuration, a 100-transition execution and an independent engine replay establish one successful causal path, whereas eleven exhaustive-checking attempts each reach their 600-second limit without a verdict. The contribution is a reproducible model and a measured account of its behavior and verification limits, not a universal service-success guarantee. We describe parameter provenance, validation boundaries, and the additional evidence needed for physical calibration and scalable verification.
+\keywords{Integrated sensing and communication \and SDN \and timed automata \and UPPAAL \and UAV service \and resource orchestration}
+\end{abstract}
+
+\section{Introduction}\label{sec:introduction}
+Integrated sensing and communication shares radio resources between data delivery and observation of the environment. A UAV-oriented service may require both communication capacity and a sufficiently fresh detection result. Increasing sensing resources can compete with packet transmission; a controller may admit a service whose eventual result is lost, delayed, or no longer useful. An analysis therefore needs to distinguish a control-plane acknowledgement from completion of the application request. The ISAC literature provides the radio and signal-processing context \cite{isac_survey_2022}. We address discrete orchestration at the boundary between those physical models and service contracts.
+
+Software-defined networking (SDN) and RAN intelligent control provide an organizational view of telemetry, admission, policy selection, and recovery. We use this view to structure a finite abstraction, not to claim compliance with a deployed RIC implementation. Physical-layer quality classes enter a MAC scheduler; telemetry and resource reports influence controller policy; application automata interpret admission and delivery. Environment processes and interface adapters are explicit because loss and blocked synchronization can change the behavior of the composition.
+
+Timed automata combine finite control with real-valued clocks \cite{alur_theory_1994}. UPPAAL supports symbolic exploration of their networks \cite{uppaal_tutorial_2004}. In network-protocol research, automated analysis of AODV explores route-discovery behavior and counterexamples in finite topologies \cite{aodv_uppaal_2012}. Its relevance here is methodological: an executable model should be accompanied by concrete properties, execution evidence, and a boundary on the configurations explored. A hierarchy of templates alone neither validates radio behavior nor resolves state-space growth.
+
+Our contribution has three parts: an executable four-layer composition with explicit interface semantics and a request-correlated sensing-result path; a reproducible evidence set including negative results and finite-family resource measurements; and a separation of established observations from universal properties and physical adequacy. The experiments concern the configurations in Sect.~\ref{sec:configuration}. They do not establish reliability, latency distributions, or verification for arbitrary numbers of UAVs.
+
+Admission permits a request to proceed. Queue service dispatches its result token. Transmission may still fail. Only a matching, fresh, acceptable result received by the application constitutes success. A bounded rejection or timeout is a terminal response, but it is not successful delivery. These distinctions motivate both the implementation and the interpretation of the results.
+
+\section{Executable Composition and Configurations}\label{sec:configuration}
+The current model is a synchronized product
+\begin{equation}
+\mathcal{M}=\A{PHY}\parallel\A{MAC}\parallel\A{SDN}\parallel\A{APP}\parallel\A{ENV}\parallel\A{OBS}\parallel\A{JOB}.
+\label{eq:composition}
+\end{equation}
+Each layer symbol denotes a group of processes. A component has locations, an initial location, clocks, bounded discrete variables, synchronization channels, guarded transitions, and location invariants. Time advances jointly, subject to all active invariants; synchronized edges execute together. Nondeterminism represents unresolved environmental and implementation choices. We do not assign probabilities to those choices.
+
+\begin{table}[t]
+\caption{Current single-UAV composition.}\label{tab:composition}
+\centering\small
+\begin{tabularx}{\textwidth}{@{}lrX@{}}
+\toprule Group & Processes & Role\\\midrule
+PHY & 5 & Channel, signal, beam, sensing quality, aggregate reports\\
+MAC & 5 & Scheduler, queue class, buffer, resources, aggregate reports\\
+SDN/RIC & 6 & Monitoring, risk, policy, rules, recovery, aggregate reports\\
+APP & 4 & Request and SLA; criticality and aggregate placeholders\\
+Environment/adapters & 8 & PHY inputs, shared load, faults, demand, four adapters\\
+Observers & 22 & PHY 3, MAC 5, SDN 6, APP 8\\
+Result job & 1 & Matching measurement, queue insertion, dispatch, transport\\\midrule
+Total & 51 & One UAV, one request, one result token\\\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:composition} counts actual instances. The result job is added to the previous 50-process composition. Four interface adapters carry finite payloads between independently specified layers. Shared queue arrivals and optional service are environmental choices. Observers expose event records and timing obligations; their presence in the composition must be examined rather than assumed behaviorally neutral.
+
+Three model identities are needed to interpret the experiments. We use short names below; the source package retains complete SHA256 identifiers and query provenance.
+\begin{table}[t]
+\caption{Distinct XML configurations. Hash prefixes identify different artifacts.}\label{tab:models}
+\centering\small
+\begin{tabularx}{\textwidth}{@{}llrX@{}}
+\toprule Name & SHA256 prefix & Processes & Evidence\\\midrule
+H: historical & \code{592678ed678c} & 50 & Historical core and overflow counterexample\\
+F: finite family & \code{5234cb087e52} ($N=1$) & $49N+1$ & Cost series and rejection trace\\
+S: completion & \code{b8ab50e112b7} & 51 & Successful trace and eleven timeouts\\\bottomrule
+\end{tabularx}
+\end{table}
+H is \code{reviewer-r1-gate1-20260923}; F is \code{uav-family-r1-20260929}; S is \code{uav-service-completion-r1-20261002}. F replicates per-UAV components with a shared load/service arbiter. Its four configurations contain 50, 99, 148, and 197 processes. S is restricted to $N=1$. Adding its result job to all family sizes would change the model and is not an experiment reported here.
+
+The repository's historical baseline pointer remains an input for reproducing H. Separate published decisions select S. Neither a directory name nor a merged change establishes transfer of a property between these configurations. S changes guards, synchronization, and state; it therefore needs its own query results. We preserve this distinction even where the configurations share most component templates.
+
+\section{Physical Abstraction and Validation}\label{sec:validation}
+The PHY group separately classifies channel condition, signal configuration, beam management, sensing quality, and aggregate state. It does not compute I/Q samples, SINR trajectories, Cramer--Rao bounds, or detection probabilities. Such quantities belong to an external physical or system-level model. A conceptual finite abstraction is
+\begin{equation}
+\alpha(x)=(q_{channel},q_{detection},q_{accuracy},q_{freshness},q_{capacity}),
+\end{equation}
+where $x$ denotes external measurements and requirements. The present thresholds and timing constants define an abstract case study. They are not calibrated against a particular radio installation.
+
+Calling a class ``conservative'' does not establish safety preservation. A transfer claim needs a relation between concrete trajectories and abstract executions, including timing, threshold equality, synchronization, and the property preserved. We make no end-to-end abstraction-soundness claim here. The abstraction can expose control inconsistencies while its physical assumptions remain open.
+
+\begin{table}[t]
+\caption{Representative S constants. Times are abstract units, not measured network latencies.}\label{tab:parameters}
+\centering\small
+\begin{tabularx}{\textwidth}{@{}lrlX@{}}
+\toprule Quantity & Value & Unit & Interpretation\\\midrule
+Queue capacity $K$ & 4 & tokens & $K+1$ is an overflow witness\\
+Thresholds $L,M,H$ & $1,2,4$ & tokens & Queue classification boundaries\\
+Acquisition $D_{sense}$ & 5 & time & Matching job measurement duration\\
+Shared service epoch & 5 & time & At most one optional eligible service\\
+Transport bound $D_{bus}$ & 1 & time & Delivery or loss after attempt begins\\
+Demand time & 1 & time & Environment input schedule\\
+Service deadline & 40 & time & Relative to actual request emission\\
+Fresh/stale/expired & $5,10$ & time & Age bands $[0,5)$, $[5,10)$, $[10,\infty)$\\\bottomrule
+\end{tabularx}
+\end{table}
+
+Table~\ref{tab:parameters} supplies magnitudes without inventing milliseconds. If a calibrated unit $\tau$ seconds were justified, the service bound would mean $40\tau$ seconds. Selecting $\tau$ after a convenient verdict would not validate that bound. Queue capacity counts abstract tokens, not bytes, and establishes no throughput figure.
+
+Validation and verification answer different questions. Our validation work inventories parameters and finite domains, checks threshold equality cases, examines interface mappings, and tests the completion predicate against an independently written strict oracle. For S, scoped regressions cover 243 quality tuples, correlation, grants without receipt, cancellation, freshness boundaries, and clock-reset ownership. These static/software checks assess implementation consistency. They do not establish a temporal property of every execution or measurement-based adequacy of an ISAC network.
+
+For external adequacy assessment, we propose a trace interface containing timestamps, request/sample IDs, measured quality, queue events, and delivery outcomes. Radio analysis would supply quality and sensing measurements; a packet/system simulator would supply contention, service, and loss observations. The abstraction map would convert these to finite domains, and independent traces would be checked for admissible transitions and timing ranges. Boundary cases include equality at thresholds, missing reports, stale samples, and burst arrivals. A mismatch should revise a stated assumption or the model, rather than be discarded because it prevents success. No coupled simulator experiment or physical validation dataset is reported.
+
+Figure~\ref{fig:phy-automaton} distinguishes telemetry classification from a measurement for an admitted job. Entering \code{SensingQoSOk} does not produce the requested result. \code{JobMeasuring} takes five units; acquisition can then succeed or fail. Nominal external inputs do not remove the internal failure choice.
+\begin{figure}[tb]
+\centering\includegraphics[width=\textwidth]{\figpath phy.pdf}
+\caption{Selected transitions of \code{u0\_phy\_Template\_A\_SQ}, S. Edge numbers are zero-based XML indices. Complete guards, updates, and omitted edges are catalogued in the source bundle.}\label{fig:phy-automaton}
+\end{figure}
+
+\section{Scheduling and Programmable Control}\label{sec:control}
+The MAC scheduler collects PHY information, selects a finite policy, applies a schedule, and waits for a PHY-command acknowledgement. Figure~\ref{fig:mac-automaton} shows the principal control cycle and timeout branch. Stale telemetry produces a constrained fallback; resource exhaustion produces a failure report. Policy input is allowed at several locations, so the main path does not represent every interleaving.
+
+The numerical queue is separate from the scheduler template. Occupancy lies in $\{0,\ldots,K+1\}$, where $K+1$ is an absorbing overflow witness. This preserves an observable violation instead of silently clipping the queue at capacity. Eligible service can remove a queued token; a command ACK cannot. This distinction matters in the counterexample in Sect.~\ref{sec:verification}.
+
+\begin{figure}[tb]
+\centering\includegraphics[width=\textwidth]{\figpath mac.pdf}
+\caption{Main fragment of \code{u0\_mac\_Template\_A\_SCH}. ACK and timeout concern a PHY command, not result delivery. Policy self-loops and late-observer variants are omitted and catalogued.}\label{fig:mac-automaton}
+\end{figure}
+
+SDN/RIC uses separate monitor, risk, policy, rule, recovery, and aggregate processes. The policy process reacts to admission requests and PHY/MAC reports. Ordered predicates select rejection, constrained operation, sensing boost, communication priority, or normal mode (Fig.~\ref{fig:sdn-automaton}). These are finite decision classes, not results of numerical optimization or a trained controller in this experiment.
+
+Rule handling and recovery are separate procedures. Installing or acknowledging a rule does not prove that a particular sensing result traversed the network. Recovery, rollback, rejection, and failure also have different application meanings. Adapters translate classes and record losses, stale delivery, unsolicited outcomes, and request association. The controller is therefore not modeled as an ideal reliable link.
+
+\begin{figure}[tb]
+\centering\includegraphics[width=\textwidth]{\figpath sdn.pdf}
+\caption{Policy-selection fragment of \code{u0\_sdn\_Template\_A\_POLICY}. The labels identify the ordered XML predicates; return edges to \code{PolicyIdle} are omitted.}\label{fig:sdn-automaton}
+\end{figure}
+
+Communication semantics are mixed. Binary rendezvous requires an enabled partner; a broadcast notification may occur without all potential receivers being ready. Shared bounded variables carry payloads. Adapters determine when payloads are stored, consumed, overwritten, or lost. An idealized sequential pipeline would hide these distinctions. A successful result must be tied to request/sample records, not inferred from an arbitrary sequence of PHY, MAC, and SDN notifications.
+
+\section{Request-Correlated Service Completion}\label{sec:completion}
+APP separates request construction, emission, pending admission, accepted service, accepted degraded service, and terminal outcomes. The relative service clock resets on actual request emission. Building a request, obtaining admission or a grant, and receiving a command ACK do not reset it. Admission waiting time therefore remains part of the service budget.
+
+The result job binds the admitted request ID to a matching PHY measurement. At acquisition completion, it stores sample quality and resets sample age. Later global KPI updates cannot overwrite that stored sample. The token enters the numerical queue at rank equal to pre-insertion occupancy plus one. Background arrivals join behind it. Eligible shared service decreases rank; service at rank one dispatches this token. A full insertion fails the job and records overflow. An unrelated grant cannot advance the result through these stages.
+
+Dispatch enables a transmission attempt; the intervening wait is not separately bounded. Once the attempt begins, transport may deliver through a binary APP handshake or lose the token within one abstract time unit. There is no result-transport retry. Cancellation disables delivery and retires remaining work. Figure~\ref{fig:app-automaton} displays application outcomes; the result job, measurement, and queue processes are separate automata, not hidden APP locations. The APP criticality and aggregate templates are zero-transition placeholders, not implemented criticality or aggregation algorithms.
+
+\begin{figure}[tb]
+\centering\includegraphics[width=\textwidth]{\figpath app.pdf}
+\caption{Selected paths of \code{u0\_app\_A\_REQ}, S. \code{Completed} requires matching receipt. Rejection, failure, timeout, and cancellation remain distinct; \code{AcceptedDegraded} paths and supplementary loops are omitted and documented.}\label{fig:app-automaton}
+\end{figure}
+
+Let $I$ abbreviate the full identity/causal-history predicate: the request is active and admitted; request, admission, job, sample, and transport identities match; the sample was produced, enqueued, dispatched, and transmission-attempted without an earlier receipt, cancellation, or relevant failure. Let $Q$ denote acceptable stored quality. The strict UAV completion condition is
+\begin{equation}
+G_{success}=I\land Q\land(a_{sample}<5)\land(a_{service}\le40).
+\label{eq:success}
+\end{equation}
+This is an explanatory abbreviation, not a replacement query. The bundle preserves the complete emitted predicate and assignments. The quality mapping distinguishes strict, normal, and relaxed requirements and retains its consistency exclusions.
+
+At sample age exactly five, the sample is stale and fails strict freshness. At service age exactly 40, the model allows either suitable receipt or timeout nondeterministically; later receipt cannot produce success. Clocks continue to advance after completion. Queries must therefore inspect immutable receipt flags and age bands recorded on the delivery edge, rather than require a completed request's live clock to remain below 40 forever.
+
+Five terminal categories are explicit: \code{Completed}, \code{Rejected}, \code{ServiceFailed}, \code{ServiceTimeout}, and \code{Cancelled}. Bounded termination in their union is weaker than bounded success. Existential success is weaker than success of every emitted request. Internal acquisition failure, loss, and optional service remain even under nominal external inputs.
+
+\section{Properties and Verification Evidence}\label{sec:verification}
+The structural obligations are deadlock freedom, queue safety, and bounded recovery attempts:
+\begin{align}
+&A[]\;\neg deadlock,\label{eq:deadlock}\\
+&A[]\;(0\le q_i\land q_i\le K_i),\label{eq:queue}\\
+&A[]\;(attempts_i\le attempts_i^{max}).\label{eq:attempts}
+\end{align}
+Finite declarations do not by themselves prove the intended bounds in Eqs.~\ref{eq:queue}--\ref{eq:attempts}. Permitting $K+1$ makes overflow observable. Unreachability of an observer error also need not guarantee progress: trigger reachability, deadlock, and time-convergent behavior must be assessed separately.
+
+Bounded response has the intended form
+\begin{equation}
+request\xrightarrow{\le D} outcome.
+\end{equation}
+This is mathematical notation, not literal UPPAAL syntax. Actual formulas use model locations, clocks, and retrospective records. Start/end events, clock resets, admissible outcomes, and progress assumptions belong to the claim. Success and terminal handling cannot share a verdict merely because they use the same deadline.
+
+\begin{table}[t]
+\caption{Evidence classes and their scope. Inconclusive runs provide no property verdict.}\label{tab:evidence}
+\centering\small
+\begin{tabularx}{\textwidth}{@{}lXX@{}}
+\toprule Scope & Observation & Interpretation\\\midrule
+H, queue safety & Violated; five arrivals reach $q=5$ at $K=4$ & Negative result on H only\\
+H, MAC response & Time-divergent argument & Local ACK/timeout, not APP success\\
+F, $N=1\ldots4$ & 18 verdicts, 72 timeouts & Finite measured campaign\\
+S, successful path & 100 transitions, replay of 101 states & One feasible completion\\
+S, first MC campaign & Eleven timeout/null attempts & No completed exhaustive verdict\\
+S/Hnom protocol & Six queries not executed & No additional result\\\bottomrule
+\end{tabularx}
+\end{table}
+
+The historical queue counterexample reaches five after five arrivals without service at capacity four. Four command ACKs occur but do not drain the queue. Run \code{p3-20260923-003-02-C01-queue} completed with a violated verdict in 19.439 seconds and recorded peak memory 182.918 MiB. Queue-full reachability on H also completed with a satisfied verdict in 17.223 seconds. These are concrete behavioral results for H, not properties transferred to S.
+
+The historical core decision accepts qualified evidence with explicit exceptions. The MAC send-to-ACK/timeout argument gives a bound of three on time-divergent executions. It is a mathematical argument, not a satisfied full-model universal APP query. The unconditional leads-to query from active ACK waiting to its termination (by ACK or timeout) was violated. The evidence index links claims to their runs or arguments and review decisions. Static checks and proofs are not relabeled as machine verdicts.
+
+The first exhaustive campaign on S used native Windows UPPAAL 5.0.0 (revision 714BA9DB36F49691) and eleven 600-second per-query attempts. Every attempt ended with \code{timeout} and a null verdict. Aggregate measured wall time was 6607.4778455 seconds against a declared 6600-second budget; the preserved record discloses a guard failure and manual stop. This overrun is a protocol deviation, not extra property evidence. No diagnostic counterexample or completed verdict was obtained. The set also leaves queue/recovery-attempt coverage and universal successful response open.
+
+A subsequent six-slot protocol separates request reachability, matching admission, a correct success witness within 40, universal success within 40, pre-terminal deadlock, and bounded terminal handling on original S. Hnom, its nominal variant, restricts external faults/load while retaining internal loss and optional service. It is a diagnostic restriction, not an established sufficient-success assumption. No slot has been executed at this manuscript revision; the integration record documents the technical execution blocker.
+
+Each machine claim in the evidence index retains run ID, execution status, verdict, model/query SHA256, and exact tool version. Commands, parameters, instance vectors, hardware, timing, memory observations, stdout/stderr, and available traces remain in the original artifacts. Similar formulas can concern different queue abstractions or notions of completion, making exact identity essential.
+
+\section{Finite-Family Scalability Experiment}\label{sec:scalability}
+The resource experiment uses F, not S. It varies the UAV copies from one to four with one shared arbiter. Fixed-$u_0$ predicates are separated from growing global predicates and per-UAV service reachability. Thus increasing the number of entities in a property is not silently treated as changing model size alone.
+
+Thirty model/query cells were attempted three times, giving 90 scientific runs. The native host used an AMD Ryzen 5 1400, eight logical processors, approximately 15.93 GiB physical RAM, and Windows 11 build 26200. UPPAAL was 5.0.0, revision 714BA9DB36F49691. The search limit was 60 seconds with a sampled 2048 MiB memory stop. Times include verifier overhead and trace writing; timeout wall times are about 62 seconds because termination and cleanup are observed. Generation and compile-only costs are recorded separately.
+
+\begin{table}[t]
+\caption{Family outcomes and joint-backlog reachability. Times summarize only completed observations; timeouts are censored.}\label{tab:scalability}
+\centering\small
+\begin{tabular}{@{}rrrrrl@{}}
+\toprule $N$ & Processes & Attempts & Verdicts & Timeouts & Backlog median (range), s\\\midrule
+1 & 50 & 18 & 12 & 6 & 2.792 (1.986--3.241)\\
+2 & 99 & 21 & 3 & 18 & 15.335 (9.249--18.804)\\
+3 & 148 & 24 & 3 & 21 & 43.503 (27.799--58.968)\\
+4 & 197 & 27 & 0 & 27 & No completed observation\\\midrule
+All & & 90 & 18 & 72 &\\\bottomrule
+\end{tabular}
+\end{table}
+
+The completed results comprise 12 satisfied and six violated verdicts. At $N=1$, queue-full reachability is satisfied in all repeats, while local and family queue safety are violated. Their median times are 12.467, 12.739, and 13.198 seconds, respectively. Joint-backlog reachability completes for $N=1,2,3$ and times out for $N=4$ (Table~\ref{tab:scalability}). All 30 service-reachability attempts time out. This establishes neither absence of service nor successful delivery. F's service predicate also differs from S's later correlated-result predicate.
+
+No run stopped at the memory threshold. The largest recorded target-process memory observation is 231.23 MiB. It is an observed peak during a bounded attempt, not an estimate of memory needed to finish an inconclusive query. Maximum measured sampling gap is 0.618 seconds despite a requested 50 ms interval; the monitor is not a hard allocation bound. Completed-run medians are conditional summaries, and substituting the timeout limit into a mean would misrepresent censored costs.
+
+The data show a practical cost increase for these predicates and this search configuration. They do not establish a universal tractability boundary, asymptotic complexity, or a cutoff that would let smaller networks represent arbitrary $N$. The tested range $N\le4$ is an experimental boundary only.
+
+Glonina's scheduling work supports scalable reasoning under explicit restrictions on components and composition \cite{glonina_thesis_2021,glonina_correctness_2018}. Deterministic scheduling and fixed task/transmission durations support equivalent executions in that model class, with correctness established through component contracts. Parameter reductions impose restrictions on clock/parameter comparisons and synchronized resets. A parameter-valuation bound is not a bound on network size, and a locally valid reduction need not survive composition.
+
+Our shared arbiter, numerical queues, clock-dependent measurements, loss choices, and optional service have not been shown to satisfy these premises. No transfer argument exists here for S. We identify this method as a direction for further work without borrowing an unbounded-instance guarantee. Simulation cost in a scheduler study and exhaustive UPPAAL cost in this campaign are different measurements.
+
+\section{Two Traced Service Scenarios}\label{sec:scenario}
+The successful scenario runs on full S. The engine selected 100 transitions; an independent engine replay accepted 101 states with complete location/integer vectors, selected edges, and consistent clock zones. The evidence IDs have prefix \code{uav-completion-82-20261002-}, with suffixes \code{simulate-006} and \code{replay-001}. Neither execution is assigned an exhaustive property verdict.
+
+\begin{table}[t]
+\caption{Successful S replay milestones. State numbers are trace indices, not elapsed time.}\label{tab:scenario}
+\centering\small
+\begin{tabularx}{\textwidth}{@{}rXX@{}}
+\toprule State & Event & Meaning\\\midrule
+4 & APP emits request & Request ID established; service age reset\\
+62 & Matching admission & Permission to proceed, not completion\\
+84 & PHY measurement completes & Sample stored; sample age reset\\
+85 & Result enters queue & Token rank established\\
+96 & Eligible MAC service & Matching token dispatched\\
+99 & Transport attempt & Delivery remains a separate choice\\
+100 & APP receives fresh matching result & Completed; success record set\\\bottomrule
+\end{tabularx}
+\end{table}
+
+At receipt, global time is 15, request age is exactly 14, and sample age is in $[4,5)$. Acquisition occurred in $(10,11]$ within the same consistent replay zone. All correlated IDs are one and stored quality satisfies the strict request. The trace exercises the path from sensing through queue service to receipt. It needs no PHY-command ACK on the healthy path: original communication/joint service eligibility suffices. ACK is therefore not a delivery witness.
+
+Two negative replay controls assess trace fidelity. Changing the final sample ID yields a discrete-state mismatch; forcing measurement age to zero yields a disjoint clock zone. Both are rejected at the last state after 99 accepted transitions. These controls support consistency, not exhaustive coverage or a universal SLA. A separate archived exploration reached receipt at sample age five and selected \code{ServiceFailed}; its overall search ended with an error after branch-cap exhaustion and remains diagnostic evidence.
+
+The rejection scenario uses F at $N=1$, with 50 processes. A 63-transition trace links PHY degradation, shared telemetry, MAC/SDN reactions, APP rejection, and an SLA report. Request-to-rejection is four abstract units; violation-to-report is zero. This explains an allowed negative outcome, not a packet traversing a mandatory linear four-layer pipeline. Its model hash differs from S, so the trace cannot be transferred automatically to the current revision.
+
+The two scenarios explain how the abstractions are used and how outcomes differ. They also expose the remaining gap: one successful execution and one rejection execution do not prove success of every request. An accepted end-to-end claim needs applicable verification evidence and a review of its assumptions.
+
+\section{Discussion and Reproducibility}\label{sec:discussion}
+Explicit event identity is more informative than generic outcome labels. Without identity and stored sample quality, admission, control response, or an unrelated fresh KPI can be mistaken for fulfillment of a request. The result job makes these mistakes visible, adds state, and introduces obligations that historical results do not discharge. We do not infer a numerical increase in reachable states from the extra process alone.
+
+The model should complement conventional simulation. A practical workflow would calibrate parameter ranges from radio analysis or independent traces, explore corner cases symbolically, and replay informative scenarios in a packet/system simulator. NS-3 or OMNeT++ \cite{ns3_manual,omnetpp_manual} could supply external traffic and service observations; their presence alone would not validate the timed abstraction. Exchanged quantities need units, IDs, timestamp semantics, and thresholds. This package provides model-side identities and traces; empirical coupling remains future work.
+
+Statistical model checking is a plausible quantitative extension. UPPAAL SMC supports simulation-based analysis under stochastic semantics \cite{uppaal_smc_2015}. Justified distributions for acquisition failures, losses, arrivals, and service durations would enable estimation of deadline-success probability with declared confidence/error parameters. Priced models could accumulate energy or resource cost. Neither rates nor expected costs can be extracted from current nondeterministic choices without extra assumptions. Statistical estimates also answer different questions from universal exhaustive verification.
+
+Material limits remain: no physical calibration, no complete abstraction-soundness proof, no universal successful-response guarantee for S, and no unbounded-family transfer theorem. The eleven S timeouts leave structural obligations open. P4 provides measured observations rather than an accepted general scalability result. Historical review decisions retain their original scope; artifact availability, technical checks, scientific acceptance, and manuscript inclusion are recorded separately.
+
+\paragraph{Reproduction.}
+The canonical repository is \url{https://github.com/artmus208/uppaal_sdn_isac}. Its integration package for 3 October 2026 contains an evidence index, build procedure, vector figures and transition catalogues, editable TeX/BibTeX, Word export, reviewer response, and checks. Historical artifacts remain in their original directories. Operational input commit is \code{452571598d4a}; S's scientific input is \code{61386aa358805}. Full identifiers and the final manuscript revision are recorded in the package. Rebuilding the paper does not rerun the verifier.
+
+\section{Conclusion}\label{sec:conclusion}
+We presented an executable timed-automata hierarchy for abstract SDN-managed ISAC orchestration with request-correlated sensing-result completion. The current 51-process configuration distinguishes successful receipt from admission, rejection, failure, timeout, and cancellation. Evidence includes a historical overflow counterexample, a family campaign with 18 verdicts and 72 timeouts, and a successful 100-transition execution on the current model. Eleven exhaustive attempts on that model provide no verdict within their limits. The package makes behavior and computational limits inspectable while universal success, complete structural verification, and physical adequacy remain unresolved. Further scientific progress requires targeted assumptions or justified reductions and independently reviewed evidence.
+
+\begin{credits}
+\subsubsection{AI assistance} OpenAI Codex was used on 3 October 2026 for manuscript editing, literature checks, document preparation, and consistency checks against archived computational evidence. Task instructions and check records are retained with the submission materials. AI assistance is not independent scientific peer review.
+\subsubsection{\discintname} The authors have no competing interests to declare that are relevant to the content of this article.
+\end{credits}
+\bibliographystyle{splncs04}
+\bibliography{monotec2026}
+\end{document}
