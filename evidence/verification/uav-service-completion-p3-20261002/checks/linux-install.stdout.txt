@@ -1,0 +1,3 @@
+Obtaining file:///mnt/d/uppaal_mcp/.workstreams/issue87
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'error'

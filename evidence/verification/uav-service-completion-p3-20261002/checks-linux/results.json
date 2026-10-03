@@ -1,0 +1,144 @@
+[
+  {
+    "name": "coordination",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.35277512500010744,
+    "stdout": "checks-linux/coordination.stdout.txt",
+    "stderr": "checks-linux/coordination.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "historical-hashes",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "scripts/check_coordination.py",
+      "--audit-hashes",
+      "--commit",
+      "HEAD",
+      "--output",
+      "/mnt/d/uppaal_mcp/.workstreams/issue87/evidence/verification/uav-service-completion-p3-20261002/checks-linux/historical-hashes.json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 12.79235900499998,
+    "stdout": "checks-linux/historical-hashes.stdout.txt",
+    "stderr": "checks-linux/historical-hashes.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "candidate-generation",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "evidence/instantiation/uav-service-completion-candidate/generate.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.6047954460000255,
+    "stdout": "checks-linux/candidate-generation.stdout.txt",
+    "stderr": "checks-linux/candidate-generation.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "candidate-audit",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "evidence/instantiation/uav-service-completion-candidate/audit.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 2.8788001689999874,
+    "stdout": "checks-linux/candidate-audit.stdout.txt",
+    "stderr": "checks-linux/candidate-audit.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "software-suite",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 176.6901315130001,
+    "stdout": "checks-linux/software-suite.stdout.txt",
+    "stderr": "checks-linux/software-suite.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "mcp-smoke",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 4.26647739200007,
+    "stdout": "checks-linux/mcp-smoke.stdout.txt",
+    "stderr": "checks-linux/mcp-smoke.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "examples",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-B",
+      "-m",
+      "uppaal_mcp.cli",
+      "list-examples"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.2589687549998416,
+    "stdout": "checks-linux/examples.stdout.txt",
+    "stderr": "checks-linux/examples.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "diff-check",
+    "command": [
+      "git",
+      "-C",
+      "/mnt/d/uppaal_mcp/.workstreams/issue87",
+      "diff",
+      "--check",
+      "46bf268c66d6ec2c106ae4ce8e8d5f893315ad91"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 6.192541676000019,
+    "stdout": "checks-linux/diff-check.stdout.txt",
+    "stderr": "checks-linux/diff-check.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "software-suite-authorized",
+    "command": [
+      "/tmp/issue87-linux-venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "sandbox": "require_escalated",
+    "exit_code": 0,
+    "elapsed_seconds": 135.295,
+    "stdout": "checks-linux/software-suite-authorized.stdout.txt",
+    "stderr": "checks-linux/software-suite-authorized.stderr.txt",
+    "evidence_kind": "software_tests"
+  }
+]

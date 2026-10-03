@@ -1,0 +1,23 @@
+{
+  "run_id": "001-a58e30073ead4b3bb01f3fcde5d8faf5",
+  "started_at": "2026-10-02T08:18:45.545729+00:00",
+  "command": [
+    "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-02-measurement-attempt01-20261002\\attempts\\001-a58e30073ead4b3bb01f3fcde5d8faf5\\trace",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-02-measurement-attempt01-20261002\\model.xml",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-02-measurement-attempt01-20261002\\query-001.q"
+  ],
+  "cwd": "D:\\UPPAAL\\app\\bin",
+  "model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+  "query_hash": "ceaf3bf6ea788bd8679e801c9238b2f634c6d45445ccc8be2a28db175176f409",
+  "formula": "E<> c82_sampled",
+  "session": "3c16a372d4cb4852bdd7d9137d330458",
+  "timeout_seconds": 600,
+  "memory_stop_bytes": 8552185856,
+  "pid": 2208
+}

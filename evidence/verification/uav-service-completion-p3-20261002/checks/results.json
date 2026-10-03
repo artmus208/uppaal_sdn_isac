@@ -1,0 +1,143 @@
+[
+  {
+    "name": "coordination",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.1815502000001743,
+    "stdout": "checks/coordination.stdout.txt",
+    "stderr": "checks/coordination.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "historical-hashes",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "scripts/check_coordination.py",
+      "--audit-hashes",
+      "--commit",
+      "HEAD",
+      "--output",
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\checks\\historical-hashes.json"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 5.633999799999856,
+    "stdout": "checks/historical-hashes.stdout.txt",
+    "stderr": "checks/historical-hashes.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "candidate-generation",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "evidence/instantiation/uav-service-completion-candidate/generate.py",
+      "--check"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 0.4131191999999828,
+    "stdout": "checks/candidate-generation.stdout.txt",
+    "stderr": "checks/candidate-generation.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "candidate-audit",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "evidence/instantiation/uav-service-completion-candidate/audit.py"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 0.35506600000007893,
+    "stdout": "checks/candidate-audit.stdout.txt",
+    "stderr": "checks/candidate-audit.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "candidate-controls",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "evidence/instantiation/uav-service-completion-candidate",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.295237199999974,
+    "stdout": "checks/candidate-controls.stdout.txt",
+    "stderr": "checks/candidate-controls.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "software-suite",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 1,
+    "elapsed_seconds": 90.56876220000004,
+    "stdout": "checks/software-suite.stdout.txt",
+    "stderr": "checks/software-suite.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "mcp-smoke",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 1.5845596999999998,
+    "stdout": "checks/mcp-smoke.stdout.txt",
+    "stderr": "checks/mcp-smoke.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "examples",
+    "command": [
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "uppaal_mcp.cli",
+      "list-examples"
+    ],
+    "exit_code": 0,
+    "elapsed_seconds": 0.34183680000001004,
+    "stdout": "checks/examples.stdout.txt",
+    "stderr": "checks/examples.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  },
+  {
+    "name": "diff-check",
+    "command": [
+      "C:/Program Files/Git/bin/git.exe",
+      "-C",
+      "D:\\uppaal_mcp\\.workstreams\\issue87",
+      "diff",
+      "--check",
+      "46bf268c66d6ec2c106ae4ce8e8d5f893315ad91"
+    ],
+    "exit_code": 2,
+    "elapsed_seconds": 0.09972190000007686,
+    "stdout": "checks/diff-check.stdout.txt",
+    "stderr": "checks/diff-check.stderr.txt",
+    "evidence_kind": "software_or_static_validation"
+  }
+]

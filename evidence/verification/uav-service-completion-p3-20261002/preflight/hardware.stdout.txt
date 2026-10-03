@@ -1,0 +1,5 @@
+{
+    "Name":  "AMD Ryzen 5 1400 Quad-Core Processor           ",
+    "NumberOfCores":  4,
+    "NumberOfLogicalProcessors":  8
+}

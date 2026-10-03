@@ -1,0 +1,23 @@
+{
+  "run_id": "001-e50441afd4e947d7a1aae37356e9656d",
+  "started_at": "2026-10-02T09:39:59.634805+00:00",
+  "command": [
+    "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-10-completion-safety-attempt01-20261002\\attempts\\001-e50441afd4e947d7a1aae37356e9656d\\trace",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-10-completion-safety-attempt01-20261002\\model.xml",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-10-completion-safety-attempt01-20261002\\query-001.q"
+  ],
+  "cwd": "D:\\UPPAAL\\app\\bin",
+  "model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+  "query_hash": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+  "formula": "A[] (u0_app_Req_0.Completed imply (c82_success && c82_received && c82_admitted && c82_request_id==c82_received_request_id && c82_sample_id==c82_received_sample_id && c82_job_id==c82_request_id && c82_admitted_id==c82_request_id && c82_tx_request_id==c82_request_id && c82_tx_sample_id==c82_sample_id && c82_payload_quality() && c82_req_fresh==2 && c82_req_update==2 && c82_sample_request_id==c82_request_id && c82_enqueued && c82_dispatched && c82_attempted && c82_sampled && c82_receipt_timely && c82_receipt_quality && c82_receipt_sample_band==0 && c82_receipt_service_band>0 && !c82_cancelled && !c82_sensing_failed && !c82_tx_lost && !c82_queue_failed && c82_outcome==1))",
+  "session": "80e3a602eaca4f6d96a4bc86313df514",
+  "timeout_seconds": 600,
+  "memory_stop_bytes": 8552185856,
+  "pid": 13988
+}

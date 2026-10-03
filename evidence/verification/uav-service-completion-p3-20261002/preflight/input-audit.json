@@ -1,0 +1,1483 @@
+{
+  "manifest_hash": "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d",
+  "scope": {
+    "N": 1,
+    "composition": "PHY || MAC || SDN || APP || ENV || OBS || ResultJob",
+    "other_N_included": [],
+    "processes": 51,
+    "requests": 1,
+    "results": 1
+  },
+  "checks": [
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/model.xml",
+      "expected": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "actual": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385"
+    },
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/instance-vector.json",
+      "expected": "69b5105223a5dd3a2bae34513f6126416fdb15fad0b99a6b405f977332feddad",
+      "actual": "69b5105223a5dd3a2bae34513f6126416fdb15fad0b99a6b405f977332feddad"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/generate.py",
+      "expected": "a5310747b9e2f1b837d0fefdff26d04c9218b7f22a87672bfaa13e7ee58e0ba2",
+      "actual": "a5310747b9e2f1b837d0fefdff26d04c9218b7f22a87672bfaa13e7ee58e0ba2"
+    },
+    {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/input-hashes.json",
+      "expected": "aca3724e77a9061ef7fa98e22d38c088fe05669da557bf0afc0b706ca8a9e5bd",
+      "actual": "aca3724e77a9061ef7fa98e22d38c088fe05669da557bf0afc0b706ca8a9e5bd"
+    },
+    {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/instance-inventory.json",
+      "expected": "1e50f63437f9f787f9670a8cfee40450a7c127ec49e58661277b6bb7fa86fc17",
+      "actual": "1e50f63437f9f787f9670a8cfee40450a7c127ec49e58661277b6bb7fa86fc17"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/instance-vector.json",
+      "expected": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c",
+      "actual": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c"
+    },
+    {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/machine-evidence-inventory.json",
+      "expected": "772c69716261b7ead3cbdf5411328ecf461f11d802ef6f4ea6ea9f7928207378",
+      "actual": "772c69716261b7ead3cbdf5411328ecf461f11d802ef6f4ea6ea9f7928207378"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/model.xml",
+      "expected": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+      "actual": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/parameters.json",
+      "expected": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a",
+      "actual": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a"
+    },
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/parameters.json",
+      "expected": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18",
+      "actual": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18"
+    },
+    {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/parameter-inventory.json",
+      "expected": "d4448839e66b2e7dfc9d4d9085a2b794e7975b3a8a48a4842ca7580287ccdaac",
+      "actual": "d4448839e66b2e7dfc9d4d9085a2b794e7975b3a8a48a4842ca7580287ccdaac"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/admitted.q",
+      "expected": "40794bff7b5afc7a2e8de7a3a353826c409b5396d6441fa5541c4aaff7fbb106",
+      "actual": "40794bff7b5afc7a2e8de7a3a353826c409b5396d6441fa5541c4aaff7fbb106"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/attempt.q",
+      "expected": "738df1dd189ee021898ecf777b3e1f03cfc5f59e82f116556fe6f8cff59840d2",
+      "actual": "738df1dd189ee021898ecf777b3e1f03cfc5f59e82f116556fe6f8cff59840d2"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/cancel.q",
+      "expected": "5265ffc294528d7bc18db8a8146ac3a53cd38a8951e17c9a3d83ced30d4c2298",
+      "actual": "5265ffc294528d7bc18db8a8146ac3a53cd38a8951e17c9a3d83ced30d4c2298"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/completion-safety.q",
+      "expected": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+      "actual": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/deadline-equality.q",
+      "expected": "0e613481a75b4f41db6e5c1a8bb103b28e169f0ee069b5b5fe431a87cffedcb4",
+      "actual": "0e613481a75b4f41db6e5c1a8bb103b28e169f0ee069b5b5fe431a87cffedcb4"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/deadlock.q",
+      "expected": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+      "actual": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/enqueue.q",
+      "expected": "f53c1a24aff330214fd481f8d733f655b6fadc0ee1cd511f99e6a1ed6a0e1157",
+      "actual": "f53c1a24aff330214fd481f8d733f655b6fadc0ee1cd511f99e6a1ed6a0e1157"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/loss.q",
+      "expected": "cc7fcd3791741da3b6df29a6e91cad409773a16d6424a4d85aceaa33cd5a618f",
+      "actual": "cc7fcd3791741da3b6df29a6e91cad409773a16d6424a4d85aceaa33cd5a618f"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/measurement.q",
+      "expected": "ceaf3bf6ea788bd8679e801c9238b2f634c6d45445ccc8be2a28db175176f409",
+      "actual": "ceaf3bf6ea788bd8679e801c9238b2f634c6d45445ccc8be2a28db175176f409"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/success.q",
+      "expected": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+      "actual": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/timeout.q",
+      "expected": "139271712e0e0144bcf7471257bf9e99d9e7f2779a20006bcfe1e6803a5798d9",
+      "actual": "139271712e0e0144bcf7471257bf9e99d9e7f2779a20006bcfe1e6803a5798d9"
+    },
+    {
+      "path": "evidence/governance/uav-service-completion-baseline-20261002/query-inventory.json",
+      "expected": "edcd0c74e05571edd2af28f56dea8982f702141006e5a96825841eceb0fa05c3",
+      "actual": "edcd0c74e05571edd2af28f56dea8982f702141006e5a96825841eceb0fa05c3"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/source-index.json",
+      "expected": "7b73699f2e6498a674c6af5bec4f40f59bbf878ab8e5516cf8217711912ac32e",
+      "actual": "7b73699f2e6498a674c6af5bec4f40f59bbf878ab8e5516cf8217711912ac32e"
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/result.json",
+      "expected": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0",
+      "actual": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0"
+    },
+    {
+      "path": "CONTRIBUTING-v2.md",
+      "expected_scientific_commit": "a2405dbc79a8b2c53e8262739490fd5c151a6074d16a57946bb3230f8d426b54",
+      "actual_checkout": "a2405dbc79a8b2c53e8262739490fd5c151a6074d16a57946bb3230f8d426b54",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "expected_scientific_commit": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+      "actual_checkout": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/.gitattributes",
+      "expected_scientific_commit": "dc814b73f33f8365a90b3781ce7f1965760a98e26fdd743fe35ceee2f70338a0",
+      "actual_checkout": "dc814b73f33f8365a90b3781ce7f1965760a98e26fdd743fe35ceee2f70338a0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/CausalReplay.java",
+      "expected_scientific_commit": "89c3dd2afa3f4b4662cad625640cec7ab5bf522534fcfa06a14a259152bb1abf",
+      "actual_checkout": "89c3dd2afa3f4b4662cad625640cec7ab5bf522534fcfa06a14a259152bb1abf",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/HANDOFF.md",
+      "expected_scientific_commit": "a701fc5e486c8ba9c8e7a28339b7f839eb6eac30854ac0fd683d4b2e4bf3709f",
+      "actual_checkout": "a701fc5e486c8ba9c8e7a28339b7f839eb6eac30854ac0fd683d4b2e4bf3709f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/PROTOCOL.md",
+      "expected_scientific_commit": "365470b7573412c724a74025cd7b6359c39d8917ebc147a009588db4b60ca125",
+      "actual_checkout": "365470b7573412c724a74025cd7b6359c39d8917ebc147a009588db4b60ca125",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/README.md",
+      "expected_scientific_commit": "25a54ad5338bdcc55d2110b3240d7bf14f2b6e63b61853b7ea4413cb0d75dc90",
+      "actual_checkout": "25a54ad5338bdcc55d2110b3240d7bf14f2b6e63b61853b7ea4413cb0d75dc90",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/artifacts-sha256.json",
+      "expected_scientific_commit": "8b8251948d1f9bad5e59ab5f4044c08905a7db4e658f615037ade073fd475f0b",
+      "actual_checkout": "8b8251948d1f9bad5e59ab5f4044c08905a7db4e658f615037ade073fd475f0b",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/assignment.json",
+      "expected_scientific_commit": "9393e2aee618178c43540848aa5993d7db65025b35c498dc41a8727b0f051899",
+      "actual_checkout": "9393e2aee618178c43540848aa5993d7db65025b35c498dc41a8727b0f051899",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/audit.py",
+      "expected_scientific_commit": "edfd0555760b946bb2d58e5c1f284dcf26527cd704bd7eeeb0583dabe4473141",
+      "actual_checkout": "edfd0555760b946bb2d58e5c1f284dcf26527cd704bd7eeeb0583dabe4473141",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/changes.json",
+      "expected_scientific_commit": "eed60097badf7169949f20052e417b1838a710db1af10b116a21f9c6971f1405",
+      "actual_checkout": "eed60097badf7169949f20052e417b1838a710db1af10b116a21f9c6971f1405",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/cli-smoke.txt",
+      "expected_scientific_commit": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+      "actual_checkout": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/cli-version-corrected.txt",
+      "expected_scientific_commit": "710a95c98ce39fdd8008037a0dac669aa6a5451e38ed42b9cc6d9745bdc735dc",
+      "actual_checkout": "710a95c98ce39fdd8008037a0dac669aa6a5451e38ed42b9cc6d9745bdc735dc",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/cli-version-unsandboxed.txt",
+      "expected_scientific_commit": "db63e0ce45c83d8d91fe6251ccffd3b8d2ced7bf684a1dda88f962b6cee371cd",
+      "actual_checkout": "db63e0ce45c83d8d91fe6251ccffd3b8d2ced7bf684a1dda88f962b6cee371cd",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/cli-version.txt",
+      "expected_scientific_commit": "3461f992d8cbb66ae9d9ddedbc8c2ab15cbb7e8cbb908c4b6ec509c88d0a70d0",
+      "actual_checkout": "3461f992d8cbb66ae9d9ddedbc8c2ab15cbb7e8cbb908c4b6ec509c88d0a70d0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/coordination.txt",
+      "expected_scientific_commit": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d",
+      "actual_checkout": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/diff-check.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/evidence-audit.txt",
+      "expected_scientific_commit": "c8bd224aed4a97e3bbefd990ea6ca075a727aa67a47ba7f2822297a27312d424",
+      "actual_checkout": "c8bd224aed4a97e3bbefd990ea6ca075a727aa67a47ba7f2822297a27312d424",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/generation.txt",
+      "expected_scientific_commit": "2b78c4f0fa22d1a1018ca4a4b4c28ebb116cadf475726e62442f399adaca9026",
+      "actual_checkout": "2b78c4f0fa22d1a1018ca4a4b4c28ebb116cadf475726e62442f399adaca9026",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/install.txt",
+      "expected_scientific_commit": "aa2f5ff7834bef858413bf3a16c60a2e090c8ceb588b62f0e3ba677297fbf608",
+      "actual_checkout": "aa2f5ff7834bef858413bf3a16c60a2e090c8ceb588b62f0e3ba677297fbf608",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/mcp-smoke.txt",
+      "expected_scientific_commit": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+      "actual_checkout": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/mcp-startup-unsandboxed.txt",
+      "expected_scientific_commit": "a74d3b676008d399dd3acd80d898d5480723cf3c7aa61d280b1e3939af3d3a07",
+      "actual_checkout": "a74d3b676008d399dd3acd80d898d5480723cf3c7aa61d280b1e3939af3d3a07",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/regression-final.txt",
+      "expected_scientific_commit": "45dd082f7fedcd94b2569aed5bcf84b6c160274386b107016c53b0177224fed0",
+      "actual_checkout": "45dd082f7fedcd94b2569aed5bcf84b6c160274386b107016c53b0177224fed0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/regression.txt",
+      "expected_scientific_commit": "257575cf40da731d5fe31fae7fc1f9092dfa31b5f873af3b5bc7fd08c5f7fb86",
+      "actual_checkout": "257575cf40da731d5fe31fae7fc1f9092dfa31b5f873af3b5bc7fd08c5f7fb86",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/repository-tests-unsandboxed.txt",
+      "expected_scientific_commit": "e9f932c4f035ca7817697504a545ecde38456aca6ade408ac0548063a2405032",
+      "actual_checkout": "e9f932c4f035ca7817697504a545ecde38456aca6ade408ac0548063a2405032",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/repository-tests.txt",
+      "expected_scientific_commit": "8f0b548bbd673561f36420bb47eb3fe23b84f0d98818b6fbb1614504ce11194d",
+      "actual_checkout": "8f0b548bbd673561f36420bb47eb3fe23b84f0d98818b6fbb1614504ce11194d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/scope.json",
+      "expected_scientific_commit": "21f1fd2a1417e237a6e23a33aee51d71124902f08b8ded5c41607074f8ca4227",
+      "actual_checkout": "21f1fd2a1417e237a6e23a33aee51d71124902f08b8ded5c41607074f8ca4227",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/checks/validation.json",
+      "expected_scientific_commit": "145d785653876a4a80a40ada405e35f28307ebe3782f57b5f7c0c055bb276b9d",
+      "actual_checkout": "145d785653876a4a80a40ada405e35f28307ebe3782f57b5f7c0c055bb276b9d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/cleanup.ps1",
+      "expected_scientific_commit": "8b0ed7aa64cd2bd7b389c5f090402a3808cf1edd71f72ccbea706a80fb0a7a4e",
+      "actual_checkout": "8b0ed7aa64cd2bd7b389c5f090402a3808cf1edd71f72ccbea706a80fb0a7a4e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/compile.json",
+      "expected_scientific_commit": "b13639dae9d3c9a1d10b80c7341fdec23bd3c7931d1f6b5ce8448df08ea3b85d",
+      "actual_checkout": "b13639dae9d3c9a1d10b80c7341fdec23bd3c7931d1f6b5ce8448df08ea3b85d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/compile.stderr.txt",
+      "expected_scientific_commit": "3ecf827479ca76a6a3e9f3adf1dbd1e30cb8b2b00c9d98d24aada341580e5b8c",
+      "actual_checkout": "3ecf827479ca76a6a3e9f3adf1dbd1e30cb8b2b00c9d98d24aada341580e5b8c",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/compile.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/completion-record.json",
+      "expected_scientific_commit": "6ac539e5ddde6b0173f58e30ce3ec2c36658ddc449df9fc012adbb2a58c3e831",
+      "actual_checkout": "6ac539e5ddde6b0173f58e30ce3ec2c36658ddc449df9fc012adbb2a58c3e831",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/contract.md",
+      "expected_scientific_commit": "611922f58f16da92db1489e5fef06d4cfb994a9f2c8bcefacafeab302fc503ac",
+      "actual_checkout": "611922f58f16da92db1489e5fef06d4cfb994a9f2c8bcefacafeab302fc503ac",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/generate.py",
+      "expected_scientific_commit": "a5310747b9e2f1b837d0fefdff26d04c9218b7f22a87672bfaa13e7ee58e0ba2",
+      "actual_checkout": "a5310747b9e2f1b837d0fefdff26d04c9218b7f22a87672bfaa13e7ee58e0ba2",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/instance-vector.json",
+      "expected_scientific_commit": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c",
+      "actual_checkout": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/inventory.json",
+      "expected_scientific_commit": "403655110fa687ebf999d1a7c79fdd1372d6d472041ad0ab73178f731b339e8b",
+      "actual_checkout": "403655110fa687ebf999d1a7c79fdd1372d6d472041ad0ab73178f731b339e8b",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/model-load.json",
+      "expected_scientific_commit": "0c594ac133322c45c0f6b2ac8ac308572079262584a4cc1e2167b07e2118b1f0",
+      "actual_checkout": "0c594ac133322c45c0f6b2ac8ac308572079262584a4cc1e2167b07e2118b1f0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/model-load.stderr.txt",
+      "expected_scientific_commit": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "actual_checkout": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/model-load.stdout.txt",
+      "expected_scientific_commit": "8a58d29d1968c637941d73f72f46ecb49cde0d8cea8ac62f4b4dd6f20110698f",
+      "actual_checkout": "8a58d29d1968c637941d73f72f46ecb49cde0d8cea8ac62f4b4dd6f20110698f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/model.xml",
+      "expected_scientific_commit": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+      "actual_checkout": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/native.ps1",
+      "expected_scientific_commit": "3c32c77279a0ebcddf93bd601ab09f4b81319e33e3e47781b8c7c590a3dca7e2",
+      "actual_checkout": "3c32c77279a0ebcddf93bd601ab09f4b81319e33e3e47781b8c7c590a3dca7e2",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/package_evidence.py",
+      "expected_scientific_commit": "ac2e8bfaf9b7bac053b45085b1a07d995cbac1805f2db6dd85819a25c614da6d",
+      "actual_checkout": "ac2e8bfaf9b7bac053b45085b1a07d995cbac1805f2db6dd85819a25c614da6d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/parameters.json",
+      "expected_scientific_commit": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a",
+      "actual_checkout": "64f0425566a2a616ef7855af74335ce77c5a2c59dede5fbc7661e9020a601a7a",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/admitted.q",
+      "expected_scientific_commit": "40794bff7b5afc7a2e8de7a3a353826c409b5396d6441fa5541c4aaff7fbb106",
+      "actual_checkout": "40794bff7b5afc7a2e8de7a3a353826c409b5396d6441fa5541c4aaff7fbb106",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/attempt.q",
+      "expected_scientific_commit": "738df1dd189ee021898ecf777b3e1f03cfc5f59e82f116556fe6f8cff59840d2",
+      "actual_checkout": "738df1dd189ee021898ecf777b3e1f03cfc5f59e82f116556fe6f8cff59840d2",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/cancel.q",
+      "expected_scientific_commit": "5265ffc294528d7bc18db8a8146ac3a53cd38a8951e17c9a3d83ced30d4c2298",
+      "actual_checkout": "5265ffc294528d7bc18db8a8146ac3a53cd38a8951e17c9a3d83ced30d4c2298",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/completion-safety.q",
+      "expected_scientific_commit": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+      "actual_checkout": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/deadline-equality.q",
+      "expected_scientific_commit": "0e613481a75b4f41db6e5c1a8bb103b28e169f0ee069b5b5fe431a87cffedcb4",
+      "actual_checkout": "0e613481a75b4f41db6e5c1a8bb103b28e169f0ee069b5b5fe431a87cffedcb4",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/deadlock.q",
+      "expected_scientific_commit": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+      "actual_checkout": "a53c752ecabf84d28dc0ea1567c0589ffb632777a5ad7178f70be0d2d99e5334",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/enqueue.q",
+      "expected_scientific_commit": "f53c1a24aff330214fd481f8d733f655b6fadc0ee1cd511f99e6a1ed6a0e1157",
+      "actual_checkout": "f53c1a24aff330214fd481f8d733f655b6fadc0ee1cd511f99e6a1ed6a0e1157",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/loss.q",
+      "expected_scientific_commit": "cc7fcd3791741da3b6df29a6e91cad409773a16d6424a4d85aceaa33cd5a618f",
+      "actual_checkout": "cc7fcd3791741da3b6df29a6e91cad409773a16d6424a4d85aceaa33cd5a618f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/measurement.q",
+      "expected_scientific_commit": "ceaf3bf6ea788bd8679e801c9238b2f634c6d45445ccc8be2a28db175176f409",
+      "actual_checkout": "ceaf3bf6ea788bd8679e801c9238b2f634c6d45445ccc8be2a28db175176f409",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/success.q",
+      "expected_scientific_commit": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+      "actual_checkout": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/queries/timeout.q",
+      "expected_scientific_commit": "139271712e0e0144bcf7471257bf9e99d9e7f2779a20006bcfe1e6803a5798d9",
+      "actual_checkout": "139271712e0e0144bcf7471257bf9e99d9e7f2779a20006bcfe1e6803a5798d9",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/raw-index.json",
+      "expected_scientific_commit": "693c327288fa8769180683c5a927ba621c42bc05f82209d3c36d1ce558f2fb2f",
+      "actual_checkout": "693c327288fa8769180683c5a927ba621c42bc05f82209d3c36d1ce558f2fb2f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/raw-traces.zip",
+      "expected_scientific_commit": "1eeac21cdae0aa111e9125158b1d353ae906883d8ad57bcbd0ffc216fc743ab3",
+      "actual_checkout": "1eeac21cdae0aa111e9125158b1d353ae906883d8ad57bcbd0ffc216fc743ab3",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/replay-steps.csv",
+      "expected_scientific_commit": "08a940a48cc5407b57142fa20de16d49a6e20c79678eff8e8cb64f6989db443a",
+      "actual_checkout": "08a940a48cc5407b57142fa20de16d49a6e20c79678eff8e8cb64f6989db443a",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/results.json",
+      "expected_scientific_commit": "4a146c5b61d7bcace8a6910ded125a1506a0fd666c4cea58cb288d95714f0619",
+      "actual_checkout": "4a146c5b61d7bcace8a6910ded125a1506a0fd666c4cea58cb288d95714f0619",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/run.py",
+      "expected_scientific_commit": "0398d44ab9ab306caab2713c19cd547618edea9f6d2deec6a19a7b380fa37b4b",
+      "actual_checkout": "0398d44ab9ab306caab2713c19cd547618edea9f6d2deec6a19a7b380fa37b4b",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/config.json",
+      "expected_scientific_commit": "866973bf84c5cae8e13d95be06753b9e31ac3defb9f2b647cd26302ca8fe19c7",
+      "actual_checkout": "866973bf84c5cae8e13d95be06753b9e31ac3defb9f2b647cd26302ca8fe19c7",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/hardware.json",
+      "expected_scientific_commit": "508db18f38f16b92e649b935b5b150edc4bdc70c5a0d7e5932d4ad9064734412",
+      "actual_checkout": "508db18f38f16b92e649b935b5b150edc4bdc70c5a0d7e5932d4ad9064734412",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/memory.csv",
+      "expected_scientific_commit": "f706d554edd5fa16e89d6372e83e9f4f145967d3af35c3165301a3dd7f13a8f9",
+      "actual_checkout": "f706d554edd5fa16e89d6372e83e9f4f145967d3af35c3165301a3dd7f13a8f9",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/monitor.json",
+      "expected_scientific_commit": "bbfac2ede6ba8fdb173118cfc0547912dcccdcf19f3d6be85651bcc076bec313",
+      "actual_checkout": "bbfac2ede6ba8fdb173118cfc0547912dcccdcf19f3d6be85651bcc076bec313",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/native-summary.json",
+      "expected_scientific_commit": "c85bd30f03deaba2a5732c472fc71efb2f4e6884a7b16350ee1839ed1ddd26cc",
+      "actual_checkout": "c85bd30f03deaba2a5732c472fc71efb2f4e6884a7b16350ee1839ed1ddd26cc",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/owned.json",
+      "expected_scientific_commit": "59a1299007f8a68fb164a91347543d886c75c5df0eea7b1a19756b65f76e075e",
+      "actual_checkout": "59a1299007f8a68fb164a91347543d886c75c5df0eea7b1a19756b65f76e075e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/provenance.json",
+      "expected_scientific_commit": "e48304f2f8434f1d4a3d61d278b4e3bc60ea9d4e821adbe1558df5e41ae47907",
+      "actual_checkout": "e48304f2f8434f1d4a3d61d278b4e3bc60ea9d4e821adbe1558df5e41ae47907",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/result.json",
+      "expected_scientific_commit": "e144e78ee79afaad11c525e3c5fde4ed887be30b1cc738ae5d850cf7e97e7186",
+      "actual_checkout": "e144e78ee79afaad11c525e3c5fde4ed887be30b1cc738ae5d850cf7e97e7186",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/stderr.txt",
+      "expected_scientific_commit": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "actual_checkout": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/wrapper-owned.json",
+      "expected_scientific_commit": "d6dbad87ca48a150946737437bfe7b292cd9255ebb5f95fed8c0776f40c64c65",
+      "actual_checkout": "d6dbad87ca48a150946737437bfe7b292cd9255ebb5f95fed8c0776f40c64c65",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-clock-001/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/config.json",
+      "expected_scientific_commit": "47407a59dc9b7a7aefd1af43d52049c58f20a0b403ca8287c13533ef6816b13f",
+      "actual_checkout": "47407a59dc9b7a7aefd1af43d52049c58f20a0b403ca8287c13533ef6816b13f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/hardware.json",
+      "expected_scientific_commit": "31fdb878c4ac8e10b141bcfb349c0f90a524e7b7d487d5137c1e202062a60874",
+      "actual_checkout": "31fdb878c4ac8e10b141bcfb349c0f90a524e7b7d487d5137c1e202062a60874",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/memory.csv",
+      "expected_scientific_commit": "6ab010dc32df4fe93a50964c78e8dd99e99c0c64f90f0f91c4b714b7e830da5e",
+      "actual_checkout": "6ab010dc32df4fe93a50964c78e8dd99e99c0c64f90f0f91c4b714b7e830da5e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/monitor.json",
+      "expected_scientific_commit": "876501f6e6367cb2f148c99abf1a261b044e61d281dde4a9401dc992f0a3ddd1",
+      "actual_checkout": "876501f6e6367cb2f148c99abf1a261b044e61d281dde4a9401dc992f0a3ddd1",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/native-summary.json",
+      "expected_scientific_commit": "14b295de058cbd1fbbbfda6e31e3adfb27b503fce0d0a0a326adbc2e67f54371",
+      "actual_checkout": "14b295de058cbd1fbbbfda6e31e3adfb27b503fce0d0a0a326adbc2e67f54371",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/owned.json",
+      "expected_scientific_commit": "6cd805e28bee7e5ee019757e9cae4df2df7ba7fbface1f05d96a2e84344e7952",
+      "actual_checkout": "6cd805e28bee7e5ee019757e9cae4df2df7ba7fbface1f05d96a2e84344e7952",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/provenance.json",
+      "expected_scientific_commit": "e87f3a3b0b4ef8c66fe8ccb91ee30a6ae156daa5602b8a0009a9f5ad601160ce",
+      "actual_checkout": "e87f3a3b0b4ef8c66fe8ccb91ee30a6ae156daa5602b8a0009a9f5ad601160ce",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/result.json",
+      "expected_scientific_commit": "1df7e694372606a39e8971d5f1270efaafcce86c1fbfc5288f137297ff48a00a",
+      "actual_checkout": "1df7e694372606a39e8971d5f1270efaafcce86c1fbfc5288f137297ff48a00a",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/stderr.txt",
+      "expected_scientific_commit": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "actual_checkout": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/wrapper-owned.json",
+      "expected_scientific_commit": "1c5fe7fda3a734b01c67ce9b1197b23751dc6bb10142f9d861002a9783baafa7",
+      "actual_checkout": "1c5fe7fda3a734b01c67ce9b1197b23751dc6bb10142f9d861002a9783baafa7",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/negative-discrete-001/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/config.json",
+      "expected_scientific_commit": "27040fd13b83ca89db8aee07d032b413f6fce5c5e15701ca62b31045f9595726",
+      "actual_checkout": "27040fd13b83ca89db8aee07d032b413f6fce5c5e15701ca62b31045f9595726",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/hardware.json",
+      "expected_scientific_commit": "56e634221ee5781172c0cb416e7c427a8584d869db38953822b2debd5105710d",
+      "actual_checkout": "56e634221ee5781172c0cb416e7c427a8584d869db38953822b2debd5105710d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/memory.csv",
+      "expected_scientific_commit": "3d0d6c8a75578ffb3a4cb8e3a30fbe5568e12c9967bf8e81dc7ed30263f6d389",
+      "actual_checkout": "3d0d6c8a75578ffb3a4cb8e3a30fbe5568e12c9967bf8e81dc7ed30263f6d389",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/monitor.json",
+      "expected_scientific_commit": "e34d360030a0c00803f62d7b385a03d227bd385cd9ec25550952ff18175ba067",
+      "actual_checkout": "e34d360030a0c00803f62d7b385a03d227bd385cd9ec25550952ff18175ba067",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/native-summary.json",
+      "expected_scientific_commit": "51aac838942cdb8fe13e0769259c25a6ea6434977f745b6d2e8579b206252f00",
+      "actual_checkout": "51aac838942cdb8fe13e0769259c25a6ea6434977f745b6d2e8579b206252f00",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/owned.json",
+      "expected_scientific_commit": "57e54594fa83aa840cb9d62bb3f248ac8fac24214b1850d0b0b92b1d826db55a",
+      "actual_checkout": "57e54594fa83aa840cb9d62bb3f248ac8fac24214b1850d0b0b92b1d826db55a",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/provenance.json",
+      "expected_scientific_commit": "1ab613c1cbdb8a184b01fba6f17a8c987ce0fda051b25119d10061a706123150",
+      "actual_checkout": "1ab613c1cbdb8a184b01fba6f17a8c987ce0fda051b25119d10061a706123150",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/result.json",
+      "expected_scientific_commit": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0",
+      "actual_checkout": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/stderr.txt",
+      "expected_scientific_commit": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "actual_checkout": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/wrapper-owned.json",
+      "expected_scientific_commit": "0e254b4b3bbfb7a100ec6732b3e6bb7b11549151cd7f10c1ce96e22bf4a257bb",
+      "actual_checkout": "0e254b4b3bbfb7a100ec6732b3e6bb7b11549151cd7f10c1ce96e22bf4a257bb",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/config.json",
+      "expected_scientific_commit": "6b3097a517c06cb6389949e7f1a13a1045cf3dca76f0dbf45b7481c454ae54d4",
+      "actual_checkout": "6b3097a517c06cb6389949e7f1a13a1045cf3dca76f0dbf45b7481c454ae54d4",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/hardware.json",
+      "expected_scientific_commit": "2b8f03801970b53d99ca60e504472fb1b4b5c1f96d385f7edcb437edfa64d397",
+      "actual_checkout": "2b8f03801970b53d99ca60e504472fb1b4b5c1f96d385f7edcb437edfa64d397",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/memory.csv",
+      "expected_scientific_commit": "a901229aa371110a7a7c1dccc6682a4a702c57203b0586b790b6d6071da6d179",
+      "actual_checkout": "a901229aa371110a7a7c1dccc6682a4a702c57203b0586b790b6d6071da6d179",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/monitor.json",
+      "expected_scientific_commit": "4f5e40718469d7d272f524e8ee35020e61a774e4e85614acedb5d103e500e5ac",
+      "actual_checkout": "4f5e40718469d7d272f524e8ee35020e61a774e4e85614acedb5d103e500e5ac",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/native-summary.json",
+      "expected_scientific_commit": "bafb82d03e4b1ed3d27e18a2adf1a3c63bbf7e7aca0545ab3c0e53fefb5487ad",
+      "actual_checkout": "bafb82d03e4b1ed3d27e18a2adf1a3c63bbf7e7aca0545ab3c0e53fefb5487ad",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/owned.json",
+      "expected_scientific_commit": "7902ecea6ed7fe9b1feee7582eb27d66a0acb90aef5bd5b2ed8f80d5f0142e2c",
+      "actual_checkout": "7902ecea6ed7fe9b1feee7582eb27d66a0acb90aef5bd5b2ed8f80d5f0142e2c",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/provenance.json",
+      "expected_scientific_commit": "942c3e5a2a74abeaa60aca5c0a954cb2c46d1a89801e14d52a896667c6432c57",
+      "actual_checkout": "942c3e5a2a74abeaa60aca5c0a954cb2c46d1a89801e14d52a896667c6432c57",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/result.json",
+      "expected_scientific_commit": "0f7df69cfa6d934c14a548956537413517a77d0a500c14d6a2ba893e18efaa21",
+      "actual_checkout": "0f7df69cfa6d934c14a548956537413517a77d0a500c14d6a2ba893e18efaa21",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/stderr.txt",
+      "expected_scientific_commit": "bebdb12db0d6cdad6611751965f0721b7450aaceecb158597862a687e7c97e76",
+      "actual_checkout": "bebdb12db0d6cdad6611751965f0721b7450aaceecb158597862a687e7c97e76",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/wrapper-owned.json",
+      "expected_scientific_commit": "802069675a842b62a6acfffef4ccb1993c31014ee38783f6203f99fce5b2f84b",
+      "actual_checkout": "802069675a842b62a6acfffef4ccb1993c31014ee38783f6203f99fce5b2f84b",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-001/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/config.json",
+      "expected_scientific_commit": "5b88053bdbc80028255675d81109bff75dfc2f5bc42abddbe392f68133b403b1",
+      "actual_checkout": "5b88053bdbc80028255675d81109bff75dfc2f5bc42abddbe392f68133b403b1",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/hardware.json",
+      "expected_scientific_commit": "4a9f4b03d1282585f481b07e6030889a9c730c5a8dadd70429d8c95fa6e27cfd",
+      "actual_checkout": "4a9f4b03d1282585f481b07e6030889a9c730c5a8dadd70429d8c95fa6e27cfd",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/memory.csv",
+      "expected_scientific_commit": "71f9cc7d8af1339c7f5c0190eeec2bbca91f118a77eb5a8f0ef4ca3fd523cf93",
+      "actual_checkout": "71f9cc7d8af1339c7f5c0190eeec2bbca91f118a77eb5a8f0ef4ca3fd523cf93",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/monitor.json",
+      "expected_scientific_commit": "3b5e2950fd2796b2e95f834b2ff02cbbe8d8ac26ddfb5acbf8fae431f2a1787d",
+      "actual_checkout": "3b5e2950fd2796b2e95f834b2ff02cbbe8d8ac26ddfb5acbf8fae431f2a1787d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/native-summary.json",
+      "expected_scientific_commit": "81582f2cadd4b509ae97b386832fb05ec48b4ec97592cea447adeb9f29b71dac",
+      "actual_checkout": "81582f2cadd4b509ae97b386832fb05ec48b4ec97592cea447adeb9f29b71dac",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/owned.json",
+      "expected_scientific_commit": "a4eac41e0f44ce9e1a68c9d9ba6fc8a8cafdd7fc778bcf836b2b4ee61fff2368",
+      "actual_checkout": "a4eac41e0f44ce9e1a68c9d9ba6fc8a8cafdd7fc778bcf836b2b4ee61fff2368",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/provenance.json",
+      "expected_scientific_commit": "5b61ccb5fea86a1420b2ed52d007294eed10bf3355bbdad8f0509a6d831f799f",
+      "actual_checkout": "5b61ccb5fea86a1420b2ed52d007294eed10bf3355bbdad8f0509a6d831f799f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/result.json",
+      "expected_scientific_commit": "dc2d4d69698ef07eb2ebebf42bff06ca588f6a8fff7dec58ceff570727f2e476",
+      "actual_checkout": "dc2d4d69698ef07eb2ebebf42bff06ca588f6a8fff7dec58ceff570727f2e476",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/stderr.txt",
+      "expected_scientific_commit": "cbbae8526926369feb1b87d630d1434936dfbf5e11dab40a7618d8b2a1d81c85",
+      "actual_checkout": "cbbae8526926369feb1b87d630d1434936dfbf5e11dab40a7618d8b2a1d81c85",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/wrapper-owned.json",
+      "expected_scientific_commit": "0bfa787f467556bf8003e52f6f5c6ac67f322aeed7f9f37dff95459b3408f8f0",
+      "actual_checkout": "0bfa787f467556bf8003e52f6f5c6ac67f322aeed7f9f37dff95459b3408f8f0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-002/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/config.json",
+      "expected_scientific_commit": "c9b2b66df612a5ea1f05f41e2293b2162370f3a0b87b016930f093be1c403877",
+      "actual_checkout": "c9b2b66df612a5ea1f05f41e2293b2162370f3a0b87b016930f093be1c403877",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/hardware.json",
+      "expected_scientific_commit": "4fa1211b700c651ccc89d5446b0252143230eb8a010dc537de1a82ed81b097bf",
+      "actual_checkout": "4fa1211b700c651ccc89d5446b0252143230eb8a010dc537de1a82ed81b097bf",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/memory.csv",
+      "expected_scientific_commit": "219215fa9939c8d66270fc11d1a634bbb3f5edbaf2c59444118c977847229b39",
+      "actual_checkout": "219215fa9939c8d66270fc11d1a634bbb3f5edbaf2c59444118c977847229b39",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/monitor.json",
+      "expected_scientific_commit": "464b9befafb291dd3f0189b522b5e29614b875fcca47ee8906e4a9060f05aa15",
+      "actual_checkout": "464b9befafb291dd3f0189b522b5e29614b875fcca47ee8906e4a9060f05aa15",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/native-summary.json",
+      "expected_scientific_commit": "48c4307eb4dd29575375826c8048567a8e3950b1acbcf7a7c6e2726a0e6d1758",
+      "actual_checkout": "48c4307eb4dd29575375826c8048567a8e3950b1acbcf7a7c6e2726a0e6d1758",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/owned.json",
+      "expected_scientific_commit": "76a608b2dc03d9a82eb66b83ae251064e3c60c7840c46c89860abe9ebcfe8b09",
+      "actual_checkout": "76a608b2dc03d9a82eb66b83ae251064e3c60c7840c46c89860abe9ebcfe8b09",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/provenance.json",
+      "expected_scientific_commit": "45b670dc1bcd4f689bcd2c4fca41e3b304214427427b311325391816b589e271",
+      "actual_checkout": "45b670dc1bcd4f689bcd2c4fca41e3b304214427427b311325391816b589e271",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/result.json",
+      "expected_scientific_commit": "33404de510853d0949e2136dcfb5bc3bdf1154410a7b69ad51574aa4f2208355",
+      "actual_checkout": "33404de510853d0949e2136dcfb5bc3bdf1154410a7b69ad51574aa4f2208355",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/stderr.txt",
+      "expected_scientific_commit": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "actual_checkout": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/wrapper-owned.json",
+      "expected_scientific_commit": "d197f9acbc4ca036efba1e2312579b373e9dec3ea2ca12bc779e6095bf7c25a1",
+      "actual_checkout": "d197f9acbc4ca036efba1e2312579b373e9dec3ea2ca12bc779e6095bf7c25a1",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-003/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/config.json",
+      "expected_scientific_commit": "a01932a3669f77d439674d3bd9fa63e5b8f940b9caa60bdac3caee88be95e1fa",
+      "actual_checkout": "a01932a3669f77d439674d3bd9fa63e5b8f940b9caa60bdac3caee88be95e1fa",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/hardware.json",
+      "expected_scientific_commit": "bae652ec13ab38b726d6d0cd4b4b513d0b544559ac85af72bc249bf07f65b68e",
+      "actual_checkout": "bae652ec13ab38b726d6d0cd4b4b513d0b544559ac85af72bc249bf07f65b68e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/memory.csv",
+      "expected_scientific_commit": "3f2432d79240255dafa2926d1d09b7c9e442d66adfb4005e2c3b0d7147487b2a",
+      "actual_checkout": "3f2432d79240255dafa2926d1d09b7c9e442d66adfb4005e2c3b0d7147487b2a",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/monitor.json",
+      "expected_scientific_commit": "575665fce48207f9681fb2470058e9e2faf991df120890c818c2aa415fa3c313",
+      "actual_checkout": "575665fce48207f9681fb2470058e9e2faf991df120890c818c2aa415fa3c313",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/native-summary.json",
+      "expected_scientific_commit": "d03065f175c2a951d368a62928df61163915616edd44a28363b235b3d2d501f7",
+      "actual_checkout": "d03065f175c2a951d368a62928df61163915616edd44a28363b235b3d2d501f7",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/owned.json",
+      "expected_scientific_commit": "6b1a3efb14ff99161de08a810912931b104197b65fc68fd38882bc9471a7116d",
+      "actual_checkout": "6b1a3efb14ff99161de08a810912931b104197b65fc68fd38882bc9471a7116d",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/provenance.json",
+      "expected_scientific_commit": "3e5fac4553b28390890a52923b4b98006287956206b1802d77dc78af904f4ada",
+      "actual_checkout": "3e5fac4553b28390890a52923b4b98006287956206b1802d77dc78af904f4ada",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/result.json",
+      "expected_scientific_commit": "ac8591aa84085dbdd7504b835cc2e161e4c8f778bdf1c1de03fd31a7153d31b4",
+      "actual_checkout": "ac8591aa84085dbdd7504b835cc2e161e4c8f778bdf1c1de03fd31a7153d31b4",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/stderr.txt",
+      "expected_scientific_commit": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "actual_checkout": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/wrapper-owned.json",
+      "expected_scientific_commit": "575034e69b0c538c1d0c759990b9b80f124c7b243a144e908812ece41bea32ee",
+      "actual_checkout": "575034e69b0c538c1d0c759990b9b80f124c7b243a144e908812ece41bea32ee",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-004/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/config.json",
+      "expected_scientific_commit": "2e25ffdaadb86393acaa5d0ede349fce6a87d7ac1c615ba9ed7de1d47482f7d7",
+      "actual_checkout": "2e25ffdaadb86393acaa5d0ede349fce6a87d7ac1c615ba9ed7de1d47482f7d7",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/hardware.json",
+      "expected_scientific_commit": "4b5e5088f2bfd8a892d68fc81c48095f9c29a4a27dab2df84a7f86a8899ad86f",
+      "actual_checkout": "4b5e5088f2bfd8a892d68fc81c48095f9c29a4a27dab2df84a7f86a8899ad86f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/memory.csv",
+      "expected_scientific_commit": "047b4285cab2f8a74d9eb197dda4dfd522d35359b09be798953be21700585556",
+      "actual_checkout": "047b4285cab2f8a74d9eb197dda4dfd522d35359b09be798953be21700585556",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/monitor.json",
+      "expected_scientific_commit": "e954f6f3eeec4920bcd1c988e30ff75ce86d0a6318192f1947fa3528cf2ff708",
+      "actual_checkout": "e954f6f3eeec4920bcd1c988e30ff75ce86d0a6318192f1947fa3528cf2ff708",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/native-summary.json",
+      "expected_scientific_commit": "00e01fb710d0bf45f9a80add82a548f15fc4ed2fce8cf5e426b287aa252dff4c",
+      "actual_checkout": "00e01fb710d0bf45f9a80add82a548f15fc4ed2fce8cf5e426b287aa252dff4c",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/owned.json",
+      "expected_scientific_commit": "c9e7db9ec57c3562ff1ad7e0643d44660a53ac23248fe9d20fc0f62e381142d0",
+      "actual_checkout": "c9e7db9ec57c3562ff1ad7e0643d44660a53ac23248fe9d20fc0f62e381142d0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/provenance.json",
+      "expected_scientific_commit": "3060a484d4d568c2716844f72f9df0750a7c3093e2d7743f8e86bb0bb97130be",
+      "actual_checkout": "3060a484d4d568c2716844f72f9df0750a7c3093e2d7743f8e86bb0bb97130be",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/result.json",
+      "expected_scientific_commit": "b76ea0a4b1fe0678938737043bd153a1ec660a9c120a04c7aad02a1acd4f2dc2",
+      "actual_checkout": "b76ea0a4b1fe0678938737043bd153a1ec660a9c120a04c7aad02a1acd4f2dc2",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/stderr.txt",
+      "expected_scientific_commit": "08f7cf6f56338ea00db795bbad43ce3379ee86400bae2a32ae96d543ebb8fe1f",
+      "actual_checkout": "08f7cf6f56338ea00db795bbad43ce3379ee86400bae2a32ae96d543ebb8fe1f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/wrapper-owned.json",
+      "expected_scientific_commit": "ac3de25a8f58ec3c1b491d73ed0f02a9acaf8d92a1e46696fb251fa893613bf7",
+      "actual_checkout": "ac3de25a8f58ec3c1b491d73ed0f02a9acaf8d92a1e46696fb251fa893613bf7",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-005/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/config.json",
+      "expected_scientific_commit": "3e323a07a7514899e2b38b62557127e5ec035bca17fca4177d4decbdbd7fe4c9",
+      "actual_checkout": "3e323a07a7514899e2b38b62557127e5ec035bca17fca4177d4decbdbd7fe4c9",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/hardware.json",
+      "expected_scientific_commit": "5e323e2d8770b3f32e6b6fe63455e580b85faec7c7415fd42b0a4c301c4e0d93",
+      "actual_checkout": "5e323e2d8770b3f32e6b6fe63455e580b85faec7c7415fd42b0a4c301c4e0d93",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/memory.csv",
+      "expected_scientific_commit": "051d606258bdb44595860d6ef43edff6d02e5c3f662ec20fcf279706dfd2eaf1",
+      "actual_checkout": "051d606258bdb44595860d6ef43edff6d02e5c3f662ec20fcf279706dfd2eaf1",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/monitor.json",
+      "expected_scientific_commit": "640d6f6b238c2852045c6f8e33323c52a8368c0e1c7af9abe012a93f9aeb6a7b",
+      "actual_checkout": "640d6f6b238c2852045c6f8e33323c52a8368c0e1c7af9abe012a93f9aeb6a7b",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/native-summary.json",
+      "expected_scientific_commit": "9c90e4d1b5739321b178911d72b99e1795cfdb939a917dfbfdf5baeaa6ff2383",
+      "actual_checkout": "9c90e4d1b5739321b178911d72b99e1795cfdb939a917dfbfdf5baeaa6ff2383",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/owned.json",
+      "expected_scientific_commit": "749bfc69ac69f56a70c1780ee153059f355b41620d2b9cd449b3beec85ad1c03",
+      "actual_checkout": "749bfc69ac69f56a70c1780ee153059f355b41620d2b9cd449b3beec85ad1c03",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/provenance.json",
+      "expected_scientific_commit": "72ecd57861f83bddd3a5aa17543adc207d18dc82127768249eb57f937b07529a",
+      "actual_checkout": "72ecd57861f83bddd3a5aa17543adc207d18dc82127768249eb57f937b07529a",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/result.json",
+      "expected_scientific_commit": "032580644cf5f6e1b173278b8d56c928d5e0f89522af348d00ecc31f796c5772",
+      "actual_checkout": "032580644cf5f6e1b173278b8d56c928d5e0f89522af348d00ecc31f796c5772",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/stderr.txt",
+      "expected_scientific_commit": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "actual_checkout": "c54198e79b9a12194513f782593fe56824616c3c33f83969b8be7b846121cda0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/wrapper-owned.json",
+      "expected_scientific_commit": "65896dc5aaa6c8543932624e0026d40927e7654331dc48cf1faa757a889ebbb4",
+      "actual_checkout": "65896dc5aaa6c8543932624e0026d40927e7654331dc48cf1faa757a889ebbb4",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/wrapper.stderr.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/runs/simulate-006/wrapper.stdout.txt",
+      "expected_scientific_commit": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "actual_checkout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/source-index.json",
+      "expected_scientific_commit": "7b73699f2e6498a674c6af5bec4f40f59bbf878ab8e5516cf8217711912ac32e",
+      "actual_checkout": "7b73699f2e6498a674c6af5bec4f40f59bbf878ab8e5516cf8217711912ac32e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/source-snapshots.zip",
+      "expected_scientific_commit": "fb17f097a2c38b746ee7eb4dfc2b2d9c0f42598c52bb194ce399a41917e85e8e",
+      "actual_checkout": "fb17f097a2c38b746ee7eb4dfc2b2d9c0f42598c52bb194ce399a41917e85e8e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/spine-corrected.tsv",
+      "expected_scientific_commit": "ff1c36e05b98f9a3edfefb73e1756cf2c1283bb8bd62f813312b9f26273ca335",
+      "actual_checkout": "ff1c36e05b98f9a3edfefb73e1756cf2c1283bb8bd62f813312b9f26273ca335",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/spine-fresh.tsv",
+      "expected_scientific_commit": "7eadb9ee87cc490eb5f69ec90d816f215b1d7cdcf0075b993e4adf43926df095",
+      "actual_checkout": "7eadb9ee87cc490eb5f69ec90d816f215b1d7cdcf0075b993e4adf43926df095",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/spine-maintenance.tsv",
+      "expected_scientific_commit": "56eb782c96fd22cbdcbe42e004e34c88f6390f17ff0ef962c8bfbe98e5f82067",
+      "actual_checkout": "56eb782c96fd22cbdcbe42e004e34c88f6390f17ff0ef962c8bfbe98e5f82067",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/spine.tsv",
+      "expected_scientific_commit": "cf118313fba7c075f2b465475cd0d8166ffcb1cc286f64fe593fb0a3abe9e34b",
+      "actual_checkout": "cf118313fba7c075f2b465475cd0d8166ffcb1cc286f64fe593fb0a3abe9e34b",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/summarize.py",
+      "expected_scientific_commit": "f48fde0109011daef59286ee46f81e3c4e8281f1a746e93894b82a3bfe218e82",
+      "actual_checkout": "f48fde0109011daef59286ee46f81e3c4e8281f1a746e93894b82a3bfe218e82",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/instantiation/uav-service-completion-candidate/test_candidate.py",
+      "expected_scientific_commit": "429ee24df76fdc9d4fe711169ec9016e700ab9e2cb1731b4a39d0526dddd974e",
+      "actual_checkout": "429ee24df76fdc9d4fe711169ec9016e700ab9e2cb1731b4a39d0526dddd974e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/scalability/family-series-68/generate.py",
+      "expected_scientific_commit": "386c08d1f3bec9f5a5602f483948cb74bbe7f8f075d7bde2b7e71aa805871384",
+      "actual_checkout": "386c08d1f3bec9f5a5602f483948cb74bbe7f8f075d7bde2b7e71aa805871384",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/instance-vector.json",
+      "expected_scientific_commit": "69b5105223a5dd3a2bae34513f6126416fdb15fad0b99a6b405f977332feddad",
+      "actual_checkout": "69b5105223a5dd3a2bae34513f6126416fdb15fad0b99a6b405f977332feddad",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/model.xml",
+      "expected_scientific_commit": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "actual_checkout": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "evidence/scalability/family-series-68/generated/n1/parameters.json",
+      "expected_scientific_commit": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18",
+      "actual_checkout": "f89f9bb0cbaff4a45440533aa273fc38f2d9efdd34b77309b59187c6c75b9a18",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "levels_tex/samplepaper.tex",
+      "expected_scientific_commit": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "actual_checkout": "7a7f71fa75e64e280945ea7a6b13041a45516f016b1d27aa3e1ae9631d34b08f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "manifests/baselines/reviewer-r1.yaml",
+      "expected_scientific_commit": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7",
+      "actual_checkout": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "manifests/baselines/uav-family-r1.yaml",
+      "expected_scientific_commit": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf",
+      "actual_checkout": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "manifests/collaboration-v1.yaml",
+      "expected_scientific_commit": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+      "actual_checkout": "31ab816470827d81bc73944487b11897beb2d0ddc80c5f3f4f878facf93417c0",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "manifests/collaboration-v2.yaml",
+      "expected_scientific_commit": "8bcf342c27030b750c2586394383b4ed291fdd9d5690c3aa56c354441cac4475",
+      "actual_checkout": "fcce78b4ef3286e3e618de9cf107bcd4ed343908f3facec614f33e8d324cf97e",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": true
+    },
+    {
+      "path": "manifests/current.json",
+      "expected_scientific_commit": "bf2d455d13cec0d5870cb7777d26efd424653ba6bb2c1b56af0ae0b7149e626f",
+      "actual_checkout": "bf2d455d13cec0d5870cb7777d26efd424653ba6bb2c1b56af0ae0b7149e626f",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "manifests/v1.md",
+      "expected_scientific_commit": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "actual_checkout": "f0290fdb65df369a42dbbdb5e8b86a3c4753f029446444281101c4b7bbbd8075",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "manifests/v2.md",
+      "expected_scientific_commit": "13c8b4e78c9f2e33096f649d130f44decd325d8a10ce82b33d2cf013c0eb2861",
+      "actual_checkout": "13c8b4e78c9f2e33096f649d130f44decd325d8a10ce82b33d2cf013c0eb2861",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "src/uppaal_mcp/integrated/adapt.py",
+      "expected_scientific_commit": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba",
+      "actual_checkout": "66c4a53277ba93e73df3048add4b529e4e412ecf93d853bf5803dc53f41095ba",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "src/uppaal_mcp/integrated/boundary.py",
+      "expected_scientific_commit": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804",
+      "actual_checkout": "4ae8b9f3e970d1c09cd94ff750f2d79482364b47179cd91cc2722bb561ed0804",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "src/uppaal_mcp/integrated/generator.py",
+      "expected_scientific_commit": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521",
+      "actual_checkout": "63bf7d4232c0ac27b5b14ec0b1b98eb6d6179090417cf44ba1a97409685be521",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    },
+    {
+      "path": "src/uppaal_mcp/integrated/inputs.py",
+      "expected_scientific_commit": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
+      "actual_checkout": "7c687d6ecad392547613dd74d98f3ff4adb7b079bb472812324821ab090c7b52",
+      "scientific_blob_matches": true,
+      "accepted_operational_delta": false
+    }
+  ],
+  "kind": "static_validation"
+}

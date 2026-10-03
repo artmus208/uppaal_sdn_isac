@@ -1,0 +1,23 @@
+{
+  "run_id": "001-7a12f00c2a3b48998f7c8dabdb2d74de",
+  "started_at": "2026-10-02T09:19:42.409880+00:00",
+  "command": [
+    "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-08-cancel-attempt01-20261002\\attempts\\001-7a12f00c2a3b48998f7c8dabdb2d74de\\trace",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-08-cancel-attempt01-20261002\\model.xml",
+    "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-08-cancel-attempt01-20261002\\query-001.q"
+  ],
+  "cwd": "D:\\UPPAAL\\app\\bin",
+  "model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+  "query_hash": "5265ffc294528d7bc18db8a8146ac3a53cd38a8951e17c9a3d83ced30d4c2298",
+  "formula": "E<> u0_app_Req_0.Cancelled",
+  "session": "387cb16bb9874d20a869564b10f36475",
+  "timeout_seconds": 600,
+  "memory_stop_bytes": 8552185856,
+  "pid": 12524
+}
