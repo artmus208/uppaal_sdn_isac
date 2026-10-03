@@ -124,15 +124,17 @@ task. No model repair or manuscript edit is part of #89.
 
 ## Native budget and watchdog
 
-The explicitly declared Runner uses the recorded Issue authorization of the exact checkpoint,
+The explicitly declared Runner uses the recorded Issue authorization of the exact
+checkpoint,
 Hnom patch/hash, six query hashes, config hash, native host/executable and stop
 policy. The latest user selection is native Windows Python + Windows PE verifyta,
 superseding the Linux preparation preserved at 9e4743bf. The exact path/hash and
 observed host/Python bindings are in `approval-template.json`; the persistent
 native Windows checkout and accepted new preparation HEAD still require the
 execution record. Account names are declared explicitly, not matched to the
-repository owner. The Runner branch is codex/<runner>/89-uav-bounded-response-runs;
-bundles and session metadata use that same identity. Historical UPPAAL version is an expected identity only; actual
+repository owner. The Runner branch is `codex/<runner>/89-uav-bounded-response-runs`;
+bundles and session metadata use that same identity. Historical UPPAAL version is
+an expected identity only; actual
 full version and help are captured once after authorization, within the session.
 
 At most six attempts, no retries; one verifier at a time; search allocation 1500 s;

@@ -61,7 +61,7 @@ preparation-stage wording. Acceptance of this protocol is not C02/P3/Gate 2/R07
 acceptance. The actual Runner's participation in execution will be disclosed; subsequent
 producer review is not independent scientific acceptance.
 
-Windows revision validation: all 26 scoped tests completed on native Windows
+Historical Windows revision validation: all 26 scoped tests completed on native Windows
 Python with zero failures/errors/skips (`checks/windows-004/record.json`). The
 first 16 process controls had passed, while three generic tests exposed system
 codepage decoding. Explicit UTF-8 restored the exact old model/query products.
@@ -72,3 +72,22 @@ under checks/windows-001, checks/windows-final and checks/windows-003.
 
 The observed Windows verifier PE is AMD64 PE32+, 6,730,240 bytes, matching the
 user's SHA256. This is byte inspection, not execution or version evidence.
+
+## Account-binding correction, 2026-10-04
+
+The user explicitly requested removal of the hardcoded artmus208 binding.
+The driver now accepts declared approver/Runner accounts, derives the execution
+branch and recovery-bundle ref from Runner, and records the actual accounts in
+session metadata. Empty/invalid identities, a mismatched branch, missing decision,
+changed model/query/config hashes and unauthorized execution remain rejected.
+Templates no longer insert an artmus208 signature or Runner by default.
+
+Current native Windows controls: 32/32, no failures/errors/skips, including six
+new identity/provenance tests. The scoped offline audit passes. Full repository
+suite: 209 tests, 3 failures, 3 errors, 2 platform skips; the original log and all
+13 check command results are preserved under checks/identity-static-20261004-001.
+Three generation/baseline checks report unchanged generator output using Windows
+backslashes in frozen_parameters_path; the model XML and query bytes match.
+No production/test/manifest files outside #89 scope were modified. These general
+Windows issues remain open, separately from the passing account-binding controls.
+There are still zero #89 verifier invocations and six null verdicts.

@@ -30,7 +30,8 @@ Read `WINDOWS.md`, `PROTOCOL.md`, `RUNNER.md`, `proposed-decision.md`, `approval
 entirely offline. `checks/check-results.json` records commands, exit codes and
 log hashes; `checks/initial-findings.json` preserves earlier limitations/failure.
 
-Before native work, the execution record must identify authorization for the exact preparation HEAD, Hnom
+Before native work, the execution record must identify authorization for the
+exact preparation HEAD, Hnom
 patch/hash, six query hashes, method/config/budget/stop policy and actual Windows
 host/tool. Observed host/Python bindings and exact verifier path/hash are recorded
 in approval-template.json; Runner must declare its persistent Windows clone path. A separate explicit Issue decision activates the proposed
@@ -40,7 +41,8 @@ Runner begins from the accepted preparation HEAD, records actual preflight and
 reserved attempt commits, and returns a durable branch/bundle plus exact HEAD.
 Owner then merges the Runner history, audits all raw files and budgets, inspects
 the traces offline, updates `results.json`, report/coverage/English fragments and
-the same final PR to read. No rebase may erase execution commits. Account identity alone grants no native permission; use the recorded user
+the same final PR to read. No rebase may erase execution commits. Account
+identity alone grants no native permission; use the recorded user
 authorization and delegation without inventing another account's signature.
 
 Durable retrieval: canonical Owner branch when published, with a full-history
@@ -54,10 +56,12 @@ HEAD and native bindings. See inputs/identity-correction.json and RUNNER.md. Nat
 results and independent scientific acceptance remain pending. Do not close #89,
 C02, full P3, C06, Gate 2 or R07 on the strength of this preparation alone.
 
-Windows revision: `checks/windows-004/record.json` records 26/26 scoped native
-Windows tests, zero skips; both failure history and diagnostic probes are retained.
-`checks/windows-check-results.json` selects that successful record by SHA256;
-offline audit checks its raw log and current source hashes. current config.json SHA256:
+Current validation: `checks/identity-windows-20261004-001/record.json` records
+32/32 scoped native Windows tests with zero failures/errors/skips.
+`checks/windows-check-results.json` selects this record by SHA256; the offline
+audit checks its raw log and current Python source hashes. The earlier 26-test
+Windows records remain historical evidence for the preceding source.
+Current config.json SHA256:
 `ee0ab52bfdc6ae3298defac8106a5cf074df968de0f51d13af0d5bd95bdd593e`.
 M, prospective Hnom, restriction patch and all six formula hashes are unchanged.
 The Windows binary hash was read and confirmed; its runtime version remains null.
@@ -65,7 +69,18 @@ The original Linux commit 9e4743bf is retained in the published branch ancestry.
 
 The new preparation HEAD/seal hash, durable bundle/hash and clean working-tree
 confirmation are published together in the #89/#90 Windows handoff. That exact
-HEAD supersedes the prior Linux handoff for the upcoming decision. No execution lease is activated by this code correction alone. The prior user
+HEAD supersedes the prior Linux handoff for the upcoming decision. No execution
+lease is activated by this code correction alone. The prior user
 authorization is recorded in #89 comment 5969141901; the driver now accepts the
 actual declared accounts instead of requiring artmus208. Historical preparation
 records below checks/ remain unchanged; current test pointers select new records.
+
+The full repository suite was attempted on native Windows: 209 tests, 3 failures,
+3 errors and 2 platform skips. Logs are in `checks/identity-static-20261004-001/`.
+Failures concern historical fixture hashes, WSL path expectations, memory
+monitoring, Windows text decoding and symlink privilege. The three candidate /
+operational generation checks also fail on Windows-only path serialization in
+parameters.json; `generation-drift-analysis.json` proves the generator is
+unchanged and model XML / queries reproduce exactly. These failures are retained,
+not reported as successful checks. Scope, coordination, historical hash audit,
+MCP/CLI smoke, dependency and #89 offline integrity checks passed.
