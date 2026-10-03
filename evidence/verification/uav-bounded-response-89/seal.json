@@ -11,7 +11,7 @@
   "audit.py": "4bd0544436051782b918a26b953a6cfc0f06ef1bfbdbd9a924609a16b9c21615",
   "config.json": "ee0ab52bfdc6ae3298defac8106a5cf074df968de0f51d13af0d5bd95bdd593e",
   "coverage.md": "1bcd3c54e91dea972a04490cf03301dcbe30d8bdba1ff9749b8b6fe761615bc2",
-  "driver.py": "7f708f278a54a9fd0a4d850f54ed4bcc5516e90bd89e1181728b18ec4eb306fc",
+  "driver.py": "e729a155262a648fae443e3305c3a077020823d7026b509784a2fb5389fa1ef8",
   "guard.py": "6bb0b6154caf0d286572f08cd35f53d4fb8ff950e4034f3e0872416abcff6a8c",
   "hnom/changes.json": "2ebd58a089653e44b8e6a3f0e53de3d68905df8f994a08c45ed235dc6844abe0",
   "hnom/proposed.patch": "b0d8e07da9401af0b64ec0224f9241456e1d8e408817c9f3432da0a868504742",
@@ -39,7 +39,7 @@
   "results.json": "55c65d2ce63648dc24e0f7540789d1b9edc956b8b05f868e014a9707e3fbe12f",
   "run_checks.py": "489b3c2ce8619d42407c0d1eea1521294fda79a1b08b78709cd7fbc763b981b0",
   "run_windows_checks.py": "50795de5756402958654db2d322eff4e55429af165a2cbf114628b50ef5078de",
-  "test_protocol.py": "ec60c5ca4c5f15a1bc1c73b299b0cf757e570403312d26ae1ef90726c4036dbe",
+  "test_protocol.py": "eb3725c17df39a1a065750cec90e0772cf304477ab832d986a946991f78f5070",
   "test_windows_guard.py": "7df3aa2805e46ac80eee2a71220aeaa58f05f601a4fe37c5109f1ecb9bd8ef3a",
   "windows_native.py": "63238206e50ce73f1dbf7cedc822be004ef1cbf8555071d596e58bad85095047",
   "inputs/identity-correction.json": "f4d0eb26d1deef8e487e3972a2b6c1644a4d358ba66403e91b748187432ec10b"

@@ -83,6 +83,19 @@ class RunnerIdentityTests(unittest.TestCase):
             self.assertEqual(driver.checkpoint('synthetic checkpoint',branch),'b'*40)
             git.assert_any_call('bundle','create',str(Path(d)/'recovery'/('b'*40+'.bundle')),branch,timeout=60)
 
+    def test_checkpoint_preserves_modified_file_status_columns(self):
+        import driver
+        branch=driver.runner_branch(self.approval())
+        def output(command,**kwargs):
+            args=tuple(command[1:])
+            if args==('branch','--show-current'):return branch+'\n'
+            if args==('status','--porcelain','--untracked-files=all'):
+                return ' M '+driver.SCOPE+'/execution/ledger.json\n'
+            if args==('rev-parse','HEAD'):return 'b'*40+'\n'
+            return ''
+        with tempfile.TemporaryDirectory() as d,patch.object(driver,'EXEC',Path(d)),patch.object(driver.subprocess,'check_output',side_effect=output):
+            self.assertEqual(driver.checkpoint('modified execution record',branch),'b'*40)
+
     def test_session_records_declared_accounts_and_branch(self):
         import audit
         import driver

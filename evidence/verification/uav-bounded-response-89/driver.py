@@ -44,7 +44,8 @@ def save(path,data):
         finally:os.close(fd)
 
 def git(*args,timeout=30):
-    return subprocess.check_output(['git',*args],cwd=ROOT,text=True,timeout=timeout).strip()
+    # Porcelain status uses leading spaces as fixed-width status columns.
+    return subprocess.check_output(['git',*args],cwd=ROOT,text=True,timeout=timeout).rstrip('\r\n')
 
 def file_index(directory):
     return {p.relative_to(ROOT).as_posix():digest(p.read_bytes()) for p in sorted(Path(directory).rglob('*'))
