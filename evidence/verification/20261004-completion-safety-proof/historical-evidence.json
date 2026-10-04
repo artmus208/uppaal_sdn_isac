@@ -1,0 +1,121 @@
+{
+  "audit_kind": "static re-audit of saved historical evidence",
+  "causal_first_records": [
+    {
+      "engine_edges": "16 2 ; 26 0 ;",
+      "first_state": 4,
+      "record": "c82_request_id",
+      "xml_edge": 2,
+      "xml_template": "u0_app_A_REQ"
+    },
+    {
+      "engine_edges": "26 23 ; 16 3 ;",
+      "first_state": 62,
+      "record": "c82_admitted",
+      "xml_edge": 3,
+      "xml_template": "u0_app_A_REQ"
+    },
+    {
+      "engine_edges": "3 25 ; 50 2 ;",
+      "first_state": 84,
+      "record": "c82_sampled",
+      "xml_edge": 25,
+      "xml_template": "u0_phy_Template_A_SQ"
+    },
+    {
+      "engine_edges": "50 4 ; 21 5 ;",
+      "first_state": 85,
+      "record": "c82_enqueued",
+      "xml_edge": 5,
+      "xml_template": "SharedLoad"
+    },
+    {
+      "engine_edges": "21 1 0 ;",
+      "first_state": 96,
+      "record": "c82_dispatched",
+      "xml_edge": 1,
+      "xml_template": "SharedLoad"
+    },
+    {
+      "engine_edges": "50 6 ;",
+      "first_state": 99,
+      "record": "c82_attempted",
+      "xml_edge": 6,
+      "xml_template": "C82_ResultJob"
+    },
+    {
+      "engine_edges": "50 7 ; 16 12 ;",
+      "first_state": 100,
+      "record": "c82_received",
+      "xml_edge": 12,
+      "xml_template": "u0_app_A_REQ"
+    },
+    {
+      "engine_edges": "50 7 ; 16 12 ;",
+      "first_state": 100,
+      "record": "c82_success",
+      "xml_edge": 12,
+      "xml_template": "u0_app_A_REQ"
+    }
+  ],
+  "historical_model_checking": {
+    "attempt_run_id": "001-e50441afd4e947d7a1aae37356e9656d",
+    "campaign_run_id": "issue87-10-completion-safety-attempt01-20261002",
+    "command": [
+      "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+      "-o",
+      "0",
+      "-t",
+      "0",
+      "-X",
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-10-completion-safety-attempt01-20261002\\attempts\\001-e50441afd4e947d7a1aae37356e9656d\\trace",
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-10-completion-safety-attempt01-20261002\\model.xml",
+      "D:\\uppaal_mcp\\.workstreams\\issue87\\evidence\\verification\\uav-service-completion-p3-20261002\\runs\\issue87-10-completion-safety-attempt01-20261002\\query-001.q"
+    ],
+    "cpu_seconds": 571.390625,
+    "elapsed_seconds": 600.5930649000002,
+    "model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+    "peak_rss_bytes": 943378432,
+    "query_hash": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+    "result": "evidence/verification/uav-service-completion-p3-20261002/runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/result.json",
+    "source_commit": "451510645b8eef2788d41b2859500d91009c0462",
+    "status": "timeout",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+    "verdict": null
+  },
+  "historical_simulation": {
+    "accepted_transitions": 100,
+    "completed_state_index": 100,
+    "limitation": "This reads historical engine output; no fresh engine replay or universal verdict.",
+    "model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+    "property_verdict": null,
+    "query_hash": null,
+    "run_id": "uav-completion-82-20261002-replay-001",
+    "source_commit": "f6adba0aee8e037557020009fc43591d732f053d",
+    "status": "replay_complete",
+    "stored_states": 101,
+    "tool_version": "UPPAAL version 5.0.0 (rev. 714BA9DB36F49691), June 2023 -- server. Licensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru)"
+  },
+  "input_file_hashes": {
+    "evidence/instantiation/uav-service-completion-candidate/raw-index.json": "693c327288fa8769180683c5a927ba621c42bc05f82209d3c36d1ce558f2fb2f",
+    "evidence/instantiation/uav-service-completion-candidate/raw-traces.zip": "1eeac21cdae0aa111e9125158b1d353ae906883d8ad57bcbd0ffc216fc743ab3",
+    "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/provenance.json": "1ab613c1cbdb8a184b01fba6f17a8c987ce0fda051b25119d10061a706123150",
+    "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/result.json": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0",
+    "evidence/verification/uav-service-completion-p3-20261002/query-ledger.json": "a7a33cc02992ed7355d57458da2cbba8dcd080822038bb3b910bdc32fc7a82cc",
+    "evidence/verification/uav-service-completion-p3-20261002/runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/result.json": "24ccc75f04ba907072d4a8f0c46f1ebf04d1591e07f2415c6fe4427e672462e4",
+    "evidence/verification/uav-service-completion-p3-20261002/runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "evidence/verification/uav-service-completion-p3-20261002/runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/stdout.txt": "aa719bb5bd515c85936a6b0d63503eff3ded7b57e68649c38144aacbd7d90af6"
+  },
+  "mathematical_argument": {
+    "acceptance_status": "pending_independent_review",
+    "artifact": "proof.md",
+    "claim": "exact completion-safety plus inactive and causal receipt history"
+  },
+  "new_native_executions": 0,
+  "raw_archive_entries": {
+    "runs/replay-001/reachable-prefix.xtr": "0ca6cf212c74284782dbc67eded3a48b9369a832cf585b94f5c0ecab7dcb2ddb",
+    "runs/replay-001/stdout.txt": "eb60ceafebd070fd452ebd8d9c9643416eb1ade4a19cb1849d6a411fb9b59d32",
+    "runs/replay-001/steps.jsonl": "f54e456d16bb167e8d898325015d958a3654a91e04c6aa6d80ba1682eeba5247",
+    "runs/simulate-006/trace.xtr": "7ef37b0e6abc77eace7aa270ce3aea6a35d10724cb662508e1f54104123ddfaf"
+  }
+}

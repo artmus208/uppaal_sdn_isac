@@ -1,0 +1,7 @@
+# Preserve raw Windows software-check logs including emitted trailing spaces; code/prose remain strict.
+checks/*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+checks/*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+checks-final/*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+checks-final/*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+checks-followup/*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+checks-followup/*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol

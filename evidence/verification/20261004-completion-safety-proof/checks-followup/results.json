@@ -1,0 +1,39 @@
+[
+  {
+    "check": "cli-console-tests",
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "test_cli.CliExitTests.test_list_examples_module_and_console",
+      "test_cli.CliExitTests.test_missing_tool_version_module_and_console",
+      "-v"
+    ],
+    "exit_code": 0,
+    "seconds": 1.5
+  },
+  {
+    "check": "whitespace",
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "seconds": 0.047
+  },
+  {
+    "check": "installed-source",
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "import uppaal_mcp,sys; print(sys.version); print(uppaal_mcp.__file__)"
+    ],
+    "exit_code": 0,
+    "seconds": 0.156
+  }
+]

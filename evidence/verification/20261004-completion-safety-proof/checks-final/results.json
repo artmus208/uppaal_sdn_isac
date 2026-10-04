@@ -1,0 +1,140 @@
+{
+  "source_commit": "d330219ad4554b4d1307235d9ac2443b0180aa5a",
+  "environment": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "package_source": "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\src"
+  },
+  "checks": [
+    {
+      "check": "environment",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "import sys,uppaal_mcp; print(sys.version); print(uppaal_mcp.__file__)"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.219
+    },
+    {
+      "check": "dependencies",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.157
+    },
+    {
+      "check": "scoped-tests",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence\\verification\\20261004-completion-safety-proof\\tests.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.109
+    },
+    {
+      "check": "premises-reproduction",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence\\verification\\20261004-completion-safety-proof\\check.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.281
+    },
+    {
+      "check": "history-reproduction",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence\\verification\\20261004-completion-safety-proof\\audit_history.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.328
+    },
+    {
+      "check": "coordination",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.157
+    },
+    {
+      "check": "baseline-hashes",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "d330219ad4554b4d1307235d9ac2443b0180aa5a",
+        "--output",
+        "evidence\\verification\\20261004-completion-safety-proof\\checks-final\\baseline-hashes.json"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 5.625
+    },
+    {
+      "check": "repository-tests",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 88.562
+    },
+    {
+      "check": "mcp-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 1.61
+    },
+    {
+      "check": "cli-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\completion-proof-108\\mcp_uppaal\\evidence\\verification\\20261004-completion-safety-proof\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.437
+    },
+    {
+      "check": "whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+        "HEAD"
+      ],
+      "exit_code": 2,
+      "elapsed_seconds": 0.109
+    }
+  ]
+}
