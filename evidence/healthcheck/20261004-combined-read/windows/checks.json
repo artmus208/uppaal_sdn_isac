@@ -1,0 +1,166 @@
+{
+  "source_commit": "4ce4a03ee4b79d8eecd723acb1dc2ca0fd17956d",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "checks": [
+    {
+      "name": "environment",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-c",
+        "import platform,sys; print(sys.version); print(platform.platform()); print(sys.executable)"
+      ],
+      "started_utc": "2026-10-04T08:18:32.829307+00:00",
+      "duration_seconds": 0.28962430000001405,
+      "exit_code": 0
+    },
+    {
+      "name": "dependencies",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "started_utc": "2026-10-04T08:18:33.360221+00:00",
+      "duration_seconds": 1.2816259999999602,
+      "exit_code": 0
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "started_utc": "2026-10-04T08:18:34.739408+00:00",
+      "duration_seconds": 1.3236159999996744,
+      "exit_code": 0
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py"
+      ],
+      "started_utc": "2026-10-04T08:18:36.140490+00:00",
+      "duration_seconds": 0.2994797999999719,
+      "exit_code": 0
+    },
+    {
+      "name": "hash-audit",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\evidence\\healthcheck\\20261004-combined-read\\windows\\baseline-hashes.json"
+      ],
+      "started_utc": "2026-10-04T08:18:36.516955+00:00",
+      "duration_seconds": 8.76179460000003,
+      "exit_code": 0
+    },
+    {
+      "name": "full-suite",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T08:18:45.356192+00:00",
+      "duration_seconds": 211.4486449000001,
+      "exit_code": 1
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "started_utc": "2026-10-04T08:22:16.870480+00:00",
+      "duration_seconds": 2.694479200000387,
+      "exit_code": 0
+    },
+    {
+      "name": "cli-smoke",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "started_utc": "2026-10-04T08:22:19.644686+00:00",
+      "duration_seconds": 0.5911856000002444,
+      "exit_code": 0
+    },
+    {
+      "name": "completion-premises",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence/verification/20261004-completion-safety-proof/check.py",
+        "--check"
+      ],
+      "started_utc": "2026-10-04T08:22:20.304371+00:00",
+      "duration_seconds": 0.42665439999973387,
+      "exit_code": 0
+    },
+    {
+      "name": "completion-tests",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence/verification/20261004-completion-safety-proof/tests.py"
+      ],
+      "started_utc": "2026-10-04T08:22:20.799803+00:00",
+      "duration_seconds": 2.346027800000229,
+      "exit_code": 0
+    },
+    {
+      "name": "completion-history",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence/verification/20261004-completion-safety-proof/audit_history.py",
+        "--check"
+      ],
+      "started_utc": "2026-10-04T08:22:23.217959+00:00",
+      "duration_seconds": 0.5036138999998911,
+      "exit_code": 0
+    },
+    {
+      "name": "capacity-premises",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "evidence/scalability/20261004-r04-compositional-proof/check_proof.py"
+      ],
+      "started_utc": "2026-10-04T08:22:23.806203+00:00",
+      "duration_seconds": 2.4694766000002346,
+      "exit_code": 0
+    },
+    {
+      "name": "capacity-tests",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\111-native-windows-check\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evidence/scalability/20261004-r04-compositional-proof",
+        "-p",
+        "test_proof.py",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T08:22:26.354131+00:00",
+      "duration_seconds": 14.46964539999999,
+      "exit_code": 0
+    }
+  ]
+}

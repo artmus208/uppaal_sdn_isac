@@ -1,0 +1,11 @@
+[
+  {
+    "name": "Python 3.12 tests and coordination checks",
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/artmus208/uppaal_sdn_isac/actions/runs/37187422354/job/111392269520",
+    "head_sha": "2f49676ad249fafa9fd36a245fc0340071ab623b",
+    "started_at": "2026-10-04T07:58:54Z",
+    "completed_at": "2026-10-04T07:59:50Z"
+  }
+]

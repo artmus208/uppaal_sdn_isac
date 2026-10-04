@@ -1,0 +1,25 @@
+{
+  "linux_mcp_outside_sandbox": {
+    "command": ".venv/bin/python -m unittest discover -s tests -p test_mcp_startup.py -v",
+    "exit_code": 0,
+    "tests": 6
+  },
+  "linux_full_outside_sandbox": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONUTF8=1 .venv/bin/python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "tests": 242,
+    "skips": 0
+  },
+  "windows_base_memory_control": {
+    "interpreter": "C:/Users/pEw/AppData/Local/Python/pythoncore-3.14-64/python.exe",
+    "script": "memory_control.py",
+    "exit_code": 0
+  },
+  "windows_venv_memory_control": {
+    "interpreter": "D:/uppaal_mcp/.worktrees/111-native-windows-check/.venv/Scripts/python.exe",
+    "script": "memory_control.py",
+    "exit_code": 1
+  },
+  "source_commit": "4ce4a03ee4b79d8eecd723acb1dc2ca0fd17956d",
+  "notes": "Control script added after source checkpoint; included and hashed in this evidence packet. Follow-up launch UTC timestamps were not separately captured; raw logs and subprocess exit codes retained."
+}

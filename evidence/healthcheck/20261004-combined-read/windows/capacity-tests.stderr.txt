@@ -1,0 +1,32 @@
+test_accepted_instances_have_complete_relation_and_expected_counts (test_proof.PremiseMutationTests.test_accepted_instances_have_complete_relation_and_expected_counts) ... ok
+test_by_reference_exposure_is_rejected (test_proof.PremiseMutationTests.test_by_reference_exposure_is_rejected) ... ok
+test_certificate_reproduces_and_preserves_native_timeouts (test_proof.PremiseMutationTests.test_certificate_reproduces_and_preserves_native_timeouts) ... ok
+test_duplicate_grant_write_is_rejected (test_proof.PremiseMutationTests.test_duplicate_grant_write_is_rejected) ... ok
+test_enumerator_detects_broken_mapping_independently_of_parser (test_proof.PremiseMutationTests.test_enumerator_detects_broken_mapping_independently_of_parser) ... ok
+test_extra_process_instance_is_rejected (test_proof.PremiseMutationTests.test_extra_process_instance_is_rejected) ... ok
+test_extra_protected_field_in_xml_attribute_is_rejected (test_proof.PremiseMutationTests.test_extra_protected_field_in_xml_attribute_is_rejected) ... ok
+test_extra_writer_in_other_template_is_rejected (test_proof.PremiseMutationTests.test_extra_writer_in_other_template_is_rejected) ... ok
+test_hidden_function_writer_is_rejected (test_proof.PremiseMutationTests.test_hidden_function_writer_is_rejected) ... ok
+test_hooks_and_external_code_are_rejected (test_proof.PremiseMutationTests.test_hooks_and_external_code_are_rejected) ... ok
+test_local_shadow_is_rejected (test_proof.PremiseMutationTests.test_local_shadow_is_rejected) ... ok
+test_missing_grant_reset_is_rejected (test_proof.PremiseMutationTests.test_missing_grant_reset_is_rejected) ... ok
+test_query_drift_and_unaccepted_N_are_rejected (test_proof.PremiseMutationTests.test_query_drift_and_unaccepted_N_are_rejected) ... ok
+test_selector_bound_drift_is_rejected (test_proof.PremiseMutationTests.test_selector_bound_drift_is_rejected) ... ok
+test_selector_shadow_is_rejected (test_proof.PremiseMutationTests.test_selector_shadow_is_rejected) ... ok
+test_selector_side_effects_are_rejected (test_proof.PremiseMutationTests.test_selector_side_effects_are_rejected) ... ok
+test_sequential_assignments_have_unsafe_intermediate_valuation (test_proof.PremiseMutationTests.test_sequential_assignments_have_unsafe_intermediate_valuation) ... ok
+test_split_writer_is_rejected_even_with_committed_intermediate_location (test_proof.PremiseMutationTests.test_split_writer_is_rejected_even_with_committed_intermediate_location) ... ok
+test_system_parameter_alias_is_rejected (test_proof.PremiseMutationTests.test_system_parameter_alias_is_rejected) ... ok
+test_true_initial_grant_is_rejected (test_proof.PremiseMutationTests.test_true_initial_grant_is_rejected) ... ok
+test_unsafe_paths_and_hash_drift_are_rejected (test_proof.PremiseMutationTests.test_unsafe_paths_and_hash_drift_are_rejected) ... ok
+test_unsupported_xml_and_dtd_are_rejected (test_proof.PremiseMutationTests.test_unsupported_xml_and_dtd_are_rejected) ... ok
+test_update_relation_is_preserved_from_every_consistent_prestate (test_proof.PremiseMutationTests.test_update_relation_is_preserved_from_every_consistent_prestate) ... ok
+test_writer_synchronization_is_rejected (test_proof.PremiseMutationTests.test_writer_synchronization_is_rejected) ... ok
+test_wrong_grant_rhs_is_rejected (test_proof.PremiseMutationTests.test_wrong_grant_rhs_is_rejected) ... ok
+test_wrong_last_server_initialization_is_rejected (test_proof.PremiseMutationTests.test_wrong_last_server_initialization_is_rejected) ... ok
+test_wrong_last_server_update_is_rejected (test_proof.PremiseMutationTests.test_wrong_last_server_update_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 14.108s
+
+OK
