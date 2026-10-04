@@ -1,4 +1,4 @@
-"""Check this packet's log hashes, write scope and unchanged manager inputs."""
+"""Check this packet's log hashes, write scope and unchanged read-only inputs."""
 import hashlib
 import json
 from pathlib import Path
@@ -7,7 +7,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[3]
 PACKET = Path(__file__).parent
 BASE = 'f0fcd770e3e6b93f99868b9116e4f0929f60d0fa'
-SCOPE = {'tests/test_coordination.py', 'tests/test_family_baseline.py', 'tests/test_sdn_layer.py'}
+SCOPE = {'tests/test_family_baseline.py', 'tests/test_sdn_layer.py'}
 
 
 def git(*args):
@@ -29,14 +29,15 @@ def main():
                 raise ValueError('Log integrity mismatch: ' + log['path'])
             checked += 1
     unchanged = {}
-    for name in ('src/uppaal_mcp/verification_manager.py', 'tests/test_verification_manager.py'):
+    for name in ('tests/test_coordination.py', 'src/uppaal_mcp/verification_manager.py',
+                 'tests/test_verification_manager.py'):
         data = (ROOT / name).read_bytes()
         if data != git('show', BASE + ':' + name):
-            raise ValueError('Manager input changed: ' + name)
+            raise ValueError('Read-only input changed: ' + name)
         unchanged[name] = hashlib.sha256(data).hexdigest()
     print(json.dumps({'base': BASE, 'head': git('rev-parse', 'HEAD').decode().strip(),
                       'changed_paths': sorted(changed), 'log_hashes_checked': checked,
-                      'manager_files_identical_to_base': unchanged}, indent=2))
+                      'read_only_files_identical_to_base': unchanged}, indent=2))
 
 
 if __name__ == '__main__':

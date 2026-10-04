@@ -76,9 +76,6 @@ class HashAuditTests(unittest.TestCase):
         self.git("init", "-q")
         self.git("config", "user.name", "Audit fixture")
         self.git("config", "user.email", "fixture@example.invalid")
-        # Preserve the deliberately mixed line endings when staging, regardless
-        # of the developer's Git defaults. A commit-only override is too late.
-        self.git("config", "core.autocrlf", "false")
         for path, data in (("z.txt", b"z\r\n"), ("a.txt", b"a\n")):
             (self.repo / path).write_bytes(data)
         paths = ["z.txt", "a.txt"]
@@ -95,7 +92,7 @@ class HashAuditTests(unittest.TestCase):
                     "sha256 of concatenated sha256sum records for the listed files in bytewise path order"}}}}
         self.save()
         self.git("add", ".")
-        self.git("commit", "-qm", "fixture")
+        self.git("-c", "core.autocrlf=false", "commit", "-qm", "fixture")
 
     def git(self, *args):
         return subprocess.check_output(["git", *args], cwd=self.repo, stderr=subprocess.PIPE)
