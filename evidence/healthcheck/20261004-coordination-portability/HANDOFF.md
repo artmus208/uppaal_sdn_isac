@@ -93,7 +93,9 @@ audits read committed blobs, so checkout newline conversion cannot fake a match.
 
 ## Next step
 
-Publish the branch and open a PR to `read` once publication is permitted, then
-have an independent maintainer review the two test changes and reproduce the
-matrix. Exact source/log hashes and unchanged scientific inputs can be checked
-without a licensed verifier. The author does not accept this PR or any gate.
+Retrieve the published `codex/vadimnbkg/99-coordination-portability` branch from
+the canonical remote and use the exact final HEAD recorded in Issue #99 / its
+PR to `read`. Have an independent maintainer review the two test changes and
+reproduce the matrix. Exact source/log hashes and unchanged scientific inputs
+can be checked without a licensed verifier. The author does not accept this PR
+or any gate.
