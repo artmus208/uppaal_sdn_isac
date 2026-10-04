@@ -1,0 +1,33 @@
+{
+  "command": [
+    ".venv\\Scripts\\uppaal-verifyta.exe",
+    "version"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:06:11.705852+00:00",
+  "duration_seconds": 0.687,
+  "exit_code": 0,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "7af79847b4bba6046b33d71f2ed83de5c41198ff",
+  "working_tree": "?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.stdout.txt\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "verifier-version.stdout.txt",
+      "bytes": 852,
+      "sha256": "5ec8cfa6498c5fd19e4b91d1e0ad7cc1c9da42f3ec03c675714b50a67b3a8858",
+      "original_sha256": "0b0a0f9d23ab2bcd37ed423e5c4cdd329aed93f82ee0be02a81be4460d4083b4"
+    },
+    "stderr": {
+      "path": "verifier-version.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

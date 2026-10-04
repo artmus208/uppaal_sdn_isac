@@ -1,0 +1,54 @@
+test_pending_candidate_and_inconsistent_freeze (test_coordination.BaselineStateTests.test_pending_candidate_and_inconsistent_freeze) ... ok
+test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... ok
+test_invalid_input_and_construction (test_coordination.HashAuditTests.test_invalid_input_and_construction) ... ok
+test_missing_input_and_immutable_output (test_coordination.HashAuditTests.test_missing_input_and_immutable_output) ... Hash audit error: [Errno 17] File exists: '/tmp/tmp9xwhdphz/result.json'
+ok
+test_canonical_storage (test_coordination.RunStorageTests.test_canonical_storage) ... ok
+test_invalid_mappings (test_coordination.RunStorageTests.test_invalid_mappings) ... ok
+test_current_family_and_historical_default_coexist (test_family_baseline.FamilyBaselineTests.test_current_family_and_historical_default_coexist) ... ok
+test_default_switch_and_selection_policy_drift_rejected (test_family_baseline.FamilyBaselineTests.test_default_switch_and_selection_policy_drift_rejected) ... ok
+test_duplicate_fields_rejected (test_family_baseline.FamilyBaselineTests.test_duplicate_fields_rejected) ... ok
+test_incomplete_family_or_query_set_rejected (test_family_baseline.FamilyBaselineTests.test_incomplete_family_or_query_set_rejected) ... ok
+test_input_drift_rejected (test_family_baseline.FamilyBaselineTests.test_input_drift_rejected) ... ok
+test_invalid_paths_rejected (test_family_baseline.FamilyBaselineTests.test_invalid_paths_rejected) ... ok
+test_manifest_and_packet_cannot_be_rehashed_together (test_family_baseline.FamilyBaselineTests.test_manifest_and_packet_cannot_be_rehashed_together) ... ok
+test_operational_contract_history_not_confused_with_current (test_family_baseline.FamilyBaselineTests.test_operational_contract_history_not_confused_with_current) ... ok
+test_scope_widening_and_forged_decision_rejected (test_family_baseline.FamilyBaselineTests.test_scope_widening_and_forged_decision_rejected) ... ok
+test_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_symlink_escape_rejected) ... ok
+fatal: not a git repository: /mnt/c/Users/musta/.codex/worktrees/e6a2/mcp_uppaal/C:/Users/musta/Desktop/pySources/mcp_uppaal/.git/worktrees/mcp_uppaal6
+setUpClass (test_sdn_layer.IntegratedCandidateTests) ... ERROR
+test_symlinked_venv_preserves_interpreter_and_cli (test_sdn_layer.IntegratedRecorderTests.test_symlinked_venv_preserves_interpreter_and_cli) ... ok
+test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths) ... ok
+test_alpha_profile_and_raw_guard_rejection (test_sdn_layer.SdnLayerTests.test_alpha_profile_and_raw_guard_rejection) ... ok
+test_article_golden_fixtures (test_sdn_layer.SdnLayerTests.test_article_golden_fixtures) ... ok
+test_benchmark_suite_positive_and_broken (test_sdn_layer.SdnLayerTests.test_benchmark_suite_positive_and_broken) ... ok
+test_contract_validation (test_sdn_layer.SdnLayerTests.test_contract_validation) ... ok
+test_extract_contract_from_article (test_sdn_layer.SdnLayerTests.test_extract_contract_from_article) ... ok
+test_generated_model_validates_static_and_generic (test_sdn_layer.SdnLayerTests.test_generated_model_validates_static_and_generic) ... ok
+test_generation_modes (test_sdn_layer.SdnLayerTests.test_generation_modes) ... ok
+test_layer_adapter_registry_contains_sdn (test_sdn_layer.SdnLayerTests.test_layer_adapter_registry_contains_sdn) ... ok
+test_property_pack_and_static_verify (test_sdn_layer.SdnLayerTests.test_property_pack_and_static_verify) ... ok
+test_readable_layout_has_separated_labels_and_loop_lanes (test_sdn_layer.SdnLayerTests.test_readable_layout_has_separated_labels_and_loop_lanes) ... ok
+test_reports_include_interface_artifacts (test_sdn_layer.SdnLayerTests.test_reports_include_interface_artifacts) ... ok
+
+======================================================================
+ERROR: setUpClass (test_sdn_layer.IntegratedCandidateTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/mnt/c/Users/musta/.codex/worktrees/e6a2/mcp_uppaal/tests/test_sdn_layer.py", line 126, in setUpClass
+    cls.candidate = generate(ROOT)
+                    ^^^^^^^^^^^^^^
+  File "/mnt/c/Users/musta/.codex/worktrees/e6a2/mcp_uppaal/src/uppaal_mcp/integrated/generator.py", line 144, in generate
+    'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'rev-parse', 'HEAD']' returned non-zero exit status 128.
+
+----------------------------------------------------------------------
+Ran 29 tests in 16.810s
+
+FAILED (errors=1)

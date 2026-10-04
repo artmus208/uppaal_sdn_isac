@@ -1,0 +1,45 @@
+{
+  "command": [
+    "wsl",
+    "-d",
+    "Ubuntu",
+    "--",
+    "env",
+    "PYTHONPATH=src:tests",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "python3",
+    "-m",
+    "unittest",
+    "test_coordination",
+    "test_family_baseline",
+    "test_sdn_layer.IntegratedRecorderTests",
+    "-v"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:07:51.362136+00:00",
+  "duration_seconds": 13.656,
+  "exit_code": 0,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "7af79847b4bba6046b33d71f2ed83de5c41198ff",
+  "working_tree": "?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/baseline-audit.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/baseline-hashes.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/baseline-hashes.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/baseline-hashes.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/full-suite.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/full-suite.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/full-suite.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/git-defaults.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/git-defaults.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/git-defaults.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-targeted.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-targeted.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/mcp-smoke.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/mcp-smoke.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/mcp-smoke.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/pip-check.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/pip-check.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/pip-check.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.stdout.txt\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "linux-targeted.stdout.txt",
+      "bytes": 144,
+      "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "original_sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010"
+    },
+    "stderr": {
+      "path": "linux-targeted.stderr.txt",
+      "bytes": 2521,
+      "sha256": "72d7c602205b30d792e2ee72beabd1efe1d06008d3888bb8c638d45cf7c4ae9e",
+      "original_sha256": "72d7c602205b30d792e2ee72beabd1efe1d06008d3888bb8c638d45cf7c4ae9e"
+    }
+  }
+}

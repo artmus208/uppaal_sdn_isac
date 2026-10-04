@@ -1,0 +1,33 @@
+{
+  "command": [
+    ".venv\\Scripts\\python.exe",
+    "evidence/healthcheck/20261004-windows-fixtures/audit.py"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:17:26.534561+00:00",
+  "duration_seconds": 0.453,
+  "exit_code": 0,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "e226496d3724935fe89d05fa00b47794ddb8a06c",
+  "working_tree": " M evidence/healthcheck/20261004-windows-fixtures/HANDOFF.md\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-full-suite.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-full-suite.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-full-suite.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-linux-targeted.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-linux-targeted.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-linux-targeted.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-scope-and-integrity.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-scope-and-integrity.stdout.txt\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "final-scope-and-integrity.stdout.txt",
+      "bytes": 5700,
+      "sha256": "0fc0ea8e3d9a1dc297cbce3ce621fbbd0bc9e4f22eac1f951321ba59fff66c9a",
+      "original_sha256": "9253f7500607998014d420ba9e41620045b5c4dd5c3b20d7fb78702bd23025ad"
+    },
+    "stderr": {
+      "path": "final-scope-and-integrity.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

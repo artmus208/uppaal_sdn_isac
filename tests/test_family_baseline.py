@@ -2,6 +2,7 @@
 import copy
 import importlib.util
 import json
+import os
 from pathlib import Path
 import shutil
 import tempfile
@@ -100,13 +101,20 @@ class FamilyBaselineTests(unittest.TestCase):
                             self.original['input_hashes'][checker.CONTRACT])
         self.assertEqual(checker.audit(self.root)['historical_input_hashes_checked'], 0)
 
-    def test_paths_and_symlink_escape_rejected(self):
+    def test_invalid_paths_rejected(self):
         for value in ('../outside', '/tmp/outside', 'a/../outside', 'a\\outside', ''):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 checker.read(self.root, value)
+
+    def test_symlink_escape_rejected(self):
         path = self.root / self.original['models'][0]['files']['model.xml']['path']
         path.unlink()
-        path.symlink_to(ROOT / self.original['models'][0]['files']['model.xml']['path'])
+        try:
+            path.symlink_to(ROOT / self.original['models'][0]['files']['model.xml']['path'])
+        except OSError as exc:
+            if os.name == 'nt' and getattr(exc, 'winerror', None) == 1314:
+                self.skipTest('Windows symlink privilege is unavailable')
+            raise
         with self.assertRaisesRegex(ValueError, 'escapes'):
             checker.audit(self.root)
 

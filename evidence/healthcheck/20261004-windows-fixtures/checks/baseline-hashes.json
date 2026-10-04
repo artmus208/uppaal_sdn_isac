@@ -1,0 +1,38 @@
+{
+  "command": [
+    ".venv\\Scripts\\python.exe",
+    "scripts/check_coordination.py",
+    "--audit-hashes",
+    "--commit",
+    "HEAD",
+    "--output",
+    "evidence/healthcheck/20261004-windows-fixtures/checks/baseline-audit.json"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:06:08.746490+00:00",
+  "duration_seconds": 8.062,
+  "exit_code": 0,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "7af79847b4bba6046b33d71f2ed83de5c41198ff",
+  "working_tree": "?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-family.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-sdn.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/baseline-audit.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/baseline-hashes.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/baseline-hashes.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/cli-examples.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/coordination.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/git-defaults.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/git-defaults.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/git-defaults.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/linux-fixtures.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/mcp-smoke.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/mcp-smoke.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/mcp-smoke.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/verifier-version.stdout.txt\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "baseline-hashes.stdout.txt",
+      "bytes": 73,
+      "sha256": "ca6c043b3f485e3a31acf20acb240d4236a57f06b0baf71f5f91eba2ebb3852c",
+      "original_sha256": "b3c3ab750380beb3b416b72279736caf1e5af79c04ba7191e0199a5ea96829ea"
+    },
+    "stderr": {
+      "path": "baseline-hashes.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

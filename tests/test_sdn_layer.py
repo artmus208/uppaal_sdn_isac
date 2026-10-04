@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import unittest
 import xml.etree.ElementTree as ET
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 
 from uppaal_mcp.layers import available_layer_adapters
 from uppaal_mcp.sdn.alpha import check_no_continuous_guards, default_profile, validate_threshold_policy
@@ -400,7 +400,7 @@ class IntegratedRecorderTests(unittest.TestCase):
         with patch.object(recorder, 'os', SimpleNamespace(name='posix', environ={
                 'WSLENV': 'KEEP/u:UPPAAL_COMPILE_ONLY/p'})), \
              patch.object(recorder, 'subprocess', SimpleNamespace(check_output=convert)):
-            command, env = recorder.compile_invocation('/mnt/c/verifyta.exe', Path('/tmp/run'))
+            command, env = recorder.compile_invocation('/mnt/c/verifyta.exe', PurePosixPath('/tmp/run'))
         self.assertEqual(command, ['/mnt/c/verifyta.exe', 'C:\\run\\model.xml', 'C:\\run\\queries.q'])
         self.assertEqual(env, {'UPPAAL_COMPILE_ONLY': '1', 'WSLENV': 'KEEP/u:UPPAAL_COMPILE_ONLY/w'})
         self.assertEqual(convert.call_args_list[0].args[0], ['wslpath', '-w', '/tmp/run/generated/model.xml'])

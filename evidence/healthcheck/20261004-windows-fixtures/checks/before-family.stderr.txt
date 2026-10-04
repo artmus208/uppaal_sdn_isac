@@ -1,0 +1,24 @@
+test_current_family_and_historical_default_coexist (test_family_baseline.FamilyBaselineTests.test_current_family_and_historical_default_coexist) ... ok
+test_default_switch_and_selection_policy_drift_rejected (test_family_baseline.FamilyBaselineTests.test_default_switch_and_selection_policy_drift_rejected) ... ok
+test_duplicate_fields_rejected (test_family_baseline.FamilyBaselineTests.test_duplicate_fields_rejected) ... ok
+test_incomplete_family_or_query_set_rejected (test_family_baseline.FamilyBaselineTests.test_incomplete_family_or_query_set_rejected) ... ok
+test_input_drift_rejected (test_family_baseline.FamilyBaselineTests.test_input_drift_rejected) ... ok
+test_manifest_and_packet_cannot_be_rehashed_together (test_family_baseline.FamilyBaselineTests.test_manifest_and_packet_cannot_be_rehashed_together) ... ok
+test_operational_contract_history_not_confused_with_current (test_family_baseline.FamilyBaselineTests.test_operational_contract_history_not_confused_with_current) ... ok
+test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected) ... ERROR
+test_scope_widening_and_forged_decision_rejected (test_family_baseline.FamilyBaselineTests.test_scope_widening_and_forged_decision_rejected) ... ok
+
+======================================================================
+ERROR: test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_family_baseline.py", line 109, in test_paths_and_symlink_escape_rejected
+    path.symlink_to(ROOT / self.original['models'][0]['files']['model.xml']['path'])
+  File "C:\Users\musta\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1198, in symlink_to
+    os.symlink(target, self, target_is_directory)
+OSError: [WinError 1314] Клиент не обладает требуемыми правами: 'C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml' -> 'C:\\Users\\musta\\AppData\\Local\\Temp\\tmp0bl58qe1\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml'
+
+----------------------------------------------------------------------
+Ran 9 tests in 5.568s
+
+FAILED (errors=1)

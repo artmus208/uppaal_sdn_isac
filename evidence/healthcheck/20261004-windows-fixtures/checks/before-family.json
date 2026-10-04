@@ -1,0 +1,40 @@
+{
+  "command": [
+    ".venv\\Scripts\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_family_baseline.py",
+    "-v"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:02:31.272682+00:00",
+  "duration_seconds": 5.922,
+  "exit_code": 1,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "8a9a81414e2ae64239cdfc0354a0ad0eaad9dcc2",
+  "working_tree": "?? evidence/healthcheck/20261004-windows-fixtures/checks/\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "before-family.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "before-family.stderr.txt",
+      "bytes": 2416,
+      "sha256": "a47dbcf48aa335dc0cffb82b9f3aa9b38b13598628feaba35427e7ccd188f41b",
+      "original_sha256": "d9405bc7649364707ccd29125a3a872ea9c4f562de59f09ce0d8b46c6142c0a5"
+    }
+  }
+}
