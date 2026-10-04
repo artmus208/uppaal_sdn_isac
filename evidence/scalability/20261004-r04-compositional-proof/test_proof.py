@@ -135,7 +135,8 @@ class PremiseMutationTests(unittest.TestCase):
         self.rejected(tree, "exactly one protected writer")
 
     def test_hooks_and_external_code_are_rejected(self):
-        for code in ("void __ON_CONSTRUCT__() {}", "void __before_update() {}", "import \"other\";"):
+        for code in ("void __ON_CONSTRUCT__() {}", "void __before_update() {}", "import \"other\";",
+                     "before_update { other=1; }", "after_update { other=0; }"):
             with self.subTest(code=code):
                 tree, _, _ = self.tree()
                 tree.find("declaration").text += "\n" + code

@@ -11,7 +11,7 @@
     "path": "manifests/baselines/uav-family-r1.yaml",
     "sha256": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf"
   },
-  "checker_sha256": "0a66e2dc3bde7f8c0e1e8722cb97090edbc2ab616b3c719239b723610f535288",
+  "checker_sha256": "8596d86f3cd329430df27ef243c89cb3cf15fbbcd3c8b8181adb93048fbd0f30",
   "evidence_kind": "static_validation",
   "independent_scientific_acceptance": "pending",
   "issue": 101,
@@ -299,5 +299,6 @@
     }
   ],
   "property_verdict": null,
-  "schema_version": 1
+  "schema_version": 1,
+  "source_ledger_sha256": "cb9675294514f9679a23500575ce3761005fb7711432b89eaca94b4563b8a1ab"
 }

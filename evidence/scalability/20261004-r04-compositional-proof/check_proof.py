@@ -137,7 +137,7 @@ def check_structure(xml: bytes, query: str, n: int) -> Premises:
     fields += [(e, "tail", e.tail or "") for e in tree.iter()]
     fields += [(e, key, value) for e in tree.iter() for key, value in e.attrib.items()]
     all_text = "\n".join(value for _, _, value in fields)
-    require(not re.search(r"\b(?:import|extern|__ON_\w*|__before_update|__after_update)\b", all_text),
+    require(not re.search(r"\b(?:import|extern|__ON_\w*|(?:__)?before_update|(?:__)?after_update)\b", all_text),
             "external code or lifecycle hook unsupported")
     declaration = tree.find("declaration")
     prefix = f"const int FAMILY_N={n};\nint[-1,{n-1}] family_last_server=-1;\n"
@@ -300,6 +300,10 @@ def historical_index(root: Path, models: dict[int, dict]) -> dict:
 
 
 def reproduce(root: Path = ROOT) -> dict[str, bytes]:
+    source_bytes = (HERE / "sources.json").read_bytes()
+    sources = json.loads(source_bytes)
+    for source in sources["local_sources"]:
+        pinned(root, source["path"], source["sha256"])
     manifest = json.loads(pinned(root, MANIFEST, MANIFEST_SHA256))
     require(manifest["metadata"]["id"] == "uav-family-r1-20260929" and
             manifest["family_domain"] == list(DOMAIN), "unexpected baseline/domain")
@@ -338,6 +342,7 @@ def reproduce(root: Path = ROOT) -> dict[str, bytes]:
         "base_commit": BASE, "baseline_id": manifest["metadata"]["id"],
         "baseline_manifest": {"path": MANIFEST, "sha256": MANIFEST_SHA256},
         "checker_sha256": digest(Path(__file__).read_bytes()),
+        "source_ledger_sha256": digest(source_bytes),
         "accepted_input_domain": list(DOMAIN), "mathematical_argument": "PROOF.md",
         "independent_scientific_acceptance": "pending",
         "property_verdict": None, "models": [models[n] for n in DOMAIN],
