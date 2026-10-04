@@ -223,8 +223,26 @@ class WindowsProcess:
         return self.returncode
 
     def running(self):
-        # A launcher can exit before its child. Keep monitoring the owned job.
-        return self.accounting().ActiveProcesses != 0
+        # Job accounting can briefly still count a signaled/exited leader.
+        # Inspect actual handles before calling anything a live descendant.
+        if self.poll() is None:
+            return True
+        for pid in self.pids():
+            if pid == self.pid:
+                continue
+            handle = open_process(0x100000 | 0x410, False, pid)
+            if not handle:
+                if C.get_last_error() == 87:
+                    continue
+                raise C.WinError(C.get_last_error())
+            try:
+                owned = W.BOOL()
+                checked(is_in_job(handle, self.job, C.byref(owned)))
+                if owned.value and not signaled(handle):
+                    return True
+            finally:
+                close_handle(handle)
+        return False
 
     def kill(self):
         checked(terminate_job(self.job, 125))

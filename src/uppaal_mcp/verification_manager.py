@@ -109,7 +109,7 @@ def alive(pid):
 
 
 def sample(proc):
-    """RSS/working set (not private bytes), OS peak and cumulative CPU seconds."""
+    """Windows job WorkingSet/sample peak; Linux process RSS/OS peak; CPU."""
     if os.name == 'nt':
         return proc.sample()
     try:
@@ -244,12 +244,28 @@ def run_attempt(directory, config, task, session, interval):
                 row = {'elapsed_seconds': elapsed, **metrics, **progress(attempt/'stdout.txt')}
                 writer.writerow(row); telemetry.flush()
                 publish(directory, 'running', task=task['id'], attempt=attempt.name, **row)
-                if not (proc.running() if os.name == 'nt' else proc.poll() is None):
+                leader_finished = os.name == 'nt' and proc.poll() is not None
+                running = proc.running() if os.name == 'nt' else proc.poll() is None
+                if leader_finished and running:
+                    # A detached child may write plausible formulas after the
+                    # command already exited. Its exit code is not the leader's.
+                    meta['leader_exited_before_descendants'] = True
+                if not running:
                     proc.wait()
                     break
                 if control(directory) == 'stop': reason = 'stopped'
                 elif elapsed >= config['timeout_seconds']: reason = 'timeout'
-                elif metrics['rss_bytes'] is None: reason = 'monitor_error'
+                elif metrics['rss_bytes'] is None:
+                    # A terminal process may lose metrics just before poll can
+                    # observe its exit. Only an actual bounded wait completion
+                    # permits parsing; an unmeasurable live process still fails.
+                    grace = min(.01, max(0, config['timeout_seconds'] - (time.monotonic() - started)))
+                    try:
+                        proc.wait(timeout=grace)
+                    except subprocess.TimeoutExpired:
+                        reason = 'monitor_error'
+                    else:
+                        break
                 elif metrics['rss_bytes'] > config['memory_stop_bytes']: reason = 'memory_limit'
                 if reason:
                     proc.kill(); proc.wait(); break
@@ -277,6 +293,9 @@ def run_attempt(directory, config, task, session, interval):
     outcomes = parse_verifyta_outcomes(out, [task['query']])
     parsed = summarize_status(proc.returncode if proc else -1, outcomes, out, err, expected_query_count=1)
     verdict = None
+    if reason is None and meta.get('leader_exited_before_descendants'):
+        reason = 'error'
+        meta['manager_error'] = 'Leader exited before owned descendants; later output is diagnostic only'
     if reason is None:
         if parsed in ('satisfied','not_satisfied'):
             reason = 'success'; verdict = 'satisfied' if parsed == 'satisfied' else 'violated'
