@@ -1,0 +1,14 @@
+{
+  "kind": "launch preparation software correction; no verifier execution",
+  "user_request": "запускай",
+  "date": "2026-10-04",
+  "source_commit": "905905c",
+  "problem": "git output strip removed the leading porcelain status space; a modified tracked ledger was then misclassified as outside execution scope",
+  "fix": "strip only CR/LF; preserve fixed-width status columns",
+  "regression": "test_checkpoint_preserves_modified_file_status_columns",
+  "tests": 33,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "scientific_inputs_and_budgets_unchanged": true
+}

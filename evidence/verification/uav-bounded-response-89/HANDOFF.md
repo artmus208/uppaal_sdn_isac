@@ -56,8 +56,8 @@ HEAD and native bindings. See inputs/identity-correction.json and RUNNER.md. Nat
 results and independent scientific acceptance remain pending. Do not close #89,
 C02, full P3, C06, Gate 2 or R07 on the strength of this preparation alone.
 
-Current validation: `checks/identity-windows-20261004-001/record.json` records
-32/32 scoped native Windows tests with zero failures/errors/skips.
+Current validation: `checks/launch-windows-20261004-001/record.json` records
+33/33 scoped native Windows tests with zero failures/errors/skips.
 `checks/windows-check-results.json` selects this record by SHA256; the offline
 audit checks its raw log and current Python source hashes. The earlier 26-test
 Windows records remain historical evidence for the preceding source.
@@ -84,3 +84,8 @@ parameters.json; `generation-drift-analysis.json` proves the generator is
 unchanged and model XML / queries reproduce exactly. These failures are retained,
 not reported as successful checks. Scope, coordination, historical hash audit,
 MCP/CLI smoke, dependency and #89 offline integrity checks passed.
+
+Launch preparation on 2026-10-04 found and corrected stripping of the leading
+Git porcelain status column before scope checking. The new regression exercises
+a modified tracked execution ledger through the real Git-output helper. No
+model, query, budget or watchdog semantics changed; 33 native controls pass.
