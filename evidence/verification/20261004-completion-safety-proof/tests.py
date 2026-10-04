@@ -2,6 +2,8 @@
 import copy
 import json
 import unittest
+import tempfile
+from unittest.mock import patch
 import xml.etree.ElementTree as ET
 from pathlib import Path
 import check
@@ -37,7 +39,14 @@ class PremiseTests(unittest.TestCase):
         self.assertEqual(actual,json.loads((check.HERE/"certificate.json").read_text()))
 
     def test_byte_gate_rejects_changed_model(self):
-        self.assertNotEqual(check.sha(ET.tostring(self.root)),check.MODEL_HASH)
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            model=root/check.MODEL
+            model.parent.mkdir(parents=True)
+            model.write_bytes(ET.tostring(self.root))
+            with patch.object(check,"ROOT",root):
+                with self.assertRaisesRegex(check.PremiseError,"model byte hash mismatch"):
+                    check.run()
 
     def test_missing_receipt(self):
         self.reject_edge(check.APP,12,"assignment","c82_received=true","c82_received=false","entry does not")
@@ -143,7 +152,7 @@ class PremiseTests(unittest.TestCase):
         root=copy.deepcopy(self.root)
         d=root.find("declaration")
         d.text=d.text.replace("void u0_app_note_kpi_update_event() {","void u0_app_note_kpi_update_event() { c82_cancelled=true;")
-        with self.assertRaisesRegex(check.PremiseError,"reviewed premise differs"):
+        with self.assertRaisesRegex(check.PremiseError,"unclassified record writer"):
             self.checked(root)
 
     def test_weakened_query_rejected(self):

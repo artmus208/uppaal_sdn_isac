@@ -13,6 +13,7 @@ MODEL = "evidence/instantiation/uav-service-completion-candidate/model.xml"
 QUERY = "evidence/instantiation/uav-service-completion-candidate/queries/completion-safety.q"
 MANIFEST = "manifests/baselines/uav-service-completion-r1.yaml"
 MODEL_HASH = "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02"
+QUERY_HASH = "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9"
 MANIFEST_HASH = "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d"
 APP = "u0_app_A_REQ"
 JOB = "C82_ResultJob"
@@ -303,7 +304,7 @@ def run():
     b = (ROOT/MODEL).read_bytes()
     q = (ROOT/QUERY).read_bytes()
     require(sha(b) == MODEL_HASH, "model byte hash mismatch")
-    require(sha(q) == expected["query_sha256"], "query byte hash mismatch")
+    require(sha(q) == expected["query_sha256"] == QUERY_HASH, "query byte hash mismatch")
     require(sha((ROOT/MANIFEST).read_bytes()) == MANIFEST_HASH, "manifest byte hash mismatch")
     cert = check_premises(ET.fromstring(b), q.decode(), expected)
     cert["inputs"] = {MODEL:sha(b), QUERY:sha(q), MANIFEST:MANIFEST_HASH,

@@ -1,0 +1,10 @@
+{
+  "evidence/instantiation/uav-service-completion-candidate/raw-index.json": "693c327288fa8769180683c5a927ba621c42bc05f82209d3c36d1ce558f2fb2f",
+  "evidence/instantiation/uav-service-completion-candidate/raw-traces.zip": "1eeac21cdae0aa111e9125158b1d353ae906883d8ad57bcbd0ffc216fc743ab3",
+  "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/provenance.json": "1ab613c1cbdb8a184b01fba6f17a8c987ce0fda051b25119d10061a706123150",
+  "evidence/instantiation/uav-service-completion-candidate/runs/replay-001/result.json": "45d54075eef3f8373785ce473e5c7ecedb059c7bcdec06e8e1fa357c88dbbfd0",
+  "evidence/verification/uav-service-completion-p3-20261002/query-ledger.json": "a7a33cc02992ed7355d57458da2cbba8dcd080822038bb3b910bdc32fc7a82cc",
+  "evidence/verification/uav-service-completion-p3-20261002/runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/result.json": "24ccc75f04ba907072d4a8f0c46f1ebf04d1591e07f2415c6fe4427e672462e4",
+  "evidence/verification/uav-service-completion-p3-20261002/runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "evidence/verification/uav-service-completion-p3-20261002/runs/issue87-10-completion-safety-attempt01-20261002/attempts/001-e50441afd4e947d7a1aae37356e9656d/stdout.txt": "aa719bb5bd515c85936a6b0d63503eff3ded7b57e68649c38144aacbd7d90af6"
+}
