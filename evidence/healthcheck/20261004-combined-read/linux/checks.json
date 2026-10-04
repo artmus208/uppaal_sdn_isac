@@ -1,0 +1,166 @@
+{
+  "source_commit": "4ce4a03ee4b79d8eecd723acb1dc2ca0fd17956d",
+  "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "checks": [
+    {
+      "name": "environment",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-c",
+        "import platform,sys; print(sys.version); print(platform.platform()); print(sys.executable)"
+      ],
+      "started_utc": "2026-10-04T08:13:58.833792+00:00",
+      "duration_seconds": 0.28952344100025584,
+      "exit_code": 0
+    },
+    {
+      "name": "dependencies",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "started_utc": "2026-10-04T08:13:59.147318+00:00",
+      "duration_seconds": 1.2584882500000276,
+      "exit_code": 0
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "started_utc": "2026-10-04T08:14:00.412232+00:00",
+      "duration_seconds": 0.7828125709997948,
+      "exit_code": 0
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "scripts/check_coordination.py"
+      ],
+      "started_utc": "2026-10-04T08:14:01.199832+00:00",
+      "duration_seconds": 0.16994989799968607,
+      "exit_code": 0
+    },
+    {
+      "name": "hash-audit",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "/tmp/uppaal-integration-check-20261004/evidence/healthcheck/20261004-combined-read/linux/baseline-hashes.json"
+      ],
+      "started_utc": "2026-10-04T08:14:01.375680+00:00",
+      "duration_seconds": 1.0212971649998508,
+      "exit_code": 0
+    },
+    {
+      "name": "full-suite",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T08:14:02.402029+00:00",
+      "duration_seconds": 153.23874254899965,
+      "exit_code": 1
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "started_utc": "2026-10-04T08:16:35.650899+00:00",
+      "duration_seconds": 4.318180493,
+      "exit_code": 0
+    },
+    {
+      "name": "cli-smoke",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "started_utc": "2026-10-04T08:16:39.996209+00:00",
+      "duration_seconds": 0.7742887759995938,
+      "exit_code": 0
+    },
+    {
+      "name": "completion-premises",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-B",
+        "evidence/verification/20261004-completion-safety-proof/check.py",
+        "--check"
+      ],
+      "started_utc": "2026-10-04T08:16:40.779397+00:00",
+      "duration_seconds": 0.5101389749997907,
+      "exit_code": 0
+    },
+    {
+      "name": "completion-tests",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-B",
+        "evidence/verification/20261004-completion-safety-proof/tests.py"
+      ],
+      "started_utc": "2026-10-04T08:16:41.301935+00:00",
+      "duration_seconds": 2.781219118000081,
+      "exit_code": 0
+    },
+    {
+      "name": "completion-history",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-B",
+        "evidence/verification/20261004-completion-safety-proof/audit_history.py",
+        "--check"
+      ],
+      "started_utc": "2026-10-04T08:16:44.090868+00:00",
+      "duration_seconds": 0.7745351069997923,
+      "exit_code": 0
+    },
+    {
+      "name": "capacity-premises",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "evidence/scalability/20261004-r04-compositional-proof/check_proof.py"
+      ],
+      "started_utc": "2026-10-04T08:16:44.871134+00:00",
+      "duration_seconds": 1.8365690350001387,
+      "exit_code": 0
+    },
+    {
+      "name": "capacity-tests",
+      "command": [
+        "/tmp/uppaal-integration-check-20261004/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evidence/scalability/20261004-r04-compositional-proof",
+        "-p",
+        "test_proof.py",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T08:16:46.713579+00:00",
+      "duration_seconds": 13.501514348,
+      "exit_code": 0
+    }
+  ]
+}
