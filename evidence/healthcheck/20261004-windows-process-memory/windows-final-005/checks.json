@@ -1,0 +1,117 @@
+{
+  "source_commit": "02887456e69fec0999d1be084ddf1d521bd1c716",
+  "source_hashes": {
+    "src/uppaal_mcp/verification_manager.py": "e79f3a55bd03d9cc833928898a39ad87890abba3b5168507ead13f71d16f332a",
+    "src/uppaal_mcp/windows_process.py": "4f1ace2b48cbf11f3e188d0327f52efc0c5c4baa5d973c716d85c591203a2a05",
+    "tests/test_verification_manager.py": "94c40aec8779c9552370a6359885df6c3a07aafef8b2b41143d707a85b45025f"
+  },
+  "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "checks": [
+    {
+      "name": "manager-tests",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_verification_manager.py",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T09:10:58.681560+00:00",
+      "elapsed_seconds": 20.099927299999763,
+      "exit_code": 0
+    },
+    {
+      "name": "full-suite",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T09:11:18.783315+00:00",
+      "elapsed_seconds": 126.58566020000035,
+      "exit_code": 1
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py"
+      ],
+      "started_utc": "2026-10-04T09:13:25.369938+00:00",
+      "elapsed_seconds": 0.22329229999922973,
+      "exit_code": 0
+    },
+    {
+      "name": "hash-audit",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\evidence\\healthcheck\\20261004-windows-process-memory\\windows-final-005\\baseline-hashes.json"
+      ],
+      "started_utc": "2026-10-04T09:13:25.593784+00:00",
+      "elapsed_seconds": 6.9310427000000345,
+      "exit_code": 0
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "started_utc": "2026-10-04T09:13:32.525691+00:00",
+      "elapsed_seconds": 0.9573129000000336,
+      "exit_code": 0
+    },
+    {
+      "name": "dependencies",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "started_utc": "2026-10-04T09:13:33.483624+00:00",
+      "elapsed_seconds": 0.9256236999999601,
+      "exit_code": 0
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "started_utc": "2026-10-04T09:13:34.410515+00:00",
+      "elapsed_seconds": 2.0881997000005867,
+      "exit_code": 0
+    },
+    {
+      "name": "cli-smoke",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "started_utc": "2026-10-04T09:13:36.499844+00:00",
+      "elapsed_seconds": 0.444985799999813,
+      "exit_code": 0
+    }
+  ]
+}

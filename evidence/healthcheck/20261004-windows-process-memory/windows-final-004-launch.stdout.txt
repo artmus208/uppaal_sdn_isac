@@ -1,0 +1,8 @@
+manager-tests 1
+full-suite 0
+coordination 0
+hash-audit 0
+pip-check 0
+dependencies 0
+mcp-smoke 0
+cli-smoke 0

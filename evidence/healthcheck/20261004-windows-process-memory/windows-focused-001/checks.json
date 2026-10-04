@@ -1,0 +1,30 @@
+{
+  "source_commit": "874ba5ec716466d6283a35193dfadeaa146b3e58",
+  "source_hashes": {
+    "src/uppaal_mcp/verification_manager.py": "65ab58dac8b48a112568f2e65541f17ffe147f875b428ae1161f92958aa9f97b",
+    "src/uppaal_mcp/windows_process.py": "1c889bb2ae92fda0a9264685cfa350fbb7cb55e9f58cfe02bad6fb30535e53a4",
+    "tests/test_verification_manager.py": "f0054ae98ae4cff3dd7ebde9b248535e002ee60f5efe5be50c0ad4151412c218"
+  },
+  "python": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]",
+  "executable": "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "checks": [
+    {
+      "name": "manager-tests",
+      "command": [
+        "D:\\uppaal_mcp\\.worktrees\\113-native-windows-memory\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_verification_manager.py",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T08:51:05.767350+00:00",
+      "elapsed_seconds": 17.21835689999989,
+      "exit_code": 0
+    }
+  ]
+}

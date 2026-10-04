@@ -1,0 +1,44 @@
+iteration 1
+test_queue_preserves_negative_verdict_and_skips_completed (test_verification_manager.ManagerTests.test_queue_preserves_negative_verdict_and_skips_completed) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.315s
+
+OK
+iteration 2
+test_queue_preserves_negative_verdict_and_skips_completed (test_verification_manager.ManagerTests.test_queue_preserves_negative_verdict_and_skips_completed) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.250s
+
+OK
+iteration 3
+test_queue_preserves_negative_verdict_and_skips_completed (test_verification_manager.ManagerTests.test_queue_preserves_negative_verdict_and_skips_completed) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.257s
+
+OK
+iteration 4
+test_queue_preserves_negative_verdict_and_skips_completed (test_verification_manager.ManagerTests.test_queue_preserves_negative_verdict_and_skips_completed) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.327s
+
+OK
+iteration 5
+test_queue_preserves_negative_verdict_and_skips_completed (test_verification_manager.ManagerTests.test_queue_preserves_negative_verdict_and_skips_completed) ... FAIL
+
+======================================================================
+FAIL: test_queue_preserves_negative_verdict_and_skips_completed (test_verification_manager.ManagerTests.test_queue_preserves_negative_verdict_and_skips_completed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/uppaal-windows-memory-113/tests/test_verification_manager.py", line 78, in test_queue_preserves_negative_verdict_and_skips_completed
+    self.assertEqual(self.run_queue(), 0, self.results())
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 0 : [{'run_id': '001-e1df4598aa774da4b7aec67e8f0ac0c8', 'started_at': '2026-10-04T09:07:24.054373+00:00', 'command': ['/usr/bin/python3.14', '/tmp/tmpmh3pvq8k/fake.py', '-X', '/tmp/tmpmh3pvq8k/queue/attempts/001-e1df4598aa774da4b7aec67e8f0ac0c8/trace', '/tmp/tmpmh3pvq8k/queue/model.xml', '/tmp/tmpmh3pvq8k/queue/query-001.q'], 'cwd': '/usr/bin', 'model_hash': '75e393b90efeffebec140e90663766d59cc5196bb61158e504801f4b6c044499', 'query_hash': '9428b59352748baea1e29086be89b6c13c8fe40c757a24f5dcda62f8f9f8142c', 'formula': 'A[] true', 'session': 'f9f6cee8dfad4f869448c31937b2e42c', 'timeout_seconds': 600, 'memory_stop_bytes': 2147483648, 'pid': 7255, 'finished_at': '2026-10-04T09:07:24.187584+00:00', 'elapsed_seconds': 0.13287315500019758, 'status': 'success', 'verdict': 'satisfied', 'returncode': 0, 'peak_rss_bytes': 12144640, 'cpu_seconds': 0.11, 'states_explored': None, 'tool_version': 'Python 3.14.4\n', 'stdout_reference': 'stdout.txt', 'stderr_reference': 'stderr.txt', 'trace_paths': []}, {'run_id': '002-2bfcd55d426645f88a986edac41cd9d9', 'started_at': '2026-10-04T09:07:24.189154+00:00', 'command': ['/usr/bin/python3.14', '/tmp/tmpmh3pvq8k/fake.py', '-X', '/tmp/tmpmh3pvq8k/queue/attempts/002-2bfcd55d426645f88a986edac41cd9d9/trace', '/tmp/tmpmh3pvq8k/queue/model.xml', '/tmp/tmpmh3pvq8k/queue/query-002.q'], 'cwd': '/usr/bin', 'model_hash': '75e393b90efeffebec140e90663766d59cc5196bb61158e504801f4b6c044499', 'query_hash': '02d3a215979de2001e03b2d7c862d30325d90816a456c2597c84bb648da219dc', 'formula': 'A[] false', 'session': 'f9f6cee8dfad4f869448c31937b2e42c', 'timeout_seconds': 600, 'memory_stop_bytes': 2147483648, 'pid': 7258, 'finished_at': '2026-10-04T09:07:24.323049+00:00', 'elapsed_seconds': 0.13368817500031582, 'status': 'monitor_error', 'verdict': None, 'returncode': 0, 'peak_rss_bytes': 12111872, 'cpu_seconds': 0.11, 'states_explored': None, 'tool_version': 'Python 3.14.4\n', 'stdout_reference': 'stdout.txt', 'stderr_reference': 'stderr.txt', 'trace_paths': []}]
+
+----------------------------------------------------------------------
+Ran 1 test in 0.307s
+
+FAILED (failures=1)

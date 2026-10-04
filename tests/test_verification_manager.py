@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
@@ -74,15 +75,17 @@ if 'failure' in q: sys.exit(1)
 
     def test_queue_preserves_negative_verdict_and_skips_completed(self):
         self.init('A[] true\nA[] false\n')
-        self.assertEqual(self.run_queue(), 0)
+        self.assertEqual(self.run_queue(), 0, self.results())
         self.assertEqual({r['verdict'] for r in self.results()}, {'satisfied','violated'})
         before = {str(p):p.read_bytes() for p in self.queue.glob('attempts/**/*') if p.is_file()}
-        self.assertEqual(self.run_queue(), 0)
+        self.assertEqual(self.run_queue(), 0, self.results())
         self.assertEqual(before, {str(p):p.read_bytes() for p in self.queue.glob('attempts/**/*') if p.is_file()})
         self.assertFalse(m.status(self.queue)['worker_active'])
 
     def test_timeout_keeps_logs_and_retries_new_attempt(self):
-        self.init('A[] slow\n', timeout=.15)
+        # Allow native launcher/job startup before asserting that output was
+        # produced. The fixture still sleeps three seconds, beyond this limit.
+        self.init('A[] slow\n', timeout=1)
         self.assertEqual(self.run_queue(), 2)
         first = self.results()[0]
         self.assertEqual(first['status'], 'timeout'); self.assertIsNone(first['verdict'])
@@ -108,7 +111,7 @@ if 'failure' in q: sys.exit(1)
 
     def test_snapshot_isolation_and_tamper_detection(self):
         self.init(); self.model.write_text('changed external original')
-        self.assertEqual(self.run_queue(), 0)
+        self.assertEqual(self.run_queue(), 0, self.results())
         (self.queue/'model.xml').write_text('changed queue snapshot')
         with self.assertRaisesRegex(ValueError, 'input changed'): self.run_queue()
 
@@ -132,7 +135,7 @@ if 'failure' in q: sys.exit(1)
         self.assertEqual(p.wait(timeout=5), 2)
         self.assertFalse(m.alive(child))
         self.assertEqual({r['status'] for r in self.results()}, {'success','stopped'})
-        self.assertEqual(self.run_queue(), 0)
+        self.assertEqual(self.run_queue(), 0, self.results())
         self.assertEqual(len(self.results()), 3)
 
     def test_missing_metrics_fail_closed(self):
@@ -150,7 +153,7 @@ if 'failure' in q: sys.exit(1)
         self.init('A[] true\n')
         attempt=self.queue/'attempts'/'001-dead'; attempt.mkdir(parents=True)
         m.save(attempt/'attempt.json', {'pid':None})
-        self.assertEqual(self.run_queue(), 0)
+        self.assertEqual(self.run_queue(), 0, self.results())
         self.assertTrue((attempt/'attempt.json').exists())
         self.assertEqual(len(list((self.queue/'attempts').iterdir())), 2)
 
@@ -164,5 +167,148 @@ if 'failure' in q: sys.exit(1)
     def test_limits_reject_nonfinite(self):
         with self.assertRaises(ValueError): self.init(timeout=float('nan'))
         self.assertFalse(self.queue.exists())
+
+    @unittest.skipIf(os.name == 'nt', 'Linux terminal-metrics race injection')
+    def test_missing_terminal_metrics_preserves_complete_negative_result(self):
+        self.init('A[] false\n')
+        def terminal_metrics(proc):
+            proc.wait(timeout=2)
+            original_poll = proc.poll
+            first = [True]
+            def delayed_poll():
+                if first[0]:
+                    first[0] = False
+                    return None
+                return original_poll()
+            proc.poll = delayed_poll
+            return dict(rss_bytes=None, peak_rss_bytes=None, cpu_seconds=None)
+        with patch.object(m, 'sample', terminal_metrics):
+            self.assertEqual(self.run_queue(), 0, self.results())
+        self.assertEqual(self.results()[0]['verdict'], 'violated')
+
+@unittest.skipUnless(os.name == 'nt', 'Native Windows job regression')
+class WindowsProcessTreeTests(unittest.TestCase):
+    setUp = ManagerTests.setUp
+    init = ManagerTests.init
+    run_queue = ManagerTests.run_queue
+    results = ManagerTests.results
+    worker = ManagerTests.worker
+
+    def tree(self, mode, **limits):
+        child = self.root/'child.py'
+        child.write_text('''import os,sys,time,pathlib
+pathlib.Path(sys.argv[1]).write_text(str(os.getpid()))
+b=bytearray(128*1024*1024)
+if sys.argv[2]=='success':
+ time.sleep(.5)
+ print('Verifying formula 1',flush=True)
+ print(' -- Formula is satisfied.',flush=True)
+else: time.sleep(30)
+''')
+        marker = self.root/'child.pid'
+        self.fake.write_text('''import sys,subprocess,pathlib,time
+if '--version' in sys.argv: sys.exit(0)
+subprocess.Popen([sys.executable, sys.argv[1], sys.argv[2], sys.argv[3]])
+while not pathlib.Path(sys.argv[2]).exists(): time.sleep(.01)
+if sys.argv[3]=='wait': time.sleep(30)
+''')
+        self.init('A[] true\n', **limits)
+        cfg = m.read(self.queue/'queue.json')
+        cfg['options'] = [str(self.fake), str(child), str(marker), mode]
+        m.save(self.queue/'queue.json', cfg)
+        return marker
+
+    def child_gone(self, marker):
+        self.assertTrue(marker.exists(), 'child must have actually started')
+        pid = int(marker.read_text())
+        deadline = time.monotonic()+5
+        while m.alive(pid) and time.monotonic()<deadline:
+            time.sleep(.02)
+        self.assertFalse(m.alive(pid), f'owned child {pid} survived cleanup')
+
+    def test_child_memory_limit_and_unrelated_process_survives(self):
+        outsider = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(30)'])
+        self.addCleanup(lambda: (outsider.kill(), outsider.wait()) if outsider.poll() is None else None)
+        marker = self.tree('wait', memory_mib=96)
+        self.assertEqual(self.run_queue(), 2)
+        result = self.results()[0]
+        self.assertEqual(result['status'], 'memory_limit')
+        self.assertIsNone(result['verdict'])
+        self.assertGreater(result['peak_rss_bytes'], 96*1024**2)
+        self.child_gone(marker)
+        self.assertIsNone(outsider.poll())
+
+    def test_timeout_cleans_child_after_leader_exit(self):
+        marker = self.tree('exit', timeout=1, memory_mib=256)
+        self.assertEqual(self.run_queue(), 2)
+        self.assertEqual(self.results()[0]['status'], 'timeout')
+        self.child_gone(marker)
+
+    def test_stop_cleans_owned_descendants(self):
+        marker = self.tree('wait', memory_mib=256)
+        worker = self.worker()
+        deadline = time.monotonic()+8
+        while not marker.exists() and time.monotonic()<deadline:
+            time.sleep(.02)
+        self.assertTrue(marker.exists())
+        m.save(self.queue/'control.json', {'action':'stop'})
+        self.assertEqual(worker.wait(timeout=8), 2)
+        self.assertEqual(self.results()[0]['status'], 'stopped')
+        self.child_gone(marker)
+
+    def test_unattended_child_output_cannot_become_a_verdict(self):
+        marker = self.tree('success', memory_mib=256)
+        self.assertEqual(self.run_queue(), 2)
+        self.assertEqual(self.results()[0]['status'], 'error')
+        self.assertIsNone(self.results()[0]['verdict'])
+        self.assertTrue(self.results()[0]['leader_exited_before_descendants'])
+        self.assertIn('Formula is satisfied', (self.queue/'attempts'/self.results()[0]['run_id']/'stdout.txt').read_text())
+        self.child_gone(marker)
+        session = next((self.queue/'sessions').glob('*/session.json'))
+        self.assertIn('aggregate', m.read(session)['hardware']['memory_measurement'])
+
+    def test_job_setup_failure_keeps_error_without_verdict(self):
+        self.init('A[] true\n')
+        with patch('uppaal_mcp.windows_process.create_job', return_value=None):
+            self.assertEqual(self.run_queue(), 2)
+        self.assertEqual(self.results()[0]['status'], 'error')
+        self.assertIsNone(self.results()[0]['verdict'])
+
+    def test_lagging_job_count_does_not_make_exited_leader_a_descendant(self):
+        from uppaal_mcp.windows_process import WindowsProcess
+        self.init('A[] true\n', timeout=2)
+        lagging = SimpleNamespace(ActiveProcesses=1, TotalUserTime=0, TotalKernelTime=0)
+        with patch.object(WindowsProcess, 'accounting', return_value=lagging):
+            self.assertEqual(self.run_queue(), 0, self.results())
+        self.assertEqual(self.results()[0]['verdict'], 'satisfied')
+        self.assertNotIn('leader_exited_before_descendants', self.results()[0])
+
+    def test_leader_exit_between_reads_does_not_invent_a_descendant(self):
+        from uppaal_mcp.windows_process import WindowsProcess, wait_handle
+        self.init('A[] true\n', timeout=2)
+        original = WindowsProcess.running
+        def exit_between_reads(proc):
+            running = original(proc)
+            if running:
+                self.assertEqual(wait_handle(proc.process, 5000), 0)
+            return running
+        with patch.object(WindowsProcess, 'running', exit_between_reads):
+            self.assertEqual(self.run_queue(), 0, self.results())
+        self.assertNotIn('leader_exited_before_descendants', self.results()[0])
+
+    def test_job_monitor_failure_cleans_descendants(self):
+        from uppaal_mcp.windows_process import WindowsProcess
+        marker = self.tree('wait', memory_mib=256)
+        original = WindowsProcess.sample
+        def fail_once_child_started(proc):
+            if marker.exists():
+                raise OSError('injected owned-job monitor failure')
+            return original(proc)
+        with patch.object(WindowsProcess, 'sample', fail_once_child_started):
+            self.assertEqual(self.run_queue(), 2)
+        self.assertEqual(self.results()[0]['status'], 'monitor_error')
+        self.assertIsNone(self.results()[0]['verdict'])
+        self.child_gone(marker)
+
 
 if __name__ == '__main__': unittest.main()
