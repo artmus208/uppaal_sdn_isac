@@ -2,6 +2,7 @@
 import argparse
 from datetime import datetime, timezone
 import hashlib
+from importlib.metadata import version
 import json
 import locale
 import os
@@ -29,7 +30,8 @@ def main():
         "evidence_class": "software_regression_diagnostics",
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "root": str(ROOT), "python": sys.version, "platform": platform.platform(),
-        "locale_encoding": locale.getencoding(),
+        "locale_encoding": locale.getpreferredencoding(False),
+        "package_versions": {name: version(name) for name in ("mcp", "PyYAML")},
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
         "source_hashes": {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in SCOPED_TESTS},
         "environment": {k: env[k] for k in ("PYTHONPATH", "PYTHONDONTWRITEBYTECODE", "PYTHONIOENCODING", "PYTHONUTF8")},
@@ -52,7 +54,7 @@ def main():
     focused = py + ["-m", "unittest", "-v", "test_coordination", "test_coordination_activation"]
     run("git-autocrlf", ["git", "config", "--show-origin", "--get-all", "core.autocrlf"])
     run("git-system-autocrlf", ["git", "config", "--system", "--get-all", "core.autocrlf"])
-    run("child-locale", py + ["-c", "import locale,sys; print(locale.getencoding()); print(sys.flags.utf8_mode)"])
+    run("child-locale", py + ["-c", "import locale,sys; print(locale.getpreferredencoding(False)); print(sys.flags.utf8_mode)"])
     run("focused-native", focused)
     with tempfile.TemporaryDirectory() as folder:
         for setting in ("false", "true", "input"):
@@ -68,7 +70,7 @@ def main():
         run("baseline-hashes", py + ["scripts/check_coordination.py", "--audit-hashes", "--commit", "HEAD",
                                     "--output", str(output / "baseline-audit.json")])
         run("mcp-smoke", py + ["-c", "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"])
-        run("cli-smoke", py + ["-m", "uppaal_mcp", "list-examples"])
+        run("cli-smoke", py + ["-m", "uppaal_mcp.cli", "list-examples"])
         run("pip-check", py + ["-m", "pip", "check"])
     # Expected failures in the before record are preserved verbatim, not hidden.
     return int(any(c["exit_code"] for c in record["checks"] if not c["name"].startswith("git-")))

@@ -30,7 +30,7 @@ class CoordinationActivationTests(unittest.TestCase):
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(ROOT / relative, target)
         self.pointer = self.root / 'manifests/current.json'
-        self.config = json.loads(self.pointer.read_text())
+        self.config = json.loads(self.pointer.read_text(encoding="utf-8"))
 
     def check(self):
         with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
@@ -41,7 +41,8 @@ class CoordinationActivationTests(unittest.TestCase):
         self.assertEqual(self.check(), 0)
         # A change to the operational plan is not drift of the frozen v1 hash.
         path = self.root / 'manifests/v2.md'
-        path.write_text(path.read_text() + '\nEditorial clarification in the operational plan.\n')
+        path.write_text(path.read_text(encoding="utf-8") + '\nEditorial clarification in the operational plan.\n',
+                        encoding="utf-8")
         self.assertEqual(self.check(), 0)
 
     def test_missing_or_invalid_pointer_never_falls_back(self):
@@ -51,18 +52,19 @@ class CoordinationActivationTests(unittest.TestCase):
                       json.dumps({**self.config, 'schema_version': 2}),
                       json.dumps({**self.config, 'unexpected': 'field'})):
             with self.subTest(value=value):
-                self.pointer.write_text(value)
+                self.pointer.write_text(value, encoding="utf-8")
                 self.assertEqual(self.check(), 1)
 
     def test_bad_paths_and_contract_disagreement_are_rejected(self):
         for value in ('manifests/missing.md', '../outside.md', str(ROOT / 'manifests/v2.md'),
                       'manifests/v1.md', None):
             with self.subTest(value=value):
-                self.pointer.write_text(json.dumps({**self.config, 'scientific_plan': value}))
+                self.pointer.write_text(json.dumps({**self.config, 'scientific_plan': value}), encoding="utf-8")
                 self.assertEqual(self.check(), 1)
-        self.pointer.write_text(json.dumps({**self.config, 'collaboration_manifest': 'manifests/collaboration-v1.yaml'}))
+        self.pointer.write_text(json.dumps({**self.config, 'collaboration_manifest': 'manifests/collaboration-v1.yaml'}),
+                                encoding="utf-8")
         self.assertEqual(self.check(), 1)
-        self.pointer.write_text(json.dumps({**self.config, 'activation_issue': ''}))
+        self.pointer.write_text(json.dumps({**self.config, 'activation_issue': ''}), encoding="utf-8")
         self.assertEqual(self.check(), 1)
 
     def test_historical_input_drift_is_rejected(self):
@@ -77,7 +79,7 @@ class CoordinationActivationTests(unittest.TestCase):
 
     def test_owner_and_gate_changes_are_rejected(self):
         path = self.root / 'manifests/collaboration-v2.yaml'
-        original = path.read_text()
+        original = path.read_text(encoding="utf-8")
         mutations = [
             ('atomic_comment_ids: [C01, C02, C03, C04, C05, C06]', 'atomic_comment_ids: [C01, C02, C03, C04, C05, R03]'),
             ('accept_after: [P3_core_evidence_accepted, gate_1]', 'accept_after: [P3_complete, gate_1]'),
@@ -88,19 +90,20 @@ class CoordinationActivationTests(unittest.TestCase):
         for before, after in mutations:
             with self.subTest(before=before):
                 self.assertIn(before, original)
-                path.write_text(original.replace(before, after))
+                path.write_text(original.replace(before, after), encoding="utf-8")
                 self.assertEqual(self.check(), 1)
-        path.write_text(original)
+        path.write_text(original, encoding="utf-8")
         self.assertEqual(self.check(), 0)
 
     def test_migration_ids_remain_unique_and_conditional(self):
         path = self.root / 'manifests/v2-migration.md'
-        original = path.read_text()
+        original = path.read_text(encoding="utf-8")
         for changed in (original.replace('| R03 | P4 |', '| R03 | P2 |'),
                         original + '\n| C01 | P3 | duplicate |\n',
                         original.replace('| D01 | P9b (условно) |', '| D01 | P9b |')):
             with self.subTest(changed=changed[-80:]):
-                path.write_text(changed)
+                self.assertNotEqual(changed, original)
+                path.write_text(changed, encoding="utf-8")
                 self.assertEqual(self.check(), 1)
 
 

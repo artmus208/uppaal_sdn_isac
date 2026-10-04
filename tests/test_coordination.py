@@ -24,7 +24,7 @@ auditor = module("baseline_audit", ROOT / "evidence/governance/20260906-baseline
 
 class RunStorageTests(unittest.TestCase):
     def setUp(self):
-        self.text = (ROOT / checker.current_configuration(ROOT)["collaboration_manifest"]).read_text()
+        self.text = (ROOT / checker.current_configuration(ROOT)["collaboration_manifest"]).read_text(encoding="utf-8")
 
     def test_canonical_storage(self):
         self.assertEqual(checker.check_run_storage(self.text), [])
@@ -46,7 +46,7 @@ class RunStorageTests(unittest.TestCase):
 
 class BaselineStateTests(unittest.TestCase):
     def test_pending_candidate_and_inconsistent_freeze(self):
-        text = (ROOT / checker.current_configuration(ROOT)["baseline_manifest"]).read_text()
+        text = (ROOT / checker.current_configuration(ROOT)["baseline_manifest"]).read_text(encoding="utf-8")
         self.assertEqual(checker.check_baseline_state(text), [])
         text = text.replace("status: frozen", "status: candidate").replace("frozen: true", "frozen: false").replace("status: accepted", "status: pending").replace("passed: true", "passed: false")
         frozen = text.replace("status: candidate", "status: frozen").replace("frozen: false", "frozen: true").replace("status: pending", "status: accepted").replace("passed: false", "passed: true")
@@ -76,6 +76,9 @@ class HashAuditTests(unittest.TestCase):
         self.git("init", "-q")
         self.git("config", "user.name", "Audit fixture")
         self.git("config", "user.email", "fixture@example.invalid")
+        # Preserve the deliberately mixed LF/CRLF bytes when git add stages them.
+        # A commit-only override is too late to undo inherited autocrlf conversion.
+        self.git("config", "core.autocrlf", "false")
         for path, data in (("z.txt", b"z\r\n"), ("a.txt", b"a\n")):
             (self.repo / path).write_bytes(data)
         paths = ["z.txt", "a.txt"]
@@ -92,7 +95,7 @@ class HashAuditTests(unittest.TestCase):
                     "sha256 of concatenated sha256sum records for the listed files in bytewise path order"}}}}
         self.save()
         self.git("add", ".")
-        self.git("-c", "core.autocrlf=false", "commit", "-qm", "fixture")
+        self.git("commit", "-qm", "fixture")
 
     def git(self, *args):
         return subprocess.check_output(["git", *args], cwd=self.repo, stderr=subprocess.PIPE)
@@ -100,9 +103,11 @@ class HashAuditTests(unittest.TestCase):
     def save(self):
         target = self.repo / auditor.MANIFEST
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json.dumps(self.manifest))
+        target.write_text(json.dumps(self.manifest), encoding="utf-8")
 
     def test_exact_bytes_and_committed_manifest(self):
+        self.assertEqual(self.git("show", "HEAD:z.txt"), b"z\r\n")
+        self.assertEqual(self.git("show", "HEAD:a.txt"), b"a\n")
         self.assertEqual(auditor.audit(self.repo)["hash_status"], "match")
         (self.repo / "z.txt").write_bytes(b"z\n")
         dirty = auditor.audit(self.repo)

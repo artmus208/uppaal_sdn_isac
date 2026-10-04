@@ -1,0 +1,244 @@
+{
+  "evidence_class": "software_regression_diagnostics",
+  "created_at_utc": "2026-10-04T00:05:32.625746+00:00",
+  "root": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "locale_encoding": "cp1251",
+  "package_versions": {
+    "mcp": "1.30.0",
+    "PyYAML": "6.0.3"
+  },
+  "source_commit": "ea30ae98ea1b60af432eafece3f2bc7eb6532adb",
+  "source_hashes": {
+    "tests/test_coordination.py": "4faecad4d305626609c25b4070c64b3622bf98e9670dc02df1e133e8e9dad07d",
+    "tests/test_coordination_activation.py": "c309860f5be98dafb5fc0c6b6ddbfd9c9dc03d52020d2b2afb7ad88275527f44"
+  },
+  "environment": {
+    "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONIOENCODING": "utf-8",
+    "PYTHONUTF8": "0"
+  },
+  "checks": [
+    {
+      "name": "git-autocrlf",
+      "command": [
+        "git",
+        "config",
+        "--show-origin",
+        "--get-all",
+        "core.autocrlf"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 0.047,
+      "log": "git-autocrlf.log",
+      "sha256": "0a75aed124ddfd92cbe1173fa264264e5d44b2f6d8d96565477771960f6c4ffc"
+    },
+    {
+      "name": "git-system-autocrlf",
+      "command": [
+        "git",
+        "config",
+        "--system",
+        "--get-all",
+        "core.autocrlf"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 0.031,
+      "log": "git-system-autocrlf.log",
+      "sha256": "a17fcf0a2f50e2d495e4f90ce263410edc183add6c62699a2facbccf60410f74"
+    },
+    {
+      "name": "child-locale",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "import locale,sys; print(locale.getencoding()); print(sys.flags.utf8_mode)"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 0.078,
+      "log": "child-locale.log",
+      "sha256": "e69f4044e266c8d960cd191d91f833164ac0b5ef246da838d9d66840815a0037"
+    },
+    {
+      "name": "focused-native",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_coordination",
+        "test_coordination_activation"
+      ],
+      "environment_overrides": {},
+      "exit_code": 1,
+      "elapsed_sec": 4.094,
+      "log": "focused-native.log",
+      "sha256": "98143b3d3b1cff2dadf83504c710f782121b5628e50f9fc3c47f1cfadd94f55c"
+    },
+    {
+      "name": "focused-autocrlf-false",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_coordination",
+        "test_coordination_activation"
+      ],
+      "environment_overrides": {
+        "GIT_CONFIG_GLOBAL": "C:\\Users\\musta\\AppData\\Local\\Temp\\tmp3x3s8qim\\false.gitconfig",
+        "GIT_CONFIG_NOSYSTEM": "1"
+      },
+      "exit_code": 1,
+      "elapsed_sec": 3.875,
+      "log": "focused-autocrlf-false.log",
+      "sha256": "6ef201198f6d4eba6c58484da2792957eb45582687ed3f39a14e9f2cc8b7d636"
+    },
+    {
+      "name": "focused-autocrlf-true",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_coordination",
+        "test_coordination_activation"
+      ],
+      "environment_overrides": {
+        "GIT_CONFIG_GLOBAL": "C:\\Users\\musta\\AppData\\Local\\Temp\\tmp3x3s8qim\\true.gitconfig",
+        "GIT_CONFIG_NOSYSTEM": "1"
+      },
+      "exit_code": 1,
+      "elapsed_sec": 3.64,
+      "log": "focused-autocrlf-true.log",
+      "sha256": "b7204417e4bcfdf4eb8e33a714125df61203231e995cd78d05701e7c333a1f47"
+    },
+    {
+      "name": "focused-autocrlf-input",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_coordination",
+        "test_coordination_activation"
+      ],
+      "environment_overrides": {
+        "GIT_CONFIG_GLOBAL": "C:\\Users\\musta\\AppData\\Local\\Temp\\tmp3x3s8qim\\input.gitconfig",
+        "GIT_CONFIG_NOSYSTEM": "1"
+      },
+      "exit_code": 1,
+      "elapsed_sec": 3.407,
+      "log": "focused-autocrlf-input.log",
+      "sha256": "573ef6ecba720e6d5296897f928798c118b6288187483eb40e2c7ebf39d20fc6"
+    },
+    {
+      "name": "full-suite",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "environment_overrides": {},
+      "exit_code": 1,
+      "elapsed_sec": 92.078,
+      "log": "full-suite.log",
+      "sha256": "d3167f09be1d442656f9aef7f6c279926d919619538aa1ad31516ab8b0a463b1"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 0.156,
+      "log": "coordination.log",
+      "sha256": "0afa00e968ae02a520b13a31b75fb8d57fd0ae97040c9a7fe745d1aa9907ad10"
+    },
+    {
+      "name": "baseline-hashes",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\evidence\\healthcheck\\20261004-coordination-portability\\before\\baseline-audit.json"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 6.047,
+      "log": "baseline-hashes.log",
+      "sha256": "b3c3ab750380beb3b416b72279736caf1e5af79c04ba7191e0199a5ea96829ea"
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 1.281,
+      "log": "mcp-smoke.log",
+      "sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913"
+    },
+    {
+      "name": "cli-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 0.391,
+      "log": "cli-smoke.log",
+      "sha256": "1af8ad56a27f370f4963277f0705948385ed924cd95a0f691ad2c57880025f1b"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "environment_overrides": {},
+      "exit_code": 0,
+      "elapsed_sec": 1.297,
+      "log": "pip-check.log",
+      "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    }
+  ],
+  "global_git_configs": {
+    "false": "[core]\n\tautocrlf = false\n",
+    "true": "[core]\n\tautocrlf = true\n",
+    "input": "[core]\n\tautocrlf = input\n"
+  }
+}
