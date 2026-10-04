@@ -1,0 +1,92 @@
+{
+  "issue": 104,
+  "source_commit": "4efe53eb5b8f302fb3b82318d90c71cc12a4aebf",
+  "comparison_base": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "checks": {
+    "focused": {
+      "exit_code": 0,
+      "summary": [
+        "Ran 55 tests in 24.021s",
+        "OK"
+      ]
+    },
+    "full-suite": {
+      "exit_code": 1,
+      "summary": [
+        "Ran 222 tests in 107.190s",
+        "FAILED (failures=3, errors=3, skipped=2)"
+      ]
+    },
+    "coordination": {
+      "exit_code": 0,
+      "summary": []
+    },
+    "baseline-hashes": {
+      "exit_code": 0,
+      "summary": []
+    },
+    "phy-static-benchmarks": {
+      "exit_code": 0,
+      "summary": []
+    },
+    "mcp-smoke": {
+      "exit_code": 0,
+      "summary": []
+    },
+    "cli-smoke": {
+      "exit_code": 0,
+      "summary": []
+    },
+    "pip-check": {
+      "exit_code": 0,
+      "summary": []
+    },
+    "baseline-regressions": {
+      "exit_code": 1,
+      "summary": [
+        "Ran 13 tests in 14.906s",
+        "FAILED (failures=45, errors=8)"
+      ]
+    },
+    "baseline-failures": {
+      "exit_code": 1,
+      "summary": [
+        "Ran 6 tests in 4.552s",
+        "FAILED (failures=3, errors=3)"
+      ]
+    }
+  },
+  "source_hashes": {
+    "src/uppaal_mcp/phy/artifacts.py": "9625b066458c20b6dff6119b73f44c07aa44816f718d4f429235341141428c6e",
+    "tests/test_phy_artifacts.py": "71e21b90741c2d4baac54986add7f43595260095d92dabea0878ea5b69b5fb27"
+  },
+  "unchanged_failure_ids": [
+    "test_current_v2_and_historical_v1_coexist (test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist)",
+    "test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest)",
+    "test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child)",
+    "test_migration_ids_remain_unique_and_conditional (test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional)",
+    "test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected)",
+    "test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths)"
+  ],
+  "new_failure_ids": [],
+  "source_and_log_hashes_match": true,
+  "baseline_manifest_sha256": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7",
+  "input_hashes": {
+    "AGENTS.md": "e9717f8d1ae99176277fd9a60146e063d1416fe92eb3f305ae4b820a881e5996",
+    "CONTRIBUTING.md": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+    "CONTRIBUTING-v2.md": "a2405dbc79a8b2c53e8262739490fd5c151a6074d16a57946bb3230f8d426b54",
+    "manifests/current.json": "bf2d455d13cec0d5870cb7777d26efd424653ba6bb2c1b56af0ae0b7149e626f",
+    "manifests/v2.md": "13c8b4e78c9f2e33096f649d130f44decd325d8a10ce82b33d2cf013c0eb2861",
+    "manifests/collaboration-v2.yaml": "fcce78b4ef3286e3e618de9cf107bcd4ed343908f3facec614f33e8d324cf97e"
+  },
+  "baseline_relevant_source_hashes": {
+    "src/uppaal_mcp/phy/artifacts.py": "8af30b49a439e456df90d39b912db913bc14bf9941e3aeaf253ad6e994d1aa92",
+    "src/uppaal_mcp/phy/tools.py": "6c8ce77052f68974a56769bfbbb5c3c00406ca5cb390554c0401206698a839a6",
+    "src/uppaal_mcp/verification_manager.py": "de41fd2ebfde7675fa618f92f7c9c5f28515236897a0e76ce6797b39e64058fd",
+    "tests/test_coordination.py": "4faecad4d305626609c25b4070c64b3622bf98e9670dc02df1e133e8e9dad07d",
+    "tests/test_coordination_activation.py": "c309860f5be98dafb5fc0c6b6ddbfd9c9dc03d52020d2b2afb7ad88275527f44",
+    "tests/test_family_baseline.py": "e05263a24c2449d51f04019945cd07c7030dbbfaa40ff44c1fe5ee60778ddd17",
+    "tests/test_sdn_layer.py": "1a77276c0fe6e3728dcad2ecb3419dcdc77c54c94dbaf705792b03cb42609315",
+    "tests/test_verification_manager.py": "51d0b2d1388b36a0c0b8f3d75ca2a99e380c91a45259b202c35fe0dd35abc3dc"
+  }
+}
