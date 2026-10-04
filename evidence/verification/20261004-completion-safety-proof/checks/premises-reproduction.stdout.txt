@@ -1,0 +1,1 @@
+{"templates": 51, "transitions_scanned": 884, "helpers_scanned": 77, "query_atoms": 26, "premises_supported": true}

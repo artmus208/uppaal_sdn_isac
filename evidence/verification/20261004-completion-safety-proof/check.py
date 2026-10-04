@@ -302,8 +302,8 @@ def check_premises(root, query, expected):
 def run():
     expected = json.loads((HERE/"premises.json").read_text(encoding="utf-8"))
     b = (ROOT/MODEL).read_bytes()
-    q = (ROOT/QUERY).read_bytes()
     require(sha(b) == MODEL_HASH, "model byte hash mismatch")
+    q = (ROOT/QUERY).read_bytes()
     require(sha(q) == expected["query_sha256"] == QUERY_HASH, "query byte hash mismatch")
     require(sha((ROOT/MANIFEST).read_bytes()) == MANIFEST_HASH, "manifest byte hash mismatch")
     cert = check_premises(ET.fromstring(b), q.decode(), expected)
