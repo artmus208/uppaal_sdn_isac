@@ -1,4 +1,4 @@
-# Handoff — Issue #108
+# Handoff вЂ” Issue #108
 
 Deliverable: proof of truthful UAV completion, stable receipt records and causal
 receipt history, with fixed-model premise checker, mutation controls, historical
@@ -44,7 +44,7 @@ independent. No native executable/version probe/engine run was launched.
   run. Two failures were missing CLI entry points and pass in the targeted
   follow-up. Four repository tests remain unresolved: three failures and one
   error. There is no single green full-suite run.
-- git diff --check passes with scoped attributes recognizing CRLF in raw Windows
+- git diff --check passes with scoped attributes recognizing CRLF and emitted trailing spaces in raw Windows
   output. Logs are preserved byte-for-byte; code/prose whitespace is still checked.
 
 Remaining full-suite failures (unchanged tests/src/scripts relative to base):
