@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_phy_artifacts.py",
+    "-v"
+  ],
+  "exit_code": 1,
+  "source_base": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "production_sha256": "8af30b49a439e456df90d39b912db913bc14bf9941e3aeaf253ad6e994d1aa92",
+  "log_sha256": "2cb4272db932798126a70a7a06a0b8bbeebfb142678d5db12b0aa80860891945"
+}
