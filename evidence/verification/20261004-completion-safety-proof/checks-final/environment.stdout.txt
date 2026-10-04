@@ -1,0 +1,2 @@
+3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]
+C:\Users\musta\.codex\worktrees\completion-proof-108\mcp_uppaal\src\uppaal_mcp\__init__.py

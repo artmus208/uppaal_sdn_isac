@@ -1,0 +1,7 @@
+# Preserve raw Windows software-check logs without treating CRLF as an error.
+checks/*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof
+checks/*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof
+checks-final/*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof
+checks-final/*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof
+checks-followup/*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof
+checks-followup/*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof

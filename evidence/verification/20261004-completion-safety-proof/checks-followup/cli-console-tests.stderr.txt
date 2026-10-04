@@ -1,0 +1,7 @@
+test_list_examples_module_and_console (test_cli.CliExitTests.test_list_examples_module_and_console) ... ok
+test_missing_tool_version_module_and_console (test_cli.CliExitTests.test_missing_tool_version_module_and_console) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.264s
+
+OK
