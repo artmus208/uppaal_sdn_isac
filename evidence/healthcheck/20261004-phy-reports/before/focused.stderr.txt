@@ -1,0 +1,844 @@
+test_absent_result_is_not_run (test_phy_report_status.PhyReportStatusTests.test_absent_result_is_not_run) ... FAIL
+test_actual_runner_failure_after_partial_success_stays_diagnostic (test_phy_report_status.PhyReportStatusTests.test_actual_runner_failure_after_partial_success_stays_diagnostic) ... FAIL
+test_actual_runner_timeout_and_complete_controls (test_phy_report_status.PhyReportStatusTests.test_actual_runner_timeout_and_complete_controls) ... FAIL
+test_completed_empty_results_have_no_verdict (test_phy_report_status.PhyReportStatusTests.test_completed_empty_results_have_no_verdict) ... FAIL
+test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) ... 
+  test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) (status='satisfied') ... FAIL
+  test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) (status='not_satisfied') ... FAIL
+  test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) (status='inconclusive') ... FAIL
+test_completed_positive_results_limit_absence_claim_to_returned_queries (test_phy_report_status.PhyReportStatusTests.test_completed_positive_results_limit_absence_claim_to_returned_queries) ... FAIL
+test_empty_and_missing_run_status_cannot_establish_results (test_phy_report_status.PhyReportStatusTests.test_empty_and_missing_run_status_cannot_establish_results) ... 
+  test_empty_and_missing_run_status_cannot_establish_results (test_phy_report_status.PhyReportStatusTests.test_empty_and_missing_run_status_cannot_establish_results) (result={}) ... FAIL
+  test_empty_and_missing_run_status_cannot_establish_results (test_phy_report_status.PhyReportStatusTests.test_empty_and_missing_run_status_cannot_establish_results) (result={'query_results': [{'formula': 'A[] not deadlock', 'status': 'satisfied'}]}) ... FAIL
+test_export_preserves_results_trace_and_input_objects (test_phy_report_status.PhyReportStatusTests.test_export_preserves_results_trace_and_input_objects) ... FAIL
+test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) ... 
+  test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome='maybe') ... FAIL
+  test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome='inconclusive') ... FAIL
+  test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome='unknown') ... FAIL
+  test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome=None) ... FAIL
+test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) ... 
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='error') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='timeout') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='tool_not_found') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='validation_failed') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='static_only') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='not_verified') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='unknown') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='success') ... FAIL
+  test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status=None) ... FAIL
+
+======================================================================
+FAIL: test_absent_result_is_not_run (test_phy_report_status.PhyReportStatusTests.test_absent_result_is_not_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 65, in test_absent_result_is_not_run
+    self.assertIn('No verification result supplied', reports['report.md'])
+AssertionError: 'No verification result supplied' not found in '# PHY Property Report\n\n| Property | Category | Query | Result | Interpretation | Source |\n|---|---|---|---|---|---|\n| deadlock_free | safety | `A[] not deadlock` | not_run | closed A_SYS has no deadlocks | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:812 |\n| reach_phy_normal | reachability | `E<> A_PH.PHYNormal` | not_run | normal PHY state is reachable | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:813 |\n| reach_phy_sensing_degraded | reachability | `E<> A_PH.PHYSensingDegraded` | not_run | sensing degradation is reachable | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:814 |\n| reach_phy_communication_degraded | reachability | `E<> A_PH.PHYCommunicationDegraded` | not_run | communication degradation is reachable | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:815 |\n| reach_phy_joint_degraded | reachability | `E<> A_PH.PHYJointDegraded` | not_run | joint degradation is reachable | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:816 |\n| aggregation_consistency | safety | `A[] (A_PH.PHYNormal imply (comm_ok && sensing_qos_ok))` | not_run | normal state implies both aggregate booleans are ok | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:817 |\n| ch_determinism | safety | `A[] (ch_enabled_count <= 1)` | not_run | channel classifier has at most one enabled result | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:858 |\n| sq_determinism | safety | `A[] (sq_enabled_count <= 1)` | not_run | sensing classifier has at most one enabled result | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:859 |\n| bm_recover_invariant | safety | `A[] (A_BM.BeamRecover imply c_rec <= D_BM)` | not_run | beam recovery never exceeds its invariant | PHY_level_formalization_reviewed-2026-06-06-143000.tex:properties:854 |\n| ObsSenseReport | observer | `A[] not ObsSenseReport.Violation` | not_run | ObsSenseReport does not reach Violation | PHY_level_formalization_reviewed-2026-06-06-143000.tex:observers:820 |\n| ObsFreshness | observer | `A[] not ObsFreshness.Violation` | not_run | ObsFreshness does not reach Violation | PHY_level_formalization_reviewed-2026-06-06-143000.tex:observers:832 |\n| ObsBeamRecovery | observer | `A[] not ObsBeamRecovery.Violation` | not_run | ObsBeamRecovery does not reach Violation | PHY_level_formalization_reviewed-2026-06-06-143000.tex:observers:842 |\n| contract_ch | contract | `A[] (ass_ch() imply not A_CH.ContractViolation_CH)` | not_run | A_CH contract violation is absent under assumptions | PHY_level_formalization_reviewed-2026-06-06-143000.tex:contracts:877 |\n| contract_sig | contract | `A[] (ass_sig() imply not A_SIG.ContractViolation_SIG)` | not_run | A_SIG contract violation is absent under assumptions | PHY_level_formalization_reviewed-2026-06-06-143000.tex:contracts:878 |\n| contract_bm | contract | `A[] (ass_bm() imply not A_BM.ContractViolation_BM)` | not_run | A_BM contract violation is absent under assumptions | PHY_level_formalization_reviewed-2026-06-06-143000.tex:contracts:879 |\n| contract_sq | contract | `A[] (ass_sq() imply not A_SQ.ContractViolation_SQ)` | not_run | A_SQ contract violation is absent under assumptions | PHY_level_formalization_reviewed-2026-06-06-143000.tex:contracts:880 |\n| contract_ph | contract | `A[] (ass_ph() imply not A_PH.ContractViolation_PH)` | not_run | A_PH contract violation is absent under assumptions | PHY_level_formalization_reviewed-2026-06-06-143000.tex:contracts:881 |\n'
+
+======================================================================
+FAIL: test_actual_runner_failure_after_partial_success_stays_diagnostic (test_phy_report_status.PhyReportStatusTests.test_actual_runner_failure_after_partial_success_stays_diagnostic)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 121, in test_actual_runner_failure_after_partial_success_stays_diagnostic
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_run', 'not_run', 'not_ru[141 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++ ['not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_actual_runner_timeout_and_complete_controls (test_phy_report_status.PhyReportStatusTests.test_actual_runner_timeout_and_complete_controls)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 136, in test_actual_runner_timeout_and_complete_controls
+    self.assert_property_states(self.reports(timed_out), ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['not_run', 'not_run', 'not_run', 'not_run', 'n[135 chars]run'] != ['not_verified', 'not_verified', 'not_verified'[220 chars]ied']
+
+First differing element 0:
+'not_run'
+'not_verified'
+
+- ['not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++ ['not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_completed_empty_results_have_no_verdict (test_phy_report_status.PhyReportStatusTests.test_completed_empty_results_have_no_verdict)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 107, in test_completed_empty_results_have_no_verdict
+    self.assertIn('No query results were reported', reports['violations.md'])
+AssertionError: 'No query results were reported' not found in '# Violations\n\nOverall status: `satisfied`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| no failed parsed query | - | - |\n'
+
+======================================================================
+FAIL: test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) (status='satisfied')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 82, in test_completed_mixed_results_preserve_query_outcomes
+    self.assertIn('Violated properties', violations)
+AssertionError: 'Violated properties' not found in '# Violations\n\nOverall status: `satisfied`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| `E<> A_PH.PHYNormal` | not_satisfied | Inspect the referenced template, guard, sync channel, and source provenance. |\n| `E<> A_PH.PHYSensingDegraded` | maybe | Inspect the referenced template, guard, sync channel, and source provenance. |\n| `E<> A_PH.PHYCommunicationDegraded` | inconclusive | Inspect the referenced template, guard, sync channel, and source provenance. |\n'
+
+======================================================================
+FAIL: test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) (status='not_satisfied')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 82, in test_completed_mixed_results_preserve_query_outcomes
+    self.assertIn('Violated properties', violations)
+AssertionError: 'Violated properties' not found in '# Violations\n\nOverall status: `not_satisfied`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| `E<> A_PH.PHYNormal` | not_satisfied | Inspect the referenced template, guard, sync channel, and source provenance. |\n| `E<> A_PH.PHYSensingDegraded` | maybe | Inspect the referenced template, guard, sync channel, and source provenance. |\n| `E<> A_PH.PHYCommunicationDegraded` | inconclusive | Inspect the referenced template, guard, sync channel, and source provenance. |\n'
+
+======================================================================
+FAIL: test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) (status='inconclusive')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 82, in test_completed_mixed_results_preserve_query_outcomes
+    self.assertIn('Violated properties', violations)
+AssertionError: 'Violated properties' not found in '# Violations\n\nOverall status: `inconclusive`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| `E<> A_PH.PHYNormal` | not_satisfied | Inspect the referenced template, guard, sync channel, and source provenance. |\n| `E<> A_PH.PHYSensingDegraded` | maybe | Inspect the referenced template, guard, sync channel, and source provenance. |\n| `E<> A_PH.PHYCommunicationDegraded` | inconclusive | Inspect the referenced template, guard, sync channel, and source provenance. |\n'
+
+======================================================================
+FAIL: test_completed_positive_results_limit_absence_claim_to_returned_queries (test_phy_report_status.PhyReportStatusTests.test_completed_positive_results_limit_absence_claim_to_returned_queries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 102, in test_completed_positive_results_limit_absence_claim_to_returned_queries
+    self.assertIn('among returned query results', reports['violations.md'])
+AssertionError: 'among returned query results' not found in '# Violations\n\nOverall status: `satisfied`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| no failed parsed query | - | - |\n'
+
+======================================================================
+FAIL: test_empty_and_missing_run_status_cannot_establish_results (test_phy_report_status.PhyReportStatusTests.test_empty_and_missing_run_status_cannot_establish_results) (result={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 72, in test_empty_and_missing_run_status_cannot_establish_results
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['not_run', 'not_run', 'not_run', 'not_run', 'n[135 chars]run'] != ['not_verified', 'not_verified', 'not_verified'[220 chars]ied']
+
+First differing element 0:
+'not_run'
+'not_verified'
+
+- ['not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++ ['not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_empty_and_missing_run_status_cannot_establish_results (test_phy_report_status.PhyReportStatusTests.test_empty_and_missing_run_status_cannot_establish_results) (result={'query_results': [{'formula': 'A[] not deadlock', 'status': 'satisfied'}]})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 72, in test_empty_and_missing_run_status_cannot_establish_results
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_run', 'not_run', 'not_ru[141 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++ ['not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_export_preserves_results_trace_and_input_objects (test_phy_report_status.PhyReportStatusTests.test_export_preserves_results_trace_and_input_objects)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 151, in test_export_preserves_results_trace_and_input_objects
+    self.assertIn('diagnostic only', (output / 'violations.md').read_text(encoding='utf-8'))
+AssertionError: 'diagnostic only' not found in '# Violations\n\nOverall status: `error`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| `E<> A_PH.PHYNormal` | not_satisfied | Inspect the referenced template, guard, sync channel, and source provenance. |\n'
+
+======================================================================
+FAIL: test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome='maybe')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 94, in test_inconclusive_queries_are_not_reported_as_violations
+    self.assertIn('Queries without a decisive verdict', violations)
+AssertionError: 'Queries without a decisive verdict' not found in '# Violations\n\nOverall status: `inconclusive`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| `A[] not deadlock` | maybe | Inspect closed A_SYS environment stubs and blocked handshakes. |\n'
+
+======================================================================
+FAIL: test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome='inconclusive')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 94, in test_inconclusive_queries_are_not_reported_as_violations
+    self.assertIn('Queries without a decisive verdict', violations)
+AssertionError: 'Queries without a decisive verdict' not found in '# Violations\n\nOverall status: `inconclusive`.\n\n| Query | Status | Suggested fix |\n|---|---|---|\n| `A[] not deadlock` | inconclusive | Inspect closed A_SYS environment stubs and blocked handshakes. |\n'
+
+======================================================================
+FAIL: test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome='unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 92, in test_inconclusive_queries_are_not_reported_as_violations
+    self.assert_property_states(reports, [expected] + ['not_run'] * (len(self.properties) - 1))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['unknown', 'not_run', 'not_run', 'not_run'[139 chars]run'] != ['not_verified', 'not_run', 'not_run', 'not[144 chars]run']
+
+First differing element 0:
+'unknown'
+'not_verified'
+
+- ['unknown',
++ ['not_verified',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run']
+
+======================================================================
+FAIL: test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) (outcome=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 92, in test_inconclusive_queries_are_not_reported_as_violations
+    self.assert_property_states(reports, [expected] + ['not_run'] * (len(self.properties) - 1))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['None', 'not_run', 'not_run', 'not_run', '[136 chars]run'] != ['not_verified', 'not_run', 'not_run', 'not[144 chars]run']
+
+First differing element 0:
+'None'
+'not_verified'
+
+- ['None',
++ ['not_verified',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run',
+   'not_run']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='error')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='timeout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='tool_not_found')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='validation_failed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='static_only')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='not_verified')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status='success')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+======================================================================
+FAIL: test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) (status=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 51, in test_unsuccessful_runs_do_not_publish_partial_verdicts
+    self.assert_property_states(reports, ['not_verified'] * len(self.properties))
+  File "C:\Users\musta\.codex\worktrees\e6a2\mcp_uppaal\tests\test_phy_report_status.py", line 35, in assert_property_states
+    self.assertEqual([row['result'] for row in rows], expected)
+AssertionError: Lists differ: ['satisfied', 'not_satisfied', 'not_run', '[147 chars]run'] != ['not_verified', 'not_verified', 'not_verif[224 chars]ied']
+
+First differing element 0:
+'satisfied'
+'not_verified'
+
+- ['satisfied',
++ ['not_verified',
+-  'not_satisfied',
+?       ^^^ -
+
++  'not_verified',
+?       ^^^
+
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run',
+-  'not_run']
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified',
++  'not_verified']
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.121s
+
+FAILED (failures=24)

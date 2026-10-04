@@ -1,0 +1,47 @@
+{
+  "base": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "implementation": "805e4dc5c23cf2f24beb64b139afe1249429600f",
+  "head": "805e4dc5c23cf2f24beb64b139afe1249429600f",
+  "changed_paths": [
+    "evidence/healthcheck/20261004-phy-reports/.gitattributes",
+    "evidence/healthcheck/20261004-phy-reports/HANDOFF.md",
+    "evidence/healthcheck/20261004-phy-reports/after/baseline-audit.json",
+    "evidence/healthcheck/20261004-phy-reports/after/baseline-hashes.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/baseline-hashes.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/checks.json",
+    "evidence/healthcheck/20261004-phy-reports/after/cli-smoke.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/cli-smoke.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/coordination.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/coordination.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/focused.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/focused.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/full-suite.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/full-suite.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/mcp-smoke.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/mcp-smoke.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/pip-check.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/after/pip-check.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/audit.py",
+    "evidence/healthcheck/20261004-phy-reports/before/checks.json",
+    "evidence/healthcheck/20261004-phy-reports/before/focused.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/before/focused.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/focused-after/checks.json",
+    "evidence/healthcheck/20261004-phy-reports/focused-after/focused.stderr.txt",
+    "evidence/healthcheck/20261004-phy-reports/focused-after/focused.stdout.txt",
+    "evidence/healthcheck/20261004-phy-reports/run_checks.py",
+    "src/uppaal_mcp/phy/reports.py",
+    "tests/test_phy_report_status.py"
+  ],
+  "implementation_hashes": {
+    "src/uppaal_mcp/phy/reports.py": "aabfd669d82c0dd1541cbf9f96857124da8671dba55bd37c9b5d81e3c1574d4e",
+    "tests/test_phy_report_status.py": "e7d68175d902b43b3967c9d380b5b5fee97c9b9e93356013ca38430609b8358d"
+  },
+  "log_hashes_checked": 18,
+  "unchanged_base_failure_inputs": {
+    "tests/test_coordination.py": "4faecad4d305626609c25b4070c64b3622bf98e9670dc02df1e133e8e9dad07d",
+    "tests/test_family_baseline.py": "e05263a24c2449d51f04019945cd07c7030dbbfaa40ff44c1fe5ee60778ddd17",
+    "tests/test_sdn_layer.py": "1a77276c0fe6e3728dcad2ecb3419dcdc77c54c94dbaf705792b03cb42609315",
+    "tests/test_verification_manager.py": "51d0b2d1388b36a0c0b8f3d75ca2a99e380c91a45259b202c35fe0dd35abc3dc",
+    "src/uppaal_mcp/verification_manager.py": "de41fd2ebfde7675fa618f92f7c9c5f28515236897a0e76ce6797b39e64058fd"
+  }
+}
