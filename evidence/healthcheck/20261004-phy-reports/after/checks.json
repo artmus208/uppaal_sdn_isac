@@ -1,0 +1,199 @@
+{
+  "source_commit": "6e5465b53b25d1b2e74734578c46d164b15c9c6f",
+  "working_tree": "A  evidence/healthcheck/20261004-phy-reports/before/checks.json\nA  evidence/healthcheck/20261004-phy-reports/before/focused.stderr.txt\nA  evidence/healthcheck/20261004-phy-reports/before/focused.stdout.txt\nA  evidence/healthcheck/20261004-phy-reports/focused-after/checks.json\nA  evidence/healthcheck/20261004-phy-reports/focused-after/focused.stderr.txt\nA  evidence/healthcheck/20261004-phy-reports/focused-after/focused.stdout.txt\nM  src/uppaal_mcp/phy/reports.py\n",
+  "source_hashes": {
+    "src/uppaal_mcp/phy/reports.py": "aabfd669d82c0dd1541cbf9f96857124da8671dba55bd37c9b5d81e3c1574d4e",
+    "tests/test_phy_report_status.py": "e7d68175d902b43b3967c9d380b5b5fee97c9b9e93356013ca38430609b8358d"
+  },
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "checks": [
+    {
+      "label": "focused",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_phy_report_status.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-04T00:51:33.188247+00:00",
+      "duration_seconds": 0.438,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "focused.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "focused.stderr.txt",
+          "sha256": "a5d850ae7e3dac18a22894110a58ac13ada66744fa4ebe78301e6f226556d296",
+          "original_sha256": "954fc5b9ba5eafa6ee1eb42c39c6373499ecbdb98c7ba82eb32a6f5a1f3d4ff0"
+        }
+      }
+    },
+    {
+      "label": "full-suite",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "started_at": "2026-10-04T00:51:33.622605+00:00",
+      "duration_seconds": 71.687,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "full-suite.stdout.txt",
+          "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+          "original_sha256": "555fa0dfcc9a7b9c46e152ca3105720055cb5e18c5623ffa131a4a6c581d096a"
+        },
+        "stderr": {
+          "path": "full-suite.stderr.txt",
+          "sha256": "4fe2c01b7c6488d98bc84f7d66f54ae22e172ea03bfe0cf9a1dcc4a5aea77383",
+          "original_sha256": "ef830c85bb0a6efb5a6a55f62515b2650085caca70504c4d95a8bcb167a9bf02"
+        }
+      }
+    },
+    {
+      "label": "coordination",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-04T00:52:45.307220+00:00",
+      "duration_seconds": 0.141,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "coordination.stdout.txt",
+          "sha256": "ec05f0dd0c03c4fc873e90b590ef5fef6bc17b87f2dafc36a909080740c7ec7d",
+          "original_sha256": "0afa00e968ae02a520b13a31b75fb8d57fd0ae97040c9a7fe745d1aa9907ad10"
+        },
+        "stderr": {
+          "path": "coordination.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "baseline-hashes",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\evidence\\healthcheck\\20261004-phy-reports\\after\\baseline-audit.json"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-04T00:52:45.443701+00:00",
+      "duration_seconds": 5.531,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "baseline-hashes.stdout.txt",
+          "sha256": "ca6c043b3f485e3a31acf20acb240d4236a57f06b0baf71f5f91eba2ebb3852c",
+          "original_sha256": "b3c3ab750380beb3b416b72279736caf1e5af79c04ba7191e0199a5ea96829ea"
+        },
+        "stderr": {
+          "path": "baseline-hashes.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "pip-check",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-04T00:52:50.981072+00:00",
+      "duration_seconds": 1.484,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "pip-check.stdout.txt",
+          "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+          "original_sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        },
+        "stderr": {
+          "path": "pip-check.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "mcp-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-04T00:52:52.470403+00:00",
+      "duration_seconds": 1.25,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "mcp-smoke.stdout.txt",
+          "sha256": "3438b3b7a82b4f289dfd5c57572f7a11e6dd000112d46b8ec9faa3957a9887fc",
+          "original_sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913"
+        },
+        "stderr": {
+          "path": "mcp-smoke.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "cli-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-04T00:52:53.708782+00:00",
+      "duration_seconds": 0.36,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "cli-smoke.stdout.txt",
+          "sha256": "8465c96442f61e1c9b63d8f2ec27cc6ed0c95836aeb4d9d14c8389b2bf726e5f",
+          "original_sha256": "1af8ad56a27f370f4963277f0705948385ed924cd95a0f691ad2c57880025f1b"
+        },
+        "stderr": {
+          "path": "cli-smoke.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ]
+}

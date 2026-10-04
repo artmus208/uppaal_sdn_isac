@@ -1,0 +1,15 @@
+test_absent_result_is_not_run (test_phy_report_status.PhyReportStatusTests.test_absent_result_is_not_run) ... ok
+test_actual_runner_failure_after_partial_success_stays_diagnostic (test_phy_report_status.PhyReportStatusTests.test_actual_runner_failure_after_partial_success_stays_diagnostic) ... ok
+test_actual_runner_timeout_and_complete_controls (test_phy_report_status.PhyReportStatusTests.test_actual_runner_timeout_and_complete_controls) ... ok
+test_completed_empty_results_have_no_verdict (test_phy_report_status.PhyReportStatusTests.test_completed_empty_results_have_no_verdict) ... ok
+test_completed_mixed_results_preserve_query_outcomes (test_phy_report_status.PhyReportStatusTests.test_completed_mixed_results_preserve_query_outcomes) ... ok
+test_completed_positive_results_limit_absence_claim_to_returned_queries (test_phy_report_status.PhyReportStatusTests.test_completed_positive_results_limit_absence_claim_to_returned_queries) ... ok
+test_empty_and_missing_run_status_cannot_establish_results (test_phy_report_status.PhyReportStatusTests.test_empty_and_missing_run_status_cannot_establish_results) ... ok
+test_export_preserves_results_trace_and_input_objects (test_phy_report_status.PhyReportStatusTests.test_export_preserves_results_trace_and_input_objects) ... ok
+test_inconclusive_queries_are_not_reported_as_violations (test_phy_report_status.PhyReportStatusTests.test_inconclusive_queries_are_not_reported_as_violations) ... ok
+test_unsuccessful_runs_do_not_publish_partial_verdicts (test_phy_report_status.PhyReportStatusTests.test_unsuccessful_runs_do_not_publish_partial_verdicts) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.099s
+
+OK
