@@ -1,0 +1,241 @@
+{
+  "evidence_class": "software_regression_diagnostics",
+  "created_at_utc": "2026-10-04T00:40:08.295456+00:00",
+  "source_commit": "4efe53eb5b8f302fb3b82318d90c71cc12a4aebf",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "locale_encoding": "cp1251",
+  "packages": {
+    "mcp": "1.30.0",
+    "PyYAML": "6.0.3"
+  },
+  "source_hashes": {
+    "src/uppaal_mcp/phy/artifacts.py": "9625b066458c20b6dff6119b73f44c07aa44816f718d4f429235341141428c6e",
+    "tests/test_phy_artifacts.py": "71e21b90741c2d4baac54986add7f43595260095d92dabea0878ea5b69b5fb27"
+  },
+  "checks": [
+    {
+      "name": "focused",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_phy_artifacts",
+        "test_phy_layer"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 0,
+      "elapsed_sec": 24.391,
+      "log": "focused.log",
+      "sha256": "094090b7c7eb8f32cdcb5c57a92027bcd8f721cd90a6a5de98ee703581b36633"
+    },
+    {
+      "name": "full-suite",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 1,
+      "elapsed_sec": 107.875,
+      "log": "full-suite.log",
+      "sha256": "56170e0e2598fa22609c3ed804aae6bf1d4790107eeae11cd1f61049c836fad6"
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 0,
+      "elapsed_sec": 0.203,
+      "log": "coordination.log",
+      "sha256": "0afa00e968ae02a520b13a31b75fb8d57fd0ae97040c9a7fe745d1aa9907ad10"
+    },
+    {
+      "name": "baseline-hashes",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\evidence\\healthcheck\\20261004-phy-artifact-cache\\final-checks\\baseline-audit.json"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 0,
+      "elapsed_sec": 5.969,
+      "log": "baseline-hashes.log",
+      "sha256": "b3c3ab750380beb3b416b72279736caf1e5af79c04ba7191e0199a5ea96829ea"
+    },
+    {
+      "name": "phy-static-benchmarks",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "phy-validate-benchmarks"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 0,
+      "elapsed_sec": 2.594,
+      "log": "phy-static-benchmarks.log",
+      "sha256": "2ef85f1f796bb5a03b7828f4594e19d3837f08a2915ccef19415ec618e958e9a"
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 0,
+      "elapsed_sec": 1.312,
+      "log": "mcp-smoke.log",
+      "sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913"
+    },
+    {
+      "name": "cli-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 0,
+      "elapsed_sec": 0.344,
+      "log": "cli-smoke.log",
+      "sha256": "1af8ad56a27f370f4963277f0705948385ed924cd95a0f691ad2c57880025f1b"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 0,
+      "elapsed_sec": 1.125,
+      "log": "pip-check.log",
+      "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+    },
+    {
+      "name": "baseline-regressions",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_phy_artifacts"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\baseline-104",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\baseline-104\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 1,
+      "elapsed_sec": 15.281,
+      "log": "baseline-regressions.log",
+      "sha256": "08b07bb43c104de6b8af55fbfe531b13e14bcfbd199c69ebfe43b739997ee59b"
+    },
+    {
+      "name": "baseline-failures",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "-v",
+        "test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest",
+        "test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist",
+        "test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional",
+        "test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected",
+        "test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths",
+        "test_verification_manager.ManagerTests.test_memory_limit_measures_real_child"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\baseline-104",
+      "environment": {
+        "PYTHONPATH": "C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\baseline-104\\src;C:\\Users\\musta\\.codex\\worktrees\\7b60\\mcp_uppaal\\.venv\\baseline-104\\tests",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONUTF8": "0"
+      },
+      "exit_code": 1,
+      "elapsed_sec": 4.969,
+      "log": "baseline-failures.log",
+      "sha256": "95b4194d77c616d7c6e6fce72737c4e50bd3ac92f1d4652a849f69c114471bf4"
+    }
+  ],
+  "comparison_base": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa"
+}
