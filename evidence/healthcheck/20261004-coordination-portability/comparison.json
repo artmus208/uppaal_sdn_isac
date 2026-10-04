@@ -1,0 +1,83 @@
+{
+  "issue": 99,
+  "source_refs": {
+    "before": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+    "after": "4073325888c60185d1b857f6f9daf20574116a6f"
+  },
+  "checks": {
+    "before": {
+      "source_hashes_match_reference": true,
+      "all_log_hashes_match": true,
+      "full_suite_summary": [
+        "Ran 209 tests in 91.242s",
+        "FAILED (failures=3, errors=3, skipped=2)"
+      ],
+      "failure_ids": [
+        "test_current_v2_and_historical_v1_coexist (test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist)",
+        "test_migration_ids_remain_unique_and_conditional (test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional)",
+        "test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected)",
+        "test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest)",
+        "test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths)",
+        "test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child)"
+      ],
+      "checks": {
+        "git-autocrlf": 0,
+        "git-system-autocrlf": 0,
+        "child-locale": 0,
+        "focused-native": 1,
+        "focused-autocrlf-false": 1,
+        "focused-autocrlf-true": 1,
+        "focused-autocrlf-input": 1,
+        "full-suite": 1,
+        "coordination": 0,
+        "baseline-hashes": 0,
+        "mcp-smoke": 0,
+        "cli-smoke": 0,
+        "pip-check": 0
+      }
+    },
+    "after": {
+      "source_hashes_match_reference": true,
+      "all_log_hashes_match": true,
+      "full_suite_summary": [
+        "Ran 209 tests in 66.818s",
+        "FAILED (failures=2, errors=1, skipped=2)"
+      ],
+      "failure_ids": [
+        "test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected)",
+        "test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths)",
+        "test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child)"
+      ],
+      "checks": {
+        "git-autocrlf": 0,
+        "git-system-autocrlf": 0,
+        "child-locale": 0,
+        "focused-native": 0,
+        "focused-autocrlf-false": 0,
+        "focused-autocrlf-true": 0,
+        "focused-autocrlf-input": 0,
+        "full-suite": 1,
+        "coordination": 0,
+        "baseline-hashes": 0,
+        "mcp-smoke": 0,
+        "cli-smoke": 0,
+        "pip-check": 0
+      }
+    }
+  },
+  "provenance_note": "After tests began before the source checkpoint commit completed; tested hashes are compared against its exact committed blobs below. No test source changed during the run.",
+  "fixed_failure_ids": [
+    "test_current_v2_and_historical_v1_coexist (test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist)",
+    "test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest)",
+    "test_migration_ids_remain_unique_and_conditional (test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional)"
+  ],
+  "new_failure_ids": [],
+  "input_hashes": {
+    "manifests/current.json": "bf2d455d13cec0d5870cb7777d26efd424653ba6bb2c1b56af0ae0b7149e626f",
+    "manifests/v2.md": "13c8b4e78c9f2e33096f649d130f44decd325d8a10ce82b33d2cf013c0eb2861",
+    "manifests/collaboration-v2.yaml": "fcce78b4ef3286e3e618de9cf107bcd4ed343908f3facec614f33e8d324cf97e",
+    "manifests/baselines/reviewer-r1.yaml": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7",
+    "scripts/check_coordination.py": "ed6ba691e75a09376736aa08cbbd169f68315f2c5074b28b01a09a5a0442e8ec",
+    "evidence/governance/20260906-baseline/audit_hashes.py": "01d1fa959ba3ac36ef85633b68ac435ba5bca4bff8ad669a641b6cba1c2a1989"
+  }
+}
