@@ -1,0 +1,40 @@
+{
+  "command": [
+    ".venv\\Scripts\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_coordination.py",
+    "-v"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:04:35.189339+00:00",
+  "duration_seconds": 2.797,
+  "exit_code": 0,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "7af79847b4bba6046b33d71f2ed83de5c41198ff",
+  "working_tree": "?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/after-coordination.stdout.txt\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "after-coordination.stdout.txt",
+      "bytes": 144,
+      "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "original_sha256": "555fa0dfcc9a7b9c46e152ca3105720055cb5e18c5623ffa131a4a6c581d096a"
+    },
+    "stderr": {
+      "path": "after-coordination.stderr.txt",
+      "bytes": 881,
+      "sha256": "acf41883a621a12053f6847caced1abece32ecf5bbbe09870cf0898f6c17ac7d",
+      "original_sha256": "13ae5276038db96bd531788134a85acdfc56f83a07eefc8ce1892105124089ca"
+    }
+  }
+}
