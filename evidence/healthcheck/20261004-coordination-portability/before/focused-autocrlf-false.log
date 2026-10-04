@@ -1,0 +1,51 @@
+test_pending_candidate_and_inconsistent_freeze (test_coordination.BaselineStateTests.test_pending_candidate_and_inconsistent_freeze) ... ok
+test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... ok
+test_invalid_input_and_construction (test_coordination.HashAuditTests.test_invalid_input_and_construction) ... ok
+test_missing_input_and_immutable_output (test_coordination.HashAuditTests.test_missing_input_and_immutable_output) ... Hash audit error: [Errno 17] File exists: 'C:\\Users\\musta\\AppData\\Local\\Temp\\tmpy91tmkp8\\result.json'
+ok
+test_canonical_storage (test_coordination.RunStorageTests.test_canonical_storage) ... ok
+test_invalid_mappings (test_coordination.RunStorageTests.test_invalid_mappings) ... ok
+test_bad_paths_and_contract_disagreement_are_rejected (test_coordination_activation.CoordinationActivationTests.test_bad_paths_and_contract_disagreement_are_rejected) ... ok
+test_current_v2_and_historical_v1_coexist (test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist) ... ERROR
+test_historical_input_drift_is_rejected (test_coordination_activation.CoordinationActivationTests.test_historical_input_drift_is_rejected) ... ok
+test_migration_ids_remain_unique_and_conditional (test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional) ... ERROR
+test_missing_or_invalid_pointer_never_falls_back (test_coordination_activation.CoordinationActivationTests.test_missing_or_invalid_pointer_never_falls_back) ... ok
+test_owner_and_gate_changes_are_rejected (test_coordination_activation.CoordinationActivationTests.test_owner_and_gate_changes_are_rejected) ... ok
+test_generator_ignores_operational_v2_and_reproduces_frozen_bytes (test_coordination_activation.FrozenGenerationTests.test_generator_ignores_operational_v2_and_reproduces_frozen_bytes) ... ok
+
+======================================================================
+ERROR: test_current_v2_and_historical_v1_coexist (test_coordination_activation.CoordinationActivationTests.test_current_v2_and_historical_v1_coexist)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\7b60\mcp_uppaal\tests\test_coordination_activation.py", line 44, in test_current_v2_and_historical_v1_coexist
+    path.write_text(path.read_text() + '\nEditorial clarification in the operational plan.\n')
+                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1059, in read_text
+    return f.read()
+           ^^^^^^^^
+  File "C:\Users\musta\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1251.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x98 in position 3301: character maps to <undefined>
+
+======================================================================
+ERROR: test_migration_ids_remain_unique_and_conditional (test_coordination_activation.CoordinationActivationTests.test_migration_ids_remain_unique_and_conditional)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\7b60\mcp_uppaal\tests\test_coordination_activation.py", line 98, in test_migration_ids_remain_unique_and_conditional
+    original = path.read_text()
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1059, in read_text
+    return f.read()
+           ^^^^^^^^
+  File "C:\Users\musta\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1251.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x98 in position 1261: character maps to <undefined>
+
+----------------------------------------------------------------------
+Ran 13 tests in 3.570s
+
+FAILED (errors=2)
+2 file hashes; 0 mismatches; 0 aggregate mismatches (not verification).
+2 file hashes; 1 mismatches; 2 aggregate mismatches (not verification).
