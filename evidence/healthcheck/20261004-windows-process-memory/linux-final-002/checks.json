@@ -1,0 +1,117 @@
+{
+  "source_commit": "f8e13f03c1cce4639a6118fef561450c7eee08b4",
+  "source_hashes": {
+    "src/uppaal_mcp/verification_manager.py": "fc9ac3fdf2f7afca1432b339af58882ab1c62c56b14a0dcd91719869be35ff43",
+    "src/uppaal_mcp/windows_process.py": "1c889bb2ae92fda0a9264685cfa350fbb7cb55e9f58cfe02bad6fb30535e53a4",
+    "tests/test_verification_manager.py": "da695d4481e1d8cec3b472d0657f4daef55186c8629758796504cc31b0ab3811"
+  },
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "executable": "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+  "platform": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "checks": [
+    {
+      "name": "manager-tests",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_verification_manager.py",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T08:54:49.366379+00:00",
+      "elapsed_seconds": 10.88882898600059,
+      "exit_code": 0
+    },
+    {
+      "name": "full-suite",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "started_utc": "2026-10-04T08:55:00.255663+00:00",
+      "elapsed_seconds": 80.6267413329997,
+      "exit_code": 0
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "scripts/check_coordination.py"
+      ],
+      "started_utc": "2026-10-04T08:56:20.882825+00:00",
+      "elapsed_seconds": 0.1371642209996935,
+      "exit_code": 0
+    },
+    {
+      "name": "hash-audit",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "/tmp/uppaal-windows-memory-113/evidence/healthcheck/20261004-windows-process-memory/linux-final-002/baseline-hashes.json"
+      ],
+      "started_utc": "2026-10-04T08:56:21.020231+00:00",
+      "elapsed_seconds": 1.0743084749992704,
+      "exit_code": 0
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "started_utc": "2026-10-04T08:56:22.095129+00:00",
+      "elapsed_seconds": 0.8885587610002403,
+      "exit_code": 0
+    },
+    {
+      "name": "dependencies",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "-m",
+        "pip",
+        "freeze"
+      ],
+      "started_utc": "2026-10-04T08:56:22.984352+00:00",
+      "elapsed_seconds": 1.1918527429997994,
+      "exit_code": 0
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "started_utc": "2026-10-04T08:56:24.176559+00:00",
+      "elapsed_seconds": 2.4780112850003206,
+      "exit_code": 0
+    },
+    {
+      "name": "cli-smoke",
+      "command": [
+        "/tmp/uppaal-windows-memory-113/.venv/bin/python",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "started_utc": "2026-10-04T08:56:26.654898+00:00",
+      "elapsed_seconds": 0.47800601400012965,
+      "exit_code": 0
+    }
+  ]
+}

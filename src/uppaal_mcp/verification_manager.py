@@ -247,6 +247,16 @@ def run_attempt(directory, config, task, session, interval):
                 leader_finished = os.name == 'nt' and proc.poll() is not None
                 running = proc.running() if os.name == 'nt' else proc.poll() is None
                 if leader_finished and running:
+                    # Windows interpreter launchers can signal just before the
+                    # child interpreter finishes. Require persistence beyond a
+                    # bounded terminal grace before treating output as detached.
+                    grace = min(.01, max(0, config['timeout_seconds'] - (time.monotonic() - started)))
+                    try:
+                        proc.wait(timeout=grace)
+                    except subprocess.TimeoutExpired:
+                        pass
+                    else:
+                        break
                     # A detached child may write plausible formulas after the
                     # command already exited. Its exit code is not the leader's.
                     meta['leader_exited_before_descendants'] = True
