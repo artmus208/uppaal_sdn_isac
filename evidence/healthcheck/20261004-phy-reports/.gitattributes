@@ -1,0 +1,3 @@
+# unittest's captured subtest headings contain intentional trailing spaces.
+# Preserve log formatting; source, metadata and documentation retain normal checks.
+**/*.txt -whitespace

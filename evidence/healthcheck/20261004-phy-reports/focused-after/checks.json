@@ -1,0 +1,46 @@
+{
+  "source_commit": "6e5465b53b25d1b2e74734578c46d164b15c9c6f",
+  "working_tree": " M src/uppaal_mcp/phy/reports.py\n?? evidence/healthcheck/20261004-phy-reports/before/\n",
+  "source_hashes": {
+    "src/uppaal_mcp/phy/reports.py": "aabfd669d82c0dd1541cbf9f96857124da8671dba55bd37c9b5d81e3c1574d4e",
+    "tests/test_phy_report_status.py": "e7d68175d902b43b3967c9d380b5b5fee97c9b9e93356013ca38430609b8358d"
+  },
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "checks": [
+    {
+      "label": "focused",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_phy_report_status.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "started_at": "2026-10-04T00:50:41.814454+00:00",
+      "duration_seconds": 0.39,
+      "timeout_seconds": 180,
+      "logs": {
+        "stdout": {
+          "path": "focused.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "focused.stderr.txt",
+          "sha256": "69c32224063f216ea097f1ca43b4298243b7bfe9c4cd61775cc6dfcfb5986ba3",
+          "original_sha256": "e64402b2dc7e7fd49ca04f22867e165ca0524e3892b1e236b5a8f3fc25a042de"
+        }
+      }
+    }
+  ]
+}

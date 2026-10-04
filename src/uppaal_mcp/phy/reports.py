@@ -36,7 +36,7 @@ def generate_report_bundle(
     }
     if model_xml is not None:
         reports.update(generate_layout_maps(contract, model_xml=model_xml))
-    if result_json:
+    if result_json is not None:
         reports["violations.md"] = _violations_report(result_json)
     if trace_text:
         reports["trace_explanation.md"] = _trace_explanation_report(trace_text, result_json=result_json)
@@ -105,14 +105,16 @@ def _property_report(
     result_json: dict | None,
 ) -> str:
     result_by_query = _result_by_query(result_json)
+    default_result = _default_result(result_json)
     lines = [
         "# PHY Property Report",
         "",
+        *_run_summary(result_json),
         "| Property | Category | Query | Result | Interpretation | Source |",
         "|---|---|---|---|---|---|",
     ]
     for item in contract.properties:
-        result = result_by_query.get(item.query, "not_run")
+        result = result_by_query.get(item.query, default_result)
         lines.append(
             "| "
             + " | ".join([
@@ -294,17 +296,28 @@ def _coverage_report(contract_json: dict) -> str:
 
 
 def _violations_report(result_json: dict) -> str:
-    lines = [
-        "# Violations",
-        "",
-        f"Overall status: `{result_json.get('status', 'unknown')}`.",
-        "",
-        "| Query | Status | Suggested fix |",
-        "|---|---|---|",
-    ]
-    for item in result_json.get("query_results", []):
-        if item.get("status") == "satisfied":
-            continue
+    outcomes = result_json.get("query_results", [])
+    lines = ["# Violations", "", *_run_summary(result_json)]
+    if not _run_completed(result_json):
+        if outcomes:
+            lines.extend([
+                "## Parsed query output (diagnostic only)", "",
+                "| Query | Parsed status |", "|---|---|",
+            ])
+            for item in outcomes:
+                lines.append(f"| {_code_cell(item.get('formula', ''))} | {_cell(item.get('status', 'unknown'))} |")
+        return "\n".join(lines) + "\n"
+    if not outcomes:
+        lines.append("No query results were reported; no property verdict is available.")
+        return "\n".join(lines) + "\n"
+    failed = [item for item in outcomes if item.get("status") == "not_satisfied"]
+    unresolved = [item for item in outcomes if item.get("status") not in {"satisfied", "not_satisfied"}]
+    if failed:
+        lines.extend([
+            "## Violated properties", "",
+            "| Query | Status | Suggested fix |", "|---|---|---|",
+        ])
+    for item in failed:
         formula = item.get("formula", "")
         lines.append(
             "| "
@@ -315,8 +328,15 @@ def _violations_report(result_json: dict) -> str:
             ])
             + " |"
         )
-    if len(lines) == 6:
-        lines.append("| no failed parsed query | - | - |")
+    if unresolved:
+        lines.extend([
+            "", "## Queries without a decisive verdict", "",
+            "| Query | Status |", "|---|---|",
+        ])
+        for item in unresolved:
+            lines.append(f"| {_code_cell(item.get('formula', ''))} | {_cell(item.get('status', 'unknown'))} |")
+    if not failed and not unresolved:
+        lines.append("No violated property was reported among returned query results.")
     return "\n".join(lines) + "\n"
 
 
@@ -371,6 +391,7 @@ def _publication_tables(contract: PhyContractModel) -> str:
 
 def _properties_csv(contract: PhyContractModel, *, result_json: dict | None) -> str:
     result_by_query = _result_by_query(result_json)
+    default_result = _default_result(result_json)
     lines = ["name,category,query,result,source,line"]
     for item in contract.properties:
         provenance = item.provenance
@@ -378,7 +399,7 @@ def _properties_csv(contract: PhyContractModel, *, result_json: dict | None) -> 
             item.name,
             item.category,
             item.query,
-            result_by_query.get(item.query, "not_run"),
+            result_by_query.get(item.query, default_result),
             provenance.source if provenance else "",
             "" if provenance is None or provenance.line is None else str(provenance.line),
         ]
@@ -464,12 +485,38 @@ def _contract_from_json(contract_json: dict) -> PhyContractModel:
     return PhyContractModel.from_dict(cleaned)
 
 
+def _run_completed(result_json: dict) -> bool:
+    # VerifytaRunner's completed-run statuses; not scientific acceptance.
+    return result_json.get("status") in {"satisfied", "not_satisfied", "inconclusive"}
+
+
+def _default_result(result_json: dict | None) -> str:
+    return "not_run" if result_json is None or _run_completed(result_json) else "not_verified"
+
+
+def _run_summary(result_json: dict | None) -> list[str]:
+    if result_json is None:
+        return ["No verification result supplied.", ""]
+    lines = [f"Overall status: `{_cell(result_json.get('status', 'unknown'))}`.", ""]
+    if not _run_completed(result_json):
+        lines.extend([
+            "No property verdicts established by this run. Static checks and partial "
+            "query output do not establish verification results.",
+            "",
+        ])
+    return lines
+
+
 def _result_by_query(result_json: dict | None) -> dict[str, str]:
-    if not result_json:
+    if result_json is None or not _run_completed(result_json):
         return {}
     return {
-        item.get("formula", ""): item.get("status", "unknown")
+        item["formula"]: (
+            item["status"] if item.get("status") in {"satisfied", "not_satisfied", "maybe", "inconclusive"}
+            else "not_verified"
+        )
         for item in result_json.get("query_results", [])
+        if item.get("formula")
     }
 
 
