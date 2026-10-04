@@ -1,0 +1,67 @@
+{
+  "evidence_kind": "software_tests_and_static_checks_not_model_checking",
+  "source_commit": "3702f123568fac0942381af17c54a89060e0dc09",
+  "python": "3.12.3",
+  "platform": "Ubuntu WSL",
+  "checks": [
+    {
+      "check": "proof",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "Ubuntu",
+        "--cd",
+        "/mnt/c/Users/musta/.codex/worktrees/38c5/mcp_uppaal",
+        "--",
+        "python3",
+        "-X",
+        "utf8",
+        "-B",
+        "evidence/scalability/20261004-r04-compositional-proof/check_proof.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.43,
+      "stdout": {
+        "path": "evidence/scalability/20261004-r04-compositional-proof/checks/linux/proof.stdout.txt",
+        "sha256": "7821989814f562f779c03f75c16daef4d3a73ab78647c65d82b2ae3f0c63a7b6"
+      },
+      "stderr": {
+        "path": "evidence/scalability/20261004-r04-compositional-proof/checks/linux/proof.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "check": "mutation-tests",
+      "command": [
+        "wsl.exe",
+        "-d",
+        "Ubuntu",
+        "--cd",
+        "/mnt/c/Users/musta/.codex/worktrees/38c5/mcp_uppaal",
+        "--",
+        "python3",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "evidence/scalability/20261004-r04-compositional-proof",
+        "-p",
+        "test_proof.py",
+        "-v"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 6.507,
+      "stdout": {
+        "path": "evidence/scalability/20261004-r04-compositional-proof/checks/linux/mutation-tests.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "evidence/scalability/20261004-r04-compositional-proof/checks/linux/mutation-tests.stderr.txt",
+        "sha256": "d4202eec43c058ac284adf06c67f613154e6a85ad5cff092b32986c13dfa6871"
+      }
+    }
+  ]
+}
