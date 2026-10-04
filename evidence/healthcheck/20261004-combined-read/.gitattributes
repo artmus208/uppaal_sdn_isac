@@ -1,0 +1,4 @@
+# Preserve native raw logs byte-for-byte; prose and code remain strict.
+*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+windows/*.json -text whitespace=cr-at-eol

@@ -1,0 +1,13 @@
+environment 0
+dependencies 0
+pip-check 0
+coordination 0
+hash-audit 0
+full-suite 1
+mcp-smoke 0
+cli-smoke 0
+completion-premises 0
+completion-tests 0
+completion-history 0
+capacity-premises 0
+capacity-tests 0

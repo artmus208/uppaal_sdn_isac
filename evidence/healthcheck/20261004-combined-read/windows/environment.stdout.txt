@@ -1,0 +1,3 @@
+3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]
+Windows-11-10.0.26200-SP0
+D:\uppaal_mcp\.worktrees\111-native-windows-check\.venv\Scripts\python.exe
