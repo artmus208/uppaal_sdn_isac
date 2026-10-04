@@ -107,6 +107,12 @@ def export_run_artifacts(
     )
     root = Path(output_root)
     artifact_dir = root / "artifacts" / metadata["run_id"]
+    input_text_hashes = {"model.xml": metadata["hashes"]["model_hash"],
+                         "queries.q": metadata["hashes"]["query_hash"]}
+    if source_text is not None:
+        input_text_hashes["source.tex"] = metadata["hashes"]["source_hash"]
+    if trace_text is not None:
+        input_text_hashes["trace.txt"] = _sha_text(trace_text)
     expected_files = set(REPORT_FILES) | {"contract.json", "model.xml", "queries.q", "run_metadata.json"}
     for name, present in (("source.tex", source_text is not None),
                           ("results.json", result_json is not None),
@@ -120,7 +126,7 @@ def export_run_artifacts(
         raise ValueError(f"Invalid PHY artifact cache at {artifact_dir}: symlink in bundle; use a new output root")
     cached = artifact_dir.exists() and not force
     if cached:
-        cached_metadata = _read_cached_metadata(artifact_dir, metadata, expected_files)
+        cached_metadata = _read_cached_metadata(artifact_dir, metadata, expected_files, input_text_hashes)
         return {
             "artifact_dir": str(artifact_dir),
             "run_id": cached_metadata["run_id"],
@@ -188,7 +194,7 @@ def _write_json(path: Path, data: Any, files: list[str]) -> None:
     _write_text(path, json.dumps(data, ensure_ascii=False, indent=2), files)
 
 
-def _read_cached_metadata(path: Path, expected: dict, expected_files: set[str]) -> dict:
+def _read_cached_metadata(path: Path, expected: dict, expected_files: set[str], input_text_hashes: dict) -> dict:
     try:
         index = json.loads((path / CHECKSUM_FILE).read_text(encoding="utf-8"))
         if (not isinstance(index, dict) or type(index.get("schema_version")) is not int
@@ -197,8 +203,13 @@ def _read_cached_metadata(path: Path, expected: dict, expected_files: set[str]) 
             raise ValueError("incomplete or invalid checksum index")
         for name in expected_files:
             actual = hashlib.sha256((path / name).read_bytes()).hexdigest()
-            if actual != index["files"][name]:
+            if actual != index["files"][name] or (name in input_text_hashes and actual != input_text_hashes[name]):
                 raise ValueError(f"checksum mismatch: {name}")
+        for name, key in (("contract.json", "contract_hash"), ("results.json", "result_hash")):
+            if name in expected_files:
+                content = json.loads((path / name).read_text(encoding="utf-8"))
+                if _sha_json(content) != expected["hashes"][key]:
+                    raise ValueError(f"input mismatch: {name}")
         metadata = json.loads((path / "run_metadata.json").read_text(encoding="utf-8"))
         if (not isinstance(metadata, dict) or not isinstance(metadata.get("created_at"), str)
                 or not metadata["created_at"] or {**metadata, "created_at": expected["created_at"]} != expected):

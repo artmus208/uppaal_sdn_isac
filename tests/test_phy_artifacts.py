@@ -182,6 +182,25 @@ class PhyArtifactCacheTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, "cache|Cache"):
                     self.export()
 
+    def test_input_payload_must_match_request_even_with_updated_checksum(self):
+        for filename in ("source.tex", "model.xml", "queries.q", "trace.txt", "contract.json", "results.json"):
+            with self.subTest(file=filename):
+                exported = self.export(force=True)
+                folder = Path(exported["artifact_dir"])
+                path = folder / filename
+                if filename.endswith(".json"):
+                    content = json.loads(path.read_text(encoding="utf-8"))
+                    content["changed"] = True
+                    path.write_text(json.dumps(content), encoding="utf-8")
+                else:
+                    path.write_bytes(path.read_bytes() + b"changed\n")
+                index_path = folder / "artifact_checksums.json"
+                index = json.loads(index_path.read_text(encoding="utf-8"))
+                index["files"][filename] = hashlib.sha256(path.read_bytes()).hexdigest()
+                index_path.write_text(json.dumps(index), encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "cache|Cache"):
+                    self.export()
+
     def test_interrupted_export_cannot_be_reported_as_cache_hit(self):
         original = artifacts._write_text
 

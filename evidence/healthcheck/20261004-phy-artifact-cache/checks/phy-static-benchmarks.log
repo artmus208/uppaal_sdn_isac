@@ -1,0 +1,1785 @@
+{
+  "ok": true,
+  "count": 21,
+  "results": [
+    {
+      "name": "nominal_phy",
+      "description": "Closed A_SYS under nominal environment class updates.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_NORMAL",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "channel_outage",
+      "description": "Channel outage reaches A_CH.Outage and aggregate joint degradation.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_JOINT_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "interference_limited",
+      "description": "Interference-limited channel path reaches A_CH.InterferenceLimited.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_COMM_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "mobility_limited",
+      "description": "Mobility-limited channel path reaches A_CH.MobilityLimited.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_SENSING_DEGRADED",
+      "metadata": {
+        "required_env_updates": [
+          "DopplerClass = DOPPLERCLASS_HIGH"
+        ]
+      },
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "multipath_limited",
+      "description": "Multipath-limited channel benchmark profile.",
+      "category": "positive-static",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_SENSING_DEGRADED",
+      "metadata": {
+        "required_env_updates": [
+          "DelaySpreadClass = DELAYSPREADCLASS_HIGH"
+        ]
+      },
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "signal_reconfiguring",
+      "description": "Signal reconfiguration path after MAC/SDN config command.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_NORMAL",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "signal_limited",
+      "description": "Signal-limited path after failed payload/DRT/BLER classes.",
+      "category": "positive-static",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_COMM_DEGRADED",
+      "metadata": {
+        "required_env_updates": [
+          "BLERClass = BLERCLASS_CRITICAL",
+          "DRTClass = DRTCLASS_BAD"
+        ]
+      },
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "beam_recovery_success",
+      "description": "Beam recovery reaches restored outcome before D_BM.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_NORMAL",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "beam_handover_hint",
+      "description": "Beam recovery handover-assist outcome benchmark.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_COMM_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "beam_failure_timeout",
+      "description": "Beam recovery timeout outcome reaches A_BM.BeamFailed.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_JOINT_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "sensing_probability_limited",
+      "description": "Low detection probability benchmark for sensing quality.",
+      "category": "positive-static",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_SENSING_DEGRADED",
+      "metadata": {
+        "required_env_updates": [
+          "PdClass = PDCLASS_LOW"
+        ]
+      },
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "sensing_freshness_limited",
+      "description": "Stale Age of Sensing reaches A_SQ.FreshnessLimited.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_SENSING_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "sensing_failure",
+      "description": "Failed sensing classes reach A_SQ.SensingFailure.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_JOINT_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "phy_communication_degraded",
+      "description": "Aggregate communication degradation benchmark.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_COMM_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "phy_sensing_degraded",
+      "description": "Aggregate sensing degradation benchmark.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_SENSING_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "phy_joint_degraded",
+      "description": "Aggregate joint degradation benchmark.",
+      "category": "positive",
+      "expected_static_ok": true,
+      "expected_validation_error": null,
+      "forced_scenario": "SCENARIO_JOINT_DEGRADED",
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": true,
+        "errors": [],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": true,
+      "ok": true
+    },
+    {
+      "name": "broken_report_channel_declared_as_chan",
+      "description": "Intentionally broken model: report/event channels are not broadcast.",
+      "category": "negative-static",
+      "expected_static_ok": false,
+      "expected_validation_error": "broadcast chan",
+      "forced_scenario": null,
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": false,
+        "errors": [
+          "channel_report must be declared as broadcast chan.",
+          "signal_report must be declared as broadcast chan.",
+          "beam_report must be declared as broadcast chan.",
+          "sensing_report must be declared as broadcast chan.",
+          "phy_kpi_report must be declared as broadcast chan.",
+          "channel_degraded must be declared as broadcast chan.",
+          "signal_degraded must be declared as broadcast chan.",
+          "beam_misaligned must be declared as broadcast chan.",
+          "beam_failure must be declared as broadcast chan.",
+          "sensing_degraded must be declared as broadcast chan.",
+          "phy_outage must be declared as broadcast chan.",
+          "degradation_event must be declared as broadcast chan.",
+          "recovery_event must be declared as broadcast chan.",
+          "mobility_alert must be declared as broadcast chan.",
+          "multipath_alert must be declared as broadcast chan.",
+          "blockage_detected must be declared as broadcast chan.",
+          "beam_locked must be declared as broadcast chan.",
+          "beam_restored must be declared as broadcast chan.",
+          "handover_hint must be declared as broadcast chan.",
+          "sensing_failure must be declared as broadcast chan.",
+          "phy_failure must be declared as broadcast chan.",
+          "sensing_success must be declared as broadcast chan.",
+          "aos_ctrl_expired must be declared as broadcast chan.",
+          "recovery_start must be declared as broadcast chan.",
+          "target_detected must be declared as broadcast chan.",
+          "contract_violation_ch must be declared as broadcast chan.",
+          "contract_violation_sig must be declared as broadcast chan.",
+          "contract_violation_bm must be declared as broadcast chan.",
+          "contract_violation_sq must be declared as broadcast chan.",
+          "contract_violation_ph must be declared as broadcast chan.",
+          "Template_ObsSenseReport observer listens to non-broadcast channel sensing_degraded.",
+          "Template_ObsSenseReport observer listens to non-broadcast channel phy_kpi_report.",
+          "Template_ObsFreshness observer listens to non-broadcast channel aos_ctrl_expired.",
+          "Template_ObsFreshness observer listens to non-broadcast channel sensing_report.",
+          "Template_ObsBeamRecovery observer listens to non-broadcast channel recovery_start.",
+          "Template_ObsBeamRecovery observer listens to non-broadcast channel beam_restored.",
+          "Template_ObsBeamRecovery observer listens to non-broadcast channel handover_hint.",
+          "Template_ObsBeamRecovery observer listens to non-broadcast channel beam_failure.",
+          "Handshake channel beam_locked has no sender.",
+          "Handshake channel beam_locked has no receiver.",
+          "Handshake channel beam_misaligned has no receiver.",
+          "Handshake channel blockage_detected has no receiver.",
+          "Handshake channel channel_degraded has no receiver.",
+          "Handshake channel contract_violation_bm has no receiver.",
+          "Handshake channel contract_violation_ch has no receiver.",
+          "Handshake channel contract_violation_ph has no receiver.",
+          "Handshake channel contract_violation_sig has no receiver.",
+          "Handshake channel contract_violation_sq has no receiver.",
+          "Handshake channel degradation_event has no receiver.",
+          "Handshake channel mobility_alert has no receiver.",
+          "Handshake channel multipath_alert has no receiver.",
+          "Handshake channel phy_failure has no receiver.",
+          "Handshake channel phy_outage has no receiver.",
+          "Handshake channel recovery_event has no sender.",
+          "Handshake channel recovery_event has no receiver.",
+          "Handshake channel sensing_failure has no receiver.",
+          "Handshake channel sensing_success has no sender.",
+          "Handshake channel sensing_success has no receiver.",
+          "Handshake channel signal_degraded has no receiver."
+        ],
+        "warnings": [],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": false,
+      "ok": true
+    },
+    {
+      "name": "broken_continuous_guard",
+      "description": "Intentionally broken model: continuous SINR_c appears in a guard.",
+      "category": "negative-static",
+      "expected_static_ok": false,
+      "expected_validation_error": "SINR_c",
+      "forced_scenario": null,
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": false,
+        "errors": [
+          "Continuous PHY value SINR_c appears in generated automata text.",
+          "Template_A_CH transition guard uses estimator-derived value SINR_c; use alpha/profile/report metadata only."
+        ],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": false,
+      "ok": true
+    },
+    {
+      "name": "broken_c_rec_gt_d_bm",
+      "description": "Intentionally broken model: BeamRecover uses c_rec > D_BM.",
+      "category": "negative-static",
+      "expected_static_ok": false,
+      "expected_validation_error": "c_rec > D_BM",
+      "forced_scenario": null,
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": false,
+        "errors": [
+          "BeamRecover transition uses unreachable guard c_rec > D_BM.",
+          "BeamRecover beam_failure! transition must use timeout guard c_rec == D_BM.",
+          "beam_failure! must be the exclusive timeout outcome at c_rec == D_BM."
+        ],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": false,
+      "ok": true
+    },
+    {
+      "name": "broken_phy_state_outside_a_ph",
+      "description": "Intentionally broken model: A_CH writes PHYState.",
+      "category": "negative-static",
+      "expected_static_ok": false,
+      "expected_validation_error": "writes PHYState",
+      "forced_scenario": null,
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": false,
+        "errors": [
+          "Template_A_CH writes PHYState; only A_PH may write it."
+        ],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ENV_CH",
+            "Template_ENV_TARGET",
+            "Template_ENV_MAC",
+            "Template_ENV_NET",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ENV_CH",
+            "ENV_TARGET",
+            "ENV_MAC",
+            "ENV_NET",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": false,
+      "ok": true
+    },
+    {
+      "name": "broken_missing_a_env",
+      "description": "Intentionally broken model: closed system misses ENV templates/instances.",
+      "category": "negative-static",
+      "expected_static_ok": false,
+      "expected_validation_error": "ENV_CH",
+      "forced_scenario": null,
+      "metadata": {},
+      "profile": {
+        "name": "default",
+        "source": "built-in",
+        "boundary_policy": "worse_class",
+        "parameter_synthesis": false,
+        "deadlines": {
+          "D_meas": 5,
+          "D_sig": 5,
+          "D_sense": 5,
+          "D_report": 5,
+          "D_BM": 5
+        }
+      },
+      "semantic_validation": {
+        "ok": false,
+        "errors": [
+          "Generated model does not contain required template/instance: ENV_CH.",
+          "Generated model does not contain required template/instance: ENV_TARGET.",
+          "Generated model does not contain required template/instance: ENV_MAC.",
+          "Generated model does not contain required template/instance: ENV_NET.",
+          "Handshake channel beam_cmd has no sender.",
+          "Handshake channel controller_report_delivered has no sender.",
+          "Handshake channel extra_ssb_cmd has no sender.",
+          "Handshake channel handover_assist_cmd has no sender.",
+          "Handshake channel mac_report_delivered has no sender.",
+          "Handshake channel measure_tick has no sender.",
+          "Handshake channel new_beam_confirmed has no sender.",
+          "Handshake channel payload_sensing_config has no sender.",
+          "Handshake channel pilot_config has no sender.",
+          "Handshake channel power_cmd has no sender.",
+          "Handshake channel prs_config has no sender.",
+          "Handshake channel recovery_cmd has no sender.",
+          "Handshake channel sensing_mode_cmd has no sender.",
+          "Handshake channel ssb_burst_config has no sender.",
+          "Handshake channel waveform_config has no sender.",
+          "Broadcast channel aos_ctrl_expired has no sender.",
+          "Broadcast channel target_detected has no sender."
+        ],
+        "warnings": [
+          "Broadcast channel beam_locked has no sender.",
+          "Broadcast channel beam_locked has no listener.",
+          "Broadcast channel beam_misaligned has no listener.",
+          "Broadcast channel blockage_detected has no listener.",
+          "Broadcast channel channel_degraded has no listener.",
+          "Broadcast channel contract_violation_bm has no listener.",
+          "Broadcast channel contract_violation_ch has no listener.",
+          "Broadcast channel contract_violation_ph has no listener.",
+          "Broadcast channel contract_violation_sig has no listener.",
+          "Broadcast channel contract_violation_sq has no listener.",
+          "Broadcast channel degradation_event has no listener.",
+          "Broadcast channel mobility_alert has no listener.",
+          "Broadcast channel multipath_alert has no listener.",
+          "Broadcast channel phy_failure has no listener.",
+          "Broadcast channel phy_outage has no listener.",
+          "Broadcast channel recovery_event has no sender.",
+          "Broadcast channel recovery_event has no listener.",
+          "Broadcast channel sensing_failure has no listener.",
+          "Broadcast channel sensing_success has no sender.",
+          "Broadcast channel sensing_success has no listener.",
+          "Broadcast channel signal_degraded has no listener."
+        ],
+        "details": {
+          "templates": [
+            "Template_A_CH",
+            "Template_A_SIG",
+            "Template_A_BM",
+            "Template_A_SQ",
+            "Template_A_PH",
+            "Template_ObsSenseReport",
+            "Template_ObsFreshness",
+            "Template_ObsBeamRecovery"
+          ],
+          "instances": [
+            "A_CH",
+            "A_SIG",
+            "A_BM",
+            "A_SQ",
+            "A_PH",
+            "ObsSenseReport",
+            "ObsFreshness",
+            "ObsBeamRecovery"
+          ]
+        }
+      },
+      "static_ok": false,
+      "ok": true
+    }
+  ]
+}
