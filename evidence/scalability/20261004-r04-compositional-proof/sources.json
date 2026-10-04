@@ -1,0 +1,156 @@
+{
+  "consulted_on": "2026-10-04",
+  "issue": 101,
+  "local_sources": [
+    {
+      "id": "D1",
+      "path": "pdfs/dissertation.pdf",
+      "pdf_pages_visually_checked": [
+        157,
+        169,
+        185,
+        189,
+        195,
+        207
+      ],
+      "printed_pages_consulted": [
+        63,
+        64,
+        67,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        139,
+        140,
+        145,
+        147,
+        148,
+        149,
+        157,
+        162,
+        165,
+        166,
+        167,
+        168,
+        169,
+        177,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        189,
+        190,
+        194,
+        195,
+        197,
+        201,
+        202,
+        204,
+        205,
+        206,
+        207,
+        208
+      ],
+      "sha256": "4f8a778c52ff1e6b33383d447ebc13e91b8d18ce8161996d79d86dc32d0f5de6",
+      "title": "Glonina A. B., dissertation, Moscow, 2020"
+    },
+    {
+      "id": "D2",
+      "path": "pdfs/instrumentalnaya-sistema-proverki-vypolneniya-ogranicheniy-realnogo-vremeni-dlya-konfiguratsiy-modulnyh-vychislitelnyh-sistem.pdf",
+      "pdf_pages_visually_checked": [
+        1,
+        6,
+        8,
+        10
+      ],
+      "printed_pages_consulted": [
+        16,
+        21,
+        23,
+        25
+      ],
+      "sha256": "094977c0712b54ced1d09abfe4a268b5ab2a540ea92b4e7e4586dfee752e9790",
+      "title": "Glonina A. B., 2020, no. 3, pp. 16-29"
+    },
+    {
+      "id": "F1",
+      "path": "evidence/scalability/family-series-68/generate.py",
+      "pdf_pages_visually_checked": [],
+      "printed_pages_consulted": [],
+      "sha256": "386c08d1f3bec9f5a5602f483948cb74bbe7f8f075d7bde2b7e71aa805871384",
+      "title": "Finite family generator: N=1,2,3,4"
+    },
+    {
+      "id": "F2",
+      "path": "evidence/scalability/family-series-68/CONTRACT.md",
+      "pdf_pages_visually_checked": [],
+      "printed_pages_consulted": [],
+      "sha256": "4d00b2929b462e2f2290e4ce674cb5f68eafb92c3013f7130837a61a3dc4f05e",
+      "title": "Accepted finite-family contract"
+    },
+    {
+      "id": "F3",
+      "path": "evidence/scalability/family-feasibility-66/CONTRACT.md",
+      "pdf_pages_visually_checked": [],
+      "printed_pages_consulted": [],
+      "sha256": "c047321e708a9a6ee40fffb5a64708b094e21f3361ebdf3375e2b22c88f7e49c",
+      "title": "Shared environment construction and interpretation"
+    },
+    {
+      "id": "H1",
+      "path": "evidence/scalability/runs/uav-family-p4-20260929/RESULTS.md",
+      "pdf_pages_visually_checked": [],
+      "printed_pages_consulted": [],
+      "sha256": "6913ace4d0cf867cfad2aa89e58f40991f543e79653aa8057621b80b0a6c22b2",
+      "title": "Historical P4 campaign summary"
+    }
+  ],
+  "notes": [
+    "D1 printed page equals PDF page. D2 printed page equals PDF page + 15.",
+    "D1 theorem statements with formula-sensitive bounds were visually inspected; text extraction alone drops minus signs.",
+    "D2 text extraction has broken glyph encoding; cited passages and metadata were read from rendered PDF pages.",
+    "The reviewer-supplied ISTINA landing URL was not accessible through web open; the local dissertation is the primary text actually inspected.",
+    "Official web documentation was consulted on the stated date, not archived as a historical UPPAAL 5.0.0 manual. No current feature is presumed to have existed in the historical verifier.",
+    "No source asserts an arbitrary-UAV cutoff or accepts this workstream result."
+  ],
+  "schema_version": 1,
+  "web_sources": [
+    {
+      "id": "U1",
+      "kind": "official_primary_documentation",
+      "url": "https://docs.uppaal.org/language-reference/system-description/semantics/",
+      "used_for": "Initial states, action/delay semantics, invalid evaluation"
+    },
+    {
+      "id": "U2",
+      "kind": "official_primary_documentation",
+      "url": "https://docs.uppaal.org/language-reference/system-description/templates/edges/",
+      "used_for": "Select scope and sequential update expressions"
+    },
+    {
+      "id": "U3",
+      "kind": "official_primary_documentation",
+      "url": "https://docs.uppaal.org/language-reference/query-semantics/symb_queries/",
+      "used_for": "Invariant semantics and complete-successor observation boundary"
+    },
+    {
+      "id": "U4",
+      "kind": "official_primary_documentation",
+      "url": "https://docs.uppaal.org/language-reference/system-description/templates/locations/",
+      "used_for": "Committed locations and interleavings"
+    },
+    {
+      "id": "U5",
+      "kind": "official_primary_documentation",
+      "url": "https://docs.uppaal.org/language-reference/system-description/declarations/functions/",
+      "used_for": "By-reference calls and lifecycle/update hooks"
+    }
+  ]
+}

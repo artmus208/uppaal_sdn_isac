@@ -1,0 +1,2 @@
+# Raw process streams are evidence: retain CRLF and trailing spaces byte-for-byte.
+checks/**/*.txt -text -whitespace
