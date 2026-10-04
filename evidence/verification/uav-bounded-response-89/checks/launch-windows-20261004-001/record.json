@@ -1,0 +1,56 @@
+{
+  "command": [
+    "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "evidence/verification/uav-bounded-response-89/run_windows_checks.py",
+    "--output",
+    "evidence/verification/uav-bounded-response-89/checks/launch-windows-20261004-001",
+    "--source-commit",
+    "905905ccf269813992879b49ed1097161f0c54e8"
+  ],
+  "errors": 0,
+  "failures": 0,
+  "finished_at_utc": "2026-10-03T23:59:40.741735+00:00",
+  "host": {
+    "logical_cpu_count": 8,
+    "machine_guid_sha256": "0a8584d7b2bebec97e47538eb32d6a04fdb5b396e953c8090759a2a99b208398",
+    "native_host": "DESKTOP-Q3CKGDN",
+    "os": "Windows",
+    "physical_ram_bytes": 17033019392,
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "python_path": "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "python_sha256": "ff9b669828a66882f3d43ed2f9192ea9d8a08f80b8ffbc2186ee946823394418",
+    "python_version": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]"
+  },
+  "kind": "native Windows synthetic/software tests; zero verifier execution",
+  "logs": [
+    {
+      "path": "unittest.txt",
+      "sha256": "112534b2328c2640602fc2d8ec065bbc28bdddfda39aa1e2f6aadfb9437dea9b"
+    }
+  ],
+  "skipped": [],
+  "source_commit": "905905ccf269813992879b49ed1097161f0c54e8",
+  "source_files": {
+    "audit.py": "4bd0544436051782b918a26b953a6cfc0f06ef1bfbdbd9a924609a16b9c21615",
+    "driver.py": "e729a155262a648fae443e3305c3a077020823d7026b509784a2fb5389fa1ef8",
+    "guard.py": "6bb0b6154caf0d286572f08cd35f53d4fb8ff950e4034f3e0872416abcff6a8c",
+    "prepare.py": "ebe66b830eafc923d9c594627c10750c803083cd5b935e79006e744b8e979a92",
+    "run_checks.py": "489b3c2ce8619d42407c0d1eea1521294fda79a1b08b78709cd7fbc763b981b0",
+    "run_windows_checks.py": "50795de5756402958654db2d322eff4e55429af165a2cbf114628b50ef5078de",
+    "test_protocol.py": "eb3725c17df39a1a065750cec90e0772cf304477ab832d986a946991f78f5070",
+    "test_windows_guard.py": "7df3aa2805e46ac80eee2a71220aeaa58f05f601a4fe37c5109f1ecb9bd8ef3a",
+    "windows_native.py": "63238206e50ce73f1dbf7cedc822be004ef1cbf8555071d596e58bad85095047"
+  },
+  "source_unchanged": true,
+  "started_at_utc": "2026-10-03T23:59:24.565614+00:00",
+  "successful": true,
+  "tests_run": 33,
+  "verifyta_read_only_pe": {
+    "bytes": 6730240,
+    "machine": "0x8664",
+    "optional_header": "0x20b",
+    "path": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+    "sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5"
+  }
+}

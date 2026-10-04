@@ -1,0 +1,11 @@
+{
+  "source_commit": "78d62d8675af25e2b06e7d191fc3ee8bc4becb23",
+  "tests": 25,
+  "failures": 1,
+  "errors": 0,
+  "skips": 0,
+  "raw_record": "checks/windows-final/record.json",
+  "finding": "A fast successful synthetic child was classified as error. The completed-leader path used asynchronous Job ActiveProcesses accounting, which can still include the exited leader. It now inspects handles of other job members for actual liveness. Added a 12-fast-exit regression; original failure retained.",
+  "scope": "Windows orchestration only; zero model/query changes or verifier executions",
+  "followup": "Initial accounting-only hypothesis was insufficient. windows-003 fast-exit regression still found live owned descendants; the retained-handle probe identified Windows conhost.exe. A bounded 250ms natural-exit grace inside the existing deadline is the final fix."
+}

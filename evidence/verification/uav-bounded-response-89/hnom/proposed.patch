@@ -1,0 +1,391 @@
+--- evidence/instantiation/uav-service-completion-candidate/model.xml
++++ evidence/verification/uav-bounded-response-89/execution/model.xml
+@@ -4497,145 +4497,145 @@
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample0" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample1" />
+-      <label kind="select">value:int[0,3]</label>
++      <label kind="select">value:int[2,2]</label>
+       <label kind="assignment">p0=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample1" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample2" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p1=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample2" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample3" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p2=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample3" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample4" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p3=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample4" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample5" />
+-      <label kind="select">value:int[0,1]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p4=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample5" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample6" />
+-      <label kind="select">value:int[0,1]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p5=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample6" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample7" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p6=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample7" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample8" />
+-      <label kind="select">value:int[0,1]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p7=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample8" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample9" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p8=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample9" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample10" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p9=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample10" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample11" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p10=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample11" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample12" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p11=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample12" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample13" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p12=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample13" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample14" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p13=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample14" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample15" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p14=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample15" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample16" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p15=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample16" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample17" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p16=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample17" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample18" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p17=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample18" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample19" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p18=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample19" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample20" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p19=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample20" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample21" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p20=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample21" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample22" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p21=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample22" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Sample23" />
+-      <label kind="select">value:int[0,2]</label>
++      <label kind="select">value:int[0,0]</label>
+       <label kind="assignment">p22=value</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_PHY_INPUT_Sample23" />
+       <target ref="u0_Boundary_E_PHY_INPUT_Publish" />
+-      <label kind="select">miss:int[0,2], scenario:int[0,3]</label>
++      <label kind="select">miss:int[0,0], scenario:int[0,0]</label>
+       <label kind="guard">!(p13 == u0_phy_PDCLASS_OK &amp;&amp; miss == 2) &amp;&amp; !(p13 == u0_phy_PDCLASS_FAILED &amp;&amp; miss == 0)</label>
+       <label kind="assignment">u0_phy_SINRClass=p0, u0_phy_BLERClass=p1, u0_phy_CQIClass=p2, u0_phy_IClass=p3, u0_phy_DopplerClass=p4, u0_phy_DelaySpreadClass=p5, u0_phy_PowerClass=p6, u0_phy_DRTClass=p7, u0_phy_PilotDensityClass=p8, u0_phy_PayloadSenseClass=p9, u0_phy_PRSClass=p10, u0_phy_BeamErrorClass=p11, u0_phy_BlockageClass=p12, u0_phy_PdClass=p13, u0_phy_RfaClass=p14, u0_phy_AccClass=p15, u0_phy_CRBClass=p16, u0_phy_AoSClass=p17, u0_phy_CapClass=p18, u0_phy_CoverageClass=p19, u0_phy_ResourceShareClass=p20, u0_phy_MisClass=p21, u0_phy_BMOverheadClass=p22, u0_bus_missed_detection=miss, u0_phy_env_scenario=scenario, u0_phy_input_changed=true, u0_bus_phy_age=0, u0_bus_phy_valid=true</label>
+     </transition>
+@@ -4773,13 +4773,6 @@
+     </location>
+     <init ref="u0_Boundary_E_FAULT_Before_Idle" />
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Idle" />
+-      <target ref="u0_Boundary_E_FAULT_Rule_Idle" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Rule_Idle" />
+       <target ref="u0_Boundary_E_FAULT_Done_Idle" />
+       <label kind="synchronisation">u0_sdn_rule_miss!</label>
+@@ -4792,13 +4785,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Idle" />
+-      <target ref="u0_Boundary_E_FAULT_Link_Idle" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Link_Idle" />
+       <target ref="u0_Boundary_E_FAULT_Done_Idle" />
+       <label kind="synchronisation">u0_sdn_link_failure!</label>
+@@ -4811,13 +4797,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Idle" />
+-      <target ref="u0_Boundary_E_FAULT_Node_Idle" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Node_Idle" />
+       <target ref="u0_Boundary_E_FAULT_Done_Idle" />
+       <label kind="synchronisation">u0_sdn_node_failure!</label>
+@@ -4835,13 +4814,6 @@
+       <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Forward" />
+-      <target ref="u0_Boundary_E_FAULT_Rule_Forward" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Rule_Forward" />
+       <target ref="u0_Boundary_E_FAULT_Done_Forward" />
+       <label kind="synchronisation">u0_sdn_rule_miss!</label>
+@@ -4854,13 +4826,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Forward" />
+-      <target ref="u0_Boundary_E_FAULT_Link_Forward" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Link_Forward" />
+       <target ref="u0_Boundary_E_FAULT_Done_Forward" />
+       <label kind="synchronisation">u0_sdn_link_failure!</label>
+@@ -4873,13 +4838,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Forward" />
+-      <target ref="u0_Boundary_E_FAULT_Node_Forward" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Node_Forward" />
+       <target ref="u0_Boundary_E_FAULT_Done_Forward" />
+       <label kind="synchronisation">u0_sdn_node_failure!</label>
+@@ -4897,13 +4855,6 @@
+       <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Ack" />
+-      <target ref="u0_Boundary_E_FAULT_Rule_Ack" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Rule_Ack" />
+       <target ref="u0_Boundary_E_FAULT_Done_Ack" />
+       <label kind="synchronisation">u0_sdn_rule_miss!</label>
+@@ -4916,13 +4867,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Ack" />
+-      <target ref="u0_Boundary_E_FAULT_Link_Ack" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Link_Ack" />
+       <target ref="u0_Boundary_E_FAULT_Done_Ack" />
+       <label kind="synchronisation">u0_sdn_link_failure!</label>
+@@ -4935,13 +4879,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Ack" />
+-      <target ref="u0_Boundary_E_FAULT_Node_Ack" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Node_Ack" />
+       <target ref="u0_Boundary_E_FAULT_Done_Ack" />
+       <label kind="synchronisation">u0_sdn_node_failure!</label>
+@@ -4959,13 +4896,6 @@
+       <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_RecFlow" />
+-      <target ref="u0_Boundary_E_FAULT_Rule_RecFlow" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Rule_RecFlow" />
+       <target ref="u0_Boundary_E_FAULT_Done_RecFlow" />
+       <label kind="synchronisation">u0_sdn_rule_miss!</label>
+@@ -4978,13 +4908,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_RecFlow" />
+-      <target ref="u0_Boundary_E_FAULT_Link_RecFlow" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Link_RecFlow" />
+       <target ref="u0_Boundary_E_FAULT_Done_RecFlow" />
+       <label kind="synchronisation">u0_sdn_link_failure!</label>
+@@ -4997,13 +4920,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_RecFlow" />
+-      <target ref="u0_Boundary_E_FAULT_Node_RecFlow" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Node_RecFlow" />
+       <target ref="u0_Boundary_E_FAULT_Done_RecFlow" />
+       <label kind="synchronisation">u0_sdn_node_failure!</label>
+@@ -5021,13 +4937,6 @@
+       <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Rollback" />
+-      <target ref="u0_Boundary_E_FAULT_Rule_Rollback" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Rule_Rollback" />
+       <target ref="u0_Boundary_E_FAULT_Done_Rollback" />
+       <label kind="synchronisation">u0_sdn_rule_miss!</label>
+@@ -5040,13 +4949,6 @@
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+     </transition>
+     <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Rollback" />
+-      <target ref="u0_Boundary_E_FAULT_Link_Rollback" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+-    </transition>
+-    <transition>
+       <source ref="u0_Boundary_E_FAULT_Link_Rollback" />
+       <target ref="u0_Boundary_E_FAULT_Done_Rollback" />
+       <label kind="synchronisation">u0_sdn_link_failure!</label>
+@@ -5057,13 +4959,6 @@
+       <target ref="u0_Boundary_E_FAULT_Done_Rollback" />
+       <label kind="guard">u0_bus_time == 13</label>
+       <label kind="assignment">u0_bus_fault_dropped=true</label>
+-    </transition>
+-    <transition>
+-      <source ref="u0_Boundary_E_FAULT_Before_Rollback" />
+-      <target ref="u0_Boundary_E_FAULT_Node_Rollback" />
+-      <label kind="select">standby:int[0,1], alternative:int[0,1]</label>
+-      <label kind="guard">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>
+-      <label kind="assignment">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>
+     </transition>
+     <transition>
+       <source ref="u0_Boundary_E_FAULT_Node_Rollback" />
+@@ -7920,7 +7815,7 @@
+     <transition>
+       <source ref="shared_Wait" />
+       <target ref="shared_Sample_1" />
+-      <label kind="select">pick_arrival:int[0,1], pick_m1:int[0,2], pick_m2:int[0,3], pick_m3:int[0,2], pick_m4:int[0,3], pick_m5:int[0,2], pick_m6:int[0,2]</label>
++      <label kind="select">pick_arrival:int[0,0], pick_m1:int[0,0], pick_m2:int[0,0], pick_m3:int[0,0], pick_m4:int[0,0], pick_m5:int[0,0], pick_m6:int[0,0]</label>
+       <label kind="guard">tick == u0_bus_T_mac_tick</label>
+       <label kind="assignment">arrival_0=pick_arrival, m1_0=pick_m1, m2_0=pick_m2, m3_0=pick_m3, m4_0=pick_m4, m5_0=pick_m5, m6_0=pick_m6</label>
+     </transition>

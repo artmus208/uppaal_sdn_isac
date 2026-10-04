@@ -1,0 +1,19 @@
+test_missing_approval_rejected_before_native_calls (test_protocol.IntegrityTests.test_missing_approval_rejected_before_native_calls) ... ok
+test_offline_audit_rejects_query_and_code_tampering (test_protocol.IntegrityTests.test_offline_audit_rejects_query_and_code_tampering) ... ok
+test_exact_allowed_changes_and_preservation (test_protocol.ModelTests.test_exact_allowed_changes_and_preservation) ... ok
+test_formulas_and_receipt_boundaries (test_protocol.ModelTests.test_formulas_and_receipt_boundaries) ... ok
+test_reproducible_products (test_protocol.ModelTests.test_reproducible_products) ... ok
+test_source_drift_rejected (test_protocol.ModelTests.test_source_drift_rejected) ... ok
+test_atomic_write_failure_retains_old_record (test_protocol.ResultTests.test_atomic_write_failure_retains_old_record) ... ok
+test_fail_closed_parser (test_protocol.ResultTests.test_fail_closed_parser) ... ok
+test_checkpoint_exports_declared_runner_branch (test_protocol.RunnerIdentityTests.test_checkpoint_exports_declared_runner_branch) ... ok
+test_declared_accounts_do_not_bypass_approval_or_hashes (test_protocol.RunnerIdentityTests.test_declared_accounts_do_not_bypass_approval_or_hashes) ... ok
+test_declared_accounts_pass_approval_without_impersonation (test_protocol.RunnerIdentityTests.test_declared_accounts_pass_approval_without_impersonation) ... ok
+test_missing_or_invalid_account_rejected_before_native_calls (test_protocol.RunnerIdentityTests.test_missing_or_invalid_account_rejected_before_native_calls) ... ok
+test_session_records_declared_accounts_and_branch (test_protocol.RunnerIdentityTests.test_session_records_declared_accounts_and_branch) ... ok
+test_wrong_runner_branch_rejected_before_native_calls (test_protocol.RunnerIdentityTests.test_wrong_runner_branch_rejected_before_native_calls) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 1.111s
+
+OK

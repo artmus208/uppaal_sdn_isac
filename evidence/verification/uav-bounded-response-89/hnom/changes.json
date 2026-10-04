@@ -1,0 +1,362 @@
+[
+  {
+    "after": "pick_arrival:int[0,0], pick_m1:int[0,0], pick_m2:int[0,0], pick_m3:int[0,0], pick_m4:int[0,0], pick_m5:int[0,0], pick_m6:int[0,0]",
+    "before": "pick_arrival:int[0,1], pick_m1:int[0,2], pick_m2:int[0,3], pick_m3:int[0,2], pick_m4:int[0,3], pick_m5:int[0,2], pick_m6:int[0,2]",
+    "kind": "select",
+    "source": "shared_Wait",
+    "target": "shared_Sample_1",
+    "template": "SharedLoad",
+    "transition_index": 0
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Idle\" />\n      <target ref=\"u0_Boundary_E_FAULT_Rule_Idle\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Idle",
+    "target": "u0_Boundary_E_FAULT_Rule_Idle",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 0
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Idle\" />\n      <target ref=\"u0_Boundary_E_FAULT_Link_Idle\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Idle",
+    "target": "u0_Boundary_E_FAULT_Link_Idle",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 3
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Idle\" />\n      <target ref=\"u0_Boundary_E_FAULT_Node_Idle\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Idle",
+    "target": "u0_Boundary_E_FAULT_Node_Idle",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 6
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Forward\" />\n      <target ref=\"u0_Boundary_E_FAULT_Rule_Forward\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Forward",
+    "target": "u0_Boundary_E_FAULT_Rule_Forward",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 10
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Forward\" />\n      <target ref=\"u0_Boundary_E_FAULT_Link_Forward\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Forward",
+    "target": "u0_Boundary_E_FAULT_Link_Forward",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 13
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Forward\" />\n      <target ref=\"u0_Boundary_E_FAULT_Node_Forward\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Forward",
+    "target": "u0_Boundary_E_FAULT_Node_Forward",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 16
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Ack\" />\n      <target ref=\"u0_Boundary_E_FAULT_Rule_Ack\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Ack",
+    "target": "u0_Boundary_E_FAULT_Rule_Ack",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 20
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Ack\" />\n      <target ref=\"u0_Boundary_E_FAULT_Link_Ack\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Ack",
+    "target": "u0_Boundary_E_FAULT_Link_Ack",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 23
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Ack\" />\n      <target ref=\"u0_Boundary_E_FAULT_Node_Ack\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Ack",
+    "target": "u0_Boundary_E_FAULT_Node_Ack",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 26
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_RecFlow\" />\n      <target ref=\"u0_Boundary_E_FAULT_Rule_RecFlow\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_RecFlow",
+    "target": "u0_Boundary_E_FAULT_Rule_RecFlow",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 30
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_RecFlow\" />\n      <target ref=\"u0_Boundary_E_FAULT_Link_RecFlow\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_RecFlow",
+    "target": "u0_Boundary_E_FAULT_Link_RecFlow",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 33
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_RecFlow\" />\n      <target ref=\"u0_Boundary_E_FAULT_Node_RecFlow\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_RecFlow",
+    "target": "u0_Boundary_E_FAULT_Node_RecFlow",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 36
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Rollback\" />\n      <target ref=\"u0_Boundary_E_FAULT_Rule_Rollback\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Rollback",
+    "target": "u0_Boundary_E_FAULT_Rule_Rollback",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 40
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Rollback\" />\n      <target ref=\"u0_Boundary_E_FAULT_Link_Rollback\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Rollback",
+    "target": "u0_Boundary_E_FAULT_Link_Rollback",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 43
+  },
+  {
+    "after": "",
+    "before": "    <transition>\n      <source ref=\"u0_Boundary_E_FAULT_Before_Rollback\" />\n      <target ref=\"u0_Boundary_E_FAULT_Node_Rollback\" />\n      <label kind=\"select\">standby:int[0,1], alternative:int[0,1]</label>\n      <label kind=\"guard\">u0_bus_time &gt;= 12 &amp;&amp; u0_bus_time &lt;= 13</label>\n      <label kind=\"assignment\">u0_sdn_standby_available=(standby == 1), u0_sdn_alternative_config_exists=(alternative == 1)</label>\n    </transition>\n",
+    "kind": "remove_external_injection_edge",
+    "source": "u0_Boundary_E_FAULT_Before_Rollback",
+    "target": "u0_Boundary_E_FAULT_Node_Rollback",
+    "template": "u0_Boundary_E_FAULT",
+    "transition_index": 46
+  },
+  {
+    "after": "value:int[2,2]",
+    "before": "value:int[0,3]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample0",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample1",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 1
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample1",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample2",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 2
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample2",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample3",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 3
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample3",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample4",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 4
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,1]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample4",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample5",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 5
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,1]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample5",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample6",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 6
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample6",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample7",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 7
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,1]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample7",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample8",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 8
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample8",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample9",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 9
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample9",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample10",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 10
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample10",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample11",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 11
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample11",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample12",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 12
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample12",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample13",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 13
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample13",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample14",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 14
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample14",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample15",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 15
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample15",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample16",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 16
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample16",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample17",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 17
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample17",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample18",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 18
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample18",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample19",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 19
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample19",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample20",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 20
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample20",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample21",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 21
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample21",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample22",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 22
+  },
+  {
+    "after": "value:int[0,0]",
+    "before": "value:int[0,2]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample22",
+    "target": "u0_Boundary_E_PHY_INPUT_Sample23",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 23
+  },
+  {
+    "after": "miss:int[0,0], scenario:int[0,0]",
+    "before": "miss:int[0,2], scenario:int[0,3]",
+    "kind": "select",
+    "source": "u0_Boundary_E_PHY_INPUT_Sample23",
+    "target": "u0_Boundary_E_PHY_INPUT_Publish",
+    "template": "u0_Boundary_E_PHY_INPUT",
+    "transition_index": 24
+  }
+]

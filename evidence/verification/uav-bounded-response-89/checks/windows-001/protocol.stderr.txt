@@ -1,0 +1,49 @@
+.E.EE...
+======================================================================
+ERROR: test_offline_audit_rejects_query_and_code_tampering (__main__.IntegrityTests.test_offline_audit_rejects_query_and_code_tampering)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\test_protocol.py", line 28, in test_offline_audit_rejects_query_and_code_tampering
+    audit.audit_preparation()
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\audit.py", line 16, in audit_preparation
+    for name,data in products().items():
+                     ^^^^^^^^^^
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\prepare.py", line 100, in products
+    for i,data in queries().items()]
+                  ^^^^^^^^^
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\prepare.py", line 84, in queries
+    g = re.search(r'`G` —.*?~~~uppaal\s*(.*?)\s*~~~', body, re.S)[1]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_formulas_and_receipt_boundaries (__main__.ModelTests.test_formulas_and_receipt_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\test_protocol.py", line 61, in test_formulas_and_receipt_boundaries
+    q=queries()
+      ^^^^^^^^^
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\prepare.py", line 84, in queries
+    g = re.search(r'`G` —.*?~~~uppaal\s*(.*?)\s*~~~', body, re.S)[1]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+
+======================================================================
+ERROR: test_reproducible_products (__main__.ModelTests.test_reproducible_products)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\test_protocol.py", line 74, in test_reproducible_products
+    for path,data in products().items():self.assertEqual((HERE/path).read_bytes(),data)
+                     ^^^^^^^^^^
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\prepare.py", line 100, in products
+    for i,data in queries().items()]
+                  ^^^^^^^^^
+  File "\\wsl.localhost\Ubuntu\tmp\uppaal-owner-89\evidence\verification\uav-bounded-response-89\prepare.py", line 84, in queries
+    g = re.search(r'`G` —.*?~~~uppaal\s*(.*?)\s*~~~', body, re.S)[1]
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^
+TypeError: 'NoneType' object is not subscriptable
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.665s
+
+FAILED (errors=3)

@@ -1,0 +1,1 @@
+{"activation": "external_independent_decision_required_not_granted_by_static_check", "check": "static_audit_ok", "gate_1": "pending_independent_decision", "inputs": 192, "new_native_runs": 0, "processes": 51, "queries_without_verdict": 11, "retained_native_cells": 9, "source_tree_membership": "archive_identity_only_use_source_history_for_git_membership"}

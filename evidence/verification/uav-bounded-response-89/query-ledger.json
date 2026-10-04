@@ -1,0 +1,80 @@
+[
+  {
+    "slot": 1,
+    "run_id": "uav-br89-q1-001",
+    "model": "Hnom",
+    "model_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+    "query_hash": "c599715a482970ae4b72e6fc1384cb1d05cd1631b166f4a9beb4f2a9507413d2",
+    "cap_seconds": 180,
+    "state": "planned",
+    "attempt_consumed": false,
+    "status": "not_executed",
+    "verdict": null,
+    "reason": "Pending explicit Hnom/native decision"
+  },
+  {
+    "slot": 2,
+    "run_id": "uav-br89-q2-001",
+    "model": "Hnom",
+    "model_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+    "query_hash": "ff797cc96cc6d018f9e6a2fa8921e81a21c7ec4fc86638b96fdfbe6adf9c11de",
+    "cap_seconds": 180,
+    "state": "planned",
+    "attempt_consumed": false,
+    "status": "not_executed",
+    "verdict": null,
+    "reason": "Pending explicit Hnom/native decision"
+  },
+  {
+    "slot": 3,
+    "run_id": "uav-br89-q3-001",
+    "model": "Hnom",
+    "model_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+    "query_hash": "9a4dc76aca31e0cd333d27ab3fab461e42128896929e2b6afa62df88b37701e9",
+    "cap_seconds": 180,
+    "state": "planned",
+    "attempt_consumed": false,
+    "status": "not_executed",
+    "verdict": null,
+    "reason": "Pending explicit Hnom/native decision"
+  },
+  {
+    "slot": 4,
+    "run_id": "uav-br89-q4-001",
+    "model": "Hnom",
+    "model_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+    "query_hash": "9b89f698bcb9031e939ac9b653480a2c164ff8cb5fc8956d2b8f947e1da4bcaf",
+    "cap_seconds": 600,
+    "state": "planned",
+    "attempt_consumed": false,
+    "status": "not_executed",
+    "verdict": null,
+    "reason": "Pending explicit Hnom/native decision"
+  },
+  {
+    "slot": 5,
+    "run_id": "uav-br89-q5-001",
+    "model": "Hnom",
+    "model_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03",
+    "query_hash": "2507c2c36030471676705b6589d8d783b419bbf3bd96ef4171caedd4ae298dae",
+    "cap_seconds": 180,
+    "state": "planned",
+    "attempt_consumed": false,
+    "status": "not_executed",
+    "verdict": null,
+    "reason": "Pending explicit Hnom/native decision"
+  },
+  {
+    "slot": 6,
+    "run_id": "uav-br89-q6-001",
+    "model": "M",
+    "model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+    "query_hash": "16b39342f932f42136802ec92947eaf2b2f102ce34e0013b7727e76fb11f7871",
+    "cap_seconds": 180,
+    "state": "planned",
+    "attempt_consumed": false,
+    "status": "not_executed",
+    "verdict": null,
+    "reason": "Pending explicit Hnom/native decision"
+  }
+]

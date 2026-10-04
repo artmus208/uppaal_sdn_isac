@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-04",
+  "issue": 89,
+  "pull_request": 90,
+  "recorded_by": "vadimnbkg",
+  "previous_preparation_head": "77c0431049e4b5d367d56e1eb5232ed2d330258e",
+  "blocker_record": "https://github.com/artmus208/uppaal_sdn_isac/issues/89#issuecomment-5969141901",
+  "user_request": "Надо убрать ограничитель запуска проверки PR89",
+  "clarified_target": "Hardcoded artmus208 account binding, not time/attempt limits or watchdog.",
+  "user_confirmation": "именно эту привязку",
+  "change": "Read explicit approver and runner accounts from the decision record; derive Runner branch and bundle ref from runner; record both accounts faithfully. No default or fabricated artmus208 identity.",
+  "scope": "evidence/verification/uav-bounded-response-89/**",
+  "execution_performed": false,
+  "unchanged": [
+    "models and queries",
+    "domain/execution decision requirements",
+    "native host and tool checks",
+    "six attempts and no retry",
+    "1500-second search and 1800-second session",
+    "memory stop and Job Object watchdog",
+    "independent scientific acceptance"
+  ]
+}

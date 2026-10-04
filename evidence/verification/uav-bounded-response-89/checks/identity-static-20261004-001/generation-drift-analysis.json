@@ -1,0 +1,10 @@
+{
+  "kind": "offline diagnosis; no files regenerated and no verifier execution",
+  "preparation_base": "77c0431049e4b5d367d56e1eb5232ed2d330258e",
+  "generator_identical_to_previous_preparation": true,
+  "drift": {
+    "parameters.json": "--- committed/parameters.json\n+++ Windows-generated/parameters.json\n@@ -12,7 +12,7 @@\n     \"fresh\": \"0<=sample_age<5\",\n     \"stale\": \"5<=sample_age<10\"\n   },\n-  \"frozen_parameters_path\": \"evidence/scalability/family-series-68/generated/n1/parameters.json\",\n+  \"frozen_parameters_path\": \"evidence\\\\scalability\\\\family-series-68\\\\generated\\\\n1\\\\parameters.json\",\n   \"measurement_duration\": 5,\n   \"measurement_provenance\": \"u0_phy_D_sense (new deliberate fixed-duration acquisition assumption)\",\n   \"queue_capacity\": 4,\n"
+  },
+  "model_xml_unchanged": true,
+  "queries_unchanged": true
+}

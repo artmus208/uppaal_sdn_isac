@@ -1,0 +1,288 @@
+[
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "evidence/verification/uav-bounded-response-89/prepare.py",
+      "--check"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/proposal.stdout.txt",
+        "sha256": "4f6f519503e9b9f69820023dfaf66af37255757a10214484de06120aa9f93fdf"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/proposal.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "proposal",
+    "started_at_utc": "2026-10-03T23:42:12.203135+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "evidence/verification/uav-bounded-response-89",
+      "-p",
+      "test_protocol.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/portable-software-controls.stdout.txt",
+        "sha256": "aea52d27230b89ca1b732866afbe137a98e65100049a56b3293def8d5fe7dda0"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/portable-software-controls.stderr.txt",
+        "sha256": "8c9bb9b7607d1484bd6554a06154844c431e48b088320eff6c3c0c38bfb7ca47"
+      }
+    ],
+    "name": "portable-software-controls",
+    "started_at_utc": "2026-10-03T23:42:12.403657+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "scripts/check_coordination.py"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/coordination.stdout.txt",
+        "sha256": "0afa00e968ae02a520b13a31b75fb8d57fd0ae97040c9a7fe745d1aa9907ad10"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/coordination.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "coordination",
+    "started_at_utc": "2026-10-03T23:42:13.768208+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "scripts/check_coordination.py",
+      "--audit-hashes",
+      "--commit",
+      "HEAD",
+      "--output",
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\evidence\\verification\\uav-bounded-response-89\\checks\\identity-static-20261004-001\\historical-hashes.json"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/historical-hashes.stdout.txt",
+        "sha256": "b3c3ab750380beb3b416b72279736caf1e5af79c04ba7191e0199a5ea96829ea"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/historical-hashes.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "historical-hashes",
+    "started_at_utc": "2026-10-03T23:42:13.897780+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "evidence/instantiation/uav-service-completion-candidate/generate.py",
+      "--check"
+    ],
+    "exit_code": 1,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/candidate-generation.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/candidate-generation.stderr.txt",
+        "sha256": "fc9409fe00c1b6e99ea0a95a524ba60af1927a0d22704ae57e2beaae6000c630"
+      }
+    ],
+    "name": "candidate-generation",
+    "started_at_utc": "2026-10-03T23:42:19.208943+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "evidence/instantiation/uav-service-completion-candidate/audit.py"
+    ],
+    "exit_code": 1,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/candidate-audit.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/candidate-audit.stderr.txt",
+        "sha256": "a93824ae5839af12b841a900f5fdc23b80c0109a5c55ef27a136b42d1c806a07"
+      }
+    ],
+    "name": "candidate-audit",
+    "started_at_utc": "2026-10-03T23:42:19.451586+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "evidence/governance/uav-service-completion-baseline-20261002/check.py",
+      "--operational"
+    ],
+    "exit_code": 1,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/baseline-operational.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/baseline-operational.stderr.txt",
+        "sha256": "e2cdf24371f6926d996acd57f277b9727086a0ad4980ed78a5ee429d0b187c16"
+      }
+    ],
+    "name": "baseline-operational",
+    "started_at_utc": "2026-10-03T23:42:19.679854+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "exit_code": 1,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/full-suite.stdout.txt",
+        "sha256": "555fa0dfcc9a7b9c46e152ca3105720055cb5e18c5623ffa131a4a6c581d096a"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/full-suite.stderr.txt",
+        "sha256": "7c26de25e83c1fbb0d7899db25f7e059730b835b091216a753a6b6d22af66408"
+      }
+    ],
+    "name": "full-suite",
+    "started_at_utc": "2026-10-03T23:42:20.276764+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-c",
+      "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/mcp-smoke.stdout.txt",
+        "sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/mcp-smoke.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "mcp-smoke",
+    "started_at_utc": "2026-10-03T23:44:01.530842+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "-m",
+      "uppaal_mcp.cli",
+      "list-examples"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/cli-examples.stdout.txt",
+        "sha256": "1af8ad56a27f370f4963277f0705948385ed924cd95a0f691ad2c57880025f1b"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/cli-examples.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "cli-examples",
+    "started_at_utc": "2026-10-03T23:44:02.862495+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/pip-check.stdout.txt",
+        "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/pip-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "pip-check",
+    "started_at_utc": "2026-10-03T23:44:03.228318+00:00"
+  },
+  {
+    "command": [
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+      "-B",
+      "evidence/verification/uav-bounded-response-89/audit.py",
+      "--output",
+      "C:\\Users\\musta\\.codex\\worktrees\\a437\\mcp_uppaal\\evidence\\verification\\uav-bounded-response-89\\checks\\identity-static-20261004-001\\offline-audit.json"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/offline-audit.stdout.txt",
+        "sha256": "eb30697704e05c086f4e97bb045a657b88d547f885fbe525102fbbbb5d78dafd"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/offline-audit.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "offline-audit",
+    "started_at_utc": "2026-10-03T23:44:04.305417+00:00"
+  },
+  {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "logs": [
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/diff-check.stdout.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "evidence/verification/uav-bounded-response-89/checks/identity-static-20261004-001/diff-check.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "name": "diff-check",
+    "started_at_utc": "2026-10-03T23:44:04.667465+00:00"
+  }
+]

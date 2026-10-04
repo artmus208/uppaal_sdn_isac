@@ -1,0 +1,11 @@
+{
+  "kind": "preparation software/environment history; no native UPPAAL calls",
+  "findings": [
+    {"command": "git ls-remote origin refs/heads/read refs/heads/codex/vadimnbkg/89-uav-bounded-response", "exit_code": 128, "diagnostic": "Failed to connect to 172.26.112.1 port 2080: Couldn't connect to server", "resolution": "Approved network read with task-local http.proxy/https.proxy overrides; confirmed base 452571598d4a5c1e070dace3a918ea737904e239. Global configuration unchanged."},
+    {"command": "git push -u origin codex/vadimnbkg/89-uav-bounded-response (GIT_TERMINAL_PROMPT=0, task-local proxy overrides)", "exit_code": 128, "diagnostic": "fatal: could not read Username for 'https://github.com': terminal prompts disabled", "resolution": "No shared credentials used. Full-history bundles saved in persistent owner repository; authenticated vadimnbkg GitHub connector available for publication."},
+    {"command": "python3 -c 'import mcp,yaml'", "exit_code": 1, "diagnostic": "ModuleNotFoundError: No module named 'mcp'", "resolution": "Installed project and PyYAML into isolated /tmp/uppaal89-venv; no global installation."},
+    {"command": "python3 -m unittest discover -s evidence/verification/uav-bounded-response-89 -p 'test_*.py' -v", "exit_code": 1, "tests": 13, "failures": 1, "diagnostic": "test_formulas_and_receipt_boundaries: AssertionError: 1 != 2 at model.count('c82_service_age=0;')", "resolution": "Corrected mistaken test expectation: the XML clock declaration is implicit initialization, with exactly one explicit reset inside c82_emit_request(). Model unchanged. All seven synthetic watchdog controls in this first run succeeded."},
+    {"command": "git bundle create .../handoff/preparation-initial.bundle codex/vadimnbkg/89-uav-bounded-response", "exit_code": 128, "diagnostic": "No such file or directory for bundle.lock", "resolution": "Created the explicitly scoped persistent handoff directory, exported and verified a complete-history bundle."}
+  ],
+  "skipped": ["Native verifyta version/help/query commands: not authorized for Owner; Runner approval pending"]
+}

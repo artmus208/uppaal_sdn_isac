@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\a437\mcp_uppaal\evidence\instantiation\uav-service-completion-candidate\audit.py", line 119, in <module>
+    result=audit();print(json.dumps({'audit':'ok','runs':len(result['runs']),'replay_states':101,'native_wall_seconds':result['native_wall_seconds'],'model_hash':result['model_hash']}))
+           ^^^^^^^
+  File "C:\Users\musta\.codex\worktrees\a437\mcp_uppaal\evidence\instantiation\uav-service-completion-candidate\audit.py", line 30, in audit
+    for name,content in generated.items():require((HERE/name).read_bytes()==content,f'generated drift {name}')
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\musta\.codex\worktrees\a437\mcp_uppaal\evidence\instantiation\uav-service-completion-candidate\audit.py", line 13, in require
+    if not value:raise ValueError(message)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: generated drift parameters.json

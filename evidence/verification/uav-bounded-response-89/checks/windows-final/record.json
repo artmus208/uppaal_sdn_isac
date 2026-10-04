@@ -1,0 +1,56 @@
+{
+  "command": [
+    "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-owner-89\\evidence\\verification\\uav-bounded-response-89\\run_windows_checks.py",
+    "--output",
+    "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-owner-89\\evidence\\verification\\uav-bounded-response-89\\checks\\windows-final",
+    "--source-commit",
+    "78d62d8675af25e2b06e7d191fc3ee8bc4becb23"
+  ],
+  "errors": 0,
+  "failures": 1,
+  "finished_at_utc": "2026-10-03T11:32:15.021908+00:00",
+  "host": {
+    "logical_cpu_count": 8,
+    "machine_guid_sha256": "0a8584d7b2bebec97e47538eb32d6a04fdb5b396e953c8090759a2a99b208398",
+    "native_host": "DESKTOP-Q3CKGDN",
+    "os": "Windows",
+    "physical_ram_bytes": 17033019392,
+    "platform": "Windows-10-10.0.19045-SP0",
+    "processor": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+    "python_path": "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "python_sha256": "ff9b669828a66882f3d43ed2f9192ea9d8a08f80b8ffbc2186ee946823394418",
+    "python_version": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]"
+  },
+  "kind": "native Windows synthetic/software tests; zero verifier execution",
+  "logs": [
+    {
+      "path": "unittest.txt",
+      "sha256": "a04f90468fd2b587ea2d47af6b749a1480a71f6387d20d2aef94b33953164609"
+    }
+  ],
+  "skipped": [],
+  "source_commit": "78d62d8675af25e2b06e7d191fc3ee8bc4becb23",
+  "source_files": {
+    "audit.py": "b5f488f7ff6956cdbf7c803aa46e32c62114e8d55ea1dd7d8805bfba7cd7eaf2",
+    "driver.py": "a7f222384d6dbaf0d0d33e68cb45a33c462fca0fe587b10a133ff6f50ab4580e",
+    "guard.py": "10f06a4fa495189cd4d3448d2ede6221a23ef345fb523bcdbd6e16567a5f41cb",
+    "prepare.py": "ebe66b830eafc923d9c594627c10750c803083cd5b935e79006e744b8e979a92",
+    "run_checks.py": "4ef70bcb8230be165ed75783ccb7a5f186271cdcd173ac1a3779a45a8db2c19c",
+    "run_windows_checks.py": "50795de5756402958654db2d322eff4e55429af165a2cbf114628b50ef5078de",
+    "test_protocol.py": "200fd13763d39866bee032d70928c4eddae62304cedf1d59bba6f30a7ccf5574",
+    "test_windows_guard.py": "03939805b5e1fcb578fdfdc8614497679056c99e4ce111ea4d134c18c7b8dd72",
+    "windows_native.py": "2da8ba4978e1ffee0af4aef8ebc0c57a9ab3deff8295dbcacfc81e043feba16c"
+  },
+  "source_unchanged": true,
+  "started_at_utc": "2026-10-03T11:31:55.006019+00:00",
+  "successful": false,
+  "tests_run": 25,
+  "verifyta_read_only_pe": {
+    "bytes": 6730240,
+    "machine": "0x8664",
+    "optional_header": "0x20b",
+    "path": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+    "sha256": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5"
+  }
+}

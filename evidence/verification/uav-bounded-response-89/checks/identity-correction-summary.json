@@ -1,0 +1,23 @@
+{
+  "kind": "account binding correction; software/static evidence only",
+  "implementation_commit": "3b4bc7c",
+  "native_controls": {
+    "tests": 32,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "record": "checks/identity-windows-20261004-001/record.json"
+  },
+  "full_suite": {
+    "tests": 209,
+    "failures": 3,
+    "errors": 3,
+    "skips": 2,
+    "log": "checks/identity-static-20261004-001/full-suite.stderr.txt"
+  },
+  "general_checks": "checks/check-results.json",
+  "generation_diagnosis": "checks/identity-static-20261004-001/generation-drift-analysis.json",
+  "outside_scope_unchanged": true,
+  "verifier_invocations": 0,
+  "execution_status": "not_executed"
+}

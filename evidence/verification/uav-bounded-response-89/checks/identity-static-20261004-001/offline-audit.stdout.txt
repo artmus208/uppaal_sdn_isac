@@ -1,0 +1,36 @@
+{
+  "preparation": {
+    "kind": "static/software only",
+    "queries": 6,
+    "processes": 51,
+    "changed_external_elements": 40,
+    "input_hashes": 16,
+    "sealed_files": 44,
+    "search_allocation_seconds": 1500,
+    "model_hash": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+    "prospective_hnom_hash": "3d29abc8a19aa743fa5e83bde7c83e3c45de36f166ea2b74315443156b073e03"
+  },
+  "execution": {
+    "native_execution": "not_executed",
+    "attempts": 0,
+    "verdicts": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "checks": {
+    "log_hashes": 26,
+    "recorded_failures": []
+  },
+  "windows_checks": {
+    "status": "software_controls_complete",
+    "tests": 32,
+    "skips": 0,
+    "record": "checks/identity-windows-20261004-001/record.json",
+    "verifier_executions": 0
+  }
+}
