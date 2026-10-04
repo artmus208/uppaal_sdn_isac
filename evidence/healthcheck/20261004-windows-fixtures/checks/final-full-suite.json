@@ -1,0 +1,38 @@
+{
+  "command": [
+    ".venv\\Scripts\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:15:35.714125+00:00",
+  "duration_seconds": 68.625,
+  "exit_code": 1,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "e226496d3724935fe89d05fa00b47794ddb8a06c",
+  "working_tree": "?? evidence/healthcheck/20261004-windows-fixtures/checks/final-full-suite.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-full-suite.stdout.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-linux-targeted.json\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-linux-targeted.stderr.txt\n?? evidence/healthcheck/20261004-windows-fixtures/checks/final-linux-targeted.stdout.txt\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "final-full-suite.stdout.txt",
+      "bytes": 144,
+      "sha256": "a580095b56cb2e9c646e296ae13b9aa9aabb32b18ea721c84ab51c4cc1171010",
+      "original_sha256": "555fa0dfcc9a7b9c46e152ca3105720055cb5e18c5623ffa131a4a6c581d096a"
+    },
+    "stderr": {
+      "path": "final-full-suite.stderr.txt",
+      "bytes": 30926,
+      "sha256": "4a199eab9494cceb584eeb8df20b57aeaeab9e9a500575740950e92945445a89",
+      "original_sha256": "1a1706ac282b5766d063e624d59b91014d911b8fb62a80b1c5555e14f4be25c4"
+    }
+  }
+}

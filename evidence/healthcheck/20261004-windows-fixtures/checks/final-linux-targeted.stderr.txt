@@ -1,0 +1,17 @@
+test_current_family_and_historical_default_coexist (test_family_baseline.FamilyBaselineTests.test_current_family_and_historical_default_coexist) ... ok
+test_default_switch_and_selection_policy_drift_rejected (test_family_baseline.FamilyBaselineTests.test_default_switch_and_selection_policy_drift_rejected) ... ok
+test_duplicate_fields_rejected (test_family_baseline.FamilyBaselineTests.test_duplicate_fields_rejected) ... ok
+test_incomplete_family_or_query_set_rejected (test_family_baseline.FamilyBaselineTests.test_incomplete_family_or_query_set_rejected) ... ok
+test_input_drift_rejected (test_family_baseline.FamilyBaselineTests.test_input_drift_rejected) ... ok
+test_invalid_paths_rejected (test_family_baseline.FamilyBaselineTests.test_invalid_paths_rejected) ... ok
+test_manifest_and_packet_cannot_be_rehashed_together (test_family_baseline.FamilyBaselineTests.test_manifest_and_packet_cannot_be_rehashed_together) ... ok
+test_operational_contract_history_not_confused_with_current (test_family_baseline.FamilyBaselineTests.test_operational_contract_history_not_confused_with_current) ... ok
+test_scope_widening_and_forged_decision_rejected (test_family_baseline.FamilyBaselineTests.test_scope_widening_and_forged_decision_rejected) ... ok
+test_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_symlink_escape_rejected) ... ok
+test_symlinked_venv_preserves_interpreter_and_cli (test_sdn_layer.IntegratedRecorderTests.test_symlinked_venv_preserves_interpreter_and_cli) ... ok
+test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 12.857s
+
+OK

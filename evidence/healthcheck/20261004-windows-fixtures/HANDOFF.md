@@ -29,8 +29,21 @@ baseline were read; this task changes neither governance nor scientific gates.
 
 ## Final checks
 
-Final checks after the scope correction are pending. The source change preserves
-the passing family and SDN assertions from the initial focused runs below.
+Tested final implementation: `e226496d3724935fe89d05fa00b47794ddb8a06c`.
+`final-full-suite`: **210 tests, 205 passed, 2 failures, 3 skips** on native
+Windows/Python 3.11.3 (exit 1, 68.043 seconds of unittest execution).
+Both changed modules have no failures: 41 passed and 2 expected skips across
+their 43 cases. The third skip is the unchanged POSIX-only manager lock test.
+
+The two remaining failures are `HashAuditTests.test_exact_bytes_and_committed_manifest`
+(reserved by #99) and `ManagerTests.test_memory_limit_measures_real_child`
+(separate manager issue). Both reproduce on the base; their source/test files
+are byte-identical to it. They are neither suppressed nor included in this fix.
+
+`final-linux-targeted`: **all 12 tests passed**, no skips, on Ubuntu/WSL with
+Python 3.12.3, including actual symlink rejection and both recorder tests.
+Final scope/log integrity audit and whitespace check pass. Review and integration
+remain pending; there is no claim of an entirely passing Windows suite.
 
 ## Retained preliminary checks and scope correction
 
@@ -87,6 +100,6 @@ Focused native commands use `-p test_family_baseline.py` or `-p test_sdn_layer.p
 with unittest discovery. The final Linux command is
 `wsl -d Ubuntu -- env PYTHONPATH=src:tests PYTHONDONTWRITEBYTECODE=1 python3 -m unittest test_family_baseline test_sdn_layer.IntegratedRecorderTests -v`.
 
-Next: finish final-scope checks, then independent review and integration decision.
+Next: independent review and integration decision.
 The known manager memory failure remains visible for separately coordinated
 follow-up under #51; the coordination fixture failure belongs to #99.
