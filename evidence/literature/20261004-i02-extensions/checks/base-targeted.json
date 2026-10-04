@@ -1,0 +1,39 @@
+{
+  "base_commit": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "archive_command": [
+    "git",
+    "archive",
+    "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+    "--",
+    "src",
+    "tests",
+    "scripts",
+    "manifests",
+    "evidence/governance",
+    "evidence/scalability",
+    "evidence/instantiation",
+    ".uppaal_mcp_workspace",
+    "levels_tex",
+    "CONTRIBUTING.md",
+    "AGENTS.md"
+  ],
+  "command": [
+    "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "unittest",
+    "-v",
+    "test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest",
+    "test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected",
+    "test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths",
+    "test_verification_manager.ManagerTests.test_memory_limit_measures_real_child"
+  ],
+  "exit_code": 1,
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "<base temp>/tests;<base temp>/src"
+  },
+  "selection": "Four failures from full suite, rerun on exact base files extracted using git archive. No library or test edits.",
+  "temporary_directory": "C:\\Users\\musta\\AppData\\Local\\Temp\\i02-95-base-u5iz6los"
+}

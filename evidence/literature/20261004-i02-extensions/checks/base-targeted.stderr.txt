@@ -1,0 +1,59 @@
+test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest) ... FAIL
+test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected) ... ERROR
+test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths) ... FAIL
+test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child) ... FAIL
+
+======================================================================
+ERROR: test_paths_and_symlink_escape_rejected (test_family_baseline.FamilyBaselineTests.test_paths_and_symlink_escape_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\AppData\Local\Temp\i02-95-base-u5iz6los\tests\test_family_baseline.py", line 27, in setUp
+    shutil.copyfile(ROOT / relative, target)
+  File "C:\Users\musta\AppData\Local\Programs\Python\Python311\Lib\shutil.py", line 256, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\musta\\AppData\\Local\\Temp\\i02-95-base-u5iz6los\\CONTRIBUTING-v2.md'
+
+======================================================================
+FAIL: test_exact_bytes_and_committed_manifest (test_coordination.HashAuditTests.test_exact_bytes_and_committed_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\AppData\Local\Temp\i02-95-base-u5iz6los\tests\test_coordination.py", line 114, in test_exact_bytes_and_committed_manifest
+    self.assertEqual(clean["hash_status"], "match")
+AssertionError: 'mismatch' != 'match'
+- mismatch
+? ---
++ match
+
+
+======================================================================
+FAIL: test_windows_compile_only_forwards_flag_and_translates_paths (test_sdn_layer.IntegratedRecorderTests.test_windows_compile_only_forwards_flag_and_translates_paths)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\AppData\Local\Temp\i02-95-base-u5iz6los\tests\test_sdn_layer.py", line 406, in test_windows_compile_only_forwards_flag_and_translates_paths
+    self.assertEqual(convert.call_args_list[0].args[0], ['wslpath', '-w', '/tmp/run/generated/model.xml'])
+AssertionError: Lists differ: ['wslpath', '-w', '\\tmp\\run\\generated\\model.xml'] != ['wslpath', '-w', '/tmp/run/generated/model.xml']
+
+First differing element 2:
+'\\tmp\\run\\generated\\model.xml'
+'/tmp/run/generated/model.xml'
+
+- ['wslpath', '-w', '\\tmp\\run\\generated\\model.xml']
+?                    ^^   ^^   ^^         ^^
+
++ ['wslpath', '-w', '/tmp/run/generated/model.xml']
+?                    ^   ^   ^         ^
+
+
+======================================================================
+FAIL: test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\AppData\Local\Temp\i02-95-base-u5iz6los\tests\test_verification_manager.py", line 95, in test_memory_limit_measures_real_child
+    self.assertEqual(self.run_queue(), 2)
+AssertionError: 0 != 2
+
+----------------------------------------------------------------------
+Ran 4 tests in 4.514s
+
+FAILED (failures=3, errors=1)

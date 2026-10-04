@@ -1,0 +1,39 @@
+{
+  "check_type": "static_artifact_audit_not_model_checking",
+  "status": "success",
+  "base_commit": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "new_bibtex_keys": [
+    "behrmann_priced_2001",
+    "kwiatkowska_digital_clocks_2006"
+  ],
+  "resolved_citation_keys": [
+    "behrmann_priced_2001",
+    "kwiatkowska_digital_clocks_2006",
+    "uppaal_smc_2015"
+  ],
+  "strict_freshness_guard_occurrences": 4,
+  "input_sha256": {
+    "AGENTS.md": "e9717f8d1ae99176277fd9a60146e063d1416fe92eb3f305ae4b820a881e5996",
+    "CONTRIBUTING.md": "ba9d0d308f86116c9f9f3783c429083e90d8d6b527d90663fef2aace66390e85",
+    "CONTRIBUTING-v2.md": "a2405dbc79a8b2c53e8262739490fd5c151a6074d16a57946bb3230f8d426b54",
+    "manifests/current.json": "bf2d455d13cec0d5870cb7777d26efd424653ba6bb2c1b56af0ae0b7149e626f",
+    "manifests/v2.md": "13c8b4e78c9f2e33096f649d130f44decd325d8a10ce82b33d2cf013c0eb2861",
+    "manifests/collaboration-v2.yaml": "fcce78b4ef3286e3e618de9cf107bcd4ed343908f3facec614f33e8d324cf97e",
+    "manifests/baselines/reviewer-r1.yaml": "d542e617148169361b96126d55bba91079fe5c8ac3cfe6d67e27755fae3a46f7",
+    "reviews/18100004273 - Comments for authors.md": "343219c6baf26377ad8d6938cfe1d698b4bf5a24b97645f7b27bf41d198a8ec4",
+    "papper/checks/literature-review.md": "d5139fa16c72d7d10b044757934ca46ccf7763dc08c7f46ca1123ff5fdd8b3d6",
+    "papper/paper-source/levels_tex/samplepaper.tex": "43d6bcbd782b1ffe46fd9f1f76e79032c075462d8ad409e04a2e119915cf5c3e",
+    "papper/paper-source/monotec2026.bib": "676c77b8014e6ca68287bc74ca9dfd29bb52b84229b7d8142cdd43c599909d03",
+    "evidence/instantiation/uav-service-completion-candidate/model.xml": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+    "src/uppaal_mcp/phy/defaults.py": "3186c4ddcc209f53da402be41ed4e1efecb8184b324f27b93b508cd9ea7ade6c"
+  },
+  "artifact_sha256": {
+    "README.md": "c5d5ceb7c93e06af78334a5e4ba0353c84eb8a751475150e7c7f3d25b88281f7",
+    "references.bib": "de2658b9a63b16af991059c196535fbd4fa109c64511a95a23c5b10016c1bcdc",
+    "proposed-text.tex": "ee47fdb825edc9fb78e405a8fd330dac1192f4e4de7cd1492f2adb9f5bf231fd",
+    "sources.json": "ad1d75c2ffe895b74bc4cc07473715a39b2b781c09bca44eea6fd39507e50d1e",
+    "check.py": "482a6716ad711b21667fb1793db838e38c5590ed52adb034b1ce95bfa373cbc6"
+  },
+  "scope": "evidence/literature/20261004-i02-extensions/",
+  "limitations": "Checks structure, hashes, citation resolution and a local XML fact; not source interpretation, typesetting or a behavioral property."
+}

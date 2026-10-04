@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "issue": "https://github.com/artmus208/uppaal_sdn_isac/issues/95",
+  "atomic_ids": ["I02"],
+  "owner": "vadimnbkg",
+  "base_commit": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "access_date": "2026-10-04",
+  "access_timezone": "Europe/Moscow",
+  "method": "Primary publisher/institution/tool pages and indicated author-PDF sections read through the web tool; local inputs inspected read-only. No experiment performed.",
+  "acceptance_status": "pending_independent_review",
+  "verification_evidence": "not_applicable",
+  "new_bibtex_keys": ["behrmann_priced_2001", "kwiatkowska_digital_clocks_2006"],
+  "reused_bibtex_keys": ["uppaal_smc_2015"],
+  "existing_bibliography": "papper/paper-source/monotec2026.bib",
+  "sources": [
+    {
+      "id": "COST",
+      "claims": ["I02-COST"],
+      "bibtex_key": "behrmann_priced_2001",
+      "title": "Minimum-Cost Reachability for Priced Time Automata",
+      "authors": ["Gerd Behrmann", "Ansgar Fehnker", "Thomas Hune", "Kim Larsen", "Paul Pettersson", "Judi Romijn", "Frits Vaandrager"],
+      "year": 2001,
+      "venue": "Hybrid Systems: Computation and Control (HSCC), LNCS 2034",
+      "pages": "147--161",
+      "doi": "10.1007/3-540-45351-2_15",
+      "metadata_url": "https://link.springer.com/chapter/10.1007/3-540-45351-2_15",
+      "text_url": "https://www.brics.dk/RS/01/3/BRICS-RS-01-3.pdf",
+      "locators": ["Publisher abstract, authors and Cite this paper", "BRICS RS-01-3, section 2, Definitions 1-2, printed pp. 4-5 (PDF pp. 6-7)"],
+      "version_note": "Published chapter title uses Time; the January 2001 author report uses Timed. Cite chapter metadata; section/page locators refer to the report."
+    },
+    {
+      "id": "PROB",
+      "claims": ["I02-PROB"],
+      "bibtex_key": "kwiatkowska_digital_clocks_2006",
+      "title": "Performance Analysis of Probabilistic Timed Automata Using Digital Clocks",
+      "authors": ["Marta Kwiatkowska", "Gethin Norman", "David Parker", "Jeremy Sproston"],
+      "year": 2006,
+      "venue": "Formal Methods in System Design 29(1)",
+      "pages": "33--78",
+      "doi": "10.1007/s10703-006-0005-2",
+      "metadata_url": "https://link.springer.com/article/10.1007/s10703-006-0005-2",
+      "additional_metadata_url": "https://eprints.gla.ac.uk/43789/",
+      "text_url": "https://www.prismmodelchecker.org/papers/fmsd06.pdf",
+      "locators": ["Author manuscript section 2.2, Definition 8, p. 7", "Sections 3.1-3.2, p. 8; sections 3.4-4.3; Theorem 24, p. 24", "Section 5, pp. 32-33"],
+      "version_note": "Use the 2006 journal paper rather than its 2003 predecessor. Locators use author-manuscript pagination, not journal pages 33-78."
+    },
+    {
+      "id": "SMC",
+      "claims": ["I02-SMC"],
+      "bibtex_key": "uppaal_smc_2015",
+      "title": "Uppaal SMC Tutorial",
+      "authors": ["Alexandre David", "Kim Guldstrand Larsen", "Axel Legay", "Marius Mikucionis", "Danny Bogsted Poulsen"],
+      "year": 2015,
+      "venue": "International Journal on Software Tools for Technology Transfer 17(4)",
+      "pages": "397--415",
+      "doi": "10.1007/s10009-014-0361-y",
+      "metadata_url": "https://vbn.aau.dk/en/publications/uppaal-smc-tutorial/",
+      "text_url": "https://uppaal.org/texts/uppaal-smc-tutorial.pdf",
+      "locators": ["Reformatted tutorial section 1, p. 2: fully stochastic scope and nondeterministic extensions", "Section 2, pp. 2-4: stochastic interpretation and networks", "Section 3, pp. 6-8: estimation, hypothesis testing and progress"],
+      "version_note": "Existing integration key reused. Journal year is 2015; section/page locators refer to the reformatted tool-hosted PDF. Existing BibTeX retains author diacritics."
+    },
+    {
+      "id": "SYMBOLIC-DOC",
+      "claims": ["I02-SYM"],
+      "title": "UPPAAL: Semantics of the Symbolic Queries",
+      "url": "https://docs.uppaal.org/language-reference/query-semantics/symb_queries/",
+      "locators": ["Path quantifiers", "Possibly", "Invariantly"],
+      "version_note": "Live documentation, not a statement of which historical binary was executed."
+    },
+    {
+      "id": "SMC-DOC",
+      "claims": ["I02-ENGINE"],
+      "title": "UPPAAL: System Description / Semantics",
+      "url": "https://docs.uppaal.org/language-reference/system-description/semantics/",
+      "locators": ["Probabilistic Transitions", "SMC Limitations: input enableness, input determinism, delay determinism, deadlocks, Zeno behavior"],
+      "version_note": "Live documentation allows non-blocking handshake inputs; do not generalize the 2015 tutorial's broadcast-only presentation to all current versions. Installed binary compatibility is untested."
+    },
+    {
+      "id": "SMC-QUERY-DOC",
+      "claims": ["I02-SMC"],
+      "title": "UPPAAL: Semantics of the Statistical Queries",
+      "url": "https://docs.uppaal.org/language-reference/query-semantics/smc_queries/",
+      "locators": ["Probability Estimation (Quantitative Model Checking)", "Hypothesis Testing (Qualitative Model Checking)"],
+      "version_note": "Current query documentation supplements, rather than versions, the 2015 paper."
+    },
+    {
+      "id": "PRISM-LANGUAGE",
+      "claims": ["I02-ENGINE"],
+      "title": "PRISM Manual: The PRISM Language / Real-time Models",
+      "url": "https://www.prismmodelchecker.org/manual/ThePRISMLanguage/Real-timeModels",
+      "locators": ["For the digital clocks engine", "Assumptions about PTAs regardless of engine"],
+      "version_note": "Current retrieved manual; restrictions are engine-specific."
+    },
+    {
+      "id": "PRISM-QUERIES",
+      "claims": ["I02-PROB"],
+      "title": "PRISM Manual: Property Specification / Real-time Models",
+      "url": "https://www.prismmodelchecker.org/manual/PropertySpecification/Real-timeModels",
+      "locators": ["Pmin/Pmax reachability examples", "Digital clocks reachability rewards and clock-independent reward structures"],
+      "version_note": "Documents current query restrictions; no PRISM translation or execution was performed."
+    }
+  ],
+  "local_inputs": [
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "CONTRIBUTING-v2.md",
+    "manifests/current.json",
+    "manifests/v2.md",
+    "manifests/collaboration-v2.yaml",
+    "manifests/baselines/reviewer-r1.yaml",
+    "reviews/18100004273 - Comments for authors.md",
+    "papper/checks/literature-review.md",
+    "papper/paper-source/levels_tex/samplepaper.tex",
+    "papper/paper-source/monotec2026.bib",
+    "evidence/instantiation/uav-service-completion-candidate/model.xml",
+    "src/uppaal_mcp/phy/defaults.py"
+  ],
+  "availability_limits": [
+    "Publisher full text is paywalled; substantive sections were read in the linked author-hosted PDFs.",
+    "Remote source bytes are not redistributed. URLs and section/page locators identify the inspected versions; no remote-file hash is asserted.",
+    "Local committed input hashes are reproduced by check.py in checks/artifact-audit.json.",
+    "No full proof rederivation, literature exhaustiveness, stochastic adequacy or engine compatibility is claimed."
+  ]
+}

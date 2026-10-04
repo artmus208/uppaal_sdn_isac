@@ -1,0 +1,85 @@
+{
+  "source_commit": "2c03ea7bd85c37c151a25254fea07b6ee2281de8",
+  "date": "2026-10-04",
+  "timezone": "Europe/Moscow",
+  "platform": "Windows-10-10.0.19045-SP0",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "packages": {
+    "mcp": "1.30.0",
+    "PyYAML": "6.0.3",
+    "bibtexparser": "1.4.4"
+  },
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "commands": [
+    {
+      "name": "artifact-audit",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "evidence/literature/20261004-i02-extensions/check.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "coordination",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "baseline-hashes",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "evidence\\literature\\20261004-i02-extensions\\checks\\baseline-audit.json"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "unittest",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1
+    },
+    {
+      "name": "mcp-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "examples-smoke",
+      "command": [
+        "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal\\.venv\\Scripts\\python.exe",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "exit_code": 0
+    }
+  ]
+}
