@@ -1,0 +1,498 @@
+test_absent_input_is_not_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_absent_input_is_not_run) ... ok
+test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes) ...
+  test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes) (layer='MAC') ... FAIL
+  test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes) (layer='SDN') ... FAIL
+test_complete_positive_run_is_preserved (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_positive_run_is_preserved) ...
+  test_complete_positive_run_is_preserved (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_positive_run_is_preserved) (layer='MAC') ... FAIL
+  test_complete_positive_run_is_preserved (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_positive_run_is_preserved) (layer='SDN') ... FAIL
+test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) ...
+  test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='MAC', result={}) ... FAIL
+  test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='MAC', result={'status': 'error'}) ... FAIL
+  test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='MAC', result={'status': 'validated', 'query_results': []}) ... FAIL
+  test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='SDN', result={}) ... FAIL
+  test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='SDN', result={'status': 'error'}) ... FAIL
+  test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='SDN', result={'status': 'validated', 'query_results': []}) ... FAIL
+test_export_preserves_raw_results_input_and_csv_schema (test_mac_sdn_report_status.MacSdnReportStatusTests.test_export_preserves_raw_results_input_and_csv_schema) ... ok
+test_inconclusive_run_is_not_a_property_violation (test_mac_sdn_report_status.MacSdnReportStatusTests.test_inconclusive_run_is_not_a_property_violation) ...
+  test_inconclusive_run_is_not_a_property_violation (test_mac_sdn_report_status.MacSdnReportStatusTests.test_inconclusive_run_is_not_a_property_violation) (layer='MAC') ... FAIL
+  test_inconclusive_run_is_not_a_property_violation (test_mac_sdn_report_status.MacSdnReportStatusTests.test_inconclusive_run_is_not_a_property_violation) (layer='SDN') ... FAIL
+test_missing_results_are_not_invented_for_a_completed_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_missing_results_are_not_invented_for_a_completed_run) ...
+  test_missing_results_are_not_invented_for_a_completed_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_missing_results_are_not_invented_for_a_completed_run) (layer='MAC', rows=[{'formula': 'A[] not deadlock'}]) ... FAIL
+  test_missing_results_are_not_invented_for_a_completed_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_missing_results_are_not_invented_for_a_completed_run) (layer='SDN', rows=[{'formula': 'A[] not deadlock'}]) ... FAIL
+test_runner_error_does_not_become_a_positive_property_result (test_mac_sdn_report_status.MacSdnReportStatusTests.test_runner_error_does_not_become_a_positive_property_result) ...
+  test_runner_error_does_not_become_a_positive_property_result (test_mac_sdn_report_status.MacSdnReportStatusTests.test_runner_error_does_not_become_a_positive_property_result) (layer='MAC') ... FAIL
+  test_runner_error_does_not_become_a_positive_property_result (test_mac_sdn_report_status.MacSdnReportStatusTests.test_runner_error_does_not_become_a_positive_property_result) (layer='SDN') ... FAIL
+test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) ...
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='error') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='timeout') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='oom') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='tool_not_found') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='static_error') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='validated') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='unknown') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='mixed') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='success') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='ok') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status=None) ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='error') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='timeout') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='oom') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='tool_not_found') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='static_error') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='validated') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='unknown') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='mixed') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='success') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='ok') ... FAIL
+  test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status=None) ... FAIL
+
+======================================================================
+FAIL: test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes) (layer='MAC')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 104, in test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes
+    self.assertIn("Violated properties", violations)
+AssertionError: 'Violated properties' not found in '# MAC Violations\n\n- `A[] (resourceClass == RES_EXHAUSTED imply !silent_accept)`: not_satisfied\n- `A[] (A_SCH.WaitPHYAck imply c_phy_ack <= D_phy_ack)`: maybe\n- `A[] not ObsPhyAck.Violation`: inconclusive\n- `A[] not ObsSensingCritical.Violation`: not_satisfied\n- `E<> A_SCH.SelectMode`: maybe\n- `E<> A_MAC_AGG.ReportSent`: inconclusive\n'
+
+======================================================================
+FAIL: test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes) (layer='SDN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 104, in test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes
+    self.assertIn("Violated properties", violations)
+AssertionError: 'Violated properties' not found in '# SDN Violations\n\n- `A[] (A_RULE.RuleInstallPending imply c_rule <= D_rule_install)`: not_satisfied\n- `A[] (telemetryClass == TEL_STALE imply !optimistic_reconfig)`: maybe\n- `A[] (telemetryClass == TEL_MISSING imply !optimistic_reconfig)`: inconclusive\n- `A[] not ObsRuleMiss.Violation`: not_satisfied\n- `A[] not ObsRecovery.Violation`: maybe\n- `A[] not ObsAdmission.Violation`: inconclusive\n- `E<> A_POLICY.Evaluate`: not_satisfied\n- `E<> A_RULE.RuleTimeout`: maybe\n- `E<> A_REC.RecoveryFailed`: inconclusive\n'
+
+======================================================================
+FAIL: test_complete_positive_run_is_preserved (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_positive_run_is_preserved) (layer='MAC')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 130, in test_complete_positive_run_is_preserved
+    self.assertIn("No violated property was reported among returned query results", reports["violations.md"])
+AssertionError: 'No violated property was reported among returned query results' not found in '# MAC Violations\n\nNo failed query was parsed.\n'
+
+======================================================================
+FAIL: test_complete_positive_run_is_preserved (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_positive_run_is_preserved) (layer='SDN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 130, in test_complete_positive_run_is_preserved
+    self.assertIn("No violated property was reported among returned query results", reports["violations.md"])
+AssertionError: 'No violated property was reported among returned query results' not found in '# SDN Violations\n\nNo failed query was parsed.\n'
+
+======================================================================
+FAIL: test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='MAC', result={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 88, in test_empty_or_static_result_does_not_imply_no_violations
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='MAC', result={'status': 'error'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 88, in test_empty_or_static_result_does_not_imply_no_violations
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='MAC', result={'status': 'validated', 'query_results': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 88, in test_empty_or_static_result_does_not_imply_no_violations
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='SDN', result={})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 88, in test_empty_or_static_result_does_not_imply_no_violations
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='SDN', result={'status': 'error'})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 88, in test_empty_or_static_result_does_not_imply_no_violations
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) (layer='SDN', result={'status': 'validated', 'query_results': []})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 88, in test_empty_or_static_result_does_not_imply_no_violations
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_inconclusive_run_is_not_a_property_violation (test_mac_sdn_report_status.MacSdnReportStatusTests.test_inconclusive_run_is_not_a_property_violation) (layer='MAC')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 117, in test_inconclusive_run_is_not_a_property_violation
+    self.assertIn("Queries without a decisive verdict", reports["violations.md"])
+AssertionError: 'Queries without a decisive verdict' not found in '# MAC Violations\n\n- `A[] not deadlock`: maybe\n- `A[] (resourceClass == RES_EXHAUSTED imply !silent_accept)`: maybe\n- `A[] (A_SCH.WaitPHYAck imply c_phy_ack <= D_phy_ack)`: maybe\n- `A[] not ObsPhyAck.Violation`: maybe\n- `A[] not ObsQueueCritical.Violation`: maybe\n- `A[] not ObsSensingCritical.Violation`: maybe\n- `E<> A_SCH.SelectMode`: maybe\n- `E<> A_MAC_AGG.ReportSent`: maybe\n'
+
+======================================================================
+FAIL: test_inconclusive_run_is_not_a_property_violation (test_mac_sdn_report_status.MacSdnReportStatusTests.test_inconclusive_run_is_not_a_property_violation) (layer='SDN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 117, in test_inconclusive_run_is_not_a_property_violation
+    self.assertIn("Queries without a decisive verdict", reports["violations.md"])
+AssertionError: 'Queries without a decisive verdict' not found in '# SDN Violations\n\n- `A[] not deadlock`: maybe\n- `A[] (A_RULE.RuleInstallPending imply c_rule <= D_rule_install)`: maybe\n- `A[] (telemetryClass == TEL_STALE imply !optimistic_reconfig)`: maybe\n- `A[] (telemetryClass == TEL_MISSING imply !optimistic_reconfig)`: maybe\n- `A[] (recoveryClass == REC_FAILED imply failure_report_sent)`: maybe\n- `A[] not ObsRuleMiss.Violation`: maybe\n- `A[] not ObsRecovery.Violation`: maybe\n- `A[] not ObsAdmission.Violation`: maybe\n- `A[] not ObsStaleTelemetry.Violation`: maybe\n- `E<> A_POLICY.Evaluate`: maybe\n- `E<> A_RULE.RuleTimeout`: maybe\n- `E<> A_REC.RecoveryFailed`: maybe\n'
+
+======================================================================
+FAIL: test_missing_results_are_not_invented_for_a_completed_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_missing_results_are_not_invented_for_a_completed_run) (layer='MAC', rows=[{'formula': 'A[] not deadlock'}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 138, in test_missing_results_are_not_invented_for_a_completed_run
+    self.assertEqual(statuses[0], "not_verified" if rows else "not_run")
+AssertionError: 'None' != 'not_verified'
+- None
++ not_verified
+
+
+======================================================================
+FAIL: test_missing_results_are_not_invented_for_a_completed_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_missing_results_are_not_invented_for_a_completed_run) (layer='SDN', rows=[{'formula': 'A[] not deadlock'}])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 138, in test_missing_results_are_not_invented_for_a_completed_run
+    self.assertEqual(statuses[0], "not_verified" if rows else "not_run")
+AssertionError: 'None' != 'not_verified'
+- None
++ not_verified
+
+
+======================================================================
+FAIL: test_runner_error_does_not_become_a_positive_property_result (test_mac_sdn_report_status.MacSdnReportStatusTests.test_runner_error_does_not_become_a_positive_property_result) (layer='MAC')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 53, in test_runner_error_does_not_become_a_positive_property_result
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_runner_error_does_not_become_a_positive_property_result (test_mac_sdn_report_status.MacSdnReportStatusTests.test_runner_error_does_not_become_a_positive_property_result) (layer='SDN')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 53, in test_runner_error_does_not_become_a_positive_property_result
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='error')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='timeout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='oom')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='tool_not_found')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='static_error')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='validated')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='mixed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='success')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status='ok')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='MAC', status=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='error')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='timeout')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='oom')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='tool_not_found')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='static_error')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='validated')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='unknown')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='mixed')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='success')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status='ok')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+======================================================================
+FAIL: test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) (layer='SDN', status=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\musta\.codex\worktrees\38c5\mcp_uppaal\tests\test_mac_sdn_report_status.py", line 71, in test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only
+    self.assertEqual(set(self.property_results(reports["report.md"])), {"not_verified"})
+AssertionError: Items in the first set but not the second:
+'not_run'
+'not_satisfied'
+'satisfied'
+Items in the second set but not the first:
+'not_verified'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.258s
+
+FAILED (failures=38)

@@ -1,0 +1,14 @@
+test_absent_input_is_not_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_absent_input_is_not_run) ... ok
+test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_mixed_results_keep_positive_negative_and_uncertain_outcomes) ... ok
+test_complete_positive_run_is_preserved (test_mac_sdn_report_status.MacSdnReportStatusTests.test_complete_positive_run_is_preserved) ... ok
+test_empty_or_static_result_does_not_imply_no_violations (test_mac_sdn_report_status.MacSdnReportStatusTests.test_empty_or_static_result_does_not_imply_no_violations) ... ok
+test_export_preserves_raw_results_input_and_csv_schema (test_mac_sdn_report_status.MacSdnReportStatusTests.test_export_preserves_raw_results_input_and_csv_schema) ... ok
+test_inconclusive_run_is_not_a_property_violation (test_mac_sdn_report_status.MacSdnReportStatusTests.test_inconclusive_run_is_not_a_property_violation) ... ok
+test_missing_results_are_not_invented_for_a_completed_run (test_mac_sdn_report_status.MacSdnReportStatusTests.test_missing_results_are_not_invented_for_a_completed_run) ... ok
+test_runner_error_does_not_become_a_positive_property_result (test_mac_sdn_report_status.MacSdnReportStatusTests.test_runner_error_does_not_become_a_positive_property_result) ... ok
+test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only (test_mac_sdn_report_status.MacSdnReportStatusTests.test_unsuccessful_runs_with_partial_verdicts_are_diagnostic_only) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.244s
+
+OK
