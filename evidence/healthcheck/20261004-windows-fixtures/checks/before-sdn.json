@@ -1,0 +1,40 @@
+{
+  "command": [
+    ".venv\\Scripts\\python.exe",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-p",
+    "test_sdn_layer.py",
+    "-v"
+  ],
+  "cwd": "C:\\Users\\musta\\.codex\\worktrees\\e6a2\\mcp_uppaal",
+  "started_at": "2026-10-04T00:02:33.100330+00:00",
+  "duration_seconds": 5.125,
+  "exit_code": 1,
+  "timeout": false,
+  "timeout_seconds": 180,
+  "source_commit": "8a9a81414e2ae64239cdfc0354a0ad0eaad9dcc2",
+  "working_tree": "?? evidence/healthcheck/20261004-windows-fixtures/checks/\n",
+  "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]",
+  "environment": {
+    "PYTHONUTF8": "1",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  },
+  "logs": {
+    "stdout": {
+      "path": "before-sdn.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "before-sdn.stderr.txt",
+      "bytes": 6043,
+      "sha256": "b4d943ff387f339c81997e3f32ce48d831dec68acf08582cf67be7b58396b030",
+      "original_sha256": "faecfc839f702dddceccef043961d5368d08ef7020904c6723c70c7e0c911105"
+    }
+  }
+}
