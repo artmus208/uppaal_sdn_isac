@@ -1,0 +1,303 @@
+{
+  "accepted_input_domain": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "base_commit": "f0fcd770e3e6b93f99868b9116e4f0929f60d0fa",
+  "baseline_id": "uav-family-r1-20260929",
+  "baseline_manifest": {
+    "path": "manifests/baselines/uav-family-r1.yaml",
+    "sha256": "5480bef5b00020735259f10eb43bdd9bc79ebc364a3bbcacad34c78fd0552cbf"
+  },
+  "checker_sha256": "0a66e2dc3bde7f8c0e1e8722cb97090edbc2ab616b3c719239b723610f535288",
+  "evidence_kind": "static_validation",
+  "independent_scientific_acceptance": "pending",
+  "issue": 101,
+  "mathematical_argument": "PROOF.md",
+  "models": [
+    {
+      "N": 1,
+      "abstract_graph": {
+        "capacity_holds_on_enumerated_states": true,
+        "concrete_service_nonvacuity": "not_established",
+        "delay_rule": "every nonnegative delay is a self-loop; not counted as discrete edges",
+        "evidence_kind": "finite_abstract_graph_enumeration_not_native_model_checking",
+        "labeled_discrete_edges_including_stutter": 6,
+        "native_property_verdict": null,
+        "reachable_state_count": 2,
+        "reachable_states": [
+          {
+            "grants": [
+              false
+            ],
+            "last_server": -1
+          },
+          {
+            "grants": [
+              true
+            ],
+            "last_server": 0
+          }
+        ],
+        "strong_relation_holds_on_enumerated_states": true,
+        "unique_source_target_pairs_including_self_loops": 4,
+        "unrestricted_projection_valuations": 4
+      },
+      "location_count": 273,
+      "model_path": "evidence/scalability/family-series-68/generated/n1/model.xml",
+      "model_sha256": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "native_model_checking_run_in_this_package": false,
+      "native_property_verdict": null,
+      "premise_status": "supported_premises_established",
+      "process_count": 50,
+      "protected_identifier_occurrences_accounted_for": 4,
+      "query": "A[] ((family_grant_0 ? 1 : 0) <= 1)",
+      "query_path": "evidence/scalability/family-series-68/generated/n1/p4/shared-capacity.q",
+      "query_sha256": "91a397f4dfa84865086e4eb1dfc9fb3a6d2e5fa9fb3c8af3c07060c07df86513",
+      "template_count": 50,
+      "transition_count": 852,
+      "writer": {
+        "grant_rhs_indices": [
+          0
+        ],
+        "internal": true,
+        "process": "shared_load",
+        "select": "server:int[-1,0]",
+        "source": "shared_Sample_1",
+        "target": "shared_Publish_0",
+        "template": "SharedLoad"
+      }
+    },
+    {
+      "N": 2,
+      "abstract_graph": {
+        "capacity_holds_on_enumerated_states": true,
+        "concrete_service_nonvacuity": "not_established",
+        "delay_rule": "every nonnegative delay is a self-loop; not counted as discrete edges",
+        "evidence_kind": "finite_abstract_graph_enumeration_not_native_model_checking",
+        "labeled_discrete_edges_including_stutter": 12,
+        "native_property_verdict": null,
+        "reachable_state_count": 3,
+        "reachable_states": [
+          {
+            "grants": [
+              false,
+              false
+            ],
+            "last_server": -1
+          },
+          {
+            "grants": [
+              true,
+              false
+            ],
+            "last_server": 0
+          },
+          {
+            "grants": [
+              false,
+              true
+            ],
+            "last_server": 1
+          }
+        ],
+        "strong_relation_holds_on_enumerated_states": true,
+        "unique_source_target_pairs_including_self_loops": 9,
+        "unrestricted_projection_valuations": 12
+      },
+      "location_count": 545,
+      "model_path": "evidence/scalability/family-series-68/generated/n2/model.xml",
+      "model_sha256": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "native_model_checking_run_in_this_package": false,
+      "native_property_verdict": null,
+      "premise_status": "supported_premises_established",
+      "process_count": 99,
+      "protected_identifier_occurrences_accounted_for": 6,
+      "query": "A[] ((family_grant_0 ? 1 : 0) + (family_grant_1 ? 1 : 0) <= 1)",
+      "query_path": "evidence/scalability/family-series-68/generated/n2/p4/shared-capacity.q",
+      "query_sha256": "24520a4484b9f6107ac75786247cfc9116d0e418ff2ce327416f5e8f03d9e3ae",
+      "template_count": 99,
+      "transition_count": 1703,
+      "writer": {
+        "grant_rhs_indices": [
+          0,
+          1
+        ],
+        "internal": true,
+        "process": "shared_load",
+        "select": "server:int[-1,1]",
+        "source": "shared_Sample_2",
+        "target": "shared_Publish_0",
+        "template": "SharedLoad"
+      }
+    },
+    {
+      "N": 3,
+      "abstract_graph": {
+        "capacity_holds_on_enumerated_states": true,
+        "concrete_service_nonvacuity": "not_established",
+        "delay_rule": "every nonnegative delay is a self-loop; not counted as discrete edges",
+        "evidence_kind": "finite_abstract_graph_enumeration_not_native_model_checking",
+        "labeled_discrete_edges_including_stutter": 20,
+        "native_property_verdict": null,
+        "reachable_state_count": 4,
+        "reachable_states": [
+          {
+            "grants": [
+              false,
+              false,
+              false
+            ],
+            "last_server": -1
+          },
+          {
+            "grants": [
+              true,
+              false,
+              false
+            ],
+            "last_server": 0
+          },
+          {
+            "grants": [
+              false,
+              true,
+              false
+            ],
+            "last_server": 1
+          },
+          {
+            "grants": [
+              false,
+              false,
+              true
+            ],
+            "last_server": 2
+          }
+        ],
+        "strong_relation_holds_on_enumerated_states": true,
+        "unique_source_target_pairs_including_self_loops": 16,
+        "unrestricted_projection_valuations": 32
+      },
+      "location_count": 817,
+      "model_path": "evidence/scalability/family-series-68/generated/n3/model.xml",
+      "model_sha256": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "native_model_checking_run_in_this_package": false,
+      "native_property_verdict": null,
+      "premise_status": "supported_premises_established",
+      "process_count": 148,
+      "protected_identifier_occurrences_accounted_for": 8,
+      "query": "A[] ((family_grant_0 ? 1 : 0) + (family_grant_1 ? 1 : 0) + (family_grant_2 ? 1 : 0) <= 1)",
+      "query_path": "evidence/scalability/family-series-68/generated/n3/p4/shared-capacity.q",
+      "query_sha256": "29044e405dcf9a80e1b4ae98861904fac458bb40a5d8a645254c95b34503da49",
+      "template_count": 148,
+      "transition_count": 2554,
+      "writer": {
+        "grant_rhs_indices": [
+          0,
+          1,
+          2
+        ],
+        "internal": true,
+        "process": "shared_load",
+        "select": "server:int[-1,2]",
+        "source": "shared_Sample_3",
+        "target": "shared_Publish_0",
+        "template": "SharedLoad"
+      }
+    },
+    {
+      "N": 4,
+      "abstract_graph": {
+        "capacity_holds_on_enumerated_states": true,
+        "concrete_service_nonvacuity": "not_established",
+        "delay_rule": "every nonnegative delay is a self-loop; not counted as discrete edges",
+        "evidence_kind": "finite_abstract_graph_enumeration_not_native_model_checking",
+        "labeled_discrete_edges_including_stutter": 30,
+        "native_property_verdict": null,
+        "reachable_state_count": 5,
+        "reachable_states": [
+          {
+            "grants": [
+              false,
+              false,
+              false,
+              false
+            ],
+            "last_server": -1
+          },
+          {
+            "grants": [
+              true,
+              false,
+              false,
+              false
+            ],
+            "last_server": 0
+          },
+          {
+            "grants": [
+              false,
+              true,
+              false,
+              false
+            ],
+            "last_server": 1
+          },
+          {
+            "grants": [
+              false,
+              false,
+              true,
+              false
+            ],
+            "last_server": 2
+          },
+          {
+            "grants": [
+              false,
+              false,
+              false,
+              true
+            ],
+            "last_server": 3
+          }
+        ],
+        "strong_relation_holds_on_enumerated_states": true,
+        "unique_source_target_pairs_including_self_loops": 25,
+        "unrestricted_projection_valuations": 80
+      },
+      "location_count": 1089,
+      "model_path": "evidence/scalability/family-series-68/generated/n4/model.xml",
+      "model_sha256": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "native_model_checking_run_in_this_package": false,
+      "native_property_verdict": null,
+      "premise_status": "supported_premises_established",
+      "process_count": 197,
+      "protected_identifier_occurrences_accounted_for": 10,
+      "query": "A[] ((family_grant_0 ? 1 : 0) + (family_grant_1 ? 1 : 0) + (family_grant_2 ? 1 : 0) + (family_grant_3 ? 1 : 0) <= 1)",
+      "query_path": "evidence/scalability/family-series-68/generated/n4/p4/shared-capacity.q",
+      "query_sha256": "fefa5071ccc30359c590cb4c167064c33a81b89a86cedd5e8b7af27a44ee9795",
+      "template_count": 197,
+      "transition_count": 3405,
+      "writer": {
+        "grant_rhs_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "internal": true,
+        "process": "shared_load",
+        "select": "server:int[-1,3]",
+        "source": "shared_Sample_4",
+        "target": "shared_Publish_0",
+        "template": "SharedLoad"
+      }
+    }
+  ],
+  "property_verdict": null,
+  "schema_version": 1
+}

@@ -1,0 +1,805 @@
+{
+  "evidence_kind": "read_only_historical_run_index",
+  "native_property_verdict": null,
+  "native_status_counts": {
+    "timeout": 12
+  },
+  "records": [
+    {
+      "N": 1,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/003-r1-n1-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/003-r1-n1-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "67bb8ae58a0d0be8bbcef2cc8e08d7002cc49c6d9e9a6d1cb270e17a9c736371",
+          "storage_sha256": "67bb8ae58a0d0be8bbcef2cc8e08d7002cc49c6d9e9a6d1cb270e17a9c736371"
+        }
+      },
+      "cell_id": "003-r1-n1-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\003-r1-n1-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n1\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-003-r1-n1-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "model_path": "evidence/scalability/family-series-68/generated/n1/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "91a397f4dfa84865086e4eb1dfc9fb3a6d2e5fa9fb3c8af3c07060c07df86513",
+      "query_path": "evidence/scalability/family-series-68/generated/n1/p4/shared-capacity.q",
+      "repeat": 1,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-003-r1-n1-shared-capacity",
+      "runtime_seconds": 62.1147066,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 1,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/042-r2-n1-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/042-r2-n1-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "67bb8ae58a0d0be8bbcef2cc8e08d7002cc49c6d9e9a6d1cb270e17a9c736371",
+          "storage_sha256": "67bb8ae58a0d0be8bbcef2cc8e08d7002cc49c6d9e9a6d1cb270e17a9c736371"
+        }
+      },
+      "cell_id": "042-r2-n1-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\042-r2-n1-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n1\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-042-r2-n1-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "model_path": "evidence/scalability/family-series-68/generated/n1/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "91a397f4dfa84865086e4eb1dfc9fb3a6d2e5fa9fb3c8af3c07060c07df86513",
+      "query_path": "evidence/scalability/family-series-68/generated/n1/p4/shared-capacity.q",
+      "repeat": 2,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-042-r2-n1-shared-capacity",
+      "runtime_seconds": 62.121147799999996,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 1,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/081-r3-n1-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/081-r3-n1-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "67bb8ae58a0d0be8bbcef2cc8e08d7002cc49c6d9e9a6d1cb270e17a9c736371",
+          "storage_sha256": "67bb8ae58a0d0be8bbcef2cc8e08d7002cc49c6d9e9a6d1cb270e17a9c736371"
+        }
+      },
+      "cell_id": "081-r3-n1-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\081-r3-n1-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n1\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n1\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-081-r3-n1-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "5234cb087e5274798926d516dedc77d1f9542ea7df59cec39f83859771ce1385",
+      "model_path": "evidence/scalability/family-series-68/generated/n1/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "91a397f4dfa84865086e4eb1dfc9fb3a6d2e5fa9fb3c8af3c07060c07df86513",
+      "query_path": "evidence/scalability/family-series-68/generated/n1/p4/shared-capacity.q",
+      "repeat": 3,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-081-r3-n1-shared-capacity",
+      "runtime_seconds": 62.1322384,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 2,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/011-r1-n2-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/011-r1-n2-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "b877a81776815f55d04e028a62cbc402ab0502bad5524bc847e498896d17eacd",
+          "storage_sha256": "b877a81776815f55d04e028a62cbc402ab0502bad5524bc847e498896d17eacd"
+        }
+      },
+      "cell_id": "011-r1-n2-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\011-r1-n2-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n2\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n2\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-011-r1-n2-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "model_path": "evidence/scalability/family-series-68/generated/n2/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "24520a4484b9f6107ac75786247cfc9116d0e418ff2ce327416f5e8f03d9e3ae",
+      "query_path": "evidence/scalability/family-series-68/generated/n2/p4/shared-capacity.q",
+      "repeat": 1,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-011-r1-n2-shared-capacity",
+      "runtime_seconds": 62.0657041,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 2,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/050-r2-n2-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/050-r2-n2-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "b877a81776815f55d04e028a62cbc402ab0502bad5524bc847e498896d17eacd",
+          "storage_sha256": "b877a81776815f55d04e028a62cbc402ab0502bad5524bc847e498896d17eacd"
+        }
+      },
+      "cell_id": "050-r2-n2-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\050-r2-n2-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n2\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n2\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-050-r2-n2-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "model_path": "evidence/scalability/family-series-68/generated/n2/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "24520a4484b9f6107ac75786247cfc9116d0e418ff2ce327416f5e8f03d9e3ae",
+      "query_path": "evidence/scalability/family-series-68/generated/n2/p4/shared-capacity.q",
+      "repeat": 2,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-050-r2-n2-shared-capacity",
+      "runtime_seconds": 62.1313258,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 2,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/089-r3-n2-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/089-r3-n2-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "b877a81776815f55d04e028a62cbc402ab0502bad5524bc847e498896d17eacd",
+          "storage_sha256": "b877a81776815f55d04e028a62cbc402ab0502bad5524bc847e498896d17eacd"
+        }
+      },
+      "cell_id": "089-r3-n2-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\089-r3-n2-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n2\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n2\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-089-r3-n2-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "e7ac599140b7beeb94acdf0e3535a727c2eccc40aa15314afa3371eb09700208",
+      "model_path": "evidence/scalability/family-series-68/generated/n2/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "24520a4484b9f6107ac75786247cfc9116d0e418ff2ce327416f5e8f03d9e3ae",
+      "query_path": "evidence/scalability/family-series-68/generated/n2/p4/shared-capacity.q",
+      "repeat": 3,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-089-r3-n2-shared-capacity",
+      "runtime_seconds": 62.138279399999995,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 3,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/020-r1-n3-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/020-r1-n3-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "cb0c88ee0987671834a3a8e856fd11a2c83a2ed53d03ec4e71c46c323d63b3ab",
+          "storage_sha256": "cb0c88ee0987671834a3a8e856fd11a2c83a2ed53d03ec4e71c46c323d63b3ab"
+        }
+      },
+      "cell_id": "020-r1-n3-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\020-r1-n3-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n3\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n3\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-020-r1-n3-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "model_path": "evidence/scalability/family-series-68/generated/n3/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "29044e405dcf9a80e1b4ae98861904fac458bb40a5d8a645254c95b34503da49",
+      "query_path": "evidence/scalability/family-series-68/generated/n3/p4/shared-capacity.q",
+      "repeat": 1,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-020-r1-n3-shared-capacity",
+      "runtime_seconds": 62.1072554,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 3,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/059-r2-n3-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/059-r2-n3-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "cb0c88ee0987671834a3a8e856fd11a2c83a2ed53d03ec4e71c46c323d63b3ab",
+          "storage_sha256": "cb0c88ee0987671834a3a8e856fd11a2c83a2ed53d03ec4e71c46c323d63b3ab"
+        }
+      },
+      "cell_id": "059-r2-n3-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\059-r2-n3-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n3\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n3\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-059-r2-n3-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "model_path": "evidence/scalability/family-series-68/generated/n3/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "29044e405dcf9a80e1b4ae98861904fac458bb40a5d8a645254c95b34503da49",
+      "query_path": "evidence/scalability/family-series-68/generated/n3/p4/shared-capacity.q",
+      "repeat": 2,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-059-r2-n3-shared-capacity",
+      "runtime_seconds": 62.1104165,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 3,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/098-r3-n3-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/098-r3-n3-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "cb0c88ee0987671834a3a8e856fd11a2c83a2ed53d03ec4e71c46c323d63b3ab",
+          "storage_sha256": "cb0c88ee0987671834a3a8e856fd11a2c83a2ed53d03ec4e71c46c323d63b3ab"
+        }
+      },
+      "cell_id": "098-r3-n3-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\098-r3-n3-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n3\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n3\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-098-r3-n3-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "aa1c0ecf1a0e8846421ebff91ac19ffc1645724d4309a38c568edbf23273ce90",
+      "model_path": "evidence/scalability/family-series-68/generated/n3/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "29044e405dcf9a80e1b4ae98861904fac458bb40a5d8a645254c95b34503da49",
+      "query_path": "evidence/scalability/family-series-68/generated/n3/p4/shared-capacity.q",
+      "repeat": 3,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-098-r3-n3-shared-capacity",
+      "runtime_seconds": 62.088617199999995,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 4,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/030-r1-n4-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/030-r1-n4-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "7f1ef2f515ac522276adf3393828a1b645a0d6677ef840b98de01bc4f0f3f195",
+          "storage_sha256": "7f1ef2f515ac522276adf3393828a1b645a0d6677ef840b98de01bc4f0f3f195"
+        }
+      },
+      "cell_id": "030-r1-n4-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\030-r1-n4-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-030-r1-n4-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "model_path": "evidence/scalability/family-series-68/generated/n4/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "fefa5071ccc30359c590cb4c167064c33a81b89a86cedd5e8b7af27a44ee9795",
+      "query_path": "evidence/scalability/family-series-68/generated/n4/p4/shared-capacity.q",
+      "repeat": 1,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-030-r1-n4-shared-capacity",
+      "runtime_seconds": 62.0855459,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 4,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/069-r2-n4-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/069-r2-n4-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "7f1ef2f515ac522276adf3393828a1b645a0d6677ef840b98de01bc4f0f3f195",
+          "storage_sha256": "7f1ef2f515ac522276adf3393828a1b645a0d6677ef840b98de01bc4f0f3f195"
+        }
+      },
+      "cell_id": "069-r2-n4-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\069-r2-n4-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-069-r2-n4-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "model_path": "evidence/scalability/family-series-68/generated/n4/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "fefa5071ccc30359c590cb4c167064c33a81b89a86cedd5e8b7af27a44ee9795",
+      "query_path": "evidence/scalability/family-series-68/generated/n4/p4/shared-capacity.q",
+      "repeat": 2,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-069-r2-n4-shared-capacity",
+      "runtime_seconds": 62.078522799999995,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    },
+    {
+      "N": 4,
+      "artifacts": {
+        "stderr": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/108-r3-n4-shared-capacity/tool.stderr.txt",
+          "reported_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/108-r3-n4-shared-capacity/tool.stdout.txt",
+          "reported_sha256": "7f1ef2f515ac522276adf3393828a1b645a0d6677ef840b98de01bc4f0f3f195",
+          "storage_sha256": "7f1ef2f515ac522276adf3393828a1b645a0d6677ef840b98de01bc4f0f3f195"
+        }
+      },
+      "cell_id": "108-r3-n4-shared-capacity",
+      "command": [
+        "D:\\UPPAAL\\app\\bin\\verifyta.exe",
+        "-q",
+        "-s",
+        "-u",
+        "-o",
+        "1",
+        "--exploration",
+        "0",
+        "--state-representation",
+        "1",
+        "-S",
+        "1",
+        "-n",
+        "0",
+        "-r",
+        "68",
+        "-t",
+        "0",
+        "-f",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\runs\\uav-family-p4-20260929\\campaign-002\\108-r3-n4-shared-capacity\\trace",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\model.xml",
+        "\\\\wsl.localhost\\Ubuntu\\tmp\\uppaal-p4-76\\evidence\\scalability\\family-series-68\\generated\\n4\\p4\\shared-capacity.q"
+      ],
+      "compile_only": false,
+      "evidence_kind": "direct_model_checking",
+      "exit_code": -1,
+      "full_record_reference": {
+        "lookup_run_id": "uav-p4-76-campaign-002-108-r3-n4-shared-capacity",
+        "path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+        "sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+      },
+      "model_hash": "e8a4cdb0a4ea795ca2c90a0dfdee8cff7b9fbc3093369fa8141d61750a28033a",
+      "model_path": "evidence/scalability/family-series-68/generated/n4/model.xml",
+      "operating_environment": {
+        "driver": "Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+        "target": "native Windows via WSL"
+      },
+      "phase": "model-checking",
+      "property_verdict": null,
+      "query_hash": "fefa5071ccc30359c590cb4c167064c33a81b89a86cedd5e8b7af27a44ee9795",
+      "query_path": "evidence/scalability/family-series-68/generated/n4/p4/shared-capacity.q",
+      "repeat": 3,
+      "result_per_query": [],
+      "run_id": "uav-p4-76-campaign-002-108-r3-n4-shared-capacity",
+      "runtime_seconds": 62.1115673,
+      "source_commit": "877fa69a29e1732db2b4047eebdd99591b185c77",
+      "status": "timeout",
+      "timeout_seconds": 60,
+      "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023"
+    }
+  ],
+  "result_count": 12,
+  "schema_version": 1,
+  "source_path": "evidence/scalability/runs/uav-family-p4-20260929/campaign-002/runs.json",
+  "source_sha256": "1ec3a64b5e012e4b5072107f23ec12b60ed04ac22ba2ba0a0e5f16b003efc0c8"
+}
