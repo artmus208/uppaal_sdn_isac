@@ -111,24 +111,7 @@ def alive(pid):
 def sample(proc):
     """RSS/working set (not private bytes), OS peak and cumulative CPU seconds."""
     if os.name == 'nt':
-        from ctypes import wintypes as w
-        class Counters(ctypes.Structure):
-            _fields_ = [('cb', w.DWORD), ('PageFaultCount', w.DWORD)] + [(n, ctypes.c_size_t) for n in
-                ('PeakWorkingSetSize', 'WorkingSetSize', 'QuotaPeakPagedPoolUsage', 'QuotaPagedPoolUsage',
-                 'QuotaPeakNonPagedPoolUsage', 'QuotaNonPagedPoolUsage', 'PagefileUsage', 'PeakPagefileUsage')]
-        k = ctypes.WinDLL('kernel32', use_last_error=True)
-        ps = ctypes.WinDLL('psapi', use_last_error=True)
-        ps.GetProcessMemoryInfo.argtypes = [w.HANDLE, ctypes.POINTER(Counters), w.DWORD]
-        k.GetProcessTimes.argtypes = [w.HANDLE] + [ctypes.POINTER(w.FILETIME)] * 4
-        h = w.HANDLE(int(proc._handle))
-        m = Counters(); m.cb = ctypes.sizeof(m)
-        ok = ps.GetProcessMemoryInfo(h, ctypes.byref(m), m.cb)
-        times = [w.FILETIME() for _ in range(4)]
-        cpu_ok = k.GetProcessTimes(h, *(ctypes.byref(t) for t in times))
-        ticks = lambda t: (t.dwHighDateTime << 32) + t.dwLowDateTime
-        return {'rss_bytes': m.WorkingSetSize if ok else None,
-                'peak_rss_bytes': m.PeakWorkingSetSize if ok else None,
-                'cpu_seconds': sum(ticks(t) for t in times[2:]) / 1e7 if cpu_ok else None}
+        return proc.sample()
     try:
         status = Path(f'/proc/{proc.pid}/status').read_text()
         fields = Path(f'/proc/{proc.pid}/stat').read_text().rsplit(')', 1)[1].split()
@@ -242,17 +225,28 @@ def run_attempt(directory, config, task, session, interval):
         with (attempt/'stdout.txt').open('wb') as stdout, (attempt/'stderr.txt').open('wb') as stderr, (attempt/'telemetry.csv').open('w', newline='') as telemetry:
             writer = csv.DictWriter(telemetry, fieldnames=['elapsed_seconds','rss_bytes','peak_rss_bytes','cpu_seconds','throughput','load'])
             writer.writeheader()
-            proc = subprocess.Popen(command, cwd=meta['cwd'], stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr)
+            if os.name == 'nt':
+                from .windows_process import WindowsProcess
+                proc = WindowsProcess(command, meta['cwd'], stdout, stderr)
+            else:
+                proc = subprocess.Popen(command, cwd=meta['cwd'], stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr)
             meta['pid'] = proc.pid; save(attempt/'attempt.json', meta)
             while True:
-                metrics = sample(proc)
+                try:
+                    metrics = sample(proc)
+                except OSError as exc:
+                    reason = 'monitor_error'
+                    meta['manager_error'] = f'{type(exc).__name__}: {exc}'
+                    break
                 if metrics['peak_rss_bytes'] is not None: peak = max(peak or 0, metrics['peak_rss_bytes'])
                 if metrics['cpu_seconds'] is not None: cpu = metrics['cpu_seconds']
                 elapsed = time.monotonic()-started
                 row = {'elapsed_seconds': elapsed, **metrics, **progress(attempt/'stdout.txt')}
                 writer.writerow(row); telemetry.flush()
                 publish(directory, 'running', task=task['id'], attempt=attempt.name, **row)
-                if proc.poll() is not None: break
+                if not (proc.running() if os.name == 'nt' else proc.poll() is None):
+                    proc.wait()
+                    break
                 if control(directory) == 'stop': reason = 'stopped'
                 elif elapsed >= config['timeout_seconds']: reason = 'timeout'
                 elif metrics['rss_bytes'] is None: reason = 'monitor_error'
@@ -267,8 +261,17 @@ def run_attempt(directory, config, task, session, interval):
         reason = 'error'
         meta['manager_error'] = f'{type(exc).__name__}: {exc}'
     finally:
-        if proc is not None and proc.poll() is None:
-            proc.kill(); proc.wait()
+        if proc is not None:
+            try:
+                if proc.running() if os.name == 'nt' else proc.poll() is None:
+                    proc.kill()
+                proc.wait()
+            except Exception as exc:
+                reason = 'error'
+                meta['manager_error'] = f'Process cleanup failed: {type(exc).__name__}: {exc}'
+            finally:
+                if os.name == 'nt':
+                    proc.close()
     text = lambda name: (attempt/name).read_text(encoding='utf-8', errors='replace') if (attempt/name).exists() else ''
     out, err = text('stdout.txt'), text('stderr.txt')
     outcomes = parse_verifyta_outcomes(out, [task['query']])
@@ -308,7 +311,11 @@ def start(directory, interval=1):
         if v.returncode or not version.strip():
             raise RuntimeError(f'Verifier preflight failed; see {sp}')
         hardware = {'platform': platform.platform(), 'processor': platform.processor(), 'logical_cpus': os.cpu_count(),
-                    'python': sys.version, 'memory_measurement': 'native working set / Linux RSS, sampled; not a hard allocation cap',
+                    'python': sys.version,
+                    'memory_measurement': ('owned Windows job aggregate working set, sampled peak; not a hard allocation cap'
+                                           if os.name == 'nt' else 'Linux process RSS / VmHWM; sampled; not a hard allocation cap'),
+                    'cpu_measurement': ('owned Windows job cumulative CPU including exited members'
+                                        if os.name == 'nt' else 'Linux process cumulative CPU'),
                     'manager_hash': digest(__file__)}
         save(sp/'session.json', {'tool_version': version, 'hardware': hardware, 'started_at': now(),
                                  'queue_hash': digest(directory/'queue.json')})

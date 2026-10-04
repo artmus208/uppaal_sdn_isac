@@ -1,0 +1,16 @@
+interpreter: D:\uppaal_mcp\.worktrees\111-native-windows-check\.venv\Scripts\python.exe
+test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child) ... FAIL
+
+======================================================================
+FAIL: test_memory_limit_measures_real_child (test_verification_manager.ManagerTests.test_memory_limit_measures_real_child)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\uppaal_mcp\.worktrees\111-native-windows-check\tests\test_verification_manager.py", line 95, in test_memory_limit_measures_real_child
+    self.assertEqual(self.run_queue(), 2)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2
+
+----------------------------------------------------------------------
+Ran 1 test in 3.374s
+
+FAILED (failures=1)

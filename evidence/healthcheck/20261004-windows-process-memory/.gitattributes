@@ -1,0 +1,4 @@
+# Keep raw native output exact, including CRLF and emitted spaces.
+*.stdout.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+*.stderr.txt -text whitespace=cr-at-eol,-blank-at-eof,-blank-at-eol
+*/checks.json -text whitespace=cr-at-eol

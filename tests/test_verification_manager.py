@@ -165,4 +165,103 @@ if 'failure' in q: sys.exit(1)
         with self.assertRaises(ValueError): self.init(timeout=float('nan'))
         self.assertFalse(self.queue.exists())
 
+@unittest.skipUnless(os.name == 'nt', 'Native Windows job regression')
+class WindowsProcessTreeTests(unittest.TestCase):
+    setUp = ManagerTests.setUp
+    init = ManagerTests.init
+    run_queue = ManagerTests.run_queue
+    results = ManagerTests.results
+    worker = ManagerTests.worker
+
+    def tree(self, mode, **limits):
+        child = self.root/'child.py'
+        child.write_text('''import os,sys,time,pathlib
+pathlib.Path(sys.argv[1]).write_text(str(os.getpid()))
+b=bytearray(128*1024*1024)
+if sys.argv[2]=='success':
+ print('Verifying formula 1',flush=True)
+ print(' -- Formula is satisfied.',flush=True)
+else: time.sleep(30)
+''')
+        marker = self.root/'child.pid'
+        self.fake.write_text('''import sys,subprocess,pathlib,time
+if '--version' in sys.argv: sys.exit(0)
+subprocess.Popen([sys.executable, sys.argv[1], sys.argv[2], sys.argv[3]])
+while not pathlib.Path(sys.argv[2]).exists(): time.sleep(.01)
+if sys.argv[3]=='wait': time.sleep(30)
+''')
+        self.init('A[] true\n', **limits)
+        cfg = m.read(self.queue/'queue.json')
+        cfg['options'] = [str(self.fake), str(child), str(marker), mode]
+        m.save(self.queue/'queue.json', cfg)
+        return marker
+
+    def child_gone(self, marker):
+        self.assertTrue(marker.exists(), 'child must have actually started')
+        pid = int(marker.read_text())
+        deadline = time.monotonic()+5
+        while m.alive(pid) and time.monotonic()<deadline:
+            time.sleep(.02)
+        self.assertFalse(m.alive(pid), f'owned child {pid} survived cleanup')
+
+    def test_child_memory_limit_and_unrelated_process_survives(self):
+        outsider = subprocess.Popen([sys.executable, '-c', 'import time; time.sleep(30)'])
+        self.addCleanup(lambda: (outsider.kill(), outsider.wait()) if outsider.poll() is None else None)
+        marker = self.tree('wait', memory_mib=96)
+        self.assertEqual(self.run_queue(), 2)
+        result = self.results()[0]
+        self.assertEqual(result['status'], 'memory_limit')
+        self.assertIsNone(result['verdict'])
+        self.assertGreater(result['peak_rss_bytes'], 96*1024**2)
+        self.child_gone(marker)
+        self.assertIsNone(outsider.poll())
+
+    def test_timeout_cleans_child_after_leader_exit(self):
+        marker = self.tree('exit', timeout=1, memory_mib=256)
+        self.assertEqual(self.run_queue(), 2)
+        self.assertEqual(self.results()[0]['status'], 'timeout')
+        self.child_gone(marker)
+
+    def test_stop_cleans_owned_descendants(self):
+        marker = self.tree('wait', memory_mib=256)
+        worker = self.worker()
+        deadline = time.monotonic()+8
+        while not marker.exists() and time.monotonic()<deadline:
+            time.sleep(.02)
+        self.assertTrue(marker.exists())
+        m.save(self.queue/'control.json', {'action':'stop'})
+        self.assertEqual(worker.wait(timeout=8), 2)
+        self.assertEqual(self.results()[0]['status'], 'stopped')
+        self.child_gone(marker)
+
+    def test_child_output_after_leader_exit_remains_successful(self):
+        marker = self.tree('success', memory_mib=256)
+        self.assertEqual(self.run_queue(), 0)
+        self.assertEqual(self.results()[0]['verdict'], 'satisfied')
+        self.child_gone(marker)
+        session = next((self.queue/'sessions').glob('*/session.json'))
+        self.assertIn('aggregate', m.read(session)['hardware']['memory_measurement'])
+
+    def test_job_setup_failure_keeps_error_without_verdict(self):
+        self.init('A[] true\n')
+        with patch('uppaal_mcp.windows_process.create_job', return_value=None):
+            self.assertEqual(self.run_queue(), 2)
+        self.assertEqual(self.results()[0]['status'], 'error')
+        self.assertIsNone(self.results()[0]['verdict'])
+
+    def test_job_monitor_failure_cleans_descendants(self):
+        from uppaal_mcp.windows_process import WindowsProcess
+        marker = self.tree('wait', memory_mib=256)
+        original = WindowsProcess.sample
+        def fail_once_child_started(proc):
+            if marker.exists():
+                raise OSError('injected owned-job monitor failure')
+            return original(proc)
+        with patch.object(WindowsProcess, 'sample', fail_once_child_started):
+            self.assertEqual(self.run_queue(), 2)
+        self.assertEqual(self.results()[0]['status'], 'monitor_error')
+        self.assertIsNone(self.results()[0]['verdict'])
+        self.child_gone(marker)
+
+
 if __name__ == '__main__': unittest.main()
