@@ -60,3 +60,15 @@ hit its 600-second limit; success stopped on a Windows status-file update error.
 Neither query has a decisive native verdict. See native-summary.md and
 native-results.json; raw evidence is preserved and no retry was performed.
 Draft PR: https://github.com/artmus208/uppaal_sdn_isac/pull/118.
+
+## User-authorized 30-minute rerun, 2026-10-05
+
+The user extended timeout to 1800 seconds per formula and authorized a
+conditional repair/rerun if the status-write error recurred. The scientific
+inputs and 2048-MiB sampled memory stop were unchanged. Both runs ended on
+memory_limit, with no native verdict: safety after 971.813 seconds, success
+after 1064.141 seconds. The status-write error did not recur; no repair or
+suffix-03 run was activated. Raw logs, exact bindings and integrity validation
+are in native-30min/. Historical native/ evidence remains byte-for-byte intact.
+Published branch remains codex/vadimnbkg/116-observer-erasure, draft PR #118;
+independent acceptance remains pending. No active native worker remains.

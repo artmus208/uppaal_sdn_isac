@@ -1,0 +1,62 @@
+[
+  {
+    "run_id": "observer-erasure-116-20261005-completion-safety-02",
+    "attempt_id": "001-50159654f5d640a78c70c2ce89acc81d",
+    "status": "memory_limit",
+    "verdict": null,
+    "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+    "query_hash": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+    "execution_commit": "f58d53c483b164dec7588990f00f0b32205ea9e6",
+    "timeout_seconds": 1800,
+    "memory_stop_bytes": 2147483648,
+    "elapsed_seconds": 971.8130000000001,
+    "peak_rss_bytes": 2148343808,
+    "cpu_seconds": 957.71875,
+    "manager_error": null,
+    "result_path": "native-30min/observer-erasure-116-20261005-completion-safety-02/attempts/001-50159654f5d640a78c70c2ce89acc81d/result.json",
+    "result_hash": "f0f6b8ae590b777cfbc5d4be0f1c319bae8c51c3b1937a67386758f69c6b8d4a",
+    "command": [
+      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+      "-o",
+      "0",
+      "-t",
+      "0",
+      "-X",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-30min\\observer-erasure-116-20261005-completion-safety-02\\attempts\\001-50159654f5d640a78c70c2ce89acc81d\\trace",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-30min\\observer-erasure-116-20261005-completion-safety-02\\model.xml",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-30min\\observer-erasure-116-20261005-completion-safety-02\\query-001.q"
+    ],
+    "trace_paths": []
+  },
+  {
+    "run_id": "observer-erasure-116-20261005-success-02",
+    "attempt_id": "001-64b976b5369f41c5a1942e6045ae2dbb",
+    "status": "memory_limit",
+    "verdict": null,
+    "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+    "query_hash": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+    "execution_commit": "5672f49c20ec0c287435fb2f4ce4248ab1fe9d27",
+    "timeout_seconds": 1800,
+    "memory_stop_bytes": 2147483648,
+    "elapsed_seconds": 1064.141,
+    "peak_rss_bytes": 2147688448,
+    "cpu_seconds": 1034.796875,
+    "manager_error": null,
+    "result_path": "native-30min/observer-erasure-116-20261005-success-02/attempts/001-64b976b5369f41c5a1942e6045ae2dbb/result.json",
+    "result_hash": "48e64ae8f2486278ebfb5ce98a96050864080f720da3e75a26918f1a43630c93",
+    "command": [
+      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+      "-o",
+      "0",
+      "-t",
+      "0",
+      "-X",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-30min\\observer-erasure-116-20261005-success-02\\attempts\\001-64b976b5369f41c5a1942e6045ae2dbb\\trace",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-30min\\observer-erasure-116-20261005-success-02\\model.xml",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-30min\\observer-erasure-116-20261005-success-02\\query-001.q"
+    ],
+    "trace_paths": []
+  }
+]
