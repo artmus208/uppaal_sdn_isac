@@ -1,0 +1,39 @@
+{
+  "checked_at": "2026-10-05T11:12:06.427735+00:00",
+  "input_runtime_command_version_result_bindings": "match",
+  "per_attempt_files_checked": 10,
+  "historical_inventory_files_checked": 82,
+  "exact_source_model_manifest_queries_and_diagnostic": "unchanged",
+  "sequential_nonoverlapping_attempts": true,
+  "telemetry": [
+    {
+      "run_id": "observer-erasure-116-20261005-completion-safety-04",
+      "samples": 6498,
+      "last_sample": {
+        "elapsed_seconds": "6592.734",
+        "rss_bytes": "7518007296",
+        "peak_rss_bytes": "7518007296",
+        "cpu_seconds": "6510.328125",
+        "throughput": "3291",
+        "load": "42912783"
+      }
+    },
+    {
+      "run_id": "observer-erasure-116-20261005-success-04",
+      "samples": 6661,
+      "last_sample": {
+        "elapsed_seconds": "6761.640000000001",
+        "rss_bytes": "7517257728",
+        "peak_rss_bytes": "7517257728",
+        "cpu_seconds": "6678.046875",
+        "throughput": "4302",
+        "load": "45025535"
+      }
+    }
+  ],
+  "native_verdicts": [
+    null,
+    null
+  ],
+  "scope": "29-process diagnostic composition; independent proof acceptance pending"
+}

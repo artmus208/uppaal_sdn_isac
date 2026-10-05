@@ -1,0 +1,474 @@
+{
+  "platform": "Windows-10-10.0.19045-SP0",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "logical_cpus": 8,
+  "total_physical_bytes": 17033019392,
+  "input_inventory": {
+    "evidence/instantiation/uav-service-completion-candidate/instance-vector.json": {
+      "sha256": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c",
+      "contents": {
+        "bindings": [
+          {
+            "bs": 0,
+            "link": 0,
+            "sdn_context": 0,
+            "service": 0,
+            "target": 0,
+            "uav": 0
+          }
+        ],
+        "candidate_not_accepted": true,
+        "configuration_id": "uav-service-completion-candidate-82-n1",
+        "entities": {
+          "abstract_queues": 1,
+          "base_stations": 1,
+          "explicit_packets": 0,
+          "explicit_result_tokens": 1,
+          "mac_contexts": 1,
+          "radio_links": 1,
+          "sdn_control_contexts": 1,
+          "sensing_targets": 1,
+          "service_sessions": 1,
+          "shared_queue_servers": 1,
+          "uav_devices": 1
+        },
+        "growth_dimension": "UAV contexts sharing one abstract BS service budget",
+        "physical_time_scale_seconds": null,
+        "process_counts": {
+          "boundary_private": 7,
+          "boundary_shared": 1,
+          "core": 20,
+          "observers": 22,
+          "result_job": 1,
+          "total": 51
+        },
+        "shared_service": {
+          "capacity_per_epoch": 1,
+          "fairness": false,
+          "optional": true,
+          "period": 5
+        },
+        "storage": "compile-time indexed namespaces u0_ through u0_; local clocks remain instance local",
+        "system_order": [
+          "u0_phy_A_CH_0",
+          "u0_phy_A_SIG_0",
+          "u0_phy_A_BM_0",
+          "u0_phy_A_SQ_0",
+          "u0_phy_A_PH_0",
+          "u0_mac_A_SCH_0",
+          "u0_mac_A_Q_0",
+          "u0_mac_A_BUF_0",
+          "u0_mac_A_RSRC_0",
+          "u0_mac_A_MAC_AGG_0",
+          "u0_sdn_A_MON_0",
+          "u0_sdn_A_RISK_0",
+          "u0_sdn_A_POLICY_0",
+          "u0_sdn_A_RULE_0",
+          "u0_sdn_A_REC_0",
+          "u0_sdn_A_SDN_AGG_0",
+          "u0_app_Req_0",
+          "u0_app_Sla_0",
+          "u0_app_Crit_0",
+          "u0_app_Agg_0",
+          "u0_boundary_E_PHY_INPUT_0",
+          "shared_load",
+          "u0_boundary_E_FAULT_0",
+          "u0_boundary_E_SERVICE_0",
+          "u0_boundary_B_PHY_MAC_0",
+          "u0_boundary_B_POLICY_0",
+          "u0_boundary_B_ADMISSION_0",
+          "u0_boundary_B_KPI_0",
+          "u0_obs_phy_ObsSenseReport_0",
+          "u0_obs_phy_ObsFreshness_0",
+          "u0_obs_phy_ObsBeamRecovery_0",
+          "u0_obs_mac_ObsPhyAck_0",
+          "u0_obs_mac_ObsQueueCritical_0",
+          "u0_obs_mac_ObsSensingCritical_0",
+          "u0_obs_mac_ObsBufferOverflow_0",
+          "u0_obs_mac_ObsMacReportFreshness_0",
+          "u0_obs_sdn_ObsRuleMiss_0",
+          "u0_obs_sdn_ObsRecovery_0",
+          "u0_obs_sdn_ObsAdmission_0",
+          "u0_obs_sdn_ObsStaleTelemetry_0",
+          "u0_obs_sdn_ObsCommandAck_0",
+          "u0_obs_sdn_ObsSensingDecision_0",
+          "u0_obs_app_ObsAdmission_0",
+          "u0_obs_app_ObsWarn_0",
+          "u0_obs_app_ObsViolation_0",
+          "u0_obs_app_ObsFresh_0",
+          "u0_obs_app_ObsUpdate_0",
+          "u0_obs_app_ObsFa_0",
+          "u0_obs_app_ObsMiss_0",
+          "u0_obs_app_ObsSafety_0",
+          "c82_job"
+        ],
+        "time_unit": "abstract_model_unit"
+      }
+    },
+    "evidence/governance/uav-service-completion-baseline-20261002/instance-inventory.json": {
+      "sha256": "1e50f63437f9f787f9670a8cfee40450a7c127ec49e58661277b6bb7fa86fc17",
+      "contents": {
+        "note": "candidate_not_accepted is preserved historical generation metadata, not current PR acceptance or a Gate decision.",
+        "ordered_bindings": [
+          {
+            "arguments": "",
+            "instance": "u0_phy_A_CH_0",
+            "template": "u0_phy_Template_A_CH"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_phy_A_SIG_0",
+            "template": "u0_phy_Template_A_SIG"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_phy_A_BM_0",
+            "template": "u0_phy_Template_A_BM"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_phy_A_SQ_0",
+            "template": "u0_phy_Template_A_SQ"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_phy_A_PH_0",
+            "template": "u0_phy_Template_A_PH"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_mac_A_SCH_0",
+            "template": "u0_mac_Template_A_SCH"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_mac_A_Q_0",
+            "template": "u0_mac_Template_A_Q"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_mac_A_BUF_0",
+            "template": "u0_mac_Template_A_BUF"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_mac_A_RSRC_0",
+            "template": "u0_mac_Template_A_RSRC"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_mac_A_MAC_AGG_0",
+            "template": "u0_mac_Template_A_MAC_AGG"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_sdn_A_MON_0",
+            "template": "u0_sdn_Template_A_MON"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_sdn_A_RISK_0",
+            "template": "u0_sdn_Template_A_RISK"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_sdn_A_POLICY_0",
+            "template": "u0_sdn_Template_A_POLICY"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_sdn_A_RULE_0",
+            "template": "u0_sdn_Template_A_RULE"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_sdn_A_REC_0",
+            "template": "u0_sdn_Template_A_REC"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_sdn_A_SDN_AGG_0",
+            "template": "u0_sdn_Template_A_SDN_AGG"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_app_Req_0",
+            "template": "u0_app_A_REQ"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_app_Sla_0",
+            "template": "u0_app_A_SLA"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_app_Crit_0",
+            "template": "u0_app_A_CRIT"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_app_Agg_0",
+            "template": "u0_app_A_SVC_AGG"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_boundary_E_PHY_INPUT_0",
+            "template": "u0_Boundary_E_PHY_INPUT"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_boundary_E_FAULT_0",
+            "template": "u0_Boundary_E_FAULT"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_boundary_E_SERVICE_0",
+            "template": "u0_Boundary_E_SERVICE"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_boundary_B_PHY_MAC_0",
+            "template": "u0_Boundary_B_PHY_MAC"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_boundary_B_POLICY_0",
+            "template": "u0_Boundary_B_POLICY"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_boundary_B_ADMISSION_0",
+            "template": "u0_Boundary_B_ADMISSION"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_boundary_B_KPI_0",
+            "template": "u0_Boundary_B_KPI"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_phy_ObsSenseReport_0",
+            "template": "u0_phy_Template_ObsSenseReport"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_phy_ObsFreshness_0",
+            "template": "u0_phy_Template_ObsFreshness"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_phy_ObsBeamRecovery_0",
+            "template": "u0_phy_Template_ObsBeamRecovery"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_mac_ObsPhyAck_0",
+            "template": "u0_mac_Template_ObsPhyAck"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_mac_ObsQueueCritical_0",
+            "template": "u0_mac_Template_ObsQueueCritical"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_mac_ObsSensingCritical_0",
+            "template": "u0_mac_Template_ObsSensingCritical"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_mac_ObsBufferOverflow_0",
+            "template": "u0_mac_Template_ObsBufferOverflow"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_mac_ObsMacReportFreshness_0",
+            "template": "u0_mac_Template_ObsMacReportFreshness"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_sdn_ObsRuleMiss_0",
+            "template": "u0_sdn_Template_ObsRuleMiss"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_sdn_ObsRecovery_0",
+            "template": "u0_sdn_Template_ObsRecovery"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_sdn_ObsAdmission_0",
+            "template": "u0_sdn_Template_ObsAdmission"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_sdn_ObsStaleTelemetry_0",
+            "template": "u0_sdn_Template_ObsStaleTelemetry"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_sdn_ObsCommandAck_0",
+            "template": "u0_sdn_Template_ObsCommandAck"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_sdn_ObsSensingDecision_0",
+            "template": "u0_sdn_Template_ObsSensingDecision"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsAdmission_0",
+            "template": "u0_app_ObsServiceAdmission"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsWarn_0",
+            "template": "u0_app_ObsSlaWarningDeadline"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsViolation_0",
+            "template": "u0_app_ObsSlaViolationDeadline"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsFresh_0",
+            "template": "u0_app_ObsDetectionFreshness"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsUpdate_0",
+            "template": "u0_app_ObsUpdatePeriodViolation"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsFa_0",
+            "template": "u0_app_ObsFalseAlarmCritical"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsMiss_0",
+            "template": "u0_app_ObsMissedDetectionCritical"
+          },
+          {
+            "arguments": "",
+            "instance": "u0_obs_app_ObsSafety_0",
+            "template": "u0_app_ObsSafetyCriticalViolation"
+          },
+          {
+            "arguments": "",
+            "instance": "shared_load",
+            "template": "SharedLoad"
+          },
+          {
+            "arguments": "",
+            "instance": "c82_job",
+            "template": "C82_ResultJob"
+          }
+        ],
+        "source": {
+          "path": "evidence/instantiation/uav-service-completion-candidate/instance-vector.json",
+          "sha256": "5a1c176ca1ba402e4017adda2937756c23717832410ad5191d5ba7b6373b0f9c"
+        },
+        "vector": {
+          "bindings": [
+            {
+              "bs": 0,
+              "link": 0,
+              "sdn_context": 0,
+              "service": 0,
+              "target": 0,
+              "uav": 0
+            }
+          ],
+          "candidate_not_accepted": true,
+          "configuration_id": "uav-service-completion-candidate-82-n1",
+          "entities": {
+            "abstract_queues": 1,
+            "base_stations": 1,
+            "explicit_packets": 0,
+            "explicit_result_tokens": 1,
+            "mac_contexts": 1,
+            "radio_links": 1,
+            "sdn_control_contexts": 1,
+            "sensing_targets": 1,
+            "service_sessions": 1,
+            "shared_queue_servers": 1,
+            "uav_devices": 1
+          },
+          "growth_dimension": "UAV contexts sharing one abstract BS service budget",
+          "physical_time_scale_seconds": null,
+          "process_counts": {
+            "boundary_private": 7,
+            "boundary_shared": 1,
+            "core": 20,
+            "observers": 22,
+            "result_job": 1,
+            "total": 51
+          },
+          "shared_service": {
+            "capacity_per_epoch": 1,
+            "fairness": false,
+            "optional": true,
+            "period": 5
+          },
+          "storage": "compile-time indexed namespaces u0_ through u0_; local clocks remain instance local",
+          "system_order": [
+            "u0_phy_A_CH_0",
+            "u0_phy_A_SIG_0",
+            "u0_phy_A_BM_0",
+            "u0_phy_A_SQ_0",
+            "u0_phy_A_PH_0",
+            "u0_mac_A_SCH_0",
+            "u0_mac_A_Q_0",
+            "u0_mac_A_BUF_0",
+            "u0_mac_A_RSRC_0",
+            "u0_mac_A_MAC_AGG_0",
+            "u0_sdn_A_MON_0",
+            "u0_sdn_A_RISK_0",
+            "u0_sdn_A_POLICY_0",
+            "u0_sdn_A_RULE_0",
+            "u0_sdn_A_REC_0",
+            "u0_sdn_A_SDN_AGG_0",
+            "u0_app_Req_0",
+            "u0_app_Sla_0",
+            "u0_app_Crit_0",
+            "u0_app_Agg_0",
+            "u0_boundary_E_PHY_INPUT_0",
+            "shared_load",
+            "u0_boundary_E_FAULT_0",
+            "u0_boundary_E_SERVICE_0",
+            "u0_boundary_B_PHY_MAC_0",
+            "u0_boundary_B_POLICY_0",
+            "u0_boundary_B_ADMISSION_0",
+            "u0_boundary_B_KPI_0",
+            "u0_obs_phy_ObsSenseReport_0",
+            "u0_obs_phy_ObsFreshness_0",
+            "u0_obs_phy_ObsBeamRecovery_0",
+            "u0_obs_mac_ObsPhyAck_0",
+            "u0_obs_mac_ObsQueueCritical_0",
+            "u0_obs_mac_ObsSensingCritical_0",
+            "u0_obs_mac_ObsBufferOverflow_0",
+            "u0_obs_mac_ObsMacReportFreshness_0",
+            "u0_obs_sdn_ObsRuleMiss_0",
+            "u0_obs_sdn_ObsRecovery_0",
+            "u0_obs_sdn_ObsAdmission_0",
+            "u0_obs_sdn_ObsStaleTelemetry_0",
+            "u0_obs_sdn_ObsCommandAck_0",
+            "u0_obs_sdn_ObsSensingDecision_0",
+            "u0_obs_app_ObsAdmission_0",
+            "u0_obs_app_ObsWarn_0",
+            "u0_obs_app_ObsViolation_0",
+            "u0_obs_app_ObsFresh_0",
+            "u0_obs_app_ObsUpdate_0",
+            "u0_obs_app_ObsFa_0",
+            "u0_obs_app_ObsMiss_0",
+            "u0_obs_app_ObsSafety_0",
+            "c82_job"
+          ],
+          "time_unit": "abstract_model_unit"
+        }
+      }
+    }
+  }
+}

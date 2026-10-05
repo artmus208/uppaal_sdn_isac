@@ -1,0 +1,263 @@
+{
+  "evidence_kind": "software_and_static_validation",
+  "licensed_execution": "not_performed",
+  "source_commit": "e5c299d0b426e57652cb8a78f37ae770949b53b1",
+  "environment": {
+    "os": "Windows-10-10.0.19045-SP0",
+    "python": "3.11.3 (tags/v3.11.3:f3909b8, Apr  4 2023, 23:49:59) [MSC v.1934 64 bit (AMD64)]"
+  },
+  "commands": [
+    {
+      "name": "environment",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "-c",
+        "import sys,platform,importlib.metadata as m; print(sys.version); print(platform.platform()); print(\"mcp\",m.version(\"mcp\")); print(\"PyYAML\",m.version(\"PyYAML\")); import uppaal_mcp; print(uppaal_mcp.__file__)"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 0.21899999999914144,
+      "logs": [
+        {
+          "path": "checks\\environment.stdout.txt",
+          "sha256": "8400ab51be6e85d95f9871dcac28a9861e821c7aa9d0e6a2afb8c1049e6dee0b"
+        },
+        {
+          "path": "checks\\environment.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "dependencies",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 1.0,
+      "logs": [
+        {
+          "path": "checks\\dependencies.stdout.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        },
+        {
+          "path": "checks\\dependencies.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "scope-status",
+      "argv": [
+        "C:\\Users\\musta\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd\\git.exe",
+        "status",
+        "--short",
+        "--branch"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 0.06300000000010186,
+      "logs": [
+        {
+          "path": "checks\\scope-status.stdout.txt",
+          "sha256": "ba051334ebc33f3162a4fd5be48615e03c8dac8ec7977e7c2752dbc1cf981841"
+        },
+        {
+          "path": "checks\\scope-status.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "premises",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-erasure\\check.py",
+        "--repo",
+        "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+        "--output",
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-erasure\\checks\\reproduced-certificate.json",
+        "--reduced",
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-erasure\\checks\\reproduced-model.xml"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 1.7029999999995198,
+      "logs": [
+        {
+          "path": "checks\\premises.stdout.txt",
+          "sha256": "e49a7c8746819a5adfcd66ff07ca9aad90d2d6f6d2f4abe288559d671fc82371"
+        },
+        {
+          "path": "checks\\premises.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "scoped-tests",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-erasure\\tests.py",
+        "--repo",
+        "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 25.843000000000757,
+      "logs": [
+        {
+          "path": "checks\\scoped-tests.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "checks\\scoped-tests.stderr.txt",
+          "sha256": "4977966f1d1964927dc9d64d25d79ef5acce91d60bcc485a5a4615f5087e7abd"
+        }
+      ]
+    },
+    {
+      "name": "coordination",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "scripts/check_coordination.py"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 0.11000000000058208,
+      "logs": [
+        {
+          "path": "checks\\coordination.stdout.txt",
+          "sha256": "0afa00e968ae02a520b13a31b75fb8d57fd0ae97040c9a7fe745d1aa9907ad10"
+        },
+        {
+          "path": "checks\\coordination.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "baseline-hashes",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-erasure\\checks\\baseline-hashes.json"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 4.218999999999141,
+      "logs": [
+        {
+          "path": "checks\\baseline-hashes.stdout.txt",
+          "sha256": "b3c3ab750380beb3b416b72279736caf1e5af79c04ba7191e0199a5ea96829ea"
+        },
+        {
+          "path": "checks\\baseline-hashes.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "mcp-smoke",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 1.625,
+      "logs": [
+        {
+          "path": "checks\\mcp-smoke.stdout.txt",
+          "sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913"
+        },
+        {
+          "path": "checks\\mcp-smoke.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "cli-smoke",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 0.40600000000085856,
+      "logs": [
+        {
+          "path": "checks\\cli-smoke.stdout.txt",
+          "sha256": "1af8ad56a27f370f4963277f0705948385ed924cd95a0f691ad2c57880025f1b"
+        },
+        {
+          "path": "checks\\cli-smoke.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "name": "repository-tests",
+      "argv": [
+        "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\observer-env\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 92.79700000000048,
+      "logs": [
+        {
+          "path": "checks\\repository-tests.stdout.txt",
+          "sha256": "555fa0dfcc9a7b9c46e152ca3105720055cb5e18c5623ffa131a4a6c581d096a"
+        },
+        {
+          "path": "checks\\repository-tests.stderr.txt",
+          "sha256": "bd2d9a389494036a3b0368576fa3400a0bd5ae51e60b28553ace7b543e0da289"
+        }
+      ]
+    },
+    {
+      "name": "whitespace",
+      "argv": [
+        "C:\\Users\\musta\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\git\\cmd\\git.exe",
+        "diff",
+        "--check"
+      ],
+      "cwd": "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work",
+      "exit_code": 0,
+      "elapsed_seconds": 0.06300000000010186,
+      "logs": [
+        {
+          "path": "checks\\whitespace.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "checks\\whitespace.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ],
+  "reproduction": {
+    "certificate.json": false,
+    "observer-erased.xml": true
+  }
+}

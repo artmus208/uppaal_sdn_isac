@@ -1,0 +1,21 @@
+{
+  "summary_exit_code": 0,
+  "per_attempt_integrity": "all hashes matched",
+  "original_campaign_unchanged": true,
+  "model_and_certificate_unchanged": true,
+  "configured_timeout_seconds": [
+    1800,
+    1800
+  ],
+  "statuses": [
+    "memory_limit",
+    "memory_limit"
+  ],
+  "verdicts": [
+    null,
+    null
+  ],
+  "status_write_error_recurred": false,
+  "repair_activated": false,
+  "native_workers_remaining": 0
+}

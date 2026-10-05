@@ -1,0 +1,16 @@
+{
+  "execution_commit": "2a8b967e4899639c0e1b2ceb21b89a0ecc7a0e9c",
+  "reserved_at": "2026-10-05T07:22:37.078193+00:00",
+  "clean_except_append_only_launch_logs": true,
+  "worker_pid": 17432,
+  "worker_command": [
+    "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native_campaign_8h.py",
+    "worker"
+  ],
+  "run_mapping": {
+    "001": "observer-erasure-116-20261005-completion-safety-04",
+    "002": "observer-erasure-116-20261005-success-04"
+  },
+  "protocol_hash": "bed5e5b8d53d1d4b096bc4ef028c62d0edff002743853ae3ec52e726219dc715"
+}

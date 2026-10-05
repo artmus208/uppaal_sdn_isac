@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-10-05T07:25:25.549403+00:00",
+  "worker_pid": 17432,
+  "sample": {
+    "phase": "running",
+    "updated_at": "2026-10-05T07:25:25.118524+00:00",
+    "task": "001",
+    "attempt": "001-ea993facc3014d8fbf5b4e8104ac814f",
+    "elapsed_seconds": 167.92100000000028,
+    "rss_bytes": 589254656,
+    "peak_rss_bytes": 589254656,
+    "cpu_seconds": 166.15625,
+    "throughput": 19657,
+    "load": 2457684
+  },
+  "native_tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+  "execution_commit": "2a8b967e4899639c0e1b2ceb21b89a0ecc7a0e9c",
+  "timeout_seconds": 28800,
+  "memory_stop_bytes": 7516192768,
+  "monitor_automation_id": "uppaal-8-7",
+  "monitor_interval_minutes": 15,
+  "result": "running; no verdict yet"
+}

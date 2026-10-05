@@ -1,0 +1,1 @@
+{"audit": "premises_hold", "counts": {"original_processes": 51, "removed_observers": 22, "retained_processes": 29, "global_helpers": 77, "observer_edges": 74, "broadcast_receive_edges": 8, "committed_locations": 5}, "reduced_sha256": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c", "model_checking": "not_performed"}

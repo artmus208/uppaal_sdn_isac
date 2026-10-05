@@ -1,0 +1,23 @@
+{
+  "run_id": "002-7f17950910d24fe29f957ad109462e0f",
+  "started_at": "2026-10-05T09:12:30.856089+00:00",
+  "command": [
+    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-8h\\queue\\attempts\\002-7f17950910d24fe29f957ad109462e0f\\trace",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-8h\\queue\\model.xml",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native-8h\\queue\\query-002.q"
+  ],
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+  "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+  "query_hash": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+  "formula": "E<> u0_app_Req_0.Completed && c82_success",
+  "session": "df206b9b60534dbc9b96380972435c51",
+  "timeout_seconds": 28800,
+  "memory_stop_bytes": 7516192768,
+  "pid": 23816
+}

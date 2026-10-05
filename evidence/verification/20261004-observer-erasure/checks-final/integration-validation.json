@@ -1,0 +1,10 @@
+{
+  "audit_exit_code": 0,
+  "certificate_byte_identical": true,
+  "model_byte_identical": true,
+  "scoped_tests": 35,
+  "scoped_tests_result": "OK",
+  "repository_source_changed": false,
+  "native_results_integrity": "all per-attempt file hashes matched",
+  "native_retries": 0
+}

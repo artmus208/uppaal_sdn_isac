@@ -1,0 +1,14 @@
+{
+  "run_id": "observer-erasure-116-20261005-success-01",
+  "execution_commit": "0a773f4c53ecbc0852b68d57016445832f9e62da",
+  "clean_before_reservation": true,
+  "reserved_at": "2026-10-05T06:15:07.689263+00:00",
+  "native_worker_command": [
+    "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native_campaign.py",
+    "run",
+    "success"
+  ],
+  "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+  "query_hash": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b"
+}

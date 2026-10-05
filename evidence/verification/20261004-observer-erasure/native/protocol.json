@@ -1,0 +1,31 @@
+{
+  "issue": 116,
+  "queries": [
+    "completion-safety",
+    "success"
+  ],
+  "attempts_per_query": 1,
+  "timeout_seconds": 600,
+  "memory_mib": 2048,
+  "options": [
+    "-o",
+    "0",
+    "-t",
+    "0"
+  ],
+  "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+  "verifier_hash": "4c8af2716ff61f3cf35c6d1dc408ccf306d44bb22478e104548a8f0f7a3febe5",
+  "manager_hash": "c359fa97c44163ba637bae8ac34f9947ca7b38122928c39aad958b97d38f1d4b",
+  "windows_process_hash": "4f1ace2b48cbf11f3e188d0327f52efc0c5c4baa5d973c716d85c591203a2a05",
+  "python": "C:\\Users\\musta\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+  "python_hash": "ff9b669828a66882f3d43ed2f9192ea9d8a08f80b8ffbc2186ee946823394418",
+  "input_manifest": "manifests/baselines/uav-service-completion-r1.yaml",
+  "input_manifest_hash": "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d",
+  "instance": "N=1, one request/result, no identifier reuse; original 51 processes, diagnostic 29",
+  "stop_on": [
+    "error",
+    "monitor_error",
+    "license/version/input mismatch"
+  ],
+  "transfer": "Conditional on independent proof acceptance; direct verdict applies only to diagnostic XML."
+}

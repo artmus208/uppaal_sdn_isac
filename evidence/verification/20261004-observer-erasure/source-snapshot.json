@@ -1,0 +1,8 @@
+{
+  "kind": "git_archive",
+  "source_commit": "e5c299d0b426e57652cb8a78f37ae770949b53b1",
+  "source_ref": "read",
+  "archive_path": "C:\\Users\\musta\\.codex\\visualizations\\2026\\10\\04\\01a10793-1324-7510-be97-53eb29d6d6e6\\source-read.zip",
+  "archive_sha256": "c96f5e0025e2e8fda4a4fce434e488eea4200ab12358f70c3add0912b5186a3d",
+  "repository": "https://github.com/artmus208/uppaal_sdn_isac"
+}
