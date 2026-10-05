@@ -41,7 +41,7 @@
   "checks-final/results.json": "403d791f2c3d85b74131f259102f4f78128cc9eb956598b211536999d5049a50",
   "checks-final/scoped-tests.stderr.txt": "94a6acefcaafb568ba8f2463baab67ec4b98218ad3f32783a148faf5c0efd05c",
   "checks-final/scoped-tests.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "HANDOFF.md": "10a741a1c4c01fc2041098df37d9feabd040dbe44352c1fb6d11684590bd4ad1",
+  "HANDOFF.md": "781c5b619b23a9f68708e09cdf99e52fa090bc7c0b5ed1ec627921e6fa603819",
   "native/environment.json": "aae1f515ca257264ff07e5c11f52356b102217effe1b53289bf66c39786721eb",
   "native/observer-erasure-116-20261005-completion-safety-01/attempts/001-33a391bbc27441fbb3bcca150c8ff621/attempt.json": "ecbeca1e523ece71bdf90a3dce8ee30d49851fc4f50b9af808ec6d4364e70cac",
   "native/observer-erasure-116-20261005-completion-safety-01/attempts/001-33a391bbc27441fbb3bcca150c8ff621/hashes.json": "18bc3432248a0c2b0909f77cdfec4c136c540f716eca869e70e98dfbc8f6aa94",

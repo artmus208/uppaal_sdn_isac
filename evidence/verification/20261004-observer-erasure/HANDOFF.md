@@ -58,4 +58,3 @@ Working tree is intended clean after the final checkpoint; exact HEAD is the
 published branch tip, rather than a self-referential hash inside this file.
 Remaining work: independent review and disposition of proof/experiment;
 any runner repair or additional native budget requires a separate scoped task.
-
