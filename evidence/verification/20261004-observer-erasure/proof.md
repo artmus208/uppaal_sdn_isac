@@ -171,9 +171,10 @@ For a well-defined state predicate phi using only retained values/locations:
 
 The exact `completion-safety.q` consequent and antecedent use retained state;
 the checker audits its transitive helper reads. T1 therefore permits transfer
-of a **future actual verdict** for that formula from R to M or M to R when the
-full reduction/run protocol is accepted. This package runs neither model and
-does not relabel the historical timeout or any previously accepted proof.
+of an **actual complete native verdict** for that formula from R to M or M to R when the
+full reduction/run protocol is accepted. Native runs are recorded separately
+in native/ under Issue #116; the argument itself assumes no native verdict
+and does not relabel historical timeouts or previously accepted proofs.
 
 **Theorem T2 (one-way deadlock inclusion).** If s is a reachable full deadlock,
 then its related projected reduced state r is a reduced deadlock. Hence a proof
@@ -237,9 +238,10 @@ why a raw monitored deadlock result or a polling observer's clock cannot be
 interpreted as a production-progress or event-deadline theorem automatically.
 
 This package changes no accepted model, query, generator, manifest, manuscript,
-execution budget or historical evidence. Native verification is not performed.
-Independent scientific acceptance and authorization of a future reduced-model
-run remain separate decisions.
+historical evidence. The authorized Issue #116 campaign adds two bounded
+native diagnostic runs with the budgets specified in assignment.md. Its direct
+verdicts and inconclusive outcomes are reported separately in native-summary.md.
+Independent acceptance of the proof remains pending.
 
 [sem]: https://docs.uppaal.org/language-reference/system-description/semantics/
 [loc]: https://docs.uppaal.org/language-reference/system-description/templates/locations/

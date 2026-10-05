@@ -27,5 +27,6 @@ event, unlike recorders updated at the event or synchronous broadcast receivers.
 Accordingly, observer Violation predicates require their own event-correlation
 and scheduling justification before being interpreted as end-to-end deadline
 guarantees. The source-bound certificate, mutation controls and exact diagnostic
-XML support independent review of these claims; no native verifier campaign
-was executed for this result.
+XML support independent review of these claims. The bounded native experiment
+is reported separately in native-summary.md; its direct scope is the diagnostic
+model and transfer still depends on independent acceptance of the proof.
