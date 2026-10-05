@@ -73,18 +73,37 @@ are in native-30min/. Historical native/ evidence remains byte-for-byte intact.
 Published branch remains codex/vadimnbkg/116-observer-erasure, draft PR #118;
 independent acceptance remains pending. No active native worker remains.
 
-## Active 8-hour / 7-GiB campaign
+## Completed 8-hour / 7-GiB campaign, 2026-10-05
 
-User extended each formula to 28800 seconds and 7168 MiB on 2026-10-05.
-A hidden persistent worker runs completion-safety then success sequentially.
+Both planned sequential attempts finished; no active campaign worker remains.
 Execution commit: 2a8b967e4899639c0e1b2ceb21b89a0ecc7a0e9c.
-Worker PID: 17432. Started 2026-10-05T07:22:36Z.
-Protocol, task/run mapping and initial observed native version are in native-8h/.
-Current result: running, no verdict. Worker output and queue telemetry are live
-runtime files and may make the checkout dirty; preserve them. Do not restart
-an already reserved queue. Pre-launch artifact-hashes.json is a snapshot,
-not an assertion that mutable live telemetry/status files remain unchanged.
-Completion monitoring: app heartbeat uppaal-8-7, every 15 minutes in this chat.
-It stays quiet on unchanged state, publishes completed evidence, and handles
-an actual recurring status-write failure under the user's repair authorization.
-The current branch/PR remain codex/vadimnbkg/116-observer-erasure / #118.
+Native version: UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023.
+Configured per formula: 28800 seconds, 7516192768-byte sampled memory stop.
+
+- completion-safety-04: memory_limit, verdict=null, elapsed 6593.531 seconds,
+  peak 7518007296 bytes; finished 2026-10-05T09:12:30.810712Z.
+- success-04: memory_limit, verdict=null, elapsed 6762.453 seconds,
+  peak 7517257728 bytes; finished 2026-10-05T11:05:13.391717Z.
+
+The second formula began only after the first ended; one attempt per formula,
+no duplicate, retry or budget increase. No status-write error or repair occurred.
+Worker exit code 2 indicates incomplete verification, with two complete attempt
+records. Neither property is proved or refuted. The memory stop ended each
+attempt before its time budget; increasing only time does not remove it.
+
+Evidence: native-8h/results.json, summary.md, validation.json, worker-exit.json,
+raw attempt files and session version probes. Reproduce the read-only audit:
+python -B evidence/verification/20261004-observer-erasure/summarize_8h.py
+All 10 per-attempt inventory files, 82 historical/scientific inventory entries,
+source model/manifest/query bytes, runtime pins, commands, result bindings,
+sequential timestamps and telemetry reconcile. Historical evidence, XML and
+certificate remain unchanged. artifact-hashes.json is now the final inventory.
+
+Published branch: codex/vadimnbkg/116-observer-erasure; draft PR #118 to read.
+Exact handoff HEAD is the published branch tip (avoids a self-referential hash).
+Working tree clean after the final checkpoint; obtain via origin branch.
+Base commit: e5c299d0b426e57652cb8a78f37ae770949b53b1.
+Remaining step: independent proof/evidence review and disposition by artmus208;
+no gate closure, scientific self-acceptance or merge. Direct model scope remains
+29 processes; transfer to the 51-process original requires independent proof
+acceptance. Completion heartbeat uppaal-8-7 is to be paused after publication.
