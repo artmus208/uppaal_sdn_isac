@@ -1,0 +1,42 @@
+test_invalid_contract_values_rejected (__main__.Arithmetic.test_invalid_contract_values_rejected) ... ok
+test_launch_delay_is_part_of_age (__main__.Arithmetic.test_launch_delay_is_part_of_age) ... ok
+test_one_skip_exhausts_budget (__main__.Arithmetic.test_one_skip_exhausts_budget) ... ok
+test_rank_phase_skip_sweep_against_explicit_decision_times (__main__.Arithmetic.test_rank_phase_skip_sweep_against_explicit_decision_times) ... ok
+test_rank_three_four_lower_bounds (__main__.Arithmetic.test_rank_three_four_lower_bounds) ... ok
+test_rank_two_even_zero_other_costs_is_stale (__main__.Arithmetic.test_rank_two_even_zero_other_costs_is_stale) ... ok
+test_strict_vs_inclusive_boundaries (__main__.Arithmetic.test_strict_vs_inclusive_boundaries) ... ok
+test_transport_boundary_independent_expected (__main__.Arithmetic.test_transport_boundary_independent_expected) ... ok
+test_exact_premises (__main__.Premises.test_exact_premises) ... ok
+test_layout_only_change_does_not_change_semantics (__main__.Premises.test_layout_only_change_does_not_change_semantics) ... ok
+test_mutation_changed_initial_sample_age (__main__.Premises.test_mutation_changed_initial_sample_age) ... ok
+test_mutation_duplicate_app_instance (__main__.Premises.test_mutation_duplicate_app_instance) ... ok
+test_mutation_duplicate_service_edge (__main__.Premises.test_mutation_duplicate_service_edge) ... ok
+test_mutation_early_epoch_guard (__main__.Premises.test_mutation_early_epoch_guard) ... ok
+test_mutation_external_rank_writer (__main__.Premises.test_mutation_external_rank_writer) ... ok
+test_mutation_fabricated_dispatch (__main__.Premises.test_mutation_fabricated_dispatch) ... ok
+test_mutation_hidden_helper_writer (__main__.Premises.test_mutation_hidden_helper_writer) ... ok
+test_mutation_long_admission (__main__.Premises.test_mutation_long_admission) ... ok
+test_mutation_post_emission_escape (__main__.Premises.test_mutation_post_emission_escape) ... ok
+test_mutation_rank_before_increment (__main__.Premises.test_mutation_rank_before_increment) ... ok
+test_mutation_remove_epoch_reset (__main__.Premises.test_mutation_remove_epoch_reset) ... ok
+test_mutation_repeat_enqueue (__main__.Premises.test_mutation_repeat_enqueue) ... ok
+test_mutation_repeat_measurement (__main__.Premises.test_mutation_repeat_measurement) ... ok
+test_mutation_reset_admission_later (__main__.Premises.test_mutation_reset_admission_later) ... ok
+test_mutation_reset_sample_at_dispatch (__main__.Premises.test_mutation_reset_sample_at_dispatch) ... ok
+test_mutation_reset_service_later (__main__.Premises.test_mutation_reset_service_later) ... ok
+test_mutation_reset_tx_later (__main__.Premises.test_mutation_reset_tx_later) ... ok
+test_mutation_restart_epoch (__main__.Premises.test_mutation_restart_epoch) ... ok
+test_mutation_shadow_rank (__main__.Premises.test_mutation_shadow_rank) ... ok
+test_mutation_shortcut_rank (__main__.Premises.test_mutation_shortcut_rank) ... ok
+test_mutation_shorter_period (__main__.Premises.test_mutation_shorter_period) ... ok
+test_mutation_stopwatch_tick (__main__.Premises.test_mutation_stopwatch_tick) ... ok
+test_mutation_terminal_escape (__main__.Premises.test_mutation_terminal_escape) ... ok
+test_mutation_unbounded_accepted (__main__.Premises.test_mutation_unbounded_accepted) ... ok
+test_mutation_unbounded_transport (__main__.Premises.test_mutation_unbounded_transport) ... ok
+test_mutation_weaken_freshness (__main__.Premises.test_mutation_weaken_freshness) ... ok
+test_outer_dependency_and_certificate (__main__.Premises.test_outer_dependency_and_certificate) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 10.532s
+
+OK

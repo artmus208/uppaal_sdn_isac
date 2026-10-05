@@ -1,0 +1,214 @@
+{
+  "architecture": "AMD64",
+  "commands": [
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "evidence/verification/20261004-service-feasibility/check.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/premises.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/premises.stdout.txt",
+          "sha256": "4846bab2ec5b61c66839d36910327d5d656ac289cb486b2fe9879c9e9e129cda"
+        }
+      },
+      "name": "premises",
+      "runtime_seconds": 0.813
+    },
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "evidence/verification/20261004-service-feasibility/tests.py"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/scoped-tests.stderr.txt",
+          "sha256": "5a8ae635db9de2c49563d0852293742c6a0a91e95a6b269641395d80973a233c"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/scoped-tests.stdout.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "name": "scoped-tests",
+      "runtime_seconds": 10.734
+    },
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "evidence/verification/20261004-completion-safety-proof/check.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/causal-proof.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/causal-proof.stdout.txt",
+          "sha256": "3d6faae77933df156ca9f9b0a93d700972fbffd8112217250ea8b76f04c83e10"
+        }
+      },
+      "name": "causal-proof",
+      "runtime_seconds": 0.187
+    },
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "scripts/check_coordination.py"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/coordination.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/coordination.stdout.txt",
+          "sha256": "0afa00e968ae02a520b13a31b75fb8d57fd0ae97040c9a7fe745d1aa9907ad10"
+        }
+      },
+      "name": "coordination",
+      "runtime_seconds": 0.125
+    },
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "scripts/check_coordination.py",
+        "--audit-hashes",
+        "--commit",
+        "HEAD",
+        "--output",
+        "evidence/verification/20261004-service-feasibility/checks/windows-001/baseline-hashes.json"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/baseline-hashes.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/baseline-hashes.stdout.txt",
+          "sha256": "b3c3ab750380beb3b416b72279736caf1e5af79c04ba7191e0199a5ea96829ea"
+        }
+      },
+      "name": "baseline-hashes",
+      "runtime_seconds": 5.11
+    },
+    {
+      "command": [
+        "<python>",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/pip-check.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/pip-check.stdout.txt",
+          "sha256": "672aec65a45bed50e70229c70934a7eebf0462595c459b83023027645d57cccf"
+        }
+      },
+      "name": "pip-check",
+      "runtime_seconds": 0.984
+    },
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "-c",
+        "from uppaal_mcp.server import build_mcp; print(type(build_mcp()).__name__)"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/mcp-smoke.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/mcp-smoke.stdout.txt",
+          "sha256": "71f29573ca2e29eacbf04f1b141bc74c400e761359e6aba61eb8798349b16913"
+        }
+      },
+      "name": "mcp-smoke",
+      "runtime_seconds": 1.906
+    },
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "-m",
+        "uppaal_mcp.cli",
+        "list-examples"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/cli-smoke.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/cli-smoke.stdout.txt",
+          "sha256": "1af8ad56a27f370f4963277f0705948385ed924cd95a0f691ad2c57880025f1b"
+        }
+      },
+      "name": "cli-smoke",
+      "runtime_seconds": 0.454
+    },
+    {
+      "command": [
+        "<python>",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "logs": {
+        "stderr": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/full-suite.stderr.txt",
+          "sha256": "9ed8001ea6092abba575c76e561478092787051e8c4a52a828be372f1def8189"
+        },
+        "stdout": {
+          "path": "evidence/verification/20261004-service-feasibility/checks/windows-001/full-suite.stdout.txt",
+          "sha256": "555fa0dfcc9a7b9c46e152ca3105720055cb5e18c5623ffa131a4a6c581d096a"
+        }
+      },
+      "name": "full-suite",
+      "runtime_seconds": 101.39
+    }
+  ],
+  "evidence_kind": "software_tests_and_static_validation",
+  "log_policy": "stdout/stderr UTF-8 copies redact workspace/user/temp/runtime paths; no hostname recorded",
+  "model_checking_verdict": null,
+  "native_execution": false,
+  "os": "Windows",
+  "packages": {
+    "PyYAML": "6.0.3",
+    "mcp": "1.30.0",
+    "uppaal-mcp": "0.1.0"
+  },
+  "python": "3.12.14",
+  "run_id": "windows-001",
+  "source_commit": "4019325b019397dae70d8f266397fbcf76c8be79"
+}
