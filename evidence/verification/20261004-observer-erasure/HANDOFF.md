@@ -70,3 +70,19 @@ suffix-03 run was activated. Raw logs, exact bindings and integrity validation
 are in native-30min/. Historical native/ evidence remains byte-for-byte intact.
 Published branch remains codex/vadimnbkg/116-observer-erasure, draft PR #118;
 independent acceptance remains pending. No active native worker remains.
+
+## Active 8-hour / 7-GiB campaign
+
+User extended each formula to 28800 seconds and 7168 MiB on 2026-10-05.
+A hidden persistent worker runs completion-safety then success sequentially.
+Execution commit: 2a8b967e4899639c0e1b2ceb21b89a0ecc7a0e9c.
+Worker PID: 17432. Started 2026-10-05T07:22:36Z.
+Protocol, task/run mapping and initial observed native version are in native-8h/.
+Current result: running, no verdict. Worker output and queue telemetry are live
+runtime files and may make the checkout dirty; preserve them. Do not restart
+an already reserved queue. Pre-launch artifact-hashes.json is a snapshot,
+not an assertion that mutable live telemetry/status files remain unchanged.
+Completion monitoring: app heartbeat uppaal-8-7, every 15 minutes in this chat.
+It stays quiet on unchanged state, publishes completed evidence, and handles
+an actual recurring status-write failure under the user's repair authorization.
+The current branch/PR remain codex/vadimnbkg/116-observer-erasure / #118.
