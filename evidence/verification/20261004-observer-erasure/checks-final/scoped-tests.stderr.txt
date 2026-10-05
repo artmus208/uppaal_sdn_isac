@@ -1,0 +1,40 @@
+test_binding_change (__main__.AuditControls.test_binding_change) ... ok
+test_certificate_is_reproducible_across_hash_seeds (__main__.AuditControls.test_certificate_is_reproducible_across_hash_seeds) ... ok
+test_committed_cycle (__main__.AuditControls.test_committed_cycle) ... ok
+test_committed_exit_equality_gap (__main__.AuditControls.test_committed_exit_equality_gap) ... ok
+test_committed_exit_overlap (__main__.AuditControls.test_committed_exit_overlap) ... ok
+test_committed_initial (__main__.AuditControls.test_committed_initial) ... ok
+test_committed_observer_cannot_receive_production_action (__main__.AuditControls.test_committed_observer_cannot_receive_production_action) ... ok
+test_deadlock_query (__main__.AuditControls.test_deadlock_query) ... ok
+test_hash_gate_does_not_publish_invalid_output (__main__.AuditControls.test_hash_gate_does_not_publish_invalid_output) ... ok
+test_hidden_query (__main__.AuditControls.test_hidden_query) ... ok
+test_hidden_read_in_production_helper (__main__.AuditControls.test_hidden_read_in_production_helper) ... ok
+test_local_hidden_shadow (__main__.AuditControls.test_local_hidden_shadow) ... ok
+test_missing_committed_exit (__main__.AuditControls.test_missing_committed_exit) ... ok
+test_observer_binary_receive (__main__.AuditControls.test_observer_binary_receive) ... ok
+test_observer_helper_reset_is_unsupported (__main__.AuditControls.test_observer_helper_reset_is_unsupported) ... ok
+test_observer_indirect_writer (__main__.AuditControls.test_observer_indirect_writer) ... ok
+test_observer_invariant (__main__.AuditControls.test_observer_invariant) ... ok
+test_observer_query (__main__.AuditControls.test_observer_query) ... ok
+test_observer_retained_clock_reset (__main__.AuditControls.test_observer_retained_clock_reset) ... ok
+test_observer_retained_write (__main__.AuditControls.test_observer_retained_write) ... ok
+test_observer_select (__main__.AuditControls.test_observer_select) ... ok
+test_observer_sender (__main__.AuditControls.test_observer_sender) ... ok
+test_observer_urgent (__main__.AuditControls.test_observer_urgent) ... ok
+test_original_and_exact_diagnostic_transformation (__main__.AuditControls.test_original_and_exact_diagnostic_transformation) ... ok
+test_priority (__main__.AuditControls.test_priority) ... ok
+test_production_hidden_guard (__main__.AuditControls.test_production_hidden_guard) ... ok
+test_recording_helper_retained_side_effect (__main__.AuditControls.test_recording_helper_retained_side_effect) ... ok
+test_transitive_production_hidden_guard (__main__.AuditControls.test_transitive_production_hidden_guard) ... ok
+test_unknown_callable (__main__.AuditControls.test_unknown_callable) ... ok
+test_urgent_broadcast_below_declaration_seal (__main__.AuditControls.test_urgent_broadcast_below_declaration_seal) ... ok
+test_committed_partition_at_deadline (__main__.SemanticControls.test_committed_partition_at_deadline) ... ok
+test_deadlock_can_be_masked_by_observer_step (__main__.SemanticControls.test_deadlock_can_be_masked_by_observer_step) ... ok
+test_polling_can_miss_a_transient_trigger (__main__.SemanticControls.test_polling_can_miss_a_transient_trigger) ... ok
+test_polling_can_start_the_clock_late (__main__.SemanticControls.test_polling_can_start_the_clock_late) ... ok
+test_zero_time_observer_cycle_masks_global_deadlock_and_liveness (__main__.SemanticControls.test_zero_time_observer_cycle_masks_global_deadlock_and_liveness) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 30.883s
+
+OK
