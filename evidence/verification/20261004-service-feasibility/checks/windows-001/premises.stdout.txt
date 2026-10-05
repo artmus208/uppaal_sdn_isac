@@ -1,0 +1,1 @@
+{"templates": 51, "transitions_scanned": 884, "helpers_scanned": 77, "rank_cap_earliest_time_only": 1, "evidence_kind": "static_validation", "model_checking_verdict": null}

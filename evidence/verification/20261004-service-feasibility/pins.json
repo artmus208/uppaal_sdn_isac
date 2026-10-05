@@ -1,0 +1,9 @@
+{
+  "evidence/instantiation/uav-service-completion-candidate/model.xml": "b8ab50e112b71491f8242789cc7906497baf8440c473d7a5a4d5214840187e02",
+  "evidence/instantiation/uav-service-completion-candidate/queries/completion-safety.q": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+  "evidence/verification/20261004-completion-safety-proof/certificate.json": "509e8329e15ae884b14cf77ab192e28403a8f62ddc219f017463df3706dfb680",
+  "evidence/verification/20261004-completion-safety-proof/check.py": "be23f9d6e1ccedb31f004e67589d324bb3b92e49f5210ca5762c92455b25918d",
+  "evidence/verification/20261004-completion-safety-proof/premises.json": "357dd32835c38065bfb32f55940b0d830569d7f1f3172ef9032fd6b49fccd193",
+  "evidence/verification/uav-bounded-response-89/queries/Q6.q": "16b39342f932f42136802ec92947eaf2b2f102ce34e0013b7727e76fb11f7871",
+  "manifests/baselines/uav-service-completion-r1.yaml": "4b4bf71f55767123cc5934074024179289fa5ad3355fa4c0e37385e8261ef98d"
+}

@@ -1,0 +1,2 @@
+# Preserve captured Windows CRLF logs as bytes; CR is a line terminator.
+checks/**/*.txt -text whitespace=cr-at-eol
