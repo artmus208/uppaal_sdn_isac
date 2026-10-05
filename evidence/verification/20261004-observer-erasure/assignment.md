@@ -31,4 +31,4 @@ Acceptance:
 5. Scoped checkpoint commits, durable published branch and draft PR to read; independent acceptance pending.
 Evidence kinds: mathematical_argument, static_validation and direct_model_checking only when a successful complete explicit native result exists.
 Out of scope: model/generator/manifest/manuscript changes, arbitrary-N theorem, full-model run campaign, native retries/budget extension, requirement/gate closure or merge.
-Status: claimed.
+Status: in-review; bounded experiment completed inconclusively; draft PR #118.

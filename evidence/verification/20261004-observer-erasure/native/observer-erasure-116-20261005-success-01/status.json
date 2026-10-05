@@ -1,4 +1,6 @@
 {
-  "phase": "ready",
-  "updated_at": "2026-10-05T06:01:18.933649+00:00"
+  "phase": "incomplete",
+  "updated_at": "2026-10-05T06:16:18.696317+00:00",
+  "completed": 0,
+  "total": 1
 }

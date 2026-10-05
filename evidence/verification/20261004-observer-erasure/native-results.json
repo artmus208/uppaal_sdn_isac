@@ -1,0 +1,62 @@
+[
+  {
+    "run_id": "observer-erasure-116-20261005-completion-safety-01",
+    "attempt_id": "001-33a391bbc27441fbb3bcca150c8ff621",
+    "status": "timeout",
+    "verdict": null,
+    "query_name": "completion-safety",
+    "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+    "query_hash": "f3cfb3800063b21045d94625f616950944663fcba61956a3498aba62ca32edf9",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+    "execution_commit": "3b5c39ec166da1c09b40c75c4fcbd66c6c354d9d",
+    "elapsed_seconds": 600.891,
+    "peak_rss_bytes": 1493688320,
+    "cpu_seconds": 595.53125,
+    "trace_paths": [],
+    "manager_error": null,
+    "result_path": "native/observer-erasure-116-20261005-completion-safety-01/attempts/001-33a391bbc27441fbb3bcca150c8ff621/result.json",
+    "result_hash": "02ba0b18924003fbbd1ebd2a08be19c1a9275d45c30998bd0db00182cf74d782",
+    "command": [
+      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+      "-o",
+      "0",
+      "-t",
+      "0",
+      "-X",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-completion-safety-01\\attempts\\001-33a391bbc27441fbb3bcca150c8ff621\\trace",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-completion-safety-01\\model.xml",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-completion-safety-01\\query-001.q"
+    ],
+    "direct_scope": "29-process diagnostic XML; full-model transfer requires independent proof acceptance"
+  },
+  {
+    "run_id": "observer-erasure-116-20261005-success-01",
+    "attempt_id": "001-a0994dab2dd5419a89ab745b4478789c",
+    "status": "error",
+    "verdict": null,
+    "query_name": "success",
+    "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+    "query_hash": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+    "tool_version": "UPPAAL 5.0.0 (rev. 714BA9DB36F49691), June 2023\nCopyright (c) 2011 - 2023, Aalborg University.\nCopyright (c) 1995 - 2011, Uppsala University and Aalborg University.\nAll rights reserved.\nCompiled using -DENABLE_TIGA -DMULTI_TERMINAL -DENABLE_TIGA_SMC -DENABLE_STORE_MINGRAPH -DTIGA_OTF_BUCHI -DENABLE_LSC \nBuilt with Boost-1.79.0, LibXml2-2.9.14, xxHash-0.8.1, UTAP-1.1.6, UUtils-1.2.0, UDBM-2.0.11, and UCDD-0.2.1\nLicensed to Artur / ITMO University, Faculty of Software Engineering and Computer Systems (itmo.ru).\n",
+    "execution_commit": "0a773f4c53ecbc0852b68d57016445832f9e62da",
+    "elapsed_seconds": 70.84400000000005,
+    "peak_rss_bytes": 298541056,
+    "cpu_seconds": 67.21875,
+    "trace_paths": [],
+    "manager_error": "PermissionError: [WinError 5] \u041e\u0442\u043a\u0430\u0437\u0430\u043d\u043e \u0432 \u0434\u043e\u0441\u0442\u0443\u043f\u0435: 'C:\\\\Users\\\\musta\\\\.codex\\\\worktrees\\\\17cd\\\\mcp_uppaal\\\\research-work\\\\evidence\\\\verification\\\\20261004-observer-erasure\\\\native\\\\observer-erasure-116-20261005-success-01\\\\status.json.301c8b8e21e14bb0b9dcaa2d5c0f817e.tmp' -> 'C:\\\\Users\\\\musta\\\\.codex\\\\worktrees\\\\17cd\\\\mcp_uppaal\\\\research-work\\\\evidence\\\\verification\\\\20261004-observer-erasure\\\\native\\\\observer-erasure-116-20261005-success-01\\\\status.json'",
+    "result_path": "native/observer-erasure-116-20261005-success-01/attempts/001-a0994dab2dd5419a89ab745b4478789c/result.json",
+    "result_hash": "8d65429e023c1730b2f84f1915ee8d9e162bd13e9a6c295da0865968337b11a3",
+    "command": [
+      "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+      "-o",
+      "0",
+      "-t",
+      "0",
+      "-X",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-success-01\\attempts\\001-a0994dab2dd5419a89ab745b4478789c\\trace",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-success-01\\model.xml",
+      "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-success-01\\query-001.q"
+    ],
+    "direct_scope": "29-process diagnostic XML; full-model transfer requires independent proof acceptance"
+  }
+]

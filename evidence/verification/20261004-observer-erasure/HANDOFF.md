@@ -48,5 +48,14 @@ Additional observed limitations:
 Native protocol: two single attempts, completion-safety then success,
 600 seconds and 2048 MiB each. Results are retained under native/.
 Exact executable, runtime and manager hashes are in native/protocol.json.
-Next step: publish checkpoint/draft PR, execute bounded native campaign,
-then publish raw evidence and its interpretation for independent review.
+Draft PR: https://github.com/artmus208/uppaal_sdn_isac/pull/118.
+Native campaign completed with no decisive verdict: completion-safety timeout
+at 600.891 seconds; success stopped after 70.844 seconds with Windows
+WinError 5 on atomic replacement of status.json. No trace and no retries.
+See native-summary.md and native-results.json for exact bindings and raw paths.
+Final integration audit reproduces the XML and certificate byte-for-byte.
+Working tree is intended clean after the final checkpoint; exact HEAD is the
+published branch tip, rather than a self-referential hash inside this file.
+Remaining work: independent review and disposition of proof/experiment;
+any runner repair or additional native budget requires a separate scoped task.
+

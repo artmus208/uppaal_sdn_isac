@@ -54,3 +54,9 @@ The bounded native campaign is specified in assignment.md and native/protocol.js
 Each exact accepted query receives one 600-second/2048-MiB attempt on the
 diagnostic XML. Native results, when present, are separate from the mathematical
 argument; full-model transfer still requires independent acceptance.
+
+The campaign ran on UPPAAL 5.0.0 (rev. 714BA9DB36F49691). Completion safety
+hit its 600-second limit; success stopped on a Windows status-file update error.
+Neither query has a decisive native verdict. See native-summary.md and
+native-results.json; raw evidence is preserved and no retry was performed.
+Draft PR: https://github.com/artmus208/uppaal_sdn_isac/pull/118.

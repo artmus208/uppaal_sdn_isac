@@ -1,0 +1,23 @@
+{
+  "run_id": "001-a0994dab2dd5419a89ab745b4478789c",
+  "started_at": "2026-10-05T06:15:07.799369+00:00",
+  "command": [
+    "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin\\verifyta.exe",
+    "-o",
+    "0",
+    "-t",
+    "0",
+    "-X",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-success-01\\attempts\\001-a0994dab2dd5419a89ab745b4478789c\\trace",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-success-01\\model.xml",
+    "C:\\Users\\musta\\.codex\\worktrees\\17cd\\mcp_uppaal\\research-work\\evidence\\verification\\20261004-observer-erasure\\native\\observer-erasure-116-20261005-success-01\\query-001.q"
+  ],
+  "cwd": "C:\\Program Files (x86)\\UPPAAL-5.0.0\\bin",
+  "model_hash": "b80db319ff7cdb511cb97aa155be01f1d68707358399fbe02fa39c1c6c32be6c",
+  "query_hash": "745ab5968a673463fac5e014c7d7f192d4ed9d43ad5e193e1b7736af6d44541b",
+  "formula": "E<> u0_app_Req_0.Completed && c82_success",
+  "session": "b0a0e7d944fe42dda8fa79fb20323dc6",
+  "timeout_seconds": 600,
+  "memory_stop_bytes": 2147483648,
+  "pid": 24168
+}
